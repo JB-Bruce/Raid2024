@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 1019259572}
   - component: {fileID: 1019259571}
   - component: {fileID: 1019259570}
+  - component: {fileID: 1019259574}
   m_Layer: 0
   m_Name: PNJ
   m_TagString: Untagged
@@ -474,7 +475,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d4dd03843d7d1408bc195dd3468f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 0, y: 0, z: 0}
   mapSize: 75
 --- !u!195 &1019259571
 NavMeshAgent:
@@ -565,6 +565,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1019259574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019259569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2b9c7b139ae5f478712ed12d367533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  order: 1
 --- !u!1 &1048724666
 GameObject:
   m_ObjectHideFlags: 0
