@@ -17,8 +17,8 @@ public class HasBeenReached : Node
     }
 
     public override NodeState Evaluate()
-    {
-        if (_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.1f) 
+    {   
+        if ((_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.1f) || (_agent.pathStatus == NavMeshPathStatus.PathPartial && _agent.velocity == Vector3.zero)) 
         {
             return NodeState.SUCCESS;
         }
