@@ -30,8 +30,28 @@ public class UnitMovement : MonoBehaviour
     // get random point on the map
     public Vector3 GetRandomPointOnMap()
     {
-        return new Vector3(Random.Range(-mapSize, mapSize), Random.Range(-mapSize, mapSize), transform.position.z);
+        Vector3 target;
+        do
+        {
+            target = new Vector3(Random.Range(-mapSize, mapSize), Random.Range(-mapSize, mapSize), transform.position.z);
+        } while (IsThePointRestricted(target));
+
+        return target;
     }
+
+    // Is the target point in the restricted area
+    private bool IsThePointRestricted(Vector3 position)
+    {
+        for(int i = 0; i < GameManager.Instance.restrictedAreas.Count; i++) 
+        {
+            if (Vector3.Distance(GameManager.Instance.restrictedAreas[i].areaOrigine, position) <= GameManager.Instance.restrictedAreas[i].areaRadius)
+            {
+                return true;
+            }
+        }
+        return false;   
+    }
+
 
     // Get a random point in the guard point of the unit
     public Vector3 GetRandomPointOnGuardPoint()
