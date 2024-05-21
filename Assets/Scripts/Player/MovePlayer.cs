@@ -8,58 +8,92 @@ public class MovePlayer : MonoBehaviour
     private CustomInput input = null;
     private Vector2 moveVector = Vector2.zero;
     private Rigidbody2D _rb = null;
-    public float moveSpeed = 10f;
+    private SpriteRenderer _sprite = null;
+    private bool _isRunning = false;
+    public GameObject weapon;
+    public float moveSpeed = 7f;
 
+
+    //If the player press the button assigned for run, change the bool _isRunning. 
+    //If the player release the button , change the bool again.
+    public void sprint(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            _isRunning =true;
+        }
+        else if (context.canceled)
+        {
+            _isRunning =false;
+        }
+    }
+
+
+    //When the game is play, it's the first thing who is done.
+    //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
         input = new CustomInput();
         _rb = GetComponent<Rigidbody2D>();
+        _sprite = GetComponent<SpriteRenderer>();
     }
 
+
+    //This function is called when the object becomes enabled and active. Enable move input
     private void OnEnable() {
-        input.Enable();
-        input.Move.Movement.performed += OnMovementPerformed;
-        input.Move.Movement.canceled += OnMovementCancelled;
+        input.Move.Enable();
+        
     }
 
+
+    //This function is called when the object becomes disabled. Disable move input
     private void OnDisable() {
-        input.Disable();
-        input.Move.Movement.performed -= OnMovementPerformed;
-        input.Move.Movement.canceled -= OnMovementCancelled;
+        input.Move.Disable();
     }
 
-    private void OnMovementPerformed(InputAction.CallbackContext value)
+
+    //Get a direction with the input for the move,  and set the speed move (on that direction) depending on if the player sprint.   
+    private void FixedUpdate() 
     {
-        moveVector = value.ReadValue<Vector2>();
+        moveVector = input.Move.Movement.ReadValue<Vector2>();
+        if(_isRunning == true)
+        {
+            _rb.velocity = moveVector * moveSpeed * 1.5f;
+        }
+        else
+        {
+            _rb.velocity = moveVector * moveSpeed;
+        }
     }
 
-    private void OnMovementCancelled(InputAction.CallbackContext value)
-    {
-        moveVector = Vector2.zero;
-    }
 
-    private void FixedUpdate() {
-        _rb.velocity = moveVector * moveSpeed;
-    }
-
+    //Look where the mouse is, and determine the position of the weapon
+    //The weapon is rotate of 90° for follow the mouse correctly
+    //if the mouse is to the left of the player, flip the sprite of the player
     void Update()
     {
-        /*
+        
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = new Vector2(
-            mousePosition.x - transform.position.x,
-            mousePosition.y - transform.position.y
+            mousePosition.x - weapon.transform.position.x,
+            mousePosition.y - weapon.transform.position.y
         );
 
-        transform.up = direction;
+        weapon.transform.up = direction;
+        Vector3 angle = new Vector3(0,0,90);
+        weapon.transform.Rotate(-angle);
 
 
-        Vector3 movement = new Vector3(
-            
-            Input.GetKey(KeyCode.D) ? 1 : Input.GetKey(KeyCode.Q) ? -1 : 0,
-            Input.GetKey(KeyCode.Z) ? 1 : Input.GetKey(KeyCode.S) ? -1 : 0,
-            0f
-        );
 
-        transform.position += movement * playerVelocity * Time.deltaTime;*/
+        if (transform.position.x > mousePosition.x)
+        {
+            _sprite.flipX = true;
+        }
+        else
+        {
+            _sprite.flipX = false;
+        }
+        
+
+
     }
 }
