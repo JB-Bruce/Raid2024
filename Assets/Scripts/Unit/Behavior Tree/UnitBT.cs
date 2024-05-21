@@ -90,3 +90,9 @@ public enum UnitOrder
 {
     Patrol, AreaGuard, Surveillance
 }
+
+// Contain all the possible Faction 
+public enum Faction
+{
+    Null,Military, Utopist, Survivalist, Scientist, Bandit
+}

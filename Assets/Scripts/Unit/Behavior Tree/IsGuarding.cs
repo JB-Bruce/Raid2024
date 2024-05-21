@@ -19,7 +19,6 @@ public class IsGuarding : Node
     {
         if (_tree.order == UnitOrder.AreaGuard)
         {
-            Debug.Log("Guard");
             return NodeState.SUCCESS;
         }
         return NodeState.FAILURE;

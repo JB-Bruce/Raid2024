@@ -5,6 +5,7 @@ using UnityEngine;
 public class Humanoid : MonoBehaviour
 {
     public int life = 100;
+    public Faction faction;
 
     public void TakeDamage(int damage)
     {

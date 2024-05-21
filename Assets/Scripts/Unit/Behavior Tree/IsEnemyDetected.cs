@@ -20,7 +20,6 @@ public class IsEnemyDetected : Node
     {
         if (_unit.IsEnemyInMyArea() )
         {
-            Debug.Log("Detect Enemy");
             return NodeState.SUCCESS;
         }
         _unit.canAttack = false;

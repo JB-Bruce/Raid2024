@@ -42,9 +42,27 @@ public class UnitCombat : MonoBehaviour
     // Check if an enemy humanoid is in the unit area
     public bool IsEnemyInMyArea()
     {
-        if(humanoidAround.Count > 0 || lastPosition != Vector3.zero) 
+        if(EnnemiesAround().Count > 0 || lastPosition != Vector3.zero)
+        {
             return true;
+        }
         return false;
+    }
+
+
+    // return all ennemie around
+    private List<Humanoid> EnnemiesAround()
+    {
+        List<Humanoid > ennemies = new List<Humanoid>();
+
+        for(int i = 0; i < humanoidAround.Count; i++)
+        {
+            if (humanoidAround[i].GetComponent<Humanoid>().faction != GetComponent<Humanoid>().faction)
+            {
+                ennemies.Add(humanoidAround[i].GetComponent<Humanoid>());
+            }
+        }
+        return ennemies;
     }
 
     // Get the nearrest enemy
@@ -54,14 +72,16 @@ public class UnitCombat : MonoBehaviour
         float _distanceToNearest = Mathf.Infinity;
         bool _nearestFound = false;
 
-        for (int i = 0; i < humanoidAround.Count; i++) 
+        List<Humanoid> ennemies = EnnemiesAround();
+
+        for (int i = 0; i < ennemies.Count; i++) 
         {
-            float _newDistance = Vector3.Distance(_transform.position, humanoidAround[i].transform.position);
-            RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, humanoidAround[nearest].transform.position - _transform.position, viewRange);
+            float _newDistance = Vector3.Distance(_transform.position, ennemies[i].transform.position);
+            RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, ennemies[nearest].transform.position - _transform.position, viewRange);
 
-            Debug.DrawRay(_transform.position, (humanoidAround[nearest].transform.position -_transform.position ) * viewRange, Color.red);
+            Debug.DrawRay(_transform.position, (ennemies[nearest].transform.position -_transform.position ) * viewRange, Color.red);
 
-            if (_hit.collider != null && _distanceToNearest > _newDistance && _hit.collider.gameObject == humanoidAround[nearest])
+            if (_hit.collider != null && _distanceToNearest > _newDistance && _hit.collider.gameObject == ennemies[nearest].gameObject)
             {
                 nearest = i;
                 _distanceToNearest = _newDistance;
@@ -71,8 +91,8 @@ public class UnitCombat : MonoBehaviour
 
         if(_nearestFound) 
         {
-            lastPosition = humanoidAround[nearest].transform.position;
-            return humanoidAround[nearest];
+            lastPosition = ennemies[nearest].transform.position;
+            return ennemies[nearest].gameObject;
         }
         return null;
     }
