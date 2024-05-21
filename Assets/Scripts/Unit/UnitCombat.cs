@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class UnitCombat : MonoBehaviour
 {
-    private List<GameObject> humanoidInMyArea = new List<GameObject>();
+    [SerializeField]
+    private List<GameObject> humanoidAround = new List<GameObject>();
     Transform _transform;
 
     //Attack Parameters
     private float _chargeTimer = 0;
     private float _attackSpeed = 1;
     public bool canAttack = false;
-
     public float attackDistance = 20f;
+    public Vector3 lastPosition = Vector3.zero;
+    public float viewRange = 31f;
 
     private void Start()
     {
         _transform = transform;
+        GetComponent<CircleCollider2D>().radius = viewRange;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.TryGetComponent<Humanoid>(out Humanoid humanoid))
         {
-            humanoidInMyArea.Add(collision.gameObject);
+            humanoidAround.Add(collision.gameObject);
         }
 
     }
@@ -32,14 +35,14 @@ public class UnitCombat : MonoBehaviour
     {
         if (collision.TryGetComponent<Humanoid>(out Humanoid humanoid))
         {
-            humanoidInMyArea.Remove(collision.gameObject);
+            humanoidAround.Remove(collision.gameObject);
         }
     }
 
     // Check if an enemy humanoid is in the unit area
     public bool IsEnemyInMyArea()
     {
-        if(humanoidInMyArea.Count > 0) 
+        if(humanoidAround.Count > 0 || lastPosition != Vector3.zero) 
             return true;
         return false;
     }
@@ -47,17 +50,31 @@ public class UnitCombat : MonoBehaviour
     // Get the nearrest enemy
     public GameObject GetNearrestEnemy()
     {
-        int nerrest = 0;
+        int nearest = 0;
+        float _distanceToNearest = Mathf.Infinity;
+        bool _nearestFound = false;
 
-        for (int i = 0; i < humanoidInMyArea.Count; i++) 
+        for (int i = 0; i < humanoidAround.Count; i++) 
         {
-            if (Vector3.Distance(_transform.position, humanoidInMyArea[nerrest].transform.position) > Vector3.Distance(_transform.position, humanoidInMyArea[i].transform.position))
+            float _newDistance = Vector3.Distance(_transform.position, humanoidAround[i].transform.position);
+            RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, humanoidAround[nearest].transform.position - _transform.position, viewRange);
+
+            Debug.DrawRay(_transform.position, (humanoidAround[nearest].transform.position -_transform.position ) * viewRange, Color.red);
+
+            if (_hit.collider != null && _distanceToNearest > _newDistance && _hit.collider.gameObject == humanoidAround[nearest])
             {
-                nerrest = i;
+                nearest = i;
+                _distanceToNearest = _newDistance;
+                _nearestFound = true;
             }
         }
 
-        return humanoidInMyArea[nerrest];
+        if(_nearestFound) 
+        {
+            lastPosition = humanoidAround[nearest].transform.position;
+            return humanoidAround[nearest];
+        }
+        return null;
     }
 
     private void Update()

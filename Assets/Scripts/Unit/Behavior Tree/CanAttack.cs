@@ -18,7 +18,7 @@ public class CanAttack : Node
     {
         GameObject enemy = _unit.GetNearrestEnemy();
 
-        if(_unit.attackDistance >= Vector3.Distance(_unit.transform.position, enemy.transform.position))
+        if(enemy != null && _unit.attackDistance >= Vector3.Distance(_unit.transform.position, enemy.transform.position))
         {
             _unitMovement.ChangeTarget(_unit.transform.position);
             _unit.canAttack = true;

@@ -20,6 +20,7 @@ public class IsPatrolling : Node
     {
         if(_tree.order == UnitOrder.Patrol) 
         {
+            Debug.Log("Patrol");
             return NodeState.SUCCESS;
         }
         return NodeState.FAILURE;

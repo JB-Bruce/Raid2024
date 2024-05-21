@@ -35,7 +35,6 @@ public class UnitBT : Humanoid
                         new CanAttack(this.gameObject)
                     }),
                     new GoToEnemy(this.gameObject)
-
                 })
             }),
 
