@@ -4,23 +4,25 @@ using UnityEngine;
 using static Node_script;
 
 /// <summary>
-/// Is the state of the Unit AreaGuard
+/// See if an enemy is in the area of the unit
 /// </summary>
-public class IsGuarding : Node
-{
-    private UnitBT _tree;
 
-    public IsGuarding(UnitBT tree)
+public class IsEnemyDetected : Node
+{
+    UnitCombat _unit;
+
+    public IsEnemyDetected(GameObject unit)
     {
-        _tree = tree;
+        _unit = unit.GetComponent<UnitCombat>();
     }
 
     public override NodeState Evaluate()
     {
-        if (_tree.order == UnitOrder.AreaGuard)
+        if (_unit.IsEnemyInMyArea() )
         {
             return NodeState.SUCCESS;
         }
+        _unit.canAttack = false;
         return NodeState.FAILURE;
     }
 }

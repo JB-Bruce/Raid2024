@@ -9,9 +9,9 @@ using static Node_script;
 /// </summary>
 public class IsPatrolling : Node
 {
-    private Behavior_tree _tree;
+    private UnitBT _tree;
 
-    public IsPatrolling (Behavior_tree tree)
+    public IsPatrolling (UnitBT tree)
     {
         _tree = tree;
     }

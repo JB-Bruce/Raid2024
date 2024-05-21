@@ -3,25 +3,20 @@ using UnityEngine;
 using UnityEngine.AI;
 using static Node_script;
 
-using static Selector;
-using static Sequence;
-
-using static HasBeenReached;
-using static IsGuarding;
-using static IsPatrolling;
-using static Guard;
-
 /// <summary>
 /// Contain all the behavior of a unit
 /// </summary>
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Behavior_tree : MonoBehaviour
+public class UnitBT : Humanoid
 {
     public UnitOrder order;
+    public float waitTime = 0;
+    public bool canMove = true;
+
     private NavMeshAgent _agent;
     private Selector _selectorRoot;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +24,22 @@ public class Behavior_tree : MonoBehaviour
 
         _selectorRoot = new Selector(new List<Node> 
         {
+            //Attack
+            new Sequence( new List<Node>
+            {
+                new IsEnemyDetected(this.gameObject),
+                new Selector(new List<Node>
+                {
+                    new Sequence( new List<Node>
+                    {
+                        new CanAttack(this.gameObject)
+                    }),
+                    new GoToEnemy(this.gameObject)
+
+                })
+            }),
+
+            //Guard
             new Sequence( new List<Node> 
             {
                 new IsGuarding(this),
@@ -36,12 +47,13 @@ public class Behavior_tree : MonoBehaviour
                 {
                     new Sequence(new List<Node> 
                     {
-                        new HasBeenReached(_agent),
+                        new HasBeenReached(_agent, this),
                         new Guard(this.gameObject)
                     })
                 } )
             }), 
 
+            //Patrol
             new Sequence( new List<Node> 
             {
                 new IsPatrolling(this),
@@ -49,7 +61,7 @@ public class Behavior_tree : MonoBehaviour
                 {
                     new Sequence(new List<Node>
                     {
-                        new HasBeenReached(_agent),
+                        new HasBeenReached(_agent, this),
                         new Patrol(this.gameObject)
                     })
                 } )
@@ -62,7 +74,11 @@ public class Behavior_tree : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _selectorRoot.Evaluate();
+        if(waitTime < Time.time) // Is the unit wait
+        {
+            _selectorRoot.Evaluate();
+        }
+
     }
 
     // Possible order unit can receive

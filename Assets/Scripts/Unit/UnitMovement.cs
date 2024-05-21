@@ -72,6 +72,4 @@ public class UnitMovement : MonoBehaviour
         _minDistanceGuardPoint = minDistanceGuardPoint;
     }
 
-
-
 }
