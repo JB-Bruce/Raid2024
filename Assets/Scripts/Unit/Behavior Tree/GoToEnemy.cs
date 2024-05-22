@@ -19,25 +19,27 @@ public class GoToEnemy : Node
     public override NodeState Evaluate()
     {
 
-        if (((_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.03f) || (_agent.pathStatus == NavMeshPathStatus.PathPartial && _agent.velocity == Vector3.zero))
-            && _unit.GetNearrestEnemy() == null)
+        if (((_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.03f) || (/*_agent.pathStatus == NavMeshPathStatus.PathPartial &&*/ _agent.velocity == Vector3.zero))
+            && _unit.nearestEnemy == null)
         {
             _unit.lastPosition = Vector3.zero;
             return NodeState.FAILURE;
         }
 
-        GameObject enemy = _unit.GetNearrestEnemy();
-
-        if (enemy != null && _unit.attackDistance < Vector3.Distance(_unit.transform.position, enemy.transform.position))
+        if (_unit.nearestEnemy != null && _unit.attackDistance < Vector3.Distance(_unit.transform.position, _unit.nearestEnemy.transform.position))
         {
-            _unitMovement.ChangeTarget(enemy.transform.position);
+            _unitMovement.ChangeTarget(_unit.nearestEnemy.transform.position);
             return NodeState.SUCCESS;
         }
 
-        else if(enemy == null && _unit.lastPosition != Vector3.zero) 
+        else if(_unit.nearestEnemy == null && _unit.lastPosition != Vector3.zero && _unit.lastEnemy != null) 
         {
             _unitMovement.ChangeTarget(_unit.lastPosition);
             return NodeState.SUCCESS;
+        }
+        else 
+        {
+            _unit.lastPosition = Vector3.zero;
         }
 
 

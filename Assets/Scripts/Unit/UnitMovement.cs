@@ -8,14 +8,16 @@ public class UnitMovement : MonoBehaviour
 {
     public int mapSize;
     NavMeshAgent _agent;
+    private Transform _transform;
 
     private Vector2 _guardPoint;
     private float _minDistanceGuardPoint;
     private float _maxDistanceGuardPoint;
 
     // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
+        _transform = transform;
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
@@ -24,7 +26,7 @@ public class UnitMovement : MonoBehaviour
     // Change the target point of the unit
     public void ChangeTarget(Vector3 target)
     {
-         _agent.SetDestination(new Vector3(target.x, target.y, transform.position.z));
+         _agent.SetDestination(new Vector3(target.x, target.y, _transform.position.z));
     }
 
     // get random point on the map
@@ -33,7 +35,7 @@ public class UnitMovement : MonoBehaviour
         Vector3 target;
         do
         {
-            target = new Vector3(Random.Range(-mapSize, mapSize), Random.Range(-mapSize, mapSize), transform.position.z);
+            target = new Vector3(Random.Range(-mapSize, mapSize), Random.Range(-mapSize, mapSize), _transform.position.z);
         } while (IsThePointRestricted(target));
 
         return target;
@@ -44,7 +46,7 @@ public class UnitMovement : MonoBehaviour
     {
         for(int i = 0; i < GameManager.Instance.restrictedAreas.Count; i++) 
         {
-            if (Vector3.Distance(GameManager.Instance.restrictedAreas[i].areaOrigine, position) <= GameManager.Instance.restrictedAreas[i].areaRadius)
+            if (Vector3.Distance(GameManager.Instance.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius)
             {
                 return true;
             }
