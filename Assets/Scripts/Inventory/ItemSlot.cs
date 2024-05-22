@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField]
     private Item _item = null;
@@ -32,10 +32,14 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// <summary>
     /// Changes the item selected in inventory and activates the item slot outline
     /// </summary>
-    private void GetSelected(bool isSelected)
+    public void GetSelected(bool isSelected)
     {
         if (isSelected)
         {
+            if (_inventory.selectedItemSlot != null)
+            {
+                _inventory.selectedItemSlot.GetSelected(false);
+            }
             _inventory.selectedItemSlot = this;
             _itemSelectedSprite.SetActive(true);
         }
@@ -49,11 +53,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerEnter(PointerEventData _)
     {
         GetSelected(true);
-    }
-
-    public void OnPointerExit(PointerEventData _)
-    {
-        GetSelected(false);
     }
     
     public void AddItemToSlot(Item item)

@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item", order = 1)]
 public class Item : ScriptableObject
 {
     [SerializeField]
@@ -12,6 +11,9 @@ public class Item : ScriptableObject
 
     [SerializeField]
     protected int _maxStack;
+
+    [SerializeField]
+    protected string _name;
 
     [SerializeField]
     protected Image _itemSprite;
