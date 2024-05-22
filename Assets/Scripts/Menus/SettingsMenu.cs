@@ -29,7 +29,7 @@ public class SettingsMenu : MonoBehaviour
         {
             Destroy(transform.parent.parent.gameObject);
         }
-
+        //Keeps the settings and sound managers from being destroyed on scene change
         DontDestroyOnLoad(transform.parent.parent); ;
 
         //Links volume sliders to their respective functions
@@ -37,6 +37,16 @@ public class SettingsMenu : MonoBehaviour
         musicVolumeSlider.onValueChanged.AddListener(delegate { OnMusicVolumeChange(); });
         sfxVolumeSlider.onValueChanged.AddListener(delegate { OnSFXVolumeChange(); });
 
+    }
+
+    public void ToggleMusic()
+    {
+        SoundManager.instance.ToggleMusic();
+    }
+
+    public void ToggleSFX()
+    {
+        SoundManager.instance.ToggleSFX();
     }
 
     public void OnMainVolumeChange()

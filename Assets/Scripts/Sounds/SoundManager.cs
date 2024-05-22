@@ -39,7 +39,7 @@ public class SoundManager : MonoBehaviour
         {
             Debug.Log("Music not Found");
         }
-        else
+        else //else play the music by name
         {
             musicPlayer.clip = _s.clip;
             musicPlayer.Play();
@@ -53,41 +53,41 @@ public class SoundManager : MonoBehaviour
         {
             Debug.Log("SFX not Found");
         }
-        else
+        else //else play the sfx by name
         {
             sfxPlayer.PlayOneShot(_s.clip);
         }
     }
 
-    public void ToggleMusic()
+    public void ToggleMusic() //Allows muting Music
     {
-        musicPlayer.mute = !musicPlayer.mute;
+        musicPlayer.mute = !musicPlayer.mute; 
     }
 
-    public void ToggleSFX()
+    public void ToggleSFX() //Allows muting sfx
     {
         sfxPlayer.mute = !sfxPlayer.mute;
     }
 
-    public void MusicVolume(float volume)
+    public void MusicVolume(float volume) //Changes the Music's volume
     {
         musicVolume = volume;
         UpdateVolumes();
     }
 
-    public void SFXVolume(float volume)
+    public void SFXVolume(float volume) //Changes the SFX's volume
     {
         sfxVolume = volume;
         UpdateVolumes();
     }
 
-    public void MainVolume (float volume)
+    public void MainVolume (float volume) //Changes the Main volume
     {
         mainVolume = volume;
         UpdateVolumes();
     }
 
-    private void UpdateVolumes()
+    private void UpdateVolumes() //Updates the volume changes
     {
         musicPlayer.volume = musicVolume * mainVolume;
         sfxPlayer.volume = sfxVolume * mainVolume;
