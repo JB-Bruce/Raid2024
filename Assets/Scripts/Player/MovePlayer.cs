@@ -3,15 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class MovePlayer : MonoBehaviour
 {
-    private CustomInput input = null;
-    private Vector2 moveVector = Vector2.zero;
+    private CustomInput _input = null;
+    public GameObject weapon;
+    private Vector2 _moveVector = Vector2.zero;
     private Rigidbody2D _rb = null;
     private SpriteRenderer _sprite = null;
-    private bool _isRunning = false;
-    public GameObject weapon;
+    
+    private bool _isSprinting = false;
+    private bool _mouseActive = true;
     public float moveSpeed = 7f;
+
+    Vector2 direction = new Vector2(0,0);
+    Vector2 lastAimDirection;
+    Vector3 mousePosition;
+    Vector3 lastMousePosition;
 
 
     //If the player press the button assigned for run, change the bool _isRunning. 
@@ -20,71 +28,58 @@ public class MovePlayer : MonoBehaviour
     {
         if (context.started)
         {
-            _isRunning =true;
+            _isSprinting =true;
         }
         else if (context.canceled)
         {
-            _isRunning =false;
+            _isSprinting =false;
         }
     }
+
 
 
     //When the game is play, it's the first thing who is done.
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
-        input = new CustomInput();
+        _input = new CustomInput();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
     }
 
 
-    //This function is called when the object becomes enabled and active. Enable move input
+    //This function is called when the object becomes enabled and active. Enable move _input
     private void OnEnable() {
-        input.Move.Enable();
-        
+        _input.Move.Enable();
+        _input.Aim.Enable();
     }
 
 
-    //This function is called when the object becomes disabled. Disable move input
+    //This function is called when the object becomes disabled. Disable move _input
     private void OnDisable() {
-        input.Move.Disable();
+        _input.Move.Disable();
+        _input.Aim.Disable();
     }
 
 
-    //Get a direction with the input for the move,  and set the speed move (on that direction) depending on if the player sprint.   
-    private void FixedUpdate() 
+    //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
+    private void Move() 
     {
-        moveVector = input.Move.Movement.ReadValue<Vector2>();
-        if(_isRunning == true)
+        _moveVector = _input.Move.Movement.ReadValue<Vector2>();
+        if(_isSprinting == true)
         {
-            _rb.velocity = moveVector * moveSpeed * 1.5f;
+            _rb.velocity = _moveVector * moveSpeed * 1.5f;
         }
         else
         {
-            _rb.velocity = moveVector * moveSpeed;
+            _rb.velocity = _moveVector * moveSpeed;
         }
     }
 
 
-    //Look where the mouse is, and determine the position of the weapon
-    //The weapon is rotate of 90° for follow the mouse correctly
-    //if the mouse is to the left of the player, flip the sprite of the player
-    void Update()
+
+    private void FlipPlayer()
     {
-        
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = new Vector2(
-            mousePosition.x - weapon.transform.position.x,
-            mousePosition.y - weapon.transform.position.y
-        );
-
-        weapon.transform.up = direction;
-        Vector3 angle = new Vector3(0,0,90);
-        weapon.transform.Rotate(-angle);
-
-
-
-        if (transform.position.x > mousePosition.x)
+        if (direction.x < 0)
         {
             _sprite.flipX = true;
         }
@@ -92,8 +87,69 @@ public class MovePlayer : MonoBehaviour
         {
             _sprite.flipX = false;
         }
-        
+    }
+
+    //Look where the mouse is, and determine the position of the weapon
+    //The weapon is rotate of 90° for follow the mouse correctly
+    //if the mouse is to the left of the player, flip the sprite of the player
+    private void WeaponAim()
+    {
+        mousePosition = Input.mousePosition;
+        float distance = Vector3.Distance(lastMousePosition, mousePosition);
+        if (distance > 5)
+        {
+            _mouseActive=true;
+            Cursor.visible = true;
+        }
+
+        Vector2 aimNotActive = new Vector2(0,0);
+
+        if (_input.Aim.Aim.ReadValue<Vector2>() != aimNotActive)
+        {
+            direction = _input.Aim.Aim.ReadValue<Vector2>();
+            lastAimDirection = direction;
+            
+            Cursor.visible = false;
+            _mouseActive=false;
+        }
+        else 
+        {
+            if(_mouseActive)
+            {
+                mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                direction = new Vector2(
+                mousePosition.x - weapon.transform.position.x,
+                mousePosition.y - weapon.transform.position.y
+                );
+                lastMousePosition = Input.mousePosition;
+            }
+
+        }
 
 
+        if (direction == aimNotActive){
+            
+            direction = lastAimDirection;
+            
+        }
+
+        weapon.transform.up = direction;
+        Vector3 angle = new Vector3(0,0,90);
+        weapon.transform.Rotate(-angle);
+    }
+
+
+
+       
+    private void FixedUpdate() 
+    {
+        Move();
+    }
+
+    void Update()
+    {
+        WeaponAim();
+
+        FlipPlayer(); 
     }
 }

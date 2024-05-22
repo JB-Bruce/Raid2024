@@ -44,15 +44,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Aim"",
-                    ""type"": ""Value"",
-                    ""id"": ""10710320-8c06-4370-969b-bcec8e3ffd3a"",
-                    ""expectedControlType"": ""Analog"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -242,17 +233,78 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""action"": ""Sprint"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Aim"",
+            ""id"": ""a9722cee-e1f0-4ab5-bc7e-2ca6b3efdda9"",
+            ""actions"": [
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Value"",
+                    ""id"": ""b7779836-bddf-4e0e-8dba-40e572d91e5b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""Right stick"",
+                    ""id"": ""5b9c48e1-b6ab-46e8-84ec-027c7236ef96"",
+                    ""path"": ""2DVector(mode=2)"",
+                    ""interactions"": """",
+                    ""processors"": ""StickDeadzone(min=0.6,max=0.9)"",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""369a8b1c-3081-45ff-9dc5-3d7437c5418a"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""name"": ""up"",
+                    ""id"": ""719ed546-bc19-44a2-93d3-70340410bfec"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Aim"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": false
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""5b9e90ae-9e60-44a4-9915-f8adacd5186d"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""1aec9ba0-db57-430b-8dea-c07d62b82a02"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""cc075143-1796-4308-bbd5-fa467eff6242"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -263,7 +315,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Move = asset.FindActionMap("Move", throwIfNotFound: true);
         m_Move_Movement = m_Move.FindAction("Movement", throwIfNotFound: true);
         m_Move_Sprint = m_Move.FindAction("Sprint", throwIfNotFound: true);
-        m_Move_Aim = m_Move.FindAction("Aim", throwIfNotFound: true);
+        // Aim
+        m_Aim = asset.FindActionMap("Aim", throwIfNotFound: true);
+        m_Aim_Aim = m_Aim.FindAction("Aim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -327,14 +381,12 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private List<IMoveActions> m_MoveActionsCallbackInterfaces = new List<IMoveActions>();
     private readonly InputAction m_Move_Movement;
     private readonly InputAction m_Move_Sprint;
-    private readonly InputAction m_Move_Aim;
     public struct MoveActions
     {
         private @CustomInput m_Wrapper;
         public MoveActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Move_Movement;
         public InputAction @Sprint => m_Wrapper.m_Move_Sprint;
-        public InputAction @Aim => m_Wrapper.m_Move_Aim;
         public InputActionMap Get() { return m_Wrapper.m_Move; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -350,9 +402,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
-            @Aim.started += instance.OnAim;
-            @Aim.performed += instance.OnAim;
-            @Aim.canceled += instance.OnAim;
         }
 
         private void UnregisterCallbacks(IMoveActions instance)
@@ -363,9 +412,6 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
-            @Aim.started -= instance.OnAim;
-            @Aim.performed -= instance.OnAim;
-            @Aim.canceled -= instance.OnAim;
         }
 
         public void RemoveCallbacks(IMoveActions instance)
@@ -383,10 +429,59 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         }
     }
     public MoveActions @Move => new MoveActions(this);
+
+    // Aim
+    private readonly InputActionMap m_Aim;
+    private List<IAimActions> m_AimActionsCallbackInterfaces = new List<IAimActions>();
+    private readonly InputAction m_Aim_Aim;
+    public struct AimActions
+    {
+        private @CustomInput m_Wrapper;
+        public AimActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Aim => m_Wrapper.m_Aim_Aim;
+        public InputActionMap Get() { return m_Wrapper.m_Aim; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AimActions set) { return set.Get(); }
+        public void AddCallbacks(IAimActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AimActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AimActionsCallbackInterfaces.Add(instance);
+            @Aim.started += instance.OnAim;
+            @Aim.performed += instance.OnAim;
+            @Aim.canceled += instance.OnAim;
+        }
+
+        private void UnregisterCallbacks(IAimActions instance)
+        {
+            @Aim.started -= instance.OnAim;
+            @Aim.performed -= instance.OnAim;
+            @Aim.canceled -= instance.OnAim;
+        }
+
+        public void RemoveCallbacks(IAimActions instance)
+        {
+            if (m_Wrapper.m_AimActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IAimActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AimActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AimActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public AimActions @Aim => new AimActions(this);
     public interface IMoveActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+    }
+    public interface IAimActions
+    {
         void OnAim(InputAction.CallbackContext context);
     }
 }

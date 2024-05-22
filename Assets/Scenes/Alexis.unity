@@ -469,7 +469,7 @@ Transform:
   m_GameObject: {fileID: 1204741085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.05, y: -0.06, z: 0}
+  m_LocalPosition: {x: 0, y: -0.06, z: 0}
   m_LocalScale: {x: 1.3385321, y: 0.45, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -708,6 +708,7 @@ GameObject:
   - component: {fileID: 1634720155}
   - component: {fileID: 1634720154}
   - component: {fileID: 1634720157}
+  - component: {fileID: 1634720158}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -824,6 +825,60 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1634720158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634720153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 858f80f2620ff6c4cb08055e6162122a, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6602df93-db00-4cd2-b157-29bd2e71416d
+    m_ActionName: Move/Movement[/Keyboard/z,/Keyboard/s,/Keyboard/q,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow,/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1634720154}
+        m_TargetAssemblyTypeName: MovePlayer, Assembly-CSharp
+        m_MethodName: sprint
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b2df1859-25e9-4c1b-a379-6b05543329e0
+    m_ActionName: Move/Sprint[/Keyboard/leftShift,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7779836-bddf-4e0e-8dba-40e572d91e5b
+    m_ActionName: Aim/Aim
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Move
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 699926259}
 --- !u!1 &2128670686
 GameObject:
   m_ObjectHideFlags: 0
@@ -850,7 +905,7 @@ Transform:
   m_GameObject: {fileID: 2128670686}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.41, y: 0.28, z: 0}
+  m_LocalPosition: {x: -0.41, y: -0.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
