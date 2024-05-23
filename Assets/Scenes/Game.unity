@@ -1035,6 +1035,39 @@ MonoBehaviour:
   - {fileID: 1000456506}
   - {fileID: 714689133}
   - {fileID: 927730605}
+  reputations:
+  - faction1: 1
+    faction2: 0
+    reputation: 0
+  - faction1: 0
+    faction2: 2
+    reputation: 0
+  - faction1: 0
+    faction2: 3
+    reputation: 0
+  - faction1: 0
+    faction2: 4
+    reputation: 0
+  - faction1: 1
+    faction2: 2
+    reputation: -3
+  - faction1: 1
+    faction2: 3
+    reputation: 5
+  - faction1: 1
+    faction2: 4
+    reputation: 1
+  - faction1: 2
+    faction2: 3
+    reputation: -1
+  - faction1: 2
+    faction2: 4
+    reputation: 2
+  - faction1: 3
+    faction2: 4
+    reputation: 3
+  maxReputation: 8
+  minReputation: -5
 --- !u!1 &1884218550
 GameObject:
   m_ObjectHideFlags: 0

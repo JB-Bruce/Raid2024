@@ -23,6 +23,8 @@ public class UnitCombat : MonoBehaviour
     private int evaluateUpdate = 0;
     public int jumpUpdate = 2;
 
+    public float neutralReputation = 0;
+
     public CircleCollider2D
         circleCollider;
 
@@ -68,7 +70,7 @@ public class UnitCombat : MonoBehaviour
 
         for(int i = 0; i < humanoidAround.Count; i++)
         {
-            if (humanoidAround[i].faction != _mHumanoid.faction)
+            if (humanoidAround[i].faction != _mHumanoid.faction && FactionManager.Instance.GetReputation(humanoidAround[i].faction, _mHumanoid.faction) < neutralReputation)
             {
                 ennemies.Add(humanoidAround[i]);
             }

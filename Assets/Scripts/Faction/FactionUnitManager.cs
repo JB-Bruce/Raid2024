@@ -70,8 +70,9 @@ public class FactionUnitManager : MonoBehaviour
                 SurveillancePoint surveillancePoint = surveillancePoints[i];
                 surveillancePoint.unit = BT.gameObject;
                 surveillancePoints[i] = surveillancePoint;
-
+                BT.surveillancePoint = surveillancePoints[i].point.position;
                 movement.ChangeTarget(surveillancePoints[i].point.position);
+
                 return;
             }
         }
