@@ -16,13 +16,23 @@ public class UnitBT : Humanoid
 
     private NavMeshAgent _agent;
     private Selector _selectorRoot;
-    
+    private UnitMovement _unitMove;
+
+    private int evaluateUpdate = 0;
+    public int jumpUpdate = 10;
+
+    public Vector3 surveillancePoint = Vector3.zero;
+
     // Start is called before the first frame update
-    void Start()
+    public void Init()
     {
+        _unitMove = GetComponent<UnitMovement>();
+        _unitMove.Init();
+        GetComponent<UnitCombat>().Init();
+
         _agent = GetComponent<NavMeshAgent>();
 
-        _selectorRoot = new Selector(new List<Node> 
+        _selectorRoot = new Selector(new List<Node>
         {
             //Attack
             new Sequence( new List<Node>
@@ -30,21 +40,18 @@ public class UnitBT : Humanoid
                 new IsEnemyDetected(this.gameObject),
                 new Selector(new List<Node>
                 {
-                    new Sequence( new List<Node>
-                    {
-                        new CanAttack(this.gameObject)
-                    }),
+                    new CanAttack(this.gameObject),
                     new GoToEnemy(this.gameObject)
                 })
             }),
 
             //Guard
-            new Sequence( new List<Node> 
+            new Sequence( new List<Node>
             {
-                new IsGuarding(this),
+                new CheckOrderState(this, UnitOrder.AreaGuard),
                 new Selector(new List<Node>
                 {
-                    new Sequence(new List<Node> 
+                    new Sequence(new List<Node>
                     {
                         new HasBeenReached(_agent, this),
                         new Guard(this.gameObject)
@@ -53,9 +60,9 @@ public class UnitBT : Humanoid
             }), 
 
             //Patrol
-            new Sequence( new List<Node> 
+            new Sequence( new List<Node>
             {
-                new IsPatrolling(this),
+                new CheckOrderState(this, UnitOrder.Patrol),
                 new Selector(new List<Node>
                 {
                     new Sequence(new List<Node>
@@ -64,8 +71,14 @@ public class UnitBT : Humanoid
                         new Patrol(this.gameObject)
                     })
                 } )
+            }),
+
+            new Sequence( new List<Node>
+            {
+                new CheckOrderState(this, UnitOrder.Surveillance),
+                new GoToSurveillancePoint(_unitMove, this)
             })
-        
+
         });
 
     }
@@ -73,8 +86,10 @@ public class UnitBT : Humanoid
     // Update is called once per frame
     void Update()
     {
-        if(waitTime < Time.time) // Is the unit wait
+        evaluateUpdate++;
+        if(waitTime < Time.time && evaluateUpdate > jumpUpdate) // Is the unit wait
         {
+            evaluateUpdate = 0;
             _selectorRoot.Evaluate();
         }
 

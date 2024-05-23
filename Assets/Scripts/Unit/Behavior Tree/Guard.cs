@@ -18,7 +18,6 @@ public class Guard : Node
 
     public override NodeState Evaluate()
     {
-        _unit.SetGuardPoint(Vector3.zero, 0, 10); // Suppr this and set when you create the unit 
         Vector3 target = _unit.GetRandomPointOnGuardPoint();
         _unit.ChangeTarget(target);
         return NodeState.SUCCESS;

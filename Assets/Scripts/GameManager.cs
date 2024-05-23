@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public List<RestrictedArea> restrictedAreas = new List<RestrictedArea>();
+    public float mapSize = 100f;
 
 
     private void Awake()
@@ -15,22 +16,12 @@ public class GameManager : MonoBehaviour
             Instance = this;
     }
 
-    private void Start()
-    {
-
-        restrictedAreas.Add(new RestrictedArea
-        {
-            areaOrigine = Vector3.zero,
-            areaRadius = 50
-        });
-    }
-
 }
 
-
+[System.Serializable]
 public struct RestrictedArea
 {
-    public Vector3 areaOrigine;
+    public Transform areaOrigine;
     public float areaRadius;
 }
 

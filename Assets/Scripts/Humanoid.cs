@@ -7,11 +7,22 @@ public class Humanoid : MonoBehaviour
     public int life = 100;
     public Faction faction;
 
-    public void TakeDamage(int damage)
+    // remove life to him self and return true if he is dead
+    public bool TakeDamage(int damage)
     {
         life -= damage;
         if (life <= 0)
-            Destroy(this.gameObject);
+        {
+            Death();
+            return true;
+        }
+        return false;
+    }
+
+    private void Death()
+    {
+        FactionManager.Instance.RemoveUnitFromFaction(faction, this.gameObject);
+        Destroy(this.gameObject);
     }
 
 }
