@@ -60,7 +60,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void OnPointerEnter(PointerEventData _)
     {
-        if (_isAvailable)
+        if (_isAvailable && _inventory.isInventoryOpen)
         {
             GetSelected(true);
         }

@@ -12,6 +12,9 @@ public class MovePlayer : MonoBehaviour
     private Rigidbody2D _rb = null;
     private SpriteRenderer _sprite = null;
     
+    [SerializeField]
+    private Inventory _inventory;
+    
     private bool _isSprinting = false;
     private bool _mouseActive = true;
     public float moveSpeed = 7f;
@@ -126,7 +129,6 @@ public class MovePlayer : MonoBehaviour
 
         }
 
-
         if (direction == aimNotActive){
             
             direction = lastAimDirection;
@@ -143,13 +145,19 @@ public class MovePlayer : MonoBehaviour
        
     private void FixedUpdate() 
     {
-        Move();
+        if (!_inventory.isInventoryOpen)
+        {
+            Move();
+        }
     }
 
     void Update()
     {
-        WeaponAim();
+        if (!_inventory.isInventoryOpen)
+        {
+            WeaponAim();
 
-        FlipPlayer(); 
+            FlipPlayer();
+        }
     }
 }

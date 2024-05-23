@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
-    private bool _isInventoryOpen = false;
+    public bool isInventoryOpen = false;
 
     [SerializeField] 
     private GameObject _inventoryPanel;
@@ -59,7 +59,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (_isMoving && _canMove)
+        if (_isMoving && _canMove && isInventoryOpen)
         {
             if (_moveDirection == Vector2.down)
             {
@@ -231,22 +231,23 @@ public class Inventory : MonoBehaviour
 
 
     /// <summary>
-    /// Open and closes the inventory UI and positions the weapon slots depending on "_isInventoryOpen"
+    /// Open and closes the inventory UI and positions the weapon slots depending on "isInventoryOpen"
     /// </summary>
     public void OpenInventory(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            _isInventoryOpen = !_isInventoryOpen;
-            _inventoryPanel.SetActive(_isInventoryOpen);
+            isInventoryOpen = !isInventoryOpen;
+            _inventoryPanel.SetActive(isInventoryOpen);
 
-            if (_isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
+            if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
             {
                 _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
             }
             else//Show the weapons in game (change position and hide the holster)
             {
+                selectedItemSlot.GetSelected(false);
                 _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
             }
@@ -399,7 +400,7 @@ public class Inventory : MonoBehaviour
     {
         if (context.started)
         {
-            if (_isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
+            if (isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
             {
                 DecideHowToUseItem();
             }
@@ -413,7 +414,7 @@ public class Inventory : MonoBehaviour
     {
         if (context.started)
         {
-            if (_isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
+            if (isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
             {
                 TryToDeleteItem(selectedItemSlot);
             }
