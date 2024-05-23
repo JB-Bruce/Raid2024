@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory Instance;
+
     public bool isInventoryOpen = false;
 
     [SerializeField] 
@@ -56,6 +58,14 @@ public class Inventory : MonoBehaviour
     private bool _canMove = true;
     private bool _isMoving = false;
     private Vector2 _moveDirection = Vector2.zero;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
 
     private void Update()
     {

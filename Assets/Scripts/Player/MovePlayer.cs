@@ -52,22 +52,22 @@ public class MovePlayer : MonoBehaviour
 
     //This function is called when the object becomes enabled and active. Enable move _input
     private void OnEnable() {
-        _input.Move.Enable();
-        _input.Aim.Enable();
+        _input.Player.Enable();
+        _input.Player.Enable();
     }
 
 
     //This function is called when the object becomes disabled. Disable move _input
     private void OnDisable() {
-        _input.Move.Disable();
-        _input.Aim.Disable();
+        _input.Player.Disable();
+        _input.Player.Disable();
     }
 
 
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
     private void Move() 
     {
-        _moveVector = _input.Move.Movement.ReadValue<Vector2>();
+        _moveVector = _input.Player.Movement.ReadValue<Vector2>();
         if(_isSprinting == true)
         {
             _rb.velocity = _moveVector * moveSpeed * 1.5f;
@@ -107,9 +107,9 @@ public class MovePlayer : MonoBehaviour
 
         Vector2 aimNotActive = new Vector2(0,0);
 
-        if (_input.Aim.Aim.ReadValue<Vector2>() != aimNotActive)
+        if (_input.Player.Aim.ReadValue<Vector2>() != aimNotActive)
         {
-            direction = _input.Aim.Aim.ReadValue<Vector2>();
+            direction = _input.Player.Aim.ReadValue<Vector2>();
             lastAimDirection = direction;
             
             Cursor.visible = false;
