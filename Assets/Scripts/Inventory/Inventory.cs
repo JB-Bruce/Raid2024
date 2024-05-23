@@ -38,36 +38,42 @@ public class Inventory : MonoBehaviour
     private int _inventoryWidth;
 
     [SerializeField]
-    private Item testItem;
-    
+    private GameObject _weaponSlotsGameObject;
+
     [SerializeField]
-    private Item testItem2;
+    private Transform _weaponSlotsPosInInventory;
+
+    [SerializeField]
+    private Transform _weaponSlotsPosInGame;
 
     private const int _itemSpacing = 95;
     private const int _armorSpacing = 200;
     private const int _weaponSpacing = 100;
 
     /// <summary>
-    /// Open and closes the inventory UI
+    /// Open and closes the inventory UI and positions the weapon slots depending on "_isInventoryOpen"
     /// </summary>
     public void OpenInventory()
     {
         _isInventoryOpen = !_isInventoryOpen;
         _inventoryPanel.SetActive(_isInventoryOpen);
+
+        if (_isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
+        {
+            _equipementSlots[_equipementSlots.Count-1].gameObject.SetActive(true);
+            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
+        }
+        else//Show the weapons in game (change position and hide the holster)
+        {
+            _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
+            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+        }
     }
 
     private void Update()
     {
         if (_isInventoryOpen)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                AddItem(testItem);
-            }
-            if (Input.GetKeyDown(KeyCode.KeypadEnter))
-            {
-                AddItem(testItem2);
-            }
             if (Input.GetMouseButtonDown(0))
             {
                 HandleLeftClick();
@@ -264,6 +270,10 @@ public class Inventory : MonoBehaviour
 
         //Holster and Weapons slots
         CreateWeaponSlots();
+
+        //Show the weapons in game
+        _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
+        _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
     }
 
     /// <summary>
