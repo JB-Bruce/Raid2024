@@ -9,7 +9,10 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] Image _pauseMenuBackgroundImage;
 
-    private void Awake()
+    [Header("Booleans: ")]
+    public bool isPaused = false;
+
+    private void Start()
     {
         if (instance == null)
         {
@@ -17,9 +20,24 @@ public class PauseManager : MonoBehaviour
         }
     }
 
+    private void Update() //Temp Test
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            if (!isPaused)
+            {
+                PauseGame();
+            }
+            else if (isPaused && !SettingsMenu.instance.isInSettings)
+            {
+                UnpauseGame();
+            }
+        }
+    }
+
     private void OnApplicationPause(bool pause) //Pauses the game on Application quit
     {
-        if (pause)
+        if (pause && !EndMenuManager.instance.gameHasEnded)
         {
             PauseGame();
         }
@@ -27,17 +45,25 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame() //Pauses the game
     {
-        _pauseMenu.SetActive(true);
-        _pauseMenuBackgroundImage.enabled = true;
+        if (!EndMenuManager.instance.gameHasEnded)
+        {
+            _pauseMenu.SetActive(true);
+            _pauseMenuBackgroundImage.enabled = true;
+            isPaused = true;
 
-        Time.timeScale = 0f;
+            Time.timeScale = 0f;
+        }
     }
 
     public void UnpauseGame() //Unpauses the game
     {
-        _pauseMenu.SetActive(false);
-        _pauseMenuBackgroundImage.enabled = false;
+        if (!EndMenuManager.instance.gameHasEnded)
+        {
+            _pauseMenu.SetActive(false);
+            _pauseMenuBackgroundImage.enabled = false;
+            isPaused = false;
 
-        Time.timeScale = 1f;
+            Time.timeScale = 1f;
+        }
     }
 }

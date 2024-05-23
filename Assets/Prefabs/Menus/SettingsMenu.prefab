@@ -210,10 +210,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3193821847192393847}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 7353517814365899272}
+        m_TargetAssemblyTypeName: SettingsMenu, Assembly-CSharp
+        m_MethodName: DeactivateSettingsMenu
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1320,7 +1320,8 @@ MonoBehaviour:
   _mainVolumeSlider: {fileID: 1077384707587058355}
   _musicVolumeSlider: {fileID: 9017344886862742778}
   _sfxVolumeSlider: {fileID: 8923414349161789491}
-  backButton: {fileID: 132855755630346005}
+  settingsMenu: {fileID: 3193821847192393847}
+  isInSettings: 0
 --- !u!114 &171180396898067953
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,10 @@ public class SettingsMenu : MonoBehaviour
     [SerializeField] Slider _sfxVolumeSlider;
 
     [Header("References: ")]
-    public GameObject backButton;
+    public GameObject settingsMenu;
+
+    [Header("Booleans: ")]
+    public bool isInSettings;
 
     private void Awake()
     {
@@ -37,6 +40,12 @@ public class SettingsMenu : MonoBehaviour
         _musicVolumeSlider.onValueChanged.AddListener(delegate { OnMusicVolumeChange(); });
         _sfxVolumeSlider.onValueChanged.AddListener(delegate { OnSFXVolumeChange(); });
 
+    }
+
+    public void DeactivateSettingsMenu()
+    {
+        settingsMenu.SetActive(false);
+        isInSettings = false;
     }
     
     public void ToggleMusic()

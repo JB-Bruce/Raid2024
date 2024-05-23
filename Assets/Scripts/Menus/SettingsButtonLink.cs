@@ -14,5 +14,6 @@ public class SettingsButtonLink : MonoBehaviour
     public void ActivateSettingsMenu()
     {
         _settingsMenu.SetActive(true);
+        SettingsMenu.instance.isInSettings = true;
     }
 }
