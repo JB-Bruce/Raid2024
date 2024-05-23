@@ -182,7 +182,8 @@ MonoBehaviour:
   _weaponSlotsContainer: {fileID: 1313696588}
   _inventoryHeight: 5
   _inventoryWidth: 5
-  testItem: {fileID: 11400000, guid: 614686278e0db0d439743205849dd39d, type: 2}
+  testItem: {fileID: 11400000, guid: 687bd13d976c7814e8cb909512e7c0f3, type: 2}
+  testItem2: {fileID: 11400000, guid: f5bee40af98f32a4eb60b31fbfd4b934, type: 2}
 --- !u!1 &555382509
 GameObject:
   m_ObjectHideFlags: 0

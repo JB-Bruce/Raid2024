@@ -1,11 +1,9 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
     private Item _item = null;
@@ -18,11 +16,15 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler
     private Image _itemSprite;
 
     [SerializeField]
+    protected Image _itemSlotSprite;
+
+    [SerializeField]
     private GameObject _itemSelectedSprite;
 
     [SerializeField]
     private Inventory _inventory;
 
+    protected bool _isAvailable = true;
 
     private void Start()
     {
@@ -45,22 +47,42 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler
         }
         else
         {
-            _inventory.selectedItemSlot = null;
+            if (_inventory.selectedItemSlot == this)
+            {
+                _inventory.selectedItemSlot = null;
+            }
             _itemSelectedSprite.SetActive(false);
         }
     }
 
+    /// <summary>
+    /// when the player hovers over the slot, get selected
+    /// </summary>
     public void OnPointerEnter(PointerEventData _)
     {
-        GetSelected(true);
+        if (_isAvailable)
+        {
+            GetSelected(true);
+        }
     }
     
+    public void OnPointerExit(PointerEventData _) 
+    {
+        GetSelected(false);
+    }
+
+    /// <summary>
+    /// method to add 1 item to the empty slot
+    /// </summary>
     public void AddItemToSlot(Item item)
     {
         _item = item;
         UpdateQuantity(1);
     }
 
+    /// <summary>
+    /// Updates the sprite of the item in the slot
+    /// </summary>
     public void UpdateItemSprite()
     {
         if (_item != null)
@@ -73,6 +95,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler
         }
     }
 
+    /// <summary>
+    /// Changes the quantity of the current item to "quantity"
+    /// Also handles if the quantity is 0 or less (deletes the item)
+    /// </summary>
     public void UpdateQuantity(int quantity)
     {
         if (quantity > 0)
@@ -94,4 +120,5 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler
     public Item Item { get { return _item; } set { _item = value; } }
     public int Quantity { get { return _quantity; } }
     public Inventory Inventory { get { return _inventory; } set {  _inventory = value; } }
+    public bool IsAvailable { get { return _isAvailable; } set { _isAvailable = value; } }
 }

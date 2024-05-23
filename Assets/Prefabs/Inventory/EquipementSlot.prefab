@@ -414,5 +414,6 @@ MonoBehaviour:
   _item: {fileID: 0}
   _quantityText: {fileID: 6513731289114114423}
   _itemSprite: {fileID: 629196079829377599}
+  _itemSlotSprite: {fileID: 69329107569457855}
   _itemSelectedSprite: {fileID: 4078597330726451024}
   _inventory: {fileID: 0}

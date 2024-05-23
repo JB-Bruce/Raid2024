@@ -39,6 +39,10 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private Item testItem;
+    
+    [SerializeField]
+    private Item testItem2;
+
     private const int _itemSpacing = 95;
     private const int _armorSpacing = 200;
     private const int _weaponSpacing = 100;
@@ -60,6 +64,10 @@ public class Inventory : MonoBehaviour
             {
                 AddItem(testItem);
             }
+            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                AddItem(testItem2);
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 HandleLeftClick();
@@ -69,100 +77,123 @@ public class Inventory : MonoBehaviour
                 HandleRightClick();
             }
 
-            if (Input.GetKeyDown(KeyCode.DownArrow))
+            HandleMovementInInventory();
+        }
+    }
+
+    /// <summary>
+    /// Handles the movement in the inventory menu.
+    /// 
+    /// WILL BE CHANGE WITH THE INPUT SYSTEM
+    /// </summary>
+    private void HandleMovementInInventory()
+    {
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if (selectedItemSlot == null)
             {
-                if (selectedItemSlot == null)
-                {
-                    selectedItemSlot = _itemSlots[0];
-                }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot))
-                {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex < (_inventoryWidth * (_inventoryHeight - 1)))
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex + _inventoryWidth];
-                        selectedItemSlot.GetSelected(true);
-                    }
-                }
-                else if (_equipementSlots.Contains(selectedItemSlot))
-                {
-                    int selectedItemIndex = _equipementSlots.LastIndexOf((EquipementSlot) selectedItemSlot);
-                    if (selectedItemIndex < 3)
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[selectedItemIndex + 1];
-                        selectedItemSlot.GetSelected(true);
-                    }
-                }
+                selectedItemSlot = _itemSlots[0];
+                selectedItemSlot.GetSelected(true);
             }
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            else if (selectedItemSlot.GetType() == typeof(ItemSlot))
             {
-                if (selectedItemSlot == null)
-                {
-                    selectedItemSlot = _itemSlots[0];
-                }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot))
-                {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex > _inventoryWidth - 1)
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex - _inventoryWidth];
-                        selectedItemSlot.GetSelected(true);
-                    }
-                }
-                else if (_weaponSlots.Contains(selectedItemSlot))
+                int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                if (selectedItemIndex < (_inventoryWidth * (_inventoryHeight - 1)))
                 {
                     selectedItemSlot.GetSelected(false);
-                    selectedItemSlot = _equipementSlots[_equipementSlots.Count - 2];
+                    selectedItemSlot = _itemSlots[selectedItemIndex + _inventoryWidth];
+                    selectedItemSlot.GetSelected(true);
+                }
+            }
+            else if (_equipementSlots.Contains(selectedItemSlot))
+            {
+                int selectedItemIndex = _equipementSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
+                if (selectedItemIndex < 3)
+                {
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _equipementSlots[selectedItemIndex + 1];
+                    selectedItemSlot.GetSelected(true);
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (selectedItemSlot == null)
+            {
+                selectedItemSlot = _itemSlots[0];
+                selectedItemSlot.GetSelected(true);
+            }
+            else if (selectedItemSlot.GetType() == typeof(ItemSlot))
+            {
+                int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                if (selectedItemIndex > _inventoryWidth - 1)
+                {
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _itemSlots[selectedItemIndex - _inventoryWidth];
+                    selectedItemSlot.GetSelected(true);
+                }
+            }
+            else if (_weaponSlots.Contains(selectedItemSlot))
+            {
+                selectedItemSlot.GetSelected(false);
+                selectedItemSlot = _equipementSlots[_equipementSlots.Count - 2];
+                selectedItemSlot.GetSelected(true);
+            }
+            else
+            {
+                int selectedItemIndex = _equipementSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
+                if (selectedItemIndex > 0)
+                {
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _equipementSlots[selectedItemIndex - 1];
+                    selectedItemSlot.GetSelected(true);
+                }
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            if (selectedItemSlot == null)
+            {
+                selectedItemSlot = _itemSlots[0];
+                selectedItemSlot.GetSelected(true);
+            }
+            else if (selectedItemSlot.GetType() == typeof(ItemSlot))
+            {
+                int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                if (selectedItemIndex % _inventoryWidth != _inventoryWidth - 1)
+                {
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _itemSlots[selectedItemIndex + 1];
+                    selectedItemSlot.GetSelected(true);
+                }
+            }
+            else if (_equipementSlots.Where(x => x.ItemType != typeof(Holster)).Contains(selectedItemSlot))
+            {
+                selectedItemSlot.GetSelected(false);
+                selectedItemSlot = _itemSlots[0];
+                selectedItemSlot.GetSelected(true);
+            }
+            else
+            {
+                if (selectedItemSlot == _equipementSlots[_equipementSlots.Count - 1])
+                {
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _weaponSlots[0];
                     selectedItemSlot.GetSelected(true);
                 }
                 else
                 {
-                    int selectedItemIndex = _equipementSlots.LastIndexOf((EquipementSlot) selectedItemSlot);
-                    if (selectedItemIndex > 0)
+                    int selectedItemIndex = _weaponSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
+                    if (_equipementSlots[3].Item == null)
                     {
                         selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[selectedItemIndex - 1];
-                        selectedItemSlot.GetSelected(true);
-                    }
-                }
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                if (selectedItemSlot == null)
-                {
-                    selectedItemSlot = _itemSlots[0];
-                }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot)) 
-                {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex % _inventoryWidth != _inventoryWidth - 1)
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex + 1];
-                        selectedItemSlot.GetSelected(true);
-                    }
-                }
-                else if (_equipementSlots.Where(x => x.ItemType != typeof(Holster)).Contains(selectedItemSlot))
-                {
-                    selectedItemSlot.GetSelected(false);
-                    selectedItemSlot = _itemSlots[0];
-                    selectedItemSlot.GetSelected(true);
-                }
-                else
-                {
-                    if (selectedItemSlot == _equipementSlots[_equipementSlots.Count - 1])
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _weaponSlots[0];
+                        selectedItemSlot = _itemSlots[0];
                         selectedItemSlot.GetSelected(true);
                     }
                     else
                     {
-                        int selectedItemIndex = _weaponSlots.LastIndexOf((EquipementSlot) selectedItemSlot);
-                        if (selectedItemIndex < 2)
+                        Holster holster = (Holster)_equipementSlots[3].Item;
+                        if (selectedItemIndex < holster.HolsterTier - 1)
                         {
                             selectedItemSlot.GetSelected(false);
                             selectedItemSlot = _weaponSlots[selectedItemIndex + 1];
@@ -177,43 +208,44 @@ public class Inventory : MonoBehaviour
                     }
                 }
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            if (selectedItemSlot == null)
             {
-                if (selectedItemSlot == null)
+                selectedItemSlot = _itemSlots[0];
+                selectedItemSlot.GetSelected(true);
+            }
+            else if (selectedItemSlot.GetType() == typeof(ItemSlot))
+            {
+                int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                if (selectedItemIndex % _inventoryWidth != 0)
                 {
-                    selectedItemSlot = _itemSlots[0];
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _itemSlots[selectedItemIndex - 1];
+                    selectedItemSlot.GetSelected(true);
                 }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot))
+                else
                 {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex % _inventoryWidth != 0)
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex - 1];
-                        selectedItemSlot.GetSelected(true);
-                    }
-                    else
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[0];
-                        selectedItemSlot.GetSelected(true);
-                    }
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _equipementSlots[0];
+                    selectedItemSlot.GetSelected(true);
                 }
-                else if (_weaponSlots.Contains(selectedItemSlot))
+            }
+            else if (_weaponSlots.Contains(selectedItemSlot))
+            {
+                int selectedItemIndex = _weaponSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
+                if (selectedItemIndex > 0)
                 {
-                    int selectedItemIndex = _weaponSlots.LastIndexOf((EquipementSlot) selectedItemSlot);
-                    if (selectedItemIndex > 0)
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _weaponSlots[selectedItemIndex - 1];
-                        selectedItemSlot.GetSelected(true);
-                    }
-                    else
-                    {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[_equipementSlots.Count - 1];
-                        selectedItemSlot.GetSelected(true);
-                    }
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _weaponSlots[selectedItemIndex - 1];
+                    selectedItemSlot.GetSelected(true);
+                }
+                else
+                {
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _equipementSlots[_equipementSlots.Count - 1];
+                    selectedItemSlot.GetSelected(true);
                 }
             }
         }
@@ -228,50 +260,15 @@ public class Inventory : MonoBehaviour
         CreateInventorySlots();
 
         //armor slots
-        for (int i = 0; i < 3; ++i)
-        {
-            GameObject newSlot = Instantiate(_equipementSlotPrefab, _armorSlotsContainer);
-            newSlot.transform.localPosition = new Vector3(0, -i * _armorSpacing);
-            newSlot.transform.localScale = new Vector3(1.75f, 1.75f, 1.75f);
-            newSlot.GetComponent<EquipementSlot>().Inventory = this;
-            //choose the type of armor equipable in this slot
-            switch (i)
-            {
-                case 0: //Helmet
-                    newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Helmet);
-                    break;
-                case 1: //Chestplate
-                    newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Chestplate);
-                    break; 
-                case 2: //Leggings
-                    newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Leggings);
-                    break;
-                default: 
-                    break;
-            }
-            _equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
-        }
+        CreateArmorSlots();
 
-        //Holster slots
-        for (int i = 0; i < 4; ++i)
-        {
-            GameObject newSlot = Instantiate(_equipementSlotPrefab, _weaponSlotsContainer);
-            newSlot.transform.localPosition = new Vector3(i * _weaponSpacing, 0);
-            if (i == 0)
-            {
-                newSlot.transform.localPosition = new Vector3(-_weaponSpacing/2, 0);
-                newSlot.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-                newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Holster);
-                _equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
-            }
-            else
-            {
-                _weaponSlots.Add(newSlot.GetComponent<EquipementSlot>());
-            }
-            newSlot.GetComponent<EquipementSlot>().Inventory = this;
-        }
+        //Holster and Weapons slots
+        CreateWeaponSlots();
     }
 
+    /// <summary>
+    /// Creates the inventory slots
+    /// </summary>
     private void CreateInventorySlots()
     {
         for (int j = 0; j < _inventoryHeight; j++)
@@ -286,6 +283,70 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Creates the armor slots and attribut their types
+    /// </summary>
+    private void CreateArmorSlots()
+    {
+        for (int i = 0; i < 3; ++i)
+        {
+            GameObject newSlot = Instantiate(_equipementSlotPrefab, _armorSlotsContainer);
+            newSlot.transform.localPosition = new Vector3(0, -i * _armorSpacing);
+            newSlot.transform.localScale = new Vector3(1.75f, 1.75f, 1.75f);
+            newSlot.GetComponent<EquipementSlot>().Inventory = this;
+            //choose the type of armor equipable in this slot
+            switch (i)
+            {
+                case 0: //Helmet
+                    newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Helmet);
+                    break;
+                case 1: //Chestplate
+                    newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Chestplate);
+                    break;
+                case 2: //Leggings
+                    newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Leggings);
+                    break;
+                default:
+                    break;
+            }
+            _equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
+        }
+    }
+
+    /// <summary>
+    /// Creates the weapon slots and the holster slot
+    /// </summary>
+    private void CreateWeaponSlots()
+    {
+        for (int i = 0; i < 4; ++i)
+        {
+            GameObject newSlot = Instantiate(_equipementSlotPrefab, _weaponSlotsContainer);
+            newSlot.transform.localPosition = new Vector3(i * _weaponSpacing, 0);
+            if (i == 0)
+            {
+                newSlot.transform.localPosition = new Vector3(-_weaponSpacing / 2, 0);
+                newSlot.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Holster);
+                _equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
+            }
+            else
+            {
+                newSlot.GetComponent<EquipementSlot>().ChangeAvailability(false);
+                _weaponSlots.Add(newSlot.GetComponent<EquipementSlot>());
+            }
+            if (i == 1)
+            {
+                newSlot.GetComponent<EquipementSlot>().ChangeAvailability(true);
+            }
+
+            newSlot.GetComponent<EquipementSlot>().Inventory = this;
+        }
+    }
+
+
+    /// <summary>
+    /// Adds the item "item" to the inventory if a slot is available
+    /// </summary>
     private void AddItem(Item item)
     {
         ItemSlot itemSlot = FindFirstInventorySlotAvailable(item);
@@ -303,7 +364,9 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Uses/Equipes the item selected when clicked
+    /// Uses/Equipes the item selected when left clicked.
+    /// 
+    /// WILL BE CHANGE INTO DYNAMIC METHOD FOR INPUT SYSTEM
     /// </summary>
     public void HandleLeftClick()
     {
@@ -313,6 +376,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// throw/destroy the item selected when right clicked.
+    /// 
+    /// WILL BE CHANGE INTO DYNAMIC METHOD FOR INPUT SYSTEM
+    /// </summary>
     public void HandleRightClick()
     {
         if (_isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
@@ -321,6 +389,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Used when throwing an item, it tries to delete the item if it's not a quest item or on an equipement slot
+    /// </summary>
     private void TryToDeleteItem(ItemSlot itemSlot)
     {
         if (itemSlot.Item != null)
@@ -333,19 +404,18 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
-    /// Decide between equiping/swapping/using the selected item
+    /// Decide between equiping/swapping/using the selected item.
     /// Can be used by TrySwapItemsInSlot as a recursif loop for stacking items
     /// </summary>
     private void DecideHowToUseItem()
     {
         if (selectedItemSlot.GetType() == typeof(EquipementSlot)) //if the player clicks on an equipement slot
         {
-            ItemSlot temp = FindFirstInventorySlotAvailable(selectedItemSlot.Item);
-            TrySwapItemsInSlots(selectedItemSlot, temp);
+            TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
         }
         else //if the player clicks in the inventory
         {
-            if (selectedItemSlot.Item.GetType().IsSubclassOf(typeof(Equipable)))
+            if (selectedItemSlot.Item.GetType().IsSubclassOf(typeof(Equipable)))//if the item is equipable
             {
                 if (selectedItemSlot.Item.GetType().IsSubclassOf(typeof(Weapon)))
                 {
@@ -356,13 +426,28 @@ public class Inventory : MonoBehaviour
                     TrySwapItemsInSlots(selectedItemSlot, FindFirstEquipementSlotAvailable(selectedItemSlot.Item));
                 }
             }
-            /*
-            else if (selectedItemSlot.Item.GetType() == typeof(Consumable))
+            else if (selectedItemSlot.Item.GetType() == typeof(Consumable))//if the item is consumable
             {
-
+                ConsumeItem(selectedItemSlot);
             }
-            */
         }
+    }
+
+    /// <summary>
+    /// Consume the item clicked and updates the stats of the player depending on the item
+    /// </summary>
+    private void ConsumeItem(ItemSlot itemSlot)
+    {
+        Consumable item = (Consumable) itemSlot.Item;
+
+        /* Update the stats of the player HERE
+        
+        Player.food += item.food
+        Player.thirst += item.thirst
+        
+        */ 
+
+        itemSlot.UpdateQuantity(itemSlot.Quantity-1);
     }
 
     /// <summary>
@@ -386,22 +471,65 @@ public class Inventory : MonoBehaviour
                     }
                 }
             }
-            //Else, we try to swap the items
+            //Else, if slot1 or 2 aren't hoslter slots (for more checks), we swap the items
 
-            Item TempItem = slot1.Item;
-            slot1.Item = slot2.Item;
-            slot2.Item = TempItem;
-
-            int TempQuantity = slot1.Quantity;
-            slot1.UpdateQuantity(slot2.Quantity);
-            slot2.UpdateQuantity(TempQuantity);
+            if (slot1.GetType() == typeof(EquipementSlot))
+            {
+                EquipementSlot equipementSlot = (EquipementSlot) slot1;
+                if (equipementSlot.ItemType == typeof(Holster))//if slot1 is an holster
+                {
+                    for (int i = 1; i < _weaponSlots.Count; i++)
+                    {
+                        if (_weaponSlots[i].Item != null)//check if there are any weapons, in which case cancel swap
+                        {
+                            return;
+                        }
+                    }
+                    for (int i = 1; i < _weaponSlots.Count; i++)//reset weapon slots availability
+                    {
+                        _weaponSlots[i].ChangeAvailability(false);
+                    }
+                }
+            }
+            if (slot2.GetType() == typeof(EquipementSlot))
+            {
+                EquipementSlot equipementSlot = (EquipementSlot)slot2;
+                if (equipementSlot.ItemType == typeof(Holster))//if slot2 is an holster (meaning slot1 has an holster item)
+                {
+                    for (int i = 1; i < _weaponSlots.Count; i++)//reset the availability of all weapon slot (prevents bugs)
+                    {
+                        _weaponSlots[i].ChangeAvailability(false);
+                    }
+                    Holster holster = (Holster) slot1.Item;
+                    for (int i = 1; i < holster.HolsterTier; i++)//changes the weapon slots to available depending on the tier of holster
+                    {
+                        _weaponSlots[i].ChangeAvailability(true);
+                    }
+                }
+            }
+            ItemSwap(slot1, slot2);
         }
     }
 
     /// <summary>
-    /// Try to stack the items from slot1 into slot2
-    /// Returns true if slot1 is empty by the end
-    /// Returns false if slot1 has some items by the end
+    /// Swaps 2 item slots
+    /// </summary>
+    private void ItemSwap(ItemSlot slot1, ItemSlot slot2)
+    {
+        Item TempItem = slot1.Item;
+        slot1.Item = slot2.Item;
+        slot2.Item = TempItem;
+
+        int TempQuantity = slot1.Quantity;
+        slot1.UpdateQuantity(slot2.Quantity);
+        slot2.UpdateQuantity(TempQuantity);
+    }
+
+
+    /// <summary>
+    /// Try to stack the items from slot1 into slot2.
+    /// Returns true if slot1 is empty by the end.
+    /// Returns false if slot1 has some items by the end.
     /// </summary>
     private bool TryStackingItems(ItemSlot slot1, ItemSlot slot2)
     {
@@ -460,11 +588,14 @@ public class Inventory : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Find the first empty weapon slot available
+    /// </summary>
     private ItemSlot FindFirstWeaponSlotAvailable(Item item)
     {
         foreach (EquipementSlot weaponSlot in _weaponSlots)
         {
-            if (weaponSlot.Item == null)
+            if (weaponSlot.Item == null && weaponSlot.IsAvailable)
             {
                 return weaponSlot;
             }
