@@ -186,6 +186,7 @@ MonoBehaviour:
   faction: 1
   unit: {fileID: 8334718818371835372, guid: 8e46a901a407f5948af5fc0623db4c59, type: 3}
   parent: {fileID: 995308350}
+  SpawnDistanceAroundPlayer: 50
   units: []
   surveillancePoints:
   - point: {fileID: 1536362992}
@@ -568,6 +569,7 @@ MonoBehaviour:
   faction: 2
   unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
+  SpawnDistanceAroundPlayer: 50
   units: []
   surveillancePoints:
   - point: {fileID: 1293993106}
@@ -661,6 +663,7 @@ MonoBehaviour:
   faction: 3
   unit: {fileID: 8334718818371835372, guid: af1e5d77db993734e8cdd1b833b6243d, type: 3}
   parent: {fileID: 995308350}
+  SpawnDistanceAroundPlayer: 50
   units: []
   surveillancePoints:
   - point: {fileID: 1244751801}
@@ -754,6 +757,7 @@ MonoBehaviour:
   faction: 4
   unit: {fileID: 8334718818371835372, guid: 6af537d49ad09654995264caae78a499, type: 3}
   parent: {fileID: 995308350}
+  SpawnDistanceAroundPlayer: 50
   units: []
   surveillancePoints:
   - point: {fileID: 1180909377}
@@ -983,6 +987,7 @@ GameObject:
   - component: {fileID: 1829011806}
   - component: {fileID: 1829011805}
   - component: {fileID: 1829011807}
+  - component: {fileID: 1829011808}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1003,6 +1008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   restrictedAreas: []
+  mapSize: 100
 --- !u!4 &1829011806
 Transform:
   m_ObjectHideFlags: 0
@@ -1035,6 +1041,7 @@ MonoBehaviour:
   - {fileID: 1000456506}
   - {fileID: 714689133}
   - {fileID: 927730605}
+  - {fileID: 1829011808}
   reputations:
   - faction1: 1
     faction2: 0
@@ -1068,6 +1075,31 @@ MonoBehaviour:
     reputation: 3
   maxReputation: 8
   minReputation: -5
+--- !u!114 &1829011808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829011804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d3179ead3860143a9fef24bcb264b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: 5
+  unit: {fileID: 8334718818371835372, guid: 91658b8e3be400a4fb202f848334ae4b, type: 3}
+  parent: {fileID: 995308350}
+  SpawnDistanceAroundPlayer: 50
+  units: []
+  surveillancePoints: []
+  maxUnit: 10
+  maxGuard: 3
+  nbrOfDeadUnit: 0
+  _unitSpawnRate: 30
+  point: {fileID: 0}
+  minDistance: 0
+  maxDistance: 0
 --- !u!1 &1884218550
 GameObject:
   m_ObjectHideFlags: 0

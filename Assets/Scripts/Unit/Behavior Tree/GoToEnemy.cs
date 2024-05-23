@@ -40,6 +40,8 @@ public class GoToEnemy : Node
         else 
         {
             _unit.lastPosition = Vector3.zero;
+            _unitMovement.ChangeTarget(_unitMovement.transform.position);
+
         }
 
 

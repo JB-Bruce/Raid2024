@@ -7,7 +7,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class UnitMovement : MonoBehaviour
 {
-    public int mapSize;
+    private float _mapSize;
     NavMeshAgent _agent;
     private Transform _transform;
 
@@ -18,6 +18,7 @@ public class UnitMovement : MonoBehaviour
     // Start is called before the first frame update
     public void Init()
     {
+        _mapSize = GameManager.Instance.mapSize;
         _transform = transform;
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
@@ -36,7 +37,7 @@ public class UnitMovement : MonoBehaviour
         Vector3 target;
         do
         {
-            target = new Vector3(Random.Range(-mapSize, mapSize), Random.Range(-mapSize, mapSize), _transform.position.z);
+            target = new Vector3(Random.Range(-_mapSize, _mapSize), Random.Range(-_mapSize, _mapSize), _transform.position.z);
         } while (IsThePointRestricted(target));
 
         return target;

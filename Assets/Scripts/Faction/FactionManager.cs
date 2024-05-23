@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.TextCore;
 
 public class FactionManager : MonoBehaviour
 {
@@ -51,6 +52,11 @@ public class FactionManager : MonoBehaviour
     // Return the reputation between faction
     public float GetReputation(Faction faction1, Faction faction2) 
     {
+        if(faction1 == Faction.Bandit || faction2 == Faction.Bandit)
+        {
+            return -5;
+        }
+
         for (int i = 0; i < reputations.Count; i++)
         {
             if ((reputations[i].faction1 == faction1 || reputations[i].faction2 == faction1) &&

@@ -8,6 +8,8 @@ public class FactionUnitManager : MonoBehaviour
     public GameObject unit;
     private Transform _transform;
     public Transform parent;
+    private float _mapSize;
+    public float SpawnDistanceAroundPlayer = 50;
 
     [Header("Unit Management")]
     public List<GameObject> units = new List<GameObject>();
@@ -29,6 +31,7 @@ public class FactionUnitManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _mapSize = GameManager.Instance.mapSize;
         _transform = transform;
         for (int i = 0; i< maxUnit; i++) 
         {
@@ -49,7 +52,13 @@ public class FactionUnitManager : MonoBehaviour
         GameObject go = Instantiate<GameObject>(unit, parent);
         UnitBT unitBT = go.GetComponent<UnitBT>();
         unitBT.Init();
-        go.transform.position = _transform.position;
+
+        if(faction == Faction.Bandit) 
+        {
+            go.transform.position = GetRandomSpawnPoint();
+        }
+        else
+            go.transform.position = _transform.position;
         
         units.Add(go);
 
@@ -61,28 +70,33 @@ public class FactionUnitManager : MonoBehaviour
     private void GiveAJob(UnitBT BT, Vector3 position)
     {
         UnitMovement movement = BT.gameObject.GetComponent<UnitMovement>();
-        for (int i = 0; i < surveillancePoints.Count; i++) 
+
+        if (faction != Faction.Bandit)
         {
-            if (surveillancePoints[i].unit == null)
+
+            for (int i = 0; i < surveillancePoints.Count; i++)
             {
-                BT.order = UnitOrder.Surveillance;
+                if (surveillancePoints[i].unit == null)
+                {
+                    BT.order = UnitOrder.Surveillance;
 
-                SurveillancePoint surveillancePoint = surveillancePoints[i];
-                surveillancePoint.unit = BT.gameObject;
-                surveillancePoints[i] = surveillancePoint;
-                BT.surveillancePoint = surveillancePoints[i].point.position;
-                movement.ChangeTarget(surveillancePoints[i].point.position);
+                    SurveillancePoint surveillancePoint = surveillancePoints[i];
+                    surveillancePoint.unit = BT.gameObject;
+                    surveillancePoints[i] = surveillancePoint;
+                    BT.surveillancePoint = surveillancePoints[i].point.position;
+                    movement.ChangeTarget(surveillancePoints[i].point.position);
 
+                    return;
+                }
+            }
+
+            if (Random.Range(0, 100) < 50 && _numberOfGuard < maxGuard)
+            {
+                BT.order = UnitOrder.AreaGuard;
+                movement.SetGuardPoint(point.position, minDistance, maxDistance);
+                _numberOfGuard++;
                 return;
             }
-        }
-
-        if(Random.Range(0,100) < 50 && _numberOfGuard < maxGuard)
-        {
-            BT.order = UnitOrder.AreaGuard;
-            movement.SetGuardPoint(point.position, minDistance, maxDistance);
-            _numberOfGuard++;
-            return;
         }
 
         BT.order = UnitOrder.Patrol;
@@ -97,6 +111,32 @@ public class FactionUnitManager : MonoBehaviour
             nbrOfDeadUnit--;
             Invoke("SpawnUnit", _unitSpawnRate);
         }
+    }
+
+    // get random point on the map
+    public Vector3 GetRandomSpawnPoint()
+    {
+        Vector3 target;
+        do
+        {
+            target = new Vector3(Random.Range(-_mapSize, _mapSize), Random.Range(-_mapSize, _mapSize), _transform.position.z);
+        } while (CanSpawnHere(target));
+
+        return target;
+    }
+
+    // can the unit spawn here
+    private bool CanSpawnHere(Vector3 position)
+    {
+        for (int i = 0; i < GameManager.Instance.restrictedAreas.Count; i++)
+        {
+            if (Vector3.Distance(GameManager.Instance.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius
+                && /*Replace by the player position*/ Vector3.Distance(Vector3.zero, position) <= SpawnDistanceAroundPlayer )
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
