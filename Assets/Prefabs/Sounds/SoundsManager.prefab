@@ -156,7 +156,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4938422617331952145}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1466.8474}
   m_LocalScale: {x: 0.00925926, y: 0.00925926, z: 0.00925926}
   m_ConstrainProportionsScale: 0
@@ -182,12 +182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be46cc095d2d2f54086e55421949eb57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicPlayer: {fileID: 1806075391969680366}
-  sfxPlayer: {fileID: 5434330515760308037}
-  musics:
+  _musicPlayer: {fileID: 1806075391969680366}
+  _sfxPlayer: {fileID: 5434330515760308037}
+  _musics:
   - name: Theme
-    clip: {fileID: 8300000, guid: a375dcff3299fd841907bb0109212afc, type: 3}
-  sfxs: []
+    clip: {fileID: 8300000, guid: d084e81614b6d3943a5902b248743f49, type: 3}
+  _sfxs: []
 --- !u!1 &5008782853023101748
 GameObject:
   m_ObjectHideFlags: 0

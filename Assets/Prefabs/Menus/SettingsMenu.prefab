@@ -222,18 +222,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!1 &774343593870071083
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,9 +409,9 @@ RectTransform:
   - {fileID: 5023979560320572723}
   m_Father: {fileID: 2715754119829745664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -450, y: -100}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 50, y: -100}
   m_SizeDelta: {x: 800, y: 800}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &983502603348110526
@@ -1329,10 +1317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c48de71d75d57442b17427e150a444c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainVolumeSlider: {fileID: 1077384707587058355}
-  musicVolumeSlider: {fileID: 9017344886862742778}
-  sfxVolumeSlider: {fileID: 8923414349161789491}
-  BackButton: {fileID: 132855755630346005}
+  _mainVolumeSlider: {fileID: 1077384707587058355}
+  _musicVolumeSlider: {fileID: 9017344886862742778}
+  _sfxVolumeSlider: {fileID: 8923414349161789491}
+  backButton: {fileID: 132855755630346005}
 --- !u!114 &171180396898067953
 MonoBehaviour:
   m_ObjectHideFlags: 0

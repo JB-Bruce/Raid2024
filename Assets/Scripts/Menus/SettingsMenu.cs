@@ -7,12 +7,12 @@ public class SettingsMenu : MonoBehaviour
     public static SettingsMenu instance;
 
     [Header("Sliders: ")]
-    [SerializeField] Slider mainVolumeSlider;
-    [SerializeField] Slider musicVolumeSlider;
-    [SerializeField] Slider sfxVolumeSlider;
+    [SerializeField] Slider _mainVolumeSlider;
+    [SerializeField] Slider _musicVolumeSlider;
+    [SerializeField] Slider _sfxVolumeSlider;
 
     [Header("References: ")]
-    public GameObject BackButton;
+    public GameObject backButton;
 
     private void Awake()
     {
@@ -33,9 +33,9 @@ public class SettingsMenu : MonoBehaviour
         DontDestroyOnLoad(transform.parent.parent);
 
         //Links volume sliders to their respective functions
-        mainVolumeSlider.onValueChanged.AddListener(delegate { OnMainVolumeChange(); });
-        musicVolumeSlider.onValueChanged.AddListener(delegate { OnMusicVolumeChange(); });
-        sfxVolumeSlider.onValueChanged.AddListener(delegate { OnSFXVolumeChange(); });
+        _mainVolumeSlider.onValueChanged.AddListener(delegate { OnMainVolumeChange(); });
+        _musicVolumeSlider.onValueChanged.AddListener(delegate { OnMusicVolumeChange(); });
+        _sfxVolumeSlider.onValueChanged.AddListener(delegate { OnSFXVolumeChange(); });
 
     }
     
@@ -51,16 +51,16 @@ public class SettingsMenu : MonoBehaviour
 
     public void OnMainVolumeChange()
     {
-        SoundManager.instance.MainVolume(mainVolumeSlider.value);
+        SoundManager.instance.MainVolume(_mainVolumeSlider.value);
     }
 
     public void OnMusicVolumeChange()
     {
-        SoundManager.instance.MusicVolume(musicVolumeSlider.value);
+        SoundManager.instance.MusicVolume(_musicVolumeSlider.value);
     }
 
     public void OnSFXVolumeChange()
     {
-        SoundManager.instance.SFXVolume(sfxVolumeSlider.value);
+        SoundManager.instance.SFXVolume(_sfxVolumeSlider.value);
     }
 }
