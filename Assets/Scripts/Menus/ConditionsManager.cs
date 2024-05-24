@@ -23,7 +23,7 @@ public class ConditionsManager : MonoBehaviour
         }
     }
 
-    public bool IsAnyMenuOpen()
+    public bool IsAnyMenuOpen() //Checks if any of the menus is open
     {
         return isPaused || hasDied || gameHasEnded;
     }
