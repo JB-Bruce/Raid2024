@@ -8,8 +8,7 @@ public class EndMenuManager : MonoBehaviour
     [Header("Menu objets: ")]
     [SerializeField] GameObject _endMenu;
 
-    [Header("Booleans: ")]
-    public bool gameHasEnded;
+    ConditionsManager _conditionsManager;
 
     private void Awake()
     {
@@ -17,35 +16,41 @@ public class EndMenuManager : MonoBehaviour
         {
             instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        _conditionsManager = ConditionsManager.instance;
     }
 
     private void Update() //Temp Test 
     {
-        if (Input.GetKeyUp(KeyCode.E)) 
+        if (Input.GetKeyUp(KeyCode.E))
         {
-            ActivateEndGame();
+            if (!_conditionsManager.IsAnyMenuOpen())
+            {
+                ActivateEndGame();
+            }
         }
     }
 
     public void ActivateEndGame() //Activates the EndGame menu and pauses game
     {
-        if (!PauseManager.instance.isPaused) 
-        {
-            _endMenu.SetActive(true);
-            gameHasEnded = true;
+        _endMenu.SetActive(true);
+        _conditionsManager.gameHasEnded = true;
 
-            Time.timeScale = 0f;
-        }
+        Time.timeScale = 0f;
     }
 
     public void ContinueGame() //Allows to continue the game and unpauses the game
     {
-        if (!PauseManager.instance.isPaused)
-        {
-            _endMenu.SetActive(false);
-            gameHasEnded = false;
+        _endMenu.SetActive(false);
+        _conditionsManager.gameHasEnded = false;
 
-            Time.timeScale = 1f;
-        }
+        Time.timeScale = 1f;
     }
 }
