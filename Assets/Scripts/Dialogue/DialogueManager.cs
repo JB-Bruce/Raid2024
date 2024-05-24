@@ -50,12 +50,12 @@ public class DialogueManager : MonoBehaviour
 
     private Coroutine _typeTextCoroutine;
 
-    public static DialogueManager Instance;
+    public static DialogueManager instance;
 
     //create an instance of the DialogueManager
     private void Awake()
     {
-        Instance = this;
+        instance = this;
     }
 
     //create a list of the choices gameobject references at the creation of the script

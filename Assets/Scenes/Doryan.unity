@@ -561,7 +561,7 @@ GameObject:
   - component: {fileID: 292031629}
   - component: {fileID: 292031628}
   m_Layer: 5
-  m_Name: TradeObjectImage
+  m_Name: TradeItemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2738,7 +2738,7 @@ GameObject:
   - component: {fileID: 1391612648}
   - component: {fileID: 1391612647}
   m_Layer: 5
-  m_Name: NumberInInventory
+  m_Name: QuantityInInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2886,7 +2886,7 @@ GameObject:
   - component: {fileID: 1456465607}
   - component: {fileID: 1456465606}
   m_Layer: 5
-  m_Name: TradeObjectImageBackgroud
+  m_Name: TradeItemImageBackgroud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3187,7 +3187,7 @@ GameObject:
   - component: {fileID: 1566789742}
   - component: {fileID: 1566789741}
   m_Layer: 5
-  m_Name: ObjectToTrade
+  m_Name: ItemToTrade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3547,7 +3547,7 @@ GameObject:
   - component: {fileID: 1674774702}
   - component: {fileID: 1674774701}
   m_Layer: 5
-  m_Name: NumberNeed
+  m_Name: QuantityNeed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

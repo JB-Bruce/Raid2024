@@ -29,7 +29,7 @@ public class TestPnj : MonoBehaviour
     public void StartDialogue()
     {
         _startButton.SetActive(false);
-        DialogueManager.Instance.StartDialogue(_name, _hideName, _isNameHide, _pnjSprite, dialogueContent, EndDialogue);
+        DialogueManager.instance.StartDialogue(_name, _hideName, _isNameHide, _pnjSprite, dialogueContent, EndDialogue);
     }
 
     //call at the end of the dialogue
