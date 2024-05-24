@@ -1539,6 +1539,7 @@ MonoBehaviour:
   _secondChoice: {fileID: 790126153}
   _skipButton: {fileID: 1765194960}
   _playerName: Vous
+  charactersPerSecond: 30
 --- !u!1 &1717761496
 GameObject:
   m_ObjectHideFlags: 0
