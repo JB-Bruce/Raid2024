@@ -21,8 +21,6 @@ public class UnitBT : Humanoid
     private int evaluateUpdate = 0;
     public int jumpUpdate = 10;
 
-    public Vector3 surveillancePoint = Vector3.zero;
-
     // Start is called before the first frame update
     public void Init()
     {
@@ -73,10 +71,33 @@ public class UnitBT : Humanoid
                 } )
             }),
 
+            // Surveillance
             new Sequence( new List<Node>
             {
                 new CheckOrderState(this, UnitOrder.Surveillance),
-                new GoToSurveillancePoint(_unitMove, this)
+                new GoToSurveillancePoint(_unitMove)
+            }),
+
+            // Capture of POI
+            new Sequence( new List<Node>
+            {
+                new CheckOrderState(this, UnitOrder.POICapture),
+                new Selector(new List<Node>
+                {
+                    new Sequence(new List<Node>
+                    {
+                        new IsPOICaptured(_unitMove),
+                        new GoToSurveillancePoint(_unitMove)
+                    }),
+                    new Selector(new List<Node>
+                    {
+                        new Sequence(new List<Node>
+                        {
+                            new HasBeenReached(_agent, this),
+                            new Guard(this.gameObject)
+                        })
+                    })
+                })
             })
 
         });
@@ -95,19 +116,17 @@ public class UnitBT : Humanoid
 
     }
 
-    // Possible order unit can receive
-
 
 }
 
 // Contain all the possible state of a unit
 public enum UnitOrder
 {
-    Patrol, AreaGuard, Surveillance
+    Patrol, AreaGuard, Surveillance, POICapture
 }
 
 // Contain all the possible Faction 
 public enum Faction
 {
-    Null,Military, Utopist, Survivalist, Scientist, Bandit
+    Null,Military, Utopist, Survivalist, Scientist, Bandit, Player
 }

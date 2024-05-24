@@ -8,7 +8,7 @@ public class UnitCombat : MonoBehaviour
     private List<Humanoid> humanoidAround = new();
     Transform _transform;
 
-    //Attack Parameters
+    [Header("Attack Parameters")]
     private float _chargeTimer = 0;
     private float _attackSpeed = 1;
     public bool canAttack = false;
@@ -20,13 +20,15 @@ public class UnitCombat : MonoBehaviour
     public Humanoid nearestEnemy;
     private Humanoid _mHumanoid;
 
+    [Header("Update Parameters")]
     private int evaluateUpdate = 0;
     public int jumpUpdate = 2;
 
+    [Header("Reputation")]
     public float neutralReputation = 0;
 
-    public CircleCollider2D
-        circleCollider;
+    [Header("Detection")]
+    public CircleCollider2D circleCollider;
 
     public void Init()
     {

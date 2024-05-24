@@ -25,12 +25,19 @@ public class FactionUnitManager : MonoBehaviour
     public float minDistance;
     public float maxDistance;
 
+    [Header("POI")]
+    public int maxUnitPerPOI = 5;
+    public int maxUnitOnPOI = 10;
+    private int _numberOfPOIUnit = 0;
+    private List<int> _unitOnPOI = new List<int>();
+
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        SetUnitOnPOI();
         _mapSize = GameManager.Instance.mapSize;
         _transform = transform;
         for (int i = 0; i< maxUnit; i++) 
@@ -83,7 +90,7 @@ public class FactionUnitManager : MonoBehaviour
                     SurveillancePoint surveillancePoint = surveillancePoints[i];
                     surveillancePoint.unit = BT.gameObject;
                     surveillancePoints[i] = surveillancePoint;
-                    BT.surveillancePoint = surveillancePoints[i].point.position;
+                    movement.SetGuardPoint(surveillancePoints[i].point.position);
                     movement.ChangeTarget(surveillancePoints[i].point.position);
 
                     return;
@@ -95,6 +102,26 @@ public class FactionUnitManager : MonoBehaviour
                 BT.order = UnitOrder.AreaGuard;
                 movement.SetGuardPoint(point.position, minDistance, maxDistance);
                 _numberOfGuard++;
+                return;
+            }
+        }
+
+        if(Random.Range(0, 100) < 50 && _numberOfPOIUnit < maxUnitOnPOI)
+        {
+            BT.order = UnitOrder.POICapture;
+
+            int random = FactionManager.Instance.poi.IndexOf(FactionManager.Instance.GetRandomPOI(this));
+
+            if (random > 0)
+            {
+                _numberOfPOIUnit++;
+
+                movement.targetPOI = FactionManager.Instance.poi[random];
+                _unitOnPOI[random]++;
+
+                movement.SetGuardPoint(movement.targetPOI.transform.position, 0, movement.gameObject.GetComponent<CircleCollider2D>().radius);
+                movement.SetGuardPoint(movement.GetRandomPointOnGuardPoint(), 0, 0);
+
                 return;
             }
         }
@@ -135,6 +162,42 @@ public class FactionUnitManager : MonoBehaviour
             {
                 return true;
             }
+        }
+        return false;
+    }
+
+    // Set List unitOnPOI
+    private void SetUnitOnPOI()
+    {
+        for(int i = 0;FactionManager.Instance.poi.Count > i; i++) 
+        {
+            _unitOnPOI.Add(0);
+        }
+    }
+
+    // When the unit die change variable job
+    public void RemoveJob(GameObject unit)
+    {
+        switch(unit.GetComponent<UnitBT>().order)
+        {
+            case UnitOrder.AreaGuard: 
+                _numberOfGuard--; 
+                break;
+
+            case UnitOrder.POICapture:
+                _numberOfPOIUnit--;
+                _unitOnPOI[FactionManager.Instance.poi.IndexOf(unit.GetComponent<UnitMovement>().targetPOI)]--;
+                break;
+        }
+       
+    }
+
+    // is the poi full of unit
+    public bool isPOIFull(int index)
+    {
+        if (_unitOnPOI[index] > maxUnitPerPOI)
+        {
+            return true;
         }
         return false;
     }
