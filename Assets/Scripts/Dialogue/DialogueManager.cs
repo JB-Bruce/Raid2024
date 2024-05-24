@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -33,7 +34,7 @@ public class DialogueManager : MonoBehaviour
 
     private Action<List<string>, bool> _returnMethode;
 
-    private List<string> _displayedDialogue = new();
+    private List<List<string>> _displayedDialogue = new();
     private List<string> _dialogueChoices = new();
     [SerializeField]
     private string _playerName;
@@ -41,6 +42,13 @@ public class DialogueManager : MonoBehaviour
     private string _pnjHideName;
 
     private bool _isPnjNameHide;
+    private bool _isTypingText;
+    private bool _isChoice;
+
+    [SerializeField]
+    private float charactersPerSecond;
+
+    private Coroutine _typeTextCoroutine;
 
     public static DialogueManager Instance;
 
@@ -55,12 +63,13 @@ public class DialogueManager : MonoBehaviour
     {
         _choicesUiList.Add(_firstChoice);
         _choicesUiList.Add(_secondChoice);
+        _isTypingText = false;
+        _isChoice = false;
     }
 
     //called by pnj to start a dialogue
     public void StartDialogue(string pnjName, string pnjHideName, bool isPnjNameHide, Sprite pnjSprite, DialogueContent talk, Action<List<string>, bool> returnMethode)
     {
-
         _displayedDialogue.Clear();
         _dialogueChoices.Clear();
         _currentTalk = talk;
@@ -70,7 +79,7 @@ public class DialogueManager : MonoBehaviour
         _isPnjNameHide = isPnjNameHide;
         _dialogueBox.SetActive(true);
         _dialogueText.SetText(string.Empty);
-        if(isPnjNameHide)
+        if (isPnjNameHide)
         {
             UpdatePnjUi(pnjName, pnjSprite);
         }
@@ -108,20 +117,38 @@ public class DialogueManager : MonoBehaviour
                 speakerName = _pnjHideName;
             }
         }
-        print(_currentTalk.talk);
         UpdateDialogue(speakerName, _currentTalk.talk);
     }
 
     //update the dialogue in the code
     private void UpdateDialogue(string speakerName, string talk)
     {
-        _displayedDialogue.Add("<color=blue>" + speakerName + "</color> : " + talk + "\n\n");
+        List<string> dialogue = new List<string>();
+        dialogue.Add("<color=blue>" + speakerName + "</color> : ");
+        dialogue.Add(talk + "\n\n");
+        _displayedDialogue.Add(dialogue);
         FillDialogueText();
 
         if (_dialogueText.textInfo.lineCount > _dialogueTextMaxLines)
         {
             _displayedDialogue.RemoveAt(0);
-            FillDialogueText();
+        }
+
+        _dialogueText.SetText(string.Empty);
+
+        for (int i = 0; i < _displayedDialogue.Count-1; i++)
+        {
+            _dialogueText.text += _displayedDialogue[i][0];
+            _dialogueText.text += _displayedDialogue[i][1];
+        }
+        _dialogueText.text += _displayedDialogue[_displayedDialogue.Count - 1][0];
+        if (!_isChoice)
+        {
+            _typeTextCoroutine = StartCoroutine(TypeText(_displayedDialogue[_displayedDialogue.Count - 1][1]));
+        }
+        else
+        {
+            _dialogueText.text += _displayedDialogue[_displayedDialogue.Count - 1][1];
         }
     }
 
@@ -131,9 +158,23 @@ public class DialogueManager : MonoBehaviour
         _dialogueText.SetText(string.Empty);
         for (int i = 0; i < _displayedDialogue.Count; i++)
         {
-            _dialogueText.SetText(_dialogueText.text + _displayedDialogue[i]);
+            _dialogueText.text += _displayedDialogue[i][0];
+            _dialogueText.text += _displayedDialogue[i][1];
         }
         _dialogueText.ForceMeshUpdate();
+    }
+
+    //print the text character by character
+    IEnumerator TypeText(string line)
+    {
+        _isTypingText = true;
+        for (int i = 0; i < line.Length; i++)
+        {
+            _dialogueText.text += line[i];
+            _dialogueText.ForceMeshUpdate();
+            yield return new WaitForSeconds((1f/charactersPerSecond));
+        }
+        _isTypingText = false;
     }
 
     //update the visual pnj interface in the dialoguebox
@@ -183,25 +224,39 @@ public class DialogueManager : MonoBehaviour
     //update the visual and the script to display the next dialogue
     public void NextTalk(int talkNumber)
     {
-        _currentTalk = _currentTalk.nextTalk[talkNumber];
-        UpdateDialogueUi();
-        UpdateChoicesButtons();
+        if (_isTypingText)
+        {
+            StopCoroutine(_typeTextCoroutine);
+            _isTypingText = false;
+            FillDialogueText();
+            UpdateChoicesButtons();
+        }
+        else
+        {
+            _currentTalk = _currentTalk.nextTalk[talkNumber];
+            _isChoice = false;
+            UpdateDialogueUi();
+        }
     }
 
     //called when a choice button is pressed to go to the next dialogue or end the dialogue
     public void Choice(int talkNumber)
     {
+        _isChoice = true;
+        _isTypingText = false;
         _dialogueChoices.Add(_currentTalk.choices[talkNumber].choice);
         UpdateDialogue(_playerName, _currentTalk.choices[talkNumber].choice);
         if (_currentTalk.nextTalk.Count > 0)
         {
             NextTalk(_currentTalk.choices[talkNumber].indexNextDialogue);
+            UpdateChoicesButtons();
         }
         else
         {
             _dialogueBox.SetActive(false);
             _returnMethode(_dialogueChoices, _isPnjNameHide);
         }
+        _isChoice = false;
     }
 }
 
