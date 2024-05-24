@@ -112,7 +112,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &4219389183257027000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   order: 0
   waitTime: 0
   canMove: 1
-  jumpUpdate: 0
+  jumpUpdate: 10
   surveillancePoint: {x: 0, y: 0, z: 0}
 --- !u!58 &7587460380071086963
 CircleCollider2D:
