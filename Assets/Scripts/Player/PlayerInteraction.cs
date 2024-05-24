@@ -17,6 +17,9 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Caculates and returns the closest container to the player (if there are any)
+    /// </summary>
     private Container GetNearestContainer()
     {
         if (containers.Count < 1 )
@@ -43,14 +46,19 @@ public class PlayerInteraction : MonoBehaviour
         return nearestContainer;
     }
 
+    /// <summary>
+    /// Try to open a container, if there are multiple, opens the closest
+    /// </summary>
     public void OpenContainer(InputAction.CallbackContext context)
     {
         if (context.started)
         {
             Container container = GetNearestContainer();
-            if (container != null)
+            if (container != null)//If a container is close, open the inventory and the container
             {
-                return;
+                Inventory.Instance.OpenInventory();
+                Inventory.Instance.currentContainer = container;
+                container.OpenContainer();
             }
         }
     }

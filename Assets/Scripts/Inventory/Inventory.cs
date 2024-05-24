@@ -50,6 +50,8 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform _weaponSlotsPosInGame;
 
+    public Container currentContainer = null;
+
     private const int _itemSpacing = 95;
     private const int _armorSpacing = 200;
     private const int _weaponSpacing = 100;
@@ -241,26 +243,36 @@ public class Inventory : MonoBehaviour
 
 
     /// <summary>
-    /// Open and closes the inventory UI and positions the weapon slots depending on "isInventoryOpen"
+    /// Input Action to open the inventory
     /// </summary>
-    public void OpenInventory(InputAction.CallbackContext context)
+    public void OpenInventoryAction(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            isInventoryOpen = !isInventoryOpen;
-            _inventoryPanel.SetActive(isInventoryOpen);
+            OpenInventory();
+        }
+    }
 
-            if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
-            {
-                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
-                _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
-            }
-            else//Show the weapons in game (change position and hide the holster)
-            {
-                selectedItemSlot.GetSelected(false);
-                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
-                _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
-            }
+    /// <summary>
+    /// Open and closes the inventory UI and positions the weapon slots depending on "isInventoryOpen"
+    /// </summary>
+    public void OpenInventory()
+    {
+        isInventoryOpen = !isInventoryOpen;
+        _inventoryPanel.SetActive(isInventoryOpen);
+
+        if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
+        {
+            _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
+            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
+        }
+        else//Show the weapons in game (change position and hide the holster)
+        {
+            selectedItemSlot.GetSelected(false);
+            _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
+            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+            currentContainer.CloseContainer();
+            currentContainer = null;
         }
     }
 

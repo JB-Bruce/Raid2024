@@ -758,7 +758,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 534561625}
         m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: OpenInventory
+        m_MethodName: OpenInventoryAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1402,6 +1402,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _containerSelectedSprite: {fileID: 1945829909}
+  _lootTable: {fileID: 0}
+  _items: []
 --- !u!1 &1711211575
 GameObject:
   m_ObjectHideFlags: 0
