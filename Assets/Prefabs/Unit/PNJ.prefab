@@ -112,7 +112,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &4219389183257027000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d4dd03843d7d1408bc195dd3468f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mapSize: 75
 --- !u!114 &1230919152798685617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,7 +142,8 @@ MonoBehaviour:
   order: 0
   waitTime: 0
   canMove: 1
-  jumpUpdate: 0
+  jumpUpdate: 10
+  surveillancePoint: {x: 0, y: 0, z: 0}
 --- !u!58 &7587460380071086963
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -222,9 +222,11 @@ MonoBehaviour:
   canAttack: 0
   attackDistance: 8
   lastPosition: {x: 0, y: 0, z: 0}
+  lastEnemy: {fileID: 0}
   viewRange: 15
   nearestEnemy: {fileID: 0}
   jumpUpdate: 10
+  neutralReputation: 0
   circleCollider: {fileID: 7587460380071086963}
 --- !u!58 &409736483878751416
 CircleCollider2D:
