@@ -11,9 +11,11 @@ public class UnitMovement : MonoBehaviour
     NavMeshAgent _agent;
     private Transform _transform;
 
-    private Vector2 _guardPoint;
+    private Vector3 _guardPoint;
     private float _minDistanceGuardPoint;
     private float _maxDistanceGuardPoint;
+    public POI targetPOI;
+    public bool poiHasBeenCaptured = false;
 
     // Start is called before the first frame update
     public void Init()
@@ -61,7 +63,7 @@ public class UnitMovement : MonoBehaviour
     public Vector3 GetRandomPointOnGuardPoint()
     {
 
-            Vector2 randomDirection = Random.insideUnitCircle;
+            Vector3 randomDirection = Random.insideUnitCircle;
 
             float randomDistance = Random.Range(_minDistanceGuardPoint, _maxDistanceGuardPoint);
 
@@ -69,11 +71,16 @@ public class UnitMovement : MonoBehaviour
     }
 
     // set the guard area
-    public void SetGuardPoint(Vector3 guardPoint, float minDistanceGuardPoint, float maxDistanceGuardPoint)
+    public void SetGuardPoint(Vector3 guardPoint, float minDistanceGuardPoint = 0, float maxDistanceGuardPoint = 0)
     {
          _guardPoint = guardPoint;
         _maxDistanceGuardPoint = maxDistanceGuardPoint;
         _minDistanceGuardPoint = minDistanceGuardPoint;
+    }
+
+    public Vector3 GetGuardPoint()
+    {
+        return _guardPoint;
     }
 
 }
