@@ -3,8 +3,9 @@ using UnityEngine.UI;
 
 public class Item : ScriptableObject
 {
+    [Header("Item")]
     [SerializeField]
-    protected int _weight;
+    protected float _weight;
 
     [SerializeField]
     protected bool _isStackable;

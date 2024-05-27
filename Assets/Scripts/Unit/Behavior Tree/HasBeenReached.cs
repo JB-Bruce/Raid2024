@@ -12,7 +12,7 @@ public class HasBeenReached : Node
 {
     NavMeshAgent _agent;
     UnitBT _tree;
-    Tuple<float,float> _waitingTime = Tuple.Create(0.5f, 3f);
+    Tuple<float,float> _waitingTime = Tuple.Create(0.5f, 0.7f);
 
     public HasBeenReached(NavMeshAgent agent, UnitBT tree)
     {
@@ -22,7 +22,7 @@ public class HasBeenReached : Node
 
     public override NodeState Evaluate()
     {   
-        if ((_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.03f) || (_agent.pathStatus == NavMeshPathStatus.PathPartial && _agent.velocity == Vector3.zero)) 
+        if ((_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.05f) || (/*_agent.pathStatus == NavMeshPathStatus.PathPartial &&*/ _agent.velocity == Vector3.zero)) 
         {
 
             _tree.canMove = !_tree.canMove;

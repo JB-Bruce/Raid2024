@@ -56,8 +56,8 @@
                 },
                 {
                     "name": "up",
-                    "id": "e6a9cccd-156a-4749-b644-a357f0c56e04",
-                    "path": "<Keyboard>/z",
+                    "id": "acf0489c-a63f-4884-aec6-5371e0f81c93",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -78,8 +78,8 @@
                 },
                 {
                     "name": "left",
-                    "id": "49347741-e06e-47c2-953d-0a0e36ac6183",
-                    "path": "<Keyboard>/q",
+                    "id": "62cd329e-1943-4db2-82c3-d6d6fa5afa75",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

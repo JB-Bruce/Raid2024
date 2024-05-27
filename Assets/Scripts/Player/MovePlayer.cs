@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +25,8 @@ public class MovePlayer : MonoBehaviour
     Vector3 mousePosition;
     Vector3 lastMousePosition;
 
+    StatsManager stats;
+
 
     //If the player press the button assigned for run, change the bool _isRunning. 
     //If the player release the button , change the bool again.
@@ -47,6 +50,7 @@ public class MovePlayer : MonoBehaviour
         _input = new CustomInput();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        stats = GetComponent<StatsManager>();
     }
 
 
@@ -67,14 +71,17 @@ public class MovePlayer : MonoBehaviour
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
     private void Move() 
     {
-        _moveVector = _input.Player.Movement.ReadValue<Vector2>();
-        if(_isSprinting == true)
+        _moveVector = _input.Move.Movement.ReadValue<Vector2>();
+        if(_isSprinting == true && stats.GetStamina() > 0)
         {
+            stats.ChangeIsSprinting(true);
             _rb.velocity = _moveVector * moveSpeed * 1.5f;
         }
         else
         {
+            stats.ChangeIsSprinting(false);
             _rb.velocity = _moveVector * moveSpeed;
+            
         }
     }
 
