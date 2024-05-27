@@ -13,6 +13,9 @@ public class MovePlayer : MonoBehaviour
     private Rigidbody2D _rb = null;
     private SpriteRenderer _sprite = null;
     
+    [SerializeField]
+    private Inventory _inventory;
+    
     private bool _isSprinting = false;
     private bool _mouseActive = true;
     public float moveSpeed = 7f;
@@ -53,15 +56,15 @@ public class MovePlayer : MonoBehaviour
 
     //This function is called when the object becomes enabled and active. Enable move _input
     private void OnEnable() {
-        _input.Move.Enable();
-        _input.Aim.Enable();
+        _input.Player.Enable();
+        _input.Player.Enable();
     }
 
 
     //This function is called when the object becomes disabled. Disable move _input
     private void OnDisable() {
-        _input.Move.Disable();
-        _input.Aim.Disable();
+        _input.Player.Disable();
+        _input.Player.Disable();
     }
 
 
@@ -111,9 +114,9 @@ public class MovePlayer : MonoBehaviour
 
         Vector2 aimNotActive = new Vector2(0,0);
 
-        if (_input.Aim.Aim.ReadValue<Vector2>() != aimNotActive)
+        if (_input.Player.Aim.ReadValue<Vector2>() != aimNotActive)
         {
-            direction = _input.Aim.Aim.ReadValue<Vector2>();
+            direction = _input.Player.Aim.ReadValue<Vector2>();
             lastAimDirection = direction;
             
             Cursor.visible = false;
@@ -133,7 +136,6 @@ public class MovePlayer : MonoBehaviour
 
         }
 
-
         if (direction == aimNotActive){
             
             direction = lastAimDirection;
@@ -150,13 +152,23 @@ public class MovePlayer : MonoBehaviour
        
     private void FixedUpdate() 
     {
-        Move();
+        if (!_inventory.isInventoryOpen)
+        {
+            Move();
+        }
+        else
+        {
+            _rb.velocity = Vector3.zero;
+        }
     }
 
     void Update()
     {
-        WeaponAim();
+        if (!_inventory.isInventoryOpen)
+        {
+            WeaponAim();
 
-        FlipPlayer(); 
+            FlipPlayer();
+        }
     }
 }

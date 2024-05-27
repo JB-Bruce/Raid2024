@@ -20,8 +20,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     [SerializeField]
     private GameObject _itemSelectedSprite;
-
-    [SerializeField]
+    
     private Inventory _inventory;
 
     protected bool _isAvailable = true;
@@ -29,6 +28,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private void Start()
     {
         UpdateQuantity(_quantity);
+        _inventory = Inventory.Instance;
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void OnPointerEnter(PointerEventData _)
     {
-        if (_isAvailable)
+        if (_isAvailable && _inventory.isInventoryOpen)
         {
             GetSelected(true);
         }
@@ -87,11 +87,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (_item != null)
         {
-            _itemSprite = _item.ItemSprite;
+            _itemSprite.sprite = _item.ItemSprite;
         }
         else
         {
-            _itemSprite = null;
+            _itemSprite.sprite = null;
         }
     }
 

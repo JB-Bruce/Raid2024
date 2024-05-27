@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 
 public class Inventory : MonoBehaviour
 {
-    private bool _isInventoryOpen = false;
+    public static Inventory Instance;
+
+    public bool isInventoryOpen = false;
 
     [SerializeField] 
     private GameObject _inventoryPanel;
@@ -48,6 +50,10 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private Transform _weaponSlotsPosInGame;
 
+    public Transform containerSlotsTransform;
+
+    public Container currentContainer = null;
+
     private const int _itemSpacing = 95;
     private const int _armorSpacing = 200;
     private const int _weaponSpacing = 100;
@@ -57,198 +63,292 @@ public class Inventory : MonoBehaviour
     private bool _isMoving = false;
     private Vector2 _moveDirection = Vector2.zero;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
+
     private void Update()
     {
-        if (_isMoving && _canMove)
+        if (_isMoving && _canMove && isInventoryOpen)
         {
-            if (_moveDirection == Vector2.down)
+            MoveInInventory();
+        }
+    }
+
+    /// <summary>
+    /// Handles controller support for the inventory
+    /// </summary>
+    private void MoveInInventory()
+    {
+        StartCoroutine(MoveCooldown());
+        if (selectedItemSlot != null)//if no item slot is selected
+        {
+            if (_moveDirection == Vector2.down)//if you want to move down
             {
-                StartCoroutine(MoveCooldown());
-                if (selectedItemSlot == null)
+                if (selectedItemSlot.GetType() == typeof(ItemSlot))//if the slot is from inventory or container
                 {
-                    selectedItemSlot = _itemSlots[0];
-                    selectedItemSlot.GetSelected(true);
-                }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot))
-                {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex < (_inventoryWidth * (_inventoryHeight - 1)))
+                    //if the slot is from container
+                    if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex + _inventoryWidth];
-                        selectedItemSlot.GetSelected(true);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex < (currentContainer.containerColumn * (currentContainer.containerRows - 1)))//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex + currentContainer.containerColumn];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
+                    }
+                    else //if the slot is from inventory
+                    {
+                        int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex < (_inventoryWidth * (_inventoryHeight - 1)))//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = _itemSlots[selectedItemIndex + _inventoryWidth];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
                     }
                 }
-                else if (_equipementSlots.Contains(selectedItemSlot))
+                else if (_equipementSlots.Contains(selectedItemSlot))//if the slot is from equipement
                 {
                     int selectedItemIndex = _equipementSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
-                    if (selectedItemIndex < 3)
+                    if (selectedItemIndex < 3)//if you can move
                     {
                         selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[selectedItemIndex + 1];
+                        selectedItemSlot = _equipementSlots[selectedItemIndex + 1];//if select next slot
                         selectedItemSlot.GetSelected(true);
                     }
                 }
             }
-            if (_moveDirection == Vector2.up)
+
+            if (_moveDirection == Vector2.up)//if you want to move up
             {
-                StartCoroutine(MoveCooldown());
-                if (selectedItemSlot == null)
+                if (selectedItemSlot.GetType() == typeof(ItemSlot))//if the slot is from inventory or container
                 {
-                    selectedItemSlot = _itemSlots[0];
-                    selectedItemSlot.GetSelected(true);
-                }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot))
-                {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex > _inventoryWidth - 1)
+                    //if the slot is from container
+                    if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex - _inventoryWidth];
-                        selectedItemSlot.GetSelected(true);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex > currentContainer.containerColumn - 1)//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex - currentContainer.containerColumn];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
+                    }
+                    else
+                    {
+                        int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex > _inventoryWidth - 1)//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = _itemSlots[selectedItemIndex - _inventoryWidth];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
                     }
                 }
-                else if (_weaponSlots.Contains(selectedItemSlot))
+                else if (_weaponSlots.Contains(selectedItemSlot))//if the slot is a weapon slot
                 {
                     selectedItemSlot.GetSelected(false);
-                    selectedItemSlot = _equipementSlots[_equipementSlots.Count - 2];
+                    selectedItemSlot = _equipementSlots[_equipementSlots.Count - 2];//select the equipement slot above (leggings)
                     selectedItemSlot.GetSelected(true);
                 }
-                else
+                else//if the slot is an equipement slot
                 {
                     int selectedItemIndex = _equipementSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
-                    if (selectedItemIndex > 0)
+                    if (selectedItemIndex > 0)//if you can move
                     {
                         selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[selectedItemIndex - 1];
+                        selectedItemSlot = _equipementSlots[selectedItemIndex - 1];//select next slot
                         selectedItemSlot.GetSelected(true);
                     }
                 }
             }
-            if (_moveDirection == Vector2.right)
+
+            if (_moveDirection == Vector2.right)//if you want to move right
             {
-                StartCoroutine(MoveCooldown());
-                if (selectedItemSlot == null)
+                if (selectedItemSlot.GetType() == typeof(ItemSlot))//if the slot is from inventory or container
                 {
-                    selectedItemSlot = _itemSlots[0];
-                    selectedItemSlot.GetSelected(true);
-                }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot))
-                {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex % _inventoryWidth != _inventoryWidth - 1)
+                    //if the slot is from container
+                    if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex + 1];
-                        selectedItemSlot.GetSelected(true);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex % currentContainer.containerColumn != currentContainer.containerColumn - 1)//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex + 1];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
+                    }
+                    else//if the slot is from inventory
+                    {
+                        int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex % _inventoryWidth != _inventoryWidth - 1)//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = _itemSlots[selectedItemIndex + 1];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
+                        else if (currentContainer != null)//else, if a container is opened
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = currentContainer.itemSlots[0];//select first slot of container
+                            selectedItemSlot.GetSelected(true);
+                        }
                     }
                 }
-                else if (_equipementSlots.Where(x => x.ItemType != typeof(Holster)).Contains(selectedItemSlot))
+                else if (_equipementSlots.Where(x => x.ItemType != typeof(Holster)).Contains(selectedItemSlot))//if the slot is not the Holster
                 {
                     selectedItemSlot.GetSelected(false);
-                    selectedItemSlot = _itemSlots[0];
+                    selectedItemSlot = _itemSlots[0];//select the first inventory slot
                     selectedItemSlot.GetSelected(true);
                 }
-                else
+                else if (selectedItemSlot == _equipementSlots[_equipementSlots.Count - 1])//if the slot is the Holster
                 {
-                    if (selectedItemSlot == _equipementSlots[_equipementSlots.Count - 1])
+                    selectedItemSlot.GetSelected(false);
+                    selectedItemSlot = _weaponSlots[0];//select the first weapon
+                    selectedItemSlot.GetSelected(true);
+                }
+                else//if the slot is a weapon slot
+                {
+                    int selectedItemIndex = _weaponSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
+                    if (_equipementSlots[3].Item == null)//if you have no Holster
                     {
                         selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _weaponSlots[0];
+                        selectedItemSlot = _itemSlots[0];//select the first inventory slot
                         selectedItemSlot.GetSelected(true);
                     }
                     else
                     {
-                        int selectedItemIndex = _weaponSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
-                        if (_equipementSlots[3].Item == null)
+                        Holster holster = (Holster)_equipementSlots[3].Item;
+                        if (selectedItemIndex < holster.HolsterTier - 1)//if you can move
                         {
                             selectedItemSlot.GetSelected(false);
-                            selectedItemSlot = _itemSlots[0];
+                            selectedItemSlot = _weaponSlots[selectedItemIndex + 1];//select next slot
                             selectedItemSlot.GetSelected(true);
                         }
                         else
                         {
-                            Holster holster = (Holster)_equipementSlots[3].Item;
-                            if (selectedItemIndex < holster.HolsterTier - 1)
-                            {
-                                selectedItemSlot.GetSelected(false);
-                                selectedItemSlot = _weaponSlots[selectedItemIndex + 1];
-                                selectedItemSlot.GetSelected(true);
-                            }
-                            else
-                            {
-                                selectedItemSlot.GetSelected(false);
-                                selectedItemSlot = _itemSlots[0];
-                                selectedItemSlot.GetSelected(true);
-                            }
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = _itemSlots[0];//select the first inventory slot
+                            selectedItemSlot.GetSelected(true);
                         }
                     }
                 }
             }
-            if (_moveDirection == Vector2.left)
+
+            if (_moveDirection == Vector2.left)//if you want to move left
             {
-                StartCoroutine(MoveCooldown());
-                if (selectedItemSlot == null)
+                if (selectedItemSlot.GetType() == typeof(ItemSlot))//if the slot is from inventory or container
                 {
-                    selectedItemSlot = _itemSlots[0];
-                    selectedItemSlot.GetSelected(true);
-                }
-                else if (selectedItemSlot.GetType() == typeof(ItemSlot))
-                {
-                    int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
-                    if (selectedItemIndex % _inventoryWidth != 0)
+                    //if the slot is from container
+                    if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _itemSlots[selectedItemIndex - 1];
-                        selectedItemSlot.GetSelected(true);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex % currentContainer.containerColumn != 0)//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex - 1];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
+                        else
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = _itemSlots[_inventoryWidth - 1];//select inventory slot
+                            selectedItemSlot.GetSelected(true);
+                        }
                     }
-                    else
+                    else//if the slot is from inventory
                     {
-                        selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[0];
-                        selectedItemSlot.GetSelected(true);
+                        int selectedItemIndex = _itemSlots.LastIndexOf(selectedItemSlot);
+                        if (selectedItemIndex % _inventoryWidth != 0)//if you can move
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = _itemSlots[selectedItemIndex - 1];//select next slot
+                            selectedItemSlot.GetSelected(true);
+                        }
+                        else
+                        {
+                            selectedItemSlot.GetSelected(false);
+                            selectedItemSlot = _equipementSlots[0];//select first equipement slot
+                            selectedItemSlot.GetSelected(true);
+                        }
                     }
                 }
-                else if (_weaponSlots.Contains(selectedItemSlot))
+                else if (_weaponSlots.Contains(selectedItemSlot))//if the slot is from weapon
                 {
                     int selectedItemIndex = _weaponSlots.LastIndexOf((EquipementSlot)selectedItemSlot);
-                    if (selectedItemIndex > 0)
+                    if (selectedItemIndex > 0)//if you can move
                     {
                         selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _weaponSlots[selectedItemIndex - 1];
+                        selectedItemSlot = _weaponSlots[selectedItemIndex - 1];//select next slot
                         selectedItemSlot.GetSelected(true);
                     }
                     else
                     {
                         selectedItemSlot.GetSelected(false);
-                        selectedItemSlot = _equipementSlots[_equipementSlots.Count - 1];
+                        selectedItemSlot = _equipementSlots[_equipementSlots.Count - 1];//select Holster slot
                         selectedItemSlot.GetSelected(true);
                     }
                 }
+            }
+        }
+        else
+        {
+            if (currentContainer != null && currentContainer.itemSlots.Count > 0)//if a container is opened
+            {
+                selectedItemSlot = currentContainer.itemSlots[0];//select the first slot of the container
+                selectedItemSlot.GetSelected(true);
+            }
+            else
+            {
+                selectedItemSlot = _itemSlots[0];//select the first slot of inventory
+                selectedItemSlot.GetSelected(true);
             }
         }
     }
 
 
     /// <summary>
-    /// Open and closes the inventory UI and positions the weapon slots depending on "_isInventoryOpen"
+    /// Input Action to open the inventory
     /// </summary>
-    public void OpenInventory(InputAction.CallbackContext context)
+    public void OpenInventoryAction(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            _isInventoryOpen = !_isInventoryOpen;
-            _inventoryPanel.SetActive(_isInventoryOpen);
+            OpenInventory();
+        }
+    }
 
-            if (_isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
+    /// <summary>
+    /// Open and closes the inventory UI and positions the weapon slots depending on "isInventoryOpen"
+    /// </summary>
+    public void OpenInventory()
+    {
+        isInventoryOpen = !isInventoryOpen;
+        _inventoryPanel.SetActive(isInventoryOpen);
+
+        if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
+        {
+            _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
+            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
+        }
+        else//Show the weapons in game (change position and hide the holster)
+        {
+            if (selectedItemSlot != null)
             {
-                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
-                _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
+                selectedItemSlot.GetSelected(false);
             }
-            else//Show the weapons in game (change position and hide the holster)
+            _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
+            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+            if (currentContainer != null)
             {
-                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
-                _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+                currentContainer.CloseContainer();
+                currentContainer = null;
             }
         }
     }
@@ -269,6 +369,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coroutine for the cooldown of movement in inventory
+    /// </summary>
     private IEnumerator MoveCooldown()
     {
         _canMove = false;
@@ -376,7 +479,7 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Adds the item "item" to the inventory if a slot is available
     /// </summary>
-    private void AddItem(Item item)
+    private bool AddItem(Item item)
     {
         ItemSlot itemSlot = FindFirstInventorySlotAvailable(item);
         if (itemSlot != null)
@@ -389,7 +492,9 @@ public class Inventory : MonoBehaviour
             {
                 itemSlot.UpdateQuantity(itemSlot.Quantity + 1);
             }
+            return true;
         }
+        return false;
     }
 
     /// <summary>
@@ -399,7 +504,7 @@ public class Inventory : MonoBehaviour
     {
         if (context.started)
         {
-            if (_isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
+            if (isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
             {
                 DecideHowToUseItem();
             }
@@ -413,7 +518,7 @@ public class Inventory : MonoBehaviour
     {
         if (context.started)
         {
-            if (_isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
+            if (isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
             {
                 TryToDeleteItem(selectedItemSlot);
             }
@@ -440,7 +545,11 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void DecideHowToUseItem()
     {
-        if (selectedItemSlot.GetType() == typeof(EquipementSlot)) //if the player clicks on an equipement slot
+        if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
+        {
+            TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
+        }
+        else if (selectedItemSlot.GetType() == typeof(EquipementSlot)) //if the player clicks on an equipement slot
         {
             TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
         }
