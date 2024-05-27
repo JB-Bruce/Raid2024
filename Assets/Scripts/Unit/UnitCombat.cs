@@ -9,16 +9,16 @@ public class UnitCombat : MonoBehaviour
     Transform _transform;
 
     [Header("Attack Parameters")]
-    private float _chargeTimer = 0;
-    private float _attackSpeed = 1;
     public bool canAttack = false;
-    public float attackDistance = 20f;
     public Vector3 lastPosition = Vector3.zero;
     public GameObject lastEnemy;
     public float viewRange = 31f;
 
     public Humanoid nearestEnemy;
     private Humanoid _mHumanoid;
+
+    public Weapon weapon;
+    private WeaponAttack weaponAttack;
 
     [Header("Update Parameters")]
     private int evaluateUpdate = 0;
@@ -32,6 +32,7 @@ public class UnitCombat : MonoBehaviour
 
     public void Init()
     {
+        weaponAttack = GetComponent<WeaponAttack>();
         _transform = transform;
         circleCollider.radius = viewRange;
         _mHumanoid = GetComponent<Humanoid>();
@@ -72,9 +73,14 @@ public class UnitCombat : MonoBehaviour
 
         for(int i = 0; i < humanoidAround.Count; i++)
         {
-            if (humanoidAround[i].faction != _mHumanoid.faction && FactionManager.Instance.GetReputation(humanoidAround[i].faction, _mHumanoid.faction) < neutralReputation)
+            if (humanoidAround[i] != null && humanoidAround[i].faction != _mHumanoid.faction && FactionManager.Instance.GetReputation(humanoidAround[i].faction, _mHumanoid.faction) < neutralReputation)
             {
                 ennemies.Add(humanoidAround[i]);
+            }
+            else if(humanoidAround[i] == null)
+            {
+                humanoidAround.RemoveAt(i);
+                i--;
             }
         }
         return ennemies;
@@ -104,7 +110,7 @@ public class UnitCombat : MonoBehaviour
                     lastEnemy = ennemies[i].gameObject;
                 }
             }
-
+               
         }
 
         if(_nearestFound) 
@@ -128,17 +134,16 @@ public class UnitCombat : MonoBehaviour
             }
         }
 
-        if(canAttack && _chargeTimer < Time.time) 
+        if(canAttack && nearestEnemy != null) 
         {
-            _chargeTimer = Time.time + _attackSpeed;
-            if (nearestEnemy != null)
-            {
-                if(nearestEnemy.TakeDamage(20))
-                {
-                    nearestEnemy = null;
-                    lastPosition = Vector3.zero;
-                }
-            }
+            weaponAttack.EquipWeapon(this);
+            weaponAttack.UseWeapon(nearestEnemy.transform.position - _transform.position);
+
+                //if(nearestEnemy.TakeDamage(20))
+                //{
+                //    nearestEnemy = null;
+                //    lastPosition = Vector3.zero;
+                //}
         }
     }
 }

@@ -215,7 +215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 1
-  unit: {fileID: 8334718818371835372, guid: 8e46a901a407f5948af5fc0623db4c59, type: 3}
+  unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
   units: []
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 3
-  unit: {fileID: 8334718818371835372, guid: af1e5d77db993734e8cdd1b833b6243d, type: 3}
+  unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
   units: []
@@ -945,7 +945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 4
-  unit: {fileID: 8334718818371835372, guid: 6af537d49ad09654995264caae78a499, type: 3}
+  unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
   units: []
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 5
-  unit: {fileID: 8334718818371835372, guid: 91658b8e3be400a4fb202f848334ae4b, type: 3}
+  unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
   units: []

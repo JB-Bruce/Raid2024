@@ -20,8 +20,12 @@ MonoBehaviour:
   _equipementTier: 0
   _damage: 10
   _attackSpeed: 1
-  _attackRange: 15
+  _attackRange: 20
+  _leftHandPos: {x: 0, y: 0}
+  _rightHandPos: {x: 0, y: 0}
   _spread: 0
   _maxBullet: 5
   _reloadTime: 1
   _ammoType: 0
+  _firePoint: {x: 0, y: 0}
+  bullet: {fileID: 5008059619825466956, guid: b3fe1a02dfbdd534bab5e85ccb492e03, type: 3}

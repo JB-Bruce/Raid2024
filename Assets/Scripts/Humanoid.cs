@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Humanoid : MonoBehaviour
 {
-    public int life = 100;
+    public float life = 100;
     public Faction faction;
 
     // remove life to him self and return true if he is dead
-    public bool TakeDamage(int damage)
+    public bool TakeDamage(float damage)
     {
         life -= damage;
         if (life <= 0)

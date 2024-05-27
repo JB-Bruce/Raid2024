@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using static Node_script;
@@ -17,13 +18,19 @@ public class UnitBT : Humanoid
     private NavMeshAgent _agent;
     private Selector _selectorRoot;
     private UnitMovement _unitMove;
+    private GameObject _weapon;
+    private UnitCombat _unitCombat;
 
     private int evaluateUpdate = 0;
     public int jumpUpdate = 10;
 
+
+
     // Start is called before the first frame update
     public void Init()
     {
+        _unitCombat = GetComponent<UnitCombat>();
+        _weapon = transform.GetChild(0).gameObject;
         _unitMove = GetComponent<UnitMovement>();
         _unitMove.Init();
         GetComponent<UnitCombat>().Init();
@@ -108,10 +115,30 @@ public class UnitBT : Humanoid
     void Update()
     {
         evaluateUpdate++;
-        if(waitTime < Time.time && evaluateUpdate > jumpUpdate) // Is the unit wait
+        if (waitTime < Time.time && evaluateUpdate > jumpUpdate) // Is the unit wait
         {
             evaluateUpdate = 0;
             _selectorRoot.Evaluate();
+
+            // Make the Unit point his weapon to the direction of his target.
+
+
+            if (_unitCombat.nearestEnemy != null)
+            {
+                Vector3 direction = _unitCombat.nearestEnemy.transform.position - transform.position;
+
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                _weapon.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            }
+
+            else if (Mathf.Abs(_agent.velocity.x) > 0.01 || Mathf.Abs(_agent.velocity.y) > 0.01)
+            {
+                float angle = Mathf.Atan2(_agent.velocity.y, _agent.velocity.x) * Mathf.Rad2Deg;
+                _weapon.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            }
+
+
+
         }
 
     }

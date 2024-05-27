@@ -17,7 +17,7 @@ public class CanAttack : Node
     public override NodeState Evaluate()
     {
 
-        if(_unit.nearestEnemy != null && _unit.attackDistance >= Vector3.Distance(_unit.transform.position, _unit.nearestEnemy.transform.position))
+        if(_unit.nearestEnemy != null && _unit.weapon.AttackRange >= Vector3.Distance(_unit.transform.position, _unit.nearestEnemy.transform.position))
         {
             _unitMovement.ChangeTarget(_unit.transform.position);
             _unit.canAttack = true;

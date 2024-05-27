@@ -87,11 +87,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         if (_item != null)
         {
-            _itemSprite = _item.ItemSprite;
+            _itemSprite.sprite = _item.ItemSprite;
         }
         else
         {
-            _itemSprite = null;
+            _itemSprite.sprite = null;
         }
     }
 
