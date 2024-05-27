@@ -16,9 +16,9 @@ public class Item : ScriptableObject
     protected string _name;
 
     [SerializeField]
-    protected Image _itemSprite;
+    protected Sprite _itemSprite;
 
     public bool IsStackable {  get { return _isStackable; } }
     public int MaxStack { get { return _maxStack; } }
-    public Image ItemSprite {  get { return _itemSprite; } }
+    public Sprite ItemSprite {  get { return _itemSprite; } }
 }

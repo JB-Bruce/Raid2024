@@ -1,24 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Container : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject _itemSlotPrefab;
+    [SerializeField] private GameObject _itemSlotPrefab;
 
-    private List<ItemSlot> _itemSlots = new List<ItemSlot>();
+    public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
-    [SerializeField] 
-    private GameObject _containerSelectedSprite;
+    public GameObject containerSelectedSprite;
 
     public LootTable lootTable;
 
-    private List<Item> _items;
+    [SerializeField] private List<ContainerItem> _items;
+
+    public int containerRows = 3;
+
+    public int containerColumn = 3;
+
+
 
     public float despawnTimer = 0f;
 
     private bool _hasBeenOpened = false;
+
+    private Inventory _inventory;
+
+    private void Start()
+    {
+        _inventory = Inventory.Instance;
+    }
 
     /// <summary>
     /// Coroutine to call after spawning a container on an ennemi corpse and setting the despawn timer
@@ -26,8 +38,7 @@ public class Container : MonoBehaviour
     public IEnumerator DespawnContainer()
     {
         yield return new WaitForSeconds(despawnTimer);
-        Inventory inventory = Inventory.Instance;
-        while (inventory.isInventoryOpen)
+        while (_inventory.isInventoryOpen)
         {
             yield return null;
         }
@@ -41,7 +52,6 @@ public class Container : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _containerSelectedSprite.SetActive(true);
             PlayerInteraction.Instance.containers.Add(this);
         }
     }
@@ -53,7 +63,7 @@ public class Container : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _containerSelectedSprite.SetActive(false);
+            containerSelectedSprite.SetActive(false);
             PlayerInteraction.Instance.containers.Remove(this);
         }
     }
@@ -68,8 +78,68 @@ public class Container : MonoBehaviour
             _hasBeenOpened = true;
             //GenerateItems();
         }
-        
+        CreateItemSlots();
     }
+
+    private void GenerateItems()
+    {
+        //loot table stuff here
+    }
+
+    /// <summary>
+    /// Generates the item slots and places the items inside
+    /// </summary>
+    private void CreateItemSlots()
+    {
+        //Center the slots
+        _inventory.containerSlotsTransform.localPosition = new Vector3(597.5f - (containerColumn - 1) * 95f / 2f, ((containerRows - 1) * 95f / 2f) + 10f, _inventory.containerSlotsTransform.localPosition.z);
+        
+        //Creates the item slots
+        for (int i = 0; i < containerRows; i++)
+        {
+            for (int j = 0 ; j < containerColumn; j++)
+            {
+                GameObject itemSlot = Instantiate(_itemSlotPrefab, _inventory.containerSlotsTransform);
+                itemSlot.transform.localPosition += new Vector3(j*95f, -i*95f, 0);
+                itemSlots.Add(itemSlot.GetComponent<ItemSlot>());
+            }
+        }
+
+        //Places the items inside of the slots
+        for (int i = 0; i < _items.Count; i++)
+        {
+            for (int j = 0; j < _items[i].amount; j++)
+            {
+                if (!AddItemToContainer(_items[i].item))
+                {
+                    return;
+                }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Try to add an item to container and return if it failed or not
+    /// </summary>
+    private bool AddItemToContainer(Item item)
+    {
+        for (int i = 0; i < itemSlots.Count; i++)
+        {
+            if (itemSlots[i].Item == null)
+            {
+                itemSlots[i].Item = item;
+                itemSlots[i].UpdateQuantity(1);
+                return true;
+            }
+            else if (itemSlots[i].Item.IsStackable && itemSlots[i].Item == item && itemSlots[i].Item.MaxStack > itemSlots[i].Quantity)
+            {
+                itemSlots[i].UpdateQuantity(itemSlots[i].Quantity + 1);
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     /// <summary>
     /// Closes the container and destroys the item slots game object (keeps the item).
@@ -77,10 +147,25 @@ public class Container : MonoBehaviour
     /// </summary>
     public void CloseContainer()
     {
-        for (int i = 0; i < _itemSlots.Count; i++)
+        _items.Clear();
+        for (int i = 0; i < itemSlots.Count; i++)
         {
-            Destroy(_itemSlots[i].gameObject);
+            if (itemSlots[i].Item != null)
+            {
+                ContainerItem containerItem;
+                containerItem.item = itemSlots[i].Item;
+                containerItem.amount = itemSlots[i].Quantity;
+                _items.Add(containerItem);
+            }
+            Destroy(itemSlots[i].gameObject);
         }
-
+        itemSlots.Clear();
     }
+}
+
+[System.Serializable]
+public struct ContainerItem
+{
+    public Item item;
+    public int amount;
 }

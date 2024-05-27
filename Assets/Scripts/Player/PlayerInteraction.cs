@@ -7,6 +7,8 @@ public class PlayerInteraction : MonoBehaviour
 {
     public static PlayerInteraction Instance;
 
+    private Inventory _inventory;
+
     public List<Container> containers = new List<Container>();
 
     private void Awake()
@@ -14,6 +16,30 @@ public class PlayerInteraction : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+        }
+    }
+
+    private void Start()
+    {
+        _inventory = Inventory.Instance;
+    }
+
+    /// <summary>
+    /// Select the nearest container
+    /// </summary>
+    private void Update()
+    {
+        for (int i = 0; i < containers.Count; i++)
+        {
+            if (containers[i] != null)
+            {
+                containers[i].containerSelectedSprite.SetActive(false);
+            }
+        }
+        Container container = GetNearestContainer();
+        if (container != null)
+        {
+            container.containerSelectedSprite.SetActive(true);
         }
     }
 
@@ -49,15 +75,25 @@ public class PlayerInteraction : MonoBehaviour
     /// <summary>
     /// Try to open a container, if there are multiple, opens the closest
     /// </summary>
-    public void OpenContainer(InputAction.CallbackContext context)
+    public void PlayerInteract(InputAction.CallbackContext context)
     {
         if (context.started)
         {
+            if (_inventory.isInventoryOpen) 
+            {
+                _inventory.OpenInventory();
+                return;
+            }
             Container container = GetNearestContainer();
+            //PNJ pnj = GetNearestPNJ();
+            //if (pnj != null && container != null)
+            //if (Vector3.Distance(transform.position, pnj.transform.position) < Vector3.Distance(transform.position, container.transform.position))
+            //Open the pnj
+            //else
             if (container != null)//If a container is close, open the inventory and the container
             {
-                Inventory.Instance.OpenInventory();
-                Inventory.Instance.currentContainer = container;
+                _inventory.OpenInventory();
+                _inventory.currentContainer = container;
                 container.OpenContainer();
             }
         }
