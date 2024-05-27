@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class MapUI : MonoBehaviour
 {
+    [SerializeField] private PlayerInput _menuInput;
     [SerializeField] private PlayerInput _playerInput;
 
     public Transform topRight;
@@ -27,33 +28,51 @@ public class MapUI : MonoBehaviour
 
     public GameObject mapUI;
 
-    public static MapUI instance;
+    public static MapUI Instance;
+
+    public bool isMapOpen = false;
 
     private void Awake()
     {
-        instance = this;
+        Instance = this;
         _ratio1 = botLeft.transform.position - topRight.transform.position;
         _ratio2 = UIBotLeft.transform.position - UITopRight.transform.position;
     }
 
-    // UI button to open or close
-    public void OpenCloseMap(InputAction.CallbackContext context)
+    /// <summary>
+    /// input action to open and close the map
+    /// </summary>
+    public void OpenCloseMapAction(InputAction.CallbackContext context)
     {
         if (context.started)
+        {
+            OpenCloseMap();
+        }
+    }
+
+    // UI button to open or close
+    public void OpenCloseMap()
+    {
+        if (!Inventory.Instance.isInventoryOpen)
         {
             mapUI.SetActive(!mapUI.activeInHierarchy);
             if (mapUI.activeInHierarchy)
             {
-                _playerInput.actions.FindActionMap("Menus").Disable();
-                _playerInput.actions.FindActionMap("Map").Enable();
+                isMapOpen = true;
+                _menuInput.actions.FindActionMap("Menus").Disable();
+                _menuInput.actions.FindActionMap("Map").Enable();
+                _playerInput.actions.FindAction("Interract").Disable();
             }
             else
             {
-                _playerInput.actions.FindActionMap("Inventory").Disable();
-                _playerInput.actions.FindActionMap("Menus").Enable();
+                isMapOpen = false;
+                _menuInput.actions.FindActionMap("Map").Disable();
+                _menuInput.actions.FindActionMap("Menus").Enable();
+                _playerInput.actions.FindAction("Interract").Enable();
             }
         }
     }
+
 
     // Put fix element on the UI 
     public void SetElementToMap(Vector3 pos, Sprite sp, Color c, float size)

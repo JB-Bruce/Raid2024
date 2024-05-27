@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Open/Close Container",
+                    "name": "Interract",
                     "type": "Button",
                     "id": "c7e85317-428a-4c7c-8559-b408c2880dd0",
                     "expectedControlType": "Button",
@@ -292,7 +292,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Open/Close Container",
+                    "action": "Interract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -303,7 +303,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Open/Close Container",
+                    "action": "Interract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

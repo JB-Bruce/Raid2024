@@ -973,7 +973,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInventoryOpen: 0
-  _playerInput: {fileID: 1349529681}
+  _menuInput: {fileID: 1349529681}
   _inventoryPanel: {fileID: 1082437416}
   selectedItemSlot: {fileID: 0}
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
@@ -1997,7 +1997,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2019647210}
         m_TargetAssemblyTypeName: MapUI, Assembly-CSharp
-        m_MethodName: OpenCloseMap
+        m_MethodName: OpenCloseMapAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2013,7 +2013,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2019647210}
         m_TargetAssemblyTypeName: MapUI, Assembly-CSharp
-        m_MethodName: OpenCloseMap
+        m_MethodName: OpenCloseMapAction
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3201,7 +3201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b8eb37c3ee8b4b4fbf5f90ef8fa6211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 1349529681}
+  _menuInput: {fileID: 1349529681}
+  _playerInput: {fileID: 406161720}
   topRight: {fileID: 1623922274}
   botLeft: {fileID: 348673552}
   UITopRight: {fileID: 1807592808}

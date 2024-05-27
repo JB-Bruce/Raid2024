@@ -77,7 +77,7 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     public void PlayerInteract(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && !MapUI.Instance.isMapOpen)
         {
             if (_inventory.isInventoryOpen) 
             {
