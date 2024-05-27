@@ -149,6 +149,10 @@ public class MovePlayer : MonoBehaviour
         {
             Move();
         }
+        else
+        {
+            _rb.velocity = Vector3.zero;
+        }
     }
 
     void Update()
