@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class TradeManager : MonoBehaviour
@@ -35,9 +37,14 @@ public class TradeManager : MonoBehaviour
     [SerializeField]
     private Transform _tradeParent;
 
+    [SerializeField] 
+    private PlayerInput _menuInput;
+
     private List<Trade> _trades = new();
 
     private Trade _selectedTrade;
+
+    public EventSystem eventSystem;
 
     public static TradeManager instance;
 
@@ -50,7 +57,10 @@ public class TradeManager : MonoBehaviour
     //configure and open the trade panel
     public void OpenTradePanel(List<TradeData> trades, Sprite traderImage)
     {
+        _menuInput.actions.FindActionMap("Menus").Disable();
+        _menuInput.actions.FindActionMap("Trader").Enable();
         _traderImage.sprite = traderImage;
+        ClearTradesGameobjects();
         foreach (var trade in trades)
         {
             GameObject tradeItemGO = Instantiate(_tradeUiPrefab, _tradeParent);
@@ -62,11 +72,24 @@ public class TradeManager : MonoBehaviour
         _tradeButton.GetComponent<Button>().interactable = false;
         _itemDescriptionPanel.SetActive(false);
         _tradePanel.SetActive(true);
+        eventSystem.SetSelectedGameObject(_trades[0].gameObject);
+    }
+
+    //destroy all trades UI gameobjects
+    private void ClearTradesGameobjects()
+    {
+        foreach (var var in _trades)
+        {
+            Destroy(var.gameObject);
+        }
+        _trades.Clear();
     }
 
     //close trade panel
     public void CloseTradePanel()
     {
+        _menuInput.actions.FindActionMap("Trader").Disable();
+        _menuInput.actions.FindActionMap("Menus").Enable();
         _traderButton.SetActive(true);
         _tradePanel.SetActive(false);
     }
@@ -105,7 +128,6 @@ public class TradeManager : MonoBehaviour
     //do the select trade
     public void DoTheTrade()
     {
-        print("trade");
         //methode to remove items need
         //methode to add trade item
         UpdateTradeButton(_selectedTrade);

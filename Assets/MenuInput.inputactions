@@ -204,7 +204,7 @@
                 {
                     "name": "",
                     "id": "fc84f5c0-3106-4bbc-af0c-c219c3a5f0d8",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -227,6 +227,28 @@
                     "name": "",
                     "id": "d6d39aff-f18c-419e-a08e-3126a9084835",
                     "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dbddbb2e-c76a-4c59-81c4-1a671def7108",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29537059-f2ff-4cde-bd1d-a454cb8534e8",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -270,6 +292,67 @@
                     "processors": "",
                     "groups": "",
                     "action": "Close Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1332557c-6cce-4df8-a488-f1b4177911c9",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9ac40c72-2e58-41c3-9d62-88870fb6763b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Map",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Trader",
+            "id": "17980a8e-176e-4b5b-8765-ce49390a949f",
+            "actions": [
+                {
+                    "name": "Close Trader",
+                    "type": "Button",
+                    "id": "26bb0355-8f56-4e0d-8b9d-8c17e09777af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "2a21091b-ceb2-487e-8dc4-36719de1cf8b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse;Gamepad",
+                    "action": "Close Trader",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dc4fdb73-4d0a-49ea-8607-03e7753c7883",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Trader",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
