@@ -7,13 +7,11 @@ public class Container : MonoBehaviour
 {
     [SerializeField] private GameObject _itemSlotPrefab;
 
-    [SerializeField] private List<ItemSlot> _itemSlots = new List<ItemSlot>();
+    public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public GameObject containerSelectedSprite;
 
-    public int minRerollNumbers = 1;
-
-    public int maxRerollNumbers = 1;
+    public int rerollNumbers = 1;
 
     public LootTable lootTable;
 
@@ -22,6 +20,8 @@ public class Container : MonoBehaviour
     public int containerRows = 3;
 
     public int containerColumn = 3;
+
+
 
     public float despawnTimer = 0f;
 
@@ -83,14 +83,10 @@ public class Container : MonoBehaviour
         CreateItemSlots();
     }
 
-    /// <summary>
-    /// Generates the items from the lootTable a random amount of time between minRerollNumbers and maxRerollNumbers
-    /// </summary>
     private void GenerateItems()
     {
         if (lootTable != null)
         {
-            int rerollNumbers = UnityEngine.Random.Range(minRerollNumbers, maxRerollNumbers);
             for (int i = 0; i < rerollNumbers; i++)
             {
                 ContainerItem containerItem = lootTable.GenerateItem();
@@ -117,7 +113,7 @@ public class Container : MonoBehaviour
             {
                 GameObject itemSlot = Instantiate(_itemSlotPrefab, _inventory.containerSlotsTransform);
                 itemSlot.transform.localPosition += new Vector3(j*95f, -i*95f, 0);
-                _itemSlots.Add(itemSlot.GetComponent<ItemSlot>());
+                itemSlots.Add(itemSlot.GetComponent<ItemSlot>());
             }
         }
 
@@ -139,17 +135,17 @@ public class Container : MonoBehaviour
     /// </summary>
     private bool AddItemToContainer(Item item)
     {
-        for (int i = 0; i < _itemSlots.Count; i++)
+        for (int i = 0; i < itemSlots.Count; i++)
         {
-            if (_itemSlots[i].Item == null)
+            if (itemSlots[i].Item == null)
             {
-                _itemSlots[i].Item = item;
-                _itemSlots[i].UpdateQuantity(1);
+                itemSlots[i].Item = item;
+                itemSlots[i].UpdateQuantity(1);
                 return true;
             }
-            else if (_itemSlots[i].Item.IsStackable && _itemSlots[i].Item == item && _itemSlots[i].Item.MaxStack > _itemSlots[i].Quantity)
+            else if (itemSlots[i].Item.IsStackable && itemSlots[i].Item == item && itemSlots[i].Item.MaxStack > itemSlots[i].Quantity)
             {
-                _itemSlots[i].UpdateQuantity(_itemSlots[i].Quantity + 1);
+                itemSlots[i].UpdateQuantity(itemSlots[i].Quantity + 1);
                 return true;
             }
         }
@@ -164,18 +160,18 @@ public class Container : MonoBehaviour
     public void CloseContainer()
     {
         _items.Clear();
-        for (int i = 0; i < _itemSlots.Count; i++)
+        for (int i = 0; i < itemSlots.Count; i++)
         {
-            if (_itemSlots[i].Item != null)
+            if (itemSlots[i].Item != null)
             {
                 ContainerItem containerItem;
-                containerItem.item = _itemSlots[i].Item;
-                containerItem.amount = _itemSlots[i].Quantity;
+                containerItem.item = itemSlots[i].Item;
+                containerItem.amount = itemSlots[i].Quantity;
                 _items.Add(containerItem);
             }
-            Destroy(_itemSlots[i].gameObject);
+            Destroy(itemSlots[i].gameObject);
         }
-        _itemSlots.Clear();
+        itemSlots.Clear();
     }
 }
 
