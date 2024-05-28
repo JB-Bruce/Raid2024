@@ -96,11 +96,11 @@ public class Inventory : MonoBehaviour
                     //if the slot is from container
                     if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        int selectedItemIndex = currentContainer._itemSlots.LastIndexOf(selectedItemSlot);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
                         if (selectedItemIndex < (currentContainer.containerColumn * (currentContainer.containerRows - 1)))//if you can move
                         {
                             selectedItemSlot.GetSelected(false);
-                            selectedItemSlot = currentContainer._itemSlots[selectedItemIndex + currentContainer.containerColumn];//select next slot
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex + currentContainer.containerColumn];//select next slot
                             selectedItemSlot.GetSelected(true);
                         }
                     }
@@ -134,11 +134,11 @@ public class Inventory : MonoBehaviour
                     //if the slot is from container
                     if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        int selectedItemIndex = currentContainer._itemSlots.LastIndexOf(selectedItemSlot);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
                         if (selectedItemIndex > currentContainer.containerColumn - 1)//if you can move
                         {
                             selectedItemSlot.GetSelected(false);
-                            selectedItemSlot = currentContainer._itemSlots[selectedItemIndex - currentContainer.containerColumn];//select next slot
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex - currentContainer.containerColumn];//select next slot
                             selectedItemSlot.GetSelected(true);
                         }
                     }
@@ -178,11 +178,11 @@ public class Inventory : MonoBehaviour
                     //if the slot is from container
                     if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        int selectedItemIndex = currentContainer._itemSlots.LastIndexOf(selectedItemSlot);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
                         if (selectedItemIndex % currentContainer.containerColumn != currentContainer.containerColumn - 1)//if you can move
                         {
                             selectedItemSlot.GetSelected(false);
-                            selectedItemSlot = currentContainer._itemSlots[selectedItemIndex + 1];//select next slot
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex + 1];//select next slot
                             selectedItemSlot.GetSelected(true);
                         }
                     }
@@ -198,7 +198,7 @@ public class Inventory : MonoBehaviour
                         else if (currentContainer != null)//else, if a container is opened
                         {
                             selectedItemSlot.GetSelected(false);
-                            selectedItemSlot = currentContainer._itemSlots[0];//select first slot of container
+                            selectedItemSlot = currentContainer.itemSlots[0];//select first slot of container
                             selectedItemSlot.GetSelected(true);
                         }
                     }
@@ -250,11 +250,11 @@ public class Inventory : MonoBehaviour
                     //if the slot is from container
                     if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
                     {
-                        int selectedItemIndex = currentContainer._itemSlots.LastIndexOf(selectedItemSlot);
+                        int selectedItemIndex = currentContainer.itemSlots.LastIndexOf(selectedItemSlot);
                         if (selectedItemIndex % currentContainer.containerColumn != 0)//if you can move
                         {
                             selectedItemSlot.GetSelected(false);
-                            selectedItemSlot = currentContainer._itemSlots[selectedItemIndex - 1];//select next slot
+                            selectedItemSlot = currentContainer.itemSlots[selectedItemIndex - 1];//select next slot
                             selectedItemSlot.GetSelected(true);
                         }
                         else
@@ -301,9 +301,9 @@ public class Inventory : MonoBehaviour
         }
         else
         {
-            if (currentContainer != null && currentContainer._itemSlots.Count > 0)//if a container is opened
+            if (currentContainer != null && currentContainer.itemSlots.Count > 0)//if a container is opened
             {
-                selectedItemSlot = currentContainer._itemSlots[0];//select the first slot of the container
+                selectedItemSlot = currentContainer.itemSlots[0];//select the first slot of the container
                 selectedItemSlot.GetSelected(true);
             }
             else
