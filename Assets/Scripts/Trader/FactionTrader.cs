@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class FactionTrader : MonoBehaviour
 {
-    private List<Trade> _trades;
+    [SerializeField]
+    private List<TradeData> _trades = new();
 
     [SerializeField]
     private string _traderName;
@@ -11,22 +12,9 @@ public class FactionTrader : MonoBehaviour
     [SerializeField]
     private Sprite _traderImage;
 
+    //call the methode in trade manager to open the trade panel
     public void Trade()
     {
-        TradeManager.instance.OpenTradePanel(_trades, _traderName, _traderImage);
+        TradeManager.instance.OpenTradePanel(_trades, _traderImage);
     }
-}
-
-[System.Serializable]
-public struct Trade
-{
-    public ScriptableObject tradeItem;
-    public List<ItemToTrade> itemsToTrade;
-}
-
-[System.Serializable]
-public struct ItemToTrade
-{
-    public ScriptableObject tradeItem;
-    public int quantityNeed;
 }

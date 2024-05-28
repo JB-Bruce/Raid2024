@@ -17,9 +17,14 @@ public class Item : ScriptableObject
     protected string _name;
 
     [SerializeField]
+    protected string _description;
+
+    [SerializeField]
     protected Sprite _itemSprite;
 
     public bool IsStackable {  get { return _isStackable; } }
     public int MaxStack { get { return _maxStack; } }
     public Sprite ItemSprite {  get { return _itemSprite; } }
+    public string Name { get { return _name;} }
+    public string Description { get { return _description;} }
 }

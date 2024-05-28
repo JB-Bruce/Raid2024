@@ -16,4 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Fabric
+  _description: 
   _itemSprite: {fileID: 0}
