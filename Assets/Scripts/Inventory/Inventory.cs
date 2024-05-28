@@ -11,6 +11,8 @@ public class Inventory : MonoBehaviour
 
     public bool isInventoryOpen = false;
 
+    [SerializeField] private PlayerInput _menuInput;
+
     [SerializeField] 
     private GameObject _inventoryPanel;
 
@@ -329,26 +331,35 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void OpenInventory()
     {
-        isInventoryOpen = !isInventoryOpen;
-        _inventoryPanel.SetActive(isInventoryOpen);
+        if (!MapUI.Instance.isMapOpen)
+        {
+            isInventoryOpen = !isInventoryOpen;
+            _inventoryPanel.SetActive(isInventoryOpen);
 
-        if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
-        {
-            _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
-            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
-        }
-        else//Show the weapons in game (change position and hide the holster)
-        {
-            if (selectedItemSlot != null)
+            if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
             {
-                selectedItemSlot.GetSelected(false);
+                _menuInput.actions.FindActionMap("Menus").Disable();
+                _menuInput.actions.FindActionMap("Inventory").Enable();
+
+                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
+                _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
             }
-            _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
-            _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
-            if (currentContainer != null)
+            else//Show the weapons in game (change position and hide the holster)
             {
-                currentContainer.CloseContainer();
-                currentContainer = null;
+                _menuInput.actions.FindActionMap("Inventory").Disable();
+                _menuInput.actions.FindActionMap("Menus").Enable();
+
+                if (selectedItemSlot != null)
+                {
+                    selectedItemSlot.GetSelected(false);
+                }
+                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
+                _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+                if (currentContainer != null)
+                {
+                    currentContainer.CloseContainer();
+                    currentContainer = null;
+                }
             }
         }
     }

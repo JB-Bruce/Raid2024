@@ -37,7 +37,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Open/Close Container"",
+                    ""name"": ""Interract"",
                     ""type"": ""Button"",
                     ""id"": ""c7e85317-428a-4c7c-8559-b408c2880dd0"",
                     ""expectedControlType"": ""Button"",
@@ -314,7 +314,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Open/Close Container"",
+                    ""action"": ""Interract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -325,7 +325,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Open/Close Container"",
+                    ""action"": ""Interract"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -337,7 +337,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
-        m_Player_OpenCloseContainer = m_Player.FindAction("Open/Close Container", throwIfNotFound: true);
+        m_Player_Interract = m_Player.FindAction("Interract", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
     }
@@ -402,7 +402,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Movement;
-    private readonly InputAction m_Player_OpenCloseContainer;
+    private readonly InputAction m_Player_Interract;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Sprint;
     public struct PlayerActions
@@ -410,7 +410,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         private @CustomInput m_Wrapper;
         public PlayerActions(@CustomInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
-        public InputAction @OpenCloseContainer => m_Wrapper.m_Player_OpenCloseContainer;
+        public InputAction @Interract => m_Wrapper.m_Player_Interract;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -425,9 +425,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @OpenCloseContainer.started += instance.OnOpenCloseContainer;
-            @OpenCloseContainer.performed += instance.OnOpenCloseContainer;
-            @OpenCloseContainer.canceled += instance.OnOpenCloseContainer;
+            @Interract.started += instance.OnInterract;
+            @Interract.performed += instance.OnInterract;
+            @Interract.canceled += instance.OnInterract;
             @Aim.started += instance.OnAim;
             @Aim.performed += instance.OnAim;
             @Aim.canceled += instance.OnAim;
@@ -441,9 +441,9 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @OpenCloseContainer.started -= instance.OnOpenCloseContainer;
-            @OpenCloseContainer.performed -= instance.OnOpenCloseContainer;
-            @OpenCloseContainer.canceled -= instance.OnOpenCloseContainer;
+            @Interract.started -= instance.OnInterract;
+            @Interract.performed -= instance.OnInterract;
+            @Interract.canceled -= instance.OnInterract;
             @Aim.started -= instance.OnAim;
             @Aim.performed -= instance.OnAim;
             @Aim.canceled -= instance.OnAim;
@@ -470,7 +470,7 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnOpenCloseContainer(InputAction.CallbackContext context);
+        void OnInterract(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
     }
