@@ -19,10 +19,12 @@ public class CinematicManager : MonoBehaviour
     [SerializeField] List<CinematicText> _cineTexts = new List<CinematicText>();
 
     private Coroutine _textCoroutine;
+    private Coroutine _autoNextCoroutine;
 
     [Header("Typing Text Settings: ")]
-    [SerializeField] float delayBeforeStart = 0f;
+    [SerializeField] float _delayBeforeStart = 0f;
     [SerializeField] float _timeBetweenChars = 0.05f;
+    [SerializeField] float timeBetweenTexts = 4f;
     [SerializeField] bool _startOnEnable = false;
 
     private string _leadingChar = "";
@@ -63,6 +65,10 @@ public class CinematicManager : MonoBehaviour
         {
             StopCoroutine(_textCoroutine);
         }
+        if (_autoNextCoroutine != null)
+        {
+            StopCoroutine(_autoNextCoroutine);
+        }
 
         _currentCineText.text = "";
         _textCoroutine = StartCoroutine("TypeCineText");
@@ -90,7 +96,7 @@ public class CinematicManager : MonoBehaviour
     {
         _currentCineText.text = _leadingCharBeforeDelay ? _leadingChar : "";
 
-        yield return new WaitForSeconds(delayBeforeStart);
+        yield return new WaitForSeconds(_delayBeforeStart);
 
         string writer = _cineTexts[_currentTextIndex].text;
 
@@ -110,6 +116,14 @@ public class CinematicManager : MonoBehaviour
         {
             _currentCineText.text = _currentCineText.text.Substring(0, _currentCineText.text.Length - _leadingChar.Length);
         }
+
+        _autoNextCoroutine = StartCoroutine(AutoNextText());
+    }
+
+    IEnumerator AutoNextText() //Starts the Coroutine to automatically change to the next Text and Slide
+    {
+        yield return new WaitForSeconds(timeBetweenTexts);
+        NextText();
     }
 
 }
