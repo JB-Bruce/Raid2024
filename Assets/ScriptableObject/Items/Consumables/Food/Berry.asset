@@ -16,6 +16,7 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Berry
+  _description: 
   _itemSprite: {fileID: 0}
   _foodAmount: 10
   _drinkAmount: 5

@@ -16,5 +16,6 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Bandage
+  _description: 
   _itemSprite: {fileID: 0}
   _healAmount: 50
