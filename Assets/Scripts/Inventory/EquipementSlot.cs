@@ -4,13 +4,7 @@ using UnityEngine.UI;
 
 public class EquipementSlot : ItemSlot
 {
-    private EventSystem _eventSystem;
     private Type _itemType = null;
-
-    private void Start()
-    {
-        _eventSystem = EventSystem.current;
-    }
 
     public void ChangeAvailability(bool availability)
     {

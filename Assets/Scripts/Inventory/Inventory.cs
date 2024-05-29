@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour
 
     public bool isInventoryOpen = false;
 
-    [SerializeField] private PlayerInput _menuInput;
+    [SerializeField] private PlayerInput _playerInput;
 
     private EventSystem _eventSystem;
 
@@ -160,16 +160,18 @@ public class Inventory : MonoBehaviour
 
             if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
             {
-                _menuInput.actions.FindActionMap("Menus").Disable();
-                _menuInput.actions.FindActionMap("Inventory").Enable();
+                Cursor.visible = true;
+                _playerInput.actions.FindActionMap("InGame").Disable();
+                _playerInput.actions.FindActionMap("Inventory").Enable();
 
                 _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
             }
             else//Show the weapons in game (change position and hide the holster)
             {
-                _menuInput.actions.FindActionMap("Inventory").Disable();
-                _menuInput.actions.FindActionMap("Menus").Enable();
+                Cursor.visible = false;
+                _playerInput.actions.FindActionMap("Inventory").Disable();
+                _playerInput.actions.FindActionMap("InGame").Enable();
 
                 if (selectedItemSlot != null)
                 {

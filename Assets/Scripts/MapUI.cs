@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class MapUI : MonoBehaviour
 {
-    [SerializeField] private PlayerInput _menuInput;
     [SerializeField] private PlayerInput _playerInput;
 
     public Transform topRight;
@@ -59,16 +58,14 @@ public class MapUI : MonoBehaviour
             if (mapUI.activeInHierarchy)
             {
                 isMapOpen = true;
-                _menuInput.actions.FindActionMap("Menus").Disable();
-                _menuInput.actions.FindActionMap("Map").Enable();
-                _playerInput.actions.FindAction("Interract").Disable();
+                _playerInput.actions.FindActionMap("InGame").Disable();
+                _playerInput.actions.FindActionMap("Map").Enable();
             }
             else
             {
                 isMapOpen = false;
-                _menuInput.actions.FindActionMap("Map").Disable();
-                _menuInput.actions.FindActionMap("Menus").Enable();
-                _playerInput.actions.FindAction("Interract").Enable();
+                _playerInput.actions.FindActionMap("Map").Disable();
+                _playerInput.actions.FindActionMap("InGame").Enable();
             }
         }
     }
