@@ -573,6 +573,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 899938240}
+        m_TargetAssemblyTypeName: MenuButtonTracker, Assembly-CSharp
+        m_MethodName: SetLastGameObjectSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2060981208}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &90928156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -718,6 +730,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 899938240}
+        m_TargetAssemblyTypeName: MenuButtonTracker, Assembly-CSharp
+        m_MethodName: SetLastGameObjectSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1072545788}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2112,6 +2136,52 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1600, y: 850}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &899938239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899938241}
+  - component: {fileID: 899938240}
+  m_Layer: 0
+  m_Name: ButtonTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &899938240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899938239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70ea06b955abf48478ec4a734a244ac2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventSystem: {fileID: 1647646308}
+  lastSelectedGameObject: {fileID: 185416570}
+--- !u!4 &899938241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899938239}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &914514965
 GameObject:
   m_ObjectHideFlags: 0
@@ -5703,13 +5773,25 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2037892266}
+      - m_Target: {fileID: 1951219158}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 899938240}
+        m_TargetAssemblyTypeName: MenuButtonTracker, Assembly-CSharp
+        m_MethodName: SetLastGameObjectSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 90928153}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5847,6 +5929,30 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1690278163}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 899938240}
+        m_TargetAssemblyTypeName: MenuButtonTracker, Assembly-CSharp
+        m_MethodName: SetLastGameObjectSelected
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 423612197}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2115932752
 MonoBehaviour:
@@ -6467,6 +6573,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4842680931083474124, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d5a39f62aa066ef4bb2ea5e0fe604e98, type: 3}
     - target: {fileID: 5713147814440932159, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6563,6 +6673,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SoundManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 6214546687236248538, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d5a39f62aa066ef4bb2ea5e0fe604e98, type: 3}
     - target: {fileID: 6308611716450720619, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6738,6 +6852,70 @@ PrefabInstance:
     - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1690278163}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 899938240}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetLastGameObjectSelected
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: MenuButtonTracker, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 2115932749}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456505285060468788, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8923414349161789491, guid: 3d4249f7ae44bd94e944a32cdc697820, type: 3}
       propertyPath: m_FillRect
@@ -6954,3 +7132,4 @@ SceneRoots:
   - {fileID: 1951219162}
   - {fileID: 2037892270}
   - {fileID: 8752501294289712023}
+  - {fileID: 899938241}

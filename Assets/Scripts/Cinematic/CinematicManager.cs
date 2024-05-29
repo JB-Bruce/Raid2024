@@ -25,7 +25,6 @@ public class CinematicManager : MonoBehaviour
     [SerializeField] float _delayBeforeStart = 0f;
     [SerializeField] float _timeBetweenChars = 0.05f;
     [SerializeField] float timeBetweenTexts = 4f;
-    [SerializeField] bool _startOnEnable = false;
 
     private string _leadingChar = "";
     private bool _leadingCharBeforeDelay = false;

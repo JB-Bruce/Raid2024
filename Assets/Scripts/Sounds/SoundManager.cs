@@ -85,7 +85,7 @@ public class SoundManager : MonoBehaviour
         Image buttonImage = button.GetComponent<Image>();
         if (buttonImage != null)
         {
-            buttonImage.sprite = isMuted ? _muteSprite : _unmuteSprite;
+            buttonImage.sprite = isMuted ? _unmuteSprite : _muteSprite;
         }
         else
         {
