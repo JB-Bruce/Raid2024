@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
@@ -11,6 +12,14 @@ public class SoundManager : MonoBehaviour
 
     [Header("Clips: ")]
     [SerializeField] Sounds[] _musics, _sfxs;
+
+    [Header("Toggle Buttons: ")]
+    [SerializeField] GameObject _musicButton;
+    [SerializeField] GameObject _sfxButton;
+
+    [Header("Toggle Buttons Sprites: ")]
+    [SerializeField] Sprite _muteSprite;
+    [SerializeField] Sprite _unmuteSprite;
 
     SettingsMenu _settingsMenu;
 
@@ -61,12 +70,27 @@ public class SoundManager : MonoBehaviour
 
     public void ToggleMusic() //Allows muting Music
     {
-        _musicPlayer.mute = !_musicPlayer.mute; 
+        _musicPlayer.mute = !_musicPlayer.mute;
+        UpdateButtonSprite(_musicButton, _musicPlayer.mute);
     }
 
     public void ToggleSFX() //Allows muting sfx
     {
         _sfxPlayer.mute = !_sfxPlayer.mute;
+        UpdateButtonSprite(_sfxButton, _sfxPlayer.mute);
+    }
+
+    private void UpdateButtonSprite(GameObject button, bool isMuted) //Changes the sprite of the Toggle Buttons from mute to unmuted and vice versa
+    {
+        Image buttonImage = button.GetComponent<Image>();
+        if (buttonImage != null)
+        {
+            buttonImage.sprite = isMuted ? _muteSprite : _unmuteSprite;
+        }
+        else
+        {
+            Debug.LogWarning("No Image Component has been found on the button");
+        }
     }
 
     public void MusicVolume(float volume) //Changes the Music's volume
