@@ -224,6 +224,7 @@ public class DialogueManager : MonoBehaviour
     //update the visual and the script to display the next dialogue
     public void NextTalk(int talkNumber)
     {
+        
         if (_isTypingText)
         {
             StopCoroutine(_typeTextCoroutine);
@@ -231,11 +232,16 @@ public class DialogueManager : MonoBehaviour
             FillDialogueText();
             UpdateChoicesButtons();
         }
-        else
+        else if (_currentTalk.nextTalk.Count > talkNumber)
         {
             _currentTalk = _currentTalk.nextTalk[talkNumber];
             _isChoice = false;
             UpdateDialogueUi();
+        }
+        else
+        {
+            _dialogueBox.SetActive(false);
+            _returnMethode(_dialogueChoices, _isPnjNameHide);
         }
     }
 
@@ -246,16 +252,8 @@ public class DialogueManager : MonoBehaviour
         _isTypingText = false;
         _dialogueChoices.Add(_currentTalk.choices[talkNumber].choice);
         UpdateDialogue(_playerName, _currentTalk.choices[talkNumber].choice);
-        if (_currentTalk.nextTalk.Count > 0)
-        {
-            NextTalk(_currentTalk.choices[talkNumber].indexNextDialogue);
-            UpdateChoicesButtons();
-        }
-        else
-        {
-            _dialogueBox.SetActive(false);
-            _returnMethode(_dialogueChoices, _isPnjNameHide);
-        }
+        NextTalk(_currentTalk.choices[talkNumber].indexNextDialogue);
+        UpdateChoicesButtons();
         _isChoice = false;
     }
 }

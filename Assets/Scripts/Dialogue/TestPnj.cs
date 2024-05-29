@@ -4,7 +4,7 @@ using UnityEngine;
 public class TestPnj : MonoBehaviour
 {
     [SerializeField]
-    private DialogueContent dialogueContent;
+    private List<DialogueContent> dialogues;
 
     [SerializeField]
     private Sprite _pnjSprite;
@@ -29,7 +29,7 @@ public class TestPnj : MonoBehaviour
     public void StartDialogue()
     {
         _startButton.SetActive(false);
-        DialogueManager.instance.StartDialogue(_name, _hideName, _isNameHide, _pnjSprite, dialogueContent, EndDialogue);
+        DialogueManager.instance.StartDialogue(_name, _hideName, _isNameHide, _pnjSprite, dialogues[0], EndDialogue);
     }
 
     //call at the end of the dialogue

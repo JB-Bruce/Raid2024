@@ -510,6 +510,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123371072}
   m_CullTransparentMesh: 1
+--- !u!1 &129142590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 129142591}
+  - component: {fileID: 129142593}
+  - component: {fileID: 129142592}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &129142591
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129142590}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1181927177}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &129142592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129142590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Jean-Baptiste
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &129142593
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 129142590}
+  m_CullTransparentMesh: 1
 --- !u!1 &285522180
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +954,246 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 480051880}
   m_CullTransparentMesh: 1
+--- !u!1 &494214605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 494214606}
+  - component: {fileID: 494214608}
+  - component: {fileID: 494214607}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &494214606
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494214605}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 780794735}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &494214607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494214605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Rachel
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &494214608
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494214605}
+  m_CullTransparentMesh: 1
+--- !u!1 &521829171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521829173}
+  - component: {fileID: 521829172}
+  m_Layer: 0
+  m_Name: Jean-Baptiste
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &521829172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521829171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - isThePlayer: 0
+    talk: "Que faites-vous ici?? Vous-\xEAtes venu pour me voler.. ou bien me tuer??!"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Calmez-vous, je viens de la part de Bruce. Il m\u2019a dit qu\u2019il
+        vous avait confi\xE9 un plan."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Bruce..? Plan..? Vous essayez de me duper! Je ne vous crois pas, \xEAtes-vous
+          bien s\xFBr que c\u2019est Bruce qui vous envoie?"
+        nextTalk:
+        - isThePlayer: 1
+          talk: "Affirme. Bruce m\u2019envoie r\xE9cup\xE9rer son plan."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Oh. Je vois. Dans ce cas je vais me pr\xE9senter. Je m\u2019appelle
+              Jean-Baptiste, j\u2019ai accompagn\xE9 et aid\xE9 Bruce par le pass\xE9.
+              Vu que tu es bien l\u2019ami de Bruce, je peux te faire confiance."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Affirme. Avez-vous le plan de la Bobine Magn\xE9tique?"
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Affirmatif, je vais vous le confier. Ce plan permet de construire
+                  le support de la bobine magn\xE9tique. C\u2019est la premi\xE8re
+                  partie de sa construction."
+                nextTalk:
+                - isThePlayer: 0
+                  talk: '*Donne le plan au joueur.*'
+                  nextTalk:
+                  - isThePlayer: 0
+                    talk: "Faites attention, ce plan n\u2019existe qu'en un exemplaire,
+                      ne le perdez pas!"
+                    nextTalk:
+                    - isThePlayer: 1
+                      talk: Merci, je ferai attention ne vous en faites pas.
+                      nextTalk: []
+                      choices: []
+                      showRealName: 1
+                    choices: []
+                    showRealName: 1
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  _pnjSprite: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+  _name: Jean-Baptiste
+  _hideName: Jean-Baptiste
+  _startButton: {fileID: 1742899192}
+--- !u!4 &521829173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521829171}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 631.3362, y: 346.93195, z: -2.4796987}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &546396428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,7 +1439,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 209.49956, y: -46.769455}
-  m_SizeDelta: {x: 326.89124, y: 72.565704}
+  m_SizeDelta: {x: 492.5972, y: 72.5657}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &612048973
 MonoBehaviour:
@@ -1114,13 +1488,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1163,6 +1537,139 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 612048971}
+  m_CullTransparentMesh: 1
+--- !u!1 &780794734
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 780794735}
+  - component: {fileID: 780794738}
+  - component: {fileID: 780794737}
+  - component: {fileID: 780794736}
+  m_Layer: 5
+  m_Name: RachelButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &780794735
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780794734}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 494214606}
+  m_Father: {fileID: 1742899193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 206, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &780794736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780794734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 780794737}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1205764664}
+        m_TargetAssemblyTypeName: TestPnj, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &780794737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780794734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &780794738
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780794734}
   m_CullTransparentMesh: 1
 --- !u!1 &790126153
 GameObject:
@@ -1354,7 +1861,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start
+  m_text: Bruce
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1430,6 +1937,139 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 799340488}
+  m_CullTransparentMesh: 1
+--- !u!1 &840726469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840726470}
+  - component: {fileID: 840726473}
+  - component: {fileID: 840726472}
+  - component: {fileID: 840726471}
+  m_Layer: 5
+  m_Name: QuestGiverButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &840726470
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840726469}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1644613232}
+  m_Father: {fileID: 1742899193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 208, y: 64}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &840726471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840726469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 840726472}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1711359534}
+        m_TargetAssemblyTypeName: TestPnj, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &840726472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840726469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &840726473
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840726469}
   m_CullTransparentMesh: 1
 --- !u!1 &977213371
 GameObject:
@@ -2013,6 +2653,279 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1181793741}
   m_CullTransparentMesh: 1
+--- !u!1 &1181927173
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1181927177}
+  - component: {fileID: 1181927176}
+  - component: {fileID: 1181927175}
+  - component: {fileID: 1181927174}
+  m_Layer: 5
+  m_Name: Jean-BaptisteButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1181927174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181927173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 0
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1181927175}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 521829172}
+        m_TargetAssemblyTypeName: TestPnj, Assembly-CSharp
+        m_MethodName: StartDialogue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1181927175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181927173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1181927176
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181927173}
+  m_CullTransparentMesh: 1
+--- !u!224 &1181927177
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181927173}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 129142591}
+  m_Father: {fileID: 1742899193}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 64}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1205764663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1205764665}
+  - component: {fileID: 1205764664}
+  m_Layer: 0
+  m_Name: Rachel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1205764664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205764663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - isThePlayer: 0
+    talk: "Qui ose me d\xE9ranger dans mes recherches?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Rachel c\u2019est bien \xE7a? J\u2019ai entendu dire que vous d\xE9tenez
+        les plans pour fabriquer un moteur thermique."
+      nextTalk:
+      - isThePlayer: 0
+        talk: Hmm, et vous pensez que je vais vous les donner gratuitement?
+        nextTalk:
+        - isThePlayer: 1
+          talk: "Non, je comprends que des plans aussi pr\xE9cieux ne viennent pas
+            sans co\xFBts. C\u2019est pourquoi je suis ici pour vous proposer un
+            \xE9change. Qu\u2019attendez-vous en \xE9change des plans?"
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Ah, voil\xE0 qui est plus raisonnable. Je cherche des ressources
+              rares, quelque chose qui vaille vraiment la peine d\u2019\xEAtre \xE9chang\xE9
+              contre ces plans."
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Des \xE9chantillons de minerai d\u2019argent et de quartz cristallin
+                feraient parfaitement l\u2019affaire, j\u2019en ai imp\xE9rativement
+                besoin pour la suite de mes recherches."
+              nextTalk:
+              - isThePlayer: 1
+                talk: "De l\u2019argent et du quartz? Je vais faire de mon mieux
+                  pour vous trouver \xE7a. Pouvez-vous m'indiquer o\xF9 je peux trouver
+                  ces ressources?"
+                nextTalk:
+                - isThePlayer: 0
+                  talk: "Tu pourras en trouver \xE0 l\u2019est du camp des utopistes.
+                    Revenez me voir d\xE8s que vous les aurez en votre possession,
+                    et nous pourrons conclure notre \xE9change."
+                  nextTalk:
+                  - isThePlayer: 1
+                    talk: "Bien. Je reviens vers vous d\u2019ici peu."
+                    nextTalk: []
+                    choices: []
+                    showRealName: 1
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "Rachel, j\u2019ai rassembl\xE9 l\u2019argent et le quartz que vous m\u2019avez
+      demand\xE9s."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Vous avez \xE9t\xE9 rapide. Montrez-moi ce que vous avez ramen\xE9."
+      nextTalk:
+      - isThePlayer: 1
+        talk: "Tenez, j\u2019esp\xE8re que c\u2019est \xE0 la hauteur de vos attentes."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Pas mal du tout. Vous vous \xEAtes montr\xE9 plus comp\xE9tent que
+            je ne le pensais. Tr\xE8s bien, je vais vous remettre les plans pour
+            le moteur thermique en \xE9change de ces ressources."
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Merci Rachel. Je vous assure qu\u2019ils sont entre de bonnes
+              mains."
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Assurez-vous de les utiliser \xE0 bon escient. Maintenant, partez
+                d\u2019ici avant que je ne change d\u2019avis."
+              nextTalk: []
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  _pnjSprite: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+  _name: Rachel
+  _hideName: Rachel
+  _startButton: {fileID: 1742899192}
+--- !u!4 &1205764665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1205764663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 631.3362, y: 346.93195, z: -2.4796987}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214369178
 GameObject:
   m_ObjectHideFlags: 0
@@ -2307,17 +3220,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272285371}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1773956595}
-  m_Father: {fileID: 1673995996}
+  m_Father: {fileID: 1742899193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -176.1, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1272285373
@@ -2364,7 +3277,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1338579620}
+      - m_Target: {fileID: 2058361972}
         m_TargetAssemblyTypeName: FactionTrader, Assembly-CSharp
         m_MethodName: Trade
         m_Mode: 1
@@ -2460,9 +3373,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1338579619}
   - component: {fileID: 1338579618}
-  - component: {fileID: 1338579620}
   m_Layer: 0
-  m_Name: Pnj
+  m_Name: Bruce
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2480,8 +3392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueContent:
-    isThePlayer: 0
+  dialogues:
+  - isThePlayer: 0
     talk: "Qui \xEAtes-vous? Que me voulez-vous? Ce sont les Utopistes qui vous envoie?"
     nextTalk:
     - isThePlayer: 1
@@ -2490,7 +3402,7 @@ MonoBehaviour:
       nextTalk:
       - isThePlayer: 0
         talk: "Ah, je vois qui vous \xEAtes. J\u2019avais beaucoup de respect pour
-          vos parents. Avant de vous aider, laisse moi me pr\xE9senter"
+          vos parents. Avant de vous aider, laisse moi me pr\xE9senter."
         nextTalk:
         - isThePlayer: 0
           talk: "Mon nom est Bruce, je faisais autrefois partie des Utopistes mais
@@ -2533,10 +3445,535 @@ MonoBehaviour:
       showRealName: 0
     choices: []
     showRealName: 0
+  - isThePlayer: 0
+    talk: "Vous revoil\xE0 et avec ma mallette!"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Comme vous me l\u2019aviez demand\xE9. Maintenant, dites-moi tout ce
+        que vous savez sur le plan de mes parents."
+      nextTalk:
+      - isThePlayer: 0
+        talk: Doucement, doucement. Je vais tout vous expliquer.
+        nextTalk:
+        - isThePlayer: 1
+          talk: "Okay je vous \xE9coute."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Il y a quelques ann\xE9es de cela, j\u2019ai travaill\xE9 avec
+              vos parents sur un moyen de restaurer les technologies du pass\xE9. 
+              Nous allions commencer \xE0 concevoir une bobine magn\xE9tique qui
+              permettrait de stopper les \xE9ruptions solaires qui interf\xE8rent
+              avec l'\xE9lectronique. Malheureusement, des bandits ont tu\xE9 tes
+              parents et vol\xE9 les plans de la bobine magn\xE9tique."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Vous avez vraiment trouv\xE9 comment restaurer les Anciennes
+                Technologies?"
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Oui et je vais avoir besoin de ton aide pour construire la
+                  Bobine Magn\xE9tique. Gr\xE2ce \xE0 celle-ci nous pourrons restaurer
+                  la grandeur du monde d\u2019autrefois."
+                nextTalk:
+                - isThePlayer: 0
+                  talk: "Je vais avoir besoin que tu me rapportes des mat\xE9riaux
+                    pour pouvoir construire le d\xE9but de la bobine magn\xE9tique.
+                    Cherche \xE0 travers les ruines pour trouver ces mat\xE9riaux.
+                    Bon courage."
+                  nextTalk: []
+                  choices: []
+                  showRealName: 1
+                choices:
+                - choice: "C\u2019est une excellente nouvelle! Comment puis-je vous
+                    aider \xE0 fabriquer cette bobine magn\xE9tique?"
+                  indexNextDialogue: 0
+                - choice: "Si ce que vous dites est vrai, il faut faire vite avant
+                    que les bandits ne d\xE9truisent les plans."
+                  indexNextDialogue: 0
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "C\u2019est bon, j\u2019ai tous les mat\xE9riaux dont vous aviez besoin."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Parfait. La prochaine \xE9tape est de trouver un endroit appropri\xE9
+        pour la construction de la bobine magn\xE9tique. Je connais le lieu parfait
+        pour sa construction mais il est actuellement occup\xE9 par des bandits."
+      nextTalk:
+      - isThePlayer: 1
+        talk: "Et je suppose que je vais devoir m\u2019en occuper?"
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Oui, apr\xE8s \xE7a nous pourrons commencer la construction de la
+            premi\xE8re partie de la Bobine Magn\xE9tique. Occupes-toi des bandits
+            et reviens me voir."
+          nextTalk: []
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "Le lieu de construction est s\xE9curis\xE9, je me suis occup\xE9 des bandits."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Bien bien\u2026 Nous aurions pu commencer la construction du support
+        de la bobine magn\xE9tique\u2026 Malencontreusement, je n\u2019ai pas ce
+        plan."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Je l\u2019ai remis \xE0 un de mes amis pour qu\u2019il soit en s\xE9curit\xE9.
+          Je t\u2019indique o\xF9 sa maison se trouve sur ta carte."
+        nextTalk:
+        - isThePlayer: 1
+          talk: "Okay, dans ce cas j\u2019y vais tout de sui-"
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Attends! Mon ami est un peu parano\xEFaque, il ne te croira pas
+              si tu lui dis que tu viens de ma part. Quand tu le verras, r\xE9ponds
+              \xE0 toutes ses questions par \u201CAffirme\u201D, il comprendra que
+              tu es digne de confiance."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "\xC9trange. C\u2019est not\xE9, je m\u2019en vais \xE0 sa rencontre."
+              nextTalk: []
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices:
+      - choice: "Dans ce cas, o\xF9 est-ce que je peux le trouver?"
+        indexNextDialogue: 0
+      - choice: "Oh l\xE0 l\xE0\u2026 Je vais devoir aller le chercher je suppose?"
+        indexNextDialogue: 0
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "J\u2019ai obtenu le plan que vous aviez confi\xE9 \xE0 Jean-Baptiste,
+      le voici."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Excellent. Nous allons pouvoir d\xE9buter la construction de la bobine
+        magn\xE9tique. Comme Jean-Baptiste a d\xFB te l\u2019expliquer, ce plan permet
+        de construire la premi\xE8re partie de la bobine, le support."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Ce support servira \xE0 maintenir le reste de la bobine magn\xE9tique.
+          C\u2019est la raison pour laquelle je t\u2019ai demand\xE9 de r\xE9cup\xE9rer
+          des mat\xE9riaux afin de construire un support solide pour la bobine."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Absolument. Une bobine de cette taille n\xE9cessite un support robuste
+            pour garantir sa stabilit\xE9 et son bon fonctionnement."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Maintenant, avant de pouvoir construire le support pour la Bobine
+              Magn\xE9tique, nous avons besoin d\u2019une plaque d\u2019acier solide."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "O\xF9 puis-je trouver cette plaque d\u2019acier?"
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Trouve un marchand affili\xE9 \xE0 l\u2019une des factions
+                  qui habitent les ruines. Il devrait \xEAtre dispos\xE9 \xE0 faire
+                  un \xE9change contre une plaque d\u2019acier."
+                nextTalk:
+                - isThePlayer: 0
+                  talk: "Une fois que tu l\u2019as en ta possession, rends-toi au
+                    lieu de construction de la Bobine et construis le support selon
+                    les plans que tu as r\xE9cup\xE9r\xE9s. C\u2019est crucial pour
+                    la r\xE9ussite du projet."
+                  nextTalk:
+                  - isThePlayer: 1
+                    talk: "Je m\u2019en occupe imm\xE9diatement."
+                    nextTalk: []
+                    choices: []
+                    showRealName: 1
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices:
+        - choice: Un support solide? Est-ce que cela signifie que la bobine sera
+            de grande taille?
+          indexNextDialogue: 0
+        - choice: "Ah, donc la bobine va \xEAtre assez imposante si elle a besoin
+            d\u2019un support solide, n\u2019est-ce pas?"
+          indexNextDialogue: 0
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "O\xF9 en est la construction du support de la bobine magn\xE9tique."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Excellent travail. Maintenant que le support est en place, il est temps
+        de passer \xE0 la prochaine \xE9tape. Nous devons obtenir le plan de la seconde
+        partie de la bobine magn\xE9tique, le moteur thermique."
+      nextTalk:
+      - isThePlayer: 1
+        talk: "D\u2019accord, je suis pr\xEAt pour la suite. Comment puis-je trouver
+          les plans du moteur thermique?"
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Je sais qu\u2019il y a une ing\xE9nieur des Intellectuels, du nom
+            de Rachel, qui vit en ermite et d\xE9tient les plans du moteur thermique.
+            Elle est r\xE9put\xE9e pour son caract\xE8re radin et sa m\xE9fiance
+            envers les \xE9trangers, mais je suis s\xFBr que tu sauras trouver un
+            moyen de l\u2019approcher."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Rends toi chez elle et vois si tu peux lui proposer un \xE9change
+              pour obtenir les plans. C\u2019est capital pour poursuivre la cr\xE9ation
+              de la bobine magn\xE9tique."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Entendu, je vais la trouver et voir ce que je peux faire pour
+                obtenir les plans. Je reviens vers vous d\xE8s que j\u2019aurai les
+                plans."
+              nextTalk: []
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices:
+    - choice: "J\u2019ai termin\xE9 la construction du support pour la bobine magn\xE9tique
+        comme vous me l\u2019avez demand\xE9."
+      indexNextDialogue: 0
+    - choice: "Le support est construit. J\u2019ai eu une petite visite de la part
+        de bandits pendant la construction, mais je m\u2019en suis occup\xE9."
+      indexNextDialogue: 0
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Ah, te revoil\xE0. As-tu r\xE9ussi \xE0 obtenir les plans du moteur thermique
+      aupr\xE8s de Rachel?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui, voici les plans que vous m\u2019avez demand\xE9s."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, tu es tr\xE8s efficace. Maintenant, passons \xE0 l\u2019\xE9tape
+          suivante. Pour construire le moteur thermique, nous aurons besoin de r\xE9cup\xE9rer
+          des pi\xE8ces sur des carcasses de voitures. Mais pour cela, il nous faut
+          une clef \xE0 molette."
+        nextTalk:
+        - isThePlayer: 1
+          talk: "O\xF9 est-ce que je peux trouver une clef \xE0 molette?"
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Tu devrais pouvoir en \xE9changer une aupr\xE8s des marchands
+              des factions. Va voir l\u2019un d\u2019eux et procure toi une clef
+              \xE0 molette. C\u2019est essentiel pour pouvoir d\xE9monter les voitures."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Okay, j\u2019en m\u2019en vais acqu\xE9rir une clef sur le champ."
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Ensuite tu pourras commencer \xE0 d\xE9monter des voitures
+                  pour r\xE9cup\xE9rer des pi\xE8ces de moteur. Quand tu en auras
+                  r\xE9colt\xE9 assez, reviens me voir."
+                nextTalk: []
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Te voil\xE0 d\xE9j\xE0 de retour. As-tu r\xE9cup\xE9r\xE9 les pi\xE8ces
+      de moteur?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui. Voici les pi\xE8ces que j\u2019ai pu trouver."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, laisse-moi les prendre. La fabrication du moteur thermique
+          est une t\xE2che trop d\xE9licate pour que tu le fabriques toi m\xEAme."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "*Prend les pi\xE8ces et se met au travail pour fabriquer le moteur
+            thermique.*"
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Voil\xE0, le moteur est pr\xEAt. Maintenant, \xE9coute-moi attentivement.
+              Ce moteur va \xEAtre vital pour le fonctionnement de la bobine magn\xE9tique.
+              Il va fournir de l\u2019\xE9nergie n\xE9cessaire pour alimenter la
+              bobine magn\xE9tique qui g\xE9n\xE9rera un champ magn\xE9tique assez
+              puissant pour nous prot\xE9ger des \xE9ruptions solaires."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Compris. O\xF9 dois-je l\u2019installer?"
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Installe-le sur le support de la bobine magn\xE9tique. Assure-toi
+                  qu\u2019il soit solidement fix\xE9. Une fois en place, reviens
+                  me voir pour la suite du projet."
+                nextTalk: []
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Ah, te revoil\xE0 sain et sauf. As-tu install\xE9 le moteur thermique
+      sur le support de la bobine magn\xE9tique?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui. Le moteur est en place, j'ai \xE0 nouveau eu des probl\xE8mes avec
+        des bandits mais tout est r\xE9gl\xE9."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, tu as accompli un travail remarquable jusqu\u2019\xE0 pr\xE9sent.
+          Cependant, il nous reste encore une \xE9tape \xE0 franchir."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Le dernier plan pour fabriquer la bobine magn\xE9tique est entre
+            les mains d\u2019un clan de bandits. Ils le gardent bien cach\xE9 dans
+            leur camp fortifi\xE9."
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Un camp de bandits? Comment vais-je pouvoir r\xE9cup\xE9rer ce
+              plan?"
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Tu devras te faufiler dans leur repaire pour mettre la main
+                sur le plan. Mais avant \xE7a, je pr\xE9f\xE9rerais que nous pr\xE9parions
+                de la dynamite pour an\xE9antir leur camp une fois que nous aurons
+                r\xE9cup\xE9r\xE9 le plan. De cette mani\xE8re, les bandits ne pourront
+                pas se venger, car ils n\u2019auront plus de refuge o\xF9 se retrancher."
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Nous aurons besoin de nitroglyc\xE9rine et de la silice. Tu
+                  pourras trouver ces \xE9l\xE9ments dans la aci\xE9rie."
+                nextTalk:
+                - isThePlayer: 1
+                  talk: "Je vais me mettre \xE0 la recherche de ces ressources aussit\xF4t."
+                  nextTalk:
+                  - isThePlayer: 0
+                    talk: "Bon courage, reviens vite, nous sommes proche de construire
+                      la bobine magn\xE9tique!"
+                    nextTalk: []
+                    choices: []
+                    showRealName: 1
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices:
+              - choice: De la dynamite? De quoi avons-nous besoin?
+                indexNextDialogue: 0
+              - choice: "De la dynamite? \xC7a, \xE7a me pla\xEEt! Qu\u2019est-ce
+                  qu\u2019il nous faut pour la fabriquer?"
+                indexNextDialogue: 0
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "As-tu rassembl\xE9 les ressources dont nous avons besoin pour la dynamite?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui. Voici ce que j\u2019ai trouv\xE9."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Tr\xE8s bien, laisse-moi les prendre. Je vais commencer \xE0 pr\xE9parer
+          la dynamite."
+        nextTalk:
+        - isThePlayer: 0
+          talk: '*Prend les ressources et se met au travail pour fabriquer la dynamite.*'
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Voil\xE0, la dynamite est pr\xEAte. Tiens, prends-la. Sois prudent
+              avec cette chose, c\u2019est un outil de destruction avant tout."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Merci, je ferai attention. Je vais me rendre au camp des bandits
+                et r\xE9cup\xE9rer le plan. Ensuite, je d\xE9truirai leur camp avec
+                la dynamite."
+              nextTalk:
+              - isThePlayer: 0
+                talk: Bon courage, reviens en un seul morceau.
+                nextTalk: []
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "Bruce, te voil\xE0 enfin! Accroche-toi, je vais te sortir d\u2019ici."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Merci. Tu es arriv\xE9 juste \xE0 temps. Mais maintenant, nous devons
+        quitter cet endroit au plus vite."
+      nextTalk: []
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Enfin en s\xE9curit\xE9. Merci de m\u2019avoir sauv\xE9. Maintenant nous
+      pouvons discuter de la derni\xE8re \xE9tape. As-tu toujours le plan pour la
+      bobine?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui, je l\u2019avais gard\xE9 sur moi. Le voici."
+      nextTalk:
+      - isThePlayer: 0
+        talk: Excellent. Pour construire la bobine, nous aurons besoin de quelques
+          ressources fondamentales. Il va nous falloir du cuivre, du plastique et
+          un noyau de ferrite.
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Tu pourras trouver le cuivre et le plastique dans les ruines. Quant
+            au noyau de ferrite, il te faudra l\u2019\xE9changer aupr\xE8s d\u2019un
+            des marchands de faction. Ils devraient en avoir trouver au fil des ann\xE9es."
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Okay. Je m\u2019en vais \xE0 la recherche de ces ressources."
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Bon courage. Ces mat\xE9riaux sont cruciaux pour aboutir \xE0
+                notre projet. Reviens vers moi d\xE8s que tu les auras rassembl\xE9s."
+              nextTalk: []
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices:
+        - choice: "Du cuivre, du plastique et un noyau de ferrite\u2026 C\u2019est
+            not\xE9. O\xF9 puis-je trouver ces ressources?"
+          indexNextDialogue: 0
+        - choice: "\xC7a fait beaucoup de ressources! Sais-tu o\xF9 je peux trouver
+            ces ressources?"
+          indexNextDialogue: 0
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Ah! Te voil\xE0 enfin! As-tu r\xE9ussi \xE0 rassembler les ressources
+      n\xE9cessaires pour la construction de la bobine?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui, Bruce. J\u2019ai tout ce qu\u2019il faut pour la construire."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, tu as fait du bon travail. Maintenant, tu vas pouvoir te
+          rendre sur le lieu de construction de la bobine magn\xE9tique et assembler
+          la derni\xE8re partie toi-m\xEAme."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Une fois que tu auras termin\xE9 la construction de la bobine, il
+            te faudra de l\u2019essence pour lancer le moteur thermique et ainsi
+            d\xE9marrer la bobine magn\xE9tique."
+          nextTalk:
+          - isThePlayer: 1
+            talk: "De l\u2019essence, d\u2019accord. O\xF9 est-ce que je peux en
+              trouver?"
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Il te faudra \xE9changer un jerrican aupr\xE8s d\u2019un marchand
+                de faction puis aller siphonner de l\u2019essence sur des voitures."
+              nextTalk:
+              - isThePlayer: 1
+                talk: "Compris, je vais m\u2019en charger."
+                nextTalk:
+                - isThePlayer: 0
+                  talk: "Bon courage et fais attention \xE0 toi. Nous y sommes presque,
+                    bient\xF4t nous changerons notre avenir! Il y a des chances que
+                    les bandits attaquent la bobine magn\xE9tique avant que tu ne
+                    puisses la d\xE9marrer. Pense \xE0 te faire des alli\xE9s pour
+                    t\u2019aider."
+                  nextTalk: []
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
   _pnjSprite: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
   _name: Vieillard
   _hideName: Bruce
-  _startButton: {fileID: 1516567674}
+  _startButton: {fileID: 1742899192}
 --- !u!4 &1338579619
 Transform:
   m_ObjectHideFlags: 0
@@ -2552,57 +3989,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1338579620
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338579617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d88d4d304ab6c9949b125b90a0fad81d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _trades:
-  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    itemsToTrade:
-    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
-      quantityNeed: 2
-    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-      quantityNeed: 3
-  - tradeItem: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
-    itemsToTrade:
-    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
-      quantityNeed: 4
-    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-      quantityNeed: 3
-  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    itemsToTrade:
-    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
-      quantityNeed: 2
-    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-      quantityNeed: 3
-  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    itemsToTrade:
-    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
-      quantityNeed: 2
-    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-      quantityNeed: 3
-  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    itemsToTrade:
-    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
-      quantityNeed: 2
-    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-      quantityNeed: 3
-  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    itemsToTrade:
-    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
-      quantityNeed: 2
-    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-      quantityNeed: 3
-  _traderName: boubou
-  _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
 --- !u!1 &1359367159
 GameObject:
   m_ObjectHideFlags: 0
@@ -2748,6 +4134,7 @@ GameObject:
   - component: {fileID: 1502163040}
   - component: {fileID: 1502163039}
   - component: {fileID: 1502163038}
+  - component: {fileID: 1502163041}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2829,6 +4216,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1502163041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502163037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1 &1516567674
 GameObject:
   m_ObjectHideFlags: 0
@@ -2842,12 +4273,12 @@ GameObject:
   - component: {fileID: 1516567677}
   - component: {fileID: 1516567676}
   m_Layer: 5
-  m_Name: StartDialogue
+  m_Name: BruceButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1516567675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2855,13 +4286,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1516567674}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 799340489}
-  m_Father: {fileID: 1673995996}
+  m_Father: {fileID: 1742899193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3040,6 +4471,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1630191617}
   m_CullTransparentMesh: 1
+--- !u!1 &1644613231
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1644613232}
+  - component: {fileID: 1644613234}
+  - component: {fileID: 1644613233}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1644613232
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644613231}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840726470}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1644613233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644613231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: QuestGiver
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4281479730
+  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 24
+  m_fontSizeBase: 24
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1644613234
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644613231}
+  m_CullTransparentMesh: 1
 --- !u!1 &1645392365
 GameObject:
   m_ObjectHideFlags: 0
@@ -3213,9 +4778,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1072630422}
-  - {fileID: 1516567675}
-  - {fileID: 1272285372}
   - {fileID: 1630191618}
+  - {fileID: 1742899193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3266,7 +4830,7 @@ MonoBehaviour:
   _itemDescriptionPanel: {fileID: 2096130104}
   _tradeButton: {fileID: 480051880}
   _tradeUiPrefab: {fileID: 8910753051020592856, guid: 676e789f8f2e09f4fb68c53a57bee715, type: 3}
-  _traderButton: {fileID: 1272285371}
+  _traderButton: {fileID: 1742899192}
   _tradeParent: {fileID: 996864916}
   _menuInput: {fileID: 1673995999}
   eventSystem: {fileID: 285522182}
@@ -3344,6 +4908,84 @@ MonoBehaviour:
   m_DefaultActionMap: Menus
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1 &1711359533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1711359535}
+  - component: {fileID: 1711359534}
+  m_Layer: 0
+  m_Name: QuestGiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1711359534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711359533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogues:
+  - isThePlayer: 0
+    talk: "Ah, te voil\xE0 enfin. J'ai entendu parler de toi et de ta famille. J\u2019ai
+      des informations qui pourraient t'int\xE9resser dans la r\xE9alisation de ton
+      objectif."
+    nextTalk:
+    - isThePlayer: 1
+      talk: Vraiment? Dites-moi ce que vous savez.
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Nous avons pris connaissance d\u2019un vieillard qui d\xE9tiendrait
+          des informations cruciales pour t\u2019aider \xE0 poursuivre le travail
+          de tes parents."
+        nextTalk:
+        - isThePlayer: 0
+          talk: Celui-ci se cache dans une cabane, je vais te l'indiquer sur ta carte.
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Merci, je m\u2019en vais \xE0 sa recherche tout de suite."
+            nextTalk: []
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  _pnjSprite: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+  _name: Quest giver
+  _hideName: Quest giver
+  _startButton: {fileID: 1742899192}
+--- !u!4 &1711359535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711359533}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 631.3362, y: 346.93195, z: -2.4796987}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717761496
 GameObject:
   m_ObjectHideFlags: 0
@@ -3478,6 +5120,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1717761496}
   m_CullTransparentMesh: 1
+--- !u!1 &1742899192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1742899193}
+  m_Layer: 5
+  m_Name: Buttons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1742899193
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742899192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1516567675}
+  - {fileID: 840726470}
+  - {fileID: 1181927177}
+  - {fileID: 780794735}
+  - {fileID: 1272285372}
+  m_Father: {fileID: 1673995996}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1761084565
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,6 +5906,89 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1981295874}
   m_CullTransparentMesh: 1
+--- !u!1 &2058361971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058361973}
+  - component: {fileID: 2058361972}
+  m_Layer: 0
+  m_Name: Trader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2058361972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058361971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88d4d304ab6c9949b125b90a0fad81d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    itemsToTrade:
+    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
+      quantityNeed: 2
+    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 3
+  - tradeItem: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+    itemsToTrade:
+    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
+      quantityNeed: 4
+    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 3
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    itemsToTrade:
+    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
+      quantityNeed: 2
+    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 3
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    itemsToTrade:
+    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
+      quantityNeed: 2
+    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 3
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    itemsToTrade:
+    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
+      quantityNeed: 2
+    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 3
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    itemsToTrade:
+    - tradeItem: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
+      quantityNeed: 2
+    - tradeItem: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 3
+  _traderName: Trader
+  _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+--- !u!4 &2058361973
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2058361971}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 642.3923, y: 317.94702, z: -2.3332798}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2096130104
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,6 +6072,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1502163040}
-  - {fileID: 1338579619}
   - {fileID: 1673995996}
   - {fileID: 285522183}
+  - {fileID: 2058361973}
+  - {fileID: 1338579619}
+  - {fileID: 1711359535}
+  - {fileID: 521829173}
+  - {fileID: 1205764665}
