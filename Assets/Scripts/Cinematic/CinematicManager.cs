@@ -1,15 +1,13 @@
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using System.Collections;
-using System;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CinematicManager : MonoBehaviour
 {
     [Header("Background Images: ")]
-    [SerializeField] Image _currentSlide;
+    [SerializeField] SpriteRenderer _currentSlide;
     [SerializeField] int _currentSlideIndex = 0;
     [SerializeField] List<Sprite> _cinematicSlides = new List<Sprite>();
 
@@ -32,6 +30,10 @@ public class CinematicManager : MonoBehaviour
     [Header("Scene Management: ")]
     [SerializeField] string _sceneToLoadAtEnd;
 
+    [Header("Camera")]
+    [SerializeField] Camera _camera;
+    [SerializeField] Animator _animator;
+
     private void Awake()
     {
         if (_currentCineText != null && _cineTexts.Count > 0)
@@ -50,6 +52,7 @@ public class CinematicManager : MonoBehaviour
 
     public void StartCinematicOnTrigger() //Starts the Cinematic when Trigger is Triggered
     {
+        _animator.Play("Slide1", 0, 0);
         StartCinematicText();
     }
 
@@ -85,6 +88,7 @@ public class CinematicManager : MonoBehaviour
         {
             _currentSlideIndex = (_currentSlideIndex + 1) % _cinematicSlides.Count;
             _currentSlide.sprite = _cinematicSlides[_currentSlideIndex];
+            _animator.Play("Slide" + (_currentSlideIndex + 1), 0, 0);
         }
 
         _currentTextIndex = (_currentTextIndex + 1) % _cineTexts.Count;
@@ -121,7 +125,7 @@ public class CinematicManager : MonoBehaviour
 
     IEnumerator AutoNextText() //Starts the Coroutine to automatically change to the next Text and Slide
     {
-        yield return new WaitForSeconds(timeBetweenTexts);
+        yield return new WaitForSeconds(_cineTexts[_currentTextIndex].delayAfterFinish);
         NextText();
     }
 
