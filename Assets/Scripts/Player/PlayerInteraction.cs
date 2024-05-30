@@ -81,7 +81,7 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (_inventory.isInventoryOpen) 
             {
-                _inventory.OpenInventory();
+                _inventory.OpenFullInventory();
                 return;
             }
             Container container = GetNearestContainer();
@@ -92,7 +92,7 @@ public class PlayerInteraction : MonoBehaviour
             //else
             if (container != null)//If a container is close, open the inventory and the container
             {
-                _inventory.OpenInventory();
+                _inventory.OpenFullInventory();
                 _inventory.currentContainer = container;
                 container.OpenContainer();
             }

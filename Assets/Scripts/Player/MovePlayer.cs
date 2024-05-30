@@ -7,7 +7,10 @@ using UnityEngine.InputSystem;
 
 public class MovePlayer : MonoBehaviour
 {
-    private CustomInput _input = null;
+    [SerializeField]
+    private PlayerInput _input;
+    private InputActionMap _inGameActionMap;
+
     public GameObject weapon;
     private Vector2 _moveVector = Vector2.zero;
     private Rigidbody2D _rb = null;
@@ -27,6 +30,10 @@ public class MovePlayer : MonoBehaviour
 
     StatsManager stats;
 
+    private void Start()
+    {
+        _inGameActionMap = _input.actions.FindActionMap("InGame");
+    }
 
     //If the player press the button assigned for run, change the bool _isRunning. 
     //If the player release the button , change the bool again.
@@ -47,32 +54,16 @@ public class MovePlayer : MonoBehaviour
     //When the game is play, it's the first thing who is done.
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
-        _input = new CustomInput();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
     }
 
-
-    //This function is called when the object becomes enabled and active. Enable move _input
-    private void OnEnable() {
-        _input.Player.Enable();
-        _input.Player.Enable();
-    }
-
-
-    //This function is called when the object becomes disabled. Disable move _input
-    private void OnDisable() {
-        _input.Player.Disable();
-        _input.Player.Disable();
-    }
-
-
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
-    private void Move() 
+    private void Move()
     {
-        _moveVector = _input.Player.Movement.ReadValue<Vector2>();
-        if(_isSprinting == true && stats.GetStamina() > 0)
+        _moveVector = _input.actions.FindAction("Movement").ReadValue<Vector2>();
+        if (_isSprinting == true && stats.GetStamina() > 0)
         {
             stats.ChangeIsSprinting(true);
             _rb.velocity = _moveVector * moveSpeed * 1.5f;
@@ -114,9 +105,9 @@ public class MovePlayer : MonoBehaviour
 
         Vector2 aimNotActive = new Vector2(0,0);
 
-        if (_input.Player.Aim.ReadValue<Vector2>() != aimNotActive)
+        if (_input.actions.FindAction("Aim").ReadValue<Vector2>() != aimNotActive)
         {
-            direction = _input.Player.Aim.ReadValue<Vector2>();
+            direction = _input.actions.FindAction("Aim").ReadValue<Vector2>();
             lastAimDirection = direction;
             
             Cursor.visible = false;
@@ -148,27 +139,18 @@ public class MovePlayer : MonoBehaviour
     }
 
 
-
-       
-    private void FixedUpdate() 
+    void Update()
     {
-        if (!_inventory.isInventoryOpen)
+        if (_inGameActionMap.enabled)
         {
             Move();
+            WeaponAim();
+            FlipPlayer();
         }
         else
         {
+            _moveVector = Vector2.zero;
             _rb.velocity = Vector3.zero;
-        }
-    }
-
-    void Update()
-    {
-        if (!_inventory.isInventoryOpen)
-        {
-            WeaponAim();
-
-            FlipPlayer();
         }
     }
 }

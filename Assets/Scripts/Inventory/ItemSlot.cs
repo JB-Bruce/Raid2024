@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    private EventSystem _eventSystem;
+
     [SerializeField]
     private Item _item = null;
     private int _quantity = 0;
@@ -27,6 +29,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void Start()
     {
+        _eventSystem = EventSystem.current;
         UpdateQuantity(_quantity);
         _inventory = Inventory.Instance;
     }
@@ -43,6 +46,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 _inventory.selectedItemSlot.GetSelected(false);
             }
             _inventory.selectedItemSlot = this;
+            _eventSystem.SetSelectedGameObject(gameObject);
             _itemSelectedSprite.SetActive(true);
         }
         else
@@ -60,7 +64,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void OnPointerEnter(PointerEventData _)
     {
-        if (_isAvailable && _inventory.isInventoryOpen)
+        if (_isAvailable && (_inventory.isInventoryOpen || _inventory.isHalfInvenoryOpen))
         {
             GetSelected(true);
         }
@@ -68,7 +72,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     public void OnPointerExit(PointerEventData _) 
     {
-        GetSelected(false);
+        if (_isAvailable && (_inventory.isInventoryOpen || _inventory.isHalfInvenoryOpen))
+        {
+            GetSelected(false);
+        }
     }
 
     /// <summary>
