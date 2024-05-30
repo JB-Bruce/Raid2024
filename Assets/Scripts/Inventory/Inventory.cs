@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
 
     public bool isInventoryOpen = false;
+    public bool isHalfInvenoryOpen = false;
 
     [SerializeField] private PlayerInput _playerInput;
 
@@ -18,6 +19,9 @@ public class Inventory : MonoBehaviour
 
     [SerializeField] 
     private GameObject _inventoryPanel;
+    
+    [SerializeField] 
+    private GameObject _itemSlotsGameObject;
 
     public ItemSlot selectedItemSlot = null;
     
@@ -54,6 +58,12 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private Transform _weaponSlotsPosInGame;
+
+    [SerializeField]
+    private Transform _itemSlotsPosInInventory;
+
+    [SerializeField]
+    private Transform _itemSlotsPosInTrade;
 
     public Transform containerSlotsTransform;
 
@@ -110,30 +120,45 @@ public class Inventory : MonoBehaviour
     {
         if (selectedItemSlot == null)
         {
-            if (currentContainer != null)
+            if (isHalfInvenoryOpen)
             {
-                selectedItemSlot = currentContainer.itemSlots[0];
+                if (_eventSystem.currentSelectedGameObject == null)
+                {
+                    selectedItemSlot = _itemSlots[0];
+                    selectedItemSlot.GetSelected(true);
+                }
             }
             else
             {
-                selectedItemSlot = _itemSlots[0];
+                if (currentContainer != null)
+                {
+                    selectedItemSlot = currentContainer.itemSlots[0];
+                }
+                else
+                {
+                    selectedItemSlot = _itemSlots[0];
+                }
+                selectedItemSlot.GetSelected(true);
             }
-            _eventSystem.SetSelectedGameObject(selectedItemSlot.gameObject);
+        }
+        GameObject currentSelectedGameObject = _eventSystem.currentSelectedGameObject;
+        ItemSlot itemSlot = null;
+        if (currentSelectedGameObject != null && currentSelectedGameObject.TryGetComponent<ItemSlot>(out itemSlot))
+        {
+            if (selectedItemSlot != null)
+            {
+                selectedItemSlot.GetSelected(false);
+            }
+            selectedItemSlot = itemSlot;
             selectedItemSlot.GetSelected(true);
         }
         else
         {
-            GameObject currentSelectedGameObject = _eventSystem.currentSelectedGameObject;
-            ItemSlot itemSlot = null;
-            if (currentSelectedGameObject != null && currentSelectedGameObject.TryGetComponent<ItemSlot>(out itemSlot))
+            if (selectedItemSlot != null)
             {
-                if (itemSlot != null)
-                {
-                    selectedItemSlot.GetSelected(false);
-                    selectedItemSlot = itemSlot;
-                    selectedItemSlot.GetSelected(true);
-                }
+                selectedItemSlot.GetSelected(false);
             }
+            selectedItemSlot = null;
         }
     }
 
@@ -144,19 +169,20 @@ public class Inventory : MonoBehaviour
     {
         if (context.started)
         {
-            OpenInventory();
+            OpenFullInventory();
         }
     }
 
     /// <summary>
     /// Open and closes the inventory UI and positions the weapon slots depending on "isInventoryOpen"
     /// </summary>
-    public void OpenInventory()
+    public void OpenFullInventory()
     {
-        if (!MapUI.Instance.isMapOpen)
+        if (_playerInput.actions.FindActionMap("InGame").enabled || _playerInput.actions.FindActionMap("Inventory").enabled)
         {
             isInventoryOpen = !isInventoryOpen;
             _inventoryPanel.SetActive(isInventoryOpen);
+            _itemSlotsGameObject.SetActive(isInventoryOpen);
 
             if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
             {
@@ -184,6 +210,33 @@ public class Inventory : MonoBehaviour
                     currentContainer.CloseContainer();
                     currentContainer = null;
                 }
+            }
+        }
+    }
+
+    /// <summary>
+    /// Opens/Closes only the inventory slots but not the equipement slots and weapon slots
+    /// </summary>
+    public void OpenInventory(bool state)
+    {
+        isHalfInvenoryOpen = state;
+        _itemSlotsGameObject.SetActive(isHalfInvenoryOpen);
+
+        if (isHalfInvenoryOpen)//Hides the weapon slots
+        {
+            Cursor.visible = true;
+            _weaponSlotsGameObject.SetActive(false);
+            _itemSlotsGameObject.transform.position = _itemSlotsPosInTrade.position;
+        }
+        else//Shows the weapon slots
+        {
+            Cursor.visible = false;
+            _weaponSlotsGameObject.SetActive(true);
+            _itemSlotsGameObject.transform.position = _itemSlotsPosInInventory.position;
+
+            if (selectedItemSlot != null)
+            {
+                selectedItemSlot.GetSelected(false);
             }
         }
     }
@@ -283,7 +336,7 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Adds the item "item" to the inventory if a slot is available
     /// </summary>
-    private bool AddItem(Item item)
+    public bool AddItem(Item item)
     {
         ItemSlot itemSlot = FindFirstInventorySlotAvailable(item);
         if (itemSlot != null)
@@ -322,7 +375,7 @@ public class Inventory : MonoBehaviour
     {
         if (context.started)
         {
-            if (isInventoryOpen && selectedItemSlot != null && selectedItemSlot.Item != null)
+            if ((isInventoryOpen || isHalfInvenoryOpen) && selectedItemSlot != null && selectedItemSlot.Item != null)
             {
                 TryToDeleteItem(selectedItemSlot);
             }
@@ -502,10 +555,6 @@ public class Inventory : MonoBehaviour
     {
         foreach (ItemSlot itemSlot in _itemSlots)
         {
-            if (itemSlot.Item == null)
-            {
-                return itemSlot;
-            }
             if (item.IsStackable)
             {
                 if (itemSlot.Item == item && itemSlot.Quantity < itemSlot.Item.MaxStack)
@@ -514,6 +563,14 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+        foreach (ItemSlot itemSlot in _itemSlots)
+        {
+            if (itemSlot.Item == null)
+            {
+                return itemSlot;
+            }
+        }
+        
         return null;
     }
 
@@ -546,5 +603,69 @@ public class Inventory : MonoBehaviour
         }
         return null;
     }
+
+    /// <summary>
+    /// Finds if the inventory is full (if there is no empty inventory slot)
+    /// </summary>
+    public bool IsInventoryFull()
+    {
+        foreach (ItemSlot itemSlot in _itemSlots)
+        {
+            if (itemSlot.Item == null)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /// <summary>
+    /// Counts the number of item "item" in the inventory and returns it
+    /// </summary>
+    public int CountItemInInventory(Item item)
+    {
+        int count = 0;
+
+        foreach (ItemSlot itemSlot in _itemSlots)
+        {
+            if (itemSlot.Item == item)
+            {
+                count += itemSlot.Quantity;
+            }
+        }
+
+        return count;
+    }
+
+    /// <summary>
+    /// Removes the quantity "quantity" of last instance of the item "item" in inventory
+    /// </summary>
+    public void RemoveItems(Item item, int quantity)
+    {
+        for (int i = _itemSlots.Count-1; i >= 0; i--)
+        {
+            if (quantity <= 0)
+            {
+                return;
+            }
+            if (_itemSlots[i].Item != null)
+            {
+                if (_itemSlots[i].Item == item && _itemSlots[i].Quantity > 0)
+                {
+                    if (quantity > _itemSlots[i].Quantity)
+                    {
+                        quantity -= _itemSlots[i].Quantity;
+                        _itemSlots[i].UpdateQuantity(0);
+                    }
+                    else
+                    {
+                        _itemSlots[i].UpdateQuantity(_itemSlots[i].Quantity - quantity);
+                        return;
+                    }
+                }
+            }
+        }
+    }
+
 
 }

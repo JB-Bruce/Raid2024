@@ -52,7 +52,7 @@ public class MapUI : MonoBehaviour
     // UI button to open or close
     public void OpenCloseMap()
     {
-        if (!Inventory.Instance.isInventoryOpen)
+        if (_playerInput.actions.FindActionMap("InGame").enabled || _playerInput.actions.FindActionMap("Map").enabled)
         {
             mapUI.SetActive(!mapUI.activeInHierarchy);
             if (mapUI.activeInHierarchy)

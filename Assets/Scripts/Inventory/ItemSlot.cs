@@ -54,7 +54,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             if (_inventory.selectedItemSlot == this)
             {
                 _inventory.selectedItemSlot = null;
-                _eventSystem.SetSelectedGameObject(null);
             }
             _itemSelectedSprite.SetActive(false);
         }
@@ -65,7 +64,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void OnPointerEnter(PointerEventData _)
     {
-        if (_isAvailable && _inventory.isInventoryOpen)
+        if (_isAvailable && (_inventory.isInventoryOpen || _inventory.isHalfInvenoryOpen))
         {
             GetSelected(true);
         }
@@ -73,7 +72,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     public void OnPointerExit(PointerEventData _) 
     {
-        if (_isAvailable && _inventory.isInventoryOpen)
+        if (_isAvailable && (_inventory.isInventoryOpen || _inventory.isHalfInvenoryOpen))
         {
             GetSelected(false);
         }

@@ -6,6 +6,8 @@ public class Trade : MonoBehaviour
 {
     private TradeData _currentData;
 
+    private Inventory _inventory;
+
     [SerializeField]
     private Image _tradableItemImage;
 
@@ -17,38 +19,45 @@ public class Trade : MonoBehaviour
 
     private List<ItemRequire> itemRequires = new();
 
-    private bool _isTradable;
+    private Tradable _tradable;
 
     public TradeData currentData { get { return _currentData; } }
 
-    public bool isTradable { get { return _isTradable; } }
+    public Tradable Tradable { get { return _tradable; } }
 
     //configure the trade prefab
     public void Configure(TradeData tradeData)
     {
+        _inventory = Inventory.Instance;
+
         _currentData = tradeData;
 
         _tradableItemImage.sprite = _currentData.tradeItem.ItemSprite;
 
+        ResetTradable();
+
         for (int i = 0; i < _currentData.itemsToTrade.Count; i++)
         {
+
             ItemToTradeData requiredItem = _currentData.itemsToTrade[i];
             GameObject requiredItemGO = Instantiate(_itemRequirePrefab, _itemRequireParent);
             itemRequires.Add(requiredItemGO.GetComponent<ItemRequire>());
 
-            int quantityInInventory = 3;//call the methode in inventory to get the quantity of the item in inventory
+            int quantityInInventory = _inventory.CountItemInInventory(requiredItem.tradeItem);
 
             itemRequires[i].itemRequireImage.sprite = requiredItem.tradeItem.ItemSprite;
             itemRequires[i].quantityRequire.text = requiredItem.quantityNeed.ToString();
             itemRequires[i].quantityInInventory.text = quantityInInventory.ToString();
 
-            if (quantityInInventory >= requiredItem.quantityNeed)
+            if (quantityInInventory < requiredItem.quantityNeed)
             {
-                _isTradable = true;
+                _tradable.isTradable = false;
+                _tradable.isMissingResources = true;
             }
-            else
+            else if (_inventory.IsInventoryFull())
             {
-                _isTradable = false;
+                _tradable.isTradable = false;
+                _tradable.isInventoryFull = true;
             }
         }
     }
@@ -56,16 +65,38 @@ public class Trade : MonoBehaviour
     //refresh the quantity in inventory of the items required
     public void Refresh()
     {
-        _isTradable = true;
-        foreach (var itemRequire in itemRequires)
-        {
-            int quantityInInventory = /*call the methode in inventory to get the quantity of the item in inventory*/int.Parse(itemRequire.quantityInInventory.text);
-            //itemRequire.quantityInInventory.text = quantityInInventory.ToString();
+        ResetTradable();
 
-            if (quantityInInventory < int.Parse(itemRequire.quantityRequire.text) /*add condition inventory is not full*/ )
+        for (int i = 0; i < itemRequires.Count; i++) 
+        {
+            ItemRequire itemRequire = itemRequires[i];
+            int quantityInInventory = _inventory.CountItemInInventory(_currentData.itemsToTrade[i].tradeItem);
+            itemRequire.quantityInInventory.text = quantityInInventory.ToString();
+
+            if (quantityInInventory < int.Parse(itemRequire.quantityRequire.text))
             {
-                _isTradable = false;
+                _tradable.isTradable = false;
+                _tradable.isMissingResources = true;
             }
         }
+        if (_inventory.IsInventoryFull())
+        {
+            _tradable.isTradable = false;
+            _tradable.isInventoryFull = true;
+        }
     }
+
+    private void ResetTradable()
+    {
+        _tradable.isTradable = true;
+        _tradable.isMissingResources = false;
+        _tradable.isInventoryFull = false;
+    }
+}
+
+public struct Tradable
+{
+    public bool isTradable;
+    public bool isInventoryFull;
+    public bool isMissingResources;
 }
