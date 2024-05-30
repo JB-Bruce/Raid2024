@@ -1,15 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class FactionUnitManager : MonoBehaviour
 {
+    private int indexeur = 0;
+
     public Faction faction;
     public GameObject unit;
     private Transform _transform;
     public Transform parent;
     private float _mapSize;
     public float SpawnDistanceAroundPlayer = 50;
+    public List<DrawUnit> drawUnits = new List<DrawUnit>();
 
     [Header("Unit Management")]
     public List<GameObject> units = new List<GameObject>();
@@ -31,32 +35,45 @@ public class FactionUnitManager : MonoBehaviour
     private int _numberOfPOIUnit = 0;
     private List<int> _unitOnPOI = new List<int>();
 
-
+    private GameManager _gameManager;
+    private FactionManager _factionManager;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        _gameManager = GameManager.Instance;
+        _factionManager = FactionManager.Instance;
+
         SetUnitOnPOI();
-        _mapSize = GameManager.Instance.mapSize;
+        _mapSize = _gameManager.mapSize;
         _transform = transform;
         for (int i = 0; i< maxUnit; i++) 
         {
             SpawnUnit();
         }
-        InvokeRepeating("CheckUnit", 0f, 1f);
+        StartCoroutine(CheckUnitRoutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    // Coroutine for CheckUnit() fonction
+    private IEnumerator CheckUnitRoutine()
     {
-       
+        while(true) 
+        {
+            CheckUnit();
+            yield return new WaitForSeconds(1f);
+        }
+
     }
 
     // Make spawn a unit
     private void SpawnUnit()
     {
-        GameObject go = Instantiate<GameObject>(unit, parent);
+        GameObject go = Instantiate<GameObject>(DrawUnit(), parent);
+
+        indexeur++;
+        go.name = faction + indexeur.ToString();
+
         UnitBT unitBT = go.GetComponent<UnitBT>();
         unitBT.Init();
 
@@ -110,13 +127,13 @@ public class FactionUnitManager : MonoBehaviour
         {
             BT.order = UnitOrder.POICapture;
 
-            int random = FactionManager.Instance.poi.IndexOf(FactionManager.Instance.GetRandomPOI(this));
+            int random = _factionManager.poi.IndexOf(_factionManager.GetRandomPOI(this));
 
             if (random > 0)
             {
                 _numberOfPOIUnit++;
 
-                movement.targetPOI = FactionManager.Instance.poi[random];
+                movement.targetPOI = _factionManager.poi[random];
                 _unitOnPOI[random]++;
 
                 movement.SetGuardPoint(movement.targetPOI.transform.position, 0, movement.gameObject.GetComponent<CircleCollider2D>().radius);
@@ -136,8 +153,15 @@ public class FactionUnitManager : MonoBehaviour
         if(nbrOfDeadUnit > 0)
         {
             nbrOfDeadUnit--;
-            Invoke("SpawnUnit", _unitSpawnRate);
+            StartCoroutine(SpawnUnitWithDelay(_unitSpawnRate));
         }
+    }
+
+    // Coroutine for Spawn a unit with delay
+    private IEnumerator SpawnUnitWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        SpawnUnit();
     }
 
     // get random point on the map
@@ -147,18 +171,18 @@ public class FactionUnitManager : MonoBehaviour
         do
         {
             target = new Vector3(Random.Range(-_mapSize, _mapSize), Random.Range(-_mapSize, _mapSize), _transform.position.z);
-        } while (CanSpawnHere(target));
+        } while (CantSpawnHere(target));
 
         return target;
     }
 
     // can the unit spawn here
-    private bool CanSpawnHere(Vector3 position)
+    private bool CantSpawnHere(Vector3 position)
     {
-        for (int i = 0; i < GameManager.Instance.restrictedAreas.Count; i++)
+        for (int i = 0; i < _gameManager.restrictedAreas.Count; i++)
         {
-            if (Vector3.Distance(GameManager.Instance.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius
-                && /*Replace by the player position*/ Vector3.Distance(Vector3.zero, position) <= SpawnDistanceAroundPlayer )
+            if ((Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius
+                || /*Replace by the player position*/ Vector3.Distance(Vector3.zero, position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) )
             {
                 return true;
             }
@@ -169,7 +193,7 @@ public class FactionUnitManager : MonoBehaviour
     // Set List unitOnPOI
     private void SetUnitOnPOI()
     {
-        for(int i = 0;FactionManager.Instance.poi.Count > i; i++) 
+        for(int i = 0; _factionManager.poi.Count > i; i++) 
         {
             _unitOnPOI.Add(0);
         }
@@ -186,7 +210,7 @@ public class FactionUnitManager : MonoBehaviour
 
             case UnitOrder.POICapture:
                 _numberOfPOIUnit--;
-                _unitOnPOI[FactionManager.Instance.poi.IndexOf(unit.GetComponent<UnitMovement>().targetPOI)]--;
+                _unitOnPOI[_factionManager.poi.IndexOf(unit.GetComponent<UnitMovement>().targetPOI)]--;
                 break;
         }
        
@@ -202,6 +226,30 @@ public class FactionUnitManager : MonoBehaviour
         return false;
     }
 
+    // Draw a unit 
+    private GameObject DrawUnit()
+    {
+        int total = 0;
+        for (int i = 0; i < drawUnits.Count; i++)
+        {
+            total += drawUnits[i].percentage;
+        }
+
+        int random = UnityEngine.Random.Range(0, total+1);
+        int unitDrop = 0;
+
+        for (int i = 0; i < drawUnits.Count; i++)
+        {
+            unitDrop += drawUnits[i].percentage;
+
+            if (random <= unitDrop)
+            {
+                return drawUnits[i].unit;
+            }
+        }
+        return null;
+    }
+
 }
 
 // point used by unit for the suveillance
@@ -212,3 +260,10 @@ public struct SurveillancePoint
     public GameObject unit;
 }
 
+// Contain a unit and is drop percentage
+[System.Serializable]
+public struct DrawUnit
+{
+    public GameObject unit;
+    public int percentage;
+}

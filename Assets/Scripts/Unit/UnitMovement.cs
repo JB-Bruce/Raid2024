@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
-using static UnityEngine.GraphicsBuffer;
+
 
 public class UnitMovement : MonoBehaviour
 {
     private float _mapSize;
-    NavMeshAgent _agent;
+    private NavMeshAgent _agent;
     private Transform _transform;
 
     private Vector3 _guardPoint;
@@ -17,14 +14,18 @@ public class UnitMovement : MonoBehaviour
     public POI targetPOI;
     public bool poiHasBeenCaptured = false;
 
+    private GameManager _gameManager;
+
     // Start is called before the first frame update
     public void Init()
     {
-        _mapSize = GameManager.Instance.mapSize;
+        _gameManager = GameManager.Instance;
+        _mapSize = _gameManager.mapSize;
         _transform = transform;
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
+
     }
 
     // Change the target point of the unit
@@ -48,9 +49,9 @@ public class UnitMovement : MonoBehaviour
     // Is the target point in the restricted area
     private bool IsThePointRestricted(Vector3 position)
     {
-        for(int i = 0; i < GameManager.Instance.restrictedAreas.Count; i++) 
+        for(int i = 0; i < _gameManager.restrictedAreas.Count; i++) 
         {
-            if (Vector3.Distance(GameManager.Instance.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius)
+            if (Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= _gameManager.restrictedAreas[i].areaRadius /*|| !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1)*/)
             {
                 return true;
             }
