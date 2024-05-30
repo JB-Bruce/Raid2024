@@ -26,8 +26,8 @@ public class Inventory : MonoBehaviour
     public ItemSlot selectedItemSlot = null;
     
     private List<ItemSlot> _itemSlots = new List<ItemSlot>();
-    private List<EquipementSlot> _equipementSlots = new List<EquipementSlot>();
-    private List<EquipementSlot> _weaponSlots = new List<EquipementSlot>();
+    public List<EquipementSlot> equipementSlots = new List<EquipementSlot>();
+    public List<EquipementSlot> weaponSlots = new List<EquipementSlot>();
 
     [SerializeField]
     private GameObject _itemSlotPrefab;
@@ -74,6 +74,8 @@ public class Inventory : MonoBehaviour
     private const int _weaponSpacing = 100;
 
     private bool _isMoving = false;
+    private Vector2 _moveDirection = Vector2.zero;
+    private MovePlayer _player;
 
     private void Awake()
     {
@@ -102,6 +104,9 @@ public class Inventory : MonoBehaviour
         //Show the weapons in game
         _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
         _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+        weaponSlots[0].GetSelected(true);
+        
+        _player = GameObject.Find("Player").GetComponent<MovePlayer>();
     }
 
     private void Update()
@@ -182,6 +187,7 @@ public class Inventory : MonoBehaviour
         {
             isInventoryOpen = !isInventoryOpen;
             _inventoryPanel.SetActive(isInventoryOpen);
+            int actualWeapon = _player.GetSelectedWeapon();
             _itemSlotsGameObject.SetActive(isInventoryOpen);
 
             if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
@@ -189,6 +195,8 @@ public class Inventory : MonoBehaviour
                 Cursor.visible = true;
                 _playerInput.actions.FindActionMap("InGame").Disable();
                 _playerInput.actions.FindActionMap("Inventory").Enable();
+                
+                weaponSlots[actualWeapon].GetSelected(false);
 
                 _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
@@ -198,7 +206,9 @@ public class Inventory : MonoBehaviour
                 Cursor.visible = false;
                 _playerInput.actions.FindActionMap("Inventory").Disable();
                 _playerInput.actions.FindActionMap("InGame").Enable();
-
+                
+                weaponSlots[actualWeapon].GetSelected(true);
+                
                 if (selectedItemSlot != null)
                 {
                     selectedItemSlot.GetSelected(false);
@@ -299,7 +309,7 @@ public class Inventory : MonoBehaviour
                 default:
                     break;
             }
-            _equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
+            equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
         }
     }
 
@@ -317,12 +327,12 @@ public class Inventory : MonoBehaviour
                 newSlot.transform.localPosition = new Vector3(-_weaponSpacing / 2, 0);
                 newSlot.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                 newSlot.GetComponent<EquipementSlot>().ItemType = typeof(Holster);
-                _equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
+                equipementSlots.Add(newSlot.GetComponent<EquipementSlot>());
             }
             else
             {
                 newSlot.GetComponent<EquipementSlot>().ChangeAvailability(false);
-                _weaponSlots.Add(newSlot.GetComponent<EquipementSlot>());
+                weaponSlots.Add(newSlot.GetComponent<EquipementSlot>());
             }
             if (i == 1)
             {
@@ -332,6 +342,9 @@ public class Inventory : MonoBehaviour
             newSlot.GetComponent<EquipementSlot>().Inventory = this;
         }
     }
+
+
+
 
     /// <summary>
     /// Adds the item "item" to the inventory if a slot is available
@@ -447,6 +460,7 @@ public class Inventory : MonoBehaviour
         itemSlot.UpdateQuantity(itemSlot.Quantity-1);
     }
 
+
     /// <summary>
     /// Try to swap items from slot1 to slot2 and verify if it can stack
     /// </summary>
@@ -475,16 +489,17 @@ public class Inventory : MonoBehaviour
                 EquipementSlot equipementSlot = (EquipementSlot) slot1;
                 if (equipementSlot.ItemType == typeof(Holster))//if slot1 is an holster
                 {
-                    for (int i = 1; i < _weaponSlots.Count; i++)
+                    for (int i = 1; i < weaponSlots.Count; i++)
                     {
-                        if (_weaponSlots[i].Item != null)//check if there are any weapons, in which case cancel swap
+                        if (weaponSlots[i].Item != null)//check if there are any weapons, in which case cancel swap
                         {
                             return;
                         }
                     }
-                    for (int i = 1; i < _weaponSlots.Count; i++)//reset weapon slots availability
+                    _player.SelectDefaultWeapon();
+                    for (int i = 1; i < weaponSlots.Count; i++)//reset weapon slots availability
                     {
-                        _weaponSlots[i].ChangeAvailability(false);
+                        weaponSlots[i].ChangeAvailability(false);
                     }
                 }
             }
@@ -493,14 +508,22 @@ public class Inventory : MonoBehaviour
                 EquipementSlot equipementSlot = (EquipementSlot)slot2;
                 if (equipementSlot.ItemType == typeof(Holster))//if slot2 is an holster (meaning slot1 has an holster item)
                 {
-                    for (int i = 1; i < _weaponSlots.Count; i++)//reset the availability of all weapon slot (prevents bugs)
-                    {
-                        _weaponSlots[i].ChangeAvailability(false);
-                    }
                     Holster holster = (Holster) slot1.Item;
+                    for (int i = holster.HolsterTier; i < weaponSlots.Count; i++)
+                    {
+                        if (weaponSlots[i].Item != null)//check if there are any weapons, in which case cancel swap
+                        {
+                            return;
+                        }
+                    }
+                    _player.SelectDefaultWeapon();
+                    for (int i = 1; i < weaponSlots.Count; i++)//reset the availability of all weapon slot (prevents bugs)
+                    {
+                        weaponSlots[i].ChangeAvailability(false);
+                    }
                     for (int i = 1; i < holster.HolsterTier; i++)//changes the weapon slots to available depending on the tier of holster
                     {
-                        _weaponSlots[i].ChangeAvailability(true);
+                        weaponSlots[i].ChangeAvailability(true);
                     }
                 }
             }
@@ -579,7 +602,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private ItemSlot FindFirstEquipementSlotAvailable(Item item)
     {
-        foreach (EquipementSlot equipementSlot in _equipementSlots)
+        foreach (EquipementSlot equipementSlot in equipementSlots)
         {
             if (equipementSlot.ItemType == item.GetType())
             {
@@ -594,7 +617,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private ItemSlot FindFirstWeaponSlotAvailable(Item item)
     {
-        foreach (EquipementSlot weaponSlot in _weaponSlots)
+        foreach (EquipementSlot weaponSlot in weaponSlots)
         {
             if (weaponSlot.Item == null && weaponSlot.IsAvailable)
             {

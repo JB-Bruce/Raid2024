@@ -62,6 +62,78 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SelectLeftWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""b7051c6e-cadf-4aa5-a12c-52a179972763"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectRightWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""f396c1be-511f-4114-bbae-f8adc59ab7f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FirstWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d42614a-3bac-4678-bd2c-8900b5f6106e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb07548e-eb8e-46b8-a845-d027edfccadf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThirdWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""b970a7ca-1fdb-4824-af8f-117aadc12178"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""d0b47a5b-daec-465e-9ad9-0d2dcc0c13ca"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""WeaponAim"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfaabe57-1795-4add-9a8a-442347dd7407"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponHit"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2f188dd-0410-4902-820e-3a02ed03f2b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -434,6 +506,30 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
+            @SelectLeftWeapon.started += instance.OnSelectLeftWeapon;
+            @SelectLeftWeapon.performed += instance.OnSelectLeftWeapon;
+            @SelectLeftWeapon.canceled += instance.OnSelectLeftWeapon;
+            @SelectRightWeapon.started += instance.OnSelectRightWeapon;
+            @SelectRightWeapon.performed += instance.OnSelectRightWeapon;
+            @SelectRightWeapon.canceled += instance.OnSelectRightWeapon;
+            @FirstWeapon.started += instance.OnFirstWeapon;
+            @FirstWeapon.performed += instance.OnFirstWeapon;
+            @FirstWeapon.canceled += instance.OnFirstWeapon;
+            @SecondWeapon.started += instance.OnSecondWeapon;
+            @SecondWeapon.performed += instance.OnSecondWeapon;
+            @SecondWeapon.canceled += instance.OnSecondWeapon;
+            @ThirdWeapon.started += instance.OnThirdWeapon;
+            @ThirdWeapon.performed += instance.OnThirdWeapon;
+            @ThirdWeapon.canceled += instance.OnThirdWeapon;
+            @ChangeWeapon.started += instance.OnChangeWeapon;
+            @ChangeWeapon.performed += instance.OnChangeWeapon;
+            @ChangeWeapon.canceled += instance.OnChangeWeapon;
+            @WeaponAim.started += instance.OnWeaponAim;
+            @WeaponAim.performed += instance.OnWeaponAim;
+            @WeaponAim.canceled += instance.OnWeaponAim;
+            @WeaponHit.started += instance.OnWeaponHit;
+            @WeaponHit.performed += instance.OnWeaponHit;
+            @WeaponHit.canceled += instance.OnWeaponHit;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)

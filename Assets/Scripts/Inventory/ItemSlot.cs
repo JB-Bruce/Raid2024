@@ -21,8 +21,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     protected Image _itemSlotSprite;
 
     [SerializeField]
-    private GameObject _itemSelectedSprite;
-    
+    public GameObject itemSelectedSprite;
+
+    [SerializeField]
     private Inventory _inventory;
 
     protected bool _isAvailable = true;
@@ -46,8 +47,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 _inventory.selectedItemSlot.GetSelected(false);
             }
             _inventory.selectedItemSlot = this;
+            itemSelectedSprite.SetActive(true);
             _eventSystem.SetSelectedGameObject(gameObject);
-            _itemSelectedSprite.SetActive(true);
         }
         else
         {
@@ -55,7 +56,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 _inventory.selectedItemSlot = null;
             }
-            _itemSelectedSprite.SetActive(false);
+            itemSelectedSprite.SetActive(false);
         }
     }
 

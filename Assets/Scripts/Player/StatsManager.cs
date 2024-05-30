@@ -16,6 +16,7 @@ public class StatsManager : MonoBehaviour
 
     private float stamina = 50;
     public Image staminaBar;
+    public Image staminaBorder;
 
     [SerializeField] private float staminaDrainAmount = 10f;
     [SerializeField] private float staminaGainAmount = 5f;
@@ -209,6 +210,17 @@ public class StatsManager : MonoBehaviour
 
                 staminaBar.fillAmount = stamina / 50f;
             }
+        }
+
+        if (stamina >=50)
+        {
+            staminaBar.CrossFadeAlpha(0,0.25f,false);
+            staminaBorder.CrossFadeAlpha(0,0.25f,false);
+        }
+        else
+        {
+            staminaBar.CrossFadeAlpha(1,0.1f,false);
+            staminaBorder.CrossFadeAlpha(1,0.1f,false);
         }
 
         _verifSprint = _isSprinting;

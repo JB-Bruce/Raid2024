@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FAMAS
   m_EditorClassIdentifier: 
   _weight: 0
-  _isStackable: 0
+  _isStackable: 1
   _maxStack: 1
   _name: FAMAS
   _itemSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
