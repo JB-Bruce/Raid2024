@@ -7,9 +7,13 @@ public class PlayerInteraction : MonoBehaviour
 {
     public static PlayerInteraction Instance;
 
+    [SerializeField]
+    private PlayerInput _playerInput;
+    private InputActionMap _actionMapInGame;
+
     private Inventory _inventory;
 
-    public List<Container> containers = new List<Container>();
+    public List<Interactable> interactables = new List<Interactable>();
 
     private void Awake()
     {
@@ -21,55 +25,70 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Start()
     {
+        _actionMapInGame = _playerInput.actions.FindActionMap("InGame");
         _inventory = Inventory.Instance;
     }
 
     /// <summary>
-    /// Select the nearest container
+    /// Select the nearest interactable and highligh it
     /// </summary>
     private void Update()
     {
-        for (int i = 0; i < containers.Count; i++)
+        for (int i = 0; i < interactables.Count; i++)
         {
-            if (containers[i] != null)
+            if (interactables[i] != null)
             {
-                containers[i].containerSelectedSprite.SetActive(false);
+                if (interactables[i].GetType() == typeof(Container))
+                {
+                    Container container = (Container)interactables[i];
+                    container.containerSelectedSprite.SetActive(false);
+                }
             }
         }
-        Container container = GetNearestContainer();
-        if (container != null)
+        Interactable interactable = GetNearestInteractable();
+        if (interactable != null)//if we find the nearest interactable, highlight it
         {
-            container.containerSelectedSprite.SetActive(true);
+            if (interactable.GetType() == typeof(Container))
+            {
+                Container container = (Container)interactable;
+                container.containerSelectedSprite.SetActive(true);
+            }
+            /*
+            else if (interactable.GetType() == typeof(PNJ))
+            {
+
+            }
+            */
         }
     }
 
     /// <summary>
     /// Caculates and returns the closest container to the player (if there are any)
     /// </summary>
-    private Container GetNearestContainer()
+    private Interactable GetNearestInteractable()
     {
-        if (containers.Count < 1 )
+        if (interactables.Count < 1 )
         {
             return null;
         }
 
-        Container nearestContainer = containers[0];
-        float nearestContainerDistance = Vector3.Distance(transform.position, containers[0].transform.position);
+        Interactable nearestInteractable = interactables[0];
+        float nearestInteractableDistance = Vector3.Distance(transform.position, interactables[0].transform.position);
 
-        for (int i = 1; i < containers.Count; i++)
+        for (int i = 1; i < interactables.Count; i++)
         {
-            if (containers[i] != null)
+            if (interactables[i] != null)
             {
-                float distance = Vector3.Distance(transform.position, containers[i].transform.position);
-                if (distance < nearestContainerDistance)
+                float distance = Vector3.Distance(transform.position, interactables[i].transform.position);
+                if (distance < nearestInteractableDistance)
                 {
-                    nearestContainer = containers[i];
-                    nearestContainerDistance = distance;
+                    nearestInteractable = interactables[i];
+                    nearestInteractableDistance = distance;
                 }
             }
         }
 
-        return nearestContainer;
+        return nearestInteractable;
     }
 
     /// <summary>
@@ -77,24 +96,34 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     public void PlayerInteract(InputAction.CallbackContext context)
     {
-        if (context.started && !MapUI.Instance.isMapOpen)
+        if (context.started && _actionMapInGame.enabled)
         {
             if (_inventory.isInventoryOpen) 
             {
                 _inventory.OpenFullInventory();
                 return;
             }
-            Container container = GetNearestContainer();
+            Interactable interactable = GetNearestInteractable();
             //PNJ pnj = GetNearestPNJ();
             //if (pnj != null && container != null)
             //if (Vector3.Distance(transform.position, pnj.transform.position) < Vector3.Distance(transform.position, container.transform.position))
             //Open the pnj
             //else
-            if (container != null)//If a container is close, open the inventory and the container
+            if (interactable != null)//If a container is close, open the inventory and the container
             {
-                _inventory.OpenFullInventory();
-                _inventory.currentContainer = container;
-                container.OpenContainer();
+                if (interactable.GetType() == typeof(Container))
+                {
+                    Container container = (Container) interactable;
+                    _inventory.OpenFullInventory();
+                    _inventory.currentContainer = container;
+                    container.OpenContainer();
+                }
+                /*
+                else if (interactable.GetType() == typeof(PNJ))
+                {
+                    //Do PNJ stuff here
+                }
+                */
             }
         }
     }
