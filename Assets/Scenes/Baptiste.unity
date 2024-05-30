@@ -1485,7 +1485,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0912a846fba2a4ca164d19cbc33263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  containers: []
+  _playerInput: {fileID: 2118519540}
+  interactables: []
 --- !u!114 &406161727
 MonoBehaviour:
   m_ObjectHideFlags: 0
