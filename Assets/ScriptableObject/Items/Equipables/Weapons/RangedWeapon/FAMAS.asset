@@ -16,12 +16,18 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 1
   _name: FAMAS
-  _itemSprite: {fileID: 516644808020111999, guid: e9e4d568a073b9b419c35db0d810eeda, type: 3}
+  _itemSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
   _equipementTier: 0
   _damage: 15
   _attackSpeed: 1
   _attackRange: 20
+  _leftHandPos: {x: 0.5, y: -0.2}
+  _rightHandPos: {x: 1.5, y: -0.08}
+  _rotationRightHand: -90
+  _rotationLeftHand: 0
   _spread: 0
   _maxBullet: 25
   _reloadTime: 1
   _ammoType: 0
+  _firePoint: {x: 12, y: 1.2}
+  bullet: {fileID: 5008059619825466956, guid: b3fe1a02dfbdd534bab5e85ccb492e03, type: 3}

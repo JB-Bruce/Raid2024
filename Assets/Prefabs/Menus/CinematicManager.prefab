@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2527217563478472488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3888888259732144679}
+  - component: {fileID: 3238359637378367023}
+  m_Layer: 0
+  m_Name: CinematicManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3888888259732144679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2527217563478472488}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3238359637378367023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2527217563478472488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41dee3205e2a07541a0fcaa8fe9586cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentSlide: {fileID: 0}
+  _currentSlideIndex: 0
+  _cinematicSlides:
+  - {fileID: 21300000, guid: e83efeda776eaff4a86d4bb73ca2b296, type: 3}
+  - {fileID: 21300000, guid: d391c00bd102a94418c5c59c7c157b05, type: 3}
+  - {fileID: 21300000, guid: 9bab0defe90530d40bd91c260a183de4, type: 3}
+  - {fileID: 21300000, guid: 68bc74ce3694e9e4ebdb8a2a602106e4, type: 3}
+  - {fileID: 21300000, guid: 331971de90bff5140b9cd9dfea3cbf6c, type: 3}
+  _currentCineText: {fileID: 0}
+  _currentTextIndex: 0
+  _cineTexts:
+  - text: "Une \xE9ruption solaire frappa notre plan\xE8te en l\u2019an 2024, ce
+      qui provoqua une dysfonction totale de tout l\u2019\xE9lectronique dans le
+      monde."
+    isSlideChanger: 1
+    isEndSlide: 0
+  - text: "Vous vous doutez que dans un monde comme le n\xF4tre, constamment connect\xE9
+      \xE0 tous les objets du quotidien\u2026"
+    isSlideChanger: 0
+    isEndSlide: 0
+  - text: "Cela provoqua une panique g\xE9n\xE9rale mondiale."
+    isSlideChanger: 1
+    isEndSlide: 0
+  - text: "Le gouvernement mondial a essay\xE9 de calmer la situation en d\xE9ployant
+      ses forces militaires pour rassurer la population\u2026"
+    isSlideChanger: 0
+    isEndSlide: 0
+  - text: "En vain, cela d\xE9clencha des guerres civiles \xE0 travers tout le globe."
+    isSlideChanger: 1
+    isEndSlide: 0
+  - text: "Ces guerres caus\xE8rent l\u2019an\xE9antissement de notre soci\xE9t\xE9
+      et peu de personnes surv\xE9curent\u2026"
+    isSlideChanger: 1
+    isEndSlide: 0
+  - text: "50 ans plus tard, 4 factions se sont form\xE9es, chacunes avec leur vision
+      de ce nouveau monde et de son futur\u2026"
+    isSlideChanger: 0
+    isEndSlide: 1
+  delayBeforeStart: 0
+  _timeBetweenChars: 0.05
+  _startOnEnable: 1
+  _sceneToLoadAtEnd: MenuTester

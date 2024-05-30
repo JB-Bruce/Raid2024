@@ -5,15 +5,20 @@ using UnityEngine.InputSystem;
 
 public class MovePlayer : MonoBehaviour
 {
-    private CustomInput _input = null;
     public GameObject rangedWeapon;
     public GameObject rangedWeaponSprite;
 
     public GameObject meleeWeapon;
     public GameObject meleeWeaponSprite;
+    [SerializeField]
+    private PlayerInput _input;
+    private InputActionMap _inGameActionMap;
     private Vector2 _moveVector = Vector2.zero;
     private Rigidbody2D _rb = null;
     private SpriteRenderer _sprite = null;
+    
+    [SerializeField]
+    private Inventory _inventory;
     
     private bool _isSprinting = false;
     private bool _isAiming = false;
@@ -33,6 +38,10 @@ public class MovePlayer : MonoBehaviour
 
     AimLaser Laser;
 
+    private void Start()
+    {
+        _inGameActionMap = _input.actions.FindActionMap("InGame");
+    }
 
     //If the player press the button assigned for run, change the bool _isRunning. 
     //If the player release the button , change the bool again.
@@ -53,7 +62,6 @@ public class MovePlayer : MonoBehaviour
     //When the game is play, it's the first thing who is done.
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
-        _input = new CustomInput();
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
@@ -61,26 +69,11 @@ public class MovePlayer : MonoBehaviour
         Laser = GameObject.Find("RangedWeaponSprite").GetComponent<AimLaser>();
     }
 
-
-    //This function is called when the object becomes enabled and active. Enable move _input
-    private void OnEnable() {
-        _input.Move.Enable();
-        _input.Aim.Enable();
-    }
-
-
-    //This function is called when the object becomes disabled. Disable move _input
-    private void OnDisable() {
-        _input.Move.Disable();
-        _input.Aim.Disable();
-    }
-
-
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
-    private void Move() 
+    private void Move()
     {
-        _moveVector = _input.Move.Movement.ReadValue<Vector2>();
-        if(_isSprinting == true && stats.GetStamina() > 0)
+        _moveVector = _input.actions.FindAction("Movement").ReadValue<Vector2>();
+        if (_isSprinting == true && stats.GetStamina() > 0)
         {
             stats.ChangeIsSprinting(true);
             _rb.velocity = _moveVector * moveSpeed * 1.5f;
@@ -122,9 +115,9 @@ public class MovePlayer : MonoBehaviour
 
         Vector2 aimNotActive = new Vector2(0,0);
 
-        if (_input.Aim.Aim.ReadValue<Vector2>() != aimNotActive)
+        if (_input.actions.FindAction("Aim").ReadValue<Vector2>() != aimNotActive)
         {
-            direction = _input.Aim.Aim.ReadValue<Vector2>();
+            direction = _input.actions.FindAction("Aim").ReadValue<Vector2>();
             lastAimDirection = direction;
             
             Cursor.visible = false;
@@ -158,7 +151,6 @@ public class MovePlayer : MonoBehaviour
             }
 
         }
-
 
         if (direction == aimNotActive){
             
@@ -238,7 +230,6 @@ public class MovePlayer : MonoBehaviour
                         _selectedWeapon = _selectedWeapon + 1;
                     }
                 }
-
                 if(inventory.equipementSlots.Last().Item.ToString() == "HolsterTier2 (Holster)")
                 {
                     if(_selectedWeapon == 1)
@@ -525,18 +516,20 @@ public class MovePlayer : MonoBehaviour
         }
     }
 
-
     void Update()
     {
-        WeaponAimDirection();
-
-        FlipPlayer(); 
-        
-        Move();
-        
-        WeaponSelected();
-
-        LaserShoot();
-
+        if (_inGameActionMap.enabled)
+        {
+            Move();
+            WeaponAim();
+            FlipPlayer();
+            WeaponSelected();
+            LaserShoot();
+        }
+        else
+        {
+            _moveVector = Vector2.zero;
+            _rb.velocity = Vector3.zero;
+        }
     }
 }

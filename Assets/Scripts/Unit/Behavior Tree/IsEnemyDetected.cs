@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using static Node_script;
 
@@ -18,7 +16,7 @@ public class IsEnemyDetected : Node
 
     public override NodeState Evaluate()
     {
-        if (_unit.IsEnemyInMyArea() )
+        if (_unit.IsEnemyInMyArea() || _unit.lastPosition != Vector3.zero )
         {
             return NodeState.SUCCESS;
         }

@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using static Node_script;
@@ -22,9 +20,8 @@ public class HasBeenReached : Node
 
     public override NodeState Evaluate()
     {   
-        if ((_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.05f) || (/*_agent.pathStatus == NavMeshPathStatus.PathPartial &&*/ _agent.velocity == Vector3.zero)) 
+        if ((_agent.pathStatus == NavMeshPathStatus.PathComplete && _agent.remainingDistance < 0.05f) || (/*_agent.pathStatus == NavMeshPathStatus.PathPartial &&*/ _agent.velocity.magnitude < 0.01f)) 
         {
-
             _tree.canMove = !_tree.canMove;
 
             if(!_tree.canMove) // Set the wait Time of the unit, so that the unit waits x second

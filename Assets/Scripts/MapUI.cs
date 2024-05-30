@@ -1,43 +1,75 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MapUI : MonoBehaviour
 {
-    public Transform TopRight;
-    public Transform BotLeft;
+    [SerializeField] private PlayerInput _playerInput;
+
+    public Transform topRight;
+    public Transform botLeft;
 
     public Transform UITopRight;
     public Transform UIBotLeft;
 
-    List<GameObject> list = new();
+    List<GameObject> _list = new();
 
-    List<(Transform, Transform)> movingMapElements = new();
+    List<(Transform, Transform)> _movingMapElements = new();
 
     public GameObject prefab;
     public Transform parent;
 
-    Vector3 ratio1;
-    Vector3 ratio2;
+    Vector3 _ratio1;
+    Vector3 _ratio2;
 
-    bool isOpen;
+    bool _isOpen;
 
     public GameObject mapUI;
 
-    public static MapUI instance;
+    public static MapUI Instance;
+
+    public bool isMapOpen = false;
 
     private void Awake()
     {
-        instance = this;
-        ratio1 = BotLeft.transform.position - TopRight.transform.position;
-        ratio2 = UIBotLeft.transform.position - UITopRight.transform.position;
+        Instance = this;
+        _ratio1 = botLeft.transform.position - topRight.transform.position;
+        _ratio2 = UIBotLeft.transform.position - UITopRight.transform.position;
+    }
+
+    /// <summary>
+    /// input action to open and close the map
+    /// </summary>
+    public void OpenCloseMapAction(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            OpenCloseMap();
+        }
     }
 
     // UI button to open or close
     public void OpenCloseMap()
     {
-        mapUI.SetActive(!mapUI.activeInHierarchy);
+        if (_playerInput.actions.FindActionMap("InGame").enabled || _playerInput.actions.FindActionMap("Map").enabled)
+        {
+            mapUI.SetActive(!mapUI.activeInHierarchy);
+            if (mapUI.activeInHierarchy)
+            {
+                isMapOpen = true;
+                _playerInput.actions.FindActionMap("InGame").Disable();
+                _playerInput.actions.FindActionMap("Map").Enable();
+            }
+            else
+            {
+                isMapOpen = false;
+                _playerInput.actions.FindActionMap("Map").Disable();
+                _playerInput.actions.FindActionMap("InGame").Enable();
+            }
+        }
     }
+
 
     // Put fix element on the UI 
     public void SetElementToMap(Vector3 pos, Sprite sp, Color c, float size)
@@ -46,14 +78,14 @@ public class MapUI : MonoBehaviour
 
         Vector3 newPos = Vector3.zero;
 
-        newPos = UIBotLeft.position + (pos - BotLeft.position) * ((UITopRight.position - UIBotLeft.position).magnitude / (TopRight.position - BotLeft.position).magnitude);
+        newPos = UIBotLeft.position + (pos - botLeft.position) * ((UITopRight.position - UIBotLeft.position).magnitude / (topRight.position - botLeft.position).magnitude);
 
         go.GetComponent<Image>().sprite = sp;
         go.GetComponent<Image>().color = c;
 
         go.transform.localScale *= size;
 
-        list.Add(go);
+        _list.Add(go);
 
         go.transform.position = newPos;
     }
@@ -65,18 +97,18 @@ public class MapUI : MonoBehaviour
         go.GetComponent<Image>().sprite = sp;
         go.GetComponent<Image>().color = c;
         go.transform.localScale *= size;
-        movingMapElements.Add((t, go.transform));
+        _movingMapElements.Add((t, go.transform));
     }
 
     // Update all the moving elements
     private void Update()
     {
-        foreach (var t in movingMapElements)
+        foreach (var t in _movingMapElements)
         {
             Vector3 newPos = Vector3.zero;
             Vector3 pos = t.Item1.position;
 
-            newPos = UIBotLeft.position + (pos - BotLeft.position) * ((UITopRight.position - UIBotLeft.position).magnitude / (TopRight.position - BotLeft.position).magnitude);
+            newPos = UIBotLeft.position + (pos - botLeft.position) * ((UITopRight.position - UIBotLeft.position).magnitude / (topRight.position - botLeft.position).magnitude);
 
             t.Item2.position = newPos;
         }

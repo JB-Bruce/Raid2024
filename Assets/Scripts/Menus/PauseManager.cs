@@ -9,26 +9,34 @@ public class PauseManager : MonoBehaviour
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] Image _pauseMenuBackgroundImage;
 
-    [Header("Booleans: ")]
-    public bool isPaused = false;
+    ConditionsManager _conditionsManager;
 
-    private void Start()
+    private void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void Start()
+    {
+        _conditionsManager = ConditionsManager.instance;
     }
 
     private void Update() //Temp Test
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            if (!isPaused)
+            if (!_conditionsManager.IsAnyMenuOpen())
             {
                 PauseGame();
             }
-            else if (isPaused && !SettingsMenu.instance.isInSettings)
+            else if (_conditionsManager.isPaused)
             {
                 UnpauseGame();
             }
@@ -37,7 +45,7 @@ public class PauseManager : MonoBehaviour
 
     private void OnApplicationPause(bool pause) //Pauses the game on Application quit
     {
-        if (pause && !EndMenuManager.instance.gameHasEnded)
+        if (pause && !_conditionsManager.gameHasEnded || !_conditionsManager.hasDied)
         {
             PauseGame();
         }
@@ -45,25 +53,19 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame() //Pauses the game
     {
-        if (!EndMenuManager.instance.gameHasEnded)
-        {
-            _pauseMenu.SetActive(true);
-            _pauseMenuBackgroundImage.enabled = true;
-            isPaused = true;
+        _pauseMenu.SetActive(true);
+        _pauseMenuBackgroundImage.enabled = true;
+        _conditionsManager.isPaused = true;
 
-            Time.timeScale = 0f;
-        }
+        Time.timeScale = 0f;
     }
 
     public void UnpauseGame() //Unpauses the game
     {
-        if (!EndMenuManager.instance.gameHasEnded)
-        {
-            _pauseMenu.SetActive(false);
-            _pauseMenuBackgroundImage.enabled = false;
-            isPaused = false;
+        _pauseMenu.SetActive(false);
+        _pauseMenuBackgroundImage.enabled = false;
+        _conditionsManager.isPaused = false;
 
-            Time.timeScale = 1f;
-        }
+        Time.timeScale = 1f;
     }
 }
