@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 [RequireComponent(typeof(CircleCollider2D))]
 public class POI : MonoBehaviour
@@ -20,12 +18,11 @@ public class POI : MonoBehaviour
     public float minDistancePOI = 0;
     public float maxDistancePOI = 0;
 
+    FactionManager _factionManager;
 
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        _factionManager = FactionManager.Instance;
     }
 
     // Update is called once per frame
@@ -53,8 +50,9 @@ public class POI : MonoBehaviour
         if(faction == ownerFaction) 
         {
             capturePercentage += captureSpeed;
+            Mathf.Clamp(capturePercentage, -100, 120);
         }
-        else if(FactionManager.Instance.GetReputation(ownerFaction, faction) >= FactionManager.Instance.allyReputation && capturePercentage == 100)
+        else if(_factionManager.GetReputation(ownerFaction, faction) >= _factionManager.allyReputation && capturePercentage == 100)
         {
             return;
         }

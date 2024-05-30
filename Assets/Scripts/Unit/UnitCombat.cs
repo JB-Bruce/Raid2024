@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +6,7 @@ public class UnitCombat : MonoBehaviour
     [SerializeField]
     private List<Humanoid> humanoidAround = new();
     Transform _transform;
+    private FactionManager _factionManager;
 
     [Header("Attack Parameters")]
     public bool canAttack = false;
@@ -18,11 +18,8 @@ public class UnitCombat : MonoBehaviour
     private Humanoid _mHumanoid;
 
     public Weapon weapon;
-    private WeaponAttack weaponAttack;
-
-    [Header("Update Parameters")]
-    private int evaluateUpdate = 0;
-    public int jumpUpdate = 2;
+    [HideInInspector]
+    public WeaponAttack weaponAttack;
 
     [Header("Reputation")]
     public float neutralReputation = 0;
@@ -32,7 +29,8 @@ public class UnitCombat : MonoBehaviour
 
     public void Init()
     {
-        weaponAttack = GetComponent<WeaponAttack>();
+        _factionManager = FactionManager.Instance;
+        weaponAttack = GetComponentInChildren<WeaponAttack>();
         _transform = transform;
         circleCollider.radius = viewRange;
         _mHumanoid = GetComponent<Humanoid>();
@@ -40,7 +38,7 @@ public class UnitCombat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<Humanoid>(out Humanoid humanoid)&& !humanoidAround.Contains(humanoid) && humanoid.faction != _mHumanoid.faction)
+        if (collision.TryGetComponent<Humanoid>(out Humanoid humanoid)&& !humanoidAround.Contains(humanoid) && humanoid.faction != _mHumanoid.faction  && !collision.isTrigger)
         {
             humanoidAround.Add(humanoid);
         }
@@ -49,7 +47,7 @@ public class UnitCombat : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Humanoid>(out Humanoid humanoid))
+        if (collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
         {
             humanoidAround.Remove(humanoid);
         }
@@ -73,7 +71,7 @@ public class UnitCombat : MonoBehaviour
 
         for(int i = 0; i < humanoidAround.Count; i++)
         {
-            if (humanoidAround[i] != null && humanoidAround[i].faction != _mHumanoid.faction && FactionManager.Instance.GetReputation(humanoidAround[i].faction, _mHumanoid.faction) < neutralReputation)
+            if (humanoidAround[i] != null && humanoidAround[i].faction != _mHumanoid.faction && _factionManager.GetReputation(humanoidAround[i].faction, _mHumanoid.faction) < neutralReputation)
             {
                 ennemies.Add(humanoidAround[i]);
             }
@@ -94,7 +92,6 @@ public class UnitCombat : MonoBehaviour
         bool _nearestFound = false;
 
         List<Humanoid> ennemies = EnnemiesAround();
-
         for (int i = 0; i < ennemies.Count; i++) 
         {
             float _newDistance = Vector3.Distance(_transform.position, ennemies[i].transform.position);
@@ -102,7 +99,8 @@ public class UnitCombat : MonoBehaviour
             {
                 RaycastHit2D _hit = Physics2D.Raycast(_transform.position, ennemies[i].transform.position - _transform.position, viewRange);
 
-                if (_hit.collider != null && _hit.collider.gameObject == ennemies[i].gameObject)
+
+                if (_hit.collider != null && _hit.collider.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
                 {
                     nearest = i;
                     _distanceToNearest = _newDistance;
@@ -115,6 +113,7 @@ public class UnitCombat : MonoBehaviour
 
         if(_nearestFound) 
         {
+            lastPosition = ennemies[nearest].transform.position;
             return ennemies[nearest];
         }
         return null;
@@ -122,28 +121,9 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
-        evaluateUpdate++;
-
-        if(evaluateUpdate > jumpUpdate) 
-        {
-            evaluateUpdate = 0;
-            nearestEnemy = GetNearrestEnemy();
-            if (nearestEnemy != null)
-            {
-                lastPosition = nearestEnemy.transform.position;
-            }
-        }
-
         if(canAttack && nearestEnemy != null) 
         {
-            weaponAttack.EquipWeapon(this);
-            weaponAttack.UseWeapon(nearestEnemy.transform.position - _transform.position);
-
-                //if(nearestEnemy.TakeDamage(20))
-                //{
-                //    nearestEnemy = null;
-                //    lastPosition = Vector3.zero;
-                //}
+            weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position);
         }
     }
 }
