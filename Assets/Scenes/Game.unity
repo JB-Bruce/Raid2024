@@ -2126,7 +2126,7 @@ MonoBehaviour:
     percentage: 1
   units: []
   surveillancePoints: []
-  maxUnit: 10
+  maxUnit: 30
   maxGuard: 3
   nbrOfDeadUnit: 0
   _unitSpawnRate: 30
