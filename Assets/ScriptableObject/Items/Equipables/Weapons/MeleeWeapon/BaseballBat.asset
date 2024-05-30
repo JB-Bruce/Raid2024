@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: BaseballBat
   m_EditorClassIdentifier: 
   _weight: 0
-  _isStackable: 0
+  _isStackable: 1
   _maxStack: 1
   _name: BaseballBat
-  _itemSprite: {fileID: 0}
+  _itemSprite: {fileID: 15152839121883387, guid: af76cc981723a6a408fb26563270ccff, type: 3}
   _equipementTier: 0
   _damage: 4
   _attackSpeed: 1

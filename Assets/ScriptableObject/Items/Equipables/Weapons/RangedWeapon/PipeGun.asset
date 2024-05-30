@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: PipeGun
   m_EditorClassIdentifier: 
   _weight: 0
-  _isStackable: 0
+  _isStackable: 1
   _maxStack: 1
   _name: PipeGun
-  _itemSprite: {fileID: 0}
+  _itemSprite: {fileID: 8878440565596431901, guid: 0f6ac24e4ed3eba4f8212d4aaf130566, type: 3}
   _equipementTier: 0
   _damage: 10
   _attackSpeed: 1
