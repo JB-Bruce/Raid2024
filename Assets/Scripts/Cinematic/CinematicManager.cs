@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CinematicManager : MonoBehaviour
 {
+    public bool isWritingText;
+
     [Header("Background Images: ")]
     [SerializeField] SpriteRenderer _currentSlide;
     [SerializeField] int _currentSlideIndex = 0;
