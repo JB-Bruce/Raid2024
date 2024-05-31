@@ -12,10 +12,13 @@ public class WeaponAttack : MonoBehaviour
     private float _timer = 0;
     private static readonly Quaternion _zeroRotation = Quaternion.Euler(0, 0, 0);
     private static readonly Quaternion _flipRotation = Quaternion.Euler(180, 0, 0);
+    private static readonly Vector3 _normalScale = new Vector3(0.2f, 0.2f, 0.2f);
+    private static readonly Vector3 _flipScale = new Vector3(-0.2f, 0.2f, 0.2f);
 
     // Cache
     private Weapon _equipedWeapon;
     private GameObject _handWeapon;
+    private Transform _AnimTransform;
     private Animator _animator;
     private RangedWeapon _rangedWeapon;
     private UnitCombat _unitCombat;
@@ -28,11 +31,12 @@ public class WeaponAttack : MonoBehaviour
     private Transform _firePointTransform;
 
 
-    private void Start()
+    public void Init()
     {
         _transform = transform;
         _unitCombat = transform.parent.GetComponent<UnitCombat>();
-        _handWeapon = transform.GetChild(0).gameObject;
+        _AnimTransform = transform.GetChild(0);
+        _handWeapon = _AnimTransform.GetChild(0).GetChild(0).gameObject;
         _handWeaponTransform = _handWeapon.transform;
         _animator = GetComponent<Animator>();
         _handWeaponSpriteRenderer = _handWeapon.GetComponent<SpriteRenderer>();
@@ -40,24 +44,50 @@ public class WeaponAttack : MonoBehaviour
         _leftHandTransform = leftHand.transform;
         _rightHandTransform = rightHand.transform;
 
-        EquipWeapon(_unitCombat.weapon);
+        //EquipWeapon(_unitCombat.weapon);
     }
 
     private void Update()
     {
-        UpdateWeaponRotation();
+            UpdateWeaponRotation();
     }
 
     // Change the local rotation of the weapon according to the rotation of the weapon
     private void UpdateWeaponRotation()
     {
         var rotationZ = _transform.rotation.eulerAngles.z;
-        _handWeaponTransform.localRotation = (rotationZ > 270 || rotationZ < 90) ? _zeroRotation : _flipRotation;
+        
+        if(rotationZ > 270 || rotationZ < 90)
+        {
+            if(_isRangeWeapon) 
+            {
+                _handWeaponTransform.localRotation = _zeroRotation;
+            }
+            else 
+            {
+                _handWeaponTransform.localRotation = _zeroRotation;
+                _AnimTransform.localScale = _normalScale; 
+            }
+
+        }
+        else
+        {
+            if (_isRangeWeapon)
+            {
+                _handWeaponTransform.localRotation = _flipRotation;
+            }
+            else
+            {
+                _handWeaponTransform.localRotation = _flipRotation;
+                _AnimTransform.localScale = _flipScale;
+            }
+        }
     }
 
     // Set all the caracteristique of the weapon
     public void EquipWeapon(Weapon weapon)
     {
+        _unitCombat.weapon = weapon;
         _equipedWeapon = weapon;
         _handWeaponSpriteRenderer.sprite = _equipedWeapon.ItemSprite;
 
@@ -77,17 +107,29 @@ public class WeaponAttack : MonoBehaviour
     // Use the equiped weapon (Attack)
     public void UseWeapon(Vector2 direction)
     {
-        if(_timer < Time.time) 
+        if (_timer < Time.time) 
         {
             _timer = Time.time + _equipedWeapon.AttackSpeed;
 
-            //_animator.Play("Attack");
+            _animator.Play(_equipedWeapon.animAttack, 0, 0);
             if (_isRangeWeapon)
             {
                 FireBullet(direction);
             }
         }
         
+    }
+
+    // Give damage to the nearrest player
+    public void CaCAttack()
+    {
+        Humanoid _enemy = _unitCombat.nearestEnemy;
+
+        if (_enemy != null) 
+        {
+            _enemy.TakeDamage(_equipedWeapon.Damage);
+        }
+
     }
 
     // Instaciate and set a bullet

@@ -10,6 +10,7 @@ public class Weapon : Equipable
     [SerializeField] protected Vector2 _rightHandPos;
     [SerializeField] protected float _rotationRightHand;
     [SerializeField] protected float _rotationLeftHand;
+    public string animAttack;
 
 
     public float Damage { get { return _damage; } }

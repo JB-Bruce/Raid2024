@@ -13,7 +13,8 @@ public class FactionUnitManager : MonoBehaviour
     public Transform parent;
     private float _mapSize;
     public float SpawnDistanceAroundPlayer = 50;
-    public List<DrawUnit> drawUnits = new List<DrawUnit>();
+    public float womenPercentage = 0;
+    public List<DrawWeapon> drawWeapons = new();
 
     [Header("Unit Management")]
     public List<GameObject> units = new List<GameObject>();
@@ -37,6 +38,13 @@ public class FactionUnitManager : MonoBehaviour
 
     private GameManager _gameManager;
     private FactionManager _factionManager;
+
+    [Header("Sprite")]
+    public Sprite menHair;
+    public Sprite womenHair;
+    public Sprite menBody;
+    public Sprite womenBody;
+    public Sprite hipHuman;
 
 
     // Start is called before the first frame update
@@ -69,8 +77,8 @@ public class FactionUnitManager : MonoBehaviour
     // Make spawn a unit
     private void SpawnUnit()
     {
-        GameObject go = Instantiate<GameObject>(DrawUnit(), parent);
-
+        GameObject go = Instantiate<GameObject>(unit, parent);
+        SetUnitSprite(womenPercentage, go);
         indexeur++;
         go.name = faction + indexeur.ToString();
 
@@ -226,31 +234,64 @@ public class FactionUnitManager : MonoBehaviour
         return false;
     }
 
-    // Draw a unit 
-    private GameObject DrawUnit()
+    // Set all the Sprite of a unit Randomly
+    public void SetUnitSprite(float womenRandom, GameObject unit)
     {
-        int total = 0;
-        for (int i = 0; i < drawUnits.Count; i++)
+        WeaponAttack _weaponAttack = unit.transform.GetChild(0).GetComponent<WeaponAttack>();
+        _weaponAttack.Init();
+        _weaponAttack.EquipWeapon(RandomDrawWeapon());
+
+        int random = UnityEngine.Random.Range(0, 100);
+
+        Transform bodyTransform = unit.gameObject.transform.GetChild(1);
+
+        SpriteRenderer body = bodyTransform.GetComponent<SpriteRenderer>();
+        SpriteRenderer hair = bodyTransform.GetChild(0).GetComponent<SpriteRenderer>();
+        SpriteRenderer hip = bodyTransform.GetChild(3).GetComponent<SpriteRenderer>();
+
+        if (random < womenRandom)
         {
-            total += drawUnits[i].percentage;
+            body.sprite = womenBody;
+            hair.sprite = womenHair;
         }
 
-        int random = UnityEngine.Random.Range(0, total+1);
+        else 
+        {
+            body.sprite = menBody;
+            hair.sprite = menHair;
+        }
+        hip.sprite = hipHuman;
+
+    }
+
+    // Draw a random weapon
+    private Weapon RandomDrawWeapon()
+    {
+        int total = 0;
+        for (int i = 0; i < drawWeapons.Count; i++)
+        {
+            total += drawWeapons[i].percentage;
+        }
+
+        int random = UnityEngine.Random.Range(0, total + 1);
         int unitDrop = 0;
 
-        for (int i = 0; i < drawUnits.Count; i++)
+        for (int i = 0; i < drawWeapons.Count; i++)
         {
-            unitDrop += drawUnits[i].percentage;
+            unitDrop += drawWeapons[i].percentage;
 
             if (random <= unitDrop)
             {
-                return drawUnits[i].unit;
+                return drawWeapons[i].weapon;
             }
         }
         return null;
     }
 
 }
+
+
+
 
 // point used by unit for the suveillance
 [System.Serializable]
@@ -260,10 +301,10 @@ public struct SurveillancePoint
     public GameObject unit;
 }
 
-// Contain a unit and is drop percentage
+// Contain the weapon draw percentage
 [System.Serializable]
-public struct DrawUnit
+public struct DrawWeapon
 {
-    public GameObject unit;
+    public Weapon weapon;
     public int percentage;
 }
