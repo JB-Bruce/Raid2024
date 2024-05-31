@@ -502,14 +502,14 @@ public class MovePlayer : MonoBehaviour
             if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "RangedWeapon")
             {
                 meleeWeaponSprite.SetActive(false);
-                rangedWeaponSprite.GetComponent<SpriteRenderer>().sprite = inventory.weaponSlots[_selectedWeapon].Item.ItemSprite.sprite;
+                rangedWeaponSprite.GetComponent<SpriteRenderer>().sprite = inventory.weaponSlots[_selectedWeapon].Item.ItemSprite;
                 rangedWeapon.SetActive(true);
                 rangedWeaponSprite.SetActive(true);
             }
             else if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "MeleeWeapon")
             {
                 rangedWeaponSprite.SetActive(false);
-                meleeWeaponSprite.GetComponent<SpriteRenderer>().sprite = inventory.weaponSlots[_selectedWeapon].Item.ItemSprite.sprite;
+                meleeWeaponSprite.GetComponent<SpriteRenderer>().sprite = inventory.weaponSlots[_selectedWeapon].Item.ItemSprite;
                 meleeWeapon.SetActive(true);
                 meleeWeaponSprite.SetActive(true);
             }
@@ -521,7 +521,7 @@ public class MovePlayer : MonoBehaviour
         if (_inGameActionMap.enabled)
         {
             Move();
-            WeaponAim();
+            WeaponAimDirection();
             FlipPlayer();
             WeaponSelected();
             LaserShoot();
