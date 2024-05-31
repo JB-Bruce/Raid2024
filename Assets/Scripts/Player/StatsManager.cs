@@ -1,10 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StatsManager : MonoBehaviour
 {
+    public static StatsManager instance;
+
+    [SerializeField]
+    private Transform _respawnPosition;
+
     private int health = 100;
     public Image healthImage;
 
@@ -67,7 +71,14 @@ public class StatsManager : MonoBehaviour
 
         if (health == 0)
         {
-
+            //Death
+            AddWater(100);
+            AddFood(100);
+            AddHealth(100);
+            stamina = 50;
+            staminaBar.fillAmount = stamina / 50f;
+            transform.position = _respawnPosition.position;
+            ChangeLifeColor();
         }
     }
 
@@ -161,8 +172,14 @@ public class StatsManager : MonoBehaviour
         RemoveFood();
     }
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
-    
     private void Start() {
         RemoveFood();
         RemoveWater();
@@ -224,30 +241,6 @@ public class StatsManager : MonoBehaviour
         }
 
         _verifSprint = _isSprinting;
-
-
-        /* -----Test for add health, water, food-----
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            AddWater(5);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            AddFood(5);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(25);
-        }
-
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            AddHealth(25);
-        }
-        -------------------------------------------*/
     }
 
 }

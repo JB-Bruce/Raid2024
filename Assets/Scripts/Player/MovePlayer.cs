@@ -422,14 +422,14 @@ public class MovePlayer : MonoBehaviour
                     Vector2 verifDirectionManette = direction*10;
                     if(verifDirectionManette.x > 0.2 || verifDirectionManette.x < -0.2 || verifDirectionManette.y > 0.2 || verifDirectionManette.y < -0.2)
                     {
-                        Debug.Log("Tir 1");
+                        //Shoot with controller
                     }
                 }
                 else
                 {
                     if(direction.x > 1.3 || direction.x < -1.3 || direction.y > 1.3 || direction.y < -1.3)
                     {
-                        Debug.Log("Tir 2");
+                        //Shoot with mouse and keyboard
                     }
                 }
                 

@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -429,7 +430,7 @@ public class Inventory : MonoBehaviour
                     TrySwapItemsInSlots(selectedItemSlot, FindFirstEquipementSlotAvailable(selectedItemSlot.Item));
                 }
             }
-            else if (selectedItemSlot.Item.GetType() == typeof(Consumable))//if the item is consumable
+            else if (selectedItemSlot.Item.GetType().IsSubclassOf(typeof(Consumable)))//if the item is consumable
             {
                 ConsumeItem(selectedItemSlot);
             }
@@ -441,14 +442,15 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void ConsumeItem(ItemSlot itemSlot)
     {
-        Consumable item = (Consumable) itemSlot.Item;
-
-        /* Update the stats of the player HERE
-        
-        Player.food += item.food
-        Player.thirst += item.thirst
-        
-        */ 
+        if (itemSlot.Item is Food food)
+        {
+            StatsManager.instance.AddFood((int)food.FoodAmount);
+            StatsManager.instance.AddWater((int)food.DrinkAmount);
+        }
+        else if (itemSlot.Item is Heal heal)
+        {
+            StatsManager.instance.AddHealth((int)heal.HealAmount);
+        }
 
         itemSlot.UpdateQuantity(itemSlot.Quantity-1);
     }
