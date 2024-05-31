@@ -78,12 +78,16 @@ public class FactionUnitManager : MonoBehaviour
     private void SpawnUnit()
     {
         GameObject go = Instantiate<GameObject>(unit, parent);
+
+        UnitBT unitBT = go.GetComponent<UnitBT>();
+        unitBT.Init();
+
         SetUnitSprite(womenPercentage, go);
         indexeur++;
         go.name = faction + indexeur.ToString();
 
-        UnitBT unitBT = go.GetComponent<UnitBT>();
-        unitBT.Init();
+
+
 
         if(faction == Faction.Bandit) 
         {
@@ -238,7 +242,6 @@ public class FactionUnitManager : MonoBehaviour
     public void SetUnitSprite(float womenRandom, GameObject unit)
     {
         WeaponAttack _weaponAttack = unit.transform.GetChild(0).GetComponent<WeaponAttack>();
-        _weaponAttack.Init();
         _weaponAttack.EquipWeapon(RandomDrawWeapon());
 
         int random = UnityEngine.Random.Range(0, 100);

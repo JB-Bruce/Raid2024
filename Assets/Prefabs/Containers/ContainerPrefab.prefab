@@ -112,8 +112,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5208347390655119281}
   - {fileID: 4349378267657777032}
@@ -167,11 +167,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
+  itemSlots: []
   containerSelectedSprite: {fileID: 6796985238649284364}
+  rerollNumbers: 1
   lootTable: {fileID: 0}
   _items: []
-  _containerRows: 3
-  _containerColumn: 3
+  containerRows: 3
+  containerColumn: 3
   despawnTimer: 0
 --- !u!1 &8882486897249550123
 GameObject:

@@ -2,14 +2,13 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsManager : MonoBehaviour
+public class StatsManager : Humanoid
 {
     public static StatsManager instance;
 
     [SerializeField]
     private Transform _respawnPosition;
 
-    private int health = 100;
     public Image healthImage;
 
     private int hunger = 100;
@@ -29,6 +28,7 @@ public class StatsManager : MonoBehaviour
     private bool _verifSprint;
     private bool _recupStamina;
 
+    /*
     //Change the life amount of the player, and change the color of the life image (depending on the life amount)
     public void TakeDamage(int damage)
     {
@@ -45,31 +45,32 @@ public class StatsManager : MonoBehaviour
         ChangeLifeColor();
         
     }
+    */
 
     //Change the life image color (is called on TakeDamage())
     public void ChangeLifeColor()
     {
-        if (health <= 100 && health >= 76)
+        if (life <= 100 && life >= 76)
         {
             healthImage.color = Color.white;
         }
 
-        if (health <= 75 && health >= 51)
+        if (life <= 75 && life >= 51)
         {
             healthImage.color = Color.yellow;
         }
 
-        if (health <= 50 && health >= 26)
+        if (life <= 50 && life >= 26)
         {
             healthImage.color = new Color(1.0f,0.5f,0.0f);
         }
 
-        if (health <= 25 && health >= 1)
+        if (life <= 25 && life >= 1)
         {
             healthImage.color = Color.red;
         }
 
-        if (health == 0)
+        if (life <= 0)
         {
             //Death
             AddWater(100);
@@ -85,13 +86,13 @@ public class StatsManager : MonoBehaviour
     //Call this function when you want to heal the player. Change the color of the life image (depending on the life amount).
     public void AddHealth(int healthAdd)
     {
-        if (health + healthAdd >= 100)
+        if (life + healthAdd >= 100)
         {
-            health = 100;
+            life = 100;
         }
         else
         {
-            health += healthAdd;
+            life += healthAdd;
         }
 
         ChangeLifeColor();
