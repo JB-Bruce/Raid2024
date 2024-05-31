@@ -16,6 +16,7 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 1
   _name: Chestplate
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: 6fea79a0a0f8de14590f06cb8e131cb6, type: 3}
   _equipementTier: 0
   _protection: 10

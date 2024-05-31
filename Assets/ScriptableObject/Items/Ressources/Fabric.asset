@@ -17,4 +17,4 @@ MonoBehaviour:
   _maxStack: 99
   _name: Fabric
   _description: 
-  _itemSprite: {fileID: 0}
+  _itemSprite: {fileID: 21300000, guid: 9f9ee8f3baf80d0499369f7bf9e8e5b0, type: 3}

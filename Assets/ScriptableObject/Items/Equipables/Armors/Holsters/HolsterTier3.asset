@@ -16,7 +16,8 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 1
   _name: Holster
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: f9ebcf05f1f99ea4999f50335b03b73c, type: 3}
   _equipementTier: 0
   _protection: 0
   _hoslterTier: 3

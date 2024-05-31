@@ -16,6 +16,7 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: TinCan
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: b1a958143406e484f85e9570ec7335a2, type: 3}
   _foodAmount: 50
   _drinkAmount: 10
