@@ -16,4 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Wood
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: 75a7b2ca0b1a7b3429162285ed962062, type: 3}

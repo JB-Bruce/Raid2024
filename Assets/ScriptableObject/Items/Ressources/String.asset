@@ -16,4 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: String
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: 969bd7c9f443c014881825a171228930, type: 3}

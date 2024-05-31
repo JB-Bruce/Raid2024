@@ -16,6 +16,7 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: WaterBottle
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: 7479ec5458ce44f418b627fe2219a164, type: 3}
   _foodAmount: 0
   _drinkAmount: 50
