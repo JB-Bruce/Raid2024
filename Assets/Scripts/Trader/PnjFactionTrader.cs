@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FactionTrader : MonoBehaviour
+public class PnjFactionTrader : MonoBehaviour
 {
     [SerializeField]
     private List<TradeData> _trades = new();

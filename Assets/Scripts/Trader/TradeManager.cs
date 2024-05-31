@@ -153,12 +153,12 @@ public class TradeManager : MonoBehaviour
 public struct TradeData
 {
     public Item tradeItem;
-    public List<ItemToTradeData> itemsToTrade;
+    public List<ItemWithQuantity> itemsToTrade;
 }
 
 [System.Serializable]
-public struct ItemToTradeData
+public struct ItemWithQuantity
 {
-    public Item tradeItem;
+    public Item item;
     public int quantityNeed;
 }
