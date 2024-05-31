@@ -416,7 +416,8 @@ MonoBehaviour:
   _quantityText: {fileID: 6868731068096860918}
   _itemSprite: {fileID: 6178372491762091074}
   _itemSlotSprite: {fileID: 3455114064871922765}
-  _itemSelectedSprite: {fileID: 8267340070962150607}
+  itemSelectedSprite: {fileID: 8267340070962150607}
+  _inventory: {fileID: 0}
 --- !u!114 &1267511212548363560
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,21 +13,8 @@ MonoBehaviour:
   m_Name: LootTable
   m_EditorClassIdentifier: 
   _loots:
-  - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-    dropRate: 50
+  - item: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    dropRate: 100
     dropNumber:
-    - amount: 3
-      pourcentage: 50
-    - amount: 6
-      pourcentage: 30
-    - amount: 9
-      pourcentage: 20
-  - item: {fileID: 11400000, guid: b2d4f5c22bb3403498fc5fcfde1c517f, type: 2}
-    dropRate: 50
-    dropNumber:
-    - amount: 2
-      pourcentage: 50
-    - amount: 4
-      pourcentage: 30
-    - amount: 6
-      pourcentage: 20
+    - amount: 1
+      pourcentage: 100

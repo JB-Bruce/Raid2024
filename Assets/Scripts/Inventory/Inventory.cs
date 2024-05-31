@@ -75,6 +75,8 @@ public class Inventory : MonoBehaviour
 
     private bool _isMoving = false;
     private Vector2 _moveDirection = Vector2.zero;
+
+    [SerializeField]
     private MovePlayer _player;
 
     private void Awake()
@@ -102,11 +104,9 @@ public class Inventory : MonoBehaviour
         CreateWeaponSlots();
 
         //Show the weapons in game
-        _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
+        equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(false);
         _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
         weaponSlots[0].GetSelected(true);
-        
-        _player = GameObject.Find("Player").GetComponent<MovePlayer>();
     }
 
     private void Update()
@@ -198,7 +198,7 @@ public class Inventory : MonoBehaviour
                 
                 weaponSlots[actualWeapon].GetSelected(false);
 
-                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(true);
+                equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(true);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
             }
             else//Show the weapons in game (change position and hide the holster)
@@ -208,12 +208,8 @@ public class Inventory : MonoBehaviour
                 _playerInput.actions.FindActionMap("InGame").Enable();
                 
                 weaponSlots[actualWeapon].GetSelected(true);
-                
-                if (selectedItemSlot != null)
-                {
-                    selectedItemSlot.GetSelected(false);
-                }
-                _equipementSlots[_equipementSlots.Count - 1].gameObject.SetActive(false);
+
+                equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(false);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
                 if (currentContainer != null)
                 {
@@ -231,10 +227,11 @@ public class Inventory : MonoBehaviour
     {
         isHalfInvenoryOpen = state;
         _itemSlotsGameObject.SetActive(isHalfInvenoryOpen);
-
+        int actualWeapon = _player.GetSelectedWeapon();
         if (isHalfInvenoryOpen)//Hides the weapon slots
         {
             Cursor.visible = true;
+            weaponSlots[actualWeapon].GetSelected(false);
             _weaponSlotsGameObject.SetActive(false);
             _itemSlotsGameObject.transform.position = _itemSlotsPosInTrade.position;
         }
@@ -242,12 +239,8 @@ public class Inventory : MonoBehaviour
         {
             Cursor.visible = false;
             _weaponSlotsGameObject.SetActive(true);
+            weaponSlots[actualWeapon].GetSelected(true);
             _itemSlotsGameObject.transform.position = _itemSlotsPosInInventory.position;
-
-            if (selectedItemSlot != null)
-            {
-                selectedItemSlot.GetSelected(false);
-            }
         }
     }
 
@@ -415,7 +408,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void DecideHowToUseItem()
     {
-        if (!_itemSlots.Contains(selectedItemSlot) && !_weaponSlots.Contains(selectedItemSlot) && !_equipementSlots.Contains(selectedItemSlot))
+        if (!_itemSlots.Contains(selectedItemSlot) && !weaponSlots.Contains(selectedItemSlot) && !equipementSlots.Contains(selectedItemSlot))
         {
             TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
         }
