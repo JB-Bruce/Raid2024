@@ -13,6 +13,8 @@ public class FactionManager : MonoBehaviour
     public float neutralReputation = -1;
     public float allyReputation = 1;
 
+
+
     private void Awake()
     {
         if (Instance == null)
@@ -114,8 +116,6 @@ public class FactionManager : MonoBehaviour
         return null;
         
     }
-
-
 }
 
 

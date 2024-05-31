@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7bfa68cb3b94b114ea9d338b859e9ad6
+guid: 75a5271ffe4f1c2499add2108131cd30
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Utopistes_Hair_H_0
+      name: Intellectuel_Tenue_F_0
       rect:
         serializedVersion: 2
-        x: 198
-        y: 387
-        width: 134
-        height: 112
+        x: 222
+        y: 128
+        width: 87
+        height: 65
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a9a950deb986d144b52176ab56d5208
-      internalID: 535702880
+      spriteID: d64416f27cf93d84490d2d60524c7d2f
+      internalID: -140732577
       vertices: []
       indices: 
       edges: []
@@ -141,7 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Utopistes_Hair_H_0: 535702880
+      Intellectuel_Tenue_F_0: -140732577
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

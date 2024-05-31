@@ -139,11 +139,11 @@ public class UnitBT : Humanoid
     // Make unit see in the right direction
     private void UnitBodyRotation()
     {
-        if (_agent.velocity.x < 0.05f && body.transform.localScale != _flippedScale)
+        if (_agent.velocity.x < -0.1 && body.transform.localScale != _flippedScale)
         {
             body.transform.localScale = _flippedScale;
         }
-        else if (_agent.velocity.x > 0.05f && body.transform.localScale != _originalScale)
+        else if (_agent.velocity.x > 0.1f && body.transform.localScale != _originalScale)
         {
             body.transform.localScale = _originalScale;
         }
@@ -160,7 +160,7 @@ public class UnitBT : Humanoid
             _weaponTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
 
-        else if (Mathf.Abs(_agent.velocity.x) > 0.01 || Mathf.Abs(_agent.velocity.y) > 0.01)
+        else if (Mathf.Abs(_agent.velocity.x) > 0.03 || Mathf.Abs(_agent.velocity.y) > 0.03)
         {
             float angle = Mathf.Atan2(_agent.velocity.y, _agent.velocity.x) * Mathf.Rad2Deg;
             _weaponTransform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));

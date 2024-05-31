@@ -218,10 +218,11 @@ MonoBehaviour:
   unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
-  drawUnits:
-  - unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
-    percentage: 1
-  - unit: {fileID: 8334718818371835372, guid: 10a683acc3f0bd44daf5920a7a1bf9cf, type: 3}
+  womenPercentage: 50
+  drawWeapons:
+  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    percentage: 5
+  - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
     percentage: 1
   units: []
   surveillancePoints:
@@ -238,6 +239,11 @@ MonoBehaviour:
   maxDistance: 50
   maxUnitPerPOI: 5
   maxUnitOnPOI: 10
+  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  menBody: {fileID: -977850549, guid: fe9aa5463f61df14d8dbb6ba8affebd6, type: 3}
+  womenBody: {fileID: -1447580690, guid: ca87692c56686de428d319ed182f1d7c, type: 3}
+  hipHuman: {fileID: -676421372, guid: c98ac555585f9874b95d2fc6aca61259, type: 3}
 --- !u!4 &324183688
 Transform:
   m_ObjectHideFlags: 0
@@ -776,10 +782,11 @@ MonoBehaviour:
   unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
-  drawUnits:
-  - unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
+  womenPercentage: 50
+  drawWeapons:
+  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
     percentage: 1
-  - unit: {fileID: 8334718818371835372, guid: 10a683acc3f0bd44daf5920a7a1bf9cf, type: 3}
+  - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
     percentage: 5
   units: []
   surveillancePoints:
@@ -796,6 +803,11 @@ MonoBehaviour:
   maxDistance: 50
   maxUnitPerPOI: 5
   maxUnitOnPOI: 10
+  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  menBody: {fileID: -1202468526, guid: 2ae2510b4b143814cb617f417445b178, type: 3}
+  womenBody: {fileID: 1678692614, guid: f3cedeb0c95d5ae47b08f69190d565d6, type: 3}
+  hipHuman: {fileID: -1821809104, guid: f4e91cedffa5d8140a3134daa179623f, type: 3}
 --- !u!4 &714689134
 Transform:
   m_ObjectHideFlags: 0
@@ -1055,11 +1067,12 @@ MonoBehaviour:
   unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
-  drawUnits:
-  - unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
-    percentage: 5
-  - unit: {fileID: 8334718818371835372, guid: 10a683acc3f0bd44daf5920a7a1bf9cf, type: 3}
-    percentage: 1
+  womenPercentage: 30
+  drawWeapons:
+  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    percentage: 8
+  - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    percentage: 2
   units: []
   surveillancePoints:
   - point: {fileID: 1244751801}
@@ -1075,6 +1088,11 @@ MonoBehaviour:
   maxDistance: 50
   maxUnitPerPOI: 5
   maxUnitOnPOI: 10
+  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  menBody: {fileID: 1599616915, guid: f32bd40b4c97a4443ab95e0d60cf8d64, type: 3}
+  womenBody: {fileID: 677454265, guid: f20724d9ec51ded459c2038be787cc96, type: 3}
+  hipHuman: {fileID: 1281644541, guid: c53e9608e2974fd41a09d588e25a23b3, type: 3}
 --- !u!4 &927730606
 Transform:
   m_ObjectHideFlags: 0
@@ -1156,11 +1174,12 @@ MonoBehaviour:
   unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 50
-  drawUnits:
-  - unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
+  womenPercentage: 70
+  drawWeapons:
+  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    percentage: 3
+  - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
     percentage: 2
-  - unit: {fileID: 8334718818371835372, guid: 10a683acc3f0bd44daf5920a7a1bf9cf, type: 3}
-    percentage: 1
   units: []
   surveillancePoints:
   - point: {fileID: 1180909377}
@@ -1176,6 +1195,11 @@ MonoBehaviour:
   maxDistance: 50
   maxUnitPerPOI: 5
   maxUnitOnPOI: 10
+  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  menBody: {fileID: 1477673848, guid: 6bf2ae8869dda1f4c8ed6c14b15e84da, type: 3}
+  womenBody: {fileID: -763562658, guid: c2a51551c90926441b3adff0ff0634af, type: 3}
+  hipHuman: {fileID: -140732577, guid: 75a5271ffe4f1c2499add2108131cd30, type: 3}
 --- !u!4 &1000456507
 Transform:
   m_ObjectHideFlags: 0
@@ -2118,12 +2142,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   faction: 5
-  unit: {fileID: 8334718818371835372, guid: 10a683acc3f0bd44daf5920a7a1bf9cf, type: 3}
+  unit: {fileID: 8334718818371835372, guid: 24b7693ad422b2e45a8f1bda8891341c, type: 3}
   parent: {fileID: 995308350}
   SpawnDistanceAroundPlayer: 30
-  drawUnits:
-  - unit: {fileID: 8334718818371835372, guid: 10a683acc3f0bd44daf5920a7a1bf9cf, type: 3}
+  womenPercentage: 10
+  drawWeapons:
+  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
     percentage: 1
+  - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    percentage: 9
   units: []
   surveillancePoints: []
   maxUnit: 30
@@ -2135,6 +2162,11 @@ MonoBehaviour:
   maxDistance: 0
   maxUnitPerPOI: 5
   maxUnitOnPOI: 10
+  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  menBody: {fileID: -622678760, guid: b8489e5742eb8cf45a8e451fc21c0a22, type: 3}
+  womenBody: {fileID: 1229961540, guid: 41a2605694b578d48b6925c55c4284a2, type: 3}
+  hipHuman: {fileID: -2095604073, guid: 88e146a23dcd5bd4b871950553bd6ec8, type: 3}
 --- !u!1 &1884218550
 GameObject:
   m_ObjectHideFlags: 0
