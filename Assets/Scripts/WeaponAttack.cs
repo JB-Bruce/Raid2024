@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WeaponAttack : MonoBehaviour
 {
@@ -17,43 +18,54 @@ public class WeaponAttack : MonoBehaviour
 
     // Cache
     private Weapon _equipedWeapon;
+
+
     private GameObject _handWeapon;
+
+    [SerializeField]
     private Transform _AnimTransform;
     private Animator _animator;
     private RangedWeapon _rangedWeapon;
     private UnitCombat _unitCombat;
+
+    [SerializeField]
     private SpriteRenderer _handWeaponSpriteRenderer;
 
+    [SerializeField]
     private Transform _transform;
+
+    [SerializeField]
     private Transform _handWeaponTransform;
+
+    [SerializeField]
     private Transform _leftHandTransform;
+
+    [SerializeField]
     private Transform _rightHandTransform;
+
+    [SerializeField]
     private Transform _firePointTransform;
 
+    public UnityEvent<Weapon> weaponChange = new UnityEvent<Weapon>();
+
+    private Camera _camera;
 
     public void Init()
     {
-        _transform = transform;
         _unitCombat = transform.parent.GetComponent<UnitCombat>();
-        _AnimTransform = transform.GetChild(0);
-        _handWeapon = _AnimTransform.GetChild(0).GetChild(0).gameObject;
-        _handWeaponTransform = _handWeapon.transform;
         _animator = GetComponent<Animator>();
-        _handWeaponSpriteRenderer = _handWeapon.GetComponent<SpriteRenderer>();
-        _firePointTransform = firePoint.transform;
-        _leftHandTransform = leftHand.transform;
-        _rightHandTransform = rightHand.transform;
+        _camera = Camera.main;
 
         //EquipWeapon(_unitCombat.weapon);
     }
 
     private void Update()
     {
-            UpdateWeaponRotation();
+        UpdateWeaponRotation();
     }
 
     // Change the local rotation of the weapon according to the rotation of the weapon
-    private void UpdateWeaponRotation()
+    public void UpdateWeaponRotation()
     {
         var rotationZ = _transform.rotation.eulerAngles.z;
         
@@ -63,7 +75,7 @@ public class WeaponAttack : MonoBehaviour
             {
                 _handWeaponTransform.localRotation = _zeroRotation;
             }
-            else 
+            else
             {
                 _handWeaponTransform.localRotation = _zeroRotation;
                 _AnimTransform.localScale = _normalScale; 
@@ -87,9 +99,10 @@ public class WeaponAttack : MonoBehaviour
     // Set all the caracteristique of the weapon
     public void EquipWeapon(Weapon weapon)
     {
-        _unitCombat.weapon = weapon;
         _equipedWeapon = weapon;
+        weaponChange.Invoke(_equipedWeapon);
         _handWeaponSpriteRenderer.sprite = _equipedWeapon.ItemSprite;
+        _AnimTransform.localScale = _normalScale;
 
         _rightHandTransform.localPosition = new Vector3(weapon.RightHand.x, weapon.RightHand.y, 0);
         _rightHandTransform.localRotation = Quaternion.Euler(0, 0, weapon.RotationRightHand);
@@ -99,7 +112,7 @@ public class WeaponAttack : MonoBehaviour
         _isRangeWeapon = weapon is RangedWeapon;
         if (_isRangeWeapon)
         {
-            _rangedWeapon = _unitCombat.weapon as RangedWeapon;
+            _rangedWeapon = _equipedWeapon as RangedWeapon;
             _firePointTransform.localPosition = _rangedWeapon.FirePoint;
         }
     }
@@ -123,13 +136,29 @@ public class WeaponAttack : MonoBehaviour
     // Give damage to the nearrest player
     public void CaCAttack()
     {
-        Humanoid _enemy = _unitCombat.nearestEnemy;
+        Humanoid _enemy = _unitCombat != null ? _unitCombat.nearestEnemy : GetFrontEnemy();
 
         if (_enemy != null) 
         {
             _enemy.TakeDamage(_equipedWeapon.Damage);
         }
 
+    }
+
+    //Get the enemy front of the unit
+    private Humanoid GetFrontEnemy()
+    {
+        Vector3 direction = -(_transform.position - _camera.ScreenToWorldPoint(Input.mousePosition)).normalized;
+
+        RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, direction, _equipedWeapon.AttackRange);
+
+        Debug.DrawRay(_transform.position, direction * 20, Color.black, 0.1f);
+
+        if(_hit.collider != null && _hit.collider.TryGetComponent<Humanoid>(out Humanoid humanoid))
+        {
+            return humanoid;
+        }
+        return null;
     }
 
     // Instaciate and set a bullet

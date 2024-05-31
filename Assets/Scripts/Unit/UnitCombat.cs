@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -31,6 +32,8 @@ public class UnitCombat : MonoBehaviour
     {
         _factionManager = FactionManager.Instance;
         weaponAttack = GetComponentInChildren<WeaponAttack>();
+
+        weaponAttack.weaponChange.AddListener(ChangeWeapon);
         _transform = transform;
         circleCollider.radius = viewRange;
         _mHumanoid = GetComponent<Humanoid>();
@@ -119,11 +122,18 @@ public class UnitCombat : MonoBehaviour
         return null;
     }
 
+    // change the weapon
+    private void ChangeWeapon(Weapon newWeapon)
+    {
+        weapon = newWeapon;
+    }
+
     private void Update()
     {
         if(canAttack && nearestEnemy != null) 
         {
             weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position);
         }
+        //weaponAttack.UpdateWeaponRotation();
     }
 }

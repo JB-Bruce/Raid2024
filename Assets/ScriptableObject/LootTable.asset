@@ -14,7 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loots:
   - item: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-    dropRate: 100
+    dropRate: 50
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    dropRate: 25
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: 66edff851a9043f4c8a93e530331abb6, type: 2}
+    dropRate: 25
     dropNumber:
     - amount: 1
       pourcentage: 100

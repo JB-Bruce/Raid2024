@@ -17,6 +17,7 @@ public class UnitBT : Humanoid
     private NavMeshAgent _agent;
     private Selector _selectorRoot;
     private UnitMovement _unitMove;
+    [SerializeField]
     private GameObject _weapon;
     private UnitCombat _unitCombat;
     private Transform _transform;
@@ -37,10 +38,12 @@ public class UnitBT : Humanoid
     {
         _transform = transform;
         _unitCombat = GetComponent<UnitCombat>();
-        _weapon = _transform.GetChild(0).gameObject;
+        //_weapon = _transform.GetChild(0).gameObject;
         _unitMove = GetComponent<UnitMovement>();
         _unitMove.Init();
         _unitCombat.Init();
+        _unitCombat.weaponAttack.Init();
+
 
         _weaponTransform = _weapon.transform;
         _weaponAttackTransform = _unitCombat.weaponAttack.transform;

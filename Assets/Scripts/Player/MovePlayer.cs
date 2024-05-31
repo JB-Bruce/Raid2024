@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class MovePlayer : MonoBehaviour
 {
-    public GameObject rangedWeapon;
-    public GameObject rangedWeaponSprite;
+    [SerializeField]
+    private WeaponAttack _weaponAttack;
 
-    public GameObject meleeWeapon;
+    [SerializeField]
+    private GameObject _weaponGameObject;
     public GameObject meleeWeaponSprite;
     [SerializeField]
     private PlayerInput _input;
@@ -23,7 +24,7 @@ public class MovePlayer : MonoBehaviour
     private bool _isSprinting = false;
     private bool _isAiming = false;
     private bool _mouseActive = true;
-    private bool _tryToHit = true;
+    private bool _tryToHit = false;
     public float moveSpeed = 7f;
     private int _selectedWeapon = 0;
 
@@ -32,15 +33,21 @@ public class MovePlayer : MonoBehaviour
     Vector3 mousePosition;
     Vector3 lastMousePosition;
 
+    [SerializeField]
+    LineRenderer _lineRenderer;
 
     StatsManager stats;
     Inventory inventory;
 
+    [SerializeField]
     AimLaser Laser;
 
+    private static readonly Quaternion _normalRotation = new Quaternion(0,0,0,0);
+    private static readonly Quaternion _flipRotation = new Quaternion(0, 180, 0, 0);
     private void Start()
     {
         _inGameActionMap = _input.actions.FindActionMap("InGame");
+        _weaponAttack.Init();
     }
 
     //If the player press the button assigned for run, change the bool _isRunning. 
@@ -63,10 +70,9 @@ public class MovePlayer : MonoBehaviour
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
         _rb = GetComponent<Rigidbody2D>();
-        _sprite = GetComponent<SpriteRenderer>();
+        _sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
-        Laser = GameObject.Find("RangedWeaponSprite").GetComponent<AimLaser>();
     }
 
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
@@ -92,11 +98,11 @@ public class MovePlayer : MonoBehaviour
     {
         if (direction.x < 0)
         {
-            _sprite.flipX = true;
+            _sprite.transform.rotation = _flipRotation;
         }
         else
         {
-            _sprite.flipX = false;
+            _sprite.transform.rotation = _normalRotation;
         }
     }
 
@@ -130,20 +136,10 @@ public class MovePlayer : MonoBehaviour
                 if(inventory.weaponSlots[_selectedWeapon].Item != null)
                 {
                     mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "RangedWeapon")
-                    {
-                        direction = new Vector2(
-                        mousePosition.x - rangedWeapon.transform.position.x,
-                        mousePosition.y - rangedWeapon.transform.position.y
-                        );
-                    }
-                    else if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "MeleeWeapon")
-                    {
-                        direction = new Vector2(
-                        mousePosition.x - meleeWeapon.transform.position.x,
-                        mousePosition.y - meleeWeapon.transform.position.y
-                        );
-                    }
+                    direction = new Vector2(
+                    mousePosition.x - _weaponGameObject.transform.position.x,
+                    mousePosition.y - _weaponGameObject.transform.position.y
+                    );
 
                 }
                 
@@ -160,19 +156,12 @@ public class MovePlayer : MonoBehaviour
 
         if(inventory.weaponSlots[_selectedWeapon].Item != null)
         {
-            if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "RangedWeapon")
-            {
-                rangedWeapon.transform.up = direction;
-                Vector3 angle = new Vector3(0,0,90);
-                rangedWeapon.transform.Rotate(-angle);
-            }
-            else if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "MeleeWeapon")
-            {
-                meleeWeapon.transform.up = direction;
-                Vector3 angle = new Vector3(0,0,90);
-                meleeWeapon.transform.Rotate(-angle);
-            }
+            //_weaponGameObject.transform.forward = direction;
+
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            _weaponGameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
+        
         
     }
 
@@ -414,22 +403,25 @@ public class MovePlayer : MonoBehaviour
     {
         if(context.started && !_tryToHit)
         {
-            _tryToHit = true;
+            
             if(_isAiming)
             {
-                if(_mouseActive == false)
+                _tryToHit = true;
+                if (_mouseActive == false)
                 {
                     Vector2 verifDirectionManette = direction*10;
                     if(verifDirectionManette.x > 0.2 || verifDirectionManette.x < -0.2 || verifDirectionManette.y > 0.2 || verifDirectionManette.y < -0.2)
                     {
-                        Debug.Log("Tir 1");
+                        //Shoot with controller
+
                     }
                 }
                 else
                 {
                     if(direction.x > 1.3 || direction.x < -1.3 || direction.y > 1.3 || direction.y < -1.3)
                     {
-                        Debug.Log("Tir 2");
+                        //Shoot with mouse and keyboard
+                        
                     }
                 }
                 
@@ -457,29 +449,29 @@ public class MovePlayer : MonoBehaviour
                 {
                     if(direction.x > 0.2 || direction.x < -0.2 || direction.y > 0.2 || direction.y < -0.2)
                     {
-                        rangedWeaponSprite.GetComponent<LineRenderer>().enabled =true;
+                       _lineRenderer.enabled =true;
                     }
                     else
                     {
-                        rangedWeaponSprite.GetComponent<LineRenderer>().enabled =false;
+                        _lineRenderer.enabled =false;
                     }
                 }
                 else
                 {
                     if(direction.x > 1.3 || direction.x < -1.3 || direction.y > 1.3 || direction.y < -1.3)
                     {
-                        rangedWeaponSprite.GetComponent<LineRenderer>().enabled =true;
+                        _lineRenderer.enabled =true;
                     }
                     else
                     {
-                        rangedWeaponSprite.GetComponent<LineRenderer>().enabled =false;
+                        _lineRenderer.enabled =false;
                     }
                 }
-    
+
             }
             else
             {
-                rangedWeaponSprite.GetComponent<LineRenderer>().enabled =false;
+                _lineRenderer.enabled =false;
             }
             Laser.ShootLaser(direction);
             direction = lastDirection;
@@ -492,26 +484,19 @@ public class MovePlayer : MonoBehaviour
     {
         if(inventory.weaponSlots[_selectedWeapon].Item == null)
         {
-            rangedWeapon.SetActive(false);
-            meleeWeapon.SetActive(false);
-            rangedWeaponSprite.SetActive(false);
-            meleeWeaponSprite.SetActive(false);
+            //_weaponAttack.EquipWeapon(Fist);
         }
         else
         {
-            if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "RangedWeapon")
+            if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
             {
-                meleeWeaponSprite.SetActive(false);
-                rangedWeaponSprite.GetComponent<SpriteRenderer>().sprite = inventory.weaponSlots[_selectedWeapon].Item.ItemSprite;
-                rangedWeapon.SetActive(true);
-                rangedWeaponSprite.SetActive(true);
+                _weaponAttack.EquipWeapon(rangedWeapon);
+                //do laser stuff here
             }
-            else if(inventory.weaponSlots[_selectedWeapon].Item.GetType().Name == "MeleeWeapon")
+            else if(inventory.weaponSlots[_selectedWeapon].Item is MeleeWeapon meleeWeapon)
             {
-                rangedWeaponSprite.SetActive(false);
-                meleeWeaponSprite.GetComponent<SpriteRenderer>().sprite = inventory.weaponSlots[_selectedWeapon].Item.ItemSprite;
-                meleeWeapon.SetActive(true);
-                meleeWeaponSprite.SetActive(true);
+                _weaponAttack.EquipWeapon(meleeWeapon);
+                //stop laser stuff here
             }
         }
     }
@@ -530,6 +515,11 @@ public class MovePlayer : MonoBehaviour
         {
             _moveVector = Vector2.zero;
             _rb.velocity = Vector3.zero;
+        }
+
+        if(_tryToHit && _isAiming)
+        {
+            _weaponAttack.UseWeapon(direction);
         }
     }
 }
