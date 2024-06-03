@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PnjFactionTrader : Interactable
+public class PnjFactionTrader : Pnj
 {
     [SerializeField]
     private List<TradeData> _trades = new();

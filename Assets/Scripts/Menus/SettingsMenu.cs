@@ -17,23 +17,29 @@ public class SettingsMenu : MonoBehaviour
     [Header("Booleans: ")]
     public bool isInSettings;
 
+    public void OpenSettings()
+    {
+        isInSettings = true;
+        settingsMenu.SetActive(true);
+    }
+
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
 
-            transform.parent.GetComponent<Canvas>().sortingOrder = 50;
-            transform.parent.GetComponent<Canvas>().worldCamera = Camera.main;
+            transform.GetComponent<Canvas>().sortingOrder = 50;
+            transform.GetComponent<Canvas>().worldCamera = Camera.main;
 
-            gameObject.SetActive(false);
+            settingsMenu.SetActive(false);
         }
         else
         {
-            Destroy(transform.parent.parent.gameObject);
+            Destroy(transform.parent.gameObject);
         }
         //Keeps the settings and sound managers from being destroyed on scene change
-        DontDestroyOnLoad(transform.parent.parent);
+        DontDestroyOnLoad(transform.parent);
 
         //Links volume sliders to their respective functions
         _mainVolumeSlider.onValueChanged.AddListener(delegate { OnMainVolumeChange(); });
