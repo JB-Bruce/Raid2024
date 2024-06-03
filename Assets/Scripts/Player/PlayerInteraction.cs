@@ -15,6 +15,8 @@ public class PlayerInteraction : MonoBehaviour
 
     public List<Interactable> interactables = new List<Interactable>();
 
+    private Interactable _closestInteractable;
+
     private void Awake()
     {
         if (Instance == null)
@@ -48,17 +50,24 @@ public class PlayerInteraction : MonoBehaviour
         Interactable interactable = GetNearestInteractable();
         if (interactable != null)//if we find the nearest interactable, highlight it
         {
-            if (interactable.GetType() == typeof(Container))
+            if (interactable is Container container)
             {
-                Container container = (Container)interactable;
                 container.containerSelectedSprite.SetActive(true);
+                _closestInteractable = container;
+                return;
             }
-            /*
-            else if (interactable.GetType() == typeof(PNJ))
+            if (interactable.gameObject.TryGetComponent<PnjFactionTrader>(out PnjFactionTrader trader))
             {
-
+                _closestInteractable = trader;
             }
-            */
+            if (interactable.gameObject.TryGetComponent<Pnj>(out Pnj pnj))
+            {
+                _closestInteractable = pnj;
+            }
+        }
+        else
+        {
+            _closestInteractable = null;
         }
     }
 
@@ -103,27 +112,26 @@ public class PlayerInteraction : MonoBehaviour
                 _inventory.OpenFullInventory();
                 return;
             }
-            Interactable interactable = GetNearestInteractable();
-            //PNJ pnj = GetNearestPNJ();
-            //if (pnj != null && container != null)
-            //if (Vector3.Distance(transform.position, pnj.transform.position) < Vector3.Distance(transform.position, container.transform.position))
-            //Open the pnj
-            //else
-            if (interactable != null)//If a container is close, open the inventory and the container
+            GetNearestInteractable();
+            if (_closestInteractable != null)//If a container is close, open the inventory and the container
             {
-                if (interactable.GetType() == typeof(Container))
+                if (_closestInteractable is Container container)
                 {
-                    Container container = (Container) interactable;
                     _inventory.OpenFullInventory();
                     _inventory.currentContainer = container;
                     container.OpenContainer();
+                    return;
                 }
-                /*
-                else if (interactable.GetType() == typeof(PNJ))
+                if (_closestInteractable is PnjFactionTrader trader)
                 {
-                    //Do PNJ stuff here
+                    trader.Trade();
+                    return;
                 }
-                */
+                if (_closestInteractable is Pnj pnj)
+                {
+                    pnj.StartDialogue();
+                    return;
+                }
             }
         }
     }
