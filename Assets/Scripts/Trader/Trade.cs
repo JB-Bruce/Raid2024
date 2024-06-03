@@ -38,14 +38,13 @@ public class Trade : MonoBehaviour
 
         for (int i = 0; i < _currentData.itemsToTrade.Count; i++)
         {
-
-            ItemToTradeData requiredItem = _currentData.itemsToTrade[i];
+            ItemWithQuantity requiredItem = _currentData.itemsToTrade[i];
             GameObject requiredItemGO = Instantiate(_itemRequirePrefab, _itemRequireParent);
             itemRequires.Add(requiredItemGO.GetComponent<ItemRequire>());
 
             int quantityInInventory = _inventory.CountItemInInventory(requiredItem.tradeItem);
 
-            itemRequires[i].itemRequireImage.sprite = requiredItem.tradeItem.ItemSprite;
+            itemRequires[i].itemRequireImage.sprite = requiredItem.item.ItemSprite;
             itemRequires[i].quantityRequire.text = requiredItem.quantityNeed.ToString();
             itemRequires[i].quantityInInventory.text = quantityInInventory.ToString();
 

@@ -1,10 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestPnj : MonoBehaviour
+public class Pnj : MonoBehaviour
 {
     [SerializeField]
-    private DialogueContent dialogueContent;
+    private List<DialogueContent> _dialogues = new();
+
+    [SerializeField]
+    private List<QuestDialogue> _questDialogues = new();
+
+    [SerializeField]
+    private DialogueContent _defaultDialogue = new();
 
     [SerializeField]
     private Sprite _pnjSprite;
@@ -29,6 +35,20 @@ public class TestPnj : MonoBehaviour
     public void StartDialogue()
     {
         _startButton.SetActive(false);
+        List<int> questIndexs = QuestManager.instance.GetCurrentMainQuestActionIndex();
+        DialogueContent dialogueContent = new();
+        foreach (var dialogue in _questDialogues)
+        {
+            if (dialogue.questIndex[0] == questIndexs[0] && dialogue.questIndex[1] == questIndexs[1])
+            {
+                dialogueContent = _dialogues[dialogue.dialogueIndex];
+                break;
+            }
+        }
+        if(dialogueContent.talk == null)
+        {
+            dialogueContent = _defaultDialogue;
+        }
         DialogueManager.instance.StartDialogue(_name, _hideName, _isNameHide, _pnjSprite, dialogueContent, EndDialogue);
     }
 
@@ -42,4 +62,11 @@ public class TestPnj : MonoBehaviour
             print(choices[i] + "\n");
         }
     }
+}
+
+[System.Serializable]
+public struct QuestDialogue
+{
+    public int[] questIndex;
+    public int dialogueIndex;
 }
