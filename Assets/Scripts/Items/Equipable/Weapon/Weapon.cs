@@ -8,6 +8,9 @@ public class Weapon : Equipable
     [SerializeField] protected float _attackRange;
     [SerializeField] protected Vector2 _leftHandPos;
     [SerializeField] protected Vector2 _rightHandPos;
+    [SerializeField] protected float _rotationRightHand;
+    [SerializeField] protected float _rotationLeftHand;
+    public string animAttack;
 
 
     public float Damage { get { return _damage; } }
@@ -15,5 +18,7 @@ public class Weapon : Equipable
     public float AttackRange { get { return _attackRange; } }
     public Vector2 LeftHand => _leftHandPos;
     public Vector2 RightHand =>_rightHandPos;
+    public float RotationRightHand => _rotationRightHand;
+    public float RotationLeftHand => _rotationLeftHand;
 
 }

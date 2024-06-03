@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.Progress;
 
-public class Container : MonoBehaviour
+public class Container : Interactable
 {
     [SerializeField] private GameObject _itemSlotPrefab;
 
@@ -54,7 +54,7 @@ public class Container : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerInteraction.Instance.containers.Add(this);
+            PlayerInteraction.Instance.interactables.Add(this);
         }
     }
 
@@ -66,7 +66,7 @@ public class Container : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             containerSelectedSprite.SetActive(false);
-            PlayerInteraction.Instance.containers.Remove(this);
+            PlayerInteraction.Instance.interactables.Remove(this);
         }
     }
 

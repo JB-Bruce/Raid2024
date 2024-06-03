@@ -17,4 +17,4 @@ MonoBehaviour:
   _maxStack: 99
   _name: Glass
   _description: 
-  _itemSprite: {fileID: 0}
+  _itemSprite: {fileID: 21300000, guid: ab946235742858c44b8dc12d70d18c46, type: 3}

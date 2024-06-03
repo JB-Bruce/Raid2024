@@ -19,8 +19,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     protected Image _itemSlotSprite;
 
     [SerializeField]
-    private GameObject _itemSelectedSprite;
-    
+    public GameObject itemSelectedSprite;
+
+    [SerializeField]
     private Inventory _inventory;
 
     protected bool _isAvailable = true;
@@ -43,7 +44,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 _inventory.selectedItemSlot.GetSelected(false);
             }
             _inventory.selectedItemSlot = this;
-            _itemSelectedSprite.SetActive(true);
+            itemSelectedSprite.SetActive(true);
+            EventSystem.current.SetSelectedGameObject(gameObject);
         }
         else
         {
@@ -51,7 +53,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             {
                 _inventory.selectedItemSlot = null;
             }
-            _itemSelectedSprite.SetActive(false);
+            itemSelectedSprite.SetActive(false);
         }
     }
 
@@ -60,7 +62,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void OnPointerEnter(PointerEventData _)
     {
-        if (_isAvailable && _inventory.isInventoryOpen)
+        if (_isAvailable && (_inventory.isInventoryOpen || _inventory.isHalfInvenoryOpen))
         {
             GetSelected(true);
         }
@@ -68,7 +70,10 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     
     public void OnPointerExit(PointerEventData _) 
     {
-        GetSelected(false);
+        if (_isAvailable && (_inventory.isInventoryOpen || _inventory.isHalfInvenoryOpen))
+        {
+            GetSelected(false);
+        }
     }
 
     /// <summary>

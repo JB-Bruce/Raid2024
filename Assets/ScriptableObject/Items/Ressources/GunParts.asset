@@ -16,4 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: GunParts
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: e612262f9311ef945946105916da79ab, type: 3}

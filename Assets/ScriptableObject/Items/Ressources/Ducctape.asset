@@ -16,4 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Ducctape
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: 4f21ed2dcaaaef64c9e582af939b5488, type: 3}

@@ -16,4 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Metal
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: e42044e9732b877489386df0707c44d4, type: 3}

@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.TextCore;
 
 public class FactionManager : MonoBehaviour
 {
@@ -15,6 +12,8 @@ public class FactionManager : MonoBehaviour
     public float minReputation = -5;
     public float neutralReputation = -1;
     public float allyReputation = 1;
+
+
 
     private void Awake()
     {
@@ -80,16 +79,14 @@ public class FactionManager : MonoBehaviour
     private List<POI> OrderPOIByPriority()
     {
         int priority = 0;
-        int OrderPOI = 0;
         List<POI> orderList = new List<POI>();
 
-        while (OrderPOI != poi.Count)
+        while (orderList.Count != poi.Count)
         {
             for (int i = 0; i < poi.Count; i++)
             {
                 if (poi[i].priority == priority)
                 {
-                    OrderPOI++;
                     orderList.Add(poi[i]);
                 }
             }
@@ -103,7 +100,7 @@ public class FactionManager : MonoBehaviour
         List<POI> canTakePOI = new List<POI>();
         int priority = -1;
 
-        for(int i = poi.Count-1 ; i > 0 ; i--) 
+        for(int i = poi.Count-1 ; i >= 0 ; i--) 
         {
             if (GetReputation(faction.faction, poi[i].ownerFaction) < neutralReputation && poi[i].capturePercentage != 100 && (priority == -1 || priority == poi[i].priority) && !faction.isPOIFull(i) )
             {
@@ -119,7 +116,6 @@ public class FactionManager : MonoBehaviour
         return null;
         
     }
-
 }
 
 
@@ -131,3 +127,5 @@ public struct Reputation
     public Faction faction2;
     [Range(-5,8)] public float reputation;
 }
+
+

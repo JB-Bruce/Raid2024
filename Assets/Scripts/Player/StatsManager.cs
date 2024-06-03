@@ -1,11 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatsManager : MonoBehaviour
+public class StatsManager : Humanoid
 {
-    private int health = 100;
+    public static StatsManager instance;
+
+    [SerializeField]
+    private Transform _respawnPosition;
+
     public Image healthImage;
 
     private int hunger = 100;
@@ -16,6 +19,7 @@ public class StatsManager : MonoBehaviour
 
     private float stamina = 50;
     public Image staminaBar;
+    public Image staminaBorder;
 
     [SerializeField] private float staminaDrainAmount = 10f;
     [SerializeField] private float staminaGainAmount = 5f;
@@ -24,6 +28,7 @@ public class StatsManager : MonoBehaviour
     private bool _verifSprint;
     private bool _recupStamina;
 
+    /*
     //Change the life amount of the player, and change the color of the life image (depending on the life amount)
     public void TakeDamage(int damage)
     {
@@ -40,46 +45,54 @@ public class StatsManager : MonoBehaviour
         ChangeLifeColor();
         
     }
+    */
 
     //Change the life image color (is called on TakeDamage())
     public void ChangeLifeColor()
     {
-        if (health <= 100 && health >= 76)
+        if (life <= 100 && life >= 76)
         {
             healthImage.color = Color.white;
         }
 
-        if (health <= 75 && health >= 51)
+        if (life <= 75 && life >= 51)
         {
             healthImage.color = Color.yellow;
         }
 
-        if (health <= 50 && health >= 26)
+        if (life <= 50 && life >= 26)
         {
             healthImage.color = new Color(1.0f,0.5f,0.0f);
         }
 
-        if (health <= 25 && health >= 1)
+        if (life <= 25 && life >= 1)
         {
             healthImage.color = Color.red;
         }
 
-        if (health == 0)
+        if (life <= 0)
         {
-
+            //Death
+            AddWater(100);
+            AddFood(100);
+            AddHealth(100);
+            stamina = 50;
+            staminaBar.fillAmount = stamina / 50f;
+            transform.position = _respawnPosition.position;
+            ChangeLifeColor();
         }
     }
 
     //Call this function when you want to heal the player. Change the color of the life image (depending on the life amount).
     public void AddHealth(int healthAdd)
     {
-        if (health + healthAdd >= 100)
+        if (life + healthAdd >= 100)
         {
-            health = 100;
+            life = 100;
         }
         else
         {
-            health += healthAdd;
+            life += healthAdd;
         }
 
         ChangeLifeColor();
@@ -160,8 +173,14 @@ public class StatsManager : MonoBehaviour
         RemoveFood();
     }
 
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
-    
     private void Start() {
         RemoveFood();
         RemoveWater();
@@ -211,31 +230,18 @@ public class StatsManager : MonoBehaviour
             }
         }
 
+        if (stamina >=50)
+        {
+            staminaBar.CrossFadeAlpha(0,0.25f,false);
+            staminaBorder.CrossFadeAlpha(0,0.25f,false);
+        }
+        else
+        {
+            staminaBar.CrossFadeAlpha(1,0.1f,false);
+            staminaBorder.CrossFadeAlpha(1,0.1f,false);
+        }
+
         _verifSprint = _isSprinting;
-
-
-        /* -----Test for add health, water, food-----
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            AddWater(5);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Tab))
-        {
-            AddFood(5);
-        }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(25);
-        }
-
-        if(Input.GetKeyDown(KeyCode.N))
-        {
-            AddHealth(25);
-        }
-        -------------------------------------------*/
     }
 
 }

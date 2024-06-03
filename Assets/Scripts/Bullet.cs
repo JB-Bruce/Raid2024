@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -9,12 +7,13 @@ public class Bullet : MonoBehaviour
     private Vector3 _startPosition = Vector3.zero;
     private float _bulletRange = 0;
     private Transform _transform;
+    public float bulletSpeed = 30;
 
     // Set bullet
-    public void SetBullet(float damage, Vector2 velocity, float bulletRange)
+    public void SetBullet(float damage, Vector2 direction, float bulletRange)
     {
         _transform = transform;
-        _velocity = velocity;
+        _velocity = direction * bulletSpeed;
         _startPosition = _transform.position;
         _bulletRange = bulletRange;
         _damage = damage;
@@ -34,6 +33,9 @@ public class Bullet : MonoBehaviour
         if(collision != null && collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
         {
             humanoid.TakeDamage(_damage);
+        }
+        if(!collision.isTrigger) 
+        {
             Destroy(gameObject);
         }
     }

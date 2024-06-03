@@ -62,6 +62,78 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""SelectLeftWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""b7051c6e-cadf-4aa5-a12c-52a179972763"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SelectRightWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""f396c1be-511f-4114-bbae-f8adc59ab7f3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FirstWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""3d42614a-3bac-4678-bd2c-8900b5f6106e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SecondWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb07548e-eb8e-46b8-a845-d027edfccadf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThirdWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""b970a7ca-1fdb-4824-af8f-117aadc12178"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeWeapon"",
+                    ""type"": ""Value"",
+                    ""id"": ""d0b47a5b-daec-465e-9ad9-0d2dcc0c13ca"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""WeaponAim"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfaabe57-1795-4add-9a8a-442347dd7407"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponHit"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2f188dd-0410-4902-820e-3a02ed03f2b9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -340,6 +412,14 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         m_Player_Interract = m_Player.FindAction("Interract", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_Sprint = m_Player.FindAction("Sprint", throwIfNotFound: true);
+        m_Player_SelectLeftWeapon = m_Player.FindAction("SelectLeftWeapon", throwIfNotFound: true);
+        m_Player_SelectRightWeapon = m_Player.FindAction("SelectRightWeapon", throwIfNotFound: true);
+        m_Player_FirstWeapon = m_Player.FindAction("FirstWeapon", throwIfNotFound: true);
+        m_Player_SecondWeapon = m_Player.FindAction("SecondWeapon", throwIfNotFound: true);
+        m_Player_ThirdWeapon = m_Player.FindAction("ThirdWeapon", throwIfNotFound: true);
+        m_Player_ChangeWeapon = m_Player.FindAction("ChangeWeapon", throwIfNotFound: true);
+        m_Player_WeaponAim = m_Player.FindAction("WeaponAim", throwIfNotFound: true);
+        m_Player_WeaponHit = m_Player.FindAction("WeaponHit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -405,6 +485,14 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interract;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_Sprint;
+    private readonly InputAction m_Player_SelectLeftWeapon;
+    private readonly InputAction m_Player_SelectRightWeapon;
+    private readonly InputAction m_Player_FirstWeapon;
+    private readonly InputAction m_Player_SecondWeapon;
+    private readonly InputAction m_Player_ThirdWeapon;
+    private readonly InputAction m_Player_ChangeWeapon;
+    private readonly InputAction m_Player_WeaponAim;
+    private readonly InputAction m_Player_WeaponHit;
     public struct PlayerActions
     {
         private @CustomInput m_Wrapper;
@@ -413,6 +501,14 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         public InputAction @Interract => m_Wrapper.m_Player_Interract;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @Sprint => m_Wrapper.m_Player_Sprint;
+        public InputAction @SelectLeftWeapon => m_Wrapper.m_Player_SelectLeftWeapon;
+        public InputAction @SelectRightWeapon => m_Wrapper.m_Player_SelectRightWeapon;
+        public InputAction @FirstWeapon => m_Wrapper.m_Player_FirstWeapon;
+        public InputAction @SecondWeapon => m_Wrapper.m_Player_SecondWeapon;
+        public InputAction @ThirdWeapon => m_Wrapper.m_Player_ThirdWeapon;
+        public InputAction @ChangeWeapon => m_Wrapper.m_Player_ChangeWeapon;
+        public InputAction @WeaponAim => m_Wrapper.m_Player_WeaponAim;
+        public InputAction @WeaponHit => m_Wrapper.m_Player_WeaponHit;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -434,6 +530,30 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Sprint.started += instance.OnSprint;
             @Sprint.performed += instance.OnSprint;
             @Sprint.canceled += instance.OnSprint;
+            @SelectLeftWeapon.started += instance.OnSelectLeftWeapon;
+            @SelectLeftWeapon.performed += instance.OnSelectLeftWeapon;
+            @SelectLeftWeapon.canceled += instance.OnSelectLeftWeapon;
+            @SelectRightWeapon.started += instance.OnSelectRightWeapon;
+            @SelectRightWeapon.performed += instance.OnSelectRightWeapon;
+            @SelectRightWeapon.canceled += instance.OnSelectRightWeapon;
+            @FirstWeapon.started += instance.OnFirstWeapon;
+            @FirstWeapon.performed += instance.OnFirstWeapon;
+            @FirstWeapon.canceled += instance.OnFirstWeapon;
+            @SecondWeapon.started += instance.OnSecondWeapon;
+            @SecondWeapon.performed += instance.OnSecondWeapon;
+            @SecondWeapon.canceled += instance.OnSecondWeapon;
+            @ThirdWeapon.started += instance.OnThirdWeapon;
+            @ThirdWeapon.performed += instance.OnThirdWeapon;
+            @ThirdWeapon.canceled += instance.OnThirdWeapon;
+            @ChangeWeapon.started += instance.OnChangeWeapon;
+            @ChangeWeapon.performed += instance.OnChangeWeapon;
+            @ChangeWeapon.canceled += instance.OnChangeWeapon;
+            @WeaponAim.started += instance.OnWeaponAim;
+            @WeaponAim.performed += instance.OnWeaponAim;
+            @WeaponAim.canceled += instance.OnWeaponAim;
+            @WeaponHit.started += instance.OnWeaponHit;
+            @WeaponHit.performed += instance.OnWeaponHit;
+            @WeaponHit.canceled += instance.OnWeaponHit;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -450,6 +570,30 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
             @Sprint.started -= instance.OnSprint;
             @Sprint.performed -= instance.OnSprint;
             @Sprint.canceled -= instance.OnSprint;
+            @SelectLeftWeapon.started -= instance.OnSelectLeftWeapon;
+            @SelectLeftWeapon.performed -= instance.OnSelectLeftWeapon;
+            @SelectLeftWeapon.canceled -= instance.OnSelectLeftWeapon;
+            @SelectRightWeapon.started -= instance.OnSelectRightWeapon;
+            @SelectRightWeapon.performed -= instance.OnSelectRightWeapon;
+            @SelectRightWeapon.canceled -= instance.OnSelectRightWeapon;
+            @FirstWeapon.started -= instance.OnFirstWeapon;
+            @FirstWeapon.performed -= instance.OnFirstWeapon;
+            @FirstWeapon.canceled -= instance.OnFirstWeapon;
+            @SecondWeapon.started -= instance.OnSecondWeapon;
+            @SecondWeapon.performed -= instance.OnSecondWeapon;
+            @SecondWeapon.canceled -= instance.OnSecondWeapon;
+            @ThirdWeapon.started -= instance.OnThirdWeapon;
+            @ThirdWeapon.performed -= instance.OnThirdWeapon;
+            @ThirdWeapon.canceled -= instance.OnThirdWeapon;
+            @ChangeWeapon.started -= instance.OnChangeWeapon;
+            @ChangeWeapon.performed -= instance.OnChangeWeapon;
+            @ChangeWeapon.canceled -= instance.OnChangeWeapon;
+            @WeaponAim.started -= instance.OnWeaponAim;
+            @WeaponAim.performed -= instance.OnWeaponAim;
+            @WeaponAim.canceled -= instance.OnWeaponAim;
+            @WeaponHit.started -= instance.OnWeaponHit;
+            @WeaponHit.performed -= instance.OnWeaponHit;
+            @WeaponHit.canceled -= instance.OnWeaponHit;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -473,5 +617,13 @@ public partial class @CustomInput: IInputActionCollection2, IDisposable
         void OnInterract(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
+        void OnSelectLeftWeapon(InputAction.CallbackContext context);
+        void OnSelectRightWeapon(InputAction.CallbackContext context);
+        void OnFirstWeapon(InputAction.CallbackContext context);
+        void OnSecondWeapon(InputAction.CallbackContext context);
+        void OnThirdWeapon(InputAction.CallbackContext context);
+        void OnChangeWeapon(InputAction.CallbackContext context);
+        void OnWeaponAim(InputAction.CallbackContext context);
+        void OnWeaponHit(InputAction.CallbackContext context);
     }
 }
