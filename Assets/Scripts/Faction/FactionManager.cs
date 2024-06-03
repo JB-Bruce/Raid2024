@@ -13,7 +13,7 @@ public class FactionManager : MonoBehaviour
     public float neutralReputation = -1;
     public float allyReputation = 1;
 
-
+    public List<FactionRespawn> factionRespawns = new List<FactionRespawn>();
 
     private void Awake()
     {
@@ -126,6 +126,14 @@ public struct Reputation
     public Faction faction1;
     public Faction faction2;
     [Range(-5,8)] public float reputation;
+}
+
+//Contain the repoawn powition of a faction
+[System.Serializable]
+public struct FactionRespawn
+{
+    public Faction RespawnFaction;
+    public Transform RespawnTransform;
 }
 
 
