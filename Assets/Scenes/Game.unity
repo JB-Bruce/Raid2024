@@ -2038,22 +2038,6 @@ MonoBehaviour:
   restrictedAreas:
   - areaOrigine: {fileID: 2095299423}
     areaRadius: 20
-  - areaOrigine: {fileID: 1907971638}
-    areaRadius: 20
-  - areaOrigine: {fileID: 571472413}
-    areaRadius: 20
-  - areaOrigine: {fileID: 1824223901}
-    areaRadius: 20
-  - areaOrigine: {fileID: 1944190776}
-    areaRadius: 20
-  - areaOrigine: {fileID: 927730606}
-    areaRadius: 50
-  - areaOrigine: {fileID: 714689134}
-    areaRadius: 50
-  - areaOrigine: {fileID: 1000456507}
-    areaRadius: 50
-  - areaOrigine: {fileID: 324183688}
-    areaRadius: 50
   mapSize: 100
 --- !u!4 &1829011806
 Transform:
@@ -2129,6 +2113,12 @@ MonoBehaviour:
   minReputation: -5
   neutralReputation: -1
   allyReputation: 1
+  changeReputationForAllies: 0.1
+  vertices:
+  - {x: 0, y: 50}
+  - {x: 100, y: 0}
+  - {x: 0, y: -50}
+  - {x: -100, y: 0}
 --- !u!114 &1829011808
 MonoBehaviour:
   m_ObjectHideFlags: 0

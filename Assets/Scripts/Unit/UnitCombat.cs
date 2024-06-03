@@ -136,4 +136,10 @@ public class UnitCombat : MonoBehaviour
         }
         //weaponAttack.UpdateWeaponRotation();
     }
+
+    // Get the faction of the owner unit
+    public Faction GetFaction() 
+    {
+        return _mHumanoid.faction;
+    }
 }
