@@ -27,7 +27,7 @@ MonoBehaviour:
   _rotationRightHand: -90
   _rotationLeftHand: 0
   animAttack: FamasShoot
-  _spread: 0
+  _spread: 10
   _maxBullet: 25
   _reloadTime: 1
   _ammoType: 0

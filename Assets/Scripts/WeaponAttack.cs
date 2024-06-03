@@ -127,6 +127,7 @@ public class WeaponAttack : MonoBehaviour
             _animator.Play(_equipedWeapon.animAttack, 0, 0);
             if (_isRangeWeapon)
             {
+                direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread/ 2), _rangedWeapon.Spread / 2));
                 FireBullet(direction);
             }
         }
@@ -140,7 +141,7 @@ public class WeaponAttack : MonoBehaviour
 
         if (_enemy != null) 
         {
-            _enemy.TakeDamage(_equipedWeapon.Damage);
+            _enemy.TakeDamage(_equipedWeapon.Damage, _unitCombat.GetFaction());
         }
 
     }
@@ -166,7 +167,26 @@ public class WeaponAttack : MonoBehaviour
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         GameObject bullet = Instantiate<GameObject>(_rangedWeapon.bullet, _firePointTransform.position, Quaternion.Euler(new Vector3(0, 0, angle)));
-        bullet.GetComponent<Bullet>().SetBullet(_equipedWeapon.Damage, direction.normalized, _equipedWeapon.AttackRange);
+        bullet.GetComponent<Bullet>().SetBullet(_equipedWeapon.Damage, direction.normalized, _equipedWeapon.AttackRange, _unitCombat.GetFaction());
     }
+
+    // Function for rotate a Vector2D
+    Vector2 rotateVector2(Vector2 vec, float angle)
+    {
+
+        const float PI = 3.141592f;
+
+        float dirAngle = Mathf.Atan2(vec.y, vec.x);
+
+        dirAngle *= 180 / PI;
+
+        float newAngle = (dirAngle + angle) * PI / 180;
+
+        Vector2 newDir = new Vector2(Mathf.Cos(newAngle), Mathf.Sin(newAngle));
+
+        return newDir.normalized;
+
+    }
+
 
 }

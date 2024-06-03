@@ -12,8 +12,12 @@ public class FactionManager : MonoBehaviour
     public float minReputation = -5;
     public float neutralReputation = -1;
     public float allyReputation = 1;
+    public float changeReputationForAllies = 0.1f;
+    public Transform[] vertices = new Transform[4];  // Les sommets du losange
 
+    private static readonly List<Faction> _interactibleFaction = new List<Faction>() { Faction.Player, Faction.Survivalist, Faction.Scientist, Faction.Military, Faction.Utopist};
     public List<FactionRespawn> factionRespawns = new List<FactionRespawn>();
+
 
     private void Awake()
     {
@@ -39,7 +43,7 @@ public class FactionManager : MonoBehaviour
 
     // Add the newReputation to the reputation between factions
 
-    public void AddReputation(Faction faction1, Faction faction2, int newReputation)
+    public void AddReputation(Faction faction1, Faction faction2, float newReputation)
     {
         for(int i = 0;i < reputations.Count;i++)
         {
@@ -116,6 +120,71 @@ public class FactionManager : MonoBehaviour
         return null;
         
     }
+
+    // Add Reputation to Allies and remove reputation to the allies of the kill unit's faction
+    public void ChangeAllReputation(Faction killer, Faction kill)
+    {
+        if (kill == Faction.Bandit)
+            return;
+        for(int i = 0 ; i< _interactibleFaction.Count; i++) 
+        {
+            if (kill != _interactibleFaction[i])
+            { 
+                if(GetReputation(kill, _interactibleFaction[i]) >= allyReputation)
+                {
+                    AddReputation(killer, _interactibleFaction[i], -changeReputationForAllies);
+                }
+                else if (GetReputation(kill, _interactibleFaction[i]) < neutralReputation)
+                {
+                    AddReputation(killer, _interactibleFaction[i], changeReputationForAllies);
+                }
+            }
+        }
+    }
+
+    //Is the point in Rhombus
+    public bool IsPointInRhombus(Vector2 point)
+    {
+        return IsPointInTriangle(point, vertices[0].position, vertices[1].position, vertices[2].position) ||
+               IsPointInTriangle(point, vertices[0].position, vertices[2].position, vertices[3].position);
+    }
+
+    // Is the Point in the triangle
+    bool IsPointInTriangle(Vector2 point, Vector2 a, Vector2 b, Vector2 c)
+    {
+        float d1 = Sign(point, a, b);
+        float d2 = Sign(point, b, c);
+        float d3 = Sign(point, c, a);
+
+        bool has_neg = (d1 < 0) || (d2 < 0) || (d3 < 0);
+        bool has_pos = (d1 > 0) || (d2 > 0) || (d3 > 0);
+
+        return !(has_neg && has_pos);
+    }
+
+    // Get the Sign of a triangle
+    float Sign(Vector2 p1, Vector2 p2, Vector2 p3)
+    {
+        return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+    }
+
+    //// Get a random point in a rhombus
+    //public Vector3 GetRandomPointInRhombus()
+    //{
+    //    // Calculate half-diagonals
+    //    float halfDiagonal1 = Vector2.Distance(vertices[0], vertices[2]) / 2f;
+    //    float halfDiagonal2 = Vector2.Distance(vertices[1], vertices[3]) / 2f;
+
+    //    // Generate random coordinates within the rhombus
+    //    float randomX = UnityEngine.Random.Range(-halfDiagonal1, halfDiagonal1);
+    //    float randomZ = UnityEngine.Random.Range(-halfDiagonal2, halfDiagonal2);
+
+    //    // Transform local coordinates to world coordinates
+    //    Vector3 randomPoint = new Vector3(randomX, randomZ);
+
+    //    return randomPoint;
+    //}
+
 }
 
 

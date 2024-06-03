@@ -194,7 +194,8 @@ public class FactionUnitManager : MonoBehaviour
         for (int i = 0; i < _gameManager.restrictedAreas.Count; i++)
         {
             if ((Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius
-                || /*Replace by the player position*/ Vector3.Distance(Vector3.zero, position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) )
+                || /*Replace by the player position*/ Vector3.Distance(new Vector3(100,100,0), position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) 
+                || !_factionManager.IsPointInRhombus(position))
             {
                 return true;
             }
@@ -290,7 +291,6 @@ public class FactionUnitManager : MonoBehaviour
         }
         return null;
     }
-
 }
 
 

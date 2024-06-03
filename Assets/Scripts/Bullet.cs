@@ -8,15 +8,17 @@ public class Bullet : MonoBehaviour
     private float _bulletRange = 0;
     private Transform _transform;
     public float bulletSpeed = 30;
+    private Faction _ownerFaction;
 
     // Set bullet
-    public void SetBullet(float damage, Vector2 direction, float bulletRange)
+    public void SetBullet(float damage, Vector2 direction, float bulletRange, Faction _faction)
     {
         _transform = transform;
         _velocity = direction * bulletSpeed;
         _startPosition = _transform.position;
         _bulletRange = bulletRange;
         _damage = damage;
+        _ownerFaction = _faction;
     }
 
     private void Update()
@@ -32,7 +34,7 @@ public class Bullet : MonoBehaviour
     {
         if(collision != null && collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
         {
-            humanoid.TakeDamage(_damage);
+            humanoid.TakeDamage(_damage, _ownerFaction);
         }
         if(!collision.isTrigger) 
         {
@@ -40,3 +42,4 @@ public class Bullet : MonoBehaviour
         }
     }
 }
+
