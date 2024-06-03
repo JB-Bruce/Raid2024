@@ -5,6 +5,9 @@ using UnityEngine;
 public class Quest
 {
     [SerializeField]
+    private string _name;
+
+    [SerializeField]
     private int _currentQuestAction;
 
     [SerializeField]
@@ -12,6 +15,9 @@ public class Quest
 
     [SerializeField]
     private List<QuestAction> _questActions = new();
+
+    public string GetName() {  return _name; }
+    public string GetDescription() {  return _description; }
 
     //get the current quest action
     public QuestAction GetCurrentQuestAction()

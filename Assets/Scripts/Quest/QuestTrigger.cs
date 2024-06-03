@@ -14,6 +14,11 @@ public class QuestTrigger : QuestAction
     //call when the QuestTrigger is the current QuestAction to configure it
     public override void Configure(){}
 
+    public override string GetObjectivesText()
+    {
+        return "Aller parler à " + _information;
+    }
+
     //return if the QuestTrigger is finished
     public bool IsFinished(questTriggerType questTriggerType, string triggerName)
     {

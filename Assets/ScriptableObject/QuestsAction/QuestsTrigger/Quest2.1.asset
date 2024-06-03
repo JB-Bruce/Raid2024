@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10a87445cef97bf4a9b581173a2e5345, type: 3}
   m_Name: Quest2.1
   m_EditorClassIdentifier: 
-  _description: "Qu\xEAte 2.1"
+  _name: "Qu\xEAte 2.1"
+  _description: "Aller parler \xE0 Rachel"
   _questTriggerType: 7
   _information: Rachel

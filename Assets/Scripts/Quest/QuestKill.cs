@@ -19,6 +19,11 @@ public class QuestKill : QuestAction
         _killCount = 0;
     }
 
+    public override string GetObjectivesText()
+    {
+        return "Tuer des " + _faction + "   " + _killCount + "/" + _numberToKill;
+    }
+
     //check if the pnj killed is from the good faction to increment the count
     private void CheckKill(Faction faction)
     {

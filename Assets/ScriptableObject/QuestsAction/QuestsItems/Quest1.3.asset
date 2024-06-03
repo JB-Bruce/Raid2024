@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44ad2a60bd9a4ee4e90735fbe989ac7d, type: 3}
   m_Name: Quest1.3
   m_EditorClassIdentifier: 
-  _description: "Qu\xEAte 1.3"
+  _name: "Qu\xEAte 1.3"
+  _description: "R\xE9cup\xE9rer des bandages"
   _itemsNeed:
   - item: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
     quantityNeed: 4

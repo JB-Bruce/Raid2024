@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f92058fc4160f3743b74414e0292bcf7, type: 3}
   m_Name: Quest2.2
   m_EditorClassIdentifier: 
-  _description: "Qu\xEAte 2.2"
+  _name: "Qu\xEAte 2.2"
+  _description: Tuer des utopistes
   _faction: 2
   _numberToKill: 3
+  _killCount: 0
