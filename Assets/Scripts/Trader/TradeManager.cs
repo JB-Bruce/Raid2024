@@ -171,8 +171,8 @@ public class TradeManager : MonoBehaviour
         //methode to remove items need from inventory
         for (int i = 0; i < _selectedTrade.currentData.itemsToTrade.Count; i++)
         {
-            ItemToTradeData itemToRemove = _selectedTrade.currentData.itemsToTrade[i];
-            _inventory.RemoveItems(itemToRemove.tradeItem, itemToRemove.quantityNeed);
+            ItemWithQuantity itemToRemove = _selectedTrade.currentData.itemsToTrade[i];
+            _inventory.RemoveItems(itemToRemove.item, itemToRemove.quantityNeed);
         }
 
         //methode to add trade item to inventory
@@ -201,12 +201,12 @@ public class TradeManager : MonoBehaviour
 public struct TradeData
 {
     public Item tradeItem;
-    public List<ItemToTradeData> itemsToTrade;
+    public List<ItemWithQuantity> itemsToTrade;
 }
 
 [System.Serializable]
-public struct ItemToTradeData
+public struct ItemWithQuantity
 {
-    public Item tradeItem;
+    public Item item;
     public int quantityNeed;
 }

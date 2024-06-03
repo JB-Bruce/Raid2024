@@ -16,6 +16,7 @@ public class FactionManager : MonoBehaviour
     public Transform[] vertices = new Transform[4];  // Les sommets du losange
 
     private static readonly List<Faction> _interactibleFaction = new List<Faction>() { Faction.Player, Faction.Survivalist, Faction.Scientist, Faction.Military, Faction.Utopist};
+    public List<FactionRespawn> factionRespawns = new List<FactionRespawn>();
 
 
     private void Awake()
@@ -194,6 +195,14 @@ public struct Reputation
     public Faction faction1;
     public Faction faction2;
     [Range(-5,8)] public float reputation;
+}
+
+//Contain the repoawn powition of a faction
+[System.Serializable]
+public struct FactionRespawn
+{
+    public Faction RespawnFaction;
+    public Transform RespawnTransform;
 }
 
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,9 @@ public class StatsManager : Humanoid
     public bool _isSprinting;
     private bool _verifSprint;
     private bool _recupStamina;
+
+    [SerializeField]
+    private ERespawnFaction _respawnFaction = ERespawnFaction.Null;
 
     /*
     //Change the life amount of the player, and change the color of the life image (depending on the life amount)
@@ -72,6 +76,7 @@ public class StatsManager : Humanoid
 
         if (life <= 0)
         {
+
             //Death
             AddWater(100);
             AddFood(100);
@@ -184,6 +189,7 @@ public class StatsManager : Humanoid
     private void Start() {
         RemoveFood();
         RemoveWater();
+        ChangeRespawnPoint();
     }
 
     //Set _recupStamina to true, when 
@@ -244,4 +250,41 @@ public class StatsManager : Humanoid
         _verifSprint = _isSprinting;
     }
 
+    //Change the position of the respawn with the faction chosen by the player
+    public void ChangeRespawnPoint()
+    {
+        switch(_respawnFaction) 
+        {
+            case ERespawnFaction.Military:
+                _respawnPosition = FactionManager.Instance.factionRespawns[0].RespawnTransform; ;
+                break;
+
+            case ERespawnFaction.Scientist:
+                _respawnPosition = FactionManager.Instance.factionRespawns[3].RespawnTransform;
+                break;
+
+            case ERespawnFaction.Utopist:
+                _respawnPosition = FactionManager.Instance.factionRespawns[1].RespawnTransform;
+                break;
+
+            case ERespawnFaction.Survivalist:
+                _respawnPosition = FactionManager.Instance.factionRespawns[2].RespawnTransform;
+                break;
+
+            default:
+                _respawnPosition = FactionManager.Instance.factionRespawns[4].RespawnTransform;
+                break;
+        }
+    }
+
+
+    //enum for the all the different faction respawn
+    public enum ERespawnFaction 
+    { 
+        Military, 
+        Utopist, 
+        Survivalist, 
+        Scientist,
+        Null
+    }
 }
