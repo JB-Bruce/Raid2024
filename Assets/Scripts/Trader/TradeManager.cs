@@ -171,8 +171,8 @@ public class TradeManager : MonoBehaviour
         //methode to remove items need from inventory
         for (int i = 0; i < _selectedTrade.currentData.itemsToTrade.Count; i++)
         {
-            ItemToTradeData itemToRemove = _selectedTrade.currentData.itemsToTrade[i];
-            _inventory.RemoveItems(itemToRemove.tradeItem, itemToRemove.quantityNeed);
+            ItemWithQuantity itemToRemove = _selectedTrade.currentData.itemsToTrade[i];
+            _inventory.RemoveItems(itemToRemove.item, itemToRemove.quantityNeed);
         }
 
         //methode to add trade item to inventory

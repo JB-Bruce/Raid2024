@@ -42,7 +42,7 @@ public class Trade : MonoBehaviour
             GameObject requiredItemGO = Instantiate(_itemRequirePrefab, _itemRequireParent);
             itemRequires.Add(requiredItemGO.GetComponent<ItemRequire>());
 
-            int quantityInInventory = _inventory.CountItemInInventory(requiredItem.tradeItem);
+            int quantityInInventory = _inventory.CountItemInInventory(requiredItem.item);
 
             itemRequires[i].itemRequireImage.sprite = requiredItem.item.ItemSprite;
             itemRequires[i].quantityRequire.text = requiredItem.quantityNeed.ToString();
@@ -69,7 +69,7 @@ public class Trade : MonoBehaviour
         for (int i = 0; i < itemRequires.Count; i++) 
         {
             ItemRequire itemRequire = itemRequires[i];
-            int quantityInInventory = _inventory.CountItemInInventory(_currentData.itemsToTrade[i].tradeItem);
+            int quantityInInventory = _inventory.CountItemInInventory(_currentData.itemsToTrade[i].item);
             itemRequire.quantityInInventory.text = quantityInInventory.ToString();
 
             if (quantityInInventory < int.Parse(itemRequire.quantityRequire.text))
