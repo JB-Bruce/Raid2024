@@ -13,7 +13,7 @@ public class FactionManager : MonoBehaviour
     public float neutralReputation = -1;
     public float allyReputation = 1;
     public float changeReputationForAllies = 0.1f;
-    public Vector2[] vertices = new Vector2[4];  // Les sommets du losange
+    public Transform[] vertices = new Transform[4];  // Les sommets du losange
 
     private static readonly List<Faction> _interactibleFaction = new List<Faction>() { Faction.Player, Faction.Survivalist, Faction.Scientist, Faction.Military, Faction.Utopist};
 
@@ -144,8 +144,8 @@ public class FactionManager : MonoBehaviour
     //Is the point in Rhombus
     public bool IsPointInRhombus(Vector2 point)
     {
-        return IsPointInTriangle(point, vertices[0], vertices[1], vertices[2]) ||
-               IsPointInTriangle(point, vertices[0], vertices[2], vertices[3]);
+        return IsPointInTriangle(point, vertices[0].position, vertices[1].position, vertices[2].position) ||
+               IsPointInTriangle(point, vertices[0].position, vertices[2].position, vertices[3].position);
     }
 
     // Is the Point in the triangle
