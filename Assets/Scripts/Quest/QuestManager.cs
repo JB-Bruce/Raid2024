@@ -8,7 +8,7 @@ public class QuestManager : MonoBehaviour
     private GameObject _questPanel;
 
     [SerializeField]
-    private GameObject _buttons;
+    private GameObject _questInfoInGame;
 
     [SerializeField]
     private TextMeshProUGUI _mainQuestTitle;
@@ -116,17 +116,24 @@ public class QuestManager : MonoBehaviour
     //open quest panel
     public void OpenQuestPanel()
     {
-        UpdateMainQuestUi();
-        UpdateQuestActionUi();
-        _buttons.SetActive(false);
-        _questPanel.SetActive(true);
+        if (_questInfoInGame.activeInHierarchy)
+        {
+            UpdateMainQuestUi();
+            UpdateQuestActionUi();
+            _questInfoInGame.SetActive(false);
+            _questPanel.SetActive(true);
+        }
+        else
+        {
+            CloseQuestPanel();
+        }
     }
 
     //close quest panel
     public void CloseQuestPanel()
     {
         _questPanel.SetActive(false);
-        _buttons.SetActive(true);
+        _questInfoInGame.SetActive(true);
     }
 
     //update main quest ui

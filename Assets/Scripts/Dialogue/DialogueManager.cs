@@ -3,10 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerInput _playerInput;
+
     [SerializeField]
     private TextMeshProUGUI _pnjNameText;
     [SerializeField]
@@ -70,6 +74,9 @@ public class DialogueManager : MonoBehaviour
     //called by pnj to start a dialogue
     public void StartDialogue(string pnjName, string pnjHideName, bool isPnjNameHide, Sprite pnjSprite, DialogueContent talk, Action<List<string>, bool> returnMethode)
     {
+        _playerInput.actions.FindActionMap("InGame").Disable();
+        _playerInput.actions.FindActionMap("Dialogue").Enable();
+
         _displayedDialogue.Clear();
         _dialogueChoices.Clear();
         _currentTalk = talk;
@@ -240,6 +247,9 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            _playerInput.actions.FindActionMap("Dialogue").Disable();
+            _playerInput.actions.FindActionMap("InGame").Enable();
+
             _dialogueBox.SetActive(false);
             QuestManager.instance.CheckQuestTrigger(QuestManager.questTriggerType.dialogue, _pnjHideName);
             _returnMethode(_dialogueChoices, _isPnjNameHide);
