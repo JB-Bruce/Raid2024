@@ -79,7 +79,11 @@ public class FactionUnitManager : MonoBehaviour
     // Make spawn a unit
     private void SpawnUnit(bool _init = false)
     {
-        GameObject go = Instantiate<GameObject>(unit, parent);
+        bool isBanditos = faction == Faction.Bandit && (Random.Range(0, 100) >= _banditSpawnInCamp || _init);
+
+        Vector3 newSpawnPos = isBanditos ? GetRandomSpawnPoint() : _spawnPosition.position;
+
+        GameObject go = Instantiate<GameObject>(unit, newSpawnPos, Quaternion.identity, parent);
 
         UnitBT unitBT = go.GetComponent<UnitBT>();
         unitBT.Init();
@@ -88,16 +92,6 @@ public class FactionUnitManager : MonoBehaviour
         indexeur++;
         go.name = faction + indexeur.ToString();
 
-
-
-
-        if(faction == Faction.Bandit && (Random.Range(0,100) >= _banditSpawnInCamp  || _init)) 
-        {
-            go.transform.position = GetRandomSpawnPoint();
-        }
-        else
-            go.transform.position = _spawnPosition.position;
-        
         units.Add(go);
 
         GiveAJob(unitBT, _transform.position);

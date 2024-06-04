@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision != null && collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
+        if(collision != null && collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
         {
             humanoid.TakeDamage(_damage, _ownerFaction, transform.right);
         }

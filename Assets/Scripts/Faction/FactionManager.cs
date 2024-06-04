@@ -17,6 +17,7 @@ public class FactionManager : MonoBehaviour
     public float changeReputationForAllies = 0.1f;
     public Transform[] vertices = new Transform[4];  // Les sommets du losange
 
+
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI _textReputationPlayerScientist;
     [SerializeField] private TextMeshProUGUI _textReputationPlayerUtopist;
