@@ -12,9 +12,11 @@ public class TutorialManager : MonoBehaviour
 
     public TextMeshProUGUI TextTutorial;
     
+    [SerializeField] private int _tutorialincrement = -1;
 
-    private int _tutorialincrement = -1;
-
+    /// <summary>
+    /// create an instance of the tutorial manager
+    /// </summary>
     private void Awake()
     {
         if (Instance == null)
@@ -26,6 +28,14 @@ public class TutorialManager : MonoBehaviour
         NextTutorial();
     }
 
+    private void Update()
+    {
+        //Check if it is in the right moment of the tutorial and if there is a weapon in hte weapon slot
+        if (_tutorialincrement == 2 && Inventory.Instance.weaponSlots[0].Item != null)
+        {
+            NextTutorial();
+        }
+    }
 
     /// <summary>
     ///     Increment a variable to go to the next step in the tutorial

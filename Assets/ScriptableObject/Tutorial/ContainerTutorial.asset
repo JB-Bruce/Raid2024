@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b517c84d775fcb2458621eb343efe5fe, type: 3}
   m_Name: ContainerTutorial
   m_EditorClassIdentifier: 
-  _loots: []
+  _loots:
+  - item: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    dropRate: 100
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
