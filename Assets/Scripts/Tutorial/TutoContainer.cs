@@ -15,6 +15,10 @@ public class TutoContainer : MonoBehaviour
             TutorialManager.Instance.NextTutorial();
         }
     }
+
+    /// <summary>
+    ///     Check if the player enter the trigger zone
+    /// </summary>
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -23,6 +27,9 @@ public class TutoContainer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Check if the player leave the trigger zone
+    /// </summary>
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
