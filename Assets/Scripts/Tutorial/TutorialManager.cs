@@ -21,22 +21,19 @@ public class TutorialManager : MonoBehaviour
             Instance = this;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         NextTutorial();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
+    /// <summary>
+    ///     Increment a variable to go to the next step in the tutorial
+    /// </summary>
     public void NextTutorial()
     {
         _tutorialincrement++;
-        if (_tutorialincrement > Tutorials.Count)
+        if (_tutorialincrement >= Tutorials.Count)
         {
             TextTutorial.enabled = false;
             return;
@@ -45,4 +42,10 @@ public class TutorialManager : MonoBehaviour
         TextTutorial.text = Tutorials[_tutorialincrement];
 
     }
+
+    /// <summary>
+    ///     Getter for tutorial increment
+    /// </summary>
+    public int TutorialIncrement()
+    { return _tutorialincrement; }
 }
