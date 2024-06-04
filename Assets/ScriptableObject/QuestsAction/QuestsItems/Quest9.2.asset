@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10a87445cef97bf4a9b581173a2e5345, type: 3}
-  m_Name: Quest2.1
+  m_Script: {fileID: 11500000, guid: 44ad2a60bd9a4ee4e90735fbe989ac7d, type: 3}
+  m_Name: Quest9.2
   m_EditorClassIdentifier: 
-  _name: "Qu\xEAte 2.1"
-  _questTriggerType: 7
-  _information: Bruce
+  _name: "Qu\xEAte 9.2"
+  _itemsNeed:
+  - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+    quantityNeed: 10
+  _itemsInInventory: []

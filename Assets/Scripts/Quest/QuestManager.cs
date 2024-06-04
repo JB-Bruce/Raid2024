@@ -20,9 +20,6 @@ public class QuestManager : MonoBehaviour
     private TextMeshProUGUI _questActionTitle;
 
     [SerializeField]
-    private TextMeshProUGUI _questActionDescription;
-
-    [SerializeField]
     private TextMeshProUGUI _objectives;
 
     [SerializeField]
@@ -38,12 +35,6 @@ public class QuestManager : MonoBehaviour
     private List<Quest> _quests = new();
 
     public static QuestManager instance;
-
-    [SerializeField]
-    private Item _bandage;
-
-    [SerializeField]
-    private Item _alcohol;
 
     //create an instance of the DialogueManager
     private void Awake()
@@ -149,7 +140,6 @@ public class QuestManager : MonoBehaviour
         string text = _quests[_currentMainQuest].GetCurrentQuestAction().GetName();
         _questActionTitleInGame.text = text;
         _questActionTitle.text = text;
-        _questActionDescription.text = _quests[_currentMainQuest].GetCurrentQuestAction().GetDescription();
     }
 
     //update quest objectives informations ui
@@ -158,32 +148,6 @@ public class QuestManager : MonoBehaviour
         string objectives = _quests[_currentMainQuest].GetCurrentQuestAction().GetObjectivesText();
         _objectivesInGame.text = objectives;
         _objectives.text = objectives;
-    }
-
-    public void TuerUnMillitaire() { CheckQuestKill(Faction.Military); }
-    public void TuerUnUtopiste() { CheckQuestKill(Faction.Utopist); }
-    public void AjouterUnBandage() 
-    {
-        ItemWithQuantity item = new();
-        item.item = _bandage;
-        item.quantityNeed = 1;
-        CheckQuestItems(item);
-    }
-
-    public void RetirerDeuxBandage()
-    {
-        ItemWithQuantity item = new();
-        item.item = _bandage;
-        item.quantityNeed = -2;
-        CheckQuestItems(item);
-    }
-
-    public void AjouterUnAlcohol()
-    {
-        ItemWithQuantity item = new();
-        item.item = _alcohol;
-        item.quantityNeed = 1;
-        CheckQuestItems(item);
     }
 
     public enum questTriggerType

@@ -10,13 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44ad2a60bd9a4ee4e90735fbe989ac7d, type: 3}
-  m_Name: Quest2.3
+  m_Name: Quest9.1
   m_EditorClassIdentifier: 
-  _name: "Qu\xEAte 2.3"
-  _description: "R\xE9cup\xE9rer des bandages et de l'alcool"
+  _name: "Qu\xEAte 9.1"
   _itemsNeed:
-  - item: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    quantityNeed: 3
-  - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
+  - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
     quantityNeed: 1
   _itemsInInventory: []
