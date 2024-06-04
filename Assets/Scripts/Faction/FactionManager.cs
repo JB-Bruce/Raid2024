@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using TMPro;
 using UnityEngine;
 
 public class FactionManager : MonoBehaviour
@@ -14,6 +16,19 @@ public class FactionManager : MonoBehaviour
     public float allyReputation = 1;
     public float changeReputationForAllies = 0.1f;
     public Transform[] vertices = new Transform[4];  // Les sommets du losange
+
+    [Header("Text")]
+    [SerializeField] private TextMeshProUGUI _textReputationPlayerScientist;
+    [SerializeField] private TextMeshProUGUI _textReputationPlayerUtopist;
+    [SerializeField] private TextMeshProUGUI _textReputationPlayerSurvivalist;
+    [SerializeField] private TextMeshProUGUI _textReputationPlayerMilitary;
+
+    [Header("Color")]
+    [SerializeField] private Color _enemyColor;
+    [SerializeField] private Color _neutralColor;
+    [SerializeField] private Color _allyColor;
+
+    public BonusFaction[] bonus = new BonusFaction[4];
 
     private static readonly List<Faction> _interactibleFaction = new List<Faction>() { Faction.Player, Faction.Survivalist, Faction.Scientist, Faction.Military, Faction.Utopist};
     public List<FactionRespawn> factionRespawns = new List<FactionRespawn>();
@@ -54,6 +69,7 @@ public class FactionManager : MonoBehaviour
                 Reputation reputation = reputations[i];
                 reputation.reputation += newReputation;
                 reputations[i] = reputation;
+                ChangeReputationText(faction1, faction2, reputations[i].reputation);
                 return;
             }
         }
@@ -168,22 +184,91 @@ public class FactionManager : MonoBehaviour
         return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
     }
 
-    //// Get a random point in a rhombus
-    //public Vector3 GetRandomPointInRhombus()
-    //{
-    //    // Calculate half-diagonals
-    //    float halfDiagonal1 = Vector2.Distance(vertices[0], vertices[2]) / 2f;
-    //    float halfDiagonal2 = Vector2.Distance(vertices[1], vertices[3]) / 2f;
+    // Change the Text of the reputation
+    private void ChangeReputationText(Faction _faction1, Faction _faction2, float reputation)
+    {
+        if(_faction1 == Faction.Player || _faction2 == Faction.Player) 
+        {
+            Faction _otherFaction = _faction1 == Faction.Player ? _faction2 : _faction1;
 
-    //    // Generate random coordinates within the rhombus
-    //    float randomX = UnityEngine.Random.Range(-halfDiagonal1, halfDiagonal1);
-    //    float randomZ = UnityEngine.Random.Range(-halfDiagonal2, halfDiagonal2);
+            switch(_otherFaction) 
+            {
+                case Faction.Survivalist:
+                    _textReputationPlayerSurvivalist.text = reputation.ToString();
+                    PlayerReputationParameters(_textReputationPlayerSurvivalist, reputation, _otherFaction);
+                    break;
 
-    //    // Transform local coordinates to world coordinates
-    //    Vector3 randomPoint = new Vector3(randomX, randomZ);
+                case Faction.Utopist:
+                    _textReputationPlayerUtopist.text = reputation.ToString();
+                    PlayerReputationParameters(_textReputationPlayerUtopist, reputation, _otherFaction);
+                    break;
 
-    //    return randomPoint;
-    //}
+                case Faction.Scientist:
+                    _textReputationPlayerScientist.text = reputation.ToString();
+                    PlayerReputationParameters(_textReputationPlayerScientist, reputation, _otherFaction);
+                    break;
+
+                case Faction.Military:
+                    _textReputationPlayerMilitary.text = reputation.ToString();
+                    PlayerReputationParameters(_textReputationPlayerMilitary, reputation, _otherFaction);
+                    break;
+            }
+        }
+
+    }
+
+    // Set Reputation parameters with player
+    private void PlayerReputationParameters(TextMeshProUGUI _text, float _reputation, Faction _faction) 
+    {
+        if(_reputation >= allyReputation)
+        {
+            _text.color = _allyColor;
+        }
+        else if( _reputation < allyReputation && _reputation >= neutralReputation) 
+        {
+            _text.color = _neutralColor;
+        }
+        else
+        {
+            _text.color = _enemyColor;
+        }
+
+        int _index = GetBonusFaction(_faction);
+
+        BonusFaction _bonusTmp = bonus[_index];
+
+        if(_reputation < 1)
+        {
+            _bonusTmp.bonus = -1;
+        }
+        else if(_reputation < 2.5)
+        {
+            _bonusTmp.bonus = 0;
+        }
+        else if(_reputation < 5)
+        {
+            _bonusTmp.bonus = 1;
+        }
+        else
+        {
+            _bonusTmp.bonus = 2;
+        }
+        bonus[_index] = _bonusTmp;
+
+    }
+
+    // return the BonusFaction index
+    private int GetBonusFaction(Faction _faction)
+    {
+        for(int i = 0; i < bonus.Length; i++) 
+        {
+            if (bonus[i].faction == _faction)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
 
 }
 
@@ -205,4 +290,11 @@ public struct FactionRespawn
     public Transform RespawnTransform;
 }
 
+//Contain the Malus/Bonus of the player by Faction with (-1 = malus, 0 = 0%, 1 = 50% and 2 = 100%)
+[System.Serializable]
+public struct BonusFaction
+{
+    public Faction faction;
+    [Range(-1,2)] public int bonus;
+}
 

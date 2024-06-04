@@ -11,6 +11,7 @@ public class WeaponAttack : MonoBehaviour
     // Variable
     private bool _isRangeWeapon = false;
     private float _timer = 0;
+    private int _magazine = 0;
     private static readonly Quaternion _zeroRotation = Quaternion.Euler(0, 0, 0);
     private static readonly Quaternion _flipRotation = Quaternion.Euler(180, 0, 0);
     private static readonly Vector3 _normalScale = new Vector3(0.2f, 0.2f, 0.2f);
@@ -114,6 +115,7 @@ public class WeaponAttack : MonoBehaviour
         {
             _rangedWeapon = _equipedWeapon as RangedWeapon;
             _firePointTransform.localPosition = _rangedWeapon.FirePoint;
+            _magazine = _rangedWeapon.MaxBullet;
         }
     }
 
@@ -127,8 +129,18 @@ public class WeaponAttack : MonoBehaviour
             _animator.Play(_equipedWeapon.animAttack, 0, 0);
             if (_isRangeWeapon)
             {
-                direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread/ 2), _rangedWeapon.Spread / 2));
-                FireBullet(direction);
+                if (_magazine > 0)
+                {
+                    direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread / 2), _rangedWeapon.Spread / 2));
+                    FireBullet(direction);
+                    _magazine--;
+                }
+                else
+                {
+                    _timer += _rangedWeapon.ReloadTime;
+                    _magazine = _rangedWeapon.MaxBullet;
+                    _animator.Play(_rangedWeapon.animReload, 0, 0);
+                }
             }
         }
         

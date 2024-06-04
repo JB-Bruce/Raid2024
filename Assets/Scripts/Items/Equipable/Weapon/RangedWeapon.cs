@@ -10,6 +10,7 @@ public class RangedWeapon : Weapon
     [SerializeField] protected BulletType _ammoType;
     [SerializeField] protected Vector2 _firePoint;
     public GameObject bullet;
+    public string animReload;
 
     public float Spread { get { return _spread; } }
     public int MaxBullet { get { return _maxBullet; } }
