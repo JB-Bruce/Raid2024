@@ -10,6 +10,8 @@ public class Humanoid : MonoBehaviour
     public float removeDeathReputation = -0.5f;
     public float removeHitReputation = -1;
 
+    public ParticleSystem pSystem;
+
 
     private FactionManager _factionManager;
 
@@ -23,6 +25,8 @@ public class Humanoid : MonoBehaviour
     {
         life -= damage;
         _factionManager.AddReputation(faction, _faction, removeHitReputation);
+
+        pSystem.Play();
 
         if (isPlayer) 
         {
