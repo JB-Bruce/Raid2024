@@ -48,5 +48,9 @@ public class Humanoid : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        if(_faction == Faction.Player)
+        {
+            QuestManager.instance.CheckQuestKill(faction);
+        }
     }
 }
