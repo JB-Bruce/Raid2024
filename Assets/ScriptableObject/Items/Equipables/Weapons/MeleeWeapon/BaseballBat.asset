@@ -21,7 +21,7 @@ MonoBehaviour:
   _equipementTier: 0
   _damage: 25
   _attackSpeed: 1
-  _attackRange: 3
+  _attackRange: 5
   _leftHandPos: {x: -0.09, y: 0.11}
   _rightHandPos: {x: 0.1, y: -0.2}
   _rotationRightHand: -24

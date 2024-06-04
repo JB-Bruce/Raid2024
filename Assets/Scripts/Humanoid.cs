@@ -10,6 +10,8 @@ public class Humanoid : MonoBehaviour
     public float removeDeathReputation = -0.5f;
     public float removeHitReputation = -1;
 
+    public ParticleSystem pSystem;
+
 
     private FactionManager _factionManager;
 
@@ -19,10 +21,12 @@ public class Humanoid : MonoBehaviour
     }
 
     // remove life to him self and return true if he is dead
-    public bool TakeDamage(float damage, Faction _faction)
+    public bool TakeDamage(float damage, Faction _faction, Vector2 fwd)
     {
         life -= damage;
         _factionManager.AddReputation(faction, _faction, removeHitReputation);
+
+        pSystem.Play();
 
         if (isPlayer) 
         {
@@ -34,6 +38,7 @@ public class Humanoid : MonoBehaviour
             isDead = true;
             Death(_faction);
         }
+        GetComponent<Rigidbody2D>().AddForce(fwd * 10, ForceMode2D.Impulse);
         return isDead;
     }
 

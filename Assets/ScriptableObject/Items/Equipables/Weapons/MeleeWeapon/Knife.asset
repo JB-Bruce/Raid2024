@@ -16,8 +16,14 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 1
   _name: Knife
+  _description: 
   _itemSprite: {fileID: 0}
   _equipementTier: 0
   _damage: 6
   _attackSpeed: 1
-  _attackRange: 2
+  _attackRange: 4
+  _leftHandPos: {x: 0, y: 0}
+  _rightHandPos: {x: 0, y: 0}
+  _rotationRightHand: 0
+  _rotationLeftHand: 0
+  animAttack: 
