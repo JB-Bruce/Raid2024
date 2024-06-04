@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1215542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215543}
+  m_Layer: 0
+  m_Name: SpawnBandit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1215543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -397, y: 100, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1829011806}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123144108
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,16 +435,18 @@ MonoBehaviour:
   maxGuard: 3
   nbrOfDeadUnit: 0
   _unitSpawnRate: 0.3
-  point: {fileID: 324183688}
-  minDistance: 10
-  maxDistance: 50
-  maxUnitPerPOI: 5
-  maxUnitOnPOI: 10
-  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
-  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
-  menBody: {fileID: -977850549, guid: fe9aa5463f61df14d8dbb6ba8affebd6, type: 3}
-  womenBody: {fileID: -1447580690, guid: ca87692c56686de428d319ed182f1d7c, type: 3}
-  hipHuman: {fileID: -676421372, guid: c98ac555585f9874b95d2fc6aca61259, type: 3}
+  _spawnPosition: {fileID: 324183688}
+  _banditSpawnInCamp: 50
+  _point: {fileID: 324183688}
+  _minDistance: 0
+  _maxDistance: 0
+  _maxUnitPerPOI: 5
+  _maxUnitOnPOI: 10
+  _menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  _womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  _menBody: {fileID: -977850549, guid: fe9aa5463f61df14d8dbb6ba8affebd6, type: 3}
+  _womenBody: {fileID: -1447580690, guid: ca87692c56686de428d319ed182f1d7c, type: 3}
+  _hipHuman: {fileID: -676421372, guid: c98ac555585f9874b95d2fc6aca61259, type: 3}
 --- !u!4 &324183688
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,16 +1063,18 @@ MonoBehaviour:
   maxGuard: 3
   nbrOfDeadUnit: 0
   _unitSpawnRate: 0.3
-  point: {fileID: 714689134}
-  minDistance: 10
-  maxDistance: 50
-  maxUnitPerPOI: 5
-  maxUnitOnPOI: 10
-  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
-  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
-  menBody: {fileID: -1202468526, guid: 2ae2510b4b143814cb617f417445b178, type: 3}
-  womenBody: {fileID: 1678692614, guid: f3cedeb0c95d5ae47b08f69190d565d6, type: 3}
-  hipHuman: {fileID: -1821809104, guid: f4e91cedffa5d8140a3134daa179623f, type: 3}
+  _spawnPosition: {fileID: 714689134}
+  _banditSpawnInCamp: 50
+  _point: {fileID: 714689134}
+  _minDistance: 0
+  _maxDistance: 0
+  _maxUnitPerPOI: 5
+  _maxUnitOnPOI: 10
+  _menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  _womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  _menBody: {fileID: -1202468526, guid: 2ae2510b4b143814cb617f417445b178, type: 3}
+  _womenBody: {fileID: 1678692614, guid: f3cedeb0c95d5ae47b08f69190d565d6, type: 3}
+  _hipHuman: {fileID: -1821809104, guid: f4e91cedffa5d8140a3134daa179623f, type: 3}
 --- !u!4 &714689134
 Transform:
   m_ObjectHideFlags: 0
@@ -1520,16 +1555,18 @@ MonoBehaviour:
   maxGuard: 3
   nbrOfDeadUnit: 0
   _unitSpawnRate: 0.3
-  point: {fileID: 927730606}
-  minDistance: 10
-  maxDistance: 50
-  maxUnitPerPOI: 5
-  maxUnitOnPOI: 10
-  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
-  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
-  menBody: {fileID: 1599616915, guid: f32bd40b4c97a4443ab95e0d60cf8d64, type: 3}
-  womenBody: {fileID: 677454265, guid: f20724d9ec51ded459c2038be787cc96, type: 3}
-  hipHuman: {fileID: 1281644541, guid: c53e9608e2974fd41a09d588e25a23b3, type: 3}
+  _spawnPosition: {fileID: 927730606}
+  _banditSpawnInCamp: 50
+  _point: {fileID: 927730606}
+  _minDistance: 0
+  _maxDistance: 0
+  _maxUnitPerPOI: 5
+  _maxUnitOnPOI: 10
+  _menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  _womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  _menBody: {fileID: 1599616915, guid: f32bd40b4c97a4443ab95e0d60cf8d64, type: 3}
+  _womenBody: {fileID: 677454265, guid: f20724d9ec51ded459c2038be787cc96, type: 3}
+  _hipHuman: {fileID: 1281644541, guid: c53e9608e2974fd41a09d588e25a23b3, type: 3}
 --- !u!4 &927730606
 Transform:
   m_ObjectHideFlags: 0
@@ -1627,16 +1664,18 @@ MonoBehaviour:
   maxGuard: 3
   nbrOfDeadUnit: 0
   _unitSpawnRate: 0.3
-  point: {fileID: 1000456507}
-  minDistance: 10
-  maxDistance: 50
-  maxUnitPerPOI: 5
-  maxUnitOnPOI: 10
-  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
-  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
-  menBody: {fileID: 1477673848, guid: 6bf2ae8869dda1f4c8ed6c14b15e84da, type: 3}
-  womenBody: {fileID: -763562658, guid: c2a51551c90926441b3adff0ff0634af, type: 3}
-  hipHuman: {fileID: -140732577, guid: 75a5271ffe4f1c2499add2108131cd30, type: 3}
+  _spawnPosition: {fileID: 1000456507}
+  _banditSpawnInCamp: 50
+  _point: {fileID: 1000456507}
+  _minDistance: 0
+  _maxDistance: 0
+  _maxUnitPerPOI: 5
+  _maxUnitOnPOI: 10
+  _menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  _womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  _menBody: {fileID: 1477673848, guid: 6bf2ae8869dda1f4c8ed6c14b15e84da, type: 3}
+  _womenBody: {fileID: -763562658, guid: c2a51551c90926441b3adff0ff0634af, type: 3}
+  _hipHuman: {fileID: -140732577, guid: 75a5271ffe4f1c2499add2108131cd30, type: 3}
 --- !u!4 &1000456507
 Transform:
   m_ObjectHideFlags: 0
@@ -3057,7 +3096,8 @@ Transform:
   m_LocalPosition: {x: -3.3, y: -16.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1215543}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1829011807
@@ -3170,16 +3210,18 @@ MonoBehaviour:
   maxGuard: 3
   nbrOfDeadUnit: 0
   _unitSpawnRate: 30
-  point: {fileID: 0}
-  minDistance: 0
-  maxDistance: 0
-  maxUnitPerPOI: 5
-  maxUnitOnPOI: 10
-  menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
-  womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
-  menBody: {fileID: -622678760, guid: b8489e5742eb8cf45a8e451fc21c0a22, type: 3}
-  womenBody: {fileID: 1229961540, guid: 41a2605694b578d48b6925c55c4284a2, type: 3}
-  hipHuman: {fileID: -2095604073, guid: 88e146a23dcd5bd4b871950553bd6ec8, type: 3}
+  _spawnPosition: {fileID: 1215543}
+  _banditSpawnInCamp: 50
+  _point: {fileID: 1215543}
+  _minDistance: 0
+  _maxDistance: 0
+  _maxUnitPerPOI: 5
+  _maxUnitOnPOI: 10
+  _menHair: {fileID: 535702880, guid: 7bfa68cb3b94b114ea9d338b859e9ad6, type: 3}
+  _womenHair: {fileID: -637052612, guid: b094162d05f85ad4b95b73344332178a, type: 3}
+  _menBody: {fileID: -622678760, guid: b8489e5742eb8cf45a8e451fc21c0a22, type: 3}
+  _womenBody: {fileID: 1229961540, guid: 41a2605694b578d48b6925c55c4284a2, type: 3}
+  _hipHuman: {fileID: -2095604073, guid: 88e146a23dcd5bd4b871950553bd6ec8, type: 3}
 --- !u!1 &1862907661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3341,8 +3383,8 @@ Transform:
   m_GameObject: {fileID: 1884218550}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 210, y: 210, z: 1}
+  m_LocalPosition: {x: -63.1124, y: 22.3626, z: 0}
+  m_LocalScale: {x: 992.19543, y: 634.3861, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1048724667}

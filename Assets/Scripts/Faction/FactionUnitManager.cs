@@ -24,15 +24,17 @@ public class FactionUnitManager : MonoBehaviour
     public int maxGuard = 3;
     public int nbrOfDeadUnit = 0;
     public float _unitSpawnRate = 30f;
+    [SerializeField] private Transform _spawnPosition;
+    [SerializeField] [Range(0,100)] private float _banditSpawnInCamp = 50;
 
     [Header("Guard Point")]
-    public Transform point;
-    public float minDistance;
-    public float maxDistance;
+    [SerializeField] private Transform _point;
+    [SerializeField] private float _minDistance;
+    [SerializeField] private float _maxDistance;
 
     [Header("POI")]
-    public int maxUnitPerPOI = 5;
-    public int maxUnitOnPOI = 10;
+    [SerializeField] private int _maxUnitPerPOI = 5;
+    [SerializeField] private int _maxUnitOnPOI = 10;
     private int _numberOfPOIUnit = 0;
     private List<int> _unitOnPOI = new List<int>();
 
@@ -40,11 +42,11 @@ public class FactionUnitManager : MonoBehaviour
     private FactionManager _factionManager;
 
     [Header("Sprite")]
-    public Sprite menHair;
-    public Sprite womenHair;
-    public Sprite menBody;
-    public Sprite womenBody;
-    public Sprite hipHuman;
+    [SerializeField] private Sprite _menHair;
+    [SerializeField] private Sprite _womenHair;
+    [SerializeField] private Sprite _menBody;
+    [SerializeField] private Sprite _womenBody;
+    [SerializeField] private Sprite _hipHuman;
 
 
     // Start is called before the first frame update
@@ -58,7 +60,7 @@ public class FactionUnitManager : MonoBehaviour
         _transform = transform;
         for (int i = 0; i< maxUnit; i++) 
         {
-            SpawnUnit();
+            SpawnUnit(true);
         }
         StartCoroutine(CheckUnitRoutine());
     }
@@ -75,7 +77,7 @@ public class FactionUnitManager : MonoBehaviour
     }
 
     // Make spawn a unit
-    private void SpawnUnit()
+    private void SpawnUnit(bool _init = false)
     {
         GameObject go = Instantiate<GameObject>(unit, parent);
 
@@ -89,12 +91,12 @@ public class FactionUnitManager : MonoBehaviour
 
 
 
-        if(faction == Faction.Bandit) 
+        if(faction == Faction.Bandit && (Random.Range(0,100) >= _banditSpawnInCamp  || _init)) 
         {
             go.transform.position = GetRandomSpawnPoint();
         }
         else
-            go.transform.position = _transform.position;
+            go.transform.position = _spawnPosition.position;
         
         units.Add(go);
 
@@ -129,13 +131,13 @@ public class FactionUnitManager : MonoBehaviour
             if (Random.Range(0, 100) < 50 && _numberOfGuard < maxGuard)
             {
                 BT.order = UnitOrder.AreaGuard;
-                movement.SetGuardPoint(point.position, minDistance, maxDistance);
+                movement.SetGuardPoint(_point.position, _minDistance, _maxDistance);
                 _numberOfGuard++;
                 return;
             }
         }
 
-        if(Random.Range(0, 100) < 50 && _numberOfPOIUnit < maxUnitOnPOI)
+        if(Random.Range(0, 100) < 50 && _numberOfPOIUnit < _maxUnitOnPOI)
         {
             BT.order = UnitOrder.POICapture;
 
@@ -232,7 +234,7 @@ public class FactionUnitManager : MonoBehaviour
     // is the poi full of unit
     public bool isPOIFull(int index)
     {
-        if (_unitOnPOI[index] > maxUnitPerPOI)
+        if (_unitOnPOI[index] > _maxUnitPerPOI)
         {
             return true;
         }
@@ -255,16 +257,16 @@ public class FactionUnitManager : MonoBehaviour
 
         if (random < womenRandom)
         {
-            body.sprite = womenBody;
-            hair.sprite = womenHair;
+            body.sprite = _womenBody;
+            hair.sprite = _womenHair;
         }
 
         else 
         {
-            body.sprite = menBody;
-            hair.sprite = menHair;
+            body.sprite = _menBody;
+            hair.sprite = _menHair;
         }
-        hip.sprite = hipHuman;
+        hip.sprite = _hipHuman;
 
     }
 
