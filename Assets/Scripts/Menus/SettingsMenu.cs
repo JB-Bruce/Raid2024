@@ -48,6 +48,13 @@ public class SettingsMenu : MonoBehaviour
 
     }
 
+    private void Start()
+    {
+        _mainVolumeSlider.value = PlayerPrefs.GetFloat("mainVolume", 1);
+        _musicVolumeSlider.value = PlayerPrefs.GetFloat("musicVolume", 1);
+        _sfxVolumeSlider.value = PlayerPrefs.GetFloat("sfxVolume", 1);
+    }
+
     public void DeactivateSettingsMenu()
     {
         settingsMenu.SetActive(false);
@@ -67,15 +74,18 @@ public class SettingsMenu : MonoBehaviour
     public void OnMainVolumeChange()
     {
         SoundManager.instance.MainVolume(_mainVolumeSlider.value);
+        PlayerPrefs.SetFloat("mainVolume", _mainVolumeSlider.value);
     }
 
     public void OnMusicVolumeChange()
     {
         SoundManager.instance.MusicVolume(_musicVolumeSlider.value);
+        PlayerPrefs.SetFloat("musicVolume", _musicVolumeSlider.value);
     }
 
     public void OnSFXVolumeChange()
     {
         SoundManager.instance.SFXVolume(_sfxVolumeSlider.value);
+        PlayerPrefs.SetFloat("sfxVolume", _sfxVolumeSlider.value);
     }
 }
