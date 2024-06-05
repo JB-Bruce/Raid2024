@@ -10,6 +10,8 @@ public class TutorialManager : MonoBehaviour
 
     public List<string> Tutorials = new List<string>();
 
+    public Transform EnemyTransform;
+
     public TextMeshProUGUI TextTutorial;
     
     [SerializeField] private int _tutorialincrement = -1;
@@ -25,6 +27,8 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
+        EnemyTransform.gameObject.SetActive(false);
+
         NextTutorial();
     }
 
@@ -34,6 +38,11 @@ public class TutorialManager : MonoBehaviour
         if (_tutorialincrement == 2 && Inventory.Instance.weaponSlots[0].Item != null)
         {
             NextTutorial();
+        }
+
+        if (_tutorialincrement == 3)
+        {
+            EnemyTransform.gameObject.SetActive(true);
         }
     }
 
