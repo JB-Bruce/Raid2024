@@ -171,7 +171,10 @@ public class TradeManager : MonoBehaviour
         }
 
         //methode to add trade item to inventory
-        _inventory.AddItem(_selectedTrade.currentData.tradeItem);
+        for(int i = 0; i < _selectedTrade.currentData.tradeItemQuantity; i++)
+        {
+            _inventory.AddItem(_selectedTrade.currentData.tradeItem);
+        }
         
         UpdateTradeButton(_selectedTrade);
         RefreshTrades();
@@ -196,6 +199,7 @@ public class TradeManager : MonoBehaviour
 public struct TradeData
 {
     public Item tradeItem;
+    public int tradeItemQuantity;
     public List<ItemWithQuantity> itemsToTrade;
 }
 
