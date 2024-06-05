@@ -71,7 +71,11 @@ public class POI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !unitInCaptureZone.Contains(humanoid) && !collision.isTrigger)
+        if(collision.transform.parent == null) 
+        {
+            return;
+        }
+        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !unitInCaptureZone.Contains(humanoid) && !collision.isTrigger)
         {
             unitInCaptureZone.Add(humanoid);
         }
@@ -79,7 +83,11 @@ public class POI : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
+        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
         {
             unitInCaptureZone.Remove(humanoid);
         }

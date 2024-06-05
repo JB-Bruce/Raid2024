@@ -41,6 +41,8 @@ public class UnitCombat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+            return;
         if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid)&& !humanoidAround.Contains(humanoid) && humanoid.faction != _mHumanoid.faction  && !collision.isTrigger)
         {
             humanoidAround.Add(humanoid);
@@ -50,6 +52,8 @@ public class UnitCombat : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+            return;
         if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
         {
             humanoidAround.Remove(humanoid);
