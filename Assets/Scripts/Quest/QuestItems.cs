@@ -30,7 +30,7 @@ public class QuestItems : QuestAction
         string textToReturn = string.Empty;
         for (int i = 0; i <_itemsInInventory.Count; i++)
         {
-            textToReturn += _itemsInInventory[i].item.Name + "   " + _itemsInInventory[i].quantityNeed + "/" + _itemsNeed[i].quantityNeed + "\n";
+            textToReturn += "- " + _itemsInInventory[i].item.Name + "   " + _itemsInInventory[i].quantityNeed + "/" + _itemsNeed[i].quantityNeed + "\n";
         }
         return textToReturn;
     }

@@ -22,7 +22,7 @@ public class QuestKill : QuestAction
     //return the text for the objectives
     public override string GetObjectivesText()
     {
-        return "Tuer des " + _faction + "   " + _killCount + "/" + _numberToKill + "\n";
+        return "- Tuer des " + _faction + "   " + _killCount + "/" + _numberToKill + "\n";
     }
 
     //check if the pnj killed is from the good faction to increment the count

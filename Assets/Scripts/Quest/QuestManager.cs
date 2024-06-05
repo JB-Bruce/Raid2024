@@ -20,9 +20,6 @@ public class QuestManager : MonoBehaviour
     private TextMeshProUGUI _questActionTitle;
 
     [SerializeField]
-    private TextMeshProUGUI _questActionDescription;
-
-    [SerializeField]
     private TextMeshProUGUI _objectives;
 
     [SerializeField]
@@ -148,7 +145,6 @@ public class QuestManager : MonoBehaviour
         string text = _quests[_currentMainQuest].GetCurrentQuestAction().GetName();
         _questActionTitleInGame.text = text;
         _questActionTitle.text = text;
-        _questActionDescription.text = _quests[_currentMainQuest].GetCurrentQuestAction().GetDescription();
     }
 
     //update quest objectives informations ui

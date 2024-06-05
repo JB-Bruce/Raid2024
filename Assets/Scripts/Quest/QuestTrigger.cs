@@ -17,7 +17,7 @@ public class QuestTrigger : QuestAction
     //return the text for the objectives
     public override string GetObjectivesText()
     {
-        return "Aller parler à " + _information;
+        return "- Aller parler à " + _information;
     }
 
     //return if the QuestTrigger is finished
