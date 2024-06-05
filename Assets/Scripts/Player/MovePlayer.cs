@@ -78,7 +78,7 @@ public class MovePlayer : MonoBehaviour
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
     private void Move()
     {
-        _moveVector = _input.actions.FindAction("Movement").ReadValue<Vector2>();
+        _moveVector = UserInput.instance.MoveInput;
         if (_isSprinting == true && stats.GetStamina() > 0)
         {
             stats.ChangeIsSprinting(true);
