@@ -5,7 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
