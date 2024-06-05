@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -11,10 +9,22 @@ public class TutorialManager : MonoBehaviour
     public List<string> Tutorials = new List<string>();
 
     public Transform EnemyTransform;
+    public Transform PlayerTransform;
+    public Transform CenterAlliesTransform;
 
     public TextMeshProUGUI TextTutorial;
+
+    public List<GameObject> ListAllies = new List<GameObject>();
+    public List<GameObject> ListUIToDeactivate = new List<GameObject>();
+
+    
     
     [SerializeField] private int _tutorialincrement = -1;
+
+
+
+
+    private bool _setEnableToTrue = true;
 
     /// <summary>
     /// create an instance of the tutorial manager
@@ -27,8 +37,6 @@ public class TutorialManager : MonoBehaviour
 
     void Start()
     {
-        EnemyTransform.gameObject.SetActive(false);
-
         NextTutorial();
     }
 
@@ -44,6 +52,22 @@ public class TutorialManager : MonoBehaviour
         {
             EnemyTransform.gameObject.SetActive(true);
         }
+
+        if (_tutorialincrement == 4 && _setEnableToTrue)
+        {
+            foreach(GameObject go in ListAllies)
+            {
+                go.SetActive(true);
+            }
+            foreach(GameObject go in ListUIToDeactivate)
+            {
+                go.SetActive(false); 
+            }
+            MovePlayer movePlayer = PlayerTransform.GetComponent<MovePlayer>();
+            Destroy(movePlayer);
+            _setEnableToTrue = false;
+        }
+
     }
 
     /// <summary>
@@ -67,4 +91,40 @@ public class TutorialManager : MonoBehaviour
     /// </summary>
     public int TutorialIncrement()
     { return _tutorialincrement; }
+
+    /// <summary>
+    ///     Get the Player Faction from playerPrefs
+    /// </summary>
+    public Faction GetPlayerFaction()
+    {
+        Faction playerFaction = Faction.Survivalist;
+
+        switch (PlayerPrefs.GetString("CharacterFaction"))
+        {
+            case "Military":
+                playerFaction = Faction.Military;
+                break;
+
+            case "Scientist":
+                playerFaction = Faction.Scientist;
+                break;
+
+            case "Utopist":
+                playerFaction = Faction.Utopist;
+                break;
+
+            case "Survivalist":
+                playerFaction = Faction.Survivalist;
+                break;
+
+            default:
+                playerFaction = Faction.Military;
+                break;
+
+        }
+
+        return playerFaction;
+    }
+
+    
 }

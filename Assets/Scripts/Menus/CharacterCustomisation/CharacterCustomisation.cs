@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 
 public class CharacterCustomisation : MonoBehaviour
 {
+    public static CharacterCustomisation Instance;
+
     public Image CharacterPreview;
 
     public Sprite WomanSprite;
@@ -15,12 +18,20 @@ public class CharacterCustomisation : MonoBehaviour
     public Toggle ToggleSkipTutorial;
 
     public bool SkipTutorial;
+    public bool PlayPressed = false;
 
     public TMP_InputField CharacterName;
 
     public GameObject CharacterSelectionUI;
 
     private string CharacterNameText;
+
+
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
     /// <summary>
     ///     Set a variable for the gender of the character
@@ -97,6 +108,7 @@ public class CharacterCustomisation : MonoBehaviour
     public void OnPlayPressed()
     {
         PlayerPrefs.SetString("CharacterName", CharacterNameText);
+        PlayPressed = true;
         CharacterSelectionUI.SetActive(false);
     }
 }
