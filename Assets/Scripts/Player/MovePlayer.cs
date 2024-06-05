@@ -519,7 +519,7 @@ public class MovePlayer : MonoBehaviour
 
         if(_tryToHit && _isAiming)
         {
-            _weaponAttack.UseWeapon(direction);
+            _weaponAttack.UseWeapon(direction, Faction.Player);
         }
     }
 }

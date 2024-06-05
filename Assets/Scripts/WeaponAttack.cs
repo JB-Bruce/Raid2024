@@ -120,7 +120,7 @@ public class WeaponAttack : MonoBehaviour
     }
 
     // Use the equiped weapon (Attack)
-    public void UseWeapon(Vector2 direction)
+    public void UseWeapon(Vector2 direction, Faction _faction)
     {
         if (_timer < Time.time) 
         {
@@ -132,7 +132,7 @@ public class WeaponAttack : MonoBehaviour
                 if (_magazine > 0)
                 {
                     direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread / 2), _rangedWeapon.Spread / 2));
-                    FireBullet(direction);
+                    FireBullet(direction, _faction);
                     _magazine--;
                 }
                 else
@@ -175,11 +175,11 @@ public class WeaponAttack : MonoBehaviour
     }
 
     // Instaciate and set a bullet
-    private void FireBullet(Vector2 direction)
+    private void FireBullet(Vector2 direction, Faction _faction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         GameObject bullet = Instantiate<GameObject>(_rangedWeapon.bullet, _firePointTransform.position, Quaternion.Euler(new Vector3(0, 0, angle)));
-        bullet.GetComponent<Bullet>().SetBullet(_equipedWeapon.Damage, direction.normalized, _equipedWeapon.AttackRange, _unitCombat.GetFaction());
+        bullet.GetComponent<Bullet>().SetBullet(_equipedWeapon.Damage, direction.normalized, _equipedWeapon.AttackRange, _faction);
     }
 
     // Function for rotate a Vector2D
