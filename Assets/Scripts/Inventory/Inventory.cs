@@ -579,6 +579,11 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private bool TryStackingItems(ItemSlot slot1, ItemSlot slot2)
     {
+        ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+        itemWithQuantity.item = slot1.Item;
+        itemWithQuantity.quantityNeed = slot1.Quantity;
+        QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
         bool isSlotEmpty = true;
 
         int remainingItems = slot2.Item.MaxStack - slot2.Quantity;
