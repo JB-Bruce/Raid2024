@@ -11,12 +11,12 @@ public class EquipementSlot : ItemSlot
         _isAvailable = availability;
         if (_isAvailable)
         {
-            _itemSlotSprite.color = new UnityEngine.Color(1, 1, 1, 1);
+            _itemSlotSprite.color = new UnityEngine.Color(0.5f, 0.5f, 0.5f, 1f);
             gameObject.GetComponent<Button>().navigation = Navigation.defaultNavigation;
         }
         else
         {
-            _itemSlotSprite.color = new UnityEngine.Color(1, 1, 1, 0);
+            _itemSlotSprite.color = new UnityEngine.Color(0.25f, 0.25f, 0.25f, 0.5f);
             Navigation navigation = new Navigation();
             navigation.mode = Navigation.Mode.None;
             gameObject.GetComponent<Button>().navigation = navigation;

@@ -12,4 +12,229 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b517c84d775fcb2458621eb343efe5fe, type: 3}
   m_Name: WoodBoxLootTable
   m_EditorClassIdentifier: 
-  _loots: []
+  _loots:
+  - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: b0db156b25d0f4e4cb5d42a2074a942e, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 2c8f4bacac00df1499309c65241b96fb, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 10
+      pourcentage: 50
+    - amount: 20
+      pourcentage: 30
+    - amount: 30
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: ac0370bde6823ac4c9fa9185148df1c0, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: 493ce8e2ad0548148bb2482fc4aab0db, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: 66edff851a9043f4c8a93e530331abb6, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: 4f167ab963ef4bf439e80d46e5647533, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: bd11abdf0994fdd49b36dcd8b71b1374, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: 09fb9573ec037ee419ce703b2a8f1100, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 2fa1abd3bc3300d45ad1a5120ddf0836, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 100
+  - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 10
+      pourcentage: 50
+    - amount: 20
+      pourcentage: 30
+    - amount: 30
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 7afc50a26a26478499434aed2709c314, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 85b51428fe9b2164bb8f56616f4c1f40, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+    dropRate: 3.448276
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20

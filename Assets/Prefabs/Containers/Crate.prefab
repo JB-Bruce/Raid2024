@@ -348,8 +348,8 @@ MonoBehaviour:
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
   itemSlots: []
   containerSelectedSprite: {fileID: 3050903927729174517}
-  rerollNumbers: 1
-  lootTable: {fileID: 0}
+  rerollNumbers: 9
+  lootTable: {fileID: 11400000, guid: a6a51366ef7348744af116f296aaa6f3, type: 2}
   _items: []
   containerRows: 3
   containerColumn: 3

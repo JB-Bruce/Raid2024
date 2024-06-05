@@ -170,11 +170,11 @@ MonoBehaviour:
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
   itemSlots: []
   containerSelectedSprite: {fileID: 7612619736928877471}
-  rerollNumbers: 1
-  lootTable: {fileID: 0}
+  rerollNumbers: 12
+  lootTable: {fileID: 11400000, guid: 69d759e88c01af64089e58e646317de7, type: 2}
   _items: []
-  containerRows: 3
-  containerColumn: 3
+  containerRows: 4
+  containerColumn: 4
   despawnTimer: 0
 --- !u!1 &7612619736928877471
 GameObject:

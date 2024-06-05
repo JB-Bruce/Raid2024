@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField]
-    private Item _item = null;
-    private int _quantity = 0;
+    private Item _item;
+    private int _quantity;
 
     [SerializeField]
     private TextMeshProUGUI _quantityText;
@@ -93,10 +93,12 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (_item != null)
         {
             _itemSprite.sprite = _item.ItemSprite;
+            _itemSprite.color = Color.white;
         }
         else
         {
             _itemSprite.sprite = null;
+            _itemSprite.color = new Color(0.5f, 0.5f, 0.5f, 0);
         }
     }
 
@@ -106,7 +108,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void UpdateQuantity(int quantity)
     {
-        if (quantity > 0)
+        if (quantity > 0 && _item != null)
         {
             UpdateItemSprite();
             _quantity = quantity;

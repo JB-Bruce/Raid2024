@@ -136,7 +136,7 @@ public class UnitCombat : MonoBehaviour
     {
         if(canAttack && nearestEnemy != null) 
         {
-            weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position);
+            weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position, _mHumanoid.faction);
         }
         //weaponAttack.UpdateWeaponRotation();
     }
