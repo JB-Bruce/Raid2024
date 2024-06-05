@@ -36,9 +36,9 @@ public class IsPOICaptured : Node
             _unitBT.order = UnitOrder.Patrol;
             for (int i = 0; i < _factionManager.factions.Count; i++)
             {
-                if (_factionManager.factions[i].faction == _unitBT.faction)
+                if (_factionManager.factions[i].FactionUnitManager.faction == _unitBT.faction)
                 {
-                    _factionManager.factions[i].RemoveJob(_unit.gameObject);
+                    _factionManager.factions[i].FactionUnitManager.RemoveJob(_unit.gameObject);
                 }
             }
             _unit.ChangeTarget(_unit.GetRandomPointOnMap());

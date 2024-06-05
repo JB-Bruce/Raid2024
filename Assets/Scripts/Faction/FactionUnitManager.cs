@@ -23,7 +23,7 @@ public class FactionUnitManager : MonoBehaviour
     public int maxUnit = 10;
     public int maxGuard = 3;
     public int nbrOfDeadUnit = 0;
-    public float _unitSpawnRate = 30f;
+    public float unitSpawnRate = 30f;
     [SerializeField] private Transform _spawnPosition;
     [SerializeField] [Range(0,100)] private float _banditSpawnInCamp = 50;
 
@@ -167,7 +167,7 @@ public class FactionUnitManager : MonoBehaviour
         if(nbrOfDeadUnit > 0)
         {
             nbrOfDeadUnit--;
-            StartCoroutine(SpawnUnitWithDelay(_unitSpawnRate));
+            StartCoroutine(SpawnUnitWithDelay(unitSpawnRate));
         }
     }
 
