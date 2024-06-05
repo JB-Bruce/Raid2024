@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 6.1"
   _itemsNeed:
-  - item: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    quantityNeed: 3
-  _itemsInInventory:
-  - item: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
-    quantityNeed: 2
+  - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+    quantityNeed: 1
+  _itemsInInventory: []
