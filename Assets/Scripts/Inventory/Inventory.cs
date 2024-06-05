@@ -114,7 +114,7 @@ public class Inventory : MonoBehaviour
 
         for(int i = 0; i < _itemsToGiveAtStart.Count; i++)
         {
-            for(int j = 0; i< _itemsToGiveAtStart[i].quantityNeed; i++)
+            for(int j = 0; j< _itemsToGiveAtStart[i].quantityNeed; j++)
             {
                 AddItem(_itemsToGiveAtStart[i].item);
             }
@@ -367,6 +367,12 @@ public class Inventory : MonoBehaviour
             {
                 itemSlot.UpdateQuantity(itemSlot.Quantity + 1);
             }
+
+            ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+            itemWithQuantity.item = item;
+            itemWithQuantity.quantityNeed = 1;
+            QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
             return true;
         }
         return false;
@@ -409,7 +415,11 @@ public class Inventory : MonoBehaviour
         {
             if (itemSlot.GetType() != typeof(EquipementSlot) && itemSlot.Item.GetType() != typeof(QuestItem))
             {
+                ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+                itemWithQuantity.item = itemSlot.Item;
+                itemWithQuantity.quantityNeed = -itemSlot.Quantity;
                 itemSlot.UpdateQuantity(0);
+                QuestManager.instance.CheckQuestItems(itemWithQuantity);
             }
         }
     }
@@ -462,6 +472,11 @@ public class Inventory : MonoBehaviour
         {
             StatsManager.instance.AddHealth((int)heal.HealAmount);
         }
+
+        ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+        itemWithQuantity.item = itemSlot.Item;
+        itemWithQuantity.quantityNeed = -1;
+        QuestManager.instance.CheckQuestItems(itemWithQuantity);
 
         itemSlot.UpdateQuantity(itemSlot.Quantity-1);
     }
@@ -542,6 +557,11 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void ItemSwap(ItemSlot slot1, ItemSlot slot2)
     {
+        ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+        itemWithQuantity.item = slot1.Item;
+        itemWithQuantity.quantityNeed = slot1.Quantity;
+        QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
         Item TempItem = slot1.Item;
         slot1.Item = slot2.Item;
         slot2.Item = TempItem;
@@ -681,14 +701,23 @@ public class Inventory : MonoBehaviour
             {
                 if (_itemSlots[i].Item == item && _itemSlots[i].Quantity > 0)
                 {
+                    ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+                    itemWithQuantity.item = item;
+
                     if (quantity > _itemSlots[i].Quantity)
                     {
                         quantity -= _itemSlots[i].Quantity;
                         _itemSlots[i].UpdateQuantity(0);
+
+                        itemWithQuantity.quantityNeed = -(quantity - _itemSlots[i].Quantity);
+                        QuestManager.instance.CheckQuestItems(itemWithQuantity);
                     }
                     else
                     {
                         _itemSlots[i].UpdateQuantity(_itemSlots[i].Quantity - quantity);
+
+                        itemWithQuantity.quantityNeed = -quantity;
+                        QuestManager.instance.CheckQuestItems(itemWithQuantity);
                         return;
                     }
                 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
@@ -53,6 +54,8 @@ public class DialogueManager : MonoBehaviour
     private float charactersPerSecond;
 
     private Coroutine _typeTextCoroutine;
+
+    public EventSystem eventSystem;
 
     public static DialogueManager instance;
 
@@ -215,6 +218,7 @@ public class DialogueManager : MonoBehaviour
             _choicesUiList[i].SetActive(true);
             _choicesUiList[i].GetComponentInChildren<TextMeshProUGUI>().SetText(_currentTalk.choices[i].choice);
         }
+        eventSystem.SetSelectedGameObject(_choicesUiList[0]);
     }
 
     //deactivate the choices buttons and activate skip button
@@ -226,6 +230,7 @@ public class DialogueManager : MonoBehaviour
         {
             _choicesUiList[i].SetActive(false);
         }
+        eventSystem.SetSelectedGameObject(_skipButton);
     }
 
     //update the visual and the script to display the next dialogue

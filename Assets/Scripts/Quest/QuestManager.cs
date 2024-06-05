@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class QuestManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField]
     private GameObject _questInfoInGame;
+
+    [SerializeField]
+    private GameObject _closeButton;
 
     [SerializeField]
     private TextMeshProUGUI _mainQuestTitle;
@@ -30,6 +34,8 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField]
     private int _currentMainQuest;
+
+    public EventSystem eventSystem;
 
     [SerializeField]
     private List<Quest> _quests = new();
@@ -107,6 +113,7 @@ public class QuestManager : MonoBehaviour
     //open quest panel
     public void OpenQuestPanel()
     {
+        eventSystem.SetSelectedGameObject(_closeButton);
         if (_questInfoInGame.activeInHierarchy)
         {
             UpdateMainQuestUi();
