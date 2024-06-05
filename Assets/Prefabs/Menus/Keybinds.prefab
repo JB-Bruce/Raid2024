@@ -1480,7 +1480,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: H
+      value: Q
       objectReference: {fileID: 0}
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -2120,7 +2120,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: I
+      value: Tab
       objectReference: {fileID: 0}
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -2289,7 +2289,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: U
+      value: Z
       objectReference: {fileID: 0}
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -2466,7 +2466,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: K
+      value: D
       objectReference: {fileID: 0}
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
@@ -2957,7 +2957,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_text
-      value: J
+      value: S
       objectReference: {fileID: 0}
     - target: {fileID: 2365714005692511731, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
       propertyPath: m_fontColor32.rgba
