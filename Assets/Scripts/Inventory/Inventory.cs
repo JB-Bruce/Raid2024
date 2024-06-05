@@ -77,6 +77,9 @@ public class Inventory : MonoBehaviour
     private bool _isMoving = false;
     private Vector2 _moveDirection = Vector2.zero;
 
+    [SerializeField] 
+    private List<ItemWithQuantity> _itemsToGiveAtStart = new();
+
     [SerializeField]
     private MovePlayer _player;
 
@@ -108,6 +111,14 @@ public class Inventory : MonoBehaviour
         equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(false);
         _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
         weaponSlots[0].GetSelected(true);
+
+        for(int i = 0; i < _itemsToGiveAtStart.Count; i++)
+        {
+            for(int j = 0; i< _itemsToGiveAtStart[i].quantityNeed; i++)
+            {
+                AddItem(_itemsToGiveAtStart[i].item);
+            }
+        }
     }
 
     private void Update()
