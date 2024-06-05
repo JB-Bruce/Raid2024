@@ -5,7 +5,7 @@ public class RebindSaveLoad : MonoBehaviour
 {
     public InputActionAsset actions;
 
-    public void OnEnable()
+    public void Awake()
     {
         var rebinds = PlayerPrefs.GetString("rebinds");
         if (!string.IsNullOrEmpty(rebinds))
