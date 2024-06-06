@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
 public class TutorialManager : MonoBehaviour
 {
     public static TutorialManager Instance;
@@ -17,14 +18,12 @@ public class TutorialManager : MonoBehaviour
     public List<GameObject> ListAllies = new List<GameObject>();
     public List<GameObject> ListUIToDeactivate = new List<GameObject>();
 
-    
+    public Animator FadeInAnimator;
     
     [SerializeField] private int _tutorialincrement = -1;
 
-
-
-
     private bool _setEnableToTrue = true;
+    private bool _playOnce = true;
 
     /// <summary>
     /// create an instance of the tutorial manager
@@ -68,6 +67,11 @@ public class TutorialManager : MonoBehaviour
             _setEnableToTrue = false;
         }
 
+        if (_tutorialincrement == 5 && _playOnce)
+        {
+            FadeInAnimator.Play("FadeIn");
+            _playOnce = false;
+        }
     }
 
     /// <summary>
