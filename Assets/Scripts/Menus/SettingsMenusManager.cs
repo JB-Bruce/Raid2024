@@ -60,6 +60,12 @@ public class SettingsMenusManager : MonoBehaviour
         }
     }
 
+    public void OpenSettings()
+    {
+        isInSettings = true;
+        settingsMenus.SetActive(true);
+    }
+
     public void ChangeChosenMenu(GameObject newMenu)
     {
         if (newMenu == _chosenMenu)

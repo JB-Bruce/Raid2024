@@ -4418,6 +4418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb675e3a82843fd4a9de0ecbc485a515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerInput: {fileID: 0}
 --- !u!1 &1697492562
 GameObject:
   m_ObjectHideFlags: 0
@@ -6972,7 +6973,7 @@ PrefabInstance:
       objectReference: {fileID: 1635004244}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _sceneToLoadAtEnd
-      value: Game
+      value: MVP
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _timeBetweenChars

@@ -9,14 +9,14 @@ public class MenuManager : MonoBehaviour
 
     public void OpenSettingsInGame()
     {
-        SettingsMenu.instance.OpenSettings();
+        SettingsMenusManager.instance.OpenSettings();
     }
 
     public void CloseSettingsInGame()
     {
         if (SettingsMenu.instance != null)
         {
-            SettingsMenu.instance.DeactivateSettingsMenu();
+            SettingsMenusManager.instance.DeactivateSettingsMenus();
         }
     }
 
@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
     {
         _playerInput.SwitchCurrentActionMap("InGame");
         this.gameObject.SetActive(false);
-        SettingsMenu.instance.DeactivateSettingsMenu();
+        SettingsMenusManager.instance.DeactivateSettingsMenus();
     }
 
     public void ReturnToMainMenu()
