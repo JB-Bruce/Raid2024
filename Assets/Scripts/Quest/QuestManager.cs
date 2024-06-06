@@ -37,6 +37,9 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private List<Quest> _quests = new();
 
+    [SerializeField]
+    private FactionQuestManager _factionQuestManager;
+
     public static QuestManager instance;
 
     [SerializeField]
@@ -53,7 +56,7 @@ public class QuestManager : MonoBehaviour
         UpdateQuestActionUi();
     }
 
-    //check if the current QuestAction is a QuestTrigger
+    //check if the current QuestActions are QuestTrigger
     public void CheckQuestTrigger(questTriggerType questTrigger, string information = "")
     {
         if (_quests[_currentMainQuest].GetCurrentQuestAction() is QuestTrigger aQuestTrigger)
@@ -62,8 +65,9 @@ public class QuestManager : MonoBehaviour
             {
                 NextMainQuest();
             }
-            UpdateObjectivesUi();
         }
+        _factionQuestManager.CheckFactionQuestsTrigger(questTrigger, information);
+        UpdateObjectivesUi();
     }
 
     //check if the current QuestAction is a QuestItems
@@ -75,6 +79,7 @@ public class QuestManager : MonoBehaviour
             {
                 NextMainQuest();
             }
+            _factionQuestManager.CheckFactionQuestsItems(itemWithQuantity);
             UpdateObjectivesUi();
         }
     }
@@ -88,6 +93,7 @@ public class QuestManager : MonoBehaviour
             {
                 NextMainQuest();
             }
+            _factionQuestManager.CheckFactionQuestsKill(faction);
             UpdateObjectivesUi();
         }
     }
