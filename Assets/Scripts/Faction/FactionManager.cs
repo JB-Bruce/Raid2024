@@ -81,6 +81,7 @@ public class FactionManager : MonoBehaviour
             {
                 Reputation reputation = reputations[i];
                 reputation.reputation += newReputation;
+                reputation.reputation = Mathf.Clamp(reputation.reputation, -5, 8);
                 reputations[i] = reputation;
                 ChangeReputationText(faction1, faction2, reputations[i].reputation);
                 return;
@@ -207,22 +208,22 @@ public class FactionManager : MonoBehaviour
             switch(_otherFaction) 
             {
                 case Faction.Survivalist:
-                    _textReputationPlayerSurvivalist.text = reputation.ToString();
+                    _textReputationPlayerSurvivalist.text = reputation.ToString("f1");
                     PlayerReputationParameters(_textReputationPlayerSurvivalist, reputation, _otherFaction);
                     break;
 
                 case Faction.Utopist:
-                    _textReputationPlayerUtopist.text = reputation.ToString();
+                    _textReputationPlayerUtopist.text = reputation.ToString("f1");
                     PlayerReputationParameters(_textReputationPlayerUtopist, reputation, _otherFaction);
                     break;
 
                 case Faction.Scientist:
-                    _textReputationPlayerScientist.text = reputation.ToString();
+                    _textReputationPlayerScientist.text = reputation.ToString("f1");
                     PlayerReputationParameters(_textReputationPlayerScientist, reputation, _otherFaction);
                     break;
 
                 case Faction.Military:
-                    _textReputationPlayerMilitary.text = reputation.ToString();
+                    _textReputationPlayerMilitary.text = reputation.ToString("f1");
                     PlayerReputationParameters(_textReputationPlayerMilitary, reputation, _otherFaction);
                     break;
             }

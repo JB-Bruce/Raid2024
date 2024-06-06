@@ -34,6 +34,7 @@ public class UnitMovement : MonoBehaviour
     // Change the target point of the unit
     public void ChangeTarget(Vector3 target)
     {
+        
          _agent.SetDestination(new Vector3(target.x, target.y, _transform.position.z));
     }
 

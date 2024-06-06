@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ad2a60bd9a4ee4e90735fbe989ac7d, type: 3}
+  m_Name: Quest2.2
+  m_EditorClassIdentifier: 
+  _name: "Qu\xEAte 2.2"
+  _itemsNeed:
+  - item: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    quantityNeed: 1
+  _itemsInInventory:
+  - item: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    quantityNeed: 1

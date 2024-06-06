@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pnj : MonoBehaviour
+public class Pnj : Interactable
 {
     [SerializeField]
     private List<DialogueContent> _dialogues = new();
@@ -31,10 +31,29 @@ public class Pnj : MonoBehaviour
         _isNameHide = true;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            PlayerInteraction.Instance.interactables.Add(this);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            PlayerInteraction.Instance.interactables.Remove(this);
+        }
+    }
+
     //call the DialogueManager to start the dialogue
     public void StartDialogue()
     {
-        _startButton.SetActive(false);
+        if (_startButton != null)
+        {
+            _startButton.SetActive(false);
+        }
         List<int> questIndexs = QuestManager.instance.GetCurrentMainQuestActionIndex();
         DialogueContent dialogueContent = new();
         foreach (var dialogue in _questDialogues)
@@ -55,12 +74,11 @@ public class Pnj : MonoBehaviour
     //call at the end of the dialogue
     private void EndDialogue(List<string> choices, bool isNameHide)
     {
-        _startButton.SetActive(true);
-        _isNameHide = isNameHide;
-        for (int i = 0; i < choices.Count; i++)
+        if (_startButton != null)
         {
-            print(choices[i] + "\n");
+            _startButton.SetActive(true);
         }
+        _isNameHide = isNameHide;
     }
 }
 

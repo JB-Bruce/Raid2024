@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,9 @@ public class Trade : MonoBehaviour
 
     [SerializeField]
     private Image _tradableItemImage;
+
+    [SerializeField]
+    private TextMeshProUGUI _tradableItemQuantityText;
 
     [SerializeField]
     private GameObject _itemRequirePrefab;
@@ -33,6 +37,8 @@ public class Trade : MonoBehaviour
         _currentData = tradeData;
 
         _tradableItemImage.sprite = _currentData.tradeItem.ItemSprite;
+
+        _tradableItemQuantityText.text = _currentData.tradeItemQuantity.ToString();
 
         ResetTradable();
 

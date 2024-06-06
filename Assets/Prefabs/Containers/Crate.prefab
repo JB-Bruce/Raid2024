@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7429285510941426723}
   - component: {fileID: 4073425849871892058}
+  - component: {fileID: 5920369574227213418}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -161,6 +162,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2237134, y: 2.299152}
   m_EdgeRadius: 0
+--- !u!114 &5920369574227213418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6017283790603101240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &6686939597042427147
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,8 +348,8 @@ MonoBehaviour:
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
   itemSlots: []
   containerSelectedSprite: {fileID: 3050903927729174517}
-  rerollNumbers: 1
-  lootTable: {fileID: 0}
+  rerollNumbers: 9
+  lootTable: {fileID: 11400000, guid: a6a51366ef7348744af116f296aaa6f3, type: 2}
   _items: []
   containerRows: 3
   containerColumn: 3

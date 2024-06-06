@@ -1,14 +1,22 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class QuestManager : MonoBehaviour
 {
     [SerializeField]
+    private PlayerInput _playerInput;
+
+    [SerializeField]
     private GameObject _questPanel;
 
     [SerializeField]
-    private GameObject _buttons;
+    private GameObject _questInfoInGame;
+
+    [SerializeField]
+    private GameObject _closeButton;
 
     [SerializeField]
     private TextMeshProUGUI _mainQuestTitle;
@@ -18,9 +26,6 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI _questActionTitle;
-
-    [SerializeField]
-    private TextMeshProUGUI _questActionDescription;
 
     [SerializeField]
     private TextMeshProUGUI _objectives;
@@ -34,6 +39,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private int _currentMainQuest;
 
+    public EventSystem eventSystem;
+
     [SerializeField]
     private List<Quest> _quests = new();
 
@@ -41,12 +48,6 @@ public class QuestManager : MonoBehaviour
     private FactionQuestManager _factionQuestManager;
 
     public static QuestManager instance;
-
-    [SerializeField]
-    private Item _bandage;
-
-    [SerializeField]
-    private Item _alcohol;
 
     //create an instance of the DialogueManager
     private void Awake()
@@ -122,17 +123,30 @@ public class QuestManager : MonoBehaviour
     //open quest panel
     public void OpenQuestPanel()
     {
-        UpdateMainQuestUi();
-        UpdateQuestActionUi();
-        _buttons.SetActive(false);
-        _questPanel.SetActive(true);
+        if (_playerInput.actions.FindActionMap("InGame").enabled)
+        {
+            _playerInput.SwitchCurrentActionMap("Quest");
+            eventSystem.SetSelectedGameObject(_closeButton);
+            if (_questInfoInGame.activeInHierarchy)
+            {
+                UpdateMainQuestUi();
+                UpdateQuestActionUi();
+                _questInfoInGame.SetActive(false);
+                _questPanel.SetActive(true);
+            }
+        }
+        else if (_playerInput.actions.FindActionMap("Quest").enabled)
+        {
+            CloseQuestPanel();
+        }
     }
 
     //close quest panel
     public void CloseQuestPanel()
     {
+        _playerInput.SwitchCurrentActionMap("InGame");
         _questPanel.SetActive(false);
-        _buttons.SetActive(true);
+        _questInfoInGame.SetActive(true);
     }
 
     //update main quest ui
@@ -148,7 +162,6 @@ public class QuestManager : MonoBehaviour
         string text = _quests[_currentMainQuest].GetCurrentQuestAction().GetName();
         _questActionTitleInGame.text = text;
         _questActionTitle.text = text;
-        _questActionDescription.text = _quests[_currentMainQuest].GetCurrentQuestAction().GetDescription();
     }
 
     //update quest objectives informations ui
@@ -157,32 +170,6 @@ public class QuestManager : MonoBehaviour
         string objectives = _quests[_currentMainQuest].GetCurrentQuestAction().GetObjectivesText();
         _objectivesInGame.text = objectives;
         _objectives.text = objectives;
-    }
-
-    public void TuerUnMillitaire() { CheckQuestKill(Faction.Military); }
-    public void TuerUnUtopiste() { CheckQuestKill(Faction.Utopist); }
-    public void AjouterUnBandage() 
-    {
-        ItemWithQuantity item = new();
-        item.item = _bandage;
-        item.quantityNeed = 1;
-        CheckQuestItems(item);
-    }
-
-    public void RetirerDeuxBandage()
-    {
-        ItemWithQuantity item = new();
-        item.item = _bandage;
-        item.quantityNeed = -2;
-        CheckQuestItems(item);
-    }
-
-    public void AjouterUnAlcohol()
-    {
-        ItemWithQuantity item = new();
-        item.item = _alcohol;
-        item.quantityNeed = 1;
-        CheckQuestItems(item);
     }
 
     public enum questTriggerType

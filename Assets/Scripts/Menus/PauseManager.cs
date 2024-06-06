@@ -1,13 +1,18 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
 {
     public static PauseManager instance;
 
+    [SerializeField] private PlayerInput _playerInput;
+
     [Header("Menu objets: ")]
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] Image _pauseMenuBackgroundImage;
+    [SerializeField] GameObject _firstMenuButton;
 
     ConditionsManager _conditionsManager;
 
@@ -21,26 +26,7 @@ public class PauseManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
-
-    private void Start()
-    {
         _conditionsManager = ConditionsManager.instance;
-    }
-
-    private void Update() //Temp Test
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            if (!_conditionsManager.IsAnyMenuOpen())
-            {
-                PauseGame();
-            }
-            else if (_conditionsManager.isPaused)
-            {
-                UnpauseGame();
-            }
-        }
     }
 
     private void OnApplicationPause(bool pause) //Pauses the game on Application quit
@@ -53,15 +39,19 @@ public class PauseManager : MonoBehaviour
 
     public void PauseGame() //Pauses the game
     {
+        _playerInput.SwitchCurrentActionMap("Pause");
+        Cursor.visible = true;
         _pauseMenu.SetActive(true);
         _pauseMenuBackgroundImage.enabled = true;
         _conditionsManager.isPaused = true;
+        EventSystem.current.SetSelectedGameObject(_firstMenuButton);
 
         Time.timeScale = 0f;
     }
 
     public void UnpauseGame() //Unpauses the game
     {
+        _playerInput.SwitchCurrentActionMap("InGame");
         _pauseMenu.SetActive(false);
         _pauseMenuBackgroundImage.enabled = false;
         _conditionsManager.isPaused = false;

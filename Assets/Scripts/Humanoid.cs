@@ -15,7 +15,7 @@ public class Humanoid : MonoBehaviour
 
     private FactionManager _factionManager;
 
-    private void Awake()
+    protected virtual void Start()
     {
         _factionManager = FactionManager.Instance;
     }
@@ -75,5 +75,9 @@ public class Humanoid : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        if(_faction == Faction.Player)
+        {
+            QuestManager.instance.CheckQuestKill(faction);
+        }
     }
 }

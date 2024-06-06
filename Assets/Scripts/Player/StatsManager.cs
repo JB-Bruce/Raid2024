@@ -186,7 +186,8 @@ public class StatsManager : Humanoid
         }
     }
 
-    private void Start() {
+    protected override void Start() {
+        base.Start();
         RemoveFood();
         RemoveWater();
         ChangeRespawnPoint();
@@ -253,6 +254,9 @@ public class StatsManager : Humanoid
     //Change the position of the respawn with the faction chosen by the player
     public void ChangeRespawnPoint()
     {
+        if(FactionManager.Instance.factionRespawns.Count <=0)
+            return;
+
         switch(_respawnFaction) 
         {
             case ERespawnFaction.Military:

@@ -16,4 +16,5 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 0
   _name: MagneticCoil
-  _itemSprite: {fileID: 0}
+  _description: 
+  _itemSprite: {fileID: 21300000, guid: a6c0492c8dc894f4795ea8c493ad880e, type: 3}

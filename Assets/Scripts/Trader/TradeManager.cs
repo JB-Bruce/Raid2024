@@ -34,9 +34,6 @@ public class TradeManager : MonoBehaviour
     private GameObject _tradeUiPrefab;
 
     [SerializeField]
-    private GameObject _traderButton;
-
-    [SerializeField]
     private Transform _tradeParent;
 
     [SerializeField] 
@@ -86,7 +83,6 @@ public class TradeManager : MonoBehaviour
                 tradeItemGO.GetComponent<Button>().onClick.AddListener(() => SelectTrade(tradeItemGO.GetComponent<Trade>()));
                 _trades.Add(tradeItemGO.GetComponent<Trade>());
             }
-            _traderButton.SetActive(false);
             _tradeButton.GetComponent<Button>().interactable = false;
             _notEnoughResourcesText.SetActive(false);
             _inventoryFullText.SetActive(false);
@@ -116,7 +112,6 @@ public class TradeManager : MonoBehaviour
 
             Inventory.Instance.OpenInventory(false);
 
-            _traderButton.SetActive(true);
             _tradePanel.SetActive(false);
         }
     }
@@ -176,7 +171,10 @@ public class TradeManager : MonoBehaviour
         }
 
         //methode to add trade item to inventory
-        _inventory.AddItem(_selectedTrade.currentData.tradeItem);
+        for(int i = 0; i < _selectedTrade.currentData.tradeItemQuantity; i++)
+        {
+            _inventory.AddItem(_selectedTrade.currentData.tradeItem);
+        }
         
         UpdateTradeButton(_selectedTrade);
         RefreshTrades();
@@ -201,6 +199,7 @@ public class TradeManager : MonoBehaviour
 public struct TradeData
 {
     public Item tradeItem;
+    public int tradeItemQuantity;
     public List<ItemWithQuantity> itemsToTrade;
 }
 

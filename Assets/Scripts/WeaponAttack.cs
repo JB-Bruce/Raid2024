@@ -5,8 +5,8 @@ public class WeaponAttack : MonoBehaviour
 {
     [Header("Paremeter")]
     public GameObject firePoint;
-    public GameObject rightHand;
-    public GameObject leftHand;
+    [SerializeField] private GameObject rightHand;
+    [SerializeField] private GameObject leftHand;
 
     // Variable
     private bool _isRangeWeapon = false;
@@ -56,8 +56,6 @@ public class WeaponAttack : MonoBehaviour
         _unitCombat = transform.parent.GetComponent<UnitCombat>();
         _animator = GetComponent<Animator>();
         _camera = Camera.main;
-
-        //EquipWeapon(_unitCombat.weapon);
     }
 
     private void Update()
