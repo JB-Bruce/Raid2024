@@ -29,21 +29,6 @@ public class PauseManager : MonoBehaviour
         _conditionsManager = ConditionsManager.instance;
     }
 
-    private void Update() //Temp Test
-    {
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            if (!_conditionsManager.IsAnyMenuOpen())
-            {
-                PauseGame();
-            }
-            else if (_conditionsManager.isPaused)
-            {
-                UnpauseGame();
-            }
-        }
-    }
-
     private void OnApplicationPause(bool pause) //Pauses the game on Application quit
     {
         if (pause && !_conditionsManager.gameHasEnded || !_conditionsManager.hasDied)
