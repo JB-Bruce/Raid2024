@@ -20,6 +20,8 @@ public class MovePlayer : MonoBehaviour
     
     [SerializeField]
     private Inventory _inventory;
+
+    public static MovePlayer instance;
     
     private bool _isSprinting = false;
     private bool _isAiming = false;
@@ -499,6 +501,21 @@ public class MovePlayer : MonoBehaviour
                 //stop laser stuff here
             }
         }
+    }
+
+//Check on the 3 equipement slots what protection is eqquiped. Get for the three the amount of reduce damage and return it.
+    public float CheckArmor()
+    {
+        float reduceDamage = 0;
+        for (int i = 0; i < 3; i ++)
+        {
+            if(inventory.equipementSlots[i].Item != null)
+            {
+                Armor armor = (Armor)inventory.equipementSlots[i].Item;
+                reduceDamage += armor.Protection;
+            }
+        }
+        return reduceDamage;
     }
 
     void Update()
