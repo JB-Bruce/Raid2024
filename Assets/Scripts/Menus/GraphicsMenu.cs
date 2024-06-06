@@ -31,8 +31,6 @@ public class GraphicsMenu : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-
-            gameObject.SetActive(false);
         }
 
         fullscreenToggle.isOn = Screen.fullScreen;
@@ -159,12 +157,6 @@ public class GraphicsMenu : MonoBehaviour
 
         Screen.SetResolution(resolutions[_selectedRes].horizontal, resolutions[_selectedRes].vertical, fullscreenToggle.isOn);
         Application.targetFrameRate = fpsLimits[_selectedFPSLimit];
-    }
-
-    public void DeactivateGraphicsMenu()
-    {
-        graphicsMenu.SetActive(false);
-        SettingsMenu.instance.isInSettings = false;
     }
 }
 
