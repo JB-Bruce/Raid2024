@@ -14,6 +14,8 @@ public class UnitBT : Humanoid
     public float waitTime = 0;
     public bool canMove = true;
 
+    public UnitLeader master;
+
     private NavMeshAgent _agent;
     private Selector _selectorRoot;
     private UnitMovement _unitMove;
@@ -175,7 +177,7 @@ public class UnitBT : Humanoid
 // Contain all the possible state of a unit
 public enum UnitOrder
 {
-    Patrol, AreaGuard, Surveillance, POICapture
+    Patrol, AreaGuard, Surveillance, POICapture, Follow
 }
 
 // Contain all the possible Faction 
