@@ -16,7 +16,12 @@ public class Quest
     [SerializeField]
     private List<QuestAction> _questActions = new();
 
+    [SerializeField]
+    private questType _questType;
+
+    //get the quest name
     public string GetName() {  return _name; }
+    //get the quest description
     public string GetDescription() {  return _description; }
 
     //get the current quest action
@@ -44,5 +49,11 @@ public class Quest
             _currentQuestAction = 0;
             return false;
         }
+    }
+
+    public enum questType
+    {
+        mainQuest,
+        factionQuest
     }
 }

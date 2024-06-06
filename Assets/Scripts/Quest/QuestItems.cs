@@ -24,6 +24,7 @@ public class QuestItems : QuestAction
         }
     }
 
+    //return the text for the objectives
     public override string GetObjectivesText()
     {
         string textToReturn = string.Empty;

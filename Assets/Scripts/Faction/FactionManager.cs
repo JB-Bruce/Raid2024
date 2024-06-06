@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
+using static UnityEngine.InputSystem.DefaultInputActions;
 
 public class FactionManager : MonoBehaviour
 {
     public static FactionManager Instance;
-    public List<FactionUnitManager> factions = new List<FactionUnitManager>();
+    public List<FactionSc> factions = new List<FactionSc>();
     public List<Reputation> reputations = new List<Reputation>();
     public List<POI> poi = new List<POI>();
     public float maxReputation = 8;
@@ -17,6 +19,7 @@ public class FactionManager : MonoBehaviour
     public float changeReputationForAllies = 0.1f;
     public Transform[] vertices = new Transform[4];  // Les sommets du losange
 
+    public UnityEvent<POI, Faction> IsPoiCaught = new();
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI _textReputationPlayerScientist;
@@ -43,16 +46,25 @@ public class FactionManager : MonoBehaviour
         poi = OrderPOIByPriority();
     }
 
+    private void Start()
+    {
+        for (int i = 0; i < factions.Count; i++) 
+        {
+            IsPoiCaught.AddListener(factions[i].HaveCaughtPOI);
+        }
+    }
+
     // Remove a unit from a faction and indicate is death to the faction
     public void RemoveUnitFromFaction(Faction faction, GameObject unit)
     {
         for(int i = 0; i < factions.Count; i++) 
         {
-            if(factions[i].faction == faction)
+            FactionUnitManager _factionUnit = factions[i].FactionUnitManager;
+            if (_factionUnit.faction == faction)
             {
-                factions[i].RemoveJob(unit);
-                factions[i].nbrOfDeadUnit++;
-                factions[i].units.Remove(unit);
+                _factionUnit.RemoveJob(unit);
+                _factionUnit.nbrOfDeadUnit++;
+                _factionUnit.units.Remove(unit);
             }
         }
     }
@@ -272,6 +284,21 @@ public class FactionManager : MonoBehaviour
         return -1;
     }
 
+    // Return the FactionSc
+    public FactionSc GetFaction(Faction _faction)
+    {
+        for (int i = 0; i < factions.Count; i++)
+        {
+            FactionUnitManager _factionUnit = factions[i].FactionUnitManager;
+
+            if (_faction == factions[i].FactionUnitManager.faction)
+            {
+                return factions[i];
+            }
+        }
+        return null;
+    }
+
 }
 
 
@@ -299,4 +326,3 @@ public struct BonusFaction
     public Faction faction;
     [Range(-1,2)] public int bonus;
 }
-
