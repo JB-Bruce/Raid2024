@@ -13,47 +13,92 @@ public class AllyTutorial : MonoBehaviour
     public GameObject Bodie;
     public GameObject Legs;
 
+    public Transform DestinationTransform;
+
     private bool _setPlayerFactionOnce = true;
+
+    private Vector3 _spawnAllyPosition = Vector3.zero;
+    private Vector3 _allyDestination = Vector3.zero;
+
+    private Transform _selfTransform;
+
+    private float travelTime = 2.0f;
+    private float elapsedTime = 0.0f;
+
+    private TutorialManager _tutorialManager;
+
+    private void Start()
+    {
+        _selfTransform = transform;
+        _spawnAllyPosition = _selfTransform.position;
+        _allyDestination = DestinationTransform.position;
+
+        _tutorialManager = TutorialManager.Instance;
+    }
 
     // Update is called once per frame
     void Update()
     {
-
-        // when the play button is pressed set the right sprite for the allies
-        if ( _setPlayerFactionOnce) //CharacterCustomisation.Instance.PlayPressed &&
+        if (_setPlayerFactionOnce && CharacterCustomisation.Instance.PlayPressed)
         {
-            switch (TutorialManager.Instance.GetPlayerFaction())
+            ChangeAlliesSpriteFromFaction();
+        }
+
+        if (_tutorialManager.TutorialIncrement() == 4)
+        {
+            elapsedTime += Time.deltaTime;
+
+            elapsedTime = Mathf.Clamp(elapsedTime, 0, travelTime);
+            
+            float t = elapsedTime / travelTime;
+
+            
+            _selfTransform.position = Vector3.Lerp(_spawnAllyPosition, _allyDestination, t);
+
+            if (Vector3.Distance(_selfTransform.position, _allyDestination) < 1.0f)
             {
-                case Faction.Military:
-                    ChangeSprite(0);
-                    break;
-
-                case Faction.Utopist:
-                    ChangeSprite(1);
-                    break;
-
-                case Faction.Survivalist:
-                    ChangeSprite(2);
-                    break;
-
-                case Faction.Scientist:
-                    ChangeSprite(3);
-                    break;
-
-                default:
-                    ChangeSprite(0);
-                    break;
+                _tutorialManager.NextTutorial();
             }
+
         }
     }
 
     /// <summary>
     ///   Change the sprite of the allies using an index
     /// </summary>
-    private void ChangeSprite(int index)
+    private void ChangeSpriteFromIndex(int index)
     {
-        Hairs.GetComponent<SpriteRenderer>().sprite = HairsSprites[0];
-        Bodie.GetComponent<SpriteRenderer>().sprite = BodiesSprites[0];
-        Legs.GetComponent<SpriteRenderer>().sprite = LegsSprites[0];
+        Hairs.GetComponent<SpriteRenderer>().sprite = HairsSprites[index];
+        Bodie.GetComponent<SpriteRenderer>().sprite = BodiesSprites[index];
+        Legs.GetComponent<SpriteRenderer>().sprite = LegsSprites[index];
+    }
+
+    /// <summary>
+    ///     when the play button is pressed set the right sprite for the allies
+    /// </summary>
+    private void ChangeAlliesSpriteFromFaction()
+    {
+        switch (TutorialManager.Instance.GetPlayerFaction())
+        {
+            case Faction.Military:
+                ChangeSpriteFromIndex(0);
+                break;
+
+            case Faction.Utopist:
+                ChangeSpriteFromIndex(1);
+                break;
+
+            case Faction.Survivalist:
+                ChangeSpriteFromIndex(2);
+                break;
+
+            case Faction.Scientist:
+                ChangeSpriteFromIndex(3);
+                break;
+
+            default:
+                ChangeSpriteFromIndex(0);
+                break;
+        }
     }
 }

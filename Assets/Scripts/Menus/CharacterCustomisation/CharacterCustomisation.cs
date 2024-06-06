@@ -24,9 +24,15 @@ public class CharacterCustomisation : MonoBehaviour
 
     public GameObject CharacterSelectionUI;
 
-    private string CharacterNameText;
+    [SerializeField] private List<GameObject> _gameobjectToActivate = new List<GameObject>();
 
+    private string _characterNameText = "";
+    private string _characterFaction = "";
+    private string _characterGender = "";
 
+    /// <summary>
+    ///  set an instance for the CharacterCustomisation
+    /// </summary>
     private void Awake()
     {
         if (Instance == null)
@@ -39,7 +45,7 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToWoman()
     {
         CharacterPreview.sprite = WomanSprite;
-        PlayerPrefs.SetString("Gender", "Woman");
+        _characterGender = "Woman";
     }
 
     /// <summary>
@@ -48,8 +54,7 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToMan()
     {
         CharacterPreview.sprite = ManSprite;
-
-        PlayerPrefs.SetString("Gender", "Man");
+        _characterGender = "Man";
     }
 
     /// <summary>
@@ -57,7 +62,8 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToSurvivalist()
     {
-        PlayerPrefs.SetString("CharacterFaction", "Survivalist");
+
+        _characterFaction = "Survivalist";
     }
 
     /// <summary>
@@ -65,14 +71,14 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToUtopist()
     {
-        PlayerPrefs.SetString("CharacterFaction", "Utopist");
+        _characterFaction = "Utopist";
     }
     /// <summary>
     ///     Set a variable to set the character faction to Scientist
     /// </summary>
     public void SetFactionToScientist()
     {
-        PlayerPrefs.SetString("CharacterFaction", "Scientist");
+        _characterFaction = "Scientist";
     }
 
     /// <summary>
@@ -80,8 +86,7 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToMilitary()
     {
-
-        PlayerPrefs.SetString("CharacterFaction", "Military");
+        _characterFaction = "Military";
     }
 
     /// <summary>
@@ -97,18 +102,35 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetCharacterName()
     {
-        CharacterNameText = CharacterName.text;
+        _characterNameText = CharacterName.text;
     }
 
     /// <summary>
-    ///     Called when button play is pressed 
-    ///     Save character name
-    ///     Deactivate the UI
+    ///     Called when button play is pressed, Save the character cutsomization and Deactivate the UI
     /// </summary>
     public void OnPlayPressed()
     {
-        PlayerPrefs.SetString("CharacterName", CharacterNameText);
-        PlayPressed = true;
+        if(_characterGender != "" && _characterNameText != "" && _characterFaction != "")
+        {
+            PlayerPrefs.SetString("Gender", _characterGender);
+            PlayerPrefs.SetString("CharacterFaction", _characterFaction);
+            PlayerPrefs.SetString("CharacterName", _characterNameText);
+            PlayPressed = true;
+            ActiveGameUI();
+        }
+    }
+
+
+    /// <summary>
+    ///     Active the Game UI et deactive the Character selection UI
+    /// </summary>
+    private void ActiveGameUI()
+    {
+        foreach(GameObject go in _gameobjectToActivate) 
+        {
+            go.SetActive(true);
+        }
+        
         CharacterSelectionUI.SetActive(false);
     }
 }
