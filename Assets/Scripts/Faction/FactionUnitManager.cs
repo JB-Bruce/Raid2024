@@ -15,6 +15,9 @@ public class FactionUnitManager : MonoBehaviour
     public float SpawnDistanceAroundPlayer = 50;
     public float womenPercentage = 0;
     public List<DrawWeapon> drawWeapons = new();
+    private int _lastFollower = 5;
+
+    public Formation formation;
 
     [Header("Unit Management")]
     public List<GameObject> units = new List<GameObject>();
@@ -26,6 +29,7 @@ public class FactionUnitManager : MonoBehaviour
     public float unitSpawnRate = 30f;
     [SerializeField] private Transform _spawnPosition;
     [SerializeField] [Range(0,100)] private float _banditSpawnInCamp = 50;
+    [SerializeField] private int _formationPercentage = 75;
 
     [Header("Guard Point")]
     [SerializeField] private Transform _point;
@@ -79,11 +83,9 @@ public class FactionUnitManager : MonoBehaviour
     // Make spawn a unit
     private void SpawnUnit(bool _init = false)
     {
-        bool isBanditos = faction == Faction.Bandit && (Random.Range(0, 100) >= _banditSpawnInCamp || _init);
+        bool _isBandit = faction == Faction.Bandit && (Random.Range(0, 100) >= _banditSpawnInCamp || _init);
 
-        Vector3 newSpawnPos = isBanditos ? GetRandomSpawnPoint() : _spawnPosition.position;
-
-        GameObject go = Instantiate<GameObject>(unit, newSpawnPos, Quaternion.identity, parent);
+        GameObject go = Instantiate<GameObject>(unit, _isBandit ? GetRandomSpawnPoint() : _spawnPosition.position, Quaternion.identity, parent);
 
         UnitBT unitBT = go.GetComponent<UnitBT>();
         unitBT.Init();
@@ -91,7 +93,6 @@ public class FactionUnitManager : MonoBehaviour
         SetUnitSprite(womenPercentage, go);
         indexeur++;
         go.name = faction + indexeur.ToString();
-
         units.Add(go);
 
         GiveAJob(unitBT, _transform.position);
@@ -102,6 +103,8 @@ public class FactionUnitManager : MonoBehaviour
     private void GiveAJob(UnitBT BT, Vector3 position)
     {
         UnitMovement movement = BT.gameObject.GetComponent<UnitMovement>();
+
+        int _random = Random.Range(0, 100);
 
         if (faction != Faction.Bandit)
         {
@@ -122,7 +125,7 @@ public class FactionUnitManager : MonoBehaviour
                 }
             }
 
-            if (Random.Range(0, 100) < 50 && _numberOfGuard < maxGuard)
+            if (_random < 50 && _numberOfGuard < maxGuard)
             {
                 BT.order = UnitOrder.AreaGuard;
                 movement.SetGuardPoint(_point.position, _minDistance, _maxDistance);
@@ -131,14 +134,14 @@ public class FactionUnitManager : MonoBehaviour
             }
         }
 
-        if(Random.Range(0, 100) < 50 && _numberOfPOIUnit < _maxUnitOnPOI)
+        else if(_random < 50 && _numberOfPOIUnit < _maxUnitOnPOI)
         {
-            BT.order = UnitOrder.POICapture;
+             BT.order = UnitOrder.POICapture;
 
-            int random = _factionManager.poi.IndexOf(_factionManager.GetRandomPOI(this));
+             int random = _factionManager.poi.IndexOf(_factionManager.GetRandomPOI(this));
 
-            if (random > 0)
-            {
+             if (random > 0)
+             {
                 _numberOfPOIUnit++;
 
                 movement.targetPOI = _factionManager.poi[random];
@@ -148,7 +151,19 @@ public class FactionUnitManager : MonoBehaviour
                 movement.SetGuardPoint(movement.GetRandomPointOnGuardPoint(), 0, 0);
 
                 return;
+             }
+        }
+
+        if(_random < _formationPercentage && _lastFollower < units.Count)
+        {
+            UnitLeader _leader = BT.gameObject.AddComponent<UnitLeader>();
+            _leader.formation = formation;
+            int _randomFollower = Random.Range(1,4);
+            for(int i = 0; i< _randomFollower; i++) 
+            {
+                _leader.AddFollower(units[units.Count - (i + 2)]);
             }
+            _lastFollower = units.Count + 4;
         }
 
         BT.order = UnitOrder.Patrol;
