@@ -36,6 +36,10 @@ public class Bullet : MonoBehaviour
             return;
         if (collision != null && collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
         {
+            if (humanoid.faction == _ownerFaction)
+            {
+                return;
+            }
             humanoid.TakeDamage(_damage, _ownerFaction, transform.right);
         }
         if(!collision.isTrigger) 

@@ -2,9 +2,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerInput _playerInput;
+
     [SerializeField]
     private GameObject _questPanel;
 
@@ -113,15 +117,19 @@ public class QuestManager : MonoBehaviour
     //open quest panel
     public void OpenQuestPanel()
     {
-        eventSystem.SetSelectedGameObject(_closeButton);
-        if (_questInfoInGame.activeInHierarchy)
+        if (_playerInput.actions.FindActionMap("InGame").enabled)
         {
-            UpdateMainQuestUi();
-            UpdateQuestActionUi();
-            _questInfoInGame.SetActive(false);
-            _questPanel.SetActive(true);
+            _playerInput.SwitchCurrentActionMap("Quest");
+            eventSystem.SetSelectedGameObject(_closeButton);
+            if (_questInfoInGame.activeInHierarchy)
+            {
+                UpdateMainQuestUi();
+                UpdateQuestActionUi();
+                _questInfoInGame.SetActive(false);
+                _questPanel.SetActive(true);
+            }
         }
-        else
+        else if (_playerInput.actions.FindActionMap("Quest").enabled)
         {
             CloseQuestPanel();
         }
@@ -130,6 +138,7 @@ public class QuestManager : MonoBehaviour
     //close quest panel
     public void CloseQuestPanel()
     {
+        _playerInput.SwitchCurrentActionMap("InGame");
         _questPanel.SetActive(false);
         _questInfoInGame.SetActive(true);
     }

@@ -69,6 +69,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Open Quest",
+                    "type": "Button",
+                    "id": "2e71823a-0b02-48fd-a963-4aeb01cdbf5c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SelectFirstWeapon",
                     "type": "Button",
                     "id": "c6f2dff5-024d-4737-80f3-993b17c1f9f9",
@@ -625,6 +634,28 @@
                     "action": "Aim",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "f99381eb-3d52-440d-abf5-993d03fbc863",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open Quest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "088bdc75-b953-42ef-81fa-b491189d75d3",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open Quest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -1074,6 +1105,45 @@
                     "processors": "",
                     "groups": "",
                     "action": "New action",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Quest",
+            "id": "9ad364b5-6977-4f7f-8189-b30084f12dfc",
+            "actions": [
+                {
+                    "name": "Close Quest",
+                    "type": "Button",
+                    "id": "7979fc61-6262-4473-8b9e-286de2d6133e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "41299b9e-1841-47ca-9f51-1bbedf1ff390",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Quest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5a2b7639-5fbe-406c-8bdb-e96c8d0c72fc",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Quest",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

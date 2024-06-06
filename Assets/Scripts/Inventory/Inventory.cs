@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
@@ -119,6 +120,14 @@ public class Inventory : MonoBehaviour
                 AddItem(_itemsToGiveAtStart[i].item);
             }
         }
+
+        //Stops navigation on weapon slots
+        for (int i = 0; i < weaponSlots.Count; i++)
+        {
+            Navigation navigation = new Navigation();
+            navigation.mode = Navigation.Mode.None;
+            weaponSlots[i].GetComponent<Button>().navigation = navigation;
+        }
     }
 
     private void Update()
@@ -212,6 +221,16 @@ public class Inventory : MonoBehaviour
 
                 equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(true);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
+
+                for (int i = 0; i < weaponSlots.Count; i++)
+                {
+                    if (weaponSlots[i].IsAvailable)
+                    {
+                        Navigation navigation = new Navigation();
+                        navigation.mode = Navigation.defaultNavigation.mode;
+                        weaponSlots[i].GetComponent<Button>().navigation = navigation;
+                    }
+                }
             }
             else//Show the weapons in game (change position and hide the holster)
             {
@@ -223,6 +242,14 @@ public class Inventory : MonoBehaviour
 
                 equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(false);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+
+                for (int i = 0; i < weaponSlots.Count; i++)
+                {
+                    Navigation navigation = new Navigation();
+                    navigation.mode = Navigation.Mode.None;
+                    weaponSlots[i].GetComponent<Button>().navigation = navigation;
+                }
+
                 if (currentContainer != null)
                 {
                     currentContainer.CloseContainer();

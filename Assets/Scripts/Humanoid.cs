@@ -15,7 +15,7 @@ public class Humanoid : MonoBehaviour
 
     private FactionManager _factionManager;
 
-    private void Awake()
+    protected virtual void Start()
     {
         _factionManager = FactionManager.Instance;
     }

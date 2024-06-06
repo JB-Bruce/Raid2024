@@ -186,7 +186,8 @@ public class StatsManager : Humanoid
         }
     }
 
-    private void Start() {
+    protected override void Start() {
+        base.Start();
         RemoveFood();
         RemoveWater();
         ChangeRespawnPoint();
