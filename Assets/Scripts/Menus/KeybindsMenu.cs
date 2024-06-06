@@ -14,14 +14,6 @@ public class KeybindsMenu : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-
-            gameObject.SetActive(false);
         }
-    }
-
-    public void DeactivateKeybindsMenu()
-    {
-        keybindsMenu.SetActive(false);
-        SettingsMenu.instance.isInSettings = false;
     }
 }
