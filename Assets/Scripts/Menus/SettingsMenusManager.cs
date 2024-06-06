@@ -40,12 +40,6 @@ public class SettingsMenusManager : MonoBehaviour
             _graphicsButton.onClick.AddListener(() => ChangeChosenMenu(_graphicsMenu));
             _audioButton.onClick.AddListener(() => ChangeChosenMenu(_audioMenu));
             _keybindsButton.onClick.AddListener(() => ChangeChosenMenu(_keybindsMenu));
-
-            _graphicsMenu.SetActive(false);
-            _audioMenu.SetActive(false);
-            _keybindsMenu.SetActive(true);
-
-            gameObject.SetActive(false);
         }
         else
         {
@@ -53,6 +47,17 @@ public class SettingsMenusManager : MonoBehaviour
         }
         // Prevents the settings and sound managers from being destroyed on scene change
         DontDestroyOnLoad(transform.parent.parent);
+    }
+
+    private void Start()
+    {
+        {
+            _graphicsMenu.SetActive(false);
+            _audioMenu.SetActive(false);
+            _keybindsMenu.SetActive(true);
+
+            gameObject.SetActive(false);
+        }
     }
 
     public void ChangeChosenMenu(GameObject newMenu)
