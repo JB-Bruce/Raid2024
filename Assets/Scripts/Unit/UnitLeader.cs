@@ -11,7 +11,6 @@ public class UnitLeader : MonoBehaviour
     public Formation formation;
     [SerializeField] private GameObject _weapon;
     private NavMeshAgent _navMesh;
-    public GameObject debuger;
 
     [SerializeField] private float _leaderSpeedMultiplier = 0.8f;
 
@@ -34,14 +33,6 @@ public class UnitLeader : MonoBehaviour
         _unitBT.order = UnitOrder.Surveillance;
         UnitMovement _unit = follower.GetComponent<UnitMovement>();
         followers.Add(_unit);
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.A) && followers.Count < formation.position.Count) 
-        {
-            AddFollower(debuger);
-        }
     }
 
     // Coroutine for set the destination of the followers

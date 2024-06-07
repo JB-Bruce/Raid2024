@@ -30,7 +30,11 @@ public class Humanoid : MonoBehaviour
     {
         
         life -= damage;
-        _factionManager.AddReputation(faction, _faction, removeHitReputation);
+
+        if (faction != Faction.Player)
+        {
+            _factionManager.AddReputation(faction, _faction, removeHitReputation);
+        }
 
         pSystem.Play();
 
@@ -38,8 +42,8 @@ public class Humanoid : MonoBehaviour
         {
             //if is this the player, get the amount of reduceDamage depending on the armors, and change the damage inflicted.
 
-            player = GameObject.FindWithTag("Player").GetComponent<MovePlayer>();
-            reduceDamage = player.CheckArmor();
+            //player = GameObject.FindWithTag("Player").GetComponent<MovePlayer>();
+            //reduceDamage = player.CheckArmor();
             if(reduceDamage != 0)
             {
                 reduceDamage = reduceDamage * damage / 100;
