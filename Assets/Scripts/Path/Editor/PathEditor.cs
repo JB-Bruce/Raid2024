@@ -59,7 +59,7 @@ public class PathEditor : Editor
     void Input()
     {
         Event guiEvent = Event.current;
-        Vector2 mousePos = HandleUtility.GUIPointToWorldRay(guiEvent.mousePosition).origin;
+        Vector2 mousePos = HandleUtility.GUIPointToWorldRay(guiEvent.mousePosition).origin - creator.transform.position;
 
         if (guiEvent.type == EventType.MouseDown && guiEvent.button == 0 && guiEvent.shift)
         {
@@ -119,22 +119,26 @@ public class PathEditor : Editor
                 HandleUtility.Repaint();
             }
         }
+
+        HandleUtility.AddDefaultControl(0);
     }
 
     void Draw()
     {
+        Vector2 pos = creator.transform.position;
+
         for (int i = 0; i < Path.NumSegments; i++)
         {
             Vector2[] points = Path.GetPointsInSegment(i);
             if (creator.displayControlPoints)
             {
                 Handles.color = Color.black;
-                Handles.DrawLine(points[1], points[0]);
-                Handles.DrawLine(points[2], points[3]);
+                Handles.DrawLine(pos + points[1], pos + points[0]);
+                Handles.DrawLine(pos + points[2], pos + points[3]);
             }
             Color segmentCol = (i == selectedSegmentIndex && Event.current.shift) ? creator.selectedSegmentCol : creator.segmentCol;
             Handles.color = segmentCol;
-            Handles.DrawBezier(points[0], points[3], points[1], points[2], segmentCol, null, 2);
+            Handles.DrawBezier(pos + points[0], pos + points[3], pos + points[1], pos + points[2], segmentCol, null, 2);
         }
 
 
@@ -144,11 +148,11 @@ public class PathEditor : Editor
             {
                 Handles.color = (i % 3 == 0) ? creator.anchorCol : creator.controlCol;
                 float handleSize = (i % 3 == 0) ? creator.anchorDiameter : creator.controlDiameter;
-                var fmh_146_66_638532012369240387 = Quaternion.identity; Vector2 newPos = Handles.FreeMoveHandle(Path[i], handleSize, Vector2.zero, Handles.CylinderHandleCap);
-                if (Path[i] != newPos)
+                Vector2 newPos = Handles.FreeMoveHandle(pos + Path[i], handleSize, Vector2.zero, Handles.CylinderHandleCap);
+                if (Path[i] + pos != newPos)
                 {
                     Undo.RecordObject(creator, "Move point");
-                    Path.MovePoint(i, newPos);
+                    Path.MovePoint(i, newPos - pos);
                 }
             }
         }
