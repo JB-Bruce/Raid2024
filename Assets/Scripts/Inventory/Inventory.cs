@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using static UnityEditor.Progress;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
@@ -77,6 +76,9 @@ public class Inventory : MonoBehaviour
     private bool _isMoving = false;
     private Vector2 _moveDirection = Vector2.zero;
 
+    [SerializeField] 
+    private List<ItemWithQuantity> _itemsToGiveAtStart = new();
+
     [SerializeField]
     private MovePlayer _player;
 
@@ -108,6 +110,22 @@ public class Inventory : MonoBehaviour
         equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(false);
         _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
         weaponSlots[0].GetSelected(true);
+
+        for(int i = 0; i < _itemsToGiveAtStart.Count; i++)
+        {
+            for(int j = 0; j< _itemsToGiveAtStart[i].quantityNeed; j++)
+            {
+                AddItem(_itemsToGiveAtStart[i].item);
+            }
+        }
+
+        //Stops navigation on weapon slots
+        for (int i = 0; i < weaponSlots.Count; i++)
+        {
+            Navigation navigation = new Navigation();
+            navigation.mode = Navigation.Mode.None;
+            weaponSlots[i].GetComponent<Button>().navigation = navigation;
+        }
     }
 
     private void Update()
@@ -201,6 +219,16 @@ public class Inventory : MonoBehaviour
 
                 equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(true);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInInventory.position;
+
+                for (int i = 0; i < weaponSlots.Count; i++)
+                {
+                    if (weaponSlots[i].IsAvailable)
+                    {
+                        Navigation navigation = new Navigation();
+                        navigation.mode = Navigation.defaultNavigation.mode;
+                        weaponSlots[i].GetComponent<Button>().navigation = navigation;
+                    }
+                }
             }
             else//Show the weapons in game (change position and hide the holster)
             {
@@ -212,6 +240,14 @@ public class Inventory : MonoBehaviour
 
                 equipementSlots[equipementSlots.Count - 1].gameObject.SetActive(false);
                 _weaponSlotsGameObject.transform.position = _weaponSlotsPosInGame.position;
+
+                for (int i = 0; i < weaponSlots.Count; i++)
+                {
+                    Navigation navigation = new Navigation();
+                    navigation.mode = Navigation.Mode.None;
+                    weaponSlots[i].GetComponent<Button>().navigation = navigation;
+                }
+
                 if (currentContainer != null)
                 {
                     currentContainer.CloseContainer();
@@ -238,6 +274,13 @@ public class Inventory : MonoBehaviour
         }
         else//Shows the weapon slots
         {
+            for (int i = 0; i < weaponSlots.Count; i++)
+            {
+                Navigation navigation = new Navigation();
+                navigation.mode = Navigation.Mode.None;
+                weaponSlots[i].GetComponent<Button>().navigation = navigation;
+            }
+
             Cursor.visible = false;
             _weaponSlotsGameObject.SetActive(true);
             weaponSlots[actualWeapon].GetSelected(true);
@@ -356,6 +399,12 @@ public class Inventory : MonoBehaviour
             {
                 itemSlot.UpdateQuantity(itemSlot.Quantity + 1);
             }
+
+            ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+            itemWithQuantity.item = item;
+            itemWithQuantity.quantityNeed = 1;
+            QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
             return true;
         }
         return false;
@@ -394,11 +443,15 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void TryToDeleteItem(ItemSlot itemSlot)
     {
-        if (itemSlot.Item != null)
+        if (itemSlot.Item != null && _itemSlots.Contains(itemSlot))
         {
-            if (itemSlot.GetType() != typeof(EquipementSlot) && itemSlot.Item.GetType() != typeof(QuestItem))
+            if (itemSlot.Item.GetType() != typeof(QuestItem))
             {
+                ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+                itemWithQuantity.item = itemSlot.Item;
+                itemWithQuantity.quantityNeed = -itemSlot.Quantity;
                 itemSlot.UpdateQuantity(0);
+                QuestManager.instance.CheckQuestItems(itemWithQuantity);
             }
         }
     }
@@ -452,6 +505,11 @@ public class Inventory : MonoBehaviour
             StatsManager.instance.AddHealth((int)heal.HealAmount);
         }
 
+        ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+        itemWithQuantity.item = itemSlot.Item;
+        itemWithQuantity.quantityNeed = -1;
+        QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
         itemSlot.UpdateQuantity(itemSlot.Quantity-1);
     }
 
@@ -496,6 +554,11 @@ public class Inventory : MonoBehaviour
                     {
                         weaponSlots[i].ChangeAvailability(false);
                     }
+                    if (selectedItemSlot != null)
+                    {
+                        selectedItemSlot.GetSelected(false);
+                    }
+                    slot1.GetSelected(true);
                 }
             }
             if (slot2.GetType() == typeof(EquipementSlot))
@@ -520,6 +583,11 @@ public class Inventory : MonoBehaviour
                     {
                         weaponSlots[i].ChangeAvailability(true);
                     }
+                    if (selectedItemSlot != null)
+                    {
+                        selectedItemSlot.GetSelected(false);
+                    }
+                    slot1.GetSelected(true);
                 }
             }
             ItemSwap(slot1, slot2);
@@ -531,6 +599,14 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void ItemSwap(ItemSlot slot1, ItemSlot slot2)
     {
+        ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+        itemWithQuantity.item = slot1.Item;
+        itemWithQuantity.quantityNeed = slot1.Quantity;
+        if (QuestManager.instance)
+        {
+            QuestManager.instance.CheckQuestItems(itemWithQuantity);
+        }
+
         Item TempItem = slot1.Item;
         slot1.Item = slot2.Item;
         slot2.Item = TempItem;
@@ -548,6 +624,11 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private bool TryStackingItems(ItemSlot slot1, ItemSlot slot2)
     {
+        ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+        itemWithQuantity.item = slot1.Item;
+        itemWithQuantity.quantityNeed = slot1.Quantity;
+        QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
         bool isSlotEmpty = true;
 
         int remainingItems = slot2.Item.MaxStack - slot2.Quantity;
@@ -619,7 +700,7 @@ public class Inventory : MonoBehaviour
                 return weaponSlot;
             }
         }
-        return null;
+        return weaponSlots[0];
     }
 
     /// <summary>
@@ -670,14 +751,23 @@ public class Inventory : MonoBehaviour
             {
                 if (_itemSlots[i].Item == item && _itemSlots[i].Quantity > 0)
                 {
+                    ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
+                    itemWithQuantity.item = item;
+
                     if (quantity > _itemSlots[i].Quantity)
                     {
                         quantity -= _itemSlots[i].Quantity;
                         _itemSlots[i].UpdateQuantity(0);
+
+                        itemWithQuantity.quantityNeed = -(quantity - _itemSlots[i].Quantity);
+                        QuestManager.instance.CheckQuestItems(itemWithQuantity);
                     }
                     else
                     {
                         _itemSlots[i].UpdateQuantity(_itemSlots[i].Quantity - quantity);
+
+                        itemWithQuantity.quantityNeed = -quantity;
+                        QuestManager.instance.CheckQuestItems(itemWithQuantity);
                         return;
                     }
                 }

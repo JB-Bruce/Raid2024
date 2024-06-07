@@ -3,10 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerInput _playerInput;
+
     [SerializeField]
     private TextMeshProUGUI _pnjNameText;
     [SerializeField]
@@ -50,6 +55,8 @@ public class DialogueManager : MonoBehaviour
 
     private Coroutine _typeTextCoroutine;
 
+    public EventSystem eventSystem;
+
     public static DialogueManager instance;
 
     //create an instance of the DialogueManager
@@ -70,6 +77,9 @@ public class DialogueManager : MonoBehaviour
     //called by pnj to start a dialogue
     public void StartDialogue(string pnjName, string pnjHideName, bool isPnjNameHide, Sprite pnjSprite, DialogueContent talk, Action<List<string>, bool> returnMethode)
     {
+        _playerInput.actions.FindActionMap("InGame").Disable();
+        _playerInput.actions.FindActionMap("Dialogue").Enable();
+
         _displayedDialogue.Clear();
         _dialogueChoices.Clear();
         _currentTalk = talk;
@@ -208,6 +218,7 @@ public class DialogueManager : MonoBehaviour
             _choicesUiList[i].SetActive(true);
             _choicesUiList[i].GetComponentInChildren<TextMeshProUGUI>().SetText(_currentTalk.choices[i].choice);
         }
+        eventSystem.SetSelectedGameObject(_choicesUiList[0]);
     }
 
     //deactivate the choices buttons and activate skip button
@@ -219,6 +230,7 @@ public class DialogueManager : MonoBehaviour
         {
             _choicesUiList[i].SetActive(false);
         }
+        eventSystem.SetSelectedGameObject(_skipButton);
     }
 
     //update the visual and the script to display the next dialogue
@@ -240,6 +252,9 @@ public class DialogueManager : MonoBehaviour
         }
         else
         {
+            _playerInput.actions.FindActionMap("Dialogue").Disable();
+            _playerInput.actions.FindActionMap("InGame").Enable();
+
             _dialogueBox.SetActive(false);
             QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.dialogue, _pnjHideName);
             _returnMethode(_dialogueChoices, _isPnjNameHide);

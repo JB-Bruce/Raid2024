@@ -27,9 +27,10 @@ MonoBehaviour:
   _rotationRightHand: -90
   _rotationLeftHand: 0
   animAttack: FamasShoot
-  _spread: 0
+  _spread: 10
   _maxBullet: 25
-  _reloadTime: 1
+  _reloadTime: 2.16
   _ammoType: 0
   _firePoint: {x: 12, y: 1.2}
   bullet: {fileID: 5008059619825466956, guid: b3fe1a02dfbdd534bab5e85ccb492e03, type: 3}
+  animReload: FamasReload

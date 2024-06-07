@@ -14,6 +14,8 @@ public class UnitMovement : MonoBehaviour
     public POI targetPOI;
     public bool poiHasBeenCaptured = false;
 
+    private FactionManager _factionManager;
+
     private GameManager _gameManager;
 
     // Start is called before the first frame update
@@ -25,12 +27,14 @@ public class UnitMovement : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
+        _factionManager = FactionManager.Instance;
 
     }
 
     // Change the target point of the unit
     public void ChangeTarget(Vector3 target)
     {
+        
          _agent.SetDestination(new Vector3(target.x, target.y, _transform.position.z));
     }
 
@@ -51,7 +55,7 @@ public class UnitMovement : MonoBehaviour
     {
         for(int i = 0; i < _gameManager.restrictedAreas.Count; i++) 
         {
-            if (Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= _gameManager.restrictedAreas[i].areaRadius /*|| !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1)*/)
+            if (Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= _gameManager.restrictedAreas[i].areaRadius || !_factionManager.IsPointInRhombus(position) /*|| !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1)*/)
             {
                 return true;
             }

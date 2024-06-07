@@ -8,7 +8,7 @@ public class Item : ScriptableObject
     protected float _weight;
 
     [SerializeField]
-    protected bool _isStackable;
+    protected bool _isStackable = true;
 
     [SerializeField]
     protected int _maxStack;

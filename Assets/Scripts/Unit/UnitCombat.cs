@@ -41,7 +41,9 @@ public class UnitCombat : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Humanoid>(out Humanoid humanoid)&& !humanoidAround.Contains(humanoid) && humanoid.faction != _mHumanoid.faction  && !collision.isTrigger)
+        if (collision.transform.parent == null)
+            return;
+        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid)&& !humanoidAround.Contains(humanoid) && humanoid.faction != _mHumanoid.faction  && !collision.isTrigger)
         {
             humanoidAround.Add(humanoid);
         }
@@ -50,7 +52,9 @@ public class UnitCombat : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
+        if (collision.transform.parent == null)
+            return;
+        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
         {
             humanoidAround.Remove(humanoid);
         }
@@ -103,7 +107,7 @@ public class UnitCombat : MonoBehaviour
                 RaycastHit2D _hit = Physics2D.Raycast(_transform.position, ennemies[i].transform.position - _transform.position, viewRange);
 
 
-                if (_hit.collider != null && _hit.collider.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
+                if (_hit.collider != null && _hit.collider.transform.parent.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
                 {
                     nearest = i;
                     _distanceToNearest = _newDistance;
@@ -132,8 +136,14 @@ public class UnitCombat : MonoBehaviour
     {
         if(canAttack && nearestEnemy != null) 
         {
-            weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position);
+            weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position, _mHumanoid.faction);
         }
         //weaponAttack.UpdateWeaponRotation();
+    }
+
+    // Get the faction of the owner unit
+    public Faction GetFaction() 
+    {
+        return _mHumanoid.faction;
     }
 }

@@ -12,6 +12,7 @@ public class POI : MonoBehaviour
     public float Timer = 0;
     public float captureTime = 1f;
     public int priority = 0;
+    private bool _captured = false;
 
     [Header("Guard POI")]
     public Transform poiPosition;
@@ -51,8 +52,19 @@ public class POI : MonoBehaviour
         {
             capturePercentage += captureSpeed;
             Mathf.Clamp(capturePercentage, -100, 120);
+
+            if(capturePercentage >= 100 && !_captured)
+            {
+                _captured = true;
+                _factionManager.IsPoiCaught.Invoke(this, ownerFaction);
+            }
+            else if(_captured && capturePercentage < 100)
+            {
+                _captured = false;
+                _factionManager.IsPoiCaught.Invoke(this, Faction.Null);
+            }
         }
-        else if(_factionManager.GetReputation(ownerFaction, faction) >= _factionManager.allyReputation && capturePercentage == 100)
+        else if(_factionManager.GetReputation(ownerFaction, faction) >= _factionManager.allyReputation && capturePercentage >= 100)
         {
             return;
         }
@@ -71,7 +83,11 @@ public class POI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !unitInCaptureZone.Contains(humanoid) && !collision.isTrigger)
+        if(collision.transform.parent == null) 
+        {
+            return;
+        }
+        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !unitInCaptureZone.Contains(humanoid) && !collision.isTrigger)
         {
             unitInCaptureZone.Add(humanoid);
         }
@@ -79,7 +95,11 @@ public class POI : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
+        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
         {
             unitInCaptureZone.Remove(humanoid);
         }

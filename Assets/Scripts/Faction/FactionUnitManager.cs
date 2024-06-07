@@ -15,6 +15,9 @@ public class FactionUnitManager : MonoBehaviour
     public float SpawnDistanceAroundPlayer = 50;
     public float womenPercentage = 0;
     public List<DrawWeapon> drawWeapons = new();
+    private int _lastFollower = 5;
+
+    public Formation formation;
 
     [Header("Unit Management")]
     public List<GameObject> units = new List<GameObject>();
@@ -23,16 +26,19 @@ public class FactionUnitManager : MonoBehaviour
     public int maxUnit = 10;
     public int maxGuard = 3;
     public int nbrOfDeadUnit = 0;
-    public float _unitSpawnRate = 30f;
+    public float unitSpawnRate = 30f;
+    [SerializeField] private Transform _spawnPosition;
+    [SerializeField] [Range(0,100)] private float _banditSpawnInCamp = 50;
+    [SerializeField] private int _formationPercentage = 75;
 
     [Header("Guard Point")]
-    public Transform point;
-    public float minDistance;
-    public float maxDistance;
+    [SerializeField] private Transform _point;
+    [SerializeField] private float _minDistance;
+    [SerializeField] private float _maxDistance;
 
     [Header("POI")]
-    public int maxUnitPerPOI = 5;
-    public int maxUnitOnPOI = 10;
+    [SerializeField] private int _maxUnitPerPOI = 5;
+    [SerializeField] private int _maxUnitOnPOI = 10;
     private int _numberOfPOIUnit = 0;
     private List<int> _unitOnPOI = new List<int>();
 
@@ -40,11 +46,11 @@ public class FactionUnitManager : MonoBehaviour
     private FactionManager _factionManager;
 
     [Header("Sprite")]
-    public Sprite menHair;
-    public Sprite womenHair;
-    public Sprite menBody;
-    public Sprite womenBody;
-    public Sprite hipHuman;
+    [SerializeField] private Sprite _menHair;
+    [SerializeField] private Sprite _womenHair;
+    [SerializeField] private Sprite _menBody;
+    [SerializeField] private Sprite _womenBody;
+    [SerializeField] private Sprite _hipHuman;
 
 
     // Start is called before the first frame update
@@ -58,7 +64,7 @@ public class FactionUnitManager : MonoBehaviour
         _transform = transform;
         for (int i = 0; i< maxUnit; i++) 
         {
-            SpawnUnit();
+            SpawnUnit(true);
         }
         StartCoroutine(CheckUnitRoutine());
     }
@@ -75,9 +81,11 @@ public class FactionUnitManager : MonoBehaviour
     }
 
     // Make spawn a unit
-    private void SpawnUnit()
+    private void SpawnUnit(bool _init = false)
     {
-        GameObject go = Instantiate<GameObject>(unit, parent);
+        bool _isBandit = faction == Faction.Bandit && (Random.Range(0, 100) >= _banditSpawnInCamp || _init);
+
+        GameObject go = Instantiate<GameObject>(unit, _isBandit ? GetRandomSpawnPoint() : _spawnPosition.position, Quaternion.identity, parent);
 
         UnitBT unitBT = go.GetComponent<UnitBT>();
         unitBT.Init();
@@ -85,17 +93,6 @@ public class FactionUnitManager : MonoBehaviour
         SetUnitSprite(womenPercentage, go);
         indexeur++;
         go.name = faction + indexeur.ToString();
-
-
-
-
-        if(faction == Faction.Bandit) 
-        {
-            go.transform.position = GetRandomSpawnPoint();
-        }
-        else
-            go.transform.position = _transform.position;
-        
         units.Add(go);
 
         GiveAJob(unitBT, _transform.position);
@@ -106,6 +103,8 @@ public class FactionUnitManager : MonoBehaviour
     private void GiveAJob(UnitBT BT, Vector3 position)
     {
         UnitMovement movement = BT.gameObject.GetComponent<UnitMovement>();
+
+        int _random = Random.Range(0, 100);
 
         if (faction != Faction.Bandit)
         {
@@ -126,23 +125,23 @@ public class FactionUnitManager : MonoBehaviour
                 }
             }
 
-            if (Random.Range(0, 100) < 50 && _numberOfGuard < maxGuard)
+            if (_random < 50 && _numberOfGuard < maxGuard)
             {
                 BT.order = UnitOrder.AreaGuard;
-                movement.SetGuardPoint(point.position, minDistance, maxDistance);
+                movement.SetGuardPoint(_point.position, _minDistance, _maxDistance);
                 _numberOfGuard++;
                 return;
             }
         }
 
-        if(Random.Range(0, 100) < 50 && _numberOfPOIUnit < maxUnitOnPOI)
+        else if(_random < 50 && _numberOfPOIUnit < _maxUnitOnPOI)
         {
-            BT.order = UnitOrder.POICapture;
+             BT.order = UnitOrder.POICapture;
 
-            int random = _factionManager.poi.IndexOf(_factionManager.GetRandomPOI(this));
+             int random = _factionManager.poi.IndexOf(_factionManager.GetRandomPOI(this));
 
-            if (random > 0)
-            {
+             if (random > 0)
+             {
                 _numberOfPOIUnit++;
 
                 movement.targetPOI = _factionManager.poi[random];
@@ -152,7 +151,19 @@ public class FactionUnitManager : MonoBehaviour
                 movement.SetGuardPoint(movement.GetRandomPointOnGuardPoint(), 0, 0);
 
                 return;
+             }
+        }
+
+        if(_random < _formationPercentage && _lastFollower < units.Count)
+        {
+            UnitLeader _leader = BT.gameObject.AddComponent<UnitLeader>();
+            _leader.formation = formation;
+            int _randomFollower = Random.Range(1,4);
+            for(int i = 0; i< _randomFollower; i++) 
+            {
+                _leader.AddFollower(units[units.Count - (i + 2)]);
             }
+            _lastFollower = units.Count + 4;
         }
 
         BT.order = UnitOrder.Patrol;
@@ -165,7 +176,7 @@ public class FactionUnitManager : MonoBehaviour
         if(nbrOfDeadUnit > 0)
         {
             nbrOfDeadUnit--;
-            StartCoroutine(SpawnUnitWithDelay(_unitSpawnRate));
+            StartCoroutine(SpawnUnitWithDelay(unitSpawnRate));
         }
     }
 
@@ -194,7 +205,8 @@ public class FactionUnitManager : MonoBehaviour
         for (int i = 0; i < _gameManager.restrictedAreas.Count; i++)
         {
             if ((Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius
-                || /*Replace by the player position*/ Vector3.Distance(Vector3.zero, position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) )
+                || /*Replace by the player position*/ Vector3.Distance(new Vector3(100,100,0), position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) 
+                || !_factionManager.IsPointInRhombus(position))
             {
                 return true;
             }
@@ -231,7 +243,7 @@ public class FactionUnitManager : MonoBehaviour
     // is the poi full of unit
     public bool isPOIFull(int index)
     {
-        if (_unitOnPOI[index] > maxUnitPerPOI)
+        if (_unitOnPOI[index] > _maxUnitPerPOI)
         {
             return true;
         }
@@ -254,16 +266,16 @@ public class FactionUnitManager : MonoBehaviour
 
         if (random < womenRandom)
         {
-            body.sprite = womenBody;
-            hair.sprite = womenHair;
+            body.sprite = _womenBody;
+            hair.sprite = _womenHair;
         }
 
         else 
         {
-            body.sprite = menBody;
-            hair.sprite = menHair;
+            body.sprite = _menBody;
+            hair.sprite = _menHair;
         }
-        hip.sprite = hipHuman;
+        hip.sprite = _hipHuman;
 
     }
 
@@ -290,7 +302,6 @@ public class FactionUnitManager : MonoBehaviour
         }
         return null;
     }
-
 }
 
 

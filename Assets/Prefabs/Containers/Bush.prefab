@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1899347777315899622}
   - component: {fileID: 8968777319621209639}
   - component: {fileID: 6462943744363581055}
+  - component: {fileID: 6089085615253006398}
   m_Layer: 0
   m_Name: Bush
   m_TagString: Untagged
@@ -86,11 +87,27 @@ MonoBehaviour:
   itemSlots: []
   containerSelectedSprite: {fileID: 2401686441063315468}
   rerollNumbers: 1
-  lootTable: {fileID: 0}
+  lootTable: {fileID: 11400000, guid: 6d7e03e9afb37bb4bba1b30b09b0f29b, type: 2}
   _items: []
   containerRows: 3
   containerColumn: 3
   despawnTimer: 0
+--- !u!114 &6089085615253006398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629520558655580687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &2401686441063315468
 GameObject:
   m_ObjectHideFlags: 0

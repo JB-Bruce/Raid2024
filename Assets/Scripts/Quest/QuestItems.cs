@@ -19,7 +19,7 @@ public class QuestItems : QuestAction
         {
             ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
             itemWithQuantity.item = itemNeed.item;
-            itemWithQuantity.quantityNeed = 0/*call inventory methode to get the quantity in inventory of itemWithQuantity.item*/;
+            itemWithQuantity.quantityNeed = Inventory.Instance.CountItemInInventory(itemNeed.item);
             _itemsInInventory.Add(itemWithQuantity);
         }
     }

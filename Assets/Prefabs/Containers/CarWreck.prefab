@@ -69,7 +69,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.33382547, y: 0.052880287}
   serializedVersion: 2
-  m_Radius: 3.7052236
+  m_Radius: 4.58
 --- !u!114 &4375120313031848906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,8 +85,8 @@ MonoBehaviour:
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
   itemSlots: []
   containerSelectedSprite: {fileID: 5194919717438635844}
-  rerollNumbers: 1
-  lootTable: {fileID: 0}
+  rerollNumbers: 3
+  lootTable: {fileID: 11400000, guid: c4c0ddef21e05c240a422bd076a5d429, type: 2}
   _items: []
   containerRows: 3
   containerColumn: 3
@@ -101,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3795860569180351154}
   - component: {fileID: 3347950055861476341}
+  - component: {fileID: 3500153349671995577}
   m_Layer: 0
   m_Name: Collider
   m_TagString: Untagged
@@ -168,6 +169,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 10.199278, y: 4.7380986}
   m_EdgeRadius: 0
+--- !u!114 &3500153349671995577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3153082099452265111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &4831727629084041190
 GameObject:
   m_ObjectHideFlags: 0

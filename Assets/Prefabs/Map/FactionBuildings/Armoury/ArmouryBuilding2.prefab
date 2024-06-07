@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1277414741848670986}
   - component: {fileID: 6188219257235666876}
+  - component: {fileID: 6431765176327450681}
+  - component: {fileID: 1679024459344141784}
+  - component: {fileID: 5843796957298652187}
   m_Layer: 0
   m_Name: ArmouryBuilding2
   m_TagString: Untagged
@@ -25,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3921981410131187832}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.6, y: -17.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -85,6 +88,105 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6431765176327450681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921981410131187832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &1679024459344141784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921981410131187832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 0}
+  _name: 
+  _hideName: 
+  _startButton: {fileID: 0}
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
+    tradeItemQuantity: 25
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
+      quantityNeed: 5
+  - tradeItem: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 3
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+      quantityNeed: 7
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 3
+  _traderName: Armurier
+  _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+--- !u!58 &5843796957298652187
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921981410131187832}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3, y: -7}
+  serializedVersion: 2
+  m_Radius: 7
 --- !u!1 &8715974895814141050
 GameObject:
   m_ObjectHideFlags: 0

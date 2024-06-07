@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 1
   _maxStack: 99
-  _name: Berry
+  _name: Baie
   _description: 
   _itemSprite: {fileID: 21300000, guid: 7465e74cb521fc3418799a9f484c5324, type: 3}
   _foodAmount: 10

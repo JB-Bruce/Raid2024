@@ -1,9 +1,14 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public class QuestManager : MonoBehaviour
 {
+    [SerializeField]
+    private PlayerInput _playerInput;
+
     [SerializeField]
     private GameObject _questPanel;
 
@@ -16,6 +21,8 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private int _currentMainQuest;
 
+    public EventSystem eventSystem;
+
     [SerializeField]
     private List<Quest> _quests = new();
 
@@ -24,7 +31,7 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField]
     private QuestPanelManager _questPanelManager;
-
+    
     public static QuestManager instance;
 
     //create an instance of the DialogueManager
@@ -107,13 +114,26 @@ public class QuestManager : MonoBehaviour
     //open quest panel
     public void OpenQuestPanel()
     {
-        _questPanelManager.ConfigurePanel();
-        _questPanel.SetActive(true);
+        if (_playerInput.actions.FindActionMap("InGame").enabled)
+        {
+            _playerInput.SwitchCurrentActionMap("Quest");
+            eventSystem.SetSelectedGameObject(_closeButton);
+            if (_questInfoInGame.activeInHierarchy)
+            {
+                _questPanelManager.ConfigurePanel();
+                _questPanel.SetActive(true);
+            }
+        }
+        else if (_playerInput.actions.FindActionMap("Quest").enabled)
+        {
+            CloseQuestPanel();
+        }
     }
 
     //close quest panel
     public void CloseQuestPanel()
     {
+        _playerInput.SwitchCurrentActionMap("InGame");
         _questPanel.SetActive(false);
     }
 

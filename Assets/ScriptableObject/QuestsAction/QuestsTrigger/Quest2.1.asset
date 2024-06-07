@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: Quest2.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 2.1"
-  _description: "Aller parler \xE0 Rachel"
   _questTriggerType: 7
-  _information: Rachel
+  _information: Bruce

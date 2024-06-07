@@ -20,6 +20,8 @@ public class MovePlayer : MonoBehaviour
     
     [SerializeField]
     private Inventory _inventory;
+
+    public static MovePlayer instance;
     
     private bool _isSprinting = false;
     private bool _isAiming = false;
@@ -69,6 +71,10 @@ public class MovePlayer : MonoBehaviour
     //When the game is play, it's the first thing who is done.
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
+        if (instance == null) 
+        { 
+            instance = this;
+        }
         _rb = GetComponent<Rigidbody2D>();
         _sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
@@ -78,7 +84,7 @@ public class MovePlayer : MonoBehaviour
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
     private void Move()
     {
-        _moveVector = _input.actions.FindAction("Movement").ReadValue<Vector2>();
+        _moveVector = UserInput.instance.MoveInput;
         if (_isSprinting == true && stats.GetStamina() > 0)
         {
             stats.ChangeIsSprinting(true);
@@ -501,6 +507,21 @@ public class MovePlayer : MonoBehaviour
         }
     }
 
+//Check on the 3 equipement slots what protection is eqquiped. Get for the three the amount of reduce damage and return it.
+    public float CheckArmor()
+    {
+        float reduceDamage = 0;
+        for (int i = 0; i < 3; i ++)
+        {
+            if(inventory.equipementSlots[i].Item != null)
+            {
+                Armor armor = (Armor)inventory.equipementSlots[i].Item;
+                reduceDamage += armor.Protection;
+            }
+        }
+        return reduceDamage;
+    }
+
     void Update()
     {
         if (_inGameActionMap.enabled)
@@ -519,7 +540,7 @@ public class MovePlayer : MonoBehaviour
 
         if(_tryToHit && _isAiming)
         {
-            _weaponAttack.UseWeapon(direction);
+            _weaponAttack.UseWeapon(direction, Faction.Player);
         }
     }
 }
