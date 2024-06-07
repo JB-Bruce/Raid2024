@@ -8,6 +8,8 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     private WeaponAttack _weaponAttack;
 
+    private Item _lastWeaponEquiped;
+
     [SerializeField]
     private GameObject _weaponGameObject;
     public GameObject meleeWeaponSprite;
@@ -484,7 +486,13 @@ public class MovePlayer : MonoBehaviour
     //Active the actual weapon of the player have equipped (rangeWeapon or meleeWeapon) and desactive other weapons
     private void WeaponSelected()
     {
-        if(inventory.weaponSlots[_selectedWeapon].Item == null)
+        if(_lastWeaponEquiped == inventory.weaponSlots[_selectedWeapon].Item)
+        { 
+            return; 
+        }
+
+        _lastWeaponEquiped = inventory.weaponSlots[_selectedWeapon].Item;
+        if (inventory.weaponSlots[_selectedWeapon].Item == null)
         {
             //_weaponAttack.EquipWeapon(Fist);
         }

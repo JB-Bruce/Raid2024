@@ -14,8 +14,8 @@ public class WeaponAttack : MonoBehaviour
     private int _magazine = 0;
     private static readonly Quaternion _zeroRotation = Quaternion.Euler(0, 0, 0);
     private static readonly Quaternion _flipRotation = Quaternion.Euler(180, 0, 0);
-    private static readonly Vector3 _normalScale = new Vector3(0.2f, 0.2f, 0.2f);
-    private static readonly Vector3 _flipScale = new Vector3(-0.2f, 0.2f, 0.2f);
+    private static readonly Vector3 _normalScale = new Vector3(0.2f,0.2f, 0.2f);
+    public Vector3 _flipScale = new Vector3(-0.2f, 0.2f, 0.2f);
 
     // Cache
     private Weapon _equipedWeapon;
@@ -100,8 +100,8 @@ public class WeaponAttack : MonoBehaviour
     {
         _equipedWeapon = weapon;
         weaponChange.Invoke(_equipedWeapon);
-        _handWeaponSpriteRenderer.sprite = _equipedWeapon.ItemSprite;
-        _AnimTransform.localScale = _normalScale;
+        _handWeaponSpriteRenderer.sprite = _equipedWeapon.WorldSprite;
+        //_AnimTransform.localScale = _normalScale;
 
         _rightHandTransform.localPosition = new Vector3(weapon.RightHand.x, weapon.RightHand.y, 0);
         _rightHandTransform.localRotation = Quaternion.Euler(0, 0, weapon.RotationRightHand);
@@ -147,11 +147,13 @@ public class WeaponAttack : MonoBehaviour
     // Give damage to the nearrest player
     public void CaCAttack()
     {
-        Humanoid _enemy = _unitCombat != null ? _unitCombat.nearestEnemy : GetFrontEnemy();
+        bool _isAI = _unitCombat != null;
+
+        Humanoid _enemy = _isAI ? _unitCombat.nearestEnemy : GetFrontEnemy();
 
         if (_enemy != null) 
         {
-            _enemy.TakeDamage(_equipedWeapon.Damage, _unitCombat.GetFaction(), (_enemy.transform.position - transform.position).normalized);
+            _enemy.TakeDamage(_equipedWeapon.Damage, _isAI ? _unitCombat.GetFaction() : Faction.Player, (_enemy.transform.position - transform.position).normalized);
         }
 
     }
@@ -163,9 +165,7 @@ public class WeaponAttack : MonoBehaviour
 
         RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, direction, _equipedWeapon.AttackRange);
 
-        Debug.DrawRay(_transform.position, direction * 20, Color.black, 0.1f);
-
-        if(_hit.collider != null && _hit.collider.TryGetComponent<Humanoid>(out Humanoid humanoid))
+        if(_hit.collider != null && _hit.collider.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid))
         {
             return humanoid;
         }
