@@ -21,6 +21,9 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     private Inventory _inventory;
 
+    [SerializeField]
+    private MeleeWeapon _handAttack;
+
     public static MovePlayer instance;
     
     private bool _isSprinting = false;
@@ -486,8 +489,11 @@ public class MovePlayer : MonoBehaviour
     //Active the actual weapon of the player have equipped (rangeWeapon or meleeWeapon) and desactive other weapons
     private void WeaponSelected()
     {
+        _lineRenderer.enabled =false;
         if(inventory.weaponSlots[_selectedWeapon].Item == null)
         {
+            
+            _weaponAttack.EquipWeapon(_handAttack);
             //_weaponAttack.EquipWeapon(Fist);
         }
         else
