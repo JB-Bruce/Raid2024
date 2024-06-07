@@ -5,13 +5,12 @@ public class WeaponAttack : MonoBehaviour
 {
     [Header("Paremeter")]
     public GameObject firePoint;
-    [SerializeField] private GameObject rightHand;
-    [SerializeField] private GameObject leftHand;
+    public GameObject rightHand;
+    public GameObject leftHand;
 
     // Variable
     private bool _isRangeWeapon = false;
     private float _timer = 0;
-    private int _magazine = 0;
     private static readonly Quaternion _zeroRotation = Quaternion.Euler(0, 0, 0);
     private static readonly Quaternion _flipRotation = Quaternion.Euler(180, 0, 0);
     private static readonly Vector3 _normalScale = new Vector3(0.2f, 0.2f, 0.2f);
@@ -56,6 +55,8 @@ public class WeaponAttack : MonoBehaviour
         _unitCombat = transform.parent.GetComponent<UnitCombat>();
         _animator = GetComponent<Animator>();
         _camera = Camera.main;
+
+        //EquipWeapon(_unitCombat.weapon);
     }
 
     private void Update()
@@ -113,7 +114,6 @@ public class WeaponAttack : MonoBehaviour
         {
             _rangedWeapon = _equipedWeapon as RangedWeapon;
             _firePointTransform.localPosition = _rangedWeapon.FirePoint;
-            _magazine = _rangedWeapon.MaxBullet;
         }
     }
 
@@ -127,18 +127,8 @@ public class WeaponAttack : MonoBehaviour
             _animator.Play(_equipedWeapon.animAttack, 0, 0);
             if (_isRangeWeapon)
             {
-                if (_magazine > 0)
-                {
-                    direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread / 2), _rangedWeapon.Spread / 2));
-                    FireBullet(direction, _faction);
-                    _magazine--;
-                }
-                else
-                {
-                    _timer += _rangedWeapon.ReloadTime;
-                    _magazine = _rangedWeapon.MaxBullet;
-                    _animator.Play(_rangedWeapon.animReload, 0, 0);
-                }
+                direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread/ 2), _rangedWeapon.Spread / 2));
+                FireBullet(direction, _faction);
             }
         }
         
@@ -151,7 +141,7 @@ public class WeaponAttack : MonoBehaviour
 
         if (_enemy != null) 
         {
-            _enemy.TakeDamage(_equipedWeapon.Damage, _unitCombat.GetFaction(), (_enemy.transform.position - transform.position).normalized);
+            _enemy.TakeDamage(_equipedWeapon.Damage, _unitCombat.GetFaction());
         }
 
     }
