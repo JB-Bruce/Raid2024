@@ -11,18 +11,18 @@ public class Humanoid : MonoBehaviour
     public float removeHitReputation = -1;
 
     public ParticleSystem pSystem;
-
+    
+    private MovePlayer _player;
+    private float _reduceDamage = 0;
 
     private FactionManager _factionManager;
 
     protected virtual void Start()
     {
+        _player = MovePlayer.instance;
         _factionManager = FactionManager.Instance;
     }
 
-    
-    public MovePlayer player;
-    private float reduceDamage;
 
 
     // remove life to him self and return true if he is dead
@@ -37,13 +37,11 @@ public class Humanoid : MonoBehaviour
         if (isPlayer) 
         {
             //if is this the player, get the amount of reduceDamage depending on the armors, and change the damage inflicted.
-
-            player = GameObject.FindWithTag("Player").GetComponent<MovePlayer>();
-            reduceDamage = player.CheckArmor();
-            if(reduceDamage != 0)
+            _reduceDamage = _player.CheckArmor();
+            if(_reduceDamage != 0)
             {
-                reduceDamage = reduceDamage * damage / 100;
-                life += reduceDamage;
+                _reduceDamage = _reduceDamage * damage / 100;
+                life += _reduceDamage;
             }
             
             if(life <= 0)
@@ -51,7 +49,6 @@ public class Humanoid : MonoBehaviour
                 life=0;
             }
             
-            Debug.Log("" + life);
             StatsManager.instance.ChangeLifeColor();
         }
 

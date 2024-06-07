@@ -71,6 +71,10 @@ public class MovePlayer : MonoBehaviour
     //When the game is play, it's the first thing who is done.
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
+        if (instance == null) 
+        { 
+            instance = this;
+        }
         _rb = GetComponent<Rigidbody2D>();
         _sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
