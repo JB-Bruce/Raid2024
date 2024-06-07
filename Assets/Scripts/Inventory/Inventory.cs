@@ -274,6 +274,13 @@ public class Inventory : MonoBehaviour
         }
         else//Shows the weapon slots
         {
+            for (int i = 0; i < weaponSlots.Count; i++)
+            {
+                Navigation navigation = new Navigation();
+                navigation.mode = Navigation.Mode.None;
+                weaponSlots[i].GetComponent<Button>().navigation = navigation;
+            }
+
             Cursor.visible = false;
             _weaponSlotsGameObject.SetActive(true);
             weaponSlots[actualWeapon].GetSelected(true);
@@ -436,9 +443,9 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void TryToDeleteItem(ItemSlot itemSlot)
     {
-        if (itemSlot.Item != null)
+        if (itemSlot.Item != null && _itemSlots.Contains(itemSlot))
         {
-            if (itemSlot.GetType() != typeof(EquipementSlot) && itemSlot.Item.GetType() != typeof(QuestItem))
+            if (itemSlot.Item.GetType() != typeof(QuestItem))
             {
                 ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
                 itemWithQuantity.item = itemSlot.Item;

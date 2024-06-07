@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 6333826459052352264}
   - component: {fileID: 8934374741260704176}
   - component: {fileID: 4809380772314542184}
+  - component: {fileID: 4380676408147988895}
+  - component: {fileID: 6276382402722824826}
   m_Layer: 0
   m_Name: TraderBuilding
   m_TagString: Untagged
@@ -26,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4872633174984159442}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.34, y: 38.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -102,6 +104,110 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &4380676408147988895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872633174984159442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 0}
+  _name: 
+  _hideName: 
+  _startButton: {fileID: 0}
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 85b51428fe9b2164bb8f56616f4c1f40, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 2
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 09fb9573ec037ee419ce703b2a8f1100, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 2
+  _traderName: Marchand
+  _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+--- !u!58 &6276382402722824826
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4872633174984159442}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -5, y: -5}
+  serializedVersion: 2
+  m_Radius: 7
 --- !u!1 &6501379095573219257
 GameObject:
   m_ObjectHideFlags: 0
