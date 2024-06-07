@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15, y: 11, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.9999999, y: 2.0433183, z: 2.0433183}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -183,36 +183,42 @@ MonoBehaviour:
   _startButton: {fileID: 0}
   _trades:
   - tradeItem: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
       quantityNeed: 1
     - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
       quantityNeed: 2
   - tradeItem: {fileID: 11400000, guid: 85b51428fe9b2164bb8f56616f4c1f40, type: 2}
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
       quantityNeed: 1
     - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
       quantityNeed: 1
   - tradeItem: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
       quantityNeed: 2
     - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
       quantityNeed: 1
   - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
       quantityNeed: 1
     - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
       quantityNeed: 2
   - tradeItem: {fileID: 11400000, guid: 09fb9573ec037ee419ce703b2a8f1100, type: 2}
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
       quantityNeed: 1
     - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
       quantityNeed: 2
   - tradeItem: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
       quantityNeed: 1

@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 1
   _maxStack: 1
-  _name: BaseballBat
+  _name: Batte de baseball
   _description: 
   _itemSprite: {fileID: 21300000, guid: d13ea39ea922922458e61c2b130948aa, type: 3}
   _equipementTier: 0

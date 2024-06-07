@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
-  _name: Knife
+  _name: Couteau
   _description: 
   _itemSprite: {fileID: 21300000, guid: 78be531d43c20744daf81b16aa330d3a, type: 3}
   _equipementTier: 0

@@ -73,6 +73,10 @@ public class MovePlayer : MonoBehaviour
     //When the game is play, it's the first thing who is done.
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
+        if (instance == null) 
+        { 
+            instance = this;
+        }
         _rb = GetComponent<Rigidbody2D>();
         _sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
@@ -82,7 +86,7 @@ public class MovePlayer : MonoBehaviour
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
     private void Move()
     {
-        _moveVector = _input.actions.FindAction("Movement").ReadValue<Vector2>();
+        _moveVector = UserInput.instance.MoveInput;
         if (_isSprinting == true && stats.GetStamina() > 0)
         {
             stats.ChangeIsSprinting(true);

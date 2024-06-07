@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class SettingsButtonLink : MonoBehaviour
 {
-    [SerializeField] GameObject _settingsMenu;
+    [SerializeField] GameObject _settingsMenus;
 
     private void Start()
     {
-        _settingsMenu = SettingsMenu.instance.gameObject;
+        _settingsMenus = SettingsMenusManager.instance.gameObject;
     }
 
-    public void ActivateSettingsMenu()
+    public void ActivateSettingsMenus()
     {
-        _settingsMenu.SetActive(true);
-        SettingsMenu.instance.isInSettings = true;
+        _settingsMenus.SetActive(true);
+        SettingsMenusManager.instance.isInSettings = true;
     }
 }
