@@ -67,7 +67,7 @@ public class QuestManager : MonoBehaviour
                 NextMainQuest();
             }
         }
-        _factionQuestManager.CheckFactionQuestsTrigger(questTrigger, information);
+        //_factionQuestManager.CheckFactionQuestsTrigger(questTrigger, information);
         UpdateObjectivesUi();
     }
 
