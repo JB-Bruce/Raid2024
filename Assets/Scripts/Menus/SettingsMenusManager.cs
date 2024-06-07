@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class SettingsMenusManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class SettingsMenusManager : MonoBehaviour
     [SerializeField] GameObject _audioMenu;
     [SerializeField] GameObject _keybindsMenu;
     [SerializeField] GameObject _settingsChooser;
+    [SerializeField] PlayerInput _playerInput;
 
     [Header("Buttons: ")]
     [SerializeField] Button _graphicsButton;
@@ -22,6 +24,8 @@ public class SettingsMenusManager : MonoBehaviour
 
     [Header("Booleans: ")]
     public bool isInSettings;
+
+    [SerializeField] string _actionMapString;
 
     public static SettingsMenusManager instance;
 
@@ -62,6 +66,7 @@ public class SettingsMenusManager : MonoBehaviour
 
     public void OpenSettings()
     {
+        _playerInput.SwitchCurrentActionMap("Settings");
         isInSettings = true;
         settingsMenus.SetActive(true);
     }
@@ -84,6 +89,7 @@ public class SettingsMenusManager : MonoBehaviour
 
     public void DeactivateSettingsMenus()
     {
+        _playerInput.SwitchCurrentActionMap(_actionMapString);
         settingsMenus.SetActive(false);
         isInSettings = false;
     }
