@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 
@@ -23,6 +25,8 @@ public class CharacterCustomisation : MonoBehaviour
     public TMP_InputField CharacterName;
 
     public GameObject CharacterSelectionUI;
+
+    [SerializeField] private PlayerInput _playerInput;
 
     [SerializeField] private List<GameObject> _gameobjectToActivate = new List<GameObject>();
 
@@ -116,6 +120,7 @@ public class CharacterCustomisation : MonoBehaviour
             PlayerPrefs.SetString("CharacterFaction", _characterFaction);
             PlayerPrefs.SetString("CharacterName", _characterNameText);
             PlayPressed = true;
+            _playerInput.SwitchCurrentActionMap("InGame");
             ActiveGameUI();
         }
     }

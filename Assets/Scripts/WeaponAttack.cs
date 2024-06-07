@@ -141,7 +141,7 @@ public class WeaponAttack : MonoBehaviour
 
         if (_enemy != null) 
         {
-            _enemy.TakeDamage(_equipedWeapon.Damage, _unitCombat.GetFaction());
+            //_enemy.TakeDamage(_equipedWeapon.Damage, _unitCombat.GetFaction());
         }
 
     }
