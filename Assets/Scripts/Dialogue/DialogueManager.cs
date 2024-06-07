@@ -256,7 +256,7 @@ public class DialogueManager : MonoBehaviour
             _playerInput.actions.FindActionMap("InGame").Enable();
 
             _dialogueBox.SetActive(false);
-            QuestManager.instance.CheckQuestTrigger(QuestManager.questTriggerType.dialogue, _pnjHideName);
+            QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.dialogue, _pnjHideName);
             _returnMethode(_dialogueChoices, _isPnjNameHide);
         }
     }

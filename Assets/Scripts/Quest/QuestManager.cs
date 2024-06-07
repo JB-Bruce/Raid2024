@@ -13,24 +13,6 @@ public class QuestManager : MonoBehaviour
     private GameObject _questPanel;
 
     [SerializeField]
-    private GameObject _questInfoInGame;
-
-    [SerializeField]
-    private GameObject _closeButton;
-
-    [SerializeField]
-    private TextMeshProUGUI _mainQuestTitle;
-
-    [SerializeField]
-    private TextMeshProUGUI _mainQuestDescription;
-
-    [SerializeField]
-    private TextMeshProUGUI _questActionTitle;
-
-    [SerializeField]
-    private TextMeshProUGUI _objectives;
-
-    [SerializeField]
     private TextMeshProUGUI _questActionTitleInGame;
 
     [SerializeField]
@@ -47,18 +29,20 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private FactionQuestManager _factionQuestManager;
 
+    [SerializeField]
+    private QuestPanelManager _questPanelManager;
+    
     public static QuestManager instance;
 
     //create an instance of the DialogueManager
     private void Awake()
     {
         instance = this;
-        UpdateObjectivesUi();
-        UpdateQuestActionUi();
+        UpdateInGameQuestUi();
     }
 
     //check if the current QuestActions are QuestTrigger
-    public void CheckQuestTrigger(questTriggerType questTrigger, string information = "")
+    public void CheckQuestTrigger(QuestTriggerType questTrigger, string information = "")
     {
         if (_quests[_currentMainQuest].GetCurrentQuestAction() is QuestTrigger aQuestTrigger)
         {
@@ -67,8 +51,8 @@ public class QuestManager : MonoBehaviour
                 NextMainQuest();
             }
         }
-        //_factionQuestManager.CheckFactionQuestsTrigger(questTrigger, information);
-        UpdateObjectivesUi();
+        _factionQuestManager.CheckFactionQuestsTrigger(questTrigger, information);
+        UpdateInGameQuestUi();
     }
 
     //check if the current QuestAction is a QuestItems
@@ -81,7 +65,7 @@ public class QuestManager : MonoBehaviour
                 NextMainQuest();
             }
             _factionQuestManager.CheckFactionQuestsItems(itemWithQuantity);
-            UpdateObjectivesUi();
+            UpdateInGameQuestUi();
         }
     }
 
@@ -95,7 +79,7 @@ public class QuestManager : MonoBehaviour
                 NextMainQuest();
             }
             _factionQuestManager.CheckFactionQuestsKill(faction);
-            UpdateObjectivesUi();
+            UpdateInGameQuestUi();
         }
     }
 
@@ -107,17 +91,24 @@ public class QuestManager : MonoBehaviour
             _currentMainQuest += 1;
         }
         _quests[_currentMainQuest].GetCurrentQuestAction().Configure();
-        UpdateMainQuestUi();
-        UpdateQuestActionUi();
+        UpdateInGameQuestUi();
     }
 
-    //get the current main quest action index
+    //return the current main quest action index
     public List<int> GetCurrentMainQuestActionIndex()
     {
-        List<int> indexs = new ();
-        indexs.Add (_currentMainQuest);
-        indexs.Add (_quests[_currentMainQuest].GetCurrentQuestActionIndex());
+        List<int> indexs = new()
+        {
+            _currentMainQuest,
+            _quests[_currentMainQuest].GetCurrentQuestActionIndex()
+        };
         return indexs;
+    }
+
+    //return the number of quest actions of a quest by index
+    public int GetMainQuestActionCountByIndex(int questIndex)
+    {
+        return _quests[questIndex].GetQuestActionCount();
     }
 
     //open quest panel
@@ -129,9 +120,7 @@ public class QuestManager : MonoBehaviour
             eventSystem.SetSelectedGameObject(_closeButton);
             if (_questInfoInGame.activeInHierarchy)
             {
-                UpdateMainQuestUi();
-                UpdateQuestActionUi();
-                _questInfoInGame.SetActive(false);
+                _questPanelManager.ConfigurePanel();
                 _questPanel.SetActive(true);
             }
         }
@@ -146,33 +135,24 @@ public class QuestManager : MonoBehaviour
     {
         _playerInput.SwitchCurrentActionMap("InGame");
         _questPanel.SetActive(false);
-        _questInfoInGame.SetActive(true);
     }
 
-    //update main quest ui
-    private void UpdateMainQuestUi()
-    {
-        _mainQuestTitle.text = _quests[_currentMainQuest].GetName();
-        _mainQuestDescription.text = _quests[_currentMainQuest].GetDescription();
-    }
-
-    //update quest action ui
-    private void UpdateQuestActionUi()
-    {
-        string text = _quests[_currentMainQuest].GetCurrentQuestAction().GetName();
-        _questActionTitleInGame.text = text;
-        _questActionTitle.text = text;
-    }
-
-    //update quest objectives informations ui
-    private void UpdateObjectivesUi()
+    //update in game quest ui
+    private void UpdateInGameQuestUi()
     {
         string objectives = _quests[_currentMainQuest].GetCurrentQuestAction().GetObjectivesText();
         _objectivesInGame.text = objectives;
-        _objectives.text = objectives;
+        string text = _quests[_currentMainQuest].GetCurrentQuestAction().GetName();
+        _questActionTitleInGame.text = text;
     }
 
-    public enum questTriggerType
+    //return the current main quest
+    public Quest GetMainQuestByIndex(int index)
+    {
+        return _quests[index];
+    }
+
+    public enum QuestTriggerType
     {
         defend,
         enterArea,

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static QuestManager;
@@ -38,7 +37,7 @@ public class FactionQuestManager : MonoBehaviour
     }
 
     //check if the currents FactionQuests are QuestsTrigger
-    public void CheckFactionQuestsTrigger(questTriggerType questTrigger, string information = "")
+    public void CheckFactionQuestsTrigger(QuestTriggerType questTrigger, string information = "")
     {
         CheckFactionQuestTrigger(questTrigger, ref _currentUtopistFactionQuest, information);
         CheckFactionQuestTrigger(questTrigger, ref _currentMilitaryFactionQuest, information);
@@ -47,7 +46,7 @@ public class FactionQuestManager : MonoBehaviour
     }
 
     //check if the current FactionQuestAction is a QuestTrigger
-    private void CheckFactionQuestTrigger(questTriggerType questTrigger, ref int questIndex, string information = "")
+    private void CheckFactionQuestTrigger(QuestTriggerType questTrigger, ref int questIndex, string information = "")
     {
         if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestTrigger aQuestTrigger)
         {
@@ -106,8 +105,8 @@ public class FactionQuestManager : MonoBehaviour
         GetIndexRefByFaction(faction) = indexQuest;
     }
 
-    //get the ref of a faction quest index with the faction name
-    private ref int GetIndexRefByFaction(string faction)
+    //return the ref of a faction quest index with the faction name
+    public ref int GetIndexRefByFaction(string faction)
     {
         if(faction == "Utopist")
         {
@@ -136,7 +135,7 @@ public class FactionQuestManager : MonoBehaviour
         }
     }
 
-    //get the number of various factionQuest
+    //return the number of various factionQuest
     public int GetFactionQuestQuantity()
     {
         return _factionQuests.Count;
@@ -146,5 +145,11 @@ public class FactionQuestManager : MonoBehaviour
     public void GiveUpQuest(string faction)
     {
         GetIndexRefByFaction(faction) = -1;
+    }
+
+    //return the quest of a faction
+    public Quest GetQuestByFaction(string faction)
+    {
+        return _factionQuests[GetIndexRefByFaction(faction)];
     }
 }
