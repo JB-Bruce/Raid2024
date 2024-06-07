@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
-  _name: Helmet
+  _name: Casque
   _description: 
   _itemSprite: {fileID: 21300000, guid: 723bc9867e7e8bd4490189df1fb7f6d4, type: 3}
   _equipementTier: 0

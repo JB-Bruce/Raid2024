@@ -130,21 +130,21 @@ MonoBehaviour:
   _startButton: {fileID: 0}
   _trades:
   - tradeItem: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
-    tradeItemQuantity: 0
+    tradeItemQuantity: 25
     itemsToTrade:
     - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
       quantityNeed: 1
     - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
       quantityNeed: 5
   - tradeItem: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-    tradeItemQuantity: 0
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
       quantityNeed: 3
     - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
       quantityNeed: 1
   - tradeItem: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-    tradeItemQuantity: 0
+    tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
       quantityNeed: 7
