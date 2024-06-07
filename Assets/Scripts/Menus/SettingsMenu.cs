@@ -7,9 +7,9 @@ public class SettingsMenu : MonoBehaviour
     public static SettingsMenu instance;
 
     [Header("Sliders: ")]
-    [SerializeField] Slider _mainVolumeSlider;
-    [SerializeField] Slider _musicVolumeSlider;
-    [SerializeField] Slider _sfxVolumeSlider;
+    [SerializeField] Scrollbar _mainVolumeSlider;
+    [SerializeField] Scrollbar _musicVolumeSlider;
+    [SerializeField] Scrollbar _sfxVolumeSlider;
 
     [Header("References: ")]
     public GameObject settingsMenu;
