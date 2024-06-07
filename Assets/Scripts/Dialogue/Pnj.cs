@@ -4,6 +4,9 @@ using UnityEngine;
 public class Pnj : Interactable
 {
     [SerializeField]
+    private GameObject _highlightSprite;
+
+    [SerializeField]
     private List<DialogueContent> _dialogues = new();
 
     [SerializeField]
@@ -31,17 +34,14 @@ public class Pnj : Interactable
         _isNameHide = true;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void GetSelected(bool state)
     {
-        if (collision.CompareTag("Player"))
+        _highlightSprite.SetActive(state);
+        if (state)
         {
             PlayerInteraction.Instance.interactables.Add(this);
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
+        else
         {
             PlayerInteraction.Instance.interactables.Remove(this);
         }
