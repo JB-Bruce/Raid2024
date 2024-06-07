@@ -1,3 +1,4 @@
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 using UnityEngine.AI;
 using static Node_script;
@@ -19,13 +20,13 @@ public class GoToEnemy : Node
 
     public override NodeState Evaluate()
     {
-        if (_unit.nearestEnemy != null && _unit.weapon.AttackRange < Vector3.Distance(_transform.position, _unit.nearestEnemy.transform.position))
+        if (_unit.nearestEnemy != null)
         {
-            _unitMovement.ChangeTarget(_unit.nearestEnemy.transform.position);
+                 _unitMovement.ChangeTarget(_unit.nearestEnemy.transform.position);
             return NodeState.SUCCESS;
         }
 
-        else if(_unit.nearestEnemy == null && _unit.lastPosition != Vector3.zero && _unit.lastEnemy != null) 
+        else if(_unit.nearestEnemy == null && _unit.lastPosition != Vector3.zero && _unit.lastEnemy != null && (_agent.velocity.magnitude > 0.01f)) 
         {
             _unitMovement.ChangeTarget(_unit.lastPosition);
             return NodeState.SUCCESS;

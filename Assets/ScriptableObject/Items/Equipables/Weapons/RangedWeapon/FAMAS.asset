@@ -17,8 +17,9 @@ MonoBehaviour:
   _maxStack: 1
   _name: FAMAS
   _description: 
-  _itemSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
+  _itemSprite: {fileID: 21300000, guid: bceee331827c2af438e0afa1dbdc0d55, type: 3}
   _equipementTier: 0
+  _worldSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
   _damage: 15
   _attackSpeed: 0.07692308
   _attackRange: 20

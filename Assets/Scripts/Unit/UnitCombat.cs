@@ -23,7 +23,7 @@ public class UnitCombat : MonoBehaviour
     public WeaponAttack weaponAttack;
 
     [Header("Reputation")]
-    public float neutralReputation = 0;
+    public float neutralReputation = -1;
 
     [Header("Detection")]
     public CircleCollider2D circleCollider;

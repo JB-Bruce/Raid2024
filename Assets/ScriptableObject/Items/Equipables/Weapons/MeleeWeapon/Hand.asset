@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd52bd496f307a4db1d7897c77ff153, type: 3}
+  m_Name: Hand
+  m_EditorClassIdentifier: 
+  _weight: 0
+  _isStackable: 0
+  _maxStack: 0
+  _name: Hand
+  _description: 
+  _itemSprite: {fileID: 0}
+  _equipementTier: 3
+  _damage: 6
+  _attackSpeed: 1
+  _attackRange: 4
+  _leftHandPos: {x: 0.7, y: 0.3}
+  _rightHandPos: {x: 1, y: -0.3}
+  _rotationRightHand: -140
+  _rotationLeftHand: 40
+  animAttack: 

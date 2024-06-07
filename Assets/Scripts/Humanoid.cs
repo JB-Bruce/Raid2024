@@ -30,7 +30,11 @@ public class Humanoid : MonoBehaviour
     {
         
         life -= damage;
-        _factionManager.AddReputation(faction, _faction, removeHitReputation);
+
+        if (faction != Faction.Player)
+        {
+            _factionManager.AddReputation(faction, _faction, removeHitReputation);
+        }
 
         pSystem.Play();
 

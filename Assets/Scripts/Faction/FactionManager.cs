@@ -52,6 +52,7 @@ public class FactionManager : MonoBehaviour
         {
             IsPoiCaught.AddListener(factions[i].HaveCaughtPOI);
         }
+        SetReputationText();
     }
 
     // Remove a unit from a faction and indicate is death to the faction
@@ -86,6 +87,15 @@ public class FactionManager : MonoBehaviour
                 ChangeReputationText(faction1, faction2, reputations[i].reputation);
                 return;
             }
+        }
+    }
+
+    // Set all the reputation Text
+    private void SetReputationText()
+    {
+        for (int i = 0; i < reputations.Count; i++)
+        {
+            ChangeReputationText(reputations[i].faction1, reputations[i].faction2, reputations[i].reputation);
         }
     }
 
