@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,14 @@ public class TutoContainer : MonoBehaviour
 {
     private bool _isInTrigger = false;
 
+    [SerializeField] private GameObject Highlight;
+
     private void Update()
     {
         if (_isInTrigger && TutorialManager.Instance.TutorialIncrement() == 1
            && Inventory.Instance.isInventoryOpen && Inventory.Instance.currentContainer != null)
         {
+            Highlight.SetActive(false);
             TutorialManager.Instance.NextTutorial();
         }
     }

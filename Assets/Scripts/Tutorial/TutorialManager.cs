@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.Processors;
 
 
 public class TutorialManager : MonoBehaviour
@@ -17,6 +18,8 @@ public class TutorialManager : MonoBehaviour
 
     public List<GameObject> ListAllies = new List<GameObject>();
     public List<GameObject> ListUIToDeactivate = new List<GameObject>();
+    
+    public List<Transform> ListTutorialTarget = new List<Transform>();
 
     public Animator FadeInAnimator;
     
@@ -25,6 +28,8 @@ public class TutorialManager : MonoBehaviour
     private bool _setEnableToTrue = true;
     private bool _playOnce = true;
 
+    private ArrowQuest _arrowQuest;
+
     /// <summary>
     /// create an instance of the tutorial manager
     /// </summary>
@@ -32,6 +37,8 @@ public class TutorialManager : MonoBehaviour
     {
         if (Instance == null)
             Instance = this;
+
+        _arrowQuest = ArrowQuest.Instance;
     }
 
     void Start()
@@ -41,37 +48,75 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        //Check if it is in the right moment of the tutorial and if there is a weapon in hte weapon slot
-        if (_tutorialincrement == 2 && Inventory.Instance.weaponSlots[0].Item != null)
+        if (!CharacterCustomisation.Instance.PlayPressed)
+            return;
+
+        //Take care of everything that appends in the tutorial
+        switch (_tutorialincrement)
         {
-            NextTutorial();
+            case 0:
+
+                ArrowQuest.Instance.QuestTarget = ListTutorialTarget[0];
+
+                break;
+                
+            case 1:
+
+                ArrowQuest.Instance.QuestTarget = ListTutorialTarget[1];
+
+                break;
+
+            case 2:
+                ArrowQuest.Instance.QuestTarget = null;
+
+                if (Inventory.Instance.weaponSlots[0].Item != null)
+                {
+                    NextTutorial();
+                }
+
+                break;
+
+            case 3:
+
+                ArrowQuest.Instance.QuestTarget = ListTutorialTarget[2];
+
+                EnemyTransform.gameObject.SetActive(true);  
+                
+                break;
+
+            case 4:
+                ArrowQuest.Instance.QuestTarget = null;
+                if (_setEnableToTrue)
+                {
+                    foreach (GameObject go in ListAllies)
+                    {
+                        go.SetActive(true);
+                    }
+                    foreach (GameObject go in ListUIToDeactivate)
+                    {
+                        go.SetActive(false);
+                    }
+                    MovePlayer movePlayer = PlayerTransform.GetComponent<MovePlayer>();
+                    Destroy(movePlayer);
+                    _setEnableToTrue = false;
+                }
+                break;
+
+            case 5:
+                ArrowQuest.Instance.QuestTarget = null;
+                if (_playOnce)
+                {
+                    FadeInAnimator.Play("FadeIn");
+                    _playOnce = false;
+                }
+                break;
+
+            default:
+                break;
         }
 
-        if (_tutorialincrement == 3)
-        {
-            EnemyTransform.gameObject.SetActive(true);
-        }
 
-        if (_tutorialincrement == 4 && _setEnableToTrue)
-        {
-            foreach(GameObject go in ListAllies)
-            {
-                go.SetActive(true);
-            }
-            foreach(GameObject go in ListUIToDeactivate)
-            {
-                go.SetActive(false); 
-            }
-            MovePlayer movePlayer = PlayerTransform.GetComponent<MovePlayer>();
-            Destroy(movePlayer);
-            _setEnableToTrue = false;
-        }
-
-        if (_tutorialincrement == 5 && _playOnce)
-        {
-            FadeInAnimator.Play("FadeIn");
-            _playOnce = false;
-        }
+      
     }
 
     /// <summary>
