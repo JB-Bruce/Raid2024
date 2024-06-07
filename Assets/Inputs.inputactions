@@ -1293,6 +1293,17 @@
                     "action": "EscapeSettings",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c0d8aa92-521b-48e4-a02a-2c134a496a97",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EscapeSettings",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
