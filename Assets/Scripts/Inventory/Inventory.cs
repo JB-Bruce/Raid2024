@@ -592,7 +592,10 @@ public class Inventory : MonoBehaviour
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
         itemWithQuantity.item = slot1.Item;
         itemWithQuantity.quantityNeed = slot1.Quantity;
-        QuestManager.instance.CheckQuestItems(itemWithQuantity);
+        if (QuestManager.instance)
+        {
+            QuestManager.instance.CheckQuestItems(itemWithQuantity);
+        }
 
         Item TempItem = slot1.Item;
         slot1.Item = slot2.Item;

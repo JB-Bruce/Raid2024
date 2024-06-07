@@ -137,11 +137,13 @@ public class WeaponAttack : MonoBehaviour
     // Give damage to the nearrest player
     public void CaCAttack()
     {
-        Humanoid _enemy = _unitCombat != null ? _unitCombat.nearestEnemy : GetFrontEnemy();
+        bool _isAI = _unitCombat != null;
 
-        if (_enemy != null) 
+        Humanoid _enemy = _isAI ? _unitCombat.nearestEnemy : GetFrontEnemy();
+
+        if (_enemy != null)
         {
-            _enemy.TakeDamage(_equipedWeapon.Damage, _unitCombat.GetFaction());
+            _enemy.TakeDamage(_equipedWeapon.Damage, _isAI ? _unitCombat.GetFaction() : Faction.Player, (_enemy.transform.position - transform.position).normalized);
         }
 
     }
