@@ -44,14 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41dee3205e2a07541a0fcaa8fe9586cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isWritingText: 0
   _currentSlide: {fileID: 0}
   _currentSlideIndex: 0
   _cinematicSlides:
-  - {fileID: 21300000, guid: e83efeda776eaff4a86d4bb73ca2b296, type: 3}
-  - {fileID: 21300000, guid: d391c00bd102a94418c5c59c7c157b05, type: 3}
-  - {fileID: 21300000, guid: 9bab0defe90530d40bd91c260a183de4, type: 3}
-  - {fileID: 21300000, guid: 68bc74ce3694e9e4ebdb8a2a602106e4, type: 3}
-  - {fileID: 21300000, guid: 331971de90bff5140b9cd9dfea3cbf6c, type: 3}
+  - {fileID: 21300000, guid: 11577f9cd21fbec4ca63da68e5945a17, type: 3}
+  - {fileID: 21300000, guid: 77c5408511164f647addb0a1fa0f832c, type: 3}
+  - {fileID: 21300000, guid: fd8255de938891647a78658a245124c7, type: 3}
+  - {fileID: 21300000, guid: 888e2a92f60c58349b798fdd2cfbdd89, type: 3}
+  - {fileID: 21300000, guid: 46bd9e9e37981d442af3d4ccb970bdfa, type: 3}
   _currentCineText: {fileID: 0}
   _currentTextIndex: 0
   _cineTexts:
@@ -60,29 +61,38 @@ MonoBehaviour:
       monde."
     isSlideChanger: 1
     isEndSlide: 0
+    delayAfterFinish: 3
   - text: "Vous vous doutez que dans un monde comme le n\xF4tre, constamment connect\xE9
       \xE0 tous les objets du quotidien\u2026"
     isSlideChanger: 0
     isEndSlide: 0
+    delayAfterFinish: 2
   - text: "Cela provoqua une panique g\xE9n\xE9rale mondiale."
     isSlideChanger: 1
     isEndSlide: 0
+    delayAfterFinish: 2
   - text: "Le gouvernement mondial a essay\xE9 de calmer la situation en d\xE9ployant
       ses forces militaires pour rassurer la population\u2026"
     isSlideChanger: 0
     isEndSlide: 0
+    delayAfterFinish: 2
   - text: "En vain, cela d\xE9clencha des guerres civiles \xE0 travers tout le globe."
     isSlideChanger: 1
     isEndSlide: 0
+    delayAfterFinish: 2
   - text: "Ces guerres caus\xE8rent l\u2019an\xE9antissement de notre soci\xE9t\xE9
       et peu de personnes surv\xE9curent\u2026"
     isSlideChanger: 1
     isEndSlide: 0
+    delayAfterFinish: 4
   - text: "50 ans plus tard, 4 factions se sont form\xE9es, chacunes avec leur vision
       de ce nouveau monde et de son futur\u2026"
     isSlideChanger: 0
     isEndSlide: 1
-  delayBeforeStart: 0
-  _timeBetweenChars: 0.05
-  _startOnEnable: 1
-  _sceneToLoadAtEnd: MenuTester
+    delayAfterFinish: 7
+  _delayBeforeStart: 0
+  _timeBetweenChars: 0.02
+  timeBetweenTexts: 4
+  _sceneToLoadAtEnd: MVP
+  _camera: {fileID: 0}
+  _animator: {fileID: 0}
