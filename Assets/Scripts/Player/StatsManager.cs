@@ -22,6 +22,10 @@ public class StatsManager : Humanoid
     public Image staminaBar;
     public Image staminaBorder;
 
+    public Image DeathFade;
+    public GameObject DeathScreen;
+    public Transform MainCamera;
+
     [SerializeField] private float staminaDrainAmount = 10f;
     [SerializeField] private float staminaGainAmount = 5f;
 
@@ -78,13 +82,14 @@ public class StatsManager : Humanoid
         {
 
             //Death
-            AddWater(100);
-            AddFood(100);
-            AddHealth(100);
-            stamina = 50;
-            staminaBar.fillAmount = stamina / 50f;
-            transform.position = _respawnPosition.position;
-            ChangeLifeColor();
+            //Fade in/out for death screen
+            Time.timeScale = 0.0f;
+            DeathFade.CrossFadeAlpha(0,0.01f,true);
+            DeathFade.enabled = true;
+            DeathFade.CrossFadeAlpha(1,1f,true);
+            
+
+            StartCoroutine(CouroutineDeath());
         }
     }
 
@@ -155,9 +160,30 @@ public class StatsManager : Humanoid
         return _isSprinting;
     }
 
+    //return the amount of stamina
     public float GetStamina()
     {
         return stamina;
+    }
+
+    //Call when the player click on the  button on death screen 
+    //set the player stats and respawn the player
+    public void RespawnPlayer()
+    {
+        AddWater(100);
+        AddFood(100);
+        AddHealth(100);
+        stamina = 50;
+        staminaBar.fillAmount = stamina / 50f;
+        transform.position = _respawnPosition.position;
+        MainCamera.position = transform.position + new Vector3(0,0,-10);
+        ChangeLifeColor();
+        
+        DeathFade.CrossFadeAlpha(0,0.01f,true);
+        DeathFade.enabled = true;
+        DeathFade.CrossFadeAlpha(1,1f,true);
+
+        StartCoroutine(CouroutineRespawn());
     }
     
     //Reduce the water every 10 seconds
@@ -176,6 +202,34 @@ public class StatsManager : Humanoid
         hunger -= 1;
         hungerBar.fillAmount = hunger / 100f;
         RemoveFood();
+    }
+
+    //Desactive the fade and show the death screen
+    IEnumerator CouroutineDeath()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+
+        
+        DeathScreen.SetActive(true);
+        DeathFade.CrossFadeAlpha(0,1f,true);
+        
+        //Time.timeScale = 1.0f;
+        yield return new WaitForSecondsRealtime(1f);
+        DeathFade.enabled = false;
+    }
+
+    //Desactive the death sreen and desactive the fade
+    IEnumerator CouroutineRespawn()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        
+        DeathScreen.SetActive(false);
+        
+        DeathFade.CrossFadeAlpha(0,1f,true);
+        
+        yield return new WaitForSecondsRealtime(1f);
+        DeathFade.enabled = false;
+        Time.timeScale = 1.0f;
     }
 
     private void Awake()
@@ -201,6 +255,14 @@ public class StatsManager : Humanoid
 
     private void Update()
     {
+        //Test death
+        /*
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            life = 0;
+            ChangeLifeColor();
+        }*/
+
         //When the player is sprinting, decrease the stamina account, and change _recupStamina to false
         if  (_isSprinting == true)
         {
@@ -280,6 +342,8 @@ public class StatsManager : Humanoid
                 break;
         }
     }
+
+
 
 
     //enum for the all the different faction respawn
