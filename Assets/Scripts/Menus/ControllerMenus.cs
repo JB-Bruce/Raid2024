@@ -23,15 +23,20 @@ public class ControllerMenus : MonoBehaviour
         {
             if (_eventSystem.currentSelectedGameObject == null)
             {
-                if (_firstMenuButton.activeInHierarchy)
-                {
-                    _eventSystem.SetSelectedGameObject(_firstMenuButton);
-                }
-                else if (_secondMenuButton.activeInHierarchy)
-                {
-                    _eventSystem.SetSelectedGameObject(_secondMenuButton);
-                }
+                SelectFirstButton();
             }
+        }
+    }
+
+    public void SelectFirstButton()
+    {
+        if (_firstMenuButton != null && _firstMenuButton.activeInHierarchy)
+        {
+            _eventSystem.SetSelectedGameObject(_firstMenuButton);
+        }
+        else if (_secondMenuButton != null && _secondMenuButton.activeInHierarchy)
+        {
+            _eventSystem.SetSelectedGameObject(_secondMenuButton);
         }
     }
 }

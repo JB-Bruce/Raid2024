@@ -274,6 +274,13 @@ public class Inventory : MonoBehaviour
         }
         else//Shows the weapon slots
         {
+            for (int i = 0; i < weaponSlots.Count; i++)
+            {
+                Navigation navigation = new Navigation();
+                navigation.mode = Navigation.Mode.None;
+                weaponSlots[i].GetComponent<Button>().navigation = navigation;
+            }
+
             Cursor.visible = false;
             _weaponSlotsGameObject.SetActive(true);
             weaponSlots[actualWeapon].GetSelected(true);

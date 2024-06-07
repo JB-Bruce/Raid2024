@@ -46,6 +46,7 @@ public class PauseManager : MonoBehaviour
     public void PauseGame() //Pauses the game
     {
         _playerInput.SwitchCurrentActionMap("Pause");
+        GetComponent<ControllerMenus>().SelectFirstButton();
         Cursor.visible = true;
         _pauseMenu.SetActive(true);
         _pauseMenuBackgroundImage.enabled = true;
