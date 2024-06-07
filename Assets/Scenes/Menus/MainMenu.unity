@@ -6094,7 +6094,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1697492568}
+      - m_Target: {fileID: 1690278168}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: OpenSettingsInGame
         m_Mode: 1
