@@ -320,8 +320,10 @@ public class MovePlayer : MonoBehaviour
     {
         if(context.performed)
         {
+            
             var scrollValue = context.ReadValue<float>();
-            if (scrollValue == 120)
+            Debug.Log(scrollValue);
+            if (scrollValue > 0)
             {
                 if(inventory.equipementSlots.Last().Item != null)
                 {
@@ -355,7 +357,7 @@ public class MovePlayer : MonoBehaviour
                 }
             
             }
-            else
+            else if (scrollValue < 0)
             {
                 if(inventory.equipementSlots.Last().Item != null)
                 {

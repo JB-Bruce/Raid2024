@@ -126,8 +126,8 @@
                     "name": "SelectWeaponWithScroll",
                     "type": "PassThrough",
                     "id": "ecde788f-b3cf-4a39-a4d9-d8f45e2ed406",
-                    "expectedControlType": "",
-                    "processors": "",
+                    "expectedControlType": "Axis",
+                    "processors": "Scale",
                     "interactions": "",
                     "initialStateCheck": false
                 },
@@ -482,39 +482,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Scroll",
-                    "id": "316fe845-5cc1-48bc-871a-679582935de3",
-                    "path": "1DAxis(whichSideWins=1)",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectWeaponWithScroll",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "cacb7b61-cf70-426b-b949-f4ab6938666a",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectWeaponWithScroll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "c91c2f63-83d7-4267-b929-43ad507df3b4",
-                    "path": "<Mouse>/scroll/y",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "SelectWeaponWithScroll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "75734a84-eebf-45c8-9242-ca597206a874",
                     "path": "<Mouse>/rightButton",
@@ -654,6 +621,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Open Quest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5c590cf6-8cc8-4fb4-af01-1d0c2a067000",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectWeaponWithScroll",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
