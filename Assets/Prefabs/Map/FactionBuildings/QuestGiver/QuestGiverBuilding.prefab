@@ -88,6 +88,8 @@ GameObject:
   - component: {fileID: 2864923250589469673}
   - component: {fileID: 6984152127417113810}
   - component: {fileID: -5222564817049972110}
+  - component: {fileID: 5642301972689535933}
+  - component: {fileID: 8090798823095612914}
   m_Layer: 0
   m_Name: QuestGiverBuilding
   m_TagString: Untagged
@@ -103,7 +105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4907262089020707382}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 29.8, y: -28, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -179,3 +181,62 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &5642301972689535933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907262089020707382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: "C'est pas ma qu\xEAte"
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+  _name: Quest giver
+  _hideName: Quest giver
+  _startButton: {fileID: 0}
+--- !u!58 &8090798823095612914
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4907262089020707382}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -3, y: -3}
+  serializedVersion: 2
+  m_Radius: 3
