@@ -12,7 +12,6 @@ public class PauseManager : MonoBehaviour
     [Header("Menu objets: ")]
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] Image _pauseMenuBackgroundImage;
-    [SerializeField] GameObject _firstMenuButton;
 
     ConditionsManager _conditionsManager;
 
@@ -26,14 +25,21 @@ public class PauseManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
         _conditionsManager = ConditionsManager.instance;
     }
 
     private void OnApplicationPause(bool pause) //Pauses the game on Application quit
     {
-        if (pause && !_conditionsManager.gameHasEnded || !_conditionsManager.hasDied)
+        if (_conditionsManager != null)
         {
-            PauseGame();
+            if (pause && _playerInput.actions.FindActionMap("InGame").enabled && (!_conditionsManager.gameHasEnded || !_conditionsManager.hasDied))
+            {
+                PauseGame();
+            }
         }
     }
 
@@ -44,7 +50,6 @@ public class PauseManager : MonoBehaviour
         _pauseMenu.SetActive(true);
         _pauseMenuBackgroundImage.enabled = true;
         _conditionsManager.isPaused = true;
-        EventSystem.current.SetSelectedGameObject(_firstMenuButton);
 
         Time.timeScale = 0f;
     }
