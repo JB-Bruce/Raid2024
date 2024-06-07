@@ -111,23 +111,25 @@ public class QuestManager : MonoBehaviour
         return _quests[questIndex].GetQuestActionCount();
     }
 
-    //open quest panel
-    public void OpenQuestPanel()
+    //open panel if he's closed and close it if he's open
+    public void SetActiveQuestPanel()
     {
         if (_playerInput.actions.FindActionMap("InGame").enabled)
         {
-            _playerInput.SwitchCurrentActionMap("Quest");
-            eventSystem.SetSelectedGameObject(_closeButton);
-            if (_questInfoInGame.activeInHierarchy)
-            {
-                _questPanelManager.ConfigurePanel();
-                _questPanel.SetActive(true);
-            }
+            OpenQuestPanel();
         }
         else if (_playerInput.actions.FindActionMap("Quest").enabled)
         {
             CloseQuestPanel();
         }
+    }
+
+    //open quest panel
+    public void OpenQuestPanel()
+    {
+        _playerInput.SwitchCurrentActionMap("Quest");
+        _questPanelManager.ConfigurePanel();
+        _questPanel.SetActive(true);
     }
 
     //close quest panel
