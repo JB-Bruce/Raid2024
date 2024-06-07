@@ -6,7 +6,7 @@ using static QuestManager;
 public class QuestTrigger : QuestAction
 {
     [SerializeField]
-    questTriggerType _questTriggerType = new();
+    QuestTriggerType _questTriggerType = new();
 
     [SerializeField]
     private string _information;
@@ -21,7 +21,7 @@ public class QuestTrigger : QuestAction
     }
 
     //return if the QuestTrigger is finished
-    public bool IsFinished(questTriggerType questTriggerType, string triggerName)
+    public bool IsFinished(QuestTriggerType questTriggerType, string triggerName)
     {
         if(questTriggerType == _questTriggerType && triggerName == _information)
         {

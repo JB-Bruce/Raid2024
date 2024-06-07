@@ -10,34 +10,34 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerExitHandler
     private float _scrollSpeed = 10f;
     private bool _isGamePadUsing = false;
 
-    private List<Selectable> _m_Selectables = new List<Selectable>();
+    private List<Selectable> _selectables = new List<Selectable>();
 
     [SerializeField]
-    private ScrollRect _m_ScrollRect;
+    private ScrollRect _scrollRect;
 
-    private Vector2 _m_NextScrollPosition = Vector2.up;
+    private Vector2 _nextScrollPosition = Vector2.up;
 
-    //get the content children onEnable
+    //return the content children onEnable
     void OnEnable()
     {
-        if (_m_ScrollRect)
+        if (_scrollRect)
         {
-            _m_ScrollRect.content.GetComponentsInChildren(_m_Selectables);
+            _scrollRect.content.GetComponentsInChildren(_selectables);
         }
     }
 
-    //get the scrollRect
+    //return the scrollRect
     void Awake()
     {
-        _m_ScrollRect = GetComponent<ScrollRect>();
+        _scrollRect = GetComponent<ScrollRect>();
     }
 
-    //get the content children at start
+    //return the content children at start
     void Start()
     {
-        if (_m_ScrollRect)
+        if (_scrollRect)
         {
-            _m_ScrollRect.content.GetComponentsInChildren(_m_Selectables);
+            _scrollRect.content.GetComponentsInChildren(_selectables);
         }
         ScrollToSelected(true);
     }
@@ -49,11 +49,11 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerExitHandler
         if ( _isGamePadUsing)
         {
             //lerp scrolling code.
-            _m_ScrollRect.normalizedPosition = Vector2.Lerp(_m_ScrollRect.normalizedPosition, _m_NextScrollPosition, _scrollSpeed * Time.unscaledDeltaTime);
+            _scrollRect.normalizedPosition = Vector2.Lerp(_scrollRect.normalizedPosition, _nextScrollPosition, _scrollSpeed * Time.unscaledDeltaTime);
         }
         else
         {
-            _m_NextScrollPosition = _m_ScrollRect.normalizedPosition;
+            _nextScrollPosition = _scrollRect.normalizedPosition;
         }
     }
 
@@ -80,18 +80,18 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerExitHandler
 
         if (selectedElement)
         {
-            selectedIndex = _m_Selectables.IndexOf(selectedElement);
+            selectedIndex = _selectables.IndexOf(selectedElement);
         }
         if (selectedIndex > -1)
         {
             if (quickScroll)
             {
-                _m_ScrollRect.normalizedPosition = new Vector2(0, 1 - (selectedIndex / ((float)_m_Selectables.Count - 1)));
-                _m_NextScrollPosition = _m_ScrollRect.normalizedPosition;
+                _scrollRect.normalizedPosition = new Vector2(0, 1 - (selectedIndex / ((float)_selectables.Count - 1)));
+                _nextScrollPosition = _scrollRect.normalizedPosition;
             }
             else
             {
-                _m_NextScrollPosition = new Vector2(0, 1 - (selectedIndex / ((float)_m_Selectables.Count - 1)));
+                _nextScrollPosition = new Vector2(0, 1 - (selectedIndex / ((float)_selectables.Count - 1)));
             }
         }
     }

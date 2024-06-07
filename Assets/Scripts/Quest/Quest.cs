@@ -19,21 +19,27 @@ public class Quest
     [SerializeField]
     private questType _questType;
 
-    //get the quest name
+    //return the quest name
     public string GetName() {  return _name; }
-    //get the quest description
+    //return the quest description
     public string GetDescription() {  return _description; }
 
-    //get the current quest action
+    //return the current quest action
     public QuestAction GetCurrentQuestAction()
     {
         return (_questActions[_currentQuestAction]);
     }
 
-    //get the current quest action index
+    //return the current quest action index
     public int GetCurrentQuestActionIndex()
     {
         return _currentQuestAction;
+    }
+
+    //return the number of quest actions in the quest
+    public int GetQuestActionCount()
+    {
+        return _questActions.Count;
     }
 
     //update the current QuestAction if is not the last of the Quest

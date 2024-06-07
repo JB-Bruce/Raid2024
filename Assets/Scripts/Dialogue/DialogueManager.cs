@@ -241,7 +241,7 @@ public class DialogueManager : MonoBehaviour
         else
         {
             _dialogueBox.SetActive(false);
-            QuestManager.instance.CheckQuestTrigger(QuestManager.questTriggerType.dialogue, _pnjHideName);
+            QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.dialogue, _pnjHideName);
             _returnMethode(_dialogueChoices, _isPnjNameHide);
         }
     }
