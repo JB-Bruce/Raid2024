@@ -328,7 +328,6 @@ public class MovePlayer : MonoBehaviour
         {
             
             var scrollValue = context.ReadValue<float>();
-            Debug.Log(scrollValue);
             if (scrollValue > 0)
             {
                 if(inventory.equipementSlots.Last().Item != null)

@@ -94,6 +94,7 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerExitHandler
                 _nextScrollPosition = new Vector2(0, 1 - (selectedIndex / ((float)_selectables.Count - 1)));
             }
         }
+        //print(_selectables.Count);
     }
 
     //set the mouseOver boolean to false

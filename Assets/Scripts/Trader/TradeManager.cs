@@ -13,6 +13,9 @@ public class TradeManager : MonoBehaviour
     private Image _traderImage;
 
     [SerializeField]
+    private TextMeshProUGUI _traderType;
+
+    [SerializeField]
     private TextMeshProUGUI _selectedItemName;
 
     [SerializeField]
@@ -45,9 +48,6 @@ public class TradeManager : MonoBehaviour
     [SerializeField]
     private GameObject _notEnoughResourcesText;
 
-    [SerializeField]
-    private ScrollRect _scrollRect;
-
     private List<Trade> _trades = new();
 
     private Trade _selectedTrade;
@@ -68,7 +68,7 @@ public class TradeManager : MonoBehaviour
     }
 
     //configure and open the trade panel
-    public void OpenTradePanel(List<TradeData> trades, Sprite traderImage)
+    public void OpenTradePanel(List<TradeData> trades, Sprite traderImage, string traderType)
     {
         if (_playerInput.actions.FindActionMap("InGame").enabled)
         {
@@ -76,9 +76,8 @@ public class TradeManager : MonoBehaviour
             _playerInput.actions.FindActionMap("Trader").Enable();
 
             Inventory.Instance.OpenInventory(true);
-
+            _traderType.text = traderType;
             _traderImage.sprite = traderImage;
-            ClearTradesGameobjects();
             foreach (var trade in trades)
             {
                 GameObject tradeItemGO = Instantiate(_tradeUiPrefab, _tradeParent);
@@ -115,6 +114,7 @@ public class TradeManager : MonoBehaviour
 
             Inventory.Instance.OpenInventory(false);
 
+            ClearTradesGameobjects();
             _tradePanel.SetActive(false);
         }
     }
