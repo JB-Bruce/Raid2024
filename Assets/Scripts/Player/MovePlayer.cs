@@ -55,6 +55,7 @@ public class MovePlayer : MonoBehaviour
     {
         _inGameActionMap = _input.actions.FindActionMap("InGame");
         _weaponAttack.Init();
+        WeaponSelected();
     }
 
     //If the player press the button assigned for run, change the bool _isRunning. 
@@ -494,7 +495,7 @@ public class MovePlayer : MonoBehaviour
     {
         _lineRenderer.enabled =false;
 
-        if(_lastWeaponEquiped == inventory.weaponSlots[_selectedWeapon].Item)
+        if(_lastWeaponEquiped == inventory.weaponSlots[_selectedWeapon].Item && _lastWeaponEquiped != null)
         { 
             return; 
         }
