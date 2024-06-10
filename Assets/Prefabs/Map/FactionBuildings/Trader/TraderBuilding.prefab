@@ -325,10 +325,9 @@ MonoBehaviour:
     nextTalk: []
     choices: []
     showRealName: 0
-  _pnjSprite: {fileID: 0}
+  _pnjSprite: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
   _name: 
   _hideName: 
-  _startButton: {fileID: 0}
   _trades:
   - tradeItem: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
     tradeItemQuantity: 1
@@ -372,7 +371,7 @@ MonoBehaviour:
       quantityNeed: 1
     - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
       quantityNeed: 2
-  _traderName: Marchand
+  _traderType: Marchand
   _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
 --- !u!1 &6587192998496651216
 GameObject:

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ScrollRectAutoScroll : MonoBehaviour, IPointerExitHandler
 {
     [SerializeField]
-    private float _scrollSpeed = 10f;
+    private float _scrollSpeed = 100f;
     private bool _isGamePadUsing = false;
 
     private List<Selectable> _selectables = new List<Selectable>();
@@ -86,7 +86,7 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerExitHandler
         {
             if (quickScroll)
             {
-                _scrollRect.normalizedPosition = new Vector2(0, 1 - (selectedIndex / ((float)_selectables.Count - 1)));
+                _scrollRect.normalizedPosition = new Vector2(0, 1 - (selectedIndex / (float)(_selectables.Count - 1)));
                 _nextScrollPosition = _scrollRect.normalizedPosition;
             }
             else
@@ -94,6 +94,7 @@ public class ScrollRectAutoScroll : MonoBehaviour, IPointerExitHandler
                 _nextScrollPosition = new Vector2(0, 1 - (selectedIndex / ((float)_selectables.Count - 1)));
             }
         }
+        //print(_selectables.Count);
     }
 
     //set the mouseOver boolean to false

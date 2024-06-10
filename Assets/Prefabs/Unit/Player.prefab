@@ -842,7 +842,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weaponAttack: {fileID: 5158963958314168577}
   _weaponGameObject: {fileID: 1759076948526354222}
-  meleeWeaponSprite: {fileID: 0}
   _input: {fileID: 0}
   _inventory: {fileID: 0}
   _handAttack: {fileID: 11400000, guid: 7e022779d57a4de4f86ef1a35f875548, type: 2}
@@ -889,6 +888,7 @@ MonoBehaviour:
   hungerBar: {fileID: 0}
   staminaBar: {fileID: 0}
   staminaBorder: {fileID: 0}
+  DeathFade: {fileID: 0}
   staminaDrainAmount: 10
   staminaGainAmount: 5
   _isSprinting: 0
