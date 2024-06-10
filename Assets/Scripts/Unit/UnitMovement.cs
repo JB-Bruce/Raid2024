@@ -53,9 +53,12 @@ public class UnitMovement : MonoBehaviour
     // Is the target point in the restricted area
     private bool IsThePointRestricted(Vector3 position)
     {
+        Collider2D _hit =  Physics2D.OverlapCircle(position, 0.1f);
+
         for(int i = 0; i < _gameManager.restrictedAreas.Count; i++) 
         {
-            if (Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= _gameManager.restrictedAreas[i].areaRadius || !_factionManager.IsPointInRhombus(position) /*|| !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1)*/)
+            if (Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= _gameManager.restrictedAreas[i].areaRadius || !_factionManager.IsPointInRhombus(position) || 
+                _hit != null || Vector3.Distance(position, _transform.position) > 100)
             {
                 return true;
             }
