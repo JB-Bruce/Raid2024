@@ -8,6 +8,8 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     private WeaponAttack _weaponAttack;
 
+    private Item _lastWeaponEquiped;
+
     [SerializeField]
     private GameObject _weaponGameObject;
     public GameObject meleeWeaponSprite;
@@ -74,6 +76,10 @@ public class MovePlayer : MonoBehaviour
     //When the game is play, it's the first thing who is done.
     //Instantiate CustomInput, Rigidbody2D, SpriteRenderer
     private void Awake() {
+        if (instance == null) 
+        { 
+            instance = this;
+        }
         _rb = GetComponent<Rigidbody2D>();
         _sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
@@ -487,7 +493,14 @@ public class MovePlayer : MonoBehaviour
     private void WeaponSelected()
     {
         _lineRenderer.enabled =false;
-        if(inventory.weaponSlots[_selectedWeapon].Item == null)
+
+        if(_lastWeaponEquiped == inventory.weaponSlots[_selectedWeapon].Item)
+        { 
+            return; 
+        }
+
+        _lastWeaponEquiped = inventory.weaponSlots[_selectedWeapon].Item;
+        if (inventory.weaponSlots[_selectedWeapon].Item == null)
         {
             
             _weaponAttack.EquipWeapon(_handAttack);

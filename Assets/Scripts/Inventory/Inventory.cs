@@ -554,6 +554,11 @@ public class Inventory : MonoBehaviour
                     {
                         weaponSlots[i].ChangeAvailability(false);
                     }
+                    if (selectedItemSlot != null)
+                    {
+                        selectedItemSlot.GetSelected(false);
+                    }
+                    slot1.GetSelected(true);
                 }
             }
             if (slot2.GetType() == typeof(EquipementSlot))
@@ -578,6 +583,11 @@ public class Inventory : MonoBehaviour
                     {
                         weaponSlots[i].ChangeAvailability(true);
                     }
+                    if (selectedItemSlot != null)
+                    {
+                        selectedItemSlot.GetSelected(false);
+                    }
+                    slot1.GetSelected(true);
                 }
             }
             ItemSwap(slot1, slot2);
@@ -690,7 +700,7 @@ public class Inventory : MonoBehaviour
                 return weaponSlot;
             }
         }
-        return null;
+        return weaponSlots[0];
     }
 
     /// <summary>

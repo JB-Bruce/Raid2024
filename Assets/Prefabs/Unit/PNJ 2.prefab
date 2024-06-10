@@ -107,7 +107,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
+  m_Sprite: {fileID: 1147398682, guid: 90103723d822bc3468b9b61e21f095cf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -167,6 +167,7 @@ MonoBehaviour:
   firePoint: {fileID: 7065665394009882849}
   rightHand: {fileID: 6957442902587261033}
   leftHand: {fileID: 5356429185688620580}
+  _flipScale: {x: -0.2, y: 0.2, z: 0.2}
   _AnimTransform: {fileID: 2211126344439906170}
   _handWeaponSpriteRenderer: {fileID: 5382921198042124605}
   _transform: {fileID: 3549200763495876058}
@@ -208,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2211126344439906170}
   m_Layer: 6
-  m_Name: AnimTransform
+  m_Name: ScriptMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,7 +241,7 @@ GameObject:
   m_Component:
   - component: {fileID: 19914330829893822}
   m_Layer: 6
-  m_Name: AnimRotation
+  m_Name: AnimMove
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1248,11 +1249,13 @@ MonoBehaviour:
   faction: 1
   isDead: 0
   removeDeathReputation: -0.5
-  removeHitReputation: -1
+  removeHitReputation: -0.1
   pSystem: {fileID: 558998445630434574}
+  player: {fileID: 0}
   order: 0
   waitTime: 0
   canMove: 1
+  master: {fileID: 0}
   _weapon: {fileID: 1514167988526934942}
   body: {fileID: 9105966237581180272}
   jumpUpdate: 10
@@ -1338,7 +1341,7 @@ MonoBehaviour:
   nearestEnemy: {fileID: 0}
   weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
   weaponAttack: {fileID: 0}
-  neutralReputation: 0
+  neutralReputation: -1
   circleCollider: {fileID: 7587460380071086963}
 --- !u!61 &264067869248090768
 BoxCollider2D:
