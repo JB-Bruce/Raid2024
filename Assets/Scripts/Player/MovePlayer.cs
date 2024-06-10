@@ -12,7 +12,7 @@ public class MovePlayer : MonoBehaviour
 
     [SerializeField]
     private GameObject _weaponGameObject;
-    public GameObject meleeWeaponSprite;
+
     [SerializeField]
     private PlayerInput _input;
     private InputActionMap _inGameActionMap;
@@ -64,7 +64,10 @@ public class MovePlayer : MonoBehaviour
     {
         if (context.started)
         {
-            _isSprinting = true;
+            if(_rb.velocity!= new Vector2(0,0))
+            {
+                _isSprinting = true;
+            }
         }
         else if (context.canceled)
         {
@@ -100,7 +103,6 @@ public class MovePlayer : MonoBehaviour
         {
             stats.ChangeIsSprinting(false);
             _rb.velocity = _moveVector * moveSpeed;
-            
         }
     }
 
@@ -538,6 +540,7 @@ public class MovePlayer : MonoBehaviour
     {
         if (_inGameActionMap.enabled)
         {
+            _rb.velocity = Vector3.Normalize(_rb.velocity);
             Move();
             WeaponAimDirection();
             FlipPlayer();
