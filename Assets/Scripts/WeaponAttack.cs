@@ -71,7 +71,7 @@ public class WeaponAttack : MonoBehaviour
         
         if(rotationZ > 270 || rotationZ < 90)
         {
-            if(_isRangeWeapon) 
+            if(!_equipedWeapon.Flipable) 
             {
                 _handWeaponTransform.localRotation = _zeroRotation;
             }
@@ -84,7 +84,7 @@ public class WeaponAttack : MonoBehaviour
         }
         else
         {
-            if (_isRangeWeapon)
+            if (!_equipedWeapon.Flipable)
             {
                 _handWeaponTransform.localRotation = _flipRotation;
             }

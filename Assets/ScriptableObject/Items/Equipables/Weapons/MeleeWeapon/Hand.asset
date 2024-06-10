@@ -15,10 +15,11 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 0
-  _name: Hand
+  _name: Main
   _description: 
   _itemSprite: {fileID: 0}
   _equipementTier: 3
+  _worldSprite: {fileID: 0}
   _damage: 6
   _attackSpeed: 1
   _attackRange: 4
