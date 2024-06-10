@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +13,9 @@ public class QuestItems : QuestAction
     private List<ItemWithQuantity> _itemsInInventory = new();
 
     //call when the QuestItems is the current QuestAction to configure it
-    public override void Configure()
+    public override bool Configure()
     {
+        bool isFinished = true;
         _itemsInInventory.Clear();
         foreach (var itemNeed in _itemsNeed)
         {
@@ -21,7 +23,12 @@ public class QuestItems : QuestAction
             itemWithQuantity.item = itemNeed.item;
             itemWithQuantity.quantityNeed = Inventory.Instance.CountItemInInventory(itemNeed.item);
             _itemsInInventory.Add(itemWithQuantity);
+            if (itemWithQuantity.quantityNeed < itemNeed.quantityNeed)
+            {
+                isFinished = false;
+            }
         }
+        return isFinished;
     }
 
     //return the text for the objectives

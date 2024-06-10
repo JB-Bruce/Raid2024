@@ -26,9 +26,6 @@ public class Pnj : Interactable
 
     private bool _isNameHide;
 
-    [SerializeField]
-    private GameObject _startButton;
-
     public void Start()
     {
         _isNameHide = true;
@@ -53,10 +50,6 @@ public class Pnj : Interactable
     //call the DialogueManager to start the dialogue
     public void StartDialogue()
     {
-        if (_startButton != null)
-        {
-            _startButton.SetActive(false);
-        }
         List<int> questIndexs = QuestManager.instance.GetCurrentMainQuestActionIndex();
         DialogueContent dialogueContent = new();
         foreach (var dialogue in _questDialogues)
@@ -77,10 +70,6 @@ public class Pnj : Interactable
     //call at the end of the dialogue
     private void EndDialogue(List<string> choices, bool isNameHide)
     {
-        if (_startButton != null)
-        {
-            _startButton.SetActive(true);
-        }
         _isNameHide = isNameHide;
     }
 }

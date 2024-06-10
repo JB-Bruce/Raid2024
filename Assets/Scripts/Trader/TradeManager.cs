@@ -45,6 +45,9 @@ public class TradeManager : MonoBehaviour
     [SerializeField]
     private GameObject _notEnoughResourcesText;
 
+    [SerializeField]
+    private ScrollRect _scrollRect;
+
     private List<Trade> _trades = new();
 
     private Trade _selectedTrade;
