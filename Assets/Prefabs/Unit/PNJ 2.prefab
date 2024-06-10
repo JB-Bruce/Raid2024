@@ -306,6 +306,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6195350611473437176}
+  - component: {fileID: 8702537998892710122}
   m_Layer: 6
   m_Name: Feet
   m_TagString: Untagged
@@ -330,6 +331,27 @@ Transform:
   - {fileID: 4053241190277791067}
   m_Father: {fileID: 6024013651768723067}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &8702537998892710122
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3695948269761944405}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67420224633811d49a86e72bebdfad58, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3721134754755647186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,7 +1273,7 @@ MonoBehaviour:
   removeDeathReputation: -0.5
   removeHitReputation: -0.1
   pSystem: {fileID: 558998445630434574}
-  player: {fileID: 0}
+  _feetAnimator: {fileID: 8702537998892710122}
   order: 0
   waitTime: 0
   canMove: 1

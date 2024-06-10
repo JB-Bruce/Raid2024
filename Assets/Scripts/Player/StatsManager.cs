@@ -322,37 +322,13 @@ public class StatsManager : Humanoid
         _recupStamina = true;
     }
 
-    private void Update()
+    protected override void Update()
     {
-        //Test death
-        /*
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            life = 0;
-            ChangeLifeColor();
-        }
-
-        
-        if(Input.GetKeyDown(KeyCode.H))
-        {
-            _respawnFaction = ERespawnFaction.Military;
-        }
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-            _respawnFaction = ERespawnFaction.Survivalist;
-        }
-        if(Input.GetKeyDown(KeyCode.K))
-        {
-            _respawnFaction = ERespawnFaction.Scientist;
-        }
-        if(Input.GetKeyDown(KeyCode.L))
-        {
-            _respawnFaction = ERespawnFaction.Utopist;
-        }*/
-
+        base.Update();
         //When the player is sprinting, decrease the stamina account, and change _recupStamina to false
         if  (_isSprinting == true)
         {
+
             if(_verifSprint == false && _recupStamina == false)
             {
                 CancelInvoke("GainStamina");
@@ -398,6 +374,7 @@ public class StatsManager : Humanoid
         }
 
         _verifSprint = _isSprinting;
+        MakeRun(_isSprinting);
     }
 
     //Change the position of the respawn with the faction chosen by the player
