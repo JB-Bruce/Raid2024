@@ -7,7 +7,7 @@ public class PnjFactionTrader : Pnj
     private List<TradeData> _trades = new();
 
     [SerializeField]
-    private string _traderName;
+    private string _traderType;
 
     [SerializeField]
     private Sprite _traderImage;
@@ -31,6 +31,6 @@ public class PnjFactionTrader : Pnj
     //call the methode in trade manager to open the trade panel
     public void Trade()
     {
-        TradeManager.instance.OpenTradePanel(_trades, _traderImage);
+        TradeManager.instance.OpenTradePanel(_trades, _traderImage, _traderType);
     }
 }

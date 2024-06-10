@@ -14,9 +14,10 @@ public class QuestKill : QuestAction
     private int _killCount;
 
     //call when the QuestKill is the current QuestAction to configure it
-    public override void Configure()
+    public override bool Configure()
     {
         _killCount = 0;
+        return false;
     }
 
     //return the text for the objectives
