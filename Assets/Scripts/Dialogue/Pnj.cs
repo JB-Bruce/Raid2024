@@ -36,7 +36,10 @@ public class Pnj : Interactable
 
     public void GetSelected(bool state)
     {
-        _highlightSprite.SetActive(state);
+        if (_highlightSprite != null)
+        {
+            _highlightSprite.SetActive(state);
+        }
         if (state)
         {
             PlayerInteraction.Instance.interactables.Add(this);
