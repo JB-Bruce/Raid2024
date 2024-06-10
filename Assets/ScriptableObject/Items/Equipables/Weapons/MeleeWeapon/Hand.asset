@@ -20,6 +20,7 @@ MonoBehaviour:
   _itemSprite: {fileID: 0}
   _equipementTier: 3
   _worldSprite: {fileID: 0}
+  _flipable: 0
   _damage: 6
   _attackSpeed: 1
   _attackRange: 4
@@ -27,4 +28,4 @@ MonoBehaviour:
   _rightHandPos: {x: 1, y: -0.3}
   _rotationRightHand: -140
   _rotationLeftHand: 40
-  animAttack: 
+  animAttack: HandHit
