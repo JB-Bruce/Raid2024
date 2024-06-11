@@ -73,7 +73,7 @@ public class Inventory : MonoBehaviour
 
     public Container currentContainer = null;
 
-    private float _mass = 0;
+    public float mass = 0;
     private float _massMax = 100;
 
     private const int _itemSpacing = 95;
@@ -504,11 +504,14 @@ public class Inventory : MonoBehaviour
         UpdateMassDisplay();
     }
 
+    /// <summary>
+    /// Updates the mass in the inventory (and the display)
+    /// </summary>
     private void UpdateMassDisplay()
     {
-        _mass = CountItemMassInInventory();
+        mass = CountItemMassInInventory();
 
-        _massText.text = "Masse : " + _mass.ToString("0.00f");
+        _massText.text = "Masse : " + mass.ToString("0.00f");
     }
 
     /// <summary>
@@ -542,7 +545,6 @@ public class Inventory : MonoBehaviour
     {
         if (slot1 != null && slot2 != null)
         {
-            Debug.Log(slot1 + ", " + slot2);
             if (slot2.GetType() != typeof(EquipementSlot))//If slot2 isn't an equipement slot (we want to swap if it is)
             {
                 if (slot1.Item != null && slot2.Item != null)
@@ -758,6 +760,9 @@ public class Inventory : MonoBehaviour
         return count;
     }
 
+    /// <summary>
+    /// Counts the mass in the inventory of the player and returns it
+    /// </summary>
     private float CountItemMassInInventory()
     {
         float mass = 0;
