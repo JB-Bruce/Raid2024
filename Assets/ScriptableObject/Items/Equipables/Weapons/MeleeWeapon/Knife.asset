@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd52bd496f307a4db1d7897c77ff153, type: 3}
   m_Name: Knife
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 0.4
   _isStackable: 0
   _maxStack: 1
   _name: Couteau
   _description: 
   _itemSprite: {fileID: 21300000, guid: 78be531d43c20744daf81b16aa330d3a, type: 3}
   _equipementTier: 0
+  _worldSprite: {fileID: 0}
+  _flipable: 0
   _damage: 6
   _attackSpeed: 1
   _attackRange: 4

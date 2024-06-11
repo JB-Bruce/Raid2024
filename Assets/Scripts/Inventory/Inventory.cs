@@ -89,6 +89,9 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private MovePlayer _player;
 
+    [SerializeField]
+    private GameObject _itemDroppedPrefab;
+
     private void Awake()
     {
         if (Instance == null)
@@ -414,10 +417,11 @@ public class Inventory : MonoBehaviour
             itemWithQuantity.quantityNeed = 1;
             QuestManager.instance.CheckQuestItems(itemWithQuantity);
 
+            UpdateMassDisplay();
+
             return true;
         }
 
-        UpdateMassDisplay();
         return false;
     }
 
@@ -463,6 +467,13 @@ public class Inventory : MonoBehaviour
                 itemWithQuantity.quantityNeed = -itemSlot.Quantity;
                 itemSlot.UpdateQuantity(0);
                 QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
+                GameObject Item = Instantiate(_itemDroppedPrefab);
+                Item.transform.position = _player.transform.position;
+                DroppedItem itemDropped = Item.GetComponent<DroppedItem>();
+                itemDropped.item = itemWithQuantity.item;
+                itemDropped.quantity = -itemWithQuantity.quantityNeed;
+                itemDropped.UpdateSprite();
 
                 UpdateMassDisplay();
             }

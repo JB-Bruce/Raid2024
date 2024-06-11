@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155d8fce1bb24284fbe3b6641026598f, type: 3}
   m_Name: FAMAS
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 3.5
   _isStackable: 1
   _maxStack: 1
   _name: FAMAS
@@ -20,6 +20,7 @@ MonoBehaviour:
   _itemSprite: {fileID: 21300000, guid: bceee331827c2af438e0afa1dbdc0d55, type: 3}
   _equipementTier: 0
   _worldSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
+  _flipable: 0
   _damage: 15
   _attackSpeed: 0.07692308
   _attackRange: 20
