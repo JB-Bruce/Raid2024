@@ -84,7 +84,7 @@ public class Pnj : Interactable
         _isNameHide = isNameHide;
     }
 
-    public override void Interact()
+    protected override void Interact()
     {
         StartDialogue();
     }
