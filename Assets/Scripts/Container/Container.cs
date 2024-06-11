@@ -172,6 +172,13 @@ public class Container : Interactable
         }
         itemSlots.Clear();
     }
+
+    public override void Interact()
+    {
+        _inventory.OpenFullInventory();
+        _inventory.currentContainer = this;
+        OpenContainer();
+    }
 }
 
 [System.Serializable]

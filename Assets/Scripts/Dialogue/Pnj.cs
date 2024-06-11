@@ -83,6 +83,11 @@ public class Pnj : Interactable
         }
         _isNameHide = isNameHide;
     }
+
+    public override void Interact()
+    {
+        StartDialogue();
+    }
 }
 
 [System.Serializable]
