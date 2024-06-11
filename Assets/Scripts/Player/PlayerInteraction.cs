@@ -67,6 +67,7 @@ public class PlayerInteraction : MonoBehaviour
                 return;
             }
             _closestInteractable = interactable;
+            _closestInteractable.Highlight(true);
         }
         else
         {

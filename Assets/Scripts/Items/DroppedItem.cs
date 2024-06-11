@@ -28,6 +28,18 @@ public class DroppedItem : Interactable
         }
     }
 
+    public override void Highlight(bool state)
+    {
+        if (state)
+        {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        }
+        else
+        {
+            GetComponent<SpriteRenderer>().color = new Color(0.75f, 0.75f, 0.75f);
+        }
+    }
+
     /// <summary>
     /// Updates the sprite of the item (used only when instantiated)
     /// </summary>
