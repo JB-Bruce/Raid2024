@@ -87,28 +87,53 @@ public class MovePlayer : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
-        inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
+        inventory = Inventory.Instance;
     }
 
     //Get a direction with the _input for the move,  and set the speed move (on that direction) depending on if the player sprint.
     private void Move()
     {
+        float weightDebuff = WeightDebuff();
+
         _moveVector = UserInput.instance.MoveInput;
         if(_rb.velocity == new Vector2(0,0))
         {
             _isSprinting = false;
         }
         
-        if (_isSprinting == true && stats.GetStamina() > 0)
+        if (_isSprinting == true && stats.GetStamina() > 0 && weightDebuff > 0.10f)
         {
             stats.ChangeIsSprinting(true);
-            _rb.velocity = _moveVector * moveSpeed * 1.5f;
+            _rb.velocity = _moveVector * moveSpeed * (weightDebuff - 0.05f) * 1.5f;
         }
         else
         {
             stats.ChangeIsSprinting(false);
-            _rb.velocity = _moveVector * moveSpeed;
+            _rb.velocity = _moveVector * moveSpeed * weightDebuff;
         }
+    }
+
+    public float WeightDebuff()
+    {
+        float weightDebuff = 1f;
+
+        switch (inventory.mass)
+        {
+            case < 45f:
+                weightDebuff = 1f;
+                break;
+            case < 60f:
+                weightDebuff = 0.90f;
+                break;
+            case < 80f:
+                weightDebuff = 0.80f;
+                break;
+            case >= 80f:
+                weightDebuff = 0.10f;
+                break;
+        }
+
+        return weightDebuff;
     }
 
 

@@ -7,6 +7,8 @@ public class StatsManager : Humanoid
 {
     public static StatsManager instance;
 
+    private MovePlayer _movePlayer;
+
     [SerializeField]
     private Transform _respawnPosition;
 
@@ -310,6 +312,7 @@ public class StatsManager : Humanoid
 
     protected override void Start() {
         base.Start();
+        _movePlayer = MovePlayer.instance;
         _factionManager = FactionManager.Instance;
         RemoveFood();
         RemoveWater();
@@ -337,7 +340,9 @@ public class StatsManager : Humanoid
             _recupStamina = false;
             if(stamina > 0)
             {
-                stamina -= staminaDrainAmount * Time.deltaTime;
+                float weightDebuff = _movePlayer.WeightDebuff();
+
+                stamina -= (staminaDrainAmount / weightDebuff) * Time.deltaTime;
             }
 
             staminaBar.fillAmount = stamina / 50f;

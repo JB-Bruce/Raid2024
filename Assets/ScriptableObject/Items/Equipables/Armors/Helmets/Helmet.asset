@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0406e61aa9e4b49af2e7eabec092b7, type: 3}
   m_Name: Helmet
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 3
   _isStackable: 0
   _maxStack: 1
   _name: Casque
   _description: 
   _itemSprite: {fileID: 21300000, guid: 723bc9867e7e8bd4490189df1fb7f6d4, type: 3}
   _equipementTier: 0
+  _worldSprite: {fileID: 0}
   _protection: 5
