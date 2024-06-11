@@ -13,6 +13,8 @@ public class Humanoid : MonoBehaviour
 
     public ParticleSystem pSystem;
 
+    private Transform _transform;
+
     [SerializeField] private Animator _feetAnimator;
     protected Rigidbody2D _rb;
     private NavMeshAgent _agent;
@@ -27,8 +29,9 @@ public class Humanoid : MonoBehaviour
         _player = MovePlayer.instance;
         _factionManager = FactionManager.Instance;
         _rb = GetComponent<Rigidbody2D>();
+        _transform = transform;
 
-        if(!isPlayer)
+        if (!isPlayer)
         {
             _agent = GetComponent<NavMeshAgent>();
         }
@@ -77,13 +80,13 @@ public class Humanoid : MonoBehaviour
             
             StatsManager.instance.ChangeLifeColor();
         }
+        GetComponent<Rigidbody2D>().AddForce(fwd * 10, ForceMode2D.Impulse);
 
         if (life <= 0 && !isDead)
         {
             isDead = true;
             Death(_faction);
         }
-        GetComponent<Rigidbody2D>().AddForce(fwd * 10, ForceMode2D.Impulse);
         return isDead;
     }
 
@@ -95,7 +98,17 @@ public class Humanoid : MonoBehaviour
             _factionManager.RemoveUnitFromFaction(faction, this.gameObject);
             _factionManager.AddReputation(faction, _faction, removeDeathReputation);
             _factionManager.ChangeAllReputation(_faction, faction);
-            Destroy(this.gameObject);
+            Animator _anim = GetComponent<Animator>();
+            //_anim.enabled = true;
+            if(Random.Range(0,2)  == 0)
+            {
+                _anim.Play("DeathL");
+            }
+            else
+            {
+                _anim.Play("DeathR");
+            }
+            RemoveUnitComponent();
         }
 
         if(_faction == Faction.Player)
@@ -103,6 +116,21 @@ public class Humanoid : MonoBehaviour
             QuestManager.instance.CheckQuestKill(faction);
         }
     }
+
+    //Destroy All the composent of a unit when he die
+    public void RemoveUnitComponent()
+    {
+        Destroy(GetComponent<UnitBT>());
+        Destroy(_agent);
+        Transform _bodyAnim = _transform.GetChild(0);
+        _bodyAnim.GetChild(0).gameObject.SetActive(false);
+        _bodyAnim.GetChild(1).GetComponentInChildren<Animator>().enabled = false;
+        _bodyAnim.GetChild(2).gameObject.SetActive(false);
+
+        Destroy(GetComponent<UnitCombat>());
+        Destroy(GetComponent<UnitMovement>());
+    }
+
 
     // Set the animation to run or walk
     protected void MakeRun(bool isRunning)

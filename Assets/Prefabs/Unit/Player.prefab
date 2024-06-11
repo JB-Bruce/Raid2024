@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 112211041879254420}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 2286795329605775770}
   - {fileID: 581131241308235198}
   - {fileID: 2348987676446745293}
-  m_Father: {fileID: 2045093296720333030}
+  m_Father: {fileID: 8826042815905041890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2081438828600798683
 SpriteRenderer:
@@ -502,13 +502,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759076948526354222}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5358568399288875607}
-  m_Father: {fileID: 2045093296720333030}
+  m_Father: {fileID: 8826042815905041890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5158963958314168577
 MonoBehaviour:
@@ -796,9 +796,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1659885193875156989}
-  - {fileID: 5927491189512210340}
-  - {fileID: 7655668425057390660}
+  - {fileID: 8826042815905041890}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &7514171623255379409
@@ -889,6 +887,9 @@ MonoBehaviour:
   staminaBar: {fileID: 0}
   staminaBorder: {fileID: 0}
   DeathFade: {fileID: 0}
+  RespawnButtonFaction: {fileID: 0}
+  DeathScreen: {fileID: 0}
+  MainCamera: {fileID: 0}
   staminaDrainAmount: 10
   staminaGainAmount: 5
   _isSprinting: 0
@@ -5830,7 +5831,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2045093296720333030}
+  m_Father: {fileID: 8826042815905041890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2342314247669994185
 BoxCollider2D:
@@ -5877,6 +5878,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.61, y: 3.26}
   m_EdgeRadius: 0
+--- !u!1 &6159918877649026531
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8826042815905041890}
+  m_Layer: 0
+  m_Name: BodyAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8826042815905041890
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159918877649026531}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1659885193875156989}
+  - {fileID: 5927491189512210340}
+  - {fileID: 7655668425057390660}
+  m_Father: {fileID: 2045093296720333030}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6934745854029503140
 GameObject:
   m_ObjectHideFlags: 0
