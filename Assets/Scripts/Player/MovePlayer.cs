@@ -85,7 +85,7 @@ public class MovePlayer : MonoBehaviour
             instance = this;
         }
         _rb = GetComponent<Rigidbody2D>();
-        _sprite = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        _sprite = transform.GetChild(0).GetChild(1).GetComponent<SpriteRenderer>();
         stats = GetComponent<StatsManager>();
         inventory = GameObject.Find("Inventory").GetComponent<Inventory>();
     }

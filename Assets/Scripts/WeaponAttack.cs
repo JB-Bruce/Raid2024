@@ -155,7 +155,7 @@ public class WeaponAttack : MonoBehaviour
 
         RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, direction, _equipedWeapon.AttackRange);
 
-        if(_hit.collider != null && _hit.collider.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid))
+        if(_hit.collider != null && _hit.collider.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid))
         {
             return humanoid;
         }

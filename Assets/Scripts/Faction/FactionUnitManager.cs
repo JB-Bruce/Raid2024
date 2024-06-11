@@ -257,12 +257,12 @@ public class FactionUnitManager : MonoBehaviour
     // Set all the Sprite of a unit Randomly
     public void SetUnitSprite(float womenRandom, GameObject unit)
     {
-        WeaponAttack _weaponAttack = unit.transform.GetChild(0).GetComponent<WeaponAttack>();
+        WeaponAttack _weaponAttack = unit.transform.GetComponentInChildren<WeaponAttack>();
         _weaponAttack.EquipWeapon(RandomDrawWeapon());
 
         int random = UnityEngine.Random.Range(0, 100);
 
-        Transform bodyTransform = unit.gameObject.transform.GetChild(1);
+        Transform bodyTransform = unit.gameObject.transform.GetChild(0).GetChild(1);
 
         SpriteRenderer body = bodyTransform.GetComponent<SpriteRenderer>();
         SpriteRenderer hair = bodyTransform.GetChild(0).GetComponent<SpriteRenderer>();
