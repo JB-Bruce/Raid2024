@@ -115,23 +115,7 @@ public class PlayerInteraction : MonoBehaviour
             GetNearestInteractable();
             if (_closestInteractable != null)//If a container is close, open the inventory and the container
             {
-                if (_closestInteractable is Container container)
-                {
-                    _inventory.OpenFullInventory();
-                    _inventory.currentContainer = container;
-                    container.OpenContainer();
-                    return;
-                }
-                if (_closestInteractable is PnjFactionTrader trader)
-                {
-                    trader.Trade();
-                    return;
-                }
-                if (_closestInteractable is Pnj pnj)
-                {
-                    pnj.StartDialogue();
-                    return;
-                }
+                _closestInteractable.Interact();
             }
         }
     }
