@@ -59,11 +59,14 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable.gameObject.TryGetComponent<PnjFactionTrader>(out PnjFactionTrader trader))
             {
                 _closestInteractable = trader;
+                return;
             }
             if (interactable.gameObject.TryGetComponent<Pnj>(out Pnj pnj))
             {
                 _closestInteractable = pnj;
+                return;
             }
+            _closestInteractable = interactable;
         }
         else
         {

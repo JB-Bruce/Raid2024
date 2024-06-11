@@ -2,15 +2,10 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    protected bool _canInterract;
-
-    private void Start()
-    {
-        _canInterract = true;
-    }
+    protected bool _canInterract = true;
 
     public virtual bool TryToInteract() 
-    { 
+    {
         if( _canInterract)
         {
             Interact();
