@@ -127,8 +127,9 @@ public class UnitBT : Humanoid
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         evaluateUpdate++;
         if (waitTime < Time.time && evaluateUpdate > jumpUpdate) // Is the unit wait
         {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Humanoid : MonoBehaviour
 {
@@ -11,7 +12,11 @@ public class Humanoid : MonoBehaviour
     public float removeHitReputation = -1;
 
     public ParticleSystem pSystem;
-    
+
+    [SerializeField] private Animator _feetAnimator;
+    protected Rigidbody2D _rb;
+    private NavMeshAgent _agent;
+
     private MovePlayer _player;
     private float _reduceDamage = 0;
 
@@ -21,9 +26,26 @@ public class Humanoid : MonoBehaviour
     {
         _player = MovePlayer.instance;
         _factionManager = FactionManager.Instance;
+        _rb = GetComponent<Rigidbody2D>();
+
+        if(!isPlayer)
+        {
+            _agent = GetComponent<NavMeshAgent>();
+        }
     }
 
+    protected virtual void Update()
+    {
+        if (isPlayer)
+        {
+            _feetAnimator.SetFloat("Speed", _rb.velocity.sqrMagnitude);
+        }
+        else
+        {
+            _feetAnimator.SetFloat("Speed", _agent.velocity.sqrMagnitude);
+        }
 
+    }
 
     // remove life to him self and return true if he is dead
     public bool TakeDamage(float damage, Faction _faction, Vector2 fwd)
@@ -80,5 +102,11 @@ public class Humanoid : MonoBehaviour
         {
             QuestManager.instance.CheckQuestKill(faction);
         }
+    }
+
+    // Set the animation to run or walk
+    protected void MakeRun(bool isRunning)
+    {
+        _feetAnimator.SetBool("isRunning", isRunning);
     }
 }

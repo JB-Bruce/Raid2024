@@ -90,7 +90,11 @@ public class QuestManager : MonoBehaviour
         {
             _currentMainQuest += 1;
         }
-        _quests[_currentMainQuest].GetCurrentQuestAction().Configure();
+        if (_quests[_currentMainQuest].GetCurrentQuestAction().Configure())
+        {
+            UpdateInGameQuestUi();
+            NextMainQuest();
+        }
         UpdateInGameQuestUi();
     }
 

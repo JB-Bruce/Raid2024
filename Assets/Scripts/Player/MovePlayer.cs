@@ -12,7 +12,7 @@ public class MovePlayer : MonoBehaviour
 
     [SerializeField]
     private GameObject _weaponGameObject;
-    public GameObject meleeWeaponSprite;
+
     [SerializeField]
     private PlayerInput _input;
     private InputActionMap _inGameActionMap;
@@ -55,6 +55,7 @@ public class MovePlayer : MonoBehaviour
     {
         _inGameActionMap = _input.actions.FindActionMap("InGame");
         _weaponAttack.Init();
+        WeaponSelected();
     }
 
     //If the player press the button assigned for run, change the bool _isRunning. 
@@ -63,7 +64,10 @@ public class MovePlayer : MonoBehaviour
     {
         if (context.started)
         {
-            _isSprinting = true;
+            if(_rb.velocity!= new Vector2(0,0))
+            {
+                _isSprinting = true;
+            }
         }
         else if (context.canceled)
         {
@@ -92,6 +96,11 @@ public class MovePlayer : MonoBehaviour
         float weightDebuff = WeightDebuff();
 
         _moveVector = UserInput.instance.MoveInput;
+        if(_rb.velocity == new Vector2(0,0))
+        {
+            _isSprinting = false;
+        }
+        
         if (_isSprinting == true && stats.GetStamina() > 0 && weightDebuff > 0.10f)
         {
             stats.ChangeIsSprinting(true);
@@ -139,6 +148,42 @@ public class MovePlayer : MonoBehaviour
         {
             _sprite.transform.rotation = _normalRotation;
         }
+    }
+
+    //The player can shoot only if he is aiming  
+    public void WeaponHit(InputAction.CallbackContext context)
+    {
+        if(context.started && !_tryToHit)
+        {
+            
+            if(_isAiming)
+            {
+                _tryToHit = true;
+                if (_mouseActive == false)
+                {
+                    Vector2 verifDirectionManette = direction*10;
+                    if(verifDirectionManette.x > 0.2 || verifDirectionManette.x < -0.2 || verifDirectionManette.y > 0.2 || verifDirectionManette.y < -0.2)
+                    {
+                        //Shoot with controller
+
+                    }
+                }
+                else
+                {
+                    if(direction.x > 1.3 || direction.x < -1.3 || direction.y > 1.3 || direction.y < -1.3)
+                    {
+                        //Shoot with mouse and keyboard
+                        
+                    }
+                }
+                
+            }
+        }
+        else if (context.canceled)
+        {
+            _tryToHit = false;
+        }
+        
     }
 
     //Look where the mouse is, and determine the position of the rangedWeapon
@@ -352,7 +397,7 @@ public class MovePlayer : MonoBehaviour
         {
             
             var scrollValue = context.ReadValue<float>();
-            if (scrollValue > 0)
+            if (scrollValue < 0)
             {
                 if(inventory.equipementSlots.Last().Item != null)
                 {
@@ -386,7 +431,7 @@ public class MovePlayer : MonoBehaviour
                 }
             
             }
-            else if (scrollValue < 0)
+            else if (scrollValue > 0)
             {
                 if(inventory.equipementSlots.Last().Item != null)
                 {
@@ -427,42 +472,6 @@ public class MovePlayer : MonoBehaviour
         else if(context.canceled)
         {
             _isAiming = false;
-        }
-        
-    }
-
-    //The player can shoot only if he is aiming  
-    public void WeaponHit(InputAction.CallbackContext context)
-    {
-        if(context.started && !_tryToHit)
-        {
-            
-            if(_isAiming)
-            {
-                _tryToHit = true;
-                if (_mouseActive == false)
-                {
-                    Vector2 verifDirectionManette = direction*10;
-                    if(verifDirectionManette.x > 0.2 || verifDirectionManette.x < -0.2 || verifDirectionManette.y > 0.2 || verifDirectionManette.y < -0.2)
-                    {
-                        //Shoot with controller
-
-                    }
-                }
-                else
-                {
-                    if(direction.x > 1.3 || direction.x < -1.3 || direction.y > 1.3 || direction.y < -1.3)
-                    {
-                        //Shoot with mouse and keyboard
-                        
-                    }
-                }
-                
-            }
-        }
-        else if (context.canceled)
-        {
-            _tryToHit = false;
         }
         
     }
@@ -517,7 +526,7 @@ public class MovePlayer : MonoBehaviour
     {
         _lineRenderer.enabled =false;
 
-        if(_lastWeaponEquiped == inventory.weaponSlots[_selectedWeapon].Item)
+        if(_lastWeaponEquiped == inventory.weaponSlots[_selectedWeapon].Item && _lastWeaponEquiped != null)
         { 
             return; 
         }
@@ -561,6 +570,7 @@ public class MovePlayer : MonoBehaviour
     {
         if (_inGameActionMap.enabled)
         {
+            _rb.velocity = Vector3.Normalize(_rb.velocity);
             Move();
             WeaponAimDirection();
             FlipPlayer();

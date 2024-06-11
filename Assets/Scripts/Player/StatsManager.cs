@@ -24,12 +24,20 @@ public class StatsManager : Humanoid
     public Image staminaBar;
     public Image staminaBorder;
 
+    public Image DeathFade;
+    public GameObject RespawnButtonFaction;
+    public GameObject DeathScreen;
+    public Transform MainCamera;
+
     [SerializeField] private float staminaDrainAmount = 10f;
     [SerializeField] private float staminaGainAmount = 5f;
 
     public bool _isSprinting;
     private bool _verifSprint;
     private bool _recupStamina;
+    private FactionManager _factionManager;
+    
+    
 
     [SerializeField]
     private ERespawnFaction _respawnFaction = ERespawnFaction.Null;
@@ -80,13 +88,63 @@ public class StatsManager : Humanoid
         {
 
             //Death
-            AddWater(100);
-            AddFood(100);
-            AddHealth(100);
-            stamina = 50;
-            staminaBar.fillAmount = stamina / 50f;
-            transform.position = _respawnPosition.position;
-            ChangeLifeColor();
+            //Fade in/out for death screen
+            if(_respawnFaction == ERespawnFaction.Survivalist)
+            {
+                if(_factionManager.GetReputation(Faction.Player, Faction.Survivalist) < -1)
+                {
+                    RespawnButtonFaction.SetActive(false);
+                }
+                else
+                {
+                    RespawnButtonFaction.SetActive(true);
+                }
+            }
+
+            if(_respawnFaction == ERespawnFaction.Utopist)
+            {
+                if(_factionManager.GetReputation(Faction.Player, Faction.Utopist) < -1)
+                {
+                    RespawnButtonFaction.SetActive(false);
+                }
+                else
+                {
+                    RespawnButtonFaction.SetActive(true);
+                }
+            }
+
+            if(_respawnFaction == ERespawnFaction.Scientist)
+            {
+                if(_factionManager.GetReputation(Faction.Player, Faction.Scientist) < -1)
+                {
+                    RespawnButtonFaction.SetActive(false);
+                }
+                else
+                {
+                    RespawnButtonFaction.SetActive(true);
+                }
+            }
+
+            if(_respawnFaction == ERespawnFaction.Military)
+            {
+                if(_factionManager.GetReputation(Faction.Player, Faction.Military) < -1)
+                {
+                    RespawnButtonFaction.SetActive(false);
+                }
+                else
+                {
+                    RespawnButtonFaction.SetActive(true);
+                }
+            }
+
+
+            Time.timeScale = 0.0f;
+            DeathFade.CrossFadeAlpha(0,0.01f,true);
+            DeathFade.enabled = true;
+            DeathFade.CrossFadeAlpha(1,1f,true);
+            
+
+            StartCoroutine(CouroutineDeath());
         }
     }
 
@@ -157,9 +215,45 @@ public class StatsManager : Humanoid
         return _isSprinting;
     }
 
+    //return the amount of stamina
     public float GetStamina()
     {
         return stamina;
+    }
+
+    //Call when the player click on the  button on death screen 
+    //set the player stats and respawn the player
+    private void RespawnPlayer()
+    {
+        AddWater(100);
+        AddFood(100);
+        AddHealth(100);
+        stamina = 50;
+        staminaBar.fillAmount = stamina / 50f;
+        transform.position = _respawnPosition.position;
+        MainCamera.position = transform.position + new Vector3(0,0,-10);
+        ChangeLifeColor();
+        
+        DeathFade.CrossFadeAlpha(0,0.01f,true);
+        DeathFade.enabled = true;
+        DeathFade.CrossFadeAlpha(1,1f,true);
+
+        StartCoroutine(CouroutineRespawn());
+    }
+
+    public void RespawnDefault()
+    {
+        var factionActual = _respawnFaction;
+        _respawnFaction = ERespawnFaction.Null;
+        ChangeRespawnPoint();
+        RespawnPlayer();
+        _respawnFaction = factionActual;
+    }
+
+    public void RespawnFaction()
+    {
+        ChangeRespawnPoint();
+        RespawnPlayer();
     }
     
     //Reduce the water every 10 seconds
@@ -180,6 +274,34 @@ public class StatsManager : Humanoid
         RemoveFood();
     }
 
+    //Desactive the fade and show the death screen
+    IEnumerator CouroutineDeath()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+
+        
+        DeathScreen.SetActive(true);
+        DeathFade.CrossFadeAlpha(0,1f,true);
+        
+        //Time.timeScale = 1.0f;
+        yield return new WaitForSecondsRealtime(1f);
+        DeathFade.enabled = false;
+    }
+
+    //Desactive the death sreen and desactive the fade
+    IEnumerator CouroutineRespawn()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        
+        DeathScreen.SetActive(false);
+        
+        DeathFade.CrossFadeAlpha(0,1f,true);
+        
+        yield return new WaitForSecondsRealtime(1f);
+        DeathFade.enabled = false;
+        Time.timeScale = 1.0f;
+    }
+
     private void Awake()
     {
         if (instance == null)
@@ -191,6 +313,7 @@ public class StatsManager : Humanoid
     protected override void Start() {
         base.Start();
         _movePlayer = MovePlayer.instance;
+        _factionManager = FactionManager.Instance;
         RemoveFood();
         RemoveWater();
         ChangeRespawnPoint();
@@ -202,11 +325,13 @@ public class StatsManager : Humanoid
         _recupStamina = true;
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         //When the player is sprinting, decrease the stamina account, and change _recupStamina to false
         if  (_isSprinting == true)
         {
+
             if(_verifSprint == false && _recupStamina == false)
             {
                 CancelInvoke("GainStamina");
@@ -254,6 +379,7 @@ public class StatsManager : Humanoid
         }
 
         _verifSprint = _isSprinting;
+        MakeRun(_isSprinting);
     }
 
     //Change the position of the respawn with the faction chosen by the player
@@ -265,7 +391,7 @@ public class StatsManager : Humanoid
         switch(_respawnFaction) 
         {
             case ERespawnFaction.Military:
-                _respawnPosition = FactionManager.Instance.factionRespawns[0].RespawnTransform; ;
+                _respawnPosition = FactionManager.Instance.factionRespawns[0].RespawnTransform;
                 break;
 
             case ERespawnFaction.Scientist:
@@ -285,6 +411,8 @@ public class StatsManager : Humanoid
                 break;
         }
     }
+
+
 
 
     //enum for the all the different faction respawn

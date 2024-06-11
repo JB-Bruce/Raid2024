@@ -12,7 +12,7 @@ public class QuestTrigger : QuestAction
     private string _information;
 
     //call when the QuestTrigger is the current QuestAction to configure it
-    public override void Configure(){}
+    public override bool Configure(){ return false; }
 
     //return the text for the objectives
     public override string GetObjectivesText()
