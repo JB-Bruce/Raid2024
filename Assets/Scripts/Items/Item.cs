@@ -27,4 +27,5 @@ public class Item : ScriptableObject
     public Sprite ItemSprite {  get { return _itemSprite; } }
     public string Name { get { return _name;} }
     public string Description { get { return _description;} }
+    public float Weight { get { return _weight; } }
 }

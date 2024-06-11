@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff43fd083044aa340a94b39840cd9c2e, type: 3}
   m_Name: String
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 0.1
   _isStackable: 1
   _maxStack: 99
   _name: Fil

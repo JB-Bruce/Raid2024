@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -28,6 +29,9 @@ public class Inventory : MonoBehaviour
     private List<ItemSlot> _itemSlots = new List<ItemSlot>();
     public List<EquipementSlot> equipementSlots = new List<EquipementSlot>();
     public List<EquipementSlot> weaponSlots = new List<EquipementSlot>();
+
+    [SerializeField]
+    private TextMeshProUGUI _massText;
 
     [SerializeField]
     private GameObject _itemSlotPrefab;
@@ -68,6 +72,9 @@ public class Inventory : MonoBehaviour
     public Transform containerSlotsTransform;
 
     public Container currentContainer = null;
+
+    private float _mass = 0;
+    private float _massMax = 100;
 
     private const int _itemSpacing = 95;
     private const int _armorSpacing = 200;
@@ -126,6 +133,8 @@ public class Inventory : MonoBehaviour
             navigation.mode = Navigation.Mode.None;
             weaponSlots[i].GetComponent<Button>().navigation = navigation;
         }
+
+        UpdateMassDisplay();
     }
 
     private void Update()
@@ -407,6 +416,8 @@ public class Inventory : MonoBehaviour
 
             return true;
         }
+
+        UpdateMassDisplay();
         return false;
     }
 
@@ -452,6 +463,8 @@ public class Inventory : MonoBehaviour
                 itemWithQuantity.quantityNeed = -itemSlot.Quantity;
                 itemSlot.UpdateQuantity(0);
                 QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
+                UpdateMassDisplay();
             }
         }
     }
@@ -488,6 +501,14 @@ public class Inventory : MonoBehaviour
                 ConsumeItem(selectedItemSlot);
             }
         }
+        UpdateMassDisplay();
+    }
+
+    private void UpdateMassDisplay()
+    {
+        _mass = CountItemMassInInventory();
+
+        _massText.text = "Masse : " + _mass.ToString("0.00f");
     }
 
     /// <summary>
@@ -521,6 +542,7 @@ public class Inventory : MonoBehaviour
     {
         if (slot1 != null && slot2 != null)
         {
+            Debug.Log(slot1 + ", " + slot2);
             if (slot2.GetType() != typeof(EquipementSlot))//If slot2 isn't an equipement slot (we want to swap if it is)
             {
                 if (slot1.Item != null && slot2.Item != null)
@@ -736,6 +758,36 @@ public class Inventory : MonoBehaviour
         return count;
     }
 
+    private float CountItemMassInInventory()
+    {
+        float mass = 0;
+
+        foreach (ItemSlot itemSlot in _itemSlots)
+        {
+            if (itemSlot.Item != null)
+            {
+                mass += itemSlot.Item.Weight * itemSlot.Quantity;
+            }
+        }
+        foreach (ItemSlot itemSlot in weaponSlots)
+        {
+            if (itemSlot.Item != null)
+            {
+                mass += itemSlot.Item.Weight * itemSlot.Quantity;
+            }
+        }
+        foreach (ItemSlot itemSlot in equipementSlots)
+        {
+            if (itemSlot.Item != null)
+            {
+                mass += (itemSlot.Item.Weight / 2f) * itemSlot.Quantity;
+            }
+        }
+
+        return mass;
+    }
+
+
     /// <summary>
     /// Removes the quantity "quantity" of last instance of the item "item" in inventory
     /// </summary>
@@ -773,6 +825,8 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+
+        UpdateMassDisplay();
     }
 
 
