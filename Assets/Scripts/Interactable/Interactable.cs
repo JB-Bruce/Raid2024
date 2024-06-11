@@ -9,7 +9,16 @@ public class Interactable : MonoBehaviour
         _canInterract = true;
     }
 
-    public virtual void Interact(){}
+    public virtual bool TryToInteract() 
+    { 
+        if( _canInterract)
+        {
+            Interact();
+        }
+        return _canInterract;
+    }
+
+    protected virtual void Interact(){}
 
     public virtual void Highlight(bool state){}
 }

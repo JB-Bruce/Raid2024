@@ -4,8 +4,25 @@ using UnityEngine;
 
 public class MainQuestInteractable : Interactable
 {
-    public override void Interact()
+    [SerializeField]
+    private QuestManager.QuestTriggerType _questTriggerType;
+
+    [SerializeField]
+    private string _information;
+
+    [SerializeField]
+    private List<Item> _itemsToGive;
+
+    [SerializeField]
+    private List<Item> _itemsTo;
+
+    protected override void Interact()
     {
-        QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.dialogue, "_pnjHideName");
+        QuestManager.instance.CheckQuestTrigger(_questTriggerType, _information);
+    }
+
+    private void GiveItems()
+    {
+
     }
 }

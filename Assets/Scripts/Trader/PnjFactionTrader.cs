@@ -34,7 +34,7 @@ public class PnjFactionTrader : Pnj
         TradeManager.instance.OpenTradePanel(_trades, _traderImage, _traderType);
     }
 
-    public override void Interact()
+    protected override void Interact()
     {
         Trade();
     }
