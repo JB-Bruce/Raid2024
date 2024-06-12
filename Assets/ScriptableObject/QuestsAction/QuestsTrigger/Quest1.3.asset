@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 1.3"
   _description: 
-  _questTriggerType: 7
+  _questTriggerType: 8
   _information: Bruce
   _objectifText: 
-  _objectsToActivateAtStart: []
-  _objectsToDesactivateAtTheEnd: []
