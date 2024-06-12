@@ -7,9 +7,16 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] PlayerInput _playerInput;
 
-    public void OpenSettingsInGame(string actionMapToSwitchTo)
+    SoundManager _soundManager;
+
+    private void Start()
     {
-        SettingsMenusManager.instance.OpenSettings(actionMapToSwitchTo);
+        _soundManager = SoundManager.instance;
+    }
+
+    public void OpenSettingsInGame()
+    {
+        SettingsMenusManager.instance.OpenSettings("Settings");
     }
 
     public void CloseSettingsInGame(string actionMapToSwitchTo)
@@ -37,6 +44,7 @@ public class MenuManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
+        _soundManager.PlaySFX("ButtonClick");
         SceneManager.LoadScene("MainMenu");
     }
 

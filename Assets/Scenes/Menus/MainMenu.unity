@@ -968,11 +968,6 @@ MonoBehaviour:
   m_Spacing: {x: 175, y: 100}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!1 &313873244 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2732917049162532095, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
-  m_PrefabInstance: {fileID: 3295947647546064275}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318101085
 GameObject:
   m_ObjectHideFlags: 0
@@ -4630,7 +4625,7 @@ MonoBehaviour:
     m_ActionName: CharacterCustomization/Move[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Pause
+  m_DefaultActionMap: InGame
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!4 &1682619433
@@ -4641,7 +4636,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1682619431}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6795,10 +6790,6 @@ PrefabInstance:
       propertyPath: _playerInput
       value: 
       objectReference: {fileID: 1682619432}
-    - target: {fileID: 2283065339798988011, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
-      propertyPath: settingsMenus
-      value: 
-      objectReference: {fileID: 313873244}
     - target: {fileID: 2283301745431017457, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -6991,18 +6982,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5287335905823570315, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
-      propertyPath: m_text
-      value: Q
-      objectReference: {fileID: 0}
     - target: {fileID: 5324342811930628893, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 2131472353}
-    - target: {fileID: 5868064492994332386, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
-      propertyPath: m_text
-      value: S
-      objectReference: {fileID: 0}
     - target: {fileID: 5890338397809220736, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -7200,10 +7183,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1690278163}
@@ -7217,7 +7196,7 @@ PrefabInstance:
       objectReference: {fileID: 2131472353}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Pause
+      value: InGame
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
@@ -7318,7 +7297,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2283065339798988011, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
   m_PrefabInstance: {fileID: 3295947647546064275}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313873244}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f28773209091c7842a326b6e94d0823c, type: 3}

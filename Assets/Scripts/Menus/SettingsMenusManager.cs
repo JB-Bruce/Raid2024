@@ -64,11 +64,14 @@ public class SettingsMenusManager : MonoBehaviour
 
     public void OpenSettings(string actionMapToSwitchTo)
     {
-        Debug.Log("Attempting to switch action map to: " + actionMapToSwitchTo);
         _playerInput.SwitchCurrentActionMap(actionMapToSwitchTo);
-        Debug.Log("Switched action map to: " + _playerInput.currentActionMap.name);
         isInSettings = true;
         settingsMenus.SetActive(true);
+    }
+
+    public void GetPlayerInput(PlayerInput InputManager)
+    {
+        _playerInput = InputManager;
     }
 
     public void ChangeChosenMenu(GameObject newMenu)
@@ -89,9 +92,7 @@ public class SettingsMenusManager : MonoBehaviour
 
     public void DeactivateSettingsMenus(string actionMapToSwitchTo)
     {
-        Debug.Log("Attempting to switch action map to: " + actionMapToSwitchTo);
         _playerInput.SwitchCurrentActionMap(actionMapToSwitchTo);
-        Debug.Log("Switched action map to: " + _playerInput.currentActionMap.name);
 
         settingsMenus.SetActive(false);
         isInSettings = false;
