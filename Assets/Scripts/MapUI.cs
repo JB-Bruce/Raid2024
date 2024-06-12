@@ -7,11 +7,15 @@ public class MapUI : MonoBehaviour
 {
     [SerializeField] private PlayerInput _playerInput;
 
-    public Transform topRight;
-    public Transform botLeft;
+    public Transform top;
+    public Transform bot;
+    public Transform right;
+    public Transform left;
 
-    public Transform UITopRight;
-    public Transform UIBotLeft;
+    public Transform UITop;
+    public Transform UIBot;
+    public Transform UIRight;
+    public Transform UILeft;
 
     List<GameObject> _list = new();
 
@@ -20,8 +24,10 @@ public class MapUI : MonoBehaviour
     public GameObject prefab;
     public Transform parent;
 
-    Vector3 _ratio1;
-    Vector3 _ratio2;
+    Vector3 _ratioVertical;
+    Vector3 _ratioVerticalUI;
+    Vector3 _ratioHorizontal;
+    Vector3 _ratioHorizontalUI;
 
     bool _isOpen;
 
@@ -34,8 +40,11 @@ public class MapUI : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        _ratio1 = botLeft.transform.position - topRight.transform.position;
-        _ratio2 = UIBotLeft.transform.position - UITopRight.transform.position;
+        _ratioVertical = bot.transform.position - top.transform.position;
+        _ratioVerticalUI = UIBot.transform.position - UITop.transform.position;
+
+        _ratioHorizontal = left.transform.position - right.transform.position;
+        _ratioHorizontalUI = UILeft.transform.position - UIRight.transform.position;
     }
 
     /// <summary>
@@ -78,7 +87,8 @@ public class MapUI : MonoBehaviour
 
         Vector3 newPos = Vector3.zero;
 
-        newPos = UIBotLeft.position + (pos - botLeft.position) * ((UITopRight.position - UIBotLeft.position).magnitude / (topRight.position - botLeft.position).magnitude);
+        newPos.y = UIBot.position.y + (pos.y - bot.position.y) * ((UITop.position.y - UIBot.position.y) / (top.position.y - bot.position.y));
+        newPos.x = UILeft.position.x + (pos.x - left.position.x) * ((UIRight.position.x - UILeft.position.x) / (right.position.x - left.position.x));
 
         go.GetComponent<Image>().sprite = sp;
         go.GetComponent<Image>().color = c;
@@ -108,7 +118,8 @@ public class MapUI : MonoBehaviour
             Vector3 newPos = Vector3.zero;
             Vector3 pos = t.Item1.position;
 
-            newPos = UIBotLeft.position + (pos - botLeft.position) * ((UITopRight.position - UIBotLeft.position).magnitude / (topRight.position - botLeft.position).magnitude);
+            newPos.y = UIBot.position.y + (pos.y - bot.position.y) * ((UITop.position.y - UIBot.position.y) / (top.position.y - bot.position.y));
+            newPos.x = UILeft.position.x + (pos.x - left.position.x) * ((UIRight.position.x - UILeft.position.x) / (right.position.x - left.position.x));
 
             t.Item2.position = newPos;
         }
