@@ -32,6 +32,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+            return;
         if (collision.transform.parent.parent == null)
             return;
         if (collision != null && collision.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
@@ -42,6 +44,7 @@ public class Bullet : MonoBehaviour
             }
             humanoid.TakeDamage(_damage, _ownerFaction, transform.right);
         }
+
         if(!collision.isTrigger && collision!=null) 
         {
             Destroy(gameObject);

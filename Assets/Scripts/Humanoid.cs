@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Humanoid : MonoBehaviour
 {
     public bool isPlayer = false;
+    public bool MoveFeet = true;
+
+    public RectTransform _slider;
 
     public float life = 100;
     public Faction faction;
@@ -13,11 +17,11 @@ public class Humanoid : MonoBehaviour
 
     public ParticleSystem pSystem;
 
-    private Transform _transform;
+    protected Transform _transform;
 
     [SerializeField] private Animator _feetAnimator;
     protected Rigidbody2D _rb;
-    private NavMeshAgent _agent;
+    protected NavMeshAgent _agent;
 
     private MovePlayer _player;
     private float _reduceDamage = 0;
@@ -26,28 +30,35 @@ public class Humanoid : MonoBehaviour
 
     protected virtual void Start()
     {
-        _player = MovePlayer.instance;
-        _factionManager = FactionManager.Instance;
-        _rb = GetComponent<Rigidbody2D>();
         _transform = transform;
+
+        if(MoveFeet) 
+        {
+            _player = MovePlayer.instance;
+            _factionManager = FactionManager.Instance;
+            _rb = GetComponent<Rigidbody2D>();
+        }
 
         if (!isPlayer)
         {
             _agent = GetComponent<NavMeshAgent>();
         }
+
     }
 
     protected virtual void Update()
     {
-        if (isPlayer)
+        if(MoveFeet)
         {
-            _feetAnimator.SetFloat("Speed", _rb.velocity.sqrMagnitude);
+            if (isPlayer)
+            {
+                _feetAnimator.SetFloat("Speed", _rb.velocity.sqrMagnitude);
+            }
+            else
+            {
+                _feetAnimator.SetFloat("Speed", _agent.velocity.sqrMagnitude);
+            }
         }
-        else
-        {
-            _feetAnimator.SetFloat("Speed", _agent.velocity.sqrMagnitude);
-        }
-
     }
 
     // remove life to him self and return true if he is dead
@@ -56,12 +67,16 @@ public class Humanoid : MonoBehaviour
         
         life -= damage;
 
-        if (faction != Faction.Player)
+        if (faction != Faction.Player && MoveFeet)
         {
             _factionManager.AddReputation(faction, _faction, removeHitReputation);
         }
+        if(MoveFeet)
+        {
+            pSystem.Play();
+            GetComponent<Rigidbody2D>().AddForce(fwd * 10, ForceMode2D.Impulse);
+        }
 
-        pSystem.Play();
 
         if (isPlayer) 
         {
@@ -80,13 +95,24 @@ public class Humanoid : MonoBehaviour
             
             StatsManager.instance.ChangeLifeColor();
         }
-        GetComponent<Rigidbody2D>().AddForce(fwd * 10, ForceMode2D.Impulse);
 
-        if (life <= 0 && !isDead)
+        if (life <= 0 && !isDead && MoveFeet)
         {
+            life = 0;
             isDead = true;
             Death(_faction);
         }
+        else if (life <= 0 && !MoveFeet && !isDead) 
+        {
+            life = 0;
+            // Building is Destroy, TODO Create a dead function
+        }
+
+        if (_slider != null)
+        {
+            _slider.localScale = new Vector3(life / 100, 1, 1);
+        }
+
         return isDead;
     }
 
