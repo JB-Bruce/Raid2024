@@ -18,4 +18,4 @@ MonoBehaviour:
   _name: Balle de plomb
   _description: 
   _itemSprite: {fileID: 21300000, guid: 567457559ee747042b284161f4c1ebd7, type: 3}
-  _bulletType: 1
+  BulletType: 1

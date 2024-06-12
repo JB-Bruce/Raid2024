@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,16 +26,24 @@ public class MovePlayer : MonoBehaviour
     private Inventory _inventory;
 
     [SerializeField]
+    private TextMeshProUGUI _numberAmmoWeapon;
+
+    [SerializeField]
     private MeleeWeapon _handAttack;
 
     public static MovePlayer instance;
+    private Animator _animator;
     
     private bool _isSprinting = false;
     private bool _isAiming = false;
     private bool _mouseActive = true;
     private bool _tryToHit = false;
+    private bool _isReloading = false;
     public float moveSpeed = 7f;
     private int _selectedWeapon = 0;
+    private int currentAmmo;
+    int numberOfAmmo;
+    string maxBullet;
 
     Vector2 direction = new Vector2(0,0);
     Vector2 lastAimDirection;
@@ -49,12 +59,17 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     AimLaser Laser;
 
+    private Weapon _equipedWeapon;
+
+    private float _timer = 0;
+
     private static readonly Quaternion _normalRotation = new Quaternion(0,0,0,0);
     private static readonly Quaternion _flipRotation = new Quaternion(0, 180, 0, 0);
     private void Start()
     {
         _inGameActionMap = _input.actions.FindActionMap("InGame");
         _weaponAttack.Init();
+        _animator = transform.GetChild(0).GetComponent<Animator>();
         WeaponSelected();
     }
 
@@ -499,6 +514,7 @@ public class MovePlayer : MonoBehaviour
     //Active the actual weapon of the player have equipped (rangeWeapon or meleeWeapon) and desactive other weapons
     private void WeaponSelected()
     {
+        
         _lineRenderer.enabled =false;
 
         if(_lastWeaponEquiped == inventory.weaponSlots[_selectedWeapon].Item && _lastWeaponEquiped != null)
@@ -509,7 +525,7 @@ public class MovePlayer : MonoBehaviour
         _lastWeaponEquiped = inventory.weaponSlots[_selectedWeapon].Item;
         if (inventory.weaponSlots[_selectedWeapon].Item == null)
         {
-            
+            _numberAmmoWeapon.enabled = false;
             _weaponAttack.EquipWeapon(_handAttack);
             //_weaponAttack.EquipWeapon(Fist);
         }
@@ -517,13 +533,76 @@ public class MovePlayer : MonoBehaviour
         {
             if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
             {
+                UpdateAmmoNumber(rangedWeapon);
+                
                 _weaponAttack.EquipWeapon(rangedWeapon);
+                
+
             }
             else if(inventory.weaponSlots[_selectedWeapon].Item is MeleeWeapon meleeWeapon)
             {
+                _numberAmmoWeapon.enabled = false;
                 _weaponAttack.EquipWeapon(meleeWeapon);
             }
         }
+    }
+
+    private void UpdateAmmoNumber(RangedWeapon rangedWeapon)
+    {
+        maxBullet = rangedWeapon.MaxBullet.ToString();
+        _numberAmmoWeapon.text = numberOfAmmo + "/" + maxBullet;
+        _numberAmmoWeapon.enabled = true;
+    }
+
+    public void ReloadAmmoInput(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            ReloadAmmo();
+        }
+    }
+
+    public void ReloadAmmo()
+    {
+        if(!_isReloading)
+        {
+            if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
+            {
+                
+                int numberOfAmmoInInventory = inventory.CountItemInInventory(rangedWeapon.BulletType[0]);
+                Debug.Log(numberOfAmmo);
+                Debug.Log(rangedWeapon.MaxBullet);
+                if(numberOfAmmoInInventory > 0 && numberOfAmmo != rangedWeapon.MaxBullet)
+                {
+                    int ammoRemoved = 0;
+                    _animator.Play(rangedWeapon.animReload, 0, 0);
+                    _isReloading = true;
+
+                    if(numberOfAmmoInInventory + numberOfAmmo >= rangedWeapon.MaxBullet)
+                    {
+                        ammoRemoved = rangedWeapon.MaxBullet-numberOfAmmo;
+                        numberOfAmmo = rangedWeapon.MaxBullet;
+                    }
+                    else
+                    {
+                        ammoRemoved = numberOfAmmoInInventory;
+                        numberOfAmmo = numberOfAmmo + numberOfAmmoInInventory;
+                    }
+                    
+                    inventory.RemoveItems(rangedWeapon.BulletType[0], ammoRemoved);
+
+                    StartCoroutine(CouroutineReload(rangedWeapon));
+                }
+
+            }
+        }
+    }
+
+    IEnumerator CouroutineReload(RangedWeapon rangedWeapon)
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        _isReloading = false;
+        UpdateAmmoNumber(rangedWeapon);
     }
 
 //Check on the 3 equipement slots what protection is eqquiped. Get for the three the amount of reduce damage and return it.
@@ -558,9 +637,43 @@ public class MovePlayer : MonoBehaviour
             _rb.velocity = Vector3.zero;
         }
 
-        if(_tryToHit && _isAiming)
+        if(_tryToHit && _isAiming && !_isReloading)
         {
-            _weaponAttack.UseWeapon(direction, Faction.Player);
+            if (_timer < Time.time) 
+            {
+                if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon)
+                {
+                    _equipedWeapon = inventory.weaponSlots[_selectedWeapon].Item as RangedWeapon;
+                }
+                else if(inventory.weaponSlots[_selectedWeapon].Item is MeleeWeapon)
+                {
+                    _equipedWeapon = inventory.weaponSlots[_selectedWeapon].Item as MeleeWeapon;
+                }
+                else
+                {
+                    _equipedWeapon = _handAttack;
+                }
+
+                _timer = Time.time + _equipedWeapon.AttackSpeed;
+                if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
+                {
+                    if(numberOfAmmo != 0)
+                    {
+                        numberOfAmmo -= 1;
+                        UpdateAmmoNumber(rangedWeapon);
+                        _weaponAttack.UseWeapon(direction, Faction.Player);
+                    }
+                    else
+                    {
+                        ReloadAmmo();
+                    }
+                    
+                }
+                else
+                {
+                    _weaponAttack.UseWeapon(direction, Faction.Player);
+                }
+            }
         }
     }
 }

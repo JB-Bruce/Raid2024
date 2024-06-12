@@ -20,6 +20,7 @@ MonoBehaviour:
   _itemSprite: {fileID: 21300000, guid: bceee331827c2af438e0afa1dbdc0d55, type: 3}
   _equipementTier: 0
   _worldSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
+  _flipable: 0
   _damage: 15
   _attackSpeed: 0.07692308
   _attackRange: 20
@@ -31,7 +32,8 @@ MonoBehaviour:
   _spread: 10
   _maxBullet: 25
   _reloadTime: 2.16
-  _ammoType: 0
+  _ammoType:
+  - {fileID: 11400000, guid: 2c8f4bacac00df1499309c65241b96fb, type: 2}
   _firePoint: {x: 12, y: 1.2}
   bullet: {fileID: 5008059619825466956, guid: b3fe1a02dfbdd534bab5e85ccb492e03, type: 3}
   animReload: FamasReload
