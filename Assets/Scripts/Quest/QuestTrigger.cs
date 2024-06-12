@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static QuestManager;
 
@@ -11,13 +12,31 @@ public class QuestTrigger : QuestAction
     [SerializeField]
     private string _information;
 
+    [SerializeField]
+    private string _objectifText;
+
     //call when the QuestTrigger is the current QuestAction to configure it
-    public override bool Configure(){ return false; }
+    public override void Configure(GameObjectsList objectsToActivateAtStart)
+    {
+        for (int i = 0; i < objectsToActivateAtStart.gameObjects.Count; i++)
+        {
+            objectsToActivateAtStart.gameObjects[i].SetActive(true);
+        }
+    }
+
+    //call when the QuestTrigger ended
+    public override void OnEnd(GameObjectsList objectsToDesactivateAtTheEnd)
+    {
+        for(int i =0; i < objectsToDesactivateAtTheEnd.gameObjects.Count; i++)
+        {
+            objectsToDesactivateAtTheEnd.gameObjects[i].SetActive(false);
+        }
+    }
 
     //return the text for the objectives
     public override string GetObjectivesText()
     {
-        return "- Aller parler à " + _information;
+        return _objectifText;
     }
 
     //return if the QuestTrigger is finished

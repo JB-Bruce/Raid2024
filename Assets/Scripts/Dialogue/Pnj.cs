@@ -73,6 +73,7 @@ public class Pnj : Interactable
         _isNameHide = isNameHide;
     }
 
+    //call when the player interract with this and this can interact
     protected override void Interact()
     {
         StartDialogue();

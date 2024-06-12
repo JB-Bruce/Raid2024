@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
@@ -15,7 +16,11 @@ public abstract class QuestAction : ScriptableObject
     public string GetDescription() { return _description; }
 
     //call when the QuestAction is the current QuestAction to configure it
-    public abstract bool Configure();
+
+    public abstract void Configure(GameObjectsList objectsToActivateAtStart);
+
+    //call when the QuestAction ended
+    public abstract void OnEnd(GameObjectsList objectsToDesactivateAtTheEnd);
 
     //return the objectives text
     public abstract string GetObjectivesText();

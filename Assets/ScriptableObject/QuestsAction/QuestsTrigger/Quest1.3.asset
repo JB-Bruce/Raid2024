@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10a87445cef97bf4a9b581173a2e5345, type: 3}
-  m_Name: Quest1.2
+  m_Name: Quest1.3
   m_EditorClassIdentifier: 
-  _name: 
+  _name: "Qu\xEAte 1.3"
   _description: 
-  _questTriggerType: 0
-  _information: 
+  _questTriggerType: 7
+  _information: Bruce
   _objectifText: 
   _objectsToActivateAtStart: []
   _objectsToDesactivateAtTheEnd: []

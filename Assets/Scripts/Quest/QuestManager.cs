@@ -89,11 +89,7 @@ public class QuestManager : MonoBehaviour
         if (!_quests[_currentMainQuest].NextQuestAction())
         {
             _currentMainQuest += 1;
-        }
-        if (_quests[_currentMainQuest].GetCurrentQuestAction().Configure())
-        {
-            UpdateInGameQuestUi();
-            NextMainQuest();
+            _quests[_currentMainQuest].GetCurrentQuestAction().Configure(_quests[_currentMainQuest].GetObjectsToActivateAtStartOfTheCUrrentQuestAction());
         }
         UpdateInGameQuestUi();
     }
@@ -162,6 +158,7 @@ public class QuestManager : MonoBehaviour
     {
         defend,
         enterArea,
+        exitArea,
         buildCoil,
         plantingDynamiteInTheBanditCamp,
         readRansomPaper,

@@ -13,7 +13,7 @@ public class QuestItems : QuestAction
     private List<ItemWithQuantity> _itemsInInventory = new();
 
     //call when the QuestItems is the current QuestAction to configure it
-    public override bool Configure()
+    public override void Configure(GameObjectsList objectsToActivateAtStart)
     {
         bool isFinished = true;
         _itemsInInventory.Clear();
@@ -30,6 +30,9 @@ public class QuestItems : QuestAction
         }
         return isFinished;
     }
+
+    //call when the QuestItems ended
+    public override void OnEnd(GameObjectsList objectsToDesactivateAtTheEnd) { }
 
     //return the text for the objectives
     public override string GetObjectivesText()

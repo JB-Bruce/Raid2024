@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "QuestKill", menuName = "ScriptableObjects/QuestAction/QuestKill", order = 1)]
@@ -14,11 +15,14 @@ public class QuestKill : QuestAction
     private int _killCount;
 
     //call when the QuestKill is the current QuestAction to configure it
-    public override bool Configure()
+    public override void Configure(GameObjectsList objectsToActivateAtStart)
     {
         _killCount = 0;
         return false;
     }
+
+    //call when the QuestKill ended
+    public override void OnEnd(GameObjectsList objectsToDesactivateAtTheEnd) { }
 
     //return the text for the objectives
     public override string GetObjectivesText()
