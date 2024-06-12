@@ -4,19 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    [SerializeField]
-    private PlayerInput _playerInput;
 
-    public void OpenSettingsInGame()
+    [SerializeField] PlayerInput _playerInput;
+
+    public void OpenSettingsInGame(string actionMapToSwitchTo)
     {
-        SettingsMenusManager.instance.OpenSettings();
+        SettingsMenusManager.instance.OpenSettings(actionMapToSwitchTo);
     }
 
-    public void CloseSettingsInGame()
+    public void CloseSettingsInGame(string actionMapToSwitchTo)
     {
         if (SettingsMenu.instance != null)
         {
-            SettingsMenusManager.instance.DeactivateSettingsMenus();
+            SettingsMenusManager.instance.DeactivateSettingsMenus(actionMapToSwitchTo);
         }
     }
 
@@ -31,7 +31,7 @@ public class MenuManager : MonoBehaviour
     {
         _playerInput.SwitchCurrentActionMap("InGame");
         this.gameObject.SetActive(false);
-        SettingsMenusManager.instance.DeactivateSettingsMenus();
+        SettingsMenusManager.instance.DeactivateSettingsMenus("InGame");
     }
 
     public void ReturnToMainMenu()

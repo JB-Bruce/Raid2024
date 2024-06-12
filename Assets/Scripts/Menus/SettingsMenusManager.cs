@@ -25,8 +25,6 @@ public class SettingsMenusManager : MonoBehaviour
     [Header("Booleans: ")]
     public bool isInSettings;
 
-    [SerializeField] string _actionMapString;
-
     public static SettingsMenusManager instance;
 
     private void Awake()
@@ -64,9 +62,11 @@ public class SettingsMenusManager : MonoBehaviour
         }
     }
 
-    public void OpenSettings()
+    public void OpenSettings(string actionMapToSwitchTo)
     {
-        _playerInput.SwitchCurrentActionMap("Settings");
+        Debug.Log("Attempting to switch action map to: " + actionMapToSwitchTo);
+        _playerInput.SwitchCurrentActionMap(actionMapToSwitchTo);
+        Debug.Log("Switched action map to: " + _playerInput.currentActionMap.name);
         isInSettings = true;
         settingsMenus.SetActive(true);
     }
@@ -87,9 +87,12 @@ public class SettingsMenusManager : MonoBehaviour
         _chosenMenu.SetActive(true);
     }
 
-    public void DeactivateSettingsMenus()
+    public void DeactivateSettingsMenus(string actionMapToSwitchTo)
     {
-        _playerInput.SwitchCurrentActionMap(_actionMapString);
+        Debug.Log("Attempting to switch action map to: " + actionMapToSwitchTo);
+        _playerInput.SwitchCurrentActionMap(actionMapToSwitchTo);
+        Debug.Log("Switched action map to: " + _playerInput.currentActionMap.name);
+
         settingsMenus.SetActive(false);
         isInSettings = false;
     }
