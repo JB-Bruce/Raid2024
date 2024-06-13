@@ -135,6 +135,7 @@ public class Humanoid : MonoBehaviour
                 _anim.Play("DeathR");
             }
             RemoveUnitComponent();
+            GetComponent<Container>().enabled = true;
         }
 
         if(_faction == Faction.Player)
