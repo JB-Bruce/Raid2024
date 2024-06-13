@@ -40,32 +40,12 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (interactables[i] != null)
             {
-                if (interactables[i].GetType() == typeof(Container))
-                {
-                    Container container = (Container)interactables[i];
-                    container.containerSelectedSprite.SetActive(false);
-                }
+                interactables[i].Highlight(false);
             }
         }
         Interactable interactable = GetNearestInteractable();
         if (interactable != null)//if we find the nearest interactable, highlight it
         {
-            if (interactable is Container container)
-            {
-                container.containerSelectedSprite.SetActive(true);
-                _closestInteractable = container;
-                return;
-            }
-            if (interactable.gameObject.TryGetComponent<PnjFactionTrader>(out PnjFactionTrader trader))
-            {
-                _closestInteractable = trader;
-                return;
-            }
-            if (interactable.gameObject.TryGetComponent<Pnj>(out Pnj pnj))
-            {
-                _closestInteractable = pnj;
-                return;
-            }
             _closestInteractable = interactable;
             _closestInteractable.Highlight(true);
         }

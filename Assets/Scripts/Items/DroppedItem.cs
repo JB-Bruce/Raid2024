@@ -5,6 +5,8 @@ public class DroppedItem : Interactable
     public int quantity = 0;
     public Item item;
 
+    private float _despawnTimer = 120f;
+
     /// <summary>
     /// Checks if the player enter the radius of the item, if he does, gets added to the list of interactable of the player
     /// </summary>
@@ -67,6 +69,22 @@ public class DroppedItem : Interactable
         }
         Highlight(false);
         PlayerInteraction.Instance.interactables.Remove(this);
+        DroppedItemManager.Instance.droppedItems.Remove(this);
         Destroy(gameObject);
+    }
+
+    private void Start()
+    {
+        DroppedItemManager.Instance.droppedItems.Add(this);
+    }
+
+    private void Update()
+    {
+        _despawnTimer -= Time.deltaTime;
+        if (_despawnTimer <= 0)
+        {
+            DroppedItemManager.Instance.droppedItems.Remove(this);
+            Destroy(gameObject);
+        }
     }
 }

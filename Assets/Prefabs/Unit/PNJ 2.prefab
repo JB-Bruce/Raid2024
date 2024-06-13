@@ -1176,6 +1176,7 @@ GameObject:
   - component: {fileID: 7906336605959991362}
   - component: {fileID: 558998445630434574}
   - component: {fileID: 8715333794526423777}
+  - component: {fileID: -8158951340268610458}
   m_Layer: 0
   m_Name: PNJ 2
   m_TagString: Untagged
@@ -1300,6 +1301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
+  MoveFeet: 1
+  _slider: {fileID: 0}
   life: 100
   faction: 1
   isDead: 0
@@ -6261,6 +6264,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8158951340268610458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334718818371835372}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3472ffb5295d762429882f413c9d3605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
+  itemSlots: []
+  containerSelectedSprite: {fileID: 0}
+  rerollNumbers: 6
+  lootTable: {fileID: 11400000, guid: a6a51366ef7348744af116f296aaa6f3, type: 2}
+  _items: []
+  containerRows: 3
+  containerColumn: 3
+  _isUnit: 1
+  despawnTimer: 120
+  despawnable: 1
 --- !u!1 &9105966237581180272
 GameObject:
   m_ObjectHideFlags: 0

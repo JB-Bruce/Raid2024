@@ -1,0 +1,35 @@
+Key,French,English,Spanish
+CREDITS,,,
+CreditDev,Developpeurs,Developers,Developares
+CreditChef,Chef de Projet,Project Manager,Projecto Manajores
+CreditLead,Lead Developpeur,Lead Developer,Director Developares
+CreditArt,Directrice Artistique,Artistic Director,Directora Artistica
+AUDIO,,,
+AudioGeneral,Général :,Main Volume :,General :
+AudioMusic,Musique :,Music :,Musica :
+AudioEffects,Effets Sonores :,Effects :,Efectos :
+GRAPHICS,,,
+GraphicsFullScreen,Plein Écran,Full Screen,Pleino Ecrante
+GraphicsVSync,Vsync,Vsync,Vsync
+GraphicsFPS,Limite d'images par secondes,Frame rate limit,Limito de image
+GraphicsRes,Résolution,Resolution,Resolucion
+GraphicsApply,Appliquer,Apply,Applicar
+KEYBINDS,,,
+KeybindsReset,Réinitialiser Touches,Reset Inputs,Reinitializacion des las touchares
+KeybindsMainTxt,Configuration des touches,Configure Inputs,Configuracion de las touchares
+KeybindsUp,-Vers le haut,-Move up,-Movar haut
+KeybindsDown,-Vers le bas,-Move down,-Movar bas
+KeybindsRight,-Vers la droite,-Move right,-Movar a la derecha
+KeybindsLeft,-Vers la gauche,-Move left,-Movare a la isquierda
+KeybindsInteract,-Intéragir,-Interact,-Interacto
+KeybindsRun,-Courir,-Run,-Corir
+KeybindsInventory,-Inventaire,-Inventory,-Inventar
+KeybindsQuest,-Journal de Quête,-Quest Panel,-Journale de quetas
+KeybindsMap,-Carte,-Map,-Mapa
+KeybindsWeapon1,-Arme 1,-Weapon 1,-Arma 1
+KeybindsWeapon2,-Arme 2,-Weapon 2,-Arma 2
+KeybindsWeapon3,-Arme 3,-Weapon 3,-Arma 3
+KeybindsLeftWeapon,-Arme Gauche,-Left Weapon,-Arma Isquierda
+KeybindsRightWeapon,-Arme Droite,-Right Weapon,-Arma Derecha
+KeybindsAim,-Viser,-Aim,-Visar
+KeybindsHit,-Frapper,-Hit,-Frappar
