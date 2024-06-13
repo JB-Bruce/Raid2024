@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,7 +7,6 @@ using UnityEngine.UI;
 
 public class FactionMenu : MonoBehaviour
 {
-    [SerializeField]
     private FactionSc _faction;
 
     private FactionLeader _leader;
@@ -26,13 +26,22 @@ public class FactionMenu : MonoBehaviour
     [SerializeField] StatsManager.ERespawnFaction _eRespawnFaction;
     [SerializeField] private Toggle _toggle;
 
+    [Header("Unit Recruitement")]
+    private int _numberOfUnit = 0;
+    [SerializeField] TextMeshProUGUI _numberOfUnitText;
+    [SerializeField] private List<GameObject> _units;
+    [SerializeField] private UnitLeader _unitLeader;
+    [SerializeField] private TextMeshProUGUI _item1Text;
+    [SerializeField] private TextMeshProUGUI _item2Text;
+    [SerializeField] private TextMeshProUGUI _item3Text;
+    [SerializeField] private int _nbrOfItem1 = 1;
+    [SerializeField] private int _nbrOfItem2 = 1;
+    [SerializeField] private int _nbrOfItem3 = 1;
 
 
 
-    private void Start()
+    private void Init()
     {
-        _leader = _faction.FactionLeader;
-        SpawnBuildings();
         _leader.haveUpgradeBuilding.AddListener(BuildingUpgrade);
         _leader.haveGainXP.AddListener(SetBuildingXPSlider);
         _statsManager = StatsManager.instance;
@@ -98,6 +107,23 @@ public class FactionMenu : MonoBehaviour
 
     }
 
+    // Set select building
+    private void SetSelectBuilding()
+    {
+        for(int i = 0; i< _leader.buildings.Count; i++)
+        {
+            if (_leader.buildingPriorityUpgrade == i)
+            {
+                _parentBuildingInfo.GetChild(i).GetChild(3).gameObject.SetActive(true);
+            }
+            else
+            {
+                _parentBuildingInfo.GetChild(i).GetChild(3).gameObject.SetActive(false);
+            }
+        }
+    }
+
+
     // Call whan the player clic on the check Box
     public void SpawnHere()
     {
@@ -118,6 +144,90 @@ public class FactionMenu : MonoBehaviour
         if(_eRespawnFaction != _statsManager.GetRespawnFaction()) 
         {
             _toggle.SetIsOnWithoutNotify(false);
+        }
+        else
+        {
+            _toggle.SetIsOnWithoutNotify(true);
+        }
+    }
+
+    // Set unit recruitement    
+    public void UnitRecruitement(int addUnit)
+    {
+        _numberOfUnit += addUnit;
+
+        if(_numberOfUnit < 0)
+            _numberOfUnit = 3;
+        if(_numberOfUnit > 3)
+            _numberOfUnit = 0;
+
+        _numberOfUnitText.text = _numberOfUnit.ToString();
+
+        _item1Text.text = (_nbrOfItem1 * _numberOfUnit).ToString();
+        _item2Text.text = (_nbrOfItem2 * _numberOfUnit).ToString();
+        _item3Text.text = (_nbrOfItem3 * _numberOfUnit).ToString();
+
+        for (int i = 0; i < _units.Count; i++) 
+        {
+            if(i < _numberOfUnit)
+                _units[i].SetActive(true);
+            else
+                _units[i].SetActive(false);
+        }
+    }
+
+    // Recruit the unit (Call by the recruit button)
+    public void Recruit()
+    {
+        _unitLeader.DisbandFormation();
+        for(int i = 0; i< _numberOfUnit; i++) 
+        {
+            GameObject unit = _faction.FactionUnitManager.SpawnWaveUnit(_faction.gameObject.transform.position, Vector3.zero);
+            _unitLeader.AddFollower(unit);
+        }
+    }
+
+    // Open the panel and set all the properties 
+    public void OpenFactionMenu(FactionSc faction)
+    {
+        _faction = faction;
+        _eRespawnFaction = CastToEFactionRespawn(_faction.FactionUnitManager.faction);
+        gameObject.SetActive(true);
+        _leader = _faction.FactionLeader;
+
+        if (_statsManager == null)
+        {
+            Init();
+        }
+
+        SpawnBuildings();
+        UnitRecruitement(0);
+        RespawnHaveChange();
+        SetBuildingXPSlider();
+        SetSelectBuilding();
+    }
+
+    // Close the panel
+    public void Close()
+    {
+        this.gameObject.SetActive(false);
+    }
+
+    // Get the EFactionRespawn for a Faction
+    private StatsManager.ERespawnFaction CastToEFactionRespawn(Faction faction)
+    {
+        switch (faction) 
+        {
+            case Faction.Utopist: 
+                return StatsManager.ERespawnFaction.Utopist;
+            case Faction.Scientist: 
+                return StatsManager.ERespawnFaction.Scientist;
+            case Faction.Survivalist: 
+                return StatsManager.ERespawnFaction.Survivalist;
+            case Faction.Military: 
+                return StatsManager.ERespawnFaction.Military;
+            default: 
+                return StatsManager.ERespawnFaction.Null;
         }
     }
 

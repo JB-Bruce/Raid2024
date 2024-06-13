@@ -20,8 +20,12 @@ public class UnitLeader : MonoBehaviour
     {
         _transform = transform;
         _weapon = _transform.GetComponentInChildren<WeaponAttack>().gameObject;
-        _navMesh = GetComponent<NavMeshAgent>();
-        _navMesh.speed *= _leaderSpeedMultiplier;
+
+        if(TryGetComponent<NavMeshAgent>(out _navMesh))
+        {
+            _navMesh.speed *= _leaderSpeedMultiplier;
+        }
+
         StartCoroutine(SetFormationPosition());
     }
 
@@ -58,6 +62,12 @@ public class UnitLeader : MonoBehaviour
 
     private void OnDestroy()
     {
+        DisbandFormation();
+    }
+
+    // Disband the formation
+    public void DisbandFormation()
+    {
         for (int i = 0; i < followers.Count; i++)
         {
             if (followers[i] != null)
@@ -65,9 +75,8 @@ public class UnitLeader : MonoBehaviour
                 followers[i].GetComponent<UnitBT>().order = UnitOrder.Patrol;
             }
         }
+        followers.Clear();
     }
-
-
 }
 
 // Contain all the information of a formation
