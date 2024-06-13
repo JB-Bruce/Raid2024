@@ -1,28 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class FactionBuilding : MonoBehaviour
 {
     public Faction faction;
-    protected int _buildingLevel = 1;
-    [SerializeField] protected List<int> _upgradePrice = new List<int>();
-
-    // Check if the building can be upgrade
-    public bool CanUpgradeBuilding(ref int XP)
-    {
-        if (_buildingLevel  <= _upgradePrice.Count && _upgradePrice[_buildingLevel - 1] <= XP)
-        {
-            UpgradeBuilding(ref XP);
-            return true; 
-        }
-        return false;
-    }
+    public int _buildingLevel = 1;
+    public int _maxLevel = 2;
+    public Sprite buildingImage;
+    public string buildingDescription;
+    public string buildingUpgradeInfo;
 
     // Upgrade the building
-    private void UpgradeBuilding(ref int XP)
+    public void UpgradeBuilding()
     {
-        XP -= _upgradePrice[_buildingLevel - 1];
         _buildingLevel++;
         UpgradeEffect();
     }
