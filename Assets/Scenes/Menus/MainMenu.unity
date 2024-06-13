@@ -6764,6 +6764,10 @@ PrefabInstance:
       propertyPath: _musics.Array.data[0].name
       value: Theme
       objectReference: {fileID: 0}
+    - target: {fileID: 5434330515760308037, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 5469202579118036732, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

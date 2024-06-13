@@ -51,6 +51,11 @@ public class WeaponAttack : MonoBehaviour
 
     private Camera _camera;
 
+    private void Start()
+    {
+        _soundManager = SoundManager.instance;
+    }
+
     public void Init()
     {
         _unitCombat = transform.parent.GetComponent<UnitCombat>();
