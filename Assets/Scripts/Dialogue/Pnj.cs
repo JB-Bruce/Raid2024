@@ -31,7 +31,7 @@ public class Pnj : Interactable
         _isNameHide = true;
     }
 
-    public override void Highlight(bool state)
+    public void GetSelected(bool state)
     {
         if (_highlightSprite != null)
         {

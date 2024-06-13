@@ -20,11 +20,9 @@ public class Container : Interactable
 
     public int containerColumn = 3;
 
-    [SerializeField]
-    private bool _isUnit = false;
+
 
     public float despawnTimer = 0f;
-    public bool despawnable = false;
 
     public string openSFX;
 
@@ -43,16 +41,14 @@ public class Container : Interactable
     /// <summary>
     /// Coroutine to call after spawning a container on an ennemi corpse and setting the despawn timer
     /// </summary>
-    private void Update()
+    public IEnumerator DespawnContainer()
     {
-        if (despawnable)
+        yield return new WaitForSeconds(despawnTimer);
+        while (_inventory.isInventoryOpen)
         {
-            despawnTimer -= Time.deltaTime;
-            if (despawnTimer < 0f && _inventory.currentContainer != this)
-            {
-                Destroy(gameObject);
-            }
+            yield return null;
         }
+        Destroy(gameObject);
     }
 
     /// <summary>
@@ -73,7 +69,7 @@ public class Container : Interactable
     {
         if (collision.CompareTag("Player"))
         {
-            Highlight(false);
+            containerSelectedSprite.SetActive(false);
             PlayerInteraction.Instance.interactables.Remove(this);
         }
     }
@@ -181,14 +177,6 @@ public class Container : Interactable
             Destroy(itemSlots[i].gameObject);
         }
         itemSlots.Clear();
-    }
-
-    public override void Highlight(bool state)
-    {
-        if (!_isUnit)
-        {
-            containerSelectedSprite.SetActive(state);
-        }
     }
 
     protected override void Interact()
