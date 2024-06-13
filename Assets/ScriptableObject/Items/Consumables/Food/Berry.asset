@@ -18,5 +18,6 @@ MonoBehaviour:
   _name: Baie
   _description: 
   _itemSprite: {fileID: 21300000, guid: 7465e74cb521fc3418799a9f484c5324, type: 3}
+  useConsSFX: EatingSFX
   _foodAmount: 10
   _drinkAmount: 5

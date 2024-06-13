@@ -15,6 +15,8 @@ public class PauseManager : MonoBehaviour
 
     ConditionsManager _conditionsManager;
 
+    SoundManager _soundManager;
+
     private void Awake()
     {
         if (instance == null)
@@ -30,6 +32,7 @@ public class PauseManager : MonoBehaviour
     private void Start()
     {
         _conditionsManager = ConditionsManager.instance;
+        _soundManager = SoundManager.instance;
     }
 
     private void OnApplicationPause(bool pause) //Pauses the game on Application quit
@@ -58,6 +61,7 @@ public class PauseManager : MonoBehaviour
     public void UnpauseGame() //Unpauses the game
     {
         _playerInput.SwitchCurrentActionMap("InGame");
+        _soundManager.PlaySFX("ButtonClick");
         _pauseMenu.SetActive(false);
         _pauseMenuBackgroundImage.enabled = false;
         _conditionsManager.isPaused = false;

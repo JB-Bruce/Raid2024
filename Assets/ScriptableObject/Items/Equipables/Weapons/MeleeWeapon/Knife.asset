@@ -29,3 +29,6 @@ MonoBehaviour:
   _rotationRightHand: 0
   _rotationLeftHand: 0
   animAttack: 
+  attackSFX: KnifeSwing
+  hitSFX: KnifeHit
+  reloadSFX: 

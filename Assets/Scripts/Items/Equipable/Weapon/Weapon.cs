@@ -11,6 +11,9 @@ public class Weapon : Equipable
     [SerializeField] protected float _rotationRightHand;
     [SerializeField] protected float _rotationLeftHand;
     public string animAttack;
+    public string attackSFX;
+    public string hitSFX;
+    public string reloadSFX;
 
 
     public float Damage { get { return _damage; } }
