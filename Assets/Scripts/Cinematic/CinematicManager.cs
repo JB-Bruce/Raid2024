@@ -36,6 +36,8 @@ public class CinematicManager : MonoBehaviour
     [SerializeField] Camera _camera;
     [SerializeField] Animator _animator;
 
+    private SoundManager _soundManager;
+
     private void Awake()
     {
         if (_currentCineText != null && _cineTexts.Count > 0)
@@ -46,6 +48,8 @@ public class CinematicManager : MonoBehaviour
 
     private void Start()
     {
+        _soundManager = SoundManager.instance;
+
         if (_currentCineText != null)
         {
             _currentCineText.text = "";
@@ -54,6 +58,7 @@ public class CinematicManager : MonoBehaviour
 
     public void StartCinematicOnTrigger() //Starts the Cinematic when Trigger is Triggered
     {
+        _soundManager.PlayMusicFromPlaylist("Cinematic");
         _animator.Play("Slide1", 0, 0);
         StartCinematicText();
     }
@@ -84,6 +89,7 @@ public class CinematicManager : MonoBehaviour
 
         if (cinematicText.isEndSlide) //If the Cinematic Text is a Cinematic Ender, loads Scene by name
         {
+            _soundManager._musicPlayer.Stop();
             SceneManager.LoadScene(_sceneToLoadAtEnd);
         }
         if (cinematicText.isSlideChanger)

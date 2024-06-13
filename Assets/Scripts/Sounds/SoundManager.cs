@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.Collections;
 
 
 public class SoundManager : MonoBehaviour
@@ -8,11 +9,14 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
 
     [Header("References: ")]
-    [SerializeField] AudioSource _musicPlayer;
-    [SerializeField] AudioSource _sfxPlayer;
+    public AudioSource _musicPlayer;
+    public AudioSource _sfxPlayer;
 
-    [Header("Clips: ")]
-    [SerializeField] Sounds[] _musics, _sfxs;
+    [Header("Playlists: ")]
+    [SerializeField] Playlist[] _playlists;
+
+    [Header("SFXS: ")]
+    [SerializeField] Sounds[] _sfxs;
 
     [Header("Toggle Buttons: ")]
     [SerializeField] GameObject _mainButton;
@@ -44,7 +48,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         _settingsMenu = SettingsMenu.instance;
-        PlayMusic("Theme");
+        PlayMusicFromPlaylist("MainMenu");
 
         if (PlayerPrefs.GetInt("mainToggle", 1) == 0)
         {
@@ -67,20 +71,6 @@ public class SoundManager : MonoBehaviour
             UpdateButtonSprite(_mainButton, _musicPlayer.mute, ref _mainMuteChecker);
 
             PlayerPrefs.SetInt("mainToggle", _mainMuteChecker);
-        }
-    }
-
-    public void PlayMusic(string _name)
-    {
-        Sounds _s = Array.Find(_musics, _x => _x.name == _name);
-        if (_s == null) //If doesn't find music by name
-        {
-            Debug.Log("Music not Found");
-        }
-        else //else play the music by name
-        {
-            _musicPlayer.clip = _s.clip;
-            _musicPlayer.Play();
         }
     }
 
@@ -180,5 +170,35 @@ public class SoundManager : MonoBehaviour
     {
         _musicPlayer.volume = _musicVolume * _mainVolume;
         _sfxPlayer.volume = _sfxVolume * _mainVolume;
+    }
+
+    public void PlayMusicFromPlaylist(string playlistName)
+    {
+        Playlist playlist = Array.Find(_playlists, p => p.name == playlistName);
+        if (playlist == null)
+        {
+            Debug.Log("Playlist not found");
+            return;
+        }
+        StartCoroutine(PlayRandomSoundFromPlaylist(playlist));
+    }
+
+    private IEnumerator PlayRandomSoundFromPlaylist(Playlist playlist)
+    {
+        Debug.Log("Playlist Coroutine Started");
+        while (true)
+        {
+            if (playlist.clips.Count == 0)
+            {
+                Debug.Log("Playlist is empty");
+                yield break;
+            }
+
+            AudioClip randomSound = playlist.clips[UnityEngine.Random.Range(0, playlist.clips.Count)];
+            _musicPlayer.clip = randomSound;
+            _musicPlayer.Play();
+
+            yield return new WaitForSeconds(_musicPlayer.clip.length);
+        }
     }
 }
