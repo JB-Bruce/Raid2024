@@ -92,6 +92,7 @@ MonoBehaviour:
   containerRows: 3
   containerColumn: 3
   despawnTimer: 0
+  openSFX: OpenBush
 --- !u!114 &6089085615253006398
 MonoBehaviour:
   m_ObjectHideFlags: 0
