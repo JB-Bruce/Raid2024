@@ -29,8 +29,6 @@ MonoBehaviour:
   _rotationRightHand: -90
   _rotationLeftHand: 0
   animAttack: FamasShoot
-  attackSFX: ShootFAMAS
-  reloadSFX: ReloadFAMAS
   _spread: 10
   _maxBullet: 25
   _reloadTime: 2.16

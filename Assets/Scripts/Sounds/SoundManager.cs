@@ -2,7 +2,6 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 
-
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
@@ -72,7 +71,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(string _name)
     {
-        Sounds _s = Array.Find(_musics, _x => _x.name == _name);
+        Sounds _s = Array.Find(_musics, _x =>  _x.name == _name);
         if (_s == null) //If doesn't find music by name
         {
             Debug.Log("Music not Found");
@@ -170,7 +169,7 @@ public class SoundManager : MonoBehaviour
         UpdateVolumes();
     }
 
-    public void MainVolume(float volume) //Changes the Main volume
+    public void MainVolume (float volume) //Changes the Main volume
     {
         _mainVolume = volume;
         UpdateVolumes();

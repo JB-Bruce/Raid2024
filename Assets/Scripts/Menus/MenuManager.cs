@@ -4,26 +4,19 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-
-    [SerializeField] PlayerInput _playerInput;
-
-    SoundManager _soundManager;
-
-    private void Start()
-    {
-        _soundManager = SoundManager.instance;
-    }
+    [SerializeField]
+    private PlayerInput _playerInput;
 
     public void OpenSettingsInGame()
     {
-        SettingsMenusManager.instance.OpenSettings("Settings");
+        SettingsMenusManager.instance.OpenSettings();
     }
 
-    public void CloseSettingsInGame(string actionMapToSwitchTo)
+    public void CloseSettingsInGame()
     {
         if (SettingsMenu.instance != null)
         {
-            SettingsMenusManager.instance.DeactivateSettingsMenus(actionMapToSwitchTo);
+            SettingsMenusManager.instance.DeactivateSettingsMenus();
         }
     }
 
@@ -38,13 +31,12 @@ public class MenuManager : MonoBehaviour
     {
         _playerInput.SwitchCurrentActionMap("InGame");
         this.gameObject.SetActive(false);
-        SettingsMenusManager.instance.DeactivateSettingsMenus("InGame");
+        SettingsMenusManager.instance.DeactivateSettingsMenus();
     }
 
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
-        _soundManager.PlaySFX("ButtonClick");
         SceneManager.LoadScene("MainMenu");
     }
 

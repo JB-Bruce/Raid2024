@@ -18,6 +18,5 @@ MonoBehaviour:
   _name: Bouteille d'eau
   _description: 
   _itemSprite: {fileID: 21300000, guid: 7479ec5458ce44f418b627fe2219a164, type: 3}
-  useConsSFX: WaterSFX
   _foodAmount: 0
   _drinkAmount: 50
