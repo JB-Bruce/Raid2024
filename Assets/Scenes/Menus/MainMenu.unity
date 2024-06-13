@@ -6598,7 +6598,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2073d2ce5a7910443a29d290d1454986, type: 3}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _sfxs.Array.size
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.size
@@ -6619,6 +6619,54 @@ PrefabInstance:
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _sfxs.Array.data[1].name
       value: CantBind
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2e125407fde78294eb60a5a2b8bce9d7, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[2].name
+      value: ShootFAMAS
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3432d748e31719547a85c7f6cea045b4, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[3].name
+      value: ShootPipegun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dcfdb9a99dfce5b4987e42c5441bd1e9, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[4].name
+      value: ReloadFAMAS
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b5b1e88f4289a4f44b33a5e0ca01ba13, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[5].name
+      value: ReloadPipegun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 02bc6c9b86104e943ab8aa31f01583a9, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[6].name
+      value: BaseballSwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ed0c14ba7ce6cb41ab8decf23096ece, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[7].name
+      value: KnifeSwing
       objectReference: {fileID: 0}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.data[0].clip

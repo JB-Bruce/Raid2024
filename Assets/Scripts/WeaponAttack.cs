@@ -27,6 +27,7 @@ public class WeaponAttack : MonoBehaviour
     private Animator _animator;
     private RangedWeapon _rangedWeapon;
     private UnitCombat _unitCombat;
+    private SoundManager _soundManager;
 
     [SerializeField]
     private SpriteRenderer _handWeaponSpriteRenderer;
@@ -125,6 +126,7 @@ public class WeaponAttack : MonoBehaviour
             _timer = Time.time + _equipedWeapon.AttackSpeed;
 
             _animator.Play(_equipedWeapon.animAttack, 0, 0);
+            _soundManager.PlaySFX(_equipedWeapon.attackSFX);
             if (_isRangeWeapon)
             {
                 direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread/ 2), _rangedWeapon.Spread / 2));
