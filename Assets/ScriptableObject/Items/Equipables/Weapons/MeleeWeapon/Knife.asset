@@ -30,4 +30,5 @@ MonoBehaviour:
   _rotationLeftHand: 0
   animAttack: 
   attackSFX: BaseballSwing
+  hitSFX: BaseballHit
   reloadSFX: 

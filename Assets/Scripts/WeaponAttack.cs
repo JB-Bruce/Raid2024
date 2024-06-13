@@ -146,6 +146,7 @@ public class WeaponAttack : MonoBehaviour
         if (_enemy != null)
         {
             _enemy.TakeDamage(_equipedWeapon.Damage, _isAI ? _unitCombat.GetFaction() : Faction.Player, (_enemy.transform.position - transform.position).normalized);
+            _soundManager.PlaySFX(_equipedWeapon.hitSFX);
         }
 
     }

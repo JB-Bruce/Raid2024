@@ -6598,7 +6598,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2073d2ce5a7910443a29d290d1454986, type: 3}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _sfxs.Array.size
-      value: 16
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.size
@@ -6731,6 +6731,30 @@ PrefabInstance:
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _sfxs.Array.data[15].name
       value: WaterSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[16].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b30e5e4e9d671d04e85a983bbd82b127, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[16].name
+      value: BulletImpact
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[17].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 975c4c5526792044c932289a67ee077c, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[17].name
+      value: BaseballHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[18].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dd81bf972b7de01448fd9029487c3cda, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[18].name
+      value: KnifeHit
       objectReference: {fileID: 0}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.data[0].clip
