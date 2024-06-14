@@ -16,5 +16,5 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 0
   _name: Bobine magnetique
-  _description: 
+  _description: "Id\xE9ale pour attirer les m\xE9taux... et les ennuis !"
   _itemSprite: {fileID: 21300000, guid: a6c0492c8dc894f4795ea8c493ad880e, type: 3}

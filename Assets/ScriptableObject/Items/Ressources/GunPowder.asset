@@ -16,5 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Poudre a cannon
-  _description: 
+  _description: "La magie qui transforme le m\xE9tal en fracas."
   _itemSprite: {fileID: 21300000, guid: 679eaba797590dd4394989d54d0fa168, type: 3}
