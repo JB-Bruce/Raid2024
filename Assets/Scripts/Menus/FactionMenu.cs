@@ -28,7 +28,7 @@ public class FactionMenu : MonoBehaviour
     [SerializeField] private Toggle _toggle;
 
     [Header("Unit Recruitement")]
-    private int _numberOfUnit = 0;
+    private int _numberOfUnit = 1;
     [SerializeField] TextMeshProUGUI _numberOfUnitText;
     [SerializeField] private List<GameObject> _units;
     [SerializeField] private UnitLeader _unitLeader;
@@ -162,10 +162,10 @@ public class FactionMenu : MonoBehaviour
     {
         _numberOfUnit += addUnit;
 
-        if(_numberOfUnit < 0)
+        if(_numberOfUnit < 1)
             _numberOfUnit = 3;
         if(_numberOfUnit > 3)
-            _numberOfUnit = 0;
+            _numberOfUnit = 1;
 
         _numberOfUnitText.text = _numberOfUnit.ToString();
 
