@@ -69,7 +69,6 @@ public class FactionLeader : MonoBehaviour
                 if(upgradableBuilding.Count == 0)
                 {
                     _allBuildingLevelMax=true;
-                    return;
                 }
 
                 else 
