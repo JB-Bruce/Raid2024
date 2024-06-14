@@ -7441,15 +7441,283 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2073d2ce5a7910443a29d290d1454986, type: 3}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.size
-      value: 1
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b9267848869d60e45a73714b3caca406, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[0].name
+      value: ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5370ef21a368a6f4498e34fd13ef4590, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[1].name
+      value: CantBind
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2e125407fde78294eb60a5a2b8bce9d7, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[2].name
+      value: ShootFAMAS
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3432d748e31719547a85c7f6cea045b4, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[3].name
+      value: ShootPipegun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dcfdb9a99dfce5b4987e42c5441bd1e9, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[4].name
+      value: ReloadFAMAS
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b5b1e88f4289a4f44b33a5e0ca01ba13, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[5].name
+      value: ReloadPipegun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 02bc6c9b86104e943ab8aa31f01583a9, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[6].name
+      value: BaseballSwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[7].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9ed0c14ba7ce6cb41ab8decf23096ece, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[7].name
+      value: KnifeSwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9e3a19635c6eb6643a65925a756270ea, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[8].name
+      value: OpenBush
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[9].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2a25ebaa42e4764419e28262bb9f91de, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[9].name
+      value: OpenCarwreck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[10].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 15568284c32190f48bc4f2059884b93e, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[10].name
+      value: OpenCrate
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[11].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: cffb6d3216ad1a742ae8cc831604e0f5, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[11].name
+      value: OpenMetalTrunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[12].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d9f52e39184850e49870a9cb24270803, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[12].name
+      value: EatingSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[13].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d91f32350b0699e4ea0b71f26602cc96, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[13].name
+      value: HealSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[14].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b8af99384eb858d4dba60c11f0050fab, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[14].name
+      value: SodaSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[15].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b313e4bca3d64447a15f2ac599a5c0b, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[15].name
+      value: WaterSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[16].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: b30e5e4e9d671d04e85a983bbd82b127, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[16].name
+      value: BulletImpact
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[17].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 975c4c5526792044c932289a67ee077c, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[17].name
+      value: BaseballHit
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[18].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dd81bf972b7de01448fd9029487c3cda, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[18].name
+      value: KnifeHit
       objectReference: {fileID: 0}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.data[0].clip
       value: 
-      objectReference: {fileID: 8300000, guid: d084e81614b6d3943a5902b248743f49, type: 3}
+      objectReference: {fileID: 8300000, guid: 73569357fbdfb6742a5be2474c3bc383, type: 3}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.data[0].name
-      value: Theme
+      value: Cinematic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _musics.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d8ca3c38536455e42918531320c3d1dc, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _musics.Array.data[1].name
+      value: Ambiance1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _musics.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d95614d8d9abfc41b114653c336748f, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _musics.Array.data[2].name
+      value: Ambiance2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].name
+      value: MainMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[1].name
+      value: Cinematic
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].name
+      value: InGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[1].clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].clips.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].sounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[1].sounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].sounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d8ca3c38536455e42918531320c3d1dc, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d95614d8d9abfc41b114653c336748f, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[1].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 73569357fbdfb6742a5be2474c3bc383, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: d8ca3c38536455e42918531320c3d1dc, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d95614d8d9abfc41b114653c336748f, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d8ca3c38536455e42918531320c3d1dc, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].sounds.Array.data[0].name
+      value: Ambiance 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d95614d8d9abfc41b114653c336748f, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[0].sounds.Array.data[1].name
+      value: Ambiance 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[1].sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 73569357fbdfb6742a5be2474c3bc383, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[1].sounds.Array.data[0].name
+      value: CinematicClip
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d8ca3c38536455e42918531320c3d1dc, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].sounds.Array.data[0].name
+      value: Ambiance 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d95614d8d9abfc41b114653c336748f, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _playlists.Array.data[2].sounds.Array.data[1].name
+      value: Ambiance 2
       objectReference: {fileID: 0}
     - target: {fileID: 5469202579118036732, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: m_Pivot.x
