@@ -1,6 +1,9 @@
+using JetBrains.Annotations;
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class StatsManager : Humanoid
@@ -37,6 +40,7 @@ public class StatsManager : Humanoid
     private bool _recupStamina;
     private FactionManager _factionManager;
     
+    public UnityEvent haveChangeSpawn = new UnityEvent();
     
 
     [SerializeField]
@@ -413,7 +417,15 @@ public class StatsManager : Humanoid
     }
 
 
+    // Change the player respawn faction
+    public void ChangeRespawnFaction(ERespawnFaction newRespawnFaction)
+    {
+        _respawnFaction = newRespawnFaction;
+        haveChangeSpawn.Invoke();
+    }
 
+    // Get Respawn Faction
+    public ERespawnFaction GetRespawnFaction() { return _respawnFaction; }
 
     //enum for the all the different faction respawn
     public enum ERespawnFaction 

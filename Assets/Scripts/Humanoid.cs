@@ -6,6 +6,7 @@ public class Humanoid : MonoBehaviour
 {
     public bool isPlayer = false;
     public bool MoveFeet = true;
+    public bool CanRespawn = true;
 
     public RectTransform _slider;
 

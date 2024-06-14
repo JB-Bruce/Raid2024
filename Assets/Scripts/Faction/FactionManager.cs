@@ -64,7 +64,12 @@ public class FactionManager : MonoBehaviour
             if (_factionUnit.faction == faction)
             {
                 _factionUnit.RemoveJob(unit);
-                _factionUnit.nbrOfDeadUnit++;
+
+                if(unit.GetComponent<Humanoid>().CanRespawn)
+                {
+                    _factionUnit.nbrOfDeadUnit++;
+                }
+
                 _factionUnit.units.Remove(unit);
             }
         }
