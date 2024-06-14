@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - AI
+  - UIElement
+  - MapBackground
   layers:
   - Default
   - TransparentFX
