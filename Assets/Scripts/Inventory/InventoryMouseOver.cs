@@ -1,6 +1,9 @@
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
 {
@@ -8,13 +11,31 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
     private bool _isUsingController = false;
 
     [SerializeField]
-    private GameObject _OverPanel;
+    private GameObject _overPanel;
 
     [SerializeField]
-    private GameObject _ControllerOptions;
+    private TextMeshProUGUI _itemName;
 
     [SerializeField]
-    private GameObject _MouseOptions;
+    private TextMeshProUGUI _itemDescription;
+
+    [SerializeField]
+    private List<GameObject> _controllerOptionsImages = new();
+
+    [SerializeField]
+    private List<GameObject> _mouseOptionsImages;
+
+    [SerializeField]
+    private GameObject _equipeGroupe;
+
+    [SerializeField]
+    private GameObject _consumeGroupe;
+
+    [SerializeField]
+    private GameObject _swapGroupe;
+
+    [SerializeField]
+    private GameObject _throwGroupe;
 
     private void Start()
     {
@@ -29,23 +50,34 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
     {
         if (!_inventory.isInventoryOpen && !_inventory.isHalfInvenoryOpen)
         {
-            _OverPanel.SetActive(false);
+            _overPanel.SetActive(false);
             return;
         }
         if (_inventory.selectedItemSlot != null)
         {
             if (_inventory.selectedItemSlot.Item == null)
             {
-                _OverPanel.SetActive(false);
+                _overPanel.SetActive(false);
                 return;
             }
             else
             {
                 PlaceOverPanel();
                 ChangeOptions();
-                _OverPanel.SetActive(true);
+                ChangeText();
+                _overPanel.SetActive(true);
             }
         }
+        else
+        {
+            _overPanel.SetActive(false);
+        }
+    }
+
+    private void ChangeText()
+    {
+        _itemName.text = _inventory.selectedItemSlot.Item.Name;
+        _itemDescription.text = '"' + _inventory.selectedItemSlot.Item.Description + '"';
     }
 
     /// <summary>
@@ -54,19 +86,19 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
     private void PlaceOverPanel()
     {
         ItemSlot slot = _inventory.selectedItemSlot;
-        Rect rect = _OverPanel.GetComponent<RectTransform>().rect;
-        Vector3 PosOffset = new Vector3(rect.width/2, rect.height/2, 0);
+        Rect rect = _overPanel.GetComponent<RectTransform>().rect;
+        Vector3 PosOffset = new Vector3(rect.width/2 + 95f/2, rect.height/2 + 95f / 2, 0);
 
-        if (slot.gameObject.transform.localPosition.x + rect.width > 1920/2)
+        if (slot.gameObject.transform.position.x + 95f / 2 + rect.width > 1920)
         {
-            PosOffset -= new Vector3(rect.width, 0, 0);
+            PosOffset -= new Vector3(rect.width + 95f, 0, 0);
         }
-        if (slot.gameObject.transform.localPosition.y + rect.height > 1080/2)
+        if (slot.gameObject.transform.position.y + 95f / 2 + rect.height > 1080)
         {
-            PosOffset -= new Vector3(0, rect.height, 0);
+            PosOffset -= new Vector3(0, rect.height + 95f, 0);
         }
 
-        _OverPanel.transform.localPosition = slot.gameObject.transform.localPosition + PosOffset;
+        _overPanel.transform.position = slot.gameObject.transform.position + PosOffset;
     }
 
     /// <summary>
@@ -76,13 +108,55 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
     {
         if (_isUsingController)
         {
-            _ControllerOptions.SetActive(true);
-            _MouseOptions.SetActive(false);
+            SetActiveControllerGroupe(true);
+            SetActiveMouseGroupe(false);
         }
         else
         {
-            _MouseOptions.SetActive(true);
-            _ControllerOptions.SetActive(false);
+            SetActiveMouseGroupe(true);
+            SetActiveControllerGroupe(false);
+        }
+
+        _swapGroupe.SetActive(false);
+        _consumeGroupe.SetActive(false);
+        _equipeGroupe.SetActive(false);
+        _throwGroupe.SetActive(true);
+
+        if (_inventory.IsContainerSlot(_inventory.selectedItemSlot) || _inventory.selectedItemSlot is EquipementSlot)
+        {
+            _swapGroupe.SetActive(true);
+            _throwGroupe.SetActive(false);
+            _controllerOptionsImages[1].SetActive(false);
+            _mouseOptionsImages[1].SetActive(false);
+        }
+        else if (_inventory.selectedItemSlot.Item is Consumable)
+        {
+            _consumeGroupe.SetActive(true);
+        }
+        else if (_inventory.selectedItemSlot.Item is Equipable)
+        {
+            _equipeGroupe.SetActive(true);
+        }
+        else
+        {
+            _controllerOptionsImages[0].SetActive(false);
+            _mouseOptionsImages[0].SetActive(false);
+        }
+    }
+
+    private void SetActiveMouseGroupe(bool active)
+    {
+        foreach (GameObject Image in _mouseOptionsImages)
+        {
+            Image.SetActive(active);
+        }
+    }
+
+    private void SetActiveControllerGroupe(bool active)
+    {
+        foreach (GameObject Image in _controllerOptionsImages)
+        {
+            Image.SetActive(active);
         }
     }
 

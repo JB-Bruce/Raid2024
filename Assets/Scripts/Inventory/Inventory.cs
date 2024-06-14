@@ -486,7 +486,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void DecideHowToUseItem()
     {
-        if (!_itemSlots.Contains(selectedItemSlot) && !weaponSlots.Contains(selectedItemSlot) && !equipementSlots.Contains(selectedItemSlot))
+        if (IsContainerSlot(selectedItemSlot))
         {
             TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
         }
@@ -513,6 +513,11 @@ public class Inventory : MonoBehaviour
             }
         }
         UpdateMassDisplay();
+    }
+
+    public bool IsContainerSlot(ItemSlot itemSlot)
+    {
+        return (!_itemSlots.Contains(itemSlot) && !weaponSlots.Contains(itemSlot) && !equipementSlots.Contains(itemSlot));
     }
 
     /// <summary>
