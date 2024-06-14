@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class FactionMenu : MonoBehaviour
 {
     private FactionSc _faction;
+    private Inventory _inventory;
 
     private FactionLeader _leader;
 
@@ -31,12 +32,11 @@ public class FactionMenu : MonoBehaviour
     [SerializeField] TextMeshProUGUI _numberOfUnitText;
     [SerializeField] private List<GameObject> _units;
     [SerializeField] private UnitLeader _unitLeader;
-    [SerializeField] private TextMeshProUGUI _item1Text;
-    [SerializeField] private TextMeshProUGUI _item2Text;
-    [SerializeField] private TextMeshProUGUI _item3Text;
-    [SerializeField] private int _nbrOfItem1 = 1;
-    [SerializeField] private int _nbrOfItem2 = 1;
-    [SerializeField] private int _nbrOfItem3 = 1;
+    [SerializeField] private List<ItemRequire> _itemText;
+    [SerializeField] private List<int> _nbrOfItems = new();
+    [SerializeField] private List<Item> _items = new();
+    [SerializeField] private Button _recruitBtn;
+    private bool _canTrade = false;
 
 
 
@@ -46,6 +46,12 @@ public class FactionMenu : MonoBehaviour
         _leader.haveGainXP.AddListener(SetBuildingXPSlider);
         _statsManager = StatsManager.instance;
         _statsManager.haveChangeSpawn.AddListener(RespawnHaveChange);
+        _inventory = Inventory.Instance;
+
+        for (int i = 0; i < _items.Count; i++)
+        {
+            _itemText[i].itemRequireImage.sprite = _items[i].ItemSprite;
+        }
     }
 
     // Spawn All building Info
@@ -163,9 +169,10 @@ public class FactionMenu : MonoBehaviour
 
         _numberOfUnitText.text = _numberOfUnit.ToString();
 
-        _item1Text.text = (_nbrOfItem1 * _numberOfUnit).ToString();
-        _item2Text.text = (_nbrOfItem2 * _numberOfUnit).ToString();
-        _item3Text.text = (_nbrOfItem3 * _numberOfUnit).ToString();
+        for(int i =0; i< _itemText.Count; i++)
+        {
+            _itemText[i].quantityRequire.text = (_nbrOfItems[i] * _numberOfUnit).ToString();
+        }
 
         for (int i = 0; i < _units.Count; i++) 
         {
@@ -174,6 +181,7 @@ public class FactionMenu : MonoBehaviour
             else
                 _units[i].SetActive(false);
         }
+        SetTradeButton();
     }
 
     // Recruit the unit (Call by the recruit button)
@@ -184,6 +192,41 @@ public class FactionMenu : MonoBehaviour
         {
             GameObject unit = _faction.FactionUnitManager.SpawnWaveUnit(_faction.gameObject.transform.position, Vector3.zero);
             _unitLeader.AddFollower(unit);
+
+            for(int j = 0; j< _items.Count; j++ )
+            {
+                _inventory.RemoveItems(_items[j], _nbrOfItems[j]);
+            }
+        }
+        SetTradeButton();
+    }
+
+    // Set the button interactible if we can trade item
+    private void SetTradeButton()
+    {
+        CanTrade();
+        if(_canTrade) 
+        {
+            _recruitBtn.interactable = true;
+        }
+        else
+        {
+            _recruitBtn.interactable = false;
+        }
+    }
+
+    // Check if the trade can be made
+    public void CanTrade()
+    {
+        _canTrade = true;
+        for (int i = 0; i < _items.Count; i++)
+        {
+            int quantityInInventory = _inventory.CountItemInInventory(_items[i]);
+            _itemText[i].quantityInInventory.text = quantityInInventory.ToString();
+            if (quantityInInventory < (_nbrOfItems[i] * _numberOfUnit))
+            {
+                _canTrade = false;
+            }
         }
     }
 
@@ -205,6 +248,7 @@ public class FactionMenu : MonoBehaviour
         RespawnHaveChange();
         SetBuildingXPSlider();
         SetSelectBuilding();
+        SetTradeButton();
     }
 
     // Close the panel
