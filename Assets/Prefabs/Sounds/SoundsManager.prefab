@@ -187,45 +187,7 @@ MonoBehaviour:
   _musics:
   - name: Theme
     clip: {fileID: 8300000, guid: d084e81614b6d3943a5902b248743f49, type: 3}
-  _sfxs:
-  - name: ButtonClick
-    clip: {fileID: 8300000, guid: b9267848869d60e45a73714b3caca406, type: 3}
-  - name: CantBind
-    clip: {fileID: 8300000, guid: 5370ef21a368a6f4498e34fd13ef4590, type: 3}
-  - name: ShootFAMAS
-    clip: {fileID: 8300000, guid: 2e125407fde78294eb60a5a2b8bce9d7, type: 3}
-  - name: ShootPipegun
-    clip: {fileID: 8300000, guid: 3432d748e31719547a85c7f6cea045b4, type: 3}
-  - name: ReloadFAMAS
-    clip: {fileID: 8300000, guid: dcfdb9a99dfce5b4987e42c5441bd1e9, type: 3}
-  - name: ReloadPipegun
-    clip: {fileID: 8300000, guid: b5b1e88f4289a4f44b33a5e0ca01ba13, type: 3}
-  - name: BaseballSwing
-    clip: {fileID: 8300000, guid: 02bc6c9b86104e943ab8aa31f01583a9, type: 3}
-  - name: KnifeSwing
-    clip: {fileID: 8300000, guid: 9ed0c14ba7ce6cb41ab8decf23096ece, type: 3}
-  - name: OpenBush
-    clip: {fileID: 8300000, guid: 9e3a19635c6eb6643a65925a756270ea, type: 3}
-  - name: OpenCarwreck
-    clip: {fileID: 8300000, guid: 2a25ebaa42e4764419e28262bb9f91de, type: 3}
-  - name: Opencrate
-    clip: {fileID: 8300000, guid: 15568284c32190f48bc4f2059884b93e, type: 3}
-  - name: OpenMetalTrunk
-    clip: {fileID: 8300000, guid: cffb6d3216ad1a742ae8cc831604e0f5, type: 3}
-  - name: EatingSFX
-    clip: {fileID: 8300000, guid: d9f52e39184850e49870a9cb24270803, type: 3}
-  - name: HealSFX
-    clip: {fileID: 8300000, guid: d91f32350b0699e4ea0b71f26602cc96, type: 3}
-  - name: SodaSFX
-    clip: {fileID: 8300000, guid: b8af99384eb858d4dba60c11f0050fab, type: 3}
-  - name: WaterSFX
-    clip: {fileID: 8300000, guid: 6b313e4bca3d64447a15f2ac599a5c0b, type: 3}
-  - name: BulletImpact
-    clip: {fileID: 8300000, guid: b30e5e4e9d671d04e85a983bbd82b127, type: 3}
-  - name: BaseballHit
-    clip: {fileID: 8300000, guid: 975c4c5526792044c932289a67ee077c, type: 3}
-  - name: KnifeHit
-    clip: {fileID: 8300000, guid: dd81bf972b7de01448fd9029487c3cda, type: 3}
+  _sfxs: []
   _mainButton: {fileID: 0}
   _musicButton: {fileID: 0}
   _sfxButton: {fileID: 0}
@@ -279,7 +241,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0

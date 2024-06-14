@@ -176,7 +176,6 @@ MonoBehaviour:
   containerRows: 4
   containerColumn: 4
   despawnTimer: 0
-  openSFX: OpenMetalTrunk
 --- !u!1 &7612619736928877471
 GameObject:
   m_ObjectHideFlags: 0

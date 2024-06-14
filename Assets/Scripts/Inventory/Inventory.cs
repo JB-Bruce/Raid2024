@@ -92,8 +92,6 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject _itemDroppedPrefab;
 
-    private SoundManager _soundManager;
-
     private void Awake()
     {
         if (Instance == null)
@@ -108,8 +106,6 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         _eventSystem = EventSystem.current;
-
-        _soundManager = SoundManager.instance;
 
         //inventory slots
         CreateInventorySlots();
@@ -490,7 +486,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void DecideHowToUseItem()
     {
-        if (!_itemSlots.Contains(selectedItemSlot) && !weaponSlots.Contains(selectedItemSlot) && !equipementSlots.Contains(selectedItemSlot))
+        if (IsContainerSlot(selectedItemSlot))
         {
             TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
         }
@@ -519,6 +515,11 @@ public class Inventory : MonoBehaviour
         UpdateMassDisplay();
     }
 
+    public bool IsContainerSlot(ItemSlot itemSlot)
+    {
+        return (!_itemSlots.Contains(itemSlot) && !weaponSlots.Contains(itemSlot) && !equipementSlots.Contains(itemSlot));
+    }
+
     /// <summary>
     /// Updates the mass in the inventory (and the display)
     /// </summary>
@@ -542,11 +543,6 @@ public class Inventory : MonoBehaviour
         else if (itemSlot.Item is Heal heal)
         {
             StatsManager.instance.AddHealth((int)heal.HealAmount);
-        }
-
-        if (itemSlot.Item is Consumable consumable)
-        {
-            _soundManager.PlaySFX(consumable.useConsSFX);
         }
 
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();

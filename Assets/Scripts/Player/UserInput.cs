@@ -7,8 +7,6 @@ public class UserInput : MonoBehaviour
 {
     public static UserInput instance;
 
-    SettingsMenusManager _settingsMenusManager;
-
     public Vector2 MoveInput {  get; private set; }
 
     public bool Interract {  get; private set; }
@@ -23,7 +21,7 @@ public class UserInput : MonoBehaviour
     public bool AimWeapon { get; private set; }
     public bool WeaponHit { get; private set; }
 
-    [SerializeField] PlayerInput _playerInput;
+    private PlayerInput _playerInput;
 
     private InputAction _moveAction;
     private InputAction _interractAction;
@@ -45,16 +43,9 @@ public class UserInput : MonoBehaviour
             instance = this;
         }
 
-        _settingsMenusManager = SettingsMenusManager.instance;
-
         _playerInput = GetComponent<PlayerInput>();
 
         SetupInputActions();
-    }
-
-    private void Start()
-    {
-        _settingsMenusManager.GetPlayerInput(_playerInput);
     }
 
     private void Update()

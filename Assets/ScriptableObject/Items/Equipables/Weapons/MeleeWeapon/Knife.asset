@@ -16,7 +16,7 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 1
   _name: Couteau
-  _description: 
+  _description: "Utile pour couper les l\xE9gumes... ou les conversations ennuyeuses."
   _itemSprite: {fileID: 21300000, guid: 78be531d43c20744daf81b16aa330d3a, type: 3}
   _equipementTier: 0
   _worldSprite: {fileID: 0}
@@ -29,6 +29,3 @@ MonoBehaviour:
   _rotationRightHand: 0
   _rotationLeftHand: 0
   animAttack: 
-  attackSFX: KnifeSwing
-  hitSFX: KnifeHit
-  reloadSFX: 

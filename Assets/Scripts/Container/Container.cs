@@ -20,35 +20,34 @@ public class Container : Interactable
 
     public int containerColumn = 3;
 
-
+    [SerializeField]
+    private bool _isUnit = false;
 
     public float despawnTimer = 0f;
-
-    public string openSFX;
+    public bool despawnable = false;
 
     private bool _hasBeenOpened = false;
 
     private Inventory _inventory;
 
-    private SoundManager _soundManager;
-
     private void Start()
     {
         _inventory = Inventory.Instance;
-        _soundManager = SoundManager.instance;
     }
 
     /// <summary>
     /// Coroutine to call after spawning a container on an ennemi corpse and setting the despawn timer
     /// </summary>
-    public IEnumerator DespawnContainer()
+    private void Update()
     {
-        yield return new WaitForSeconds(despawnTimer);
-        while (_inventory.isInventoryOpen)
+        if (despawnable)
         {
-            yield return null;
+            despawnTimer -= Time.deltaTime;
+            if (despawnTimer < 0f && _inventory.currentContainer != this)
+            {
+                Destroy(gameObject);
+            }
         }
-        Destroy(gameObject);
     }
 
     /// <summary>
@@ -69,7 +68,7 @@ public class Container : Interactable
     {
         if (collision.CompareTag("Player"))
         {
-            containerSelectedSprite.SetActive(false);
+            Highlight(false);
             PlayerInteraction.Instance.interactables.Remove(this);
         }
     }
@@ -84,7 +83,6 @@ public class Container : Interactable
             _hasBeenOpened = true;
             GenerateItems();
         }
-        _soundManager.PlaySFX(openSFX);
         CreateItemSlots();
     }
 
@@ -177,6 +175,14 @@ public class Container : Interactable
             Destroy(itemSlots[i].gameObject);
         }
         itemSlots.Clear();
+    }
+
+    public override void Highlight(bool state)
+    {
+        if (!_isUnit)
+        {
+            containerSelectedSprite.SetActive(state);
+        }
     }
 
     protected override void Interact()

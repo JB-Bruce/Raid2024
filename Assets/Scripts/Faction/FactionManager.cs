@@ -64,7 +64,12 @@ public class FactionManager : MonoBehaviour
             if (_factionUnit.faction == faction)
             {
                 _factionUnit.RemoveJob(unit);
-                _factionUnit.nbrOfDeadUnit++;
+
+                if(unit.GetComponent<Humanoid>().CanRespawn)
+                {
+                    _factionUnit.nbrOfDeadUnit++;
+                }
+
                 _factionUnit.units.Remove(unit);
             }
         }
@@ -102,9 +107,15 @@ public class FactionManager : MonoBehaviour
     // Return the reputation between faction
     public float GetReputation(Faction faction1, Faction faction2) 
     {
-        if(faction1 == Faction.Bandit || faction2 == Faction.Bandit)
+
+        if (faction1 == Faction.Bandit || faction2 == Faction.Bandit)
         {
             return -5;
+        }
+
+        if (faction1 == Faction.Null || faction2 == Faction.Null)
+        {
+            return 0;
         }
 
         for (int i = 0; i < reputations.Count; i++)

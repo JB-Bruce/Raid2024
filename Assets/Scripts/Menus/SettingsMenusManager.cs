@@ -25,6 +25,8 @@ public class SettingsMenusManager : MonoBehaviour
     [Header("Booleans: ")]
     public bool isInSettings;
 
+    [SerializeField] string _actionMapString;
+
     public static SettingsMenusManager instance;
 
     private void Awake()
@@ -62,16 +64,11 @@ public class SettingsMenusManager : MonoBehaviour
         }
     }
 
-    public void OpenSettings(string actionMapToSwitchTo)
+    public void OpenSettings()
     {
-        _playerInput.SwitchCurrentActionMap(actionMapToSwitchTo);
+        _playerInput.SwitchCurrentActionMap("Settings");
         isInSettings = true;
         settingsMenus.SetActive(true);
-    }
-
-    public void GetPlayerInput(PlayerInput InputManager)
-    {
-        _playerInput = InputManager;
     }
 
     public void ChangeChosenMenu(GameObject newMenu)
@@ -90,10 +87,9 @@ public class SettingsMenusManager : MonoBehaviour
         _chosenMenu.SetActive(true);
     }
 
-    public void DeactivateSettingsMenus(string actionMapToSwitchTo)
+    public void DeactivateSettingsMenus()
     {
-        _playerInput.SwitchCurrentActionMap(actionMapToSwitchTo);
-
+        _playerInput.SwitchCurrentActionMap(_actionMapString);
         settingsMenus.SetActive(false);
         isInSettings = false;
     }

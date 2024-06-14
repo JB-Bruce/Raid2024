@@ -16,6 +16,7 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Balle 5,56mm
-  _description: 
+  _description: "Pour les discussions o\xF9 les arguments doivent vraiment faire
+    mouche."
   _itemSprite: {fileID: 21300000, guid: a904fe707d8db544fba3623d1e8ce7f2, type: 3}
   _bulletType: 0

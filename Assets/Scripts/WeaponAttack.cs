@@ -27,7 +27,6 @@ public class WeaponAttack : MonoBehaviour
     private Animator _animator;
     private RangedWeapon _rangedWeapon;
     private UnitCombat _unitCombat;
-    private SoundManager _soundManager;
 
     [SerializeField]
     private SpriteRenderer _handWeaponSpriteRenderer;
@@ -50,11 +49,6 @@ public class WeaponAttack : MonoBehaviour
     public UnityEvent<Weapon> weaponChange = new UnityEvent<Weapon>();
 
     private Camera _camera;
-
-    private void Start()
-    {
-        _soundManager = SoundManager.instance;
-    }
 
     public void Init()
     {
@@ -131,7 +125,6 @@ public class WeaponAttack : MonoBehaviour
             _timer = Time.time + _equipedWeapon.AttackSpeed;
 
             _animator.Play(_equipedWeapon.animAttack, 0, 0);
-            _soundManager.PlaySFX(_equipedWeapon.attackSFX);
             if (_isRangeWeapon)
             {
                 direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread/ 2), _rangedWeapon.Spread / 2));
@@ -151,7 +144,6 @@ public class WeaponAttack : MonoBehaviour
         if (_enemy != null)
         {
             _enemy.TakeDamage(_equipedWeapon.Damage, _isAI ? _unitCombat.GetFaction() : Faction.Player, (_enemy.transform.position - transform.position).normalized);
-            _soundManager.PlaySFX(_equipedWeapon.hitSFX);
         }
 
     }

@@ -16,7 +16,7 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 1
   _name: Fusil de fortune
-  _description: 
+  _description: "L\u2019arme DIY par excellence! Attention aux fuites d\u2019eau."
   _itemSprite: {fileID: 21300000, guid: 98cfc1227242838498daa11ab16f1b80, type: 3}
   _equipementTier: 0
   _worldSprite: {fileID: 0}
@@ -29,8 +29,6 @@ MonoBehaviour:
   _rotationRightHand: 0
   _rotationLeftHand: 0
   animAttack: 
-  attackSFX: ShootPipegun
-  reloadSFX: ReloadPipegun
   _spread: 0
   _maxBullet: 5
   _reloadTime: 1

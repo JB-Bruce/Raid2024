@@ -16,7 +16,8 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 1
   _name: FAMAS
-  _description: 
+  _description: "Parfaite pour repousser les bandits, impressionner les survivants,
+    ou ouvrir les conserves r\xE9calcitrantes (avec un peu de pratique)."
   _itemSprite: {fileID: 21300000, guid: bceee331827c2af438e0afa1dbdc0d55, type: 3}
   _equipementTier: 0
   _worldSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
@@ -29,8 +30,6 @@ MonoBehaviour:
   _rotationRightHand: -90
   _rotationLeftHand: 0
   animAttack: FamasShoot
-  attackSFX: ShootFAMAS
-  reloadSFX: ReloadFAMAS
   _spread: 10
   _maxBullet: 25
   _reloadTime: 2.16
