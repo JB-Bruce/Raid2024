@@ -13,7 +13,7 @@ public class QuestItems : QuestAction
     private List<ItemWithQuantity> _itemsInInventory = new();
 
     //call when the QuestItems is the current QuestAction to configure it
-    public override void Configure(GameObjectsList objectsToActivateAtStart)
+    public override bool Configure(GameObjectsList objectsToActivateAtStart)
     {
         bool isFinished = true;
         _itemsInInventory.Clear();
@@ -40,7 +40,7 @@ public class QuestItems : QuestAction
         string textToReturn = string.Empty;
         for (int i = 0; i <_itemsInInventory.Count; i++)
         {
-            textToReturn += "- " + _itemsInInventory[i].item.Name + "   " + _itemsInInventory[i].quantityNeed + "/" + _itemsNeed[i].quantityNeed + "\n";
+            textToReturn += "- " + _itemsInInventory[i].item.Name + "   " + System.Math.Clamp(_itemsInInventory[i].quantityNeed, 0, _itemsNeed[i].quantityNeed) + "/" + _itemsNeed[i].quantityNeed + "\n";
         }
         return textToReturn;
     }

@@ -15,7 +15,7 @@ public class QuestKill : QuestAction
     private int _killCount;
 
     //call when the QuestKill is the current QuestAction to configure it
-    public override void Configure(GameObjectsList objectsToActivateAtStart)
+    public override bool Configure(GameObjectsList objectsToActivateAtStart)
     {
         _killCount = 0;
         return false;

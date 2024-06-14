@@ -119,7 +119,18 @@ public class PlayerInteraction : MonoBehaviour
             GetNearestInteractable();
             if (_closestInteractable != null)//If a container is close, open the inventory and the container
             {
-                _closestInteractable.TryToInteract();
+                MainQuestInteractable mainQuestInteractable;
+                if (_closestInteractable is Pnj && _closestInteractable.gameObject.TryGetComponent<MainQuestInteractable>(out mainQuestInteractable))
+                {
+                    if (mainQuestInteractable.TryToInteract())
+                    {
+                        _closestInteractable.TryToInteract();
+                    }
+                }
+                else
+                {
+                    _closestInteractable.TryToInteract();
+                }
             }
         }
     }

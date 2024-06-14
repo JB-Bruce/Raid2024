@@ -101,6 +101,7 @@ public class QuestPanelManager : MonoBehaviour
     //open main quest panel
     public void OpenMainQuestPanel() 
     {
+        _selectedQuestIndex = QuestManager.instance.GetCurrentMainQuestActionIndex()[0];
         UpdateMainQuestUi();
         _factionQuestPanel.SetActive(false);
         _mainQuestPanel.SetActive(true);

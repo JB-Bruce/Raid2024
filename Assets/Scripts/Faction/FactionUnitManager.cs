@@ -105,7 +105,7 @@ public class FactionUnitManager : MonoBehaviour
     }
 
     // Make spawn a unit with parameters (for wave)
-    public void SpawnWaveUnit(Vector3 position, Vector3 target)
+    public void SpawnWaveUnit(Vector3 position, Vector3 target, float maxRange = 0)
     {
 
         GameObject go = Instantiate<GameObject>(unit, position, Quaternion.identity, parent);
@@ -123,7 +123,7 @@ public class FactionUnitManager : MonoBehaviour
         unitBT.faction = faction;
 
         unitBT.order = UnitOrder.AreaGuard;
-        unitMovement.SetGuardPoint(target, 0, 0);
+        unitMovement.SetGuardPoint(target, 0, maxRange);
     }
 
     // Give a job to unit

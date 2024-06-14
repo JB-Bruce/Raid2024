@@ -50,6 +50,7 @@ public class Pnj : Interactable
     //call the DialogueManager to start the dialogue
     public void StartDialogue()
     {
+        Time.timeScale = 0.0f;
         List<int> questIndexs = QuestManager.instance.GetCurrentMainQuestActionIndex();
         DialogueContent dialogueContent = new();
         foreach (var dialogue in _questDialogues)
@@ -70,6 +71,7 @@ public class Pnj : Interactable
     //call at the end of the dialogue
     private void EndDialogue(List<string> choices, bool isNameHide)
     {
+        Time.timeScale = 1.0f;
         _isNameHide = isNameHide;
     }
 

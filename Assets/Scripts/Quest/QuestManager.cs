@@ -7,6 +7,15 @@ using UnityEngine.InputSystem;
 public class QuestManager : MonoBehaviour
 {
     [SerializeField]
+    private int _banditsAtConstructionArea;
+
+    [SerializeField]
+    private GameObject _case;
+
+    [SerializeField]
+    private GameObject _constructionArea;
+
+    [SerializeField]
     private PlayerInput _playerInput;
 
     [SerializeField]
@@ -31,7 +40,10 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField]
     private QuestPanelManager _questPanelManager;
-    
+
+    [SerializeField]
+    private FactionUnitManager _factionUnitManager;
+
     public static QuestManager instance;
 
     //create an instance of the DialogueManager
@@ -90,6 +102,27 @@ public class QuestManager : MonoBehaviour
         {
             _currentMainQuest += 1;
             _quests[_currentMainQuest].GetCurrentQuestAction().Configure(_quests[_currentMainQuest].GetObjectsToActivateAtStartOfTheCUrrentQuestAction());
+        }
+        List<string> actionsToDo = _quests[_currentMainQuest].GetCurrentQuestAction().GetActionsToDoAtStart();
+        if (actionsToDo.Count >0)
+        {
+            for (int i = 0; i < actionsToDo.Count; i++)
+            {
+                switch (actionsToDo[i])
+                {
+                    case "CaseSpawnBandit":
+                        _factionUnitManager.SpawnWaveUnit(_case.transform.position, _case.transform.position, 5);
+                        break;
+                    case "ConstructionSpawnBandit":
+                        for (int j = 0; j < _banditsAtConstructionArea; j++)
+                        {
+                            _factionUnitManager.SpawnWaveUnit(_constructionArea.transform.position, _case.transform.position, 8);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
         UpdateInGameQuestUi();
     }
@@ -159,11 +192,7 @@ public class QuestManager : MonoBehaviour
         defend,
         enterArea,
         exitArea,
-        buildCoil,
-        plantingDynamiteInTheBanditCamp,
-        readRansomPaper,
-        fillTheEngine,
-        startMagneticCoil,
+        interact,
         dialogue
     }
 }

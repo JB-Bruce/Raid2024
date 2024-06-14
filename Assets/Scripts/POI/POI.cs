@@ -81,10 +81,13 @@ public class POI : MonoBehaviour
 
     }
 
-    private void 
-        ter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.parent.parent == null) 
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
+        if (collision.transform.parent.parent == null) 
         {
             return;
         }
@@ -96,6 +99,10 @@ public class POI : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.transform.parent == null)
+        {
+            return;
+        }
         if (collision.transform.parent.parent == null)
         {
             return;

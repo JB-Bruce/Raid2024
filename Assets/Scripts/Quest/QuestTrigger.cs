@@ -16,12 +16,13 @@ public class QuestTrigger : QuestAction
     private string _objectifText;
 
     //call when the QuestTrigger is the current QuestAction to configure it
-    public override void Configure(GameObjectsList objectsToActivateAtStart)
+    public override bool Configure(GameObjectsList objectsToActivateAtStart)
     {
         for (int i = 0; i < objectsToActivateAtStart.gameObjects.Count; i++)
         {
             objectsToActivateAtStart.gameObjects[i].SetActive(true);
         }
+        return false;
     }
 
     //call when the QuestTrigger ended

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 1.1"
   _description: 
-  _questTriggerType: 8
+  _actionsToDoAtStart: []
+  _questTriggerType: 4
   _information: Lieutenant Enzo
   _objectifText: 
