@@ -29,6 +29,7 @@ MonoBehaviour:
   _rotationRightHand: -90
   _rotationLeftHand: 0
   animAttack: FamasShoot
+  animIdle: WeaponIdle
   _spread: 10
   _maxBullet: 25
   _reloadTime: 2.16
