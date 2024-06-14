@@ -29,12 +29,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartWave(_protectObject.transform.position, 60, 2, 1);
-    }
-
     // Start a wave (point  = point to defend // duration = duration of the wave // intensity = number of unit who spawn/second)
     public void StartWave(Vector3 point, float duration, int intencity, float waitSpawnTimer)
     {

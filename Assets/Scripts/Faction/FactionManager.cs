@@ -1,10 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.InputSystem.DefaultInputActions;
 
 public class FactionManager : MonoBehaviour
 {
@@ -20,6 +18,8 @@ public class FactionManager : MonoBehaviour
     public Transform[] vertices = new Transform[4];  // Les sommets du losange
 
     public UnityEvent<POI, Faction> IsPoiCaught = new();
+
+    [SerializeField] private List<FactionPlacement> _factionsPlacement = new List<FactionPlacement>();
 
     [Header("Text")]
     [SerializeField] private TextMeshProUGUI _textReputationPlayerScientist;
@@ -44,6 +44,7 @@ public class FactionManager : MonoBehaviour
             Instance = this;
 
         poi = OrderPOIByPriority();
+        SetFactionsPosition();
     }
 
     private void Start()
@@ -320,6 +321,23 @@ public class FactionManager : MonoBehaviour
         return null;
     }
 
+    //set the position of factions on a random point and all the buildings
+    private void SetFactionsPosition()
+    {
+        for(int i =1; i < factions.Count;i++) 
+        {
+            int _randomIndex = UnityEngine.Random.Range(0, _factionsPlacement.Count);
+            factions[i].transform.position = _factionsPlacement[_randomIndex].position.position;
+            factions[i].SetGuardPoint(_factionsPlacement[_randomIndex].guardPoint1.localPosition, _factionsPlacement[_randomIndex].guardPoint2.localPosition);
+            factions[i].FactionLeader.buildings = _factionsPlacement[_randomIndex].buildings;
+            for(int j = 0; j < _factionsPlacement[_randomIndex].buildings.Count; j++) 
+            {
+                _factionsPlacement[_randomIndex].buildings[j].faction = factions[i].FactionUnitManager.faction;
+            }
+            _factionsPlacement.RemoveAt(_randomIndex);
+        }
+    }
+
 }
 
 
@@ -346,4 +364,14 @@ public struct BonusFaction
 {
     public Faction faction;
     [Range(-1,2)] public int bonus;
+}
+
+// Contain all the information for place a faction at a new position
+[System.Serializable]
+public struct FactionPlacement
+{
+    public Transform position;
+    public Transform guardPoint1;
+    public Transform guardPoint2;
+    public List<FactionBuilding> buildings;
 }

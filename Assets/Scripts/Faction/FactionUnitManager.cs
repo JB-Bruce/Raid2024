@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
 
 public class FactionUnitManager : MonoBehaviour
 {

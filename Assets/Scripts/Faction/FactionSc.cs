@@ -9,6 +9,7 @@ public class FactionSc : MonoBehaviour
     private FactionLeader _factionLeader;
     private FactionUnitManager _unitManager;
     private List<POI> _caughtPOI = new();
+    [SerializeField] Transform[] _guardTransform = new Transform[2];
 
     private void Awake()
     {
@@ -47,6 +48,12 @@ public class FactionSc : MonoBehaviour
         }
     }
 
+    // Set position of guard point
+    public void SetGuardPoint(Vector3 pos1, Vector3 pos2)
+    {
+        _guardTransform[0].localPosition = pos1;
+        _guardTransform[1].localPosition = pos2;
+    }
     public FactionUnitManager FactionUnitManager => _unitManager;
     public FactionLeader FactionLeader => _factionLeader;
 }
