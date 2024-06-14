@@ -89,7 +89,7 @@ public class CinematicManager : MonoBehaviour
 
         if (cinematicText.isEndSlide) //If the Cinematic Text is a Cinematic Ender, loads Scene by name
         {
-            _soundManager._musicPlayer.Stop();
+            _soundManager.PlayMusicFromPlaylist("InGame");
             SceneManager.LoadScene(_sceneToLoadAtEnd);
         }
         if (cinematicText.isSlideChanger)

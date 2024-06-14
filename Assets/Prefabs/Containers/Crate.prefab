@@ -354,4 +354,4 @@ MonoBehaviour:
   containerRows: 3
   containerColumn: 3
   despawnTimer: 0
-  openSFX: CrateOpen
+  openSFX: OpenCrate

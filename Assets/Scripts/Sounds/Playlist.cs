@@ -6,5 +6,5 @@ using UnityEngine;
 public class Playlist
 {
     public string name;
-    public List<AudioClip> clips;
+    public List<Sounds> sounds;
 }
