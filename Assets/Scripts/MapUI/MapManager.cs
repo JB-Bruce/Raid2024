@@ -1,8 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
-public class MapUIOver : MonoBehaviour
+public class MapManager : MonoBehaviour
 {
     GameObject overedObject;
 
@@ -12,6 +13,14 @@ public class MapUIOver : MonoBehaviour
     public Transform Bottom;
     public Transform Left;
     public Transform Right;
+
+    public Transform playerT;
+    public Transform playerPingArrow;
+    public Transform questPingArrow;
+
+    public bool doesArrowsFollowPlayer;
+
+    public float distanceToDesappear;
 
     public bool IsPointerOverUIElement(out GameObject uiElement)
     {
@@ -36,10 +45,17 @@ public class MapUIOver : MonoBehaviour
     private void Start()
     {
         playerPing.gameObject.SetActive(false);
+        playerPingArrow.gameObject.SetActive(false);
+        questPingArrow.gameObject.SetActive(false);
     }
 
     void Update()
     {
+        if (playerPingArrow.gameObject.activeInHierarchy)
+        {
+            SetPlayerPingArrow();
+        }
+
         if (IsPointerOverUIElement(out GameObject uiElement))
         {
             
@@ -55,6 +71,7 @@ public class MapUIOver : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     playerPing.gameObject.SetActive(false);
+                    playerPingArrow.gameObject.SetActive(false);
                 }
                 return;
             }
@@ -65,6 +82,7 @@ public class MapUIOver : MonoBehaviour
             {
                 playerPing.position = mousePos;
                 playerPing.gameObject.SetActive(true);
+                playerPingArrow.gameObject.SetActive(true);
             }
         }
         
@@ -73,6 +91,26 @@ public class MapUIOver : MonoBehaviour
             overedObject.GetComponentInParent<MapUIElement>().SetTextActive(false);
             overedObject = null;
         }
+    }
+
+    private void SetPlayerPingArrow()
+    {
+        Vector3 newPos = MapUI.instance.GetWorldPosFromUIPos(playerPing.position);
+        Vector2 dir = newPos - playerT.position;
+        playerPingArrow.right = dir.normalized;
+
+        if(doesArrowsFollowPlayer)
+        {
+            playerPingArrow.transform.position = Camera.main.WorldToScreenPoint(playerT.position);
+        }
+
+        playerPingArrow.GetChild(0).gameObject.SetActive(dir.magnitude > distanceToDesappear);
+        
+    }
+
+    private void SetQuestPingArrow()
+    {
+
     }
 
     public void SelectUIElement(GameObject uiElement)

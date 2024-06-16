@@ -11,8 +11,8 @@ public class MapElement : MonoBehaviour
     private void Start()
     {
         if (!canMove)
-            MapUI.Instance.SetElementToMap(transform.position, sp, color, size, overName);
+            MapUI.instance.SetElementToMap(transform.position, sp, color, size, overName);
         else
-            MapUI.Instance.SetMovingElementToMap(transform, sp, color, size, overName);
+            MapUI.instance.SetMovingElementToMap(transform, sp, color, size, overName);
     }
 }

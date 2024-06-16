@@ -33,13 +33,13 @@ public class MapUI : MonoBehaviour
 
     public GameObject mapUI;
 
-    public static MapUI Instance;
+    public static MapUI instance;
 
     public bool isMapOpen = false;
 
     private void Awake()
     {
-        Instance = this;
+        instance = this;
         _ratioVertical = bot.transform.position - top.transform.position;
         _ratioVerticalUI = UIBot.transform.position - UITop.transform.position;
 
@@ -103,6 +103,26 @@ public class MapUI : MonoBehaviour
         GameObject go = Instantiate(prefab, parent);
         go.GetComponent<MapUIElement>().Init(sp, _name, size, c);
         _movingMapElements.Add((t, go.transform));
+    }
+
+    public Vector2 GetWorldPosFromUIPos(Vector2 pos)
+    {
+        Vector3 newPos = Vector3.zero;
+
+        newPos.y = bot.position.y + (pos.y - UIBot.position.y) * ((top.position.y - bot.position.y) / (UITop.position.y - UIBot.position.y));
+        newPos.x = left.position.x + (pos.x - UILeft.position.x) * ((right.position.x - left.position.x) / (UIRight.position.x - UILeft.position.x));
+
+        return newPos;
+    }
+
+    public Vector2 GetUIPosFromWorldPos(Vector2 pos)
+    {
+        Vector3 newPos = Vector3.zero;
+
+        newPos.y = UIBot.position.y + (pos.y - bot.position.y) * ((UITop.position.y - UIBot.position.y) / (top.position.y - bot.position.y));
+        newPos.x = UILeft.position.x + (pos.x - left.position.x) * ((UIRight.position.x - UILeft.position.x) / (right.position.x - left.position.x));
+
+        return newPos;
     }
 
     // Update all the moving elements
