@@ -28,4 +28,6 @@ MonoBehaviour:
   _rightHandPos: {x: 0.14, y: 0}
   _rotationRightHand: 0
   _rotationLeftHand: 180
+  _moveSpeed: 5
   animAttack: KnifeAttack
+  animIdle: 

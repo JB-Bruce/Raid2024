@@ -28,5 +28,6 @@ MonoBehaviour:
   _rightHandPos: {x: 1, y: -0.3}
   _rotationRightHand: -140
   _rotationLeftHand: 40
+  _moveSpeed: 6
   animAttack: HandHit
   animIdle: WeaponIdle

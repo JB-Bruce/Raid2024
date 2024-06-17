@@ -29,6 +29,7 @@ MonoBehaviour:
   _rightHandPos: {x: 1.5, y: -0.08}
   _rotationRightHand: -90
   _rotationLeftHand: 0
+  _moveSpeed: 2.5
   animAttack: FamasShoot
   animIdle: WeaponIdle
   _spread: 10

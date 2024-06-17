@@ -98,7 +98,7 @@ public class FactionUnitManager : MonoBehaviour
         go.name = faction + indexeur.ToString();
         units.Add(go);
 
-        GiveAJob(unitBT, _transform.position);
+        GiveAJob(unitBT, _transform.position, !_isBandit);
         unitBT.faction = faction;
     }
 
@@ -117,7 +117,7 @@ public class FactionUnitManager : MonoBehaviour
         go.name = faction + indexeur.ToString();
         units.Add(go);
 
-        GiveAJob(unitBT, _transform.position);
+        GiveAJob(unitBT, _transform.position, true);
         unitBT.faction = faction;
 
         unitBT.order = UnitOrder.AreaGuard;
@@ -127,13 +127,13 @@ public class FactionUnitManager : MonoBehaviour
     }
 
     // Give a job to unit
-    private void GiveAJob(UnitBT BT, Vector3 position)
+    private void GiveAJob(UnitBT BT, Vector3 position, bool canProtectFaction)
     {
         UnitMovement movement = BT.gameObject.GetComponent<UnitMovement>();
 
         int _random = Random.Range(0, 100);
 
-        if (faction != Faction.Bandit)
+        if (canProtectFaction)
         {
 
             for (int i = 0; i < surveillancePoints.Count; i++)

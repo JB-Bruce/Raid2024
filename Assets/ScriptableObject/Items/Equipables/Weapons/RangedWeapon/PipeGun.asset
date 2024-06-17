@@ -28,11 +28,13 @@ MonoBehaviour:
   _rightHandPos: {x: 0.112, y: -0.013}
   _rotationRightHand: 204.69
   _rotationLeftHand: 0
+  _moveSpeed: 3
   animAttack: FamasShoot
+  animIdle: 
   _spread: 0
   _maxBullet: 5
   _reloadTime: 1
-  _ammoType: 1
+  _ammoType: []
   _firePoint: {x: 5, y: 2.3}
   bullet: {fileID: 5008059619825466956, guid: b3fe1a02dfbdd534bab5e85ccb492e03, type: 3}
   animReload: PipeGunReload
