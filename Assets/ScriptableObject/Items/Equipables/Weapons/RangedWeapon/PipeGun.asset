@@ -19,20 +19,20 @@ MonoBehaviour:
   _description: "L\u2019arme DIY par excellence! Attention aux fuites d\u2019eau."
   _itemSprite: {fileID: 21300000, guid: 98cfc1227242838498daa11ab16f1b80, type: 3}
   _equipementTier: 0
-  _worldSprite: {fileID: 0}
+  _worldSprite: {fileID: -664833799, guid: 9b8079160c75e444683777736f8dd84c, type: 3}
   _flipable: 0
   _damage: 10
   _attackSpeed: 1
   _attackRange: 20
-  _leftHandPos: {x: 0, y: 0}
-  _rightHandPos: {x: 0, y: 0}
-  _rotationRightHand: 0
+  _leftHandPos: {x: 0.05, y: 0.06}
+  _rightHandPos: {x: 0.112, y: -0.013}
+  _rotationRightHand: 204.69
   _rotationLeftHand: 0
-  animAttack: 
+  animAttack: FamasShoot
   _spread: 0
   _maxBullet: 5
   _reloadTime: 1
-  _ammoType: 0
-  _firePoint: {x: 0, y: 0}
+  _ammoType: 1
+  _firePoint: {x: 5, y: 2.3}
   bullet: {fileID: 5008059619825466956, guid: b3fe1a02dfbdd534bab5e85ccb492e03, type: 3}
-  animReload: 
+  animReload: PipeGunReload
