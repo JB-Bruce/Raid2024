@@ -43,7 +43,9 @@ public class UnitCombat : MonoBehaviour
     {
         if (collision.transform.parent == null)
             return;
-        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid)&& !humanoidAround.Contains(humanoid) && humanoid.faction != _mHumanoid.faction  && !collision.isTrigger)
+        if (collision.transform.parent.parent == null)
+            return;
+        if (collision.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid)&& !humanoidAround.Contains(humanoid) && humanoid.faction != _mHumanoid.faction  && !collision.isTrigger)
         {
             humanoidAround.Add(humanoid);
         }
@@ -54,7 +56,9 @@ public class UnitCombat : MonoBehaviour
     {
         if (collision.transform.parent == null)
             return;
-        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
+        if (collision.transform.parent.parent == null)
+            return;
+        if (collision.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
         {
             humanoidAround.Remove(humanoid);
         }
@@ -107,7 +111,7 @@ public class UnitCombat : MonoBehaviour
                 RaycastHit2D _hit = Physics2D.Raycast(_transform.position, ennemies[i].transform.position - _transform.position, viewRange);
 
 
-                if (_hit.collider != null && _hit.collider.transform.parent.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
+                if (_hit.collider != null && _hit.collider.transform.parent.parent.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
                 {
                     nearest = i;
                     _distanceToNearest = _newDistance;

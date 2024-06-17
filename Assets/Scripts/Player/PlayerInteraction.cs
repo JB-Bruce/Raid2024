@@ -40,30 +40,14 @@ public class PlayerInteraction : MonoBehaviour
         {
             if (interactables[i] != null)
             {
-                if (interactables[i].GetType() == typeof(Container))
-                {
-                    Container container = (Container)interactables[i];
-                    container.containerSelectedSprite.SetActive(false);
-                }
+                interactables[i].Highlight(false);
             }
         }
         Interactable interactable = GetNearestInteractable();
         if (interactable != null)//if we find the nearest interactable, highlight it
         {
-            if (interactable is Container container)
-            {
-                container.containerSelectedSprite.SetActive(true);
-                _closestInteractable = container;
-                return;
-            }
-            if (interactable.gameObject.TryGetComponent<PnjFactionTrader>(out PnjFactionTrader trader))
-            {
-                _closestInteractable = trader;
-            }
-            if (interactable.gameObject.TryGetComponent<Pnj>(out Pnj pnj))
-            {
-                _closestInteractable = pnj;
-            }
+            _closestInteractable = interactable;
+            _closestInteractable.Highlight(true);
         }
         else
         {
@@ -115,23 +99,7 @@ public class PlayerInteraction : MonoBehaviour
             GetNearestInteractable();
             if (_closestInteractable != null)//If a container is close, open the inventory and the container
             {
-                if (_closestInteractable is Container container)
-                {
-                    _inventory.OpenFullInventory();
-                    _inventory.currentContainer = container;
-                    container.OpenContainer();
-                    return;
-                }
-                if (_closestInteractable is PnjFactionTrader trader)
-                {
-                    trader.Trade();
-                    return;
-                }
-                if (_closestInteractable is Pnj pnj)
-                {
-                    pnj.StartDialogue();
-                    return;
-                }
+                _closestInteractable.TryToInteract();
             }
         }
     }

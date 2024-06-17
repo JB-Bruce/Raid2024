@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
 
 public class FactionUnitManager : MonoBehaviour
 {
     private int indexeur = 0;
+    [SerializeField]
+    private Transform _player;
+
 
     public Faction faction;
     public GameObject unit;
@@ -99,6 +100,30 @@ public class FactionUnitManager : MonoBehaviour
 
         GiveAJob(unitBT, _transform.position);
         unitBT.faction = faction;
+    }
+
+    // Make spawn a unit with parameters (for wave)
+    public GameObject SpawnWaveUnit(Vector3 position, Vector3 target)
+    {
+
+        GameObject go = Instantiate<GameObject>(unit, position, Quaternion.identity, parent);
+
+        UnitBT unitBT = go.GetComponent<UnitBT>();
+        UnitMovement unitMovement = go.GetComponent<UnitMovement>();
+        unitBT.Init();
+
+        SetUnitSprite(womenPercentage, go);
+        indexeur++;
+        go.name = faction + indexeur.ToString();
+        units.Add(go);
+
+        GiveAJob(unitBT, _transform.position);
+        unitBT.faction = faction;
+
+        unitBT.order = UnitOrder.AreaGuard;
+        unitMovement.SetGuardPoint(target, 0, 0);
+
+        return go;
     }
 
     // Give a job to unit
@@ -209,7 +234,7 @@ public class FactionUnitManager : MonoBehaviour
         for (int i = 0; i < _gameManager.restrictedAreas.Count; i++)
         {
             if ((Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius
-                || /*Replace by the player position*/ Vector3.Distance(new Vector3(100,100,0), position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) 
+                || Vector3.Distance(_player.position, position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) 
                 || !_factionManager.IsPointInRhombus(position) || _hit != null)
             {
                 return true;
@@ -257,12 +282,12 @@ public class FactionUnitManager : MonoBehaviour
     // Set all the Sprite of a unit Randomly
     public void SetUnitSprite(float womenRandom, GameObject unit)
     {
-        WeaponAttack _weaponAttack = unit.transform.GetChild(0).GetComponent<WeaponAttack>();
+        WeaponAttack _weaponAttack = unit.transform.GetComponentInChildren<WeaponAttack>();
         _weaponAttack.EquipWeapon(RandomDrawWeapon());
 
         int random = UnityEngine.Random.Range(0, 100);
 
-        Transform bodyTransform = unit.gameObject.transform.GetChild(1);
+        Transform bodyTransform = unit.gameObject.transform.GetChild(0).GetChild(1);
 
         SpriteRenderer body = bodyTransform.GetComponent<SpriteRenderer>();
         SpriteRenderer hair = bodyTransform.GetChild(0).GetComponent<SpriteRenderer>();

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798cd9a67ada3044a80496011da2ea41, type: 3}
   m_Name: Soda
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 0.3
   _isStackable: 1
   _maxStack: 99
   _name: Soda
-  _description: 
+  _description: "La potion p\xE9tillante qui rend la fin du monde un peu plus supportable."
   _itemSprite: {fileID: 21300000, guid: 64b42946bcd14bb4c96cd204cefdb83d, type: 3}
   _foodAmount: 0
   _drinkAmount: 70

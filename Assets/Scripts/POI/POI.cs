@@ -83,11 +83,15 @@ public class POI : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.parent == null) 
+        if (collision.transform.parent == null)
         {
             return;
         }
-        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !unitInCaptureZone.Contains(humanoid) && !collision.isTrigger)
+        if (collision.transform.parent.parent == null) 
+        {
+            return;
+        }
+        if (collision.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !unitInCaptureZone.Contains(humanoid) && !collision.isTrigger)
         {
             unitInCaptureZone.Add(humanoid);
         }
@@ -99,10 +103,24 @@ public class POI : MonoBehaviour
         {
             return;
         }
-        if (collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
+        if (collision.transform.parent.parent == null)
+        {
+            return;
+        }
+        if (collision.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger)
         {
             unitInCaptureZone.Remove(humanoid);
         }
 
+    }
+
+    // Return the Faction who captured the POI 
+    public Faction GetOwnerFaction()
+    {
+        if(_captured)
+        {
+            return ownerFaction;
+        }
+        return Faction.Null;
     }
 }

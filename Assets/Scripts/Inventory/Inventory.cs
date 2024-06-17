@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -28,6 +29,9 @@ public class Inventory : MonoBehaviour
     private List<ItemSlot> _itemSlots = new List<ItemSlot>();
     public List<EquipementSlot> equipementSlots = new List<EquipementSlot>();
     public List<EquipementSlot> weaponSlots = new List<EquipementSlot>();
+
+    [SerializeField]
+    private TextMeshProUGUI _massText;
 
     [SerializeField]
     private GameObject _itemSlotPrefab;
@@ -69,6 +73,9 @@ public class Inventory : MonoBehaviour
 
     public Container currentContainer = null;
 
+    public float mass = 0;
+    private float _massMax = 100;
+
     private const int _itemSpacing = 95;
     private const int _armorSpacing = 200;
     private const int _weaponSpacing = 100;
@@ -81,6 +88,9 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     private MovePlayer _player;
+
+    [SerializeField]
+    private GameObject _itemDroppedPrefab;
 
     private void Awake()
     {
@@ -126,6 +136,8 @@ public class Inventory : MonoBehaviour
             navigation.mode = Navigation.Mode.None;
             weaponSlots[i].GetComponent<Button>().navigation = navigation;
         }
+
+        UpdateMassDisplay();
     }
 
     private void Update()
@@ -405,8 +417,11 @@ public class Inventory : MonoBehaviour
             itemWithQuantity.quantityNeed = 1;
             QuestManager.instance.CheckQuestItems(itemWithQuantity);
 
+            UpdateMassDisplay();
+
             return true;
         }
+
         return false;
     }
 
@@ -452,6 +467,15 @@ public class Inventory : MonoBehaviour
                 itemWithQuantity.quantityNeed = -itemSlot.Quantity;
                 itemSlot.UpdateQuantity(0);
                 QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
+                GameObject Item = Instantiate(_itemDroppedPrefab);
+                Item.transform.position = _player.transform.position;
+                DroppedItem itemDropped = Item.GetComponent<DroppedItem>();
+                itemDropped.item = itemWithQuantity.item;
+                itemDropped.quantity = -itemWithQuantity.quantityNeed;
+                itemDropped.UpdateSprite();
+
+                UpdateMassDisplay();
             }
         }
     }
@@ -462,7 +486,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void DecideHowToUseItem()
     {
-        if (!_itemSlots.Contains(selectedItemSlot) && !weaponSlots.Contains(selectedItemSlot) && !equipementSlots.Contains(selectedItemSlot))
+        if (IsContainerSlot(selectedItemSlot))
         {
             TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
         }
@@ -488,6 +512,22 @@ public class Inventory : MonoBehaviour
                 ConsumeItem(selectedItemSlot);
             }
         }
+        UpdateMassDisplay();
+    }
+
+    public bool IsContainerSlot(ItemSlot itemSlot)
+    {
+        return (!_itemSlots.Contains(itemSlot) && !weaponSlots.Contains(itemSlot) && !equipementSlots.Contains(itemSlot));
+    }
+
+    /// <summary>
+    /// Updates the mass in the inventory (and the display)
+    /// </summary>
+    private void UpdateMassDisplay()
+    {
+        mass = CountItemMassInInventory();
+
+        _massText.text = "Masse : " + mass.ToString("0.00f");
     }
 
     /// <summary>
@@ -743,6 +783,39 @@ public class Inventory : MonoBehaviour
     }
 
     /// <summary>
+    /// Counts the mass in the inventory of the player and returns it
+    /// </summary>
+    private float CountItemMassInInventory()
+    {
+        float mass = 0;
+
+        foreach (ItemSlot itemSlot in _itemSlots)
+        {
+            if (itemSlot.Item != null)
+            {
+                mass += itemSlot.Item.Weight * itemSlot.Quantity;
+            }
+        }
+        foreach (ItemSlot itemSlot in weaponSlots)
+        {
+            if (itemSlot.Item != null)
+            {
+                mass += itemSlot.Item.Weight * itemSlot.Quantity;
+            }
+        }
+        foreach (ItemSlot itemSlot in equipementSlots)
+        {
+            if (itemSlot.Item != null)
+            {
+                mass += (itemSlot.Item.Weight / 2f) * itemSlot.Quantity;
+            }
+        }
+
+        return mass;
+    }
+
+
+    /// <summary>
     /// Removes the quantity "quantity" of last instance of the item "item" in inventory
     /// </summary>
     public void RemoveItems(Item item, int quantity)
@@ -779,6 +852,8 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
+
+        UpdateMassDisplay();
     }
 
 

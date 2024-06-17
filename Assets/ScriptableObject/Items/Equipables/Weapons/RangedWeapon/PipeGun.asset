@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155d8fce1bb24284fbe3b6641026598f, type: 3}
   m_Name: PipeGun
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 1.5
   _isStackable: 1
   _maxStack: 1
   _name: Fusil de fortune
-  _description: 
+  _description: "L\u2019arme DIY par excellence! Attention aux fuites d\u2019eau."
   _itemSprite: {fileID: 21300000, guid: 98cfc1227242838498daa11ab16f1b80, type: 3}
   _equipementTier: 0
   _worldSprite: {fileID: 0}

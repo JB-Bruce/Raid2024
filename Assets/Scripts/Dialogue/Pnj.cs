@@ -31,7 +31,7 @@ public class Pnj : Interactable
         _isNameHide = true;
     }
 
-    public void GetSelected(bool state)
+    public override void Highlight(bool state)
     {
         if (_highlightSprite != null)
         {
@@ -71,6 +71,11 @@ public class Pnj : Interactable
     private void EndDialogue(List<string> choices, bool isNameHide)
     {
         _isNameHide = isNameHide;
+    }
+
+    protected override void Interact()
+    {
+        StartDialogue();
     }
 }
 

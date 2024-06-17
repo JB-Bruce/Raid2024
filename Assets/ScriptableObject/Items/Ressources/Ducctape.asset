@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff43fd083044aa340a94b39840cd9c2e, type: 3}
   m_Name: Ducctape
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 0.1
   _isStackable: 1
   _maxStack: 99
   _name: Ruban adhesif
-  _description: 
+  _description: "Que ce soit pour r\xE9parer une fuite ou pour fabriquer une armure
+    de fortune, le ruban adhesif est le compagnon fid\xE8le de l'ing\xE9nieur improvis\xE9."
   _itemSprite: {fileID: 21300000, guid: 4f21ed2dcaaaef64c9e582af939b5488, type: 3}

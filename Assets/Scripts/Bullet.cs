@@ -34,7 +34,9 @@ public class Bullet : MonoBehaviour
     {
         if (collision.transform.parent == null)
             return;
-        if (collision != null && collision.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
+        if (collision.transform.parent.parent == null)
+            return;
+        if (collision != null && collision.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid) && !collision.isTrigger) 
         {
             if (humanoid.faction == _ownerFaction)
             {
@@ -42,7 +44,8 @@ public class Bullet : MonoBehaviour
             }
             humanoid.TakeDamage(_damage, _ownerFaction, transform.right);
         }
-        if(!collision.isTrigger) 
+
+        if(!collision.isTrigger && collision!=null) 
         {
             Destroy(gameObject);
         }

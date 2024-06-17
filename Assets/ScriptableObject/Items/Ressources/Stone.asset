@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff43fd083044aa340a94b39840cd9c2e, type: 3}
   m_Name: Stone
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 0.5
   _isStackable: 1
   _maxStack: 99
   _name: Pierre
-  _description: 
+  _description: "Qui aurait cru que le monde moderne reviendrait \xE0 l'\xE2ge de
+    pierre?"
   _itemSprite: {fileID: 21300000, guid: 4f796152363dd38409174157eca39f46, type: 3}

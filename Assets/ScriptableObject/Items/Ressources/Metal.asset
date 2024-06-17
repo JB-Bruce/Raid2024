@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff43fd083044aa340a94b39840cd9c2e, type: 3}
   m_Name: Metal
   m_EditorClassIdentifier: 
-  _weight: 0
+  _weight: 1
   _isStackable: 1
   _maxStack: 99
   _name: Metal
-  _description: 
+  _description: Le couteau suisse des ressources post-apocalyptiques.
   _itemSprite: {fileID: 21300000, guid: e42044e9732b877489386df0707c44d4, type: 3}

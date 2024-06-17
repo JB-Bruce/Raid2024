@@ -1,17 +1,20 @@
 using UnityEngine;
 using System;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
 
     [Header("References: ")]
-    [SerializeField] AudioSource _musicPlayer;
-    [SerializeField] AudioSource _sfxPlayer;
+    public AudioSource _musicPlayer;
+    public AudioSource _sfxPlayer;
 
     [Header("Clips: ")]
     [SerializeField] Sounds[] _musics, _sfxs;
+    [SerializeField] Playlist[] _playlists;
 
     [Header("Toggle Buttons: ")]
     [SerializeField] GameObject _mainButton;
@@ -32,6 +35,8 @@ public class SoundManager : MonoBehaviour
     private int _musicMuteChecker = 1;
     private int _sfxMuteChecker = 1;
 
+    private Coroutine _currentPlaylistCoroutine;
+
     private void Awake()
     {
         if (instance == null)
@@ -43,7 +48,7 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         _settingsMenu = SettingsMenu.instance;
-        PlayMusic("Theme");
+        PlayMusic("Ambiance1");
 
         if (PlayerPrefs.GetInt("mainToggle", 1) == 0)
         {
@@ -71,12 +76,12 @@ public class SoundManager : MonoBehaviour
 
     public void PlayMusic(string _name)
     {
-        Sounds _s = Array.Find(_musics, _x =>  _x.name == _name);
-        if (_s == null) //If doesn't find music by name
+        Sounds _s = Array.Find(_musics, _x => _x.name == _name);
+        if (_s == null) // If doesn't find music by name
         {
             Debug.Log("Music not Found");
         }
-        else //else play the music by name
+        else // else play the music by name
         {
             _musicPlayer.clip = _s.clip;
             _musicPlayer.Play();
@@ -86,17 +91,17 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(string _name)
     {
         Sounds _s = Array.Find(_sfxs, _x => _x.name == _name);
-        if (_s == null) //If doesn't find sfx by name
+        if (_s == null) // If doesn't find sfx by name
         {
             Debug.Log("SFX not Found");
         }
-        else //else play the sfx by name
+        else // else play the sfx by name
         {
             _sfxPlayer.PlayOneShot(_s.clip);
         }
     }
 
-    public void ToggleMain() //Allows muting both Music and SFX
+    public void ToggleMain() // Allows muting both Music and SFX
     {
         if ((_mainMuteChecker == 1 && _musicMuteChecker == 1 && _sfxMuteChecker == 0) || (_mainMuteChecker == 0 && _musicMuteChecker == 0 && _sfxMuteChecker == 1))
         {
@@ -117,7 +122,7 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetInt("mainToggle", _mainMuteChecker);
     }
 
-    public void ToggleMusic() //Allows muting Music
+    public void ToggleMusic() // Allows muting Music
     {
         _musicPlayer.mute = !_musicPlayer.mute;
 
@@ -130,7 +135,7 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetInt("musicToggle", _musicMuteChecker);
     }
 
-    public void ToggleSFX() //Allows muting sfx
+    public void ToggleSFX() // Allows muting sfx
     {
         _sfxPlayer.mute = !_sfxPlayer.mute;
 
@@ -143,7 +148,7 @@ public class SoundManager : MonoBehaviour
         PlayerPrefs.SetInt("sfxToggle", _sfxMuteChecker);
     }
 
-    private void UpdateButtonSprite(GameObject button, bool isMuted, ref int muteChecker) //Changes the sprite of the Toggle Buttons from mute to unmuted and vice versa
+    private void UpdateButtonSprite(GameObject button, bool isMuted, ref int muteChecker) // Changes the sprite of the Toggle Buttons from mute to unmuted and vice versa
     {
         Image buttonImage = button.GetComponent<Image>();
         if (buttonImage != null)
@@ -157,27 +162,66 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void MusicVolume(float volume) //Changes the Music's volume
+    public void MusicVolume(float volume) // Changes the Music's volume
     {
         _musicVolume = volume;
         UpdateVolumes();
     }
 
-    public void SFXVolume(float volume) //Changes the SFX's volume
+    public void SFXVolume(float volume) // Changes the SFX's volume
     {
         _sfxVolume = volume;
         UpdateVolumes();
     }
 
-    public void MainVolume (float volume) //Changes the Main volume
+    public void MainVolume(float volume) // Changes the Main volume
     {
         _mainVolume = volume;
         UpdateVolumes();
     }
 
-    private void UpdateVolumes() //Updates the volume changes
+    private void UpdateVolumes() // Updates the volume changes
     {
         _musicPlayer.volume = _musicVolume * _mainVolume;
         _sfxPlayer.volume = _sfxVolume * _mainVolume;
+    }
+
+    public void PlayMusicFromPlaylist(string playlistName)
+    {
+        Playlist playlist = Array.Find(_playlists, p => p.name == playlistName);
+        if (playlist == null)
+        {
+            Debug.Log("Playlist not found: " + playlistName);
+            return;
+        }
+
+        Debug.Log("Playing from playlist: " + playlist.name);
+
+        // Stop the current coroutine if it's running
+        if (_currentPlaylistCoroutine != null)
+        {
+            StopCoroutine(_currentPlaylistCoroutine);
+        }
+
+        _currentPlaylistCoroutine = StartCoroutine(PlayRandomSoundFromPlaylist(playlist));
+    }
+
+    private IEnumerator PlayRandomSoundFromPlaylist(Playlist playlist)
+    {
+        while (true)
+        {
+            if (playlist.sounds.Count == 0)
+            {
+                Debug.Log("Playlist is empty: " + playlist.name);
+                yield break;
+            }
+
+            Sounds randomSound = playlist.sounds[UnityEngine.Random.Range(0, playlist.sounds.Count)];
+            Debug.Log("Playing clip: " + randomSound.name + " from playlist: " + playlist.name);
+            _musicPlayer.clip = randomSound.clip;
+            _musicPlayer.Play();
+
+            yield return new WaitForSeconds(_musicPlayer.clip.length);
+        }
     }
 }

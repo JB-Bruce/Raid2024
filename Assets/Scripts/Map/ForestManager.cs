@@ -10,8 +10,8 @@ public class ForestManager : MonoBehaviour
 
     public List<Tree> Prefabs = new List<Tree>();
 
-    private float _minSizetree = 0.9f;
-    private float _maxSizetree = 1.1f;
+    private float _minSizetree = 0.75f;
+    private float _maxSizetree = 1.25f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +25,9 @@ public class ForestManager : MonoBehaviour
     private void RandomTree()
     {
 
-        foreach (Transform t in ForestTrees)
+        foreach (Transform t in transform)
         {
+            ForestTrees.Add(t);
             float size = Random.Range(_minSizetree, _maxSizetree + 0.01f);
             float randompercentage = Random.Range(0, 100.0f);
             float prefabspercentage = 0;

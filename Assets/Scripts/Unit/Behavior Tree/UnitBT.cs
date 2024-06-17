@@ -16,13 +16,13 @@ public class UnitBT : Humanoid
 
     public UnitLeader master;
 
-    private NavMeshAgent _agent;
+    //private NavMeshAgent _agent;
     private Selector _selectorRoot;
     private UnitMovement _unitMove;
     [SerializeField]
     private GameObject _weapon;
     private UnitCombat _unitCombat;
-    private Transform _transform;
+    //private Transform _transform;
     public GameObject body;
 
     private int evaluateUpdate = 0;

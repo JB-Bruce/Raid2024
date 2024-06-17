@@ -50,11 +50,9 @@ public class WeaponAttack : MonoBehaviour
 
     public void Init()
     {
-        _unitCombat = transform.parent.GetComponent<UnitCombat>();
+        _unitCombat = transform.parent.parent.GetComponent<UnitCombat>();
         _animator = GetComponent<Animator>();
         _camera = Camera.main;
-
-        //EquipWeapon(_unitCombat.weapon);
     }
 
     private void Update()
@@ -153,7 +151,8 @@ public class WeaponAttack : MonoBehaviour
 
         RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, direction, _equipedWeapon.AttackRange);
 
-        if(_hit.collider != null && _hit.collider.transform.parent.TryGetComponent<Humanoid>(out Humanoid humanoid))
+        if(_hit.collider != null  && _hit.collider.transform.parent != null && _hit.collider.transform.parent.parent != null 
+            && _hit.collider.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid))
         {
             return humanoid;
         }
