@@ -1387,6 +1387,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "Death",
+            "id": "c6f1f077-4d2c-41ed-849e-5b4cca996ee3",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "dedfa57b-26d0-40a8-9ef9-1295845a086e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "a3c42a82-d8f1-4550-a308-8d4c77230362",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
