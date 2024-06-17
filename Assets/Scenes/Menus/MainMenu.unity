@@ -9158,7 +9158,7 @@ PrefabInstance:
       objectReference: {fileID: 1635004244}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _sceneToLoadAtEnd
-      value: MVP
+      value: Tutorial
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _timeBetweenChars
