@@ -15,6 +15,7 @@ public class MapManager : MonoBehaviour
     public Transform Right;
 
     public Transform playerT;
+    private Vector2 mainQuestWaypoint;
     public Transform playerPingArrow;
     public Transform questPingArrow;
 
@@ -22,6 +23,7 @@ public class MapManager : MonoBehaviour
 
     public float distanceToDesappear;
 
+    // Detect overed ui element
     public bool IsPointerOverUIElement(out GameObject uiElement)
     {
         PointerEventData pointerData = new PointerEventData(EventSystem.current)
@@ -56,9 +58,21 @@ public class MapManager : MonoBehaviour
             SetPlayerPingArrow();
         }
 
+        if (questPingArrow.gameObject.activeInHierarchy)
+        {
+            SetQuestPingArrow();
+        }
+
         if (IsPointerOverUIElement(out GameObject uiElement))
         {
-            
+            Vector2 mousePos = Input.mousePosition;
+
+            if (IsPointInMap(mousePos, Top.position, Bottom.position, Left.position, Right.position) && Input.GetMouseButtonDown(0))
+            {
+                playerPing.position = mousePos;
+                playerPing.gameObject.SetActive(true);
+                playerPingArrow.gameObject.SetActive(true);
+            }
 
             if (uiElement.tag == "UIElement")
             {
@@ -76,14 +90,7 @@ public class MapManager : MonoBehaviour
                 return;
             }
 
-            Vector2 mousePos = Input.mousePosition;
-
-            if (IsPointInMap(mousePos, Top.position, Bottom.position, Left.position, Right.position) && Input.GetMouseButtonDown(0))
-            {
-                playerPing.position = mousePos;
-                playerPing.gameObject.SetActive(true);
-                playerPingArrow.gameObject.SetActive(true);
-            }
+            
         }
         
         if(overedObject != null)
@@ -93,6 +100,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    // set rotation of the player arrow
     private void SetPlayerPingArrow()
     {
         Vector3 newPos = MapUI.instance.GetWorldPosFromUIPos(playerPing.position);
@@ -108,11 +116,31 @@ public class MapManager : MonoBehaviour
         
     }
 
+    // set rotation of the quest arrow
     private void SetQuestPingArrow()
     {
+        Vector2 dir = mainQuestWaypoint - (Vector2)playerT.position;
+        playerPingArrow.right = dir.normalized;
 
+        if (doesArrowsFollowPlayer)
+        {
+            playerPingArrow.transform.position = Camera.main.WorldToScreenPoint(playerT.position);
+        }
+
+        if (dir.magnitude < distanceToDesappear)
+        {
+            questPingArrow.gameObject.SetActive(false);
+        }
     }
 
+    // Waypoint set by main quest to indicate a point on the map
+    public void SetQuestWaypoint(Vector2 newPos)
+    {
+        mainQuestWaypoint = newPos;
+        questPingArrow.gameObject.SetActive(true);
+    }
+
+    // Over an ui element with text
     public void SelectUIElement(GameObject uiElement)
     {
         if (uiElement != overedObject)
@@ -123,6 +151,7 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    // Is a point in the map
     public bool IsPointInMap(Vector2 point, Vector2 top, Vector2 bot, Vector2 left, Vector2 right)
     {
         return IsPointInTriangle(point, left, top, right) ||
