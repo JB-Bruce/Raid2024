@@ -324,7 +324,7 @@ public class FactionManager : MonoBehaviour
     //set the position of factions on a random point and all the buildings
     private void SetFactionsPosition()
     {
-        for(int i =1; i < factions.Count;i++) 
+        for(int i = 1; i < factions.Count;i++) 
         {
             int _randomIndex = UnityEngine.Random.Range(0, _factionsPlacement.Count);
             factions[i].transform.position = _factionsPlacement[_randomIndex].position.position;
