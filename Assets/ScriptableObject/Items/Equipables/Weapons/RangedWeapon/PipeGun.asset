@@ -29,6 +29,7 @@ MonoBehaviour:
   _rotationRightHand: 0
   _rotationLeftHand: 0
   animAttack: 
+  animIdle: WeaponIdle
   _spread: 0
   _maxBullet: 5
   _reloadTime: 1

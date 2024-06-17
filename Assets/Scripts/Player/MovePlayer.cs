@@ -39,13 +39,18 @@ public class MovePlayer : MonoBehaviour
     private bool _mouseActive = true;
     private bool _tryToHit = false;
     private bool _isReloading = false;
+    private bool _cancelReload = false;
     public float moveSpeed = 7f;
     private int _selectedWeapon = 0;
     private int currentAmmoWeapon1;
     private int currentAmmoWeapon2;
     private int currentAmmoWeapon3;
+    private int oldAmmo1 = 0;
+    private int oldAmmo2 = 0;
+    private int oldAmmo3 = 0;
     string maxBullet;
     int oldSelectedWeapon = 0;
+    int ammoRemoved;
 
     Vector2 direction = new Vector2(0,0);
     Vector2 lastAimDirection;
@@ -69,6 +74,7 @@ public class MovePlayer : MonoBehaviour
     private static readonly Quaternion _flipRotation = new Quaternion(0, 180, 0, 0);
     private void Start()
     {
+        
         _inGameActionMap = _input.actions.FindActionMap("InGame");
         _weaponAttack.Init();
         _animator = transform.GetChild(0).GetComponent<Animator>();
@@ -275,6 +281,7 @@ public class MovePlayer : MonoBehaviour
                     }
                 }
             }
+            AmmoWhenChangeWeapon();
         }
     }
 
@@ -321,6 +328,7 @@ public class MovePlayer : MonoBehaviour
                     }
                 }
             }
+            AmmoWhenChangeWeapon();
         }
     }
 
@@ -338,6 +346,8 @@ public class MovePlayer : MonoBehaviour
         inventory.weaponSlots[_selectedWeapon].GetSelected(false);
         _selectedWeapon = 0;
         inventory.weaponSlots[_selectedWeapon].GetSelected(true);
+
+        AmmoWhenChangeWeapon();
     }
 
     //With a player input, select the first weapon 
@@ -380,6 +390,7 @@ public class MovePlayer : MonoBehaviour
                     }
                 }
             }
+            AmmoWhenChangeWeapon();
         }
     }
 
@@ -417,6 +428,7 @@ public class MovePlayer : MonoBehaviour
                     }
                 }
             }
+            AmmoWhenChangeWeapon();
         }
     }
 
@@ -496,17 +508,52 @@ public class MovePlayer : MonoBehaviour
                     inventory.weaponSlots[_selectedWeapon].GetSelected(true);
                 }
             }
-            if(oldSelectedWeapon != _selectedWeapon)
+            AmmoWhenChangeWeapon();
+        }
+    }
+
+    private void AmmoWhenChangeWeapon()
+    {
+        if(oldSelectedWeapon != _selectedWeapon)
+        {
+            
+            //_cancelReload = true;
+
+            if(_isReloading)
             {
+
                 if (inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
                 {
                     UpdateAmmoNumber(rangedWeapon);
 
-                    
-                    //_animator.Play(Weapon.animIdle, 0, 0);
-                    //_animator.enabled = false;
+                    _animator.Play(rangedWeapon.animIdle, 0, 0);    
+                }
+                else
+                {
+                    _animator.Play(_handAttack.animIdle, 0, 0);
+                }
+
+                if (inventory.weaponSlots[oldSelectedWeapon].Item is RangedWeapon oldRangedWeapon)
+                {
+                    StopCoroutine(CouroutineReload(oldRangedWeapon));
+                    for(int i = 0; i < ammoRemoved; i++)
+                    {
+                        inventory.AddItem(oldRangedWeapon.BulletType[0]);
+                    }
+                }
+                currentAmmoWeapon1 = oldAmmo1;
+                currentAmmoWeapon2 = oldAmmo2;
+                currentAmmoWeapon3 = oldAmmo3;
+                
+            }
+            else
+            {
+                if (inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
+                {
+                    UpdateAmmoNumber(rangedWeapon);   
                 }
             }
+            _isReloading = false;          
         }
     }
 
@@ -621,7 +668,11 @@ public class MovePlayer : MonoBehaviour
         {
             _numberAmmoWeapon.text = currentAmmoWeapon3 + "/" + maxBullet;
         }
-        _numberAmmoWeapon.enabled = true;
+
+        if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon)
+        {
+            _numberAmmoWeapon.enabled = true;
+        }
     }
     
 
@@ -637,6 +688,9 @@ public class MovePlayer : MonoBehaviour
     {
         if(!_isReloading)
         {
+            oldAmmo1 = currentAmmoWeapon1;
+            oldAmmo2 = currentAmmoWeapon2;
+            oldAmmo3 = currentAmmoWeapon3;
             if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
             {
                 int numberOfAmmoInInventory = inventory.CountItemInInventory(rangedWeapon.BulletType[0]);
@@ -645,7 +699,7 @@ public class MovePlayer : MonoBehaviour
                 {
                     if(numberOfAmmoInInventory > 0 && currentAmmoWeapon1 != rangedWeapon.MaxBullet)
                     {
-                        int ammoRemoved = 0;
+                        ammoRemoved = 0;
                         _animator.Play(rangedWeapon.animReload, 0, 0);
                         _isReloading = true;
 
@@ -669,7 +723,7 @@ public class MovePlayer : MonoBehaviour
                 {
                     if(numberOfAmmoInInventory > 0 && currentAmmoWeapon2 != rangedWeapon.MaxBullet)
                     {
-                        int ammoRemoved = 0;
+                        ammoRemoved = 0;
                         _animator.Play(rangedWeapon.animReload, 0, 0);
                         _isReloading = true;
 
@@ -693,7 +747,7 @@ public class MovePlayer : MonoBehaviour
                 {
                     if(numberOfAmmoInInventory > 0 && currentAmmoWeapon3 != rangedWeapon.MaxBullet)
                     {
-                        int ammoRemoved = 0;
+                        ammoRemoved = 0;
                         _animator.Play(rangedWeapon.animReload, 0, 0);
                         _isReloading = true;
 
@@ -720,7 +774,9 @@ public class MovePlayer : MonoBehaviour
     IEnumerator CouroutineReload(RangedWeapon rangedWeapon)
     {
         _lineRenderer.enabled =false;
+
         yield return new WaitForSeconds(2f);
+
         _isReloading = false;
         UpdateAmmoNumber(rangedWeapon);
     }
@@ -779,13 +835,13 @@ public class MovePlayer : MonoBehaviour
         {
             if (_timer < Time.time) 
             {
-                if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon)
+                if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedweapon)
                 {
-                    _equipedWeapon = inventory.weaponSlots[_selectedWeapon].Item as RangedWeapon;
+                    _equipedWeapon = rangedweapon;
                 }
-                else if(inventory.weaponSlots[_selectedWeapon].Item is MeleeWeapon)
+                else if(inventory.weaponSlots[_selectedWeapon].Item is MeleeWeapon meleeweapon)
                 {
-                    _equipedWeapon = inventory.weaponSlots[_selectedWeapon].Item as MeleeWeapon;
+                    _equipedWeapon = meleeweapon;
                 }
                 else
                 {
@@ -840,6 +896,7 @@ public class MovePlayer : MonoBehaviour
                 }
                 else
                 {
+                    _cancelReload= false;
                     _weaponAttack.UseWeapon(direction, Faction.Player);
                 }
             }

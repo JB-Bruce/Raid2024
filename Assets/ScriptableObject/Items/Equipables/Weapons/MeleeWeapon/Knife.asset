@@ -19,6 +19,8 @@ MonoBehaviour:
   _description: 
   _itemSprite: {fileID: 21300000, guid: 78be531d43c20744daf81b16aa330d3a, type: 3}
   _equipementTier: 0
+  _worldSprite: {fileID: 0}
+  _flipable: 0
   _damage: 6
   _attackSpeed: 1
   _attackRange: 4
@@ -27,3 +29,4 @@ MonoBehaviour:
   _rotationRightHand: 0
   _rotationLeftHand: 0
   animAttack: 
+  animIdle: WeaponIdle
