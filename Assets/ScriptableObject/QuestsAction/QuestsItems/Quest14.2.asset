@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44ad2a60bd9a4ee4e90735fbe989ac7d, type: 3}
-  m_Name: Quest13.1
+  m_Name: Quest14.2
   m_EditorClassIdentifier: 
-  _name: "Qu\xEAte 13.1"
+  _name: "Qu\xEAte 14.2"
+  _description: 
+  _actionsToDoAtStart: []
   _itemsNeed:
-  - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
-    quantityNeed: 4
-  - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
-    quantityNeed: 3
+  - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+    quantityNeed: 1
   _itemsInInventory: []

@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Quest5.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 5.1"
-  _questTriggerType: 7
-  _information: Jean-Baptiste
+  _description: 
+  _actionsToDoAtStart: []
+  _questTriggerType: 1
+  _information: Jean-BaptisteArea
+  _objectifText: 

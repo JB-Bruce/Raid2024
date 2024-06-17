@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Quest13.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 13.3"
-  _questTriggerType: 7
-  _information: Bruce
+  _description: 
+  _actionsToDoAtStart: []
+  _questTriggerType: 2
+  _information: BanditPoi
+  _objectifText: 

@@ -9,6 +9,9 @@ public class QuestKill : QuestAction
     Faction _faction = new();
 
     [SerializeField]
+    private string _enemyType;
+
+    [SerializeField]
     private int _numberToKill;
 
     [SerializeField]
@@ -31,18 +34,18 @@ public class QuestKill : QuestAction
     }
 
     //check if the pnj killed is from the good faction to increment the count
-    private void CheckKill(Faction faction)
+    private void CheckKill(Faction faction, string enemyType)
     {
-        if(faction == _faction)
+        if(faction == _faction && enemyType == _enemyType)
         {
             _killCount++;
         }
     }
 
     //return if the QuestKill is finished
-    public bool IsFinished(Faction faction)
+    public bool IsFinished(Faction faction, string enemyType)
     {
-        CheckKill(faction);
+        CheckKill(faction, enemyType);
         if (_killCount < _numberToKill)
         {
             return false;

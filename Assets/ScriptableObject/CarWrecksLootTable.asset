@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loots:
   - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
-    dropRate: 16.66667
+    dropRate: 14.2857
     dropNumber:
     - amount: 1
       pourcentage: 50
@@ -23,7 +23,7 @@ MonoBehaviour:
     - amount: 5
       pourcentage: 20
   - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
-    dropRate: 16.66667
+    dropRate: 14.2857
     dropNumber:
     - amount: 1
       pourcentage: 50
@@ -32,7 +32,7 @@ MonoBehaviour:
     - amount: 5
       pourcentage: 20
   - item: {fileID: 11400000, guid: 2c8f4bacac00df1499309c65241b96fb, type: 2}
-    dropRate: 16.66667
+    dropRate: 14.2857
     dropNumber:
     - amount: 10
       pourcentage: 50
@@ -41,7 +41,7 @@ MonoBehaviour:
     - amount: 30
       pourcentage: 20
   - item: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
-    dropRate: 16.66667
+    dropRate: 14.2857
     dropNumber:
     - amount: 10
       pourcentage: 50
@@ -50,7 +50,7 @@ MonoBehaviour:
     - amount: 30
       pourcentage: 20
   - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
-    dropRate: 16.66667
+    dropRate: 14.2857
     dropNumber:
     - amount: 1
       pourcentage: 50
@@ -59,7 +59,16 @@ MonoBehaviour:
     - amount: 5
       pourcentage: 20
   - item: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
-    dropRate: 16.66667
+    dropRate: 14.2857
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 3
+      pourcentage: 30
+    - amount: 5
+      pourcentage: 20
+  - item: {fileID: 11400000, guid: 070d4893aefb883408846c85f9892657, type: 2}
+    dropRate: 14.2857
     dropNumber:
     - amount: 1
       pourcentage: 50

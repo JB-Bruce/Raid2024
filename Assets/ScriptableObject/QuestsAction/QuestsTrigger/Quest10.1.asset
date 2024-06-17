@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Quest10.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 10.1"
-  _questTriggerType: 7
-  _information: Bruce
+  _description: 
+  _actionsToDoAtStart: []
+  _questTriggerType: 3
+  _information: ConstructionEngine
+  _objectifText: 

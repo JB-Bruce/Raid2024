@@ -5,8 +5,6 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
 
-    public GameObject _protectObject;
-
     [SerializeField]
     private GameObject _player;
 
@@ -29,12 +27,6 @@ public class WaveManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        StartWave(_protectObject.transform.position, 60, 2, 1);
-    }
-
     // Start a wave (point  = point to defend // duration = duration of the wave // intensity = number of unit who spawn/second)
     public void StartWave(Vector3 point, float duration, int intencity, float waitSpawnTimer)
     {
@@ -54,6 +46,7 @@ public class WaveManager : MonoBehaviour
                 _unitManager.SpawnWaveUnit(GetRandomSpawnPosition(), _point);
             }
         }
+        QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.defend, "DefendBase");
     }
 
     // Get a random spawn position for the unit

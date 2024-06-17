@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Quest11.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 11.2"
-  _questTriggerType: 7
+  _description: 
+  _actionsToDoAtStart: []
+  _questTriggerType: 4
   _information: Bruce
+  _objectifText: 

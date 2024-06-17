@@ -79,20 +79,20 @@ public class FactionQuestManager : MonoBehaviour
     }
 
     //check if the currents FactionQuests are QuestsKill
-    public void CheckFactionQuestsKill(Faction faction)
+    public void CheckFactionQuestsKill(Faction faction, string enemyType)
     {
-        CheckFactionQuestKill(faction, ref _currentUtopistFactionQuest);
-        CheckFactionQuestKill(faction, ref _currentMilitaryFactionQuest);
-        CheckFactionQuestKill(faction, ref _currentSurvivalistFactionQuest);
-        CheckFactionQuestKill(faction, ref _currentIntellectualFactionQuest);
+        CheckFactionQuestKill(faction, ref _currentUtopistFactionQuest, enemyType);
+        CheckFactionQuestKill(faction, ref _currentMilitaryFactionQuest, enemyType);
+        CheckFactionQuestKill(faction, ref _currentSurvivalistFactionQuest, enemyType);
+        CheckFactionQuestKill(faction, ref _currentIntellectualFactionQuest, enemyType);
     }
 
     //check if the current FactionQuestAction is a QuestKill
-    private void CheckFactionQuestKill(Faction faction, ref int questIndex)
+    private void CheckFactionQuestKill(Faction faction, ref int questIndex, string enemyType)
     {
         if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestKill aQuestKill)
         {
-            if (aQuestKill.IsFinished(faction))
+            if (aQuestKill.IsFinished(faction, enemyType))
             {
                 NextQuest(ref questIndex);
             }

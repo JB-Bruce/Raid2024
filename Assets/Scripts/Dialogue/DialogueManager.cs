@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour
             UpdatePnjUi(pnjHideName, pnjSprite);
         }
         UpdateDialogueUi();
-        UpdateChoicesButtons();
+        DesableChoicesButtons();
     }
 
     //update the visual of the dialogue

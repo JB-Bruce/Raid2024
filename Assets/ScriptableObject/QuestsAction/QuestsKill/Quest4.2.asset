@@ -16,5 +16,6 @@ MonoBehaviour:
   _description: 
   _actionsToDoAtStart: []
   _faction: 5
+  _enemyType: clearConstructionArea
   _numberToKill: 5
-  _killCount: 0
+  _killCount: 5

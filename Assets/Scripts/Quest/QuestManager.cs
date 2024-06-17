@@ -10,10 +10,22 @@ public class QuestManager : MonoBehaviour
     private int _banditsAtConstructionArea;
 
     [SerializeField]
-    private GameObject _case;
+    private ItemWithQuantity _checkItem;
 
     [SerializeField]
-    private GameObject _constructionArea;
+    private GameObject _case;
+    
+    [SerializeField]
+    private GameObject _bruce;
+
+    [SerializeField]
+    private GameObject _bruceTpPosition;
+
+    [SerializeField]
+    private GameObject _bruceTpBackPosition;
+
+    [SerializeField]
+    private GameObject _constructionSpot;
 
     [SerializeField]
     private PlayerInput _playerInput;
@@ -82,15 +94,15 @@ public class QuestManager : MonoBehaviour
     }
 
     //check if the current QuestAction is a QuestKill
-    public void CheckQuestKill(Faction faction)
+    public void CheckQuestKill(Faction faction, string enemyType = "")
     {
         if (_quests[_currentMainQuest].GetCurrentQuestAction() is QuestKill aQuestKill)
         {
-            if (aQuestKill.IsFinished(faction))
+            if (aQuestKill.IsFinished(faction, enemyType))
             {
                 NextMainQuest();
             }
-            _factionQuestManager.CheckFactionQuestsKill(faction);
+            _factionQuestManager.CheckFactionQuestsKill(faction, enemyType);
             UpdateInGameQuestUi();
         }
     }
@@ -111,19 +123,29 @@ public class QuestManager : MonoBehaviour
                 switch (actionsToDo[i])
                 {
                     case "CaseSpawnBandit":
-                        _factionUnitManager.SpawnWaveUnit(_case.transform.position, _case.transform.position, 5);
+                        _factionUnitManager.SpawnWaveUnit(_case.transform.position + new Vector3(0, 2, 0), _case.transform.position, 5);
                         break;
                     case "ConstructionSpawnBandit":
                         for (int j = 0; j < _banditsAtConstructionArea; j++)
                         {
-                            _factionUnitManager.SpawnWaveUnit(_constructionArea.transform.position, _case.transform.position, 8);
+                            _factionUnitManager.SpawnWaveUnit(_constructionSpot.transform.position + new Vector3(0, 2, 0), _constructionSpot.transform.position, 5, "clearConstructionArea");
                         }
+                        break;
+                    case "DefendBase":
+                        WaveManager.instance.StartWave(_constructionSpot.transform.position, 10, 1, 3);
+                        break;
+                    case "TpBruce":
+                        _bruce.transform.position = _bruceTpPosition.transform.position;
+                        break;
+                    case "TpBackBruce":
+                        _bruce.transform.position = _bruceTpBackPosition.transform.position;
                         break;
                     default:
                         break;
                 }
             }
         }
+        CheckQuestItems(_checkItem);
         UpdateInGameQuestUi();
     }
 

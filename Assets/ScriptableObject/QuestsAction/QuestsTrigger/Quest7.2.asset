@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f92058fc4160f3743b74414e0292bcf7, type: 3}
-  m_Name: Quest12.2
+  m_Script: {fileID: 11500000, guid: 10a87445cef97bf4a9b581173a2e5345, type: 3}
+  m_Name: Quest7.2
   m_EditorClassIdentifier: 
-  _name: "Qu\xEAte 12.2"
-  _faction: 5
-  _numberToKill: 5
-  _killCount: 0
+  _name: "Qu\xEAte 7.2"
+  _description: 
+  _actionsToDoAtStart:
+  - DefendBase
+  _questTriggerType: 0
+  _information: DefendBase
+  _objectifText: 

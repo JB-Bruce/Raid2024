@@ -100,12 +100,12 @@ public class FactionUnitManager : MonoBehaviour
         go.name = faction + indexeur.ToString();
         units.Add(go);
 
-        GiveAJob(unitBT, _transform.position);
+        GiveAJob(unitBT, _transform.position, !_isBandit);
         unitBT.faction = faction;
     }
 
     // Make spawn a unit with parameters (for wave)
-    public void SpawnWaveUnit(Vector3 position, Vector3 target, float maxRange = 0)
+    public void SpawnWaveUnit(Vector3 position, Vector3 target, float maxRange = 0, string enemyType = "")
     {
 
         GameObject go = Instantiate<GameObject>(unit, position, Quaternion.identity, parent);
@@ -119,21 +119,23 @@ public class FactionUnitManager : MonoBehaviour
         go.name = faction + indexeur.ToString();
         units.Add(go);
 
-        GiveAJob(unitBT, _transform.position);
+        GiveAJob(unitBT, _transform.position, true);
         unitBT.faction = faction;
 
         unitBT.order = UnitOrder.AreaGuard;
         unitMovement.SetGuardPoint(target, 0, maxRange);
+
+        unitBT.SetQuestType(enemyType);
     }
 
     // Give a job to unit
-    private void GiveAJob(UnitBT BT, Vector3 position)
+    private void GiveAJob(UnitBT BT, Vector3 position, bool canProtectFaction)
     {
         UnitMovement movement = BT.gameObject.GetComponent<UnitMovement>();
 
         int _random = Random.Range(0, 100);
 
-        if (faction != Faction.Bandit)
+        if (canProtectFaction)
         {
 
             for (int i = 0; i < surveillancePoints.Count; i++)

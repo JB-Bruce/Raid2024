@@ -26,6 +26,9 @@ public class Humanoid : MonoBehaviour
     private MovePlayer _player;
     private float _reduceDamage = 0;
 
+    [SerializeField]
+    private string _questType;
+
     private FactionManager _factionManager;
 
     protected virtual void Start()
@@ -139,7 +142,7 @@ public class Humanoid : MonoBehaviour
 
         if(_faction == Faction.Player)
         {
-            QuestManager.instance.CheckQuestKill(faction);
+            QuestManager.instance.CheckQuestKill(faction, _questType);
         }
     }
 
@@ -162,5 +165,11 @@ public class Humanoid : MonoBehaviour
     protected void MakeRun(bool isRunning)
     {
         _feetAnimator.SetBool("isRunning", isRunning);
+    }
+
+    //modify the quest type
+    public void SetQuestType(string questType)
+    {
+        _questType = questType;
     }
 }
