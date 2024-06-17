@@ -521,6 +521,7 @@ public class MovePlayer : MonoBehaviour
 
             if(_isReloading)
             {
+                StopAllCoroutines();
 
                 if (inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
                 {
@@ -535,7 +536,7 @@ public class MovePlayer : MonoBehaviour
 
                 if (inventory.weaponSlots[oldSelectedWeapon].Item is RangedWeapon oldRangedWeapon)
                 {
-                    StopCoroutine(CouroutineReload(oldRangedWeapon));
+                    //StopCoroutine(CouroutineReload(oldRangedWeapon));
                     for(int i = 0; i < ammoRemoved; i++)
                     {
                         inventory.AddItem(oldRangedWeapon.BulletType[0]);
@@ -653,6 +654,7 @@ public class MovePlayer : MonoBehaviour
         }
     }
 
+    //Change the text of the current ammo, next to the weapons
     private void UpdateAmmoNumber(RangedWeapon rangedWeapon)
     {
         maxBullet = rangedWeapon.MaxBullet.ToString();
@@ -675,7 +677,7 @@ public class MovePlayer : MonoBehaviour
         }
     }
     
-
+    //Detect the input for reload
     public void ReloadAmmoInput(InputAction.CallbackContext context)
     {
         if(context.started)
@@ -684,6 +686,7 @@ public class MovePlayer : MonoBehaviour
         }
     }
 
+    //Change the actual ammo of the weapon, and call a couroutine for display the current ammo
     public void ReloadAmmo()
     {
         if(!_isReloading)
@@ -771,6 +774,7 @@ public class MovePlayer : MonoBehaviour
         }
     }
 
+    //Wait two second before displaying current ammo
     IEnumerator CouroutineReload(RangedWeapon rangedWeapon)
     {
         _lineRenderer.enabled =false;
@@ -781,6 +785,7 @@ public class MovePlayer : MonoBehaviour
         UpdateAmmoNumber(rangedWeapon);
     }
 
+//When the weapon is removed from the weapon slot, remove all the ammo of the weapon. When reequiped, the weapons have 0 ammo.
     public void RemoveAmmoWhenRemoveWeapon(int _selectedWeapon)
     {
         if(_selectedWeapon == 0)
