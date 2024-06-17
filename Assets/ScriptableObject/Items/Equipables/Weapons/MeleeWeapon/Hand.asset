@@ -29,3 +29,4 @@ MonoBehaviour:
   _rotationRightHand: -140
   _rotationLeftHand: 40
   animAttack: HandHit
+  animIdle: WeaponIdle

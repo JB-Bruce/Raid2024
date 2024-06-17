@@ -639,6 +639,12 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void ItemSwap(ItemSlot slot1, ItemSlot slot2)
     {
+        if(slot1.Item.GetType() == typeof(RangedWeapon) && slot1 is EquipementSlot equipementSlot)
+        {
+            _player.RemoveAmmoWhenRemoveWeapon(weaponSlots.IndexOf(equipementSlot));
+        }
+
+
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
         itemWithQuantity.item = slot1.Item;
         itemWithQuantity.quantityNeed = slot1.Quantity;

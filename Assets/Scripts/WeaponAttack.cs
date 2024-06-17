@@ -20,8 +20,6 @@ public class WeaponAttack : MonoBehaviour
     private Weapon _equipedWeapon;
 
 
-    private GameObject _handWeapon;
-
     [SerializeField]
     private Transform _AnimTransform;
     private Animator _animator;
