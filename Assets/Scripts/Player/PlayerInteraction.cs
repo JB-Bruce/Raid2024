@@ -70,7 +70,7 @@ public class PlayerInteraction : MonoBehaviour
 
         for (int i = 1; i < interactables.Count; i++)
         {
-            if (interactables[i] != null)
+            if (interactables[i] != null && interactables[i].enabled)
             {
                 float distance = Vector3.Distance(transform.position, interactables[i].transform.position);
                 if (distance < nearestInteractableDistance)
@@ -96,7 +96,7 @@ public class PlayerInteraction : MonoBehaviour
                 _inventory.OpenFullInventory();
                 return;
             }
-            GetNearestInteractable();
+            _closestInteractable = GetNearestInteractable();
             if (_closestInteractable != null)//If a container is close, open the inventory and the container
             {
                 _closestInteractable.TryToInteract();

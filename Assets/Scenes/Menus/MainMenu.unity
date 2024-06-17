@@ -8069,6 +8069,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 625
       objectReference: {fileID: 0}
+    - target: {fileID: 2283301745431017457, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -937.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2732917049162532095, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_Name
       value: SettingsMenus
@@ -8500,6 +8504,14 @@ PrefabInstance:
     - target: {fileID: 5623691229775307549, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -260
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839061617880490409, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_Size
+      value: 0.20212767
+      objectReference: {fileID: 0}
+    - target: {fileID: 5839061617880490409, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5910762444932985241, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_AnchorMax.y
