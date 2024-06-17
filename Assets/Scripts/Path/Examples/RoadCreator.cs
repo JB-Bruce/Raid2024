@@ -18,13 +18,14 @@ public class RoadCreator : MonoBehaviour
     {
         Path path = GetComponent<PathCreator>().path;
         Vector2[] points = path.CalculateEvenlySpacedPoints(spacing);
-        GetComponent<MeshFilter>().mesh = CreateRoadMesh(points, path.IsClosed);
+        float[] widths = path.CalculateEvenlySpacedWidths(spacing);
+        GetComponent<MeshFilter>().mesh = CreateRoadMesh(points, widths, path.IsClosed);
 
         int textureRepeat = Mathf.RoundToInt(tiling * points.Length * spacing * .05f);
         GetComponent<MeshRenderer>().sharedMaterial.mainTextureScale = new Vector2(1, textureRepeat);
     }
 
-    Mesh CreateRoadMesh(Vector2[] points, bool isClosed)
+    Mesh CreateRoadMesh(Vector2[] points, float[] widths, bool isClosed)
     {
         Vector3[] verts = new Vector3[points.Length * 2];
         Vector2[] uvs = new Vector2[verts.Length];
@@ -48,8 +49,8 @@ public class RoadCreator : MonoBehaviour
             forward.Normalize();
             Vector2 left = new Vector2(-forward.y, forward.x);
 
-            verts[vertIndex] = points[i] + left * roadWidth * .5f;
-            verts[vertIndex + 1] = points[i] - left * roadWidth * .5f;
+            verts[vertIndex] = points[i] + left * widths[i] * .5f;
+            verts[vertIndex + 1] = points[i] - left * widths[i] * .5f;
 
             float completionPercent = i / (float)(points.Length - 1);
             float v = 1 - Mathf.Abs(2 * completionPercent - 1);

@@ -6,7 +6,6 @@ using UnityEditor;
 [CustomEditor(typeof(PathCreator))]
 public class PathEditor : Editor
 {
-
     PathCreator creator;
     Path Path
     {
@@ -18,6 +17,7 @@ public class PathEditor : Editor
 
     const float segmentSelectDistanceThreshold = .1f;
     int selectedSegmentIndex = -1;
+    int selectedWidthIndex = -1;
 
     public override void OnInspectorGUI()
     {
@@ -120,6 +120,30 @@ public class PathEditor : Editor
             }
         }
 
+        // Check for width handle selection
+        if (guiEvent.type == EventType.MouseMove || guiEvent.type == EventType.MouseDown)
+        {
+            float minDstToWidthHandle = creator.controlDiameter * .5f;
+            int newSelectedWidthIndex = -1;
+
+            for (int i = 0; i < Path.NumSegments; i++)
+            {
+                Vector2[] points = Path.GetPointsInSegment(i);
+                float dst = Vector2.Distance(mousePos, points[1]);
+                if (dst < minDstToWidthHandle)
+                {
+                    minDstToWidthHandle = dst;
+                    newSelectedWidthIndex = i;
+                }
+            }
+
+            if (newSelectedWidthIndex != selectedWidthIndex)
+            {
+                selectedWidthIndex = newSelectedWidthIndex;
+                HandleUtility.Repaint();
+            }
+        }
+
         HandleUtility.AddDefaultControl(0);
     }
 
@@ -139,16 +163,48 @@ public class PathEditor : Editor
             Color segmentCol = (i == selectedSegmentIndex && Event.current.shift) ? creator.selectedSegmentCol : creator.segmentCol;
             Handles.color = segmentCol;
             Handles.DrawBezier(pos + points[0], pos + points[3], pos + points[1], pos + points[2], segmentCol, null, 2);
+
+            // Draw width handle
+            if (selectedWidthIndex == i)
+            {
+                Handles.color = Color.blue;
+                Handles.DrawSolidDisc(pos + points[1], Vector3.forward, creator.controlDiameter * .5f);
+            }
+        }
+
+        // Draw width handles
+        if (creator.displayControlPoints)
+        {
+            for (int i = 0; i < Path.NumSegments; i++)
+            {
+                Vector2[] points = Path.GetPointsInSegment(i);
+                Handles.color = Color.blue;
+                EditorGUI.BeginChangeCheck();
+                Vector2 newWidthPos = Handles.FreeMoveHandle(pos + points[0], creator.controlDiameter * 3f, Vector3.zero, Handles.CircleHandleCap);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(creator, "Move width point");
+                    Path.MoveWidthHandle(i, (newWidthPos - (pos + points[0])).magnitude);
+                }
+                EditorGUI.BeginChangeCheck();
+                newWidthPos = Handles.FreeMoveHandle(pos + points[3], creator.controlDiameter * 3f, Vector3.zero, Handles.CircleHandleCap);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    Undo.RecordObject(creator, "Move width point");
+                    Path.MoveWidthHandle(i+1, (newWidthPos - (pos + points[3])).magnitude);
+                }
+            }
         }
 
 
+        // Draw points
         for (int i = 0; i < Path.NumPoints; i++)
         {
             if (i % 3 == 0 || creator.displayControlPoints)
             {
                 Handles.color = (i % 3 == 0) ? creator.anchorCol : creator.controlCol;
                 float handleSize = (i % 3 == 0) ? creator.anchorDiameter : creator.controlDiameter;
-                Vector2 newPos = Handles.FreeMoveHandle(pos + Path[i], handleSize, Vector2.zero, Handles.CylinderHandleCap);
+                Vector2 newPos = Handles.FreeMoveHandle(pos + Path[i], handleSize, Vector3.zero, Handles.CircleHandleCap);
                 if (Path[i] + pos != newPos)
                 {
                     Undo.RecordObject(creator, "Move point");
@@ -164,6 +220,8 @@ public class PathEditor : Editor
         if (creator.path == null)
         {
             creator.CreatePath();
+
         }
     }
 }
+

@@ -7,20 +7,32 @@ public class Path
 {
 
     [SerializeField, HideInInspector]
-    List<Vector2> points;
+    private List<Vector2> points;
     [SerializeField, HideInInspector]
-    bool isClosed;
+    private List<float> widths;
     [SerializeField, HideInInspector]
-    bool autoSetControlPoints;
+    private List<Vector2> widthsPoints;
+    [SerializeField, HideInInspector]
+    private bool isClosed;
+    [SerializeField, HideInInspector]
+    private bool autoSetControlPoints;
 
-    public Path(Vector2 centre)
+    public Path(Vector2 center)
     {
         points = new List<Vector2>
         {
-            centre+Vector2.left,
-            centre+(Vector2.left+Vector2.up)*.5f,
-            centre + (Vector2.right+Vector2.down)*.5f,
-            centre + Vector2.right
+            center + Vector2.left,
+            center + (Vector2.left + Vector2.up) * .5f,
+            center + (Vector2.right + Vector2.down) * .5f,
+            center + Vector2.right
+        };
+
+        widths = new List<float> { 1, 1 };
+
+        widthsPoints = new()
+        {
+            center + (Vector2.left + Vector2.up),
+            center + (Vector2.right + Vector2.up)
         };
     }
 
@@ -43,28 +55,28 @@ public class Path
             if (isClosed != value)
             {
                 isClosed = value;
-
                 if (isClosed)
                 {
                     points.Add(points[points.Count - 1] * 2 - points[points.Count - 2]);
                     points.Add(points[0] * 2 - points[1]);
-                    if (autoSetControlPoints)
-                    {
-                        AutoSetAnchorControlPoints(0);
-                        AutoSetAnchorControlPoints(points.Count - 3);
-                    }
+                    points.Add(points[0]);
+                    widths.Add(widths[widths.Count - 1]);
                 }
                 else
                 {
-                    points.RemoveRange(points.Count - 2, 2);
-                    if (autoSetControlPoints)
-                    {
-                        AutoSetStartAndEndControls();
-                    }
+                    points.RemoveRange(points.Count - 3, 3);
+                    widths.RemoveAt(widths.Count - 1);
                 }
+
+                if (autoSetControlPoints)
+                {
+                    AutoSetStartAndEndControls();
+                }
+
             }
         }
     }
+
 
     public bool AutoSetControlPoints
     {
@@ -106,16 +118,20 @@ public class Path
         points.Add(points[points.Count - 1] * 2 - points[points.Count - 2]);
         points.Add((points[points.Count - 1] + anchorPos) * .5f);
         points.Add(anchorPos);
+        widths.Add(widths[widths.Count - 1]);
 
         if (autoSetControlPoints)
         {
             AutoSetAllAffectedControlPoints(points.Count - 1);
         }
+
     }
 
     public void SplitSegment(Vector2 anchorPos, int segmentIndex)
     {
         points.InsertRange(segmentIndex * 3 + 2, new Vector2[] { Vector2.zero, anchorPos, Vector2.zero });
+        widths.Insert(segmentIndex + 1, (widths[segmentIndex] + widths[segmentIndex + 1]) / 2);
+
         if (autoSetControlPoints)
         {
             AutoSetAllAffectedControlPoints(segmentIndex * 3 + 3);
@@ -124,6 +140,7 @@ public class Path
         {
             AutoSetAnchorControlPoints(segmentIndex * 3 + 3);
         }
+
     }
 
     public void DeleteSegment(int anchorIndex)
@@ -137,21 +154,30 @@ public class Path
                     points[points.Count - 1] = points[2];
                 }
                 points.RemoveRange(0, 3);
+                widths.RemoveAt(0);
             }
             else if (anchorIndex == points.Count - 1 && !isClosed)
             {
                 points.RemoveRange(anchorIndex - 2, 3);
+                widths.RemoveAt(widths.Count - 1);
             }
             else
             {
                 points.RemoveRange(anchorIndex - 1, 3);
+                widths.RemoveAt(anchorIndex / 3);
             }
+
         }
     }
 
     public Vector2[] GetPointsInSegment(int i)
     {
         return new Vector2[] { points[i * 3], points[i * 3 + 1], points[i * 3 + 2], points[LoopIndex(i * 3 + 3)] };
+    }
+
+    public float GetWidthInSegment(int i)
+    {
+        return widths[i / 3];
     }
 
     public void MovePoint(int i, Vector2 pos)
@@ -233,6 +259,55 @@ public class Path
         return evenlySpacedPoints.ToArray();
     }
 
+    public float[] CalculateEvenlySpacedWidths(float spacing, float resolution = 1)
+    {
+        List<float> evenlySpacedWidths = new List<float>();
+        evenlySpacedWidths.Add(widths[0]);
+        Vector2 previousPoint = points[0];
+        float dstSinceLastEvenPoint = 0;
+        float lastWidth = widths[0];
+
+
+        for (int segmentIndex = 0; segmentIndex < NumSegments; segmentIndex++)
+        {
+            float newWidth = widths[(segmentIndex + 1) % widths.Count];
+            Vector2[] p = GetPointsInSegment(segmentIndex);
+            float controlNetLength = Vector2.Distance(p[0], p[1]) + Vector2.Distance(p[1], p[2]) + Vector2.Distance(p[2], p[3]);
+            float estimatedCurveLength = Vector2.Distance(p[0], p[3]) + controlNetLength / 2f;
+            int divisions = Mathf.CeilToInt(estimatedCurveLength * resolution * 10);
+            float t = 0;
+            while (t <= 1)
+            {
+                t += 1f / divisions;
+                Vector2 pointOnCurve = Bezier.EvaluateCubic(p[0], p[1], p[2], p[3], t);
+                dstSinceLastEvenPoint += Vector2.Distance(previousPoint, pointOnCurve);
+
+                while (dstSinceLastEvenPoint >= spacing)
+                {
+                    float overshootDst = dstSinceLastEvenPoint - spacing;
+                    Vector2 newEvenlySpacedPoint = pointOnCurve + (previousPoint - pointOnCurve).normalized * overshootDst;
+                    evenlySpacedWidths.Add(Mathf.Lerp(lastWidth, newWidth, t));
+                    dstSinceLastEvenPoint = overshootDst;
+                    previousPoint = newEvenlySpacedPoint;
+                }
+
+                previousPoint = pointOnCurve;
+            }
+            lastWidth = newWidth;
+        }
+
+        evenlySpacedWidths.Add(widths[0]);
+
+        return evenlySpacedWidths.ToArray();
+    }
+
+    public void MoveWidthHandle(int i, float width)
+    {
+        if (i < widths.Count)
+        {
+            widths[i] = width;
+        }
+    }
 
     void AutoSetAllAffectedControlPoints(int updatedAnchorIndex)
     {
@@ -287,6 +362,7 @@ public class Path
             }
         }
     }
+
 
     void AutoSetStartAndEndControls()
     {
