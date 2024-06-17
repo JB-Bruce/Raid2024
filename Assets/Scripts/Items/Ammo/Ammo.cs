@@ -4,13 +4,14 @@ using UnityEngine;
 public class Ammo : Item
 {
     [Header("Ammo")]
-    [SerializeField] protected BulletType _bulletType;
+    public string BulletType;
 
-    public BulletType BulletType { get { return _bulletType; } }
+    //public BulletType BulletType { get { return _bulletType; } }
 }
 
+/*
 public enum BulletType
 {
     RiffleAmmo,
     HandGunAmmo
-}
+}*/
