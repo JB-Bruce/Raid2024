@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SteelPlate
   m_EditorClassIdentifier: 
   _weight: 0
-  _isStackable: 1
+  _isStackable: 0
   _maxStack: 1
   _name: Plaque d'acier
   _description: 

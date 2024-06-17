@@ -385,6 +385,20 @@ MonoBehaviour:
       quantityNeed: 4
     - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
       quantityNeed: 7
+  - tradeItem: {fileID: 11400000, guid: c489ecec3f98f3f4abeecf51fc0f582a, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 9
+  - tradeItem: {fileID: 11400000, guid: 842d3181ddf62b44da8756e61cdec506, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 4
   _traderType: Marchand
   _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
 --- !u!1 &6587192998496651216

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: AdjustableWrench
   m_EditorClassIdentifier: 
   _weight: 0
-  _isStackable: 1
-  _maxStack: 99
+  _isStackable: 0
+  _maxStack: 1
   _name: "Cl\xE9 \xE0 molette"
   _description: 
   _itemSprite: {fileID: 21300000, guid: 2450d5676b7239d47a3399ae4bfb6a2c, type: 3}

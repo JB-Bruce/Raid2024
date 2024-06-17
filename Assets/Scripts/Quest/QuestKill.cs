@@ -21,6 +21,10 @@ public class QuestKill : QuestAction
     public override bool Configure(GameObjectsList objectsToActivateAtStart)
     {
         _killCount = 0;
+        for (int i = 0; i < objectsToActivateAtStart.gameObjects.Count; i++)
+        {
+            objectsToActivateAtStart.gameObjects[i].SetActive(true);
+        }
         return false;
     }
 

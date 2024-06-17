@@ -18,6 +18,10 @@ MonoBehaviour:
   _itemsNeed:
   - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
     quantityNeed: 4
-  - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+  - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
     quantityNeed: 3
-  _itemsInInventory: []
+  _itemsInInventory:
+  - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+    quantityNeed: 4
+  - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+    quantityNeed: 3
