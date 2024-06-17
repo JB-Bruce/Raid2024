@@ -29,5 +29,6 @@ MonoBehaviour:
   _rightHandPos: {x: 0.1, y: -0.2}
   _rotationRightHand: -24
   _rotationLeftHand: 0
+  _moveSpeed: 5
   animAttack: BaseballBatAttack
   animIdle: WeaponIdle

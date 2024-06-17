@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class WeaponAttack : MonoBehaviour
@@ -25,6 +26,7 @@ public class WeaponAttack : MonoBehaviour
     private Animator _animator;
     private RangedWeapon _rangedWeapon;
     private UnitCombat _unitCombat;
+    private NavMeshAgent _navMeshAgent;
 
     [SerializeField]
     private SpriteRenderer _handWeaponSpriteRenderer;
@@ -52,6 +54,7 @@ public class WeaponAttack : MonoBehaviour
     {
         _unitCombat = transform.parent.parent.GetComponent<UnitCombat>();
         _animator = GetComponent<Animator>();
+        _navMeshAgent = transform.parent.parent.GetComponent<NavMeshAgent>();
         _camera = Camera.main;
     }
 
@@ -99,6 +102,11 @@ public class WeaponAttack : MonoBehaviour
         weaponChange.Invoke(_equipedWeapon);
         _handWeaponSpriteRenderer.sprite = _equipedWeapon.WorldSprite;
         //_AnimTransform.localScale = _normalScale;
+
+        if(_navMeshAgent != null)
+        {
+            _navMeshAgent.speed = weapon.MoveSpeed;
+        }
 
         _rightHandTransform.localPosition = new Vector3(weapon.RightHand.x, weapon.RightHand.y, 0);
         _rightHandTransform.localRotation = Quaternion.Euler(0, 0, weapon.RotationRightHand);
