@@ -3,13 +3,14 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class LanguageManager : MonoBehaviour
 {
     public string filePath = "Assets/Localization.csv";
     private Dictionary<string, Dictionary<string, string>> localizationData;
 
-    private List<string> differentLanguages = new();
+    public List<string> differentLanguages = new();
     public List<LanguageFlags> languageFlags = new();
     int languageIndex = 0;
 
@@ -44,6 +45,7 @@ public class LanguageManager : MonoBehaviour
             if (differentLanguages[i] == selectedLanguage)
             {
                 languageIndex = i;
+                flagImg.sprite = GetFlagSprite(selectedLanguage);
                 return;
             }
         }
@@ -65,7 +67,7 @@ public class LanguageManager : MonoBehaviour
     {
         if(flagImg != null)
         {
-            flagImg.sprite = 
+            flagImg.sprite = GetFlagSprite(newLanguage);
         }
         if(instance != this)
         {
@@ -77,12 +79,13 @@ public class LanguageManager : MonoBehaviour
         languageChangedEvent.Invoke();
     }
 
-    private void GetFlagSprite(string language)
+    private Sprite GetFlagSprite(string language)
     {
         foreach (var item in languageFlags)
         {
-
+            if (item.language == language) return item.sp;
         }
+        return null;
     }
 
     void LoadLocalizationData()
@@ -94,11 +97,14 @@ public class LanguageManager : MonoBehaviour
 
         var headers = lines[0].Split(',');
 
+        for (int k = 1; k < headers.Length; k++)
+        {
+            differentLanguages.Add(headers[k]);
+        }
+
         for (int i = 1; i < lines.Length; i++)
         {
             var fields = lines[i].Split(',');
-
-            differentLanguages.Add(headers[i]);
 
             var key = fields[0];
             var translations = new Dictionary<string, string>();
@@ -106,7 +112,6 @@ public class LanguageManager : MonoBehaviour
             for (int j = 1; j < fields.Length; j++)
             {
                 translations[headers[j]] = fields[j];
-                
             }
 
             localizationData[key] = translations;
