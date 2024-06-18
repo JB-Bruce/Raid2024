@@ -12,6 +12,8 @@ public class FactionMenu : MonoBehaviour
 
     private FactionLeader _leader;
 
+    private FactionManager _factionManager;
+
     [SerializeField]
     private Transform _parentBuildingInfo;
 
@@ -47,6 +49,7 @@ public class FactionMenu : MonoBehaviour
         _statsManager = StatsManager.instance;
         _statsManager.haveChangeSpawn.AddListener(RespawnHaveChange);
         _inventory = Inventory.Instance;
+        _factionManager = FactionManager.Instance;
 
         for (int i = 0; i < _items.Count; i++)
         {
@@ -147,6 +150,13 @@ public class FactionMenu : MonoBehaviour
     // Call when the respawn point have change for uncheck the check box of other faction
     private void RespawnHaveChange()
     {
+        if(_factionManager.GetReputation(Faction.Player, _faction.FactionUnitManager.faction) < _factionManager.neutralReputation)
+        {
+            _toggle.SetIsOnWithoutNotify(false);
+            _toggle.interactable = false;
+            return;
+        }
+        _toggle.interactable = true;
         if(_eRespawnFaction != _statsManager.GetRespawnFaction()) 
         {
             _toggle.SetIsOnWithoutNotify(false);
@@ -234,7 +244,6 @@ public class FactionMenu : MonoBehaviour
     public void OpenFactionMenu(FactionSc faction)
     {
         _faction = faction;
-        _eRespawnFaction = CastToEFactionRespawn(_faction.FactionUnitManager.faction);
         gameObject.SetActive(true);
         _leader = _faction.FactionLeader;
 
@@ -243,6 +252,8 @@ public class FactionMenu : MonoBehaviour
             Init();
         }
 
+        _eRespawnFaction = _statsManager.CastToEFactionRespawn(_faction.FactionUnitManager.faction);
+        
         SpawnBuildings();
         UnitRecruitement(0);
         RespawnHaveChange();
@@ -255,24 +266,6 @@ public class FactionMenu : MonoBehaviour
     public void Close()
     {
         this.gameObject.SetActive(false);
-    }
-
-    // Get the EFactionRespawn for a Faction
-    private StatsManager.ERespawnFaction CastToEFactionRespawn(Faction faction)
-    {
-        switch (faction) 
-        {
-            case Faction.Utopist: 
-                return StatsManager.ERespawnFaction.Utopist;
-            case Faction.Scientist: 
-                return StatsManager.ERespawnFaction.Scientist;
-            case Faction.Survivalist: 
-                return StatsManager.ERespawnFaction.Survivalist;
-            case Faction.Military: 
-                return StatsManager.ERespawnFaction.Military;
-            default: 
-                return StatsManager.ERespawnFaction.Null;
-        }
     }
 
 }

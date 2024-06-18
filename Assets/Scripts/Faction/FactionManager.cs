@@ -17,6 +17,8 @@ public class FactionManager : MonoBehaviour
     public float changeReputationForAllies = 0.1f;
     public Transform[] vertices = new Transform[4];  // Les sommets du losange
 
+    private StatsManager _statManager;
+
     public UnityEvent<POI, Faction> IsPoiCaught = new();
 
     [SerializeField] private List<FactionPlacement> _factionsPlacement = new List<FactionPlacement>();
@@ -91,8 +93,24 @@ public class FactionManager : MonoBehaviour
                 reputation.reputation = Mathf.Clamp(reputation.reputation, -5, 8);
                 reputations[i] = reputation;
                 ChangeReputationText(faction1, faction2, reputations[i].reputation);
+                CanAlwaysRespawnInFaction(faction1, faction2, reputation.reputation);
                 return;
             }
+        }
+    }
+
+    // Check if the Player is not ennemy with the faction where he set is respawn
+    private void CanAlwaysRespawnInFaction(Faction faction1, Faction faction2, float reputation)
+    {
+        if(_statManager == null)
+        {
+            _statManager = StatsManager.instance;
+        }
+
+        if((faction1 == Faction.Player || faction2 == Faction.Player) &&
+            (_statManager.CastToEFactionRespawn(faction1) == _statManager.GetRespawnFaction() || _statManager.CastToEFactionRespawn(faction2) == _statManager.GetRespawnFaction()))
+        {
+            _statManager.ChangeRespawnFaction(StatsManager.ERespawnFaction.Null);
         }
     }
 
