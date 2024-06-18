@@ -5028,6 +5028,7 @@ GameObject:
   - component: {fileID: 1635004243}
   - component: {fileID: 1635004245}
   - component: {fileID: 1635004244}
+  - component: {fileID: 1635004246}
   m_Layer: 5
   m_Name: CinematicTextHolder
   m_TagString: Untagged
@@ -5049,10 +5050,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1308541016}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1350, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1635004244
 MonoBehaviour:
@@ -5152,6 +5153,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635004242}
   m_CullTransparentMesh: 1
+--- !u!95 &1635004246
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1635004242}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ce40814166e01e74886bd14cbe5b6b57, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1647646306
 GameObject:
   m_ObjectHideFlags: 0
@@ -9149,9 +9171,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 196565490}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _textHolder
+      value: 
+      objectReference: {fileID: 1308541015}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _currentSlide
       value: 
       objectReference: {fileID: 703883205}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _textAnimator
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _currentCineText
       value: 
@@ -9185,32 +9215,56 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 46bd9e9e37981d442af3d4ccb970bdfa, type: 3}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
-      propertyPath: _cineTexts.Array.data[0].delayAfterFinish
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
-      propertyPath: _cineTexts.Array.data[1].delayAfterFinish
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
-      propertyPath: _cineTexts.Array.data[2].delayAfterFinish
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
-      propertyPath: _cineTexts.Array.data[3].delayAfterFinish
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
-      propertyPath: _cineTexts.Array.data[4].delayAfterFinish
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
-      propertyPath: _cineTexts.Array.data[5].delayAfterFinish
+      propertyPath: _cineTexts.Array.data[0].displayDuration
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[1].displayDuration
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[2].displayDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[3].displayDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[5].displayDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[6].displayDuration
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[0].delayAfterFinish
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[1].delayAfterFinish
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[2].delayAfterFinish
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[3].delayAfterFinish
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[4].delayAfterFinish
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[5].delayAfterFinish
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[6].delayAfterFinish
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3888888259732144679, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: m_LocalPosition.x
