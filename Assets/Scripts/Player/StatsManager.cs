@@ -424,6 +424,24 @@ public class StatsManager : Humanoid
         haveChangeSpawn.Invoke();
     }
 
+    // Get the EFactionRespawn for a Faction
+    public ERespawnFaction CastToEFactionRespawn(Faction faction)
+    {
+        switch (faction)
+        {
+            case Faction.Utopist:
+                return StatsManager.ERespawnFaction.Utopist;
+            case Faction.Scientist:
+                return StatsManager.ERespawnFaction.Scientist;
+            case Faction.Survivalist:
+                return StatsManager.ERespawnFaction.Survivalist;
+            case Faction.Military:
+                return StatsManager.ERespawnFaction.Military;
+            default:
+                return StatsManager.ERespawnFaction.Null;
+        }
+    }
+
     // Get Respawn Faction
     public ERespawnFaction GetRespawnFaction() { return _respawnFaction; }
 
