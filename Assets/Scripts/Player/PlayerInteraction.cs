@@ -15,8 +15,6 @@ public class PlayerInteraction : MonoBehaviour
 
     public List<Interactable> interactables = new List<Interactable>();
 
-    private Interactable _closestInteractable;
-
     private void Awake()
     {
         if (Instance == null)
@@ -46,12 +44,7 @@ public class PlayerInteraction : MonoBehaviour
         Interactable interactable = GetNearestInteractable();
         if (interactable != null)//if we find the nearest interactable, highlight it
         {
-            _closestInteractable = interactable;
-            _closestInteractable.Highlight(true);
-        }
-        else
-        {
-            _closestInteractable = null;
+            interactable.Highlight(true);
         }
     }
 
@@ -65,10 +58,10 @@ public class PlayerInteraction : MonoBehaviour
             return null;
         }
 
-        Interactable nearestInteractable = interactables[0];
-        float nearestInteractableDistance = Vector3.Distance(transform.position, interactables[0].transform.position);
+        Interactable nearestInteractable = null;
+        float nearestInteractableDistance = float.PositiveInfinity;
 
-        for (int i = 1; i < interactables.Count; i++)
+        for (int i = 0; i < interactables.Count; i++)
         {
             if (interactables[i] != null && interactables[i].enabled)
             {
@@ -96,10 +89,10 @@ public class PlayerInteraction : MonoBehaviour
                 _inventory.OpenFullInventory();
                 return;
             }
-            _closestInteractable = GetNearestInteractable();
-            if (_closestInteractable != null)//If a container is close, open the inventory and the container
+            Interactable interactable = GetNearestInteractable();
+            if (interactable != null)//If a container is close, open the inventory and the container
             {
-                _closestInteractable.TryToInteract();
+                interactable.TryToInteract();
             }
         }
     }

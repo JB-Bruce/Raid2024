@@ -21,5 +21,5 @@ MonoBehaviour:
   - item: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
     dropRate: 50
     dropNumber:
-    - amount: 1
+    - amount: 25
       pourcentage: 100

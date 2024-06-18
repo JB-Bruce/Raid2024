@@ -77,7 +77,7 @@ public class MovePlayer : MonoBehaviour
         
         _inGameActionMap = _input.actions.FindActionMap("InGame");
         _weaponAttack.Init();
-        _animator = transform.GetChild(0).GetComponent<Animator>();
+        _animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         WeaponSelected();
     }
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4737630396025798506}
   - component: {fileID: 8927071942371023014}
+  - component: {fileID: 1272589283933137518}
   m_Layer: 0
   m_Name: ArmouryBuilding2Sprite
   m_TagString: Untagged
@@ -85,6 +86,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1272589283933137518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116907053236628235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &235033018802824167
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,8 +312,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1277414741848670986}
-  - component: {fileID: 6431765176327450681}
   - component: {fileID: 1679024459344141784}
+  - component: {fileID: 8453884897881644730}
   m_Layer: 0
   m_Name: ArmouryBuilding2
   m_TagString: Untagged
@@ -321,22 +338,6 @@ Transform:
   - {fileID: 4737630396025798506}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6431765176327450681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3921981410131187832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!114 &1679024459344141784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +386,33 @@ MonoBehaviour:
       quantityNeed: 3
   _traderType: Armurier
   _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+--- !u!114 &8453884897881644730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3921981410131187832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eae98ffe826b2d41b5d3713022be3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: 0
+  _buildingLevel: 1
+  _maxLevel: 2
+  buildingImage: {fileID: 21300000, guid: 82bb66ad7670d0c41ab00352668eb4f8, type: 3}
+  buildingDescription: Armory
+  buildingUpgradeInfo: Info
+  WeaponSpawnPerLevel:
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+      percentage: 90
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 10
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+      percentage: 1
 --- !u!1 &6370066154580544063
 GameObject:
   m_ObjectHideFlags: 0

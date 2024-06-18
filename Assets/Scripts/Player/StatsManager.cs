@@ -289,8 +289,8 @@ public class StatsManager : Humanoid
     {
         yield return new WaitForSecondsRealtime(2f);
 
-        
         DeathScreen.SetActive(true);
+        DeathScreen.transform.parent.GetComponent<ControllerMenus>().SelectFirstButton();
         DeathFade.CrossFadeAlpha(0,1f,true);
         
         //Time.timeScale = 1.0f;
