@@ -36,7 +36,7 @@ MonoBehaviour:
   _maxBullet: 25
   _reloadTime: 2.16
   _ammoType:
-  - {fileID: 11400000, guid: 2c8f4bacac00df1499309c65241b96fb, type: 2}
+  - {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
   _firePoint: {x: 12, y: 1.2}
   bullet: {fileID: 5008059619825466956, guid: b3fe1a02dfbdd534bab5e85ccb492e03, type: 3}
   animReload: FamasReload

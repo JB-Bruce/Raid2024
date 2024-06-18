@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 3940482209557991970}
   - component: {fileID: 5656506728215062035}
   - component: {fileID: -6361526223329198720}
+  - component: {fileID: 6184363168880076205}
   m_Layer: 0
   m_Name: CantinaBuilding
   m_TagString: Untagged
@@ -103,7 +104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6185244960243729735}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.9599977, y: -0.6299834, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -179,3 +180,24 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!114 &6184363168880076205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185244960243729735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8388ec3da5662c24bb0e93b8f21a70db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: 0
+  _buildingLevel: 1
+  _maxLevel: 3
+  buildingImage: {fileID: 21300000, guid: b0723a50e16e6ab40acaf371555cdcb4, type: 3}
+  buildingDescription: Cafet
+  buildingUpgradeInfo: Info
+  respawnSpeedPerLevel:
+  - 1
+  - 0.9

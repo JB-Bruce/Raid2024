@@ -19,6 +19,8 @@ public class MapManager : MonoBehaviour
     public Transform playerPingArrow;
     public Transform questPingArrow;
 
+    public Transform mapT;
+
     public bool doesArrowsFollowPlayer;
 
     public float distanceToDesappear;
@@ -62,6 +64,8 @@ public class MapManager : MonoBehaviour
         {
             SetQuestPingArrow();
         }
+
+        if (!mapT.gameObject.activeInHierarchy) return;
 
         if (IsPointerOverUIElement(out GameObject uiElement))
         {

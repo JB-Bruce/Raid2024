@@ -4,6 +4,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class StatsManager : Humanoid
@@ -11,6 +12,9 @@ public class StatsManager : Humanoid
     public static StatsManager instance;
 
     private MovePlayer _movePlayer;
+
+    [SerializeField]
+    private PlayerInput _playerInput;
 
     [SerializeField]
     private Transform _respawnPosition;
@@ -146,7 +150,8 @@ public class StatsManager : Humanoid
             DeathFade.CrossFadeAlpha(0,0.01f,true);
             DeathFade.enabled = true;
             DeathFade.CrossFadeAlpha(1,1f,true);
-            
+
+            _playerInput.SwitchCurrentActionMap("Death");
 
             StartCoroutine(CouroutineDeath());
         }
@@ -241,6 +246,7 @@ public class StatsManager : Humanoid
         DeathFade.CrossFadeAlpha(0,0.01f,true);
         DeathFade.enabled = true;
         DeathFade.CrossFadeAlpha(1,1f,true);
+        _playerInput.SwitchCurrentActionMap("InGame");
 
         StartCoroutine(CouroutineRespawn());
     }
@@ -283,8 +289,8 @@ public class StatsManager : Humanoid
     {
         yield return new WaitForSecondsRealtime(2f);
 
-        
         DeathScreen.SetActive(true);
+        DeathScreen.transform.parent.GetComponent<ControllerMenus>().SelectFirstButton();
         DeathFade.CrossFadeAlpha(0,1f,true);
         
         //Time.timeScale = 1.0f;
