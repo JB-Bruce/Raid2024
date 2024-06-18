@@ -20,6 +20,8 @@ public class DecorManager : MonoBehaviour
     [SerializeField] int _numberOfDecor = 100;
     [SerializeField] float _minDistanceBetweenDecor = 0.5f;
     [SerializeField] float _maxDistanceBetweenDecor = 2f;
+    [SerializeField] float _minOffsetDistance = 0.5f;
+    [SerializeField] float _maxOffsetDistance = 2f;
     [SerializeField] int _maxAttempts = 10;
 
     [Header("Generation Bounds")]
@@ -87,7 +89,7 @@ public class DecorManager : MonoBehaviour
                 randomPos = GetRandomPointInPolygon(_polygonPoints);
 
                 // Add a random offset to make positions more diverse
-                float randomOffset = Random.Range(_minDistanceBetweenDecor, _maxDistanceBetweenDecor);
+                float randomOffset = Random.Range(_minOffsetDistance, _maxOffsetDistance);
                 Vector2 randomDirection = Random.insideUnitCircle.normalized;
                 Vector2 offsetPosition = randomPos + randomDirection * randomOffset;
 
