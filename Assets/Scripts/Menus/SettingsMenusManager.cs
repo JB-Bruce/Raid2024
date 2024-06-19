@@ -27,6 +27,9 @@ public class SettingsMenusManager : MonoBehaviour
 
     [SerializeField] string _actionMapString;
 
+    MenuManager _menuManager;
+    MenuButtonTracker _menuButtonTracker;
+
     public static SettingsMenusManager instance;
 
     private void Awake()
@@ -66,6 +69,7 @@ public class SettingsMenusManager : MonoBehaviour
 
     public void OpenSettings()
     {
+        _playerInput = FindAnyObjectByType<PlayerInput>();
         _playerInput.SwitchCurrentActionMap("Settings");
         isInSettings = true;
         settingsMenus.SetActive(true);
@@ -85,6 +89,20 @@ public class SettingsMenusManager : MonoBehaviour
 
         _chosenMenu = newMenu;
         _chosenMenu.SetActive(true);
+    }
+
+    public void ActivateMainMenu()
+    {
+        _menuManager = MenuManager.instance;
+
+        _menuManager.gameObject.SetActive(true);
+    }
+
+    public void GetSelectedButton()
+    {
+        _menuButtonTracker = MenuButtonTracker.instance;
+
+        _menuButtonTracker.SetLastGameObjectSelected(GameObject.Find("SettingsBackButton"));
     }
 
     public void DeactivateSettingsMenus()
