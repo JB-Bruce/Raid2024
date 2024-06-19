@@ -9216,27 +9216,31 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 46bd9e9e37981d442af3d4ccb970bdfa, type: 3}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[0].displayDuration
-      value: 4
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[1].displayDuration
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[2].displayDuration
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[3].displayDuration
-      value: 2
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[4].displayDuration
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[5].displayDuration
-      value: 2
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[6].displayDuration
-      value: 2
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[0].delayAfterFinish

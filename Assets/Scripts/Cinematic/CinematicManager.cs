@@ -18,10 +18,6 @@ public class CinematicManager : MonoBehaviour
 
     private Coroutine _autoNextCoroutine;
 
-    [Header("Typing Text Settings: ")]
-    [SerializeField] float _delayBeforeStart = 0f;
-    [SerializeField] float timeBetweenTexts = 4f;
-
     [Header("Scene Management: ")]
     [SerializeField] string _sceneToLoadAtEnd;
 
