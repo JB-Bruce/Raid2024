@@ -13,9 +13,27 @@ public class CharacterCustomisation : MonoBehaviour
     public static CharacterCustomisation Instance;
 
     public Image CharacterPreview;
+    public Image CharacterPreviewHair;
+    public Image CharacterPreviewHip;
 
     public Sprite WomanSprite;
+    public Sprite WomanSpriteHair;
+    public Sprite WomanSpriteHip;
+
     public Sprite ManSprite;
+    public Sprite ManSpriteHair;
+    public Sprite ManSpriteHip;
+
+
+    public SpriteRenderer PlayerHair;
+    public SpriteRenderer PlayerBody;
+    public SpriteRenderer PlayerHip;
+    
+    /*
+    public Sprite PlayerSpriteBody;
+    public Sprite PlayerSpriteHair;
+    public Sprite PlayerSpriteHip;*/
+
 
     public Toggle ToggleSkipTutorial;
 
@@ -49,6 +67,11 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToWoman()
     {
         CharacterPreview.sprite = WomanSprite;
+        CharacterPreviewHair.rectTransform.sizeDelta = new Vector2(139, 157);
+        CharacterPreviewHair.rectTransform.anchoredPosition = new Vector2(0, 81);
+        CharacterPreviewHair.sprite = WomanSpriteHair;
+        CharacterPreviewHip.sprite = WomanSpriteHip;
+
         _characterGender = "Woman";
     }
 
@@ -58,6 +81,10 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToMan()
     {
         CharacterPreview.sprite = ManSprite;
+        CharacterPreviewHair.rectTransform.sizeDelta = new Vector2(134, 112);
+        CharacterPreviewHair.rectTransform.anchoredPosition = new Vector2(0, 100);
+        CharacterPreviewHair.sprite = ManSpriteHair;
+        CharacterPreviewHip.sprite = ManSpriteHip;
         _characterGender = "Man";
     }
 
@@ -119,6 +146,12 @@ public class CharacterCustomisation : MonoBehaviour
             PlayerPrefs.SetString("Gender", _characterGender);
             PlayerPrefs.SetString("CharacterFaction", _characterFaction);
             PlayerPrefs.SetString("CharacterName", _characterNameText);
+
+
+            PlayerBody.sprite = CharacterPreview.sprite;
+            PlayerHair.sprite = CharacterPreviewHair.sprite;
+            PlayerHip.sprite = CharacterPreviewHip.sprite;
+
             PlayPressed = true;
             _playerInput.SwitchCurrentActionMap("InGame");
             ActiveGameUI();

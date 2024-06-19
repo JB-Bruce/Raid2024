@@ -146,9 +146,9 @@ public class TutorialManager : MonoBehaviour
         }
             
         TextTutorial.text = Tutorials[_tutorialincrement];
-
+        
     }
-
+    
     /// <summary>
     ///     Getter for tutorial increment
     /// </summary>

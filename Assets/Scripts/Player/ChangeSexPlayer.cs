@@ -1,0 +1,38 @@
+using UnityEngine;
+
+public class ChangeSexPlayer : MonoBehaviour
+{
+
+    public Sprite WomanSprite;
+    public Sprite WomanSpriteHair;
+    public Sprite WomanSpriteHip;
+
+    public Sprite ManSprite;
+    public Sprite ManSpriteHair;
+    public Sprite ManSpriteHip;
+
+
+    public SpriteRenderer PlayerHair;
+    public SpriteRenderer PlayerBody;
+    public SpriteRenderer PlayerHip;
+
+    private string _characterGender = "";
+    // Start is called before the first frame update
+    void Awake()
+    {
+        if(PlayerPrefs.GetString("Gender", _characterGender) == "Man")
+        {
+            PlayerBody.sprite = ManSprite;
+            PlayerHair.sprite = ManSpriteHair;
+            PlayerHip.sprite = ManSpriteHip;
+        }
+        else
+        {
+            PlayerBody.sprite = WomanSprite;
+            PlayerHair.sprite = WomanSpriteHair;
+            PlayerHip.sprite = WomanSpriteHip;
+        }
+        
+    }
+
+}

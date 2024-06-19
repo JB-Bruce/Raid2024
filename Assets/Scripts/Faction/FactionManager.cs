@@ -47,6 +47,7 @@ public class FactionManager : MonoBehaviour
 
         poi = OrderPOIByPriority();
         SetFactionsPosition();
+        AddReputation(Faction.Player, TutorialManager.Instance.GetPlayerFaction(), 56);
     }
 
     private void Start()
