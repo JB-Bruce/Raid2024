@@ -27,6 +27,7 @@ public class CinematicManager : MonoBehaviour
 
     private Animator _textAnimator;
     private SoundManager _soundManager;
+    [SerializeField] Animator _fadeAnimator;
 
     private void Awake()
     {
@@ -62,6 +63,7 @@ public class CinematicManager : MonoBehaviour
 
     private void StartCinematicSequence() //Starts the Cinematic coroutine
     {
+        FadeOut();
         if (_autoNextCoroutine != null)
         {
             StopCoroutine(_autoNextCoroutine);
@@ -74,14 +76,24 @@ public class CinematicManager : MonoBehaviour
         _autoNextCoroutine = StartCoroutine(AutoNextText());
     }
 
+    private void FadeIn()
+    {
+        _fadeAnimator.Play("FadeIn");
+    }
+
+    private void FadeOut()
+    {
+        _fadeAnimator.Play("FadeOut");
+    }
+
     public void NextText() //Next Text changes the current displayed text to the next text of the list as well as the next slide if the Cinematic text is a slide changer
     {
         CinematicText cinematicText = _cineTexts[_currentTextIndex];
 
         if (cinematicText.isEndSlide) //If the Cinematic Text is a Cinematic Ender, loads Scene by name
         {
-            _soundManager.PlayMusicFromPlaylist("InGame");
-            SceneManager.LoadScene(_sceneToLoadAtEnd);
+            Skip();
+            return;
         }
         if (cinematicText.isSlideChanger)
         {
@@ -92,6 +104,18 @@ public class CinematicManager : MonoBehaviour
 
         _currentTextIndex = (_currentTextIndex + 1) % _cineTexts.Count;
         StartCinematicSequence();
+    }
+
+    private void LoadNextScene()
+    {
+        _soundManager.PlayMusicFromPlaylist("InGame");
+        SceneManager.LoadScene(_sceneToLoadAtEnd);
+    }
+
+    public void Skip()
+    {
+        FadeIn();
+        Invoke("LoadNextScene", .75f);
     }
 
     IEnumerator AutoNextText() //Starts the Coroutine to automatically change to the next Text and Slide
