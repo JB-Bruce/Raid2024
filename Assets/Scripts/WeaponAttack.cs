@@ -193,5 +193,13 @@ public class WeaponAttack : MonoBehaviour
 
     }
 
+    public bool IsRangedWeapon => _isRangeWeapon;
+    public RangedWeapon RangedWeapon => _rangedWeapon;
+    public Animator Animator => _animator;
+    public float Timer 
+    { 
+        get { return _timer; }
+        set {  _timer = value; }
+    }
 
 }

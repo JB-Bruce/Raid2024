@@ -82,6 +82,8 @@ public class Pnj : Interactable
     {
         StartDialogue();
     }
+
+    public string GetName => _name;
 }
 
 [System.Serializable]
