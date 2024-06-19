@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Humanoid : MonoBehaviour
 {
     public bool isPlayer = false;
+    public CircleCollider2D circleCollider;
     public bool MoveFeet = true;
     public bool CanRespawn = true;
 
@@ -136,6 +137,9 @@ public class Humanoid : MonoBehaviour
                 _anim.Play("DeathR");
             }
             RemoveUnitComponent();
+
+            circleCollider.enabled = false;
+
             GetComponent<Container>().enabled = true;
         }
 
