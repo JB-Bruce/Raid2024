@@ -48,7 +48,6 @@ public class SoundManager : MonoBehaviour
     private void Start()
     {
         _settingsMenu = SettingsMenu.instance;
-        PlayMusic("Ambiance1");
 
         if (PlayerPrefs.GetInt("mainToggle", 1) == 0)
         {
