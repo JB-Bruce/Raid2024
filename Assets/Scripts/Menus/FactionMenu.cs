@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class FactionMenu : MonoBehaviour
 {
-    private FactionSc _faction;
+    [SerializeField] private FactionSc _faction;
     private Inventory _inventory;
 
     private FactionLeader _leader;
@@ -22,6 +22,8 @@ public class FactionMenu : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _currentLVL;
     [SerializeField] private TextMeshProUGUI _nextLVL;
     [SerializeField] private TextMeshProUGUI _progress;
+    [SerializeField] private Transform _pointerTransform;
+    [SerializeField] private Transform _indicatorTransform;
 
     [Header("Respawn")]
 
@@ -44,6 +46,7 @@ public class FactionMenu : MonoBehaviour
 
     private void Init()
     {
+        _leader = _faction.FactionLeader;
         _leader.haveUpgradeBuilding.AddListener(BuildingUpgrade);
         _leader.haveGainXP.AddListener(SetBuildingXPSlider);
         _statsManager = StatsManager.instance;
@@ -69,27 +72,28 @@ public class FactionMenu : MonoBehaviour
     // Set a building Info
     private void SetBuilding(GameObject buildingInfo, int index)
     {
-        buildingInfo.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = _leader.buildings[index].buildingDescription;
         buildingInfo.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _leader.buildings[index].buildingUpgradeInfo;
-        buildingInfo.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _leader.buildings[index]._buildingLevel.ToString();
-        buildingInfo.transform.GetChild(3).gameObject.SetActive(false);
-        buildingInfo.transform.GetChild(4).GetComponent<Image>().sprite = _leader.buildings[index].buildingImage;
+        buildingInfo.transform.GetChild(3).GetComponentInChildren<TextMeshProUGUI>().text = ((RomanNumeral)_leader.buildings[index]._buildingLevel).ToString();
+        buildingInfo.transform.GetChild(0).gameObject.SetActive(false);
+        buildingInfo.transform.GetChild(2).GetComponent<Image>().sprite = _leader.buildings[index].buildingImage;
     }
 
     // Reset all properties who change with the building upgrade
     private void BuildingUpgrade(int index)
     {
+        _leader.buildingPriorityUpgrade = -1;
         SetBuilding(_parentBuildingInfo.GetChild(index).gameObject, index);
     }
 
     // Set the slider of building XP
     private void SetBuildingXPSlider()
     {
-        _currentLVL.text = _leader.LevelOfLeader.ToString();
-        _nextLVL.text = (_leader.LevelOfLeader + 1).ToString();
+        _currentLVL.text = ((RomanNumeral)_leader.LevelOfLeader).ToString();
+        _nextLVL.text = ((RomanNumeral)(_leader.LevelOfLeader + 1)).ToString();
         float _sliderSize = Mathf.Clamp((float)(_leader.BuildingXP) / ((float)_leader.UpgradePrice), 0, 1);
         _slider.localScale = new Vector3(_sliderSize, 1, 1);
         _progress.text = _leader.BuildingXP.ToString() + " / " + _leader.UpgradePrice.ToString();
+        _indicatorTransform.position = _pointerTransform.position;
     }
 
     // Select building the player want to upgrade in priority
@@ -102,15 +106,15 @@ public class FactionMenu : MonoBehaviour
 
         if (_leader.buildingPriorityUpgrade == index )
         {
-            _parentBuildingInfo.GetChild(index).GetChild(3).gameObject.SetActive(false);
+            _parentBuildingInfo.GetChild(index).GetChild(0).gameObject.SetActive(false);
             _leader.buildingPriorityUpgrade = -1;
             return;
         }
 
-        _parentBuildingInfo.GetChild(index).GetChild(3).gameObject.SetActive(true);
+        _parentBuildingInfo.GetChild(index).GetChild(0).gameObject.SetActive(true);
         if(_leader.buildingPriorityUpgrade != -1)
         {
-            _parentBuildingInfo.GetChild(_leader.buildingPriorityUpgrade).GetChild(3).gameObject.SetActive(false);
+            _parentBuildingInfo.GetChild(_leader.buildingPriorityUpgrade).GetChild(0).gameObject.SetActive(false);
         }
         _leader.buildingPriorityUpgrade = index;
 
@@ -123,11 +127,11 @@ public class FactionMenu : MonoBehaviour
         {
             if (_leader.buildingPriorityUpgrade == i)
             {
-                _parentBuildingInfo.GetChild(i).GetChild(3).gameObject.SetActive(true);
+                _parentBuildingInfo.GetChild(i).GetChild(0).gameObject.SetActive(true);
             }
             else
             {
-                _parentBuildingInfo.GetChild(i).GetChild(3).gameObject.SetActive(false);
+                _parentBuildingInfo.GetChild(i).GetChild(0).gameObject.SetActive(false);
             }
         }
     }
@@ -241,11 +245,10 @@ public class FactionMenu : MonoBehaviour
     }
 
     // Open the panel and set all the properties 
-    public void OpenFactionMenu(FactionSc faction)
+    public void OpenFactionMenu()
     {
-        _faction = faction;
+        Time.timeScale = 0;
         gameObject.SetActive(true);
-        _leader = _faction.FactionLeader;
 
         if (_statsManager == null)
         {
@@ -262,10 +265,28 @@ public class FactionMenu : MonoBehaviour
         SetTradeButton();
     }
 
+    enum RomanNumeral 
+    {
+        I = 1,
+        II = 2, 
+        III = 3,
+        IV = 4,
+        V = 5, 
+        VI = 6, 
+        VII = 7,
+        VIII = 8,
+        IX = 9,
+        X = 10,
+        XI = 11,
+        XII = 12,
+        XIII = 13,
+    }
+
     // Close the panel
     public void Close()
     {
         this.gameObject.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
 }
