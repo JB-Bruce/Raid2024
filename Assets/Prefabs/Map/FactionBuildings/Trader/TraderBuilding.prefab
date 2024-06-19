@@ -392,7 +392,7 @@ MonoBehaviour:
       quantityNeed: 8
     - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
       quantityNeed: 9
-  - tradeItem: {fileID: 11400000, guid: 842d3181ddf62b44da8756e61cdec506, type: 2}
+  - tradeItem: {fileID: 11400000, guid: ea49fd97856ce2941b0178e6c31a7440, type: 2}
     tradeItemQuantity: 1
     itemsToTrade:
     - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}

@@ -4,6 +4,8 @@ public class DroppedItem : Interactable
 {
     public int quantity = 0;
     public Item item;
+    [SerializeField]
+    private float _stuffQuantityInThis = 0;
 
     /// <summary>
     /// Checks if the player enter the radius of the item, if he does, gets added to the list of interactable of the player
@@ -58,7 +60,7 @@ public class DroppedItem : Interactable
         {
             if (item != null)
             {
-                if (!inventory.AddItem(item))
+                if (!inventory.AddItem(item, _stuffQuantityInThis))
                 {
                     quantity -= i;
                     return;
@@ -68,5 +70,10 @@ public class DroppedItem : Interactable
         Highlight(false);
         PlayerInteraction.Instance.interactables.Remove(this);
         Destroy(gameObject);
+    }
+
+    public void SetStuffQuantityInThis(float quantity)
+    {
+        _stuffQuantityInThis = quantity;
     }
 }

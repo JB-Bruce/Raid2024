@@ -19,7 +19,6 @@ public abstract class QuestAction : ScriptableObject
     public string GetDescription() { return _description; }
 
     //call when the QuestAction is the current QuestAction to configure it
-
     public abstract bool Configure(GameObjectsList objectsToActivateAtStart);
 
     //call when the QuestAction ended

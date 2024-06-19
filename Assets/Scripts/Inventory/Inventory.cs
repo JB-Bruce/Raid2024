@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -398,7 +399,7 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Adds the item "item" to the inventory if a slot is available
     /// </summary>
-    public bool AddItem(Item item)
+    public bool AddItem(Item item, float quantityContainer = 0)
     {
         ItemSlot itemSlot = FindFirstInventorySlotAvailable(item);
         if (itemSlot != null)
@@ -406,6 +407,11 @@ public class Inventory : MonoBehaviour
             if (itemSlot.Item == null)
             {
                 itemSlot.AddItemToSlot(item);
+                if (item is QuestItemContainer)
+                {
+                    itemSlot.SetContainerQuantity(quantityContainer);
+                    itemSlot.UpdateItemSprite();
+                }
             }
             else
             {
@@ -462,15 +468,19 @@ public class Inventory : MonoBehaviour
         {
             if (itemSlot.Item.GetType() != typeof(QuestItem))
             {
+                GameObject Item = Instantiate(_itemDroppedPrefab);
+                Item.transform.position = _player.transform.position;
+                DroppedItem itemDropped = Item.GetComponent<DroppedItem>();
+                itemDropped.SetStuffQuantityInThis(itemSlot.GetContainerQuantity());
+
                 ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
                 itemWithQuantity.item = itemSlot.Item;
                 itemWithQuantity.quantityNeed = -itemSlot.Quantity;
                 itemSlot.UpdateQuantity(0);
                 QuestManager.instance.CheckQuestItems(itemWithQuantity);
 
-                GameObject Item = Instantiate(_itemDroppedPrefab);
-                Item.transform.position = _player.transform.position;
-                DroppedItem itemDropped = Item.GetComponent<DroppedItem>();
+                
+                
                 itemDropped.item = itemWithQuantity.item;
                 itemDropped.quantity = -itemWithQuantity.quantityNeed;
                 itemDropped.UpdateSprite();
@@ -845,5 +855,44 @@ public class Inventory : MonoBehaviour
         UpdateMassDisplay();
     }
 
+    public bool AddQuantityInQuestItemContainer(string name, float quantity)
+    {
+        for (int i = _itemSlots.Count - 1; i >= 0; i--)
+        {
+            if (_itemSlots[i].Item != null)
+            {
+                if (_itemSlots[i].Item.Name == name && _itemSlots[i].Quantity > 0)
+                {
+                    if (_itemSlots[i].Item is QuestItemContainer questItemContainer)
+                    {
+                        if (!questItemContainer.IsFull())
+                        {
+                            _itemSlots[i].AddContainerQuantity(quantity);
+                            _itemSlots[i].UpdateContainerQuantity();
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
 
+    public float GetQuantityStuffInQuestContainer(string name)
+    {
+        float quantity = 0;
+        for (int i = _itemSlots.Count - 1; i >= 0; i--)
+        {
+            if (_itemSlots[i].Item != null)
+            {
+                if (_itemSlots[i].Item.Name == name && _itemSlots[i].Quantity > 0)
+                {
+                    if (_itemSlots[i].Item is QuestItemContainer questItemContainer)
+                    {
+                        quantity += _itemSlots[i].GetContainerQuantity();
+                    }
+                }
+            }
+        }
+        return quantity;
+    }
 }

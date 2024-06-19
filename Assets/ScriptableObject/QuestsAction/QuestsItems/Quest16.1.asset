@@ -16,6 +16,6 @@ MonoBehaviour:
   _description: 
   _actionsToDoAtStart: []
   _itemsNeed:
-  - item: {fileID: 11400000, guid: 842d3181ddf62b44da8756e61cdec506, type: 2}
+  - item: {fileID: 11400000, guid: ea49fd97856ce2941b0178e6c31a7440, type: 2}
     quantityNeed: 1
   _itemsInInventory: []

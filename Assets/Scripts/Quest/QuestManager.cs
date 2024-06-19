@@ -93,6 +93,20 @@ public class QuestManager : MonoBehaviour
         }
     }
 
+    //check if the current QuestAction is a QuestPick
+    public void CheckQuestPick(float quantityPick, string stuffToPick)
+    {
+        if (_quests[_currentMainQuest].GetCurrentQuestAction() is QuestPick aQuestPick)
+        {
+            if (aQuestPick.IsFinished(quantityPick, stuffToPick))
+            {
+                NextMainQuest();
+            }
+            _factionQuestManager.CheckFactionQuestsPick(quantityPick, stuffToPick);
+            UpdateInGameQuestUi();
+        }
+    }
+
     //check if the current QuestAction is a QuestKill
     public void CheckQuestKill(Faction faction, string enemyType = "")
     {

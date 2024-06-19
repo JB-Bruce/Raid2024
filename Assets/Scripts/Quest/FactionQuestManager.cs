@@ -99,6 +99,27 @@ public class FactionQuestManager : MonoBehaviour
         }
     }
 
+    //check if the currents FactionQuests are QuestsPick
+    public void CheckFactionQuestsPick(float quantityPick, string stuffToPick)
+    {
+        CheckFactionQuestPick(quantityPick, ref _currentUtopistFactionQuest, stuffToPick);
+        CheckFactionQuestPick(quantityPick, ref _currentMilitaryFactionQuest, stuffToPick);
+        CheckFactionQuestPick(quantityPick, ref _currentSurvivalistFactionQuest, stuffToPick);
+        CheckFactionQuestPick(quantityPick, ref _currentIntellectualFactionQuest, stuffToPick);
+    }
+
+    //check if the current FactionQuestAction is a QuestKill
+    private void CheckFactionQuestPick(float quantityPick, ref int questIndex, string stuffToPick)
+    {
+        if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestPick aQuestPick)
+        {
+            if (aQuestPick.IsFinished(quantityPick, stuffToPick))
+            {
+                NextQuest(ref questIndex);
+            }
+        }
+    }
+
     //select a faction quest
     public void SelectFactionQuest(int indexQuest, string faction)
     {

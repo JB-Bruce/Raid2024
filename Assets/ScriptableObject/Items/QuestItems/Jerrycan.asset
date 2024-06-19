@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5dafc29a983784faa2c84188305680, type: 3}
+  m_Script: {fileID: 11500000, guid: d5e25d0b36dfd11499419d38e50921dd, type: 3}
   m_Name: Jerrycan
   m_EditorClassIdentifier: 
   _weight: 0
@@ -18,3 +18,5 @@ MonoBehaviour:
   _name: Jerrican
   _description: 
   _itemSprite: {fileID: 21300000, guid: c6195655666b07b449e89303572db057, type: 3}
+  _quantityInThis: 0
+  _quantityFull: 100
