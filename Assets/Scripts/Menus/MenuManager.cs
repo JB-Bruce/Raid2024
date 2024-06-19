@@ -7,17 +7,39 @@ public class MenuManager : MonoBehaviour
     [SerializeField]
     private PlayerInput _playerInput;
 
+    SettingsMenusManager _settingsMenus;
+    MenuButtonTracker _menuButtonTracker;
+
+    public static MenuManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    private void Start()
+    {
+        _settingsMenus = SettingsMenusManager.instance;
+    }
+
     public void OpenSettingsInGame()
     {
-        SettingsMenusManager.instance.OpenSettings();
+        _settingsMenus.OpenSettings();
     }
 
     public void CloseSettingsInGame()
     {
         if (SettingsMenu.instance != null)
         {
-            SettingsMenusManager.instance.DeactivateSettingsMenus();
+            _settingsMenus.DeactivateSettingsMenus();
         }
+    }
+
+    public void GetSelectedSettingsButton()
+    {
+        _menuButtonTracker = MenuButtonTracker.instance;
+
+        _menuButtonTracker.SetLastGameObjectSelected(GameObject.Find("SettingsButton"));
     }
 
     public void ChangeScene(string _sceneName)
@@ -31,7 +53,7 @@ public class MenuManager : MonoBehaviour
     {
         _playerInput.SwitchCurrentActionMap("InGame");
         this.gameObject.SetActive(false);
-        SettingsMenusManager.instance.DeactivateSettingsMenus();
+        _settingsMenus.DeactivateSettingsMenus();
     }
 
     public void ReturnToMainMenu()
