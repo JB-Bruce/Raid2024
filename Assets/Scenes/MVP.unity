@@ -58628,7 +58628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6674064959078192860, guid: 4f5d42ab6ac4d094c8b52e802c61f92c, type: 3}
       propertyPath: m_SortingOrder
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -75089,6 +75089,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TraderBuilding
       objectReference: {fileID: 0}
+    - target: {fileID: 5057843188029697249, guid: 3ecb13fcead85924683bc01ba5aac875, type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 6333826459052352264, guid: 3ecb13fcead85924683bc01ba5aac875, type: 3}
       propertyPath: m_LocalPosition.x
       value: 26.9
@@ -75128,6 +75132,10 @@ PrefabInstance:
     - target: {fileID: 6333826459052352264, guid: 3ecb13fcead85924683bc01ba5aac875, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9181408580102685373, guid: 3ecb13fcead85924683bc01ba5aac875, type: 3}
+      propertyPath: m_SortingOrder
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
