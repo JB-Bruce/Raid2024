@@ -98,7 +98,7 @@ public class DialogueManager : MonoBehaviour
             UpdatePnjUi(pnjHideName, pnjSprite);
         }
         UpdateDialogueUi();
-        UpdateChoicesButtons();
+        DesableChoicesButtons();
     }
 
     //update the visual of the dialogue
@@ -182,7 +182,7 @@ public class DialogueManager : MonoBehaviour
         {
             _dialogueText.text += line[i];
             _dialogueText.ForceMeshUpdate();
-            yield return new WaitForSeconds((1f/charactersPerSecond));
+            yield return new WaitForSecondsRealtime((1f/charactersPerSecond));
         }
         _isTypingText = false;
     }

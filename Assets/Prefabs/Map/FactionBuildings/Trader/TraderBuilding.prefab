@@ -372,6 +372,34 @@ MonoBehaviour:
       quantityNeed: 1
     - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
       quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 69daa4cc1e4680b4ea4f3f93866c8ed6, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 7
+  - tradeItem: {fileID: 11400000, guid: c489ecec3f98f3f4abeecf51fc0f582a, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 9
+  - tradeItem: {fileID: 11400000, guid: ea49fd97856ce2941b0178e6c31a7440, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 4
   _traderType: Marchand
   _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
 --- !u!114 &7478662891674075893

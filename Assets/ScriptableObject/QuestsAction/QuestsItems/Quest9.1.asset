@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Quest9.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 9.1"
+  _description: 
+  _actionsToDoAtStart: []
   _itemsNeed:
-  - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+  - item: {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
     quantityNeed: 1
   _itemsInInventory: []

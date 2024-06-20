@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Quest8.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 8.1"
-  _questTriggerType: 7
-  _information: Rachel
+  _actionsToDoAtStart: []
+  _questTriggerType: 1
+  _information: RachelArea
+  _objectifText: "- Aller \xE0 la maison de Rachel"

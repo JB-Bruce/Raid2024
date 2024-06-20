@@ -7,6 +7,30 @@ using UnityEngine.InputSystem;
 public class QuestManager : MonoBehaviour
 {
     [SerializeField]
+    private int _banditsAtConstructionArea;
+
+    [SerializeField]
+    private ItemWithQuantity _checkItem;
+
+    [SerializeField]
+    private GameObject _case;
+    
+    [SerializeField]
+    private GameObject _bruce;
+
+    [SerializeField]
+    private GameObject _bruceTpPosition;
+
+    [SerializeField]
+    private GameObject _bruceTpBackPosition;
+
+    [SerializeField]
+    private GameObject _constructionSpot;
+
+    [SerializeField]
+    private GameObject _objectToDefend;
+
+    [SerializeField]
     private PlayerInput _playerInput;
 
     [SerializeField]
@@ -31,7 +55,10 @@ public class QuestManager : MonoBehaviour
 
     [SerializeField]
     private QuestPanelManager _questPanelManager;
-    
+
+    [SerializeField]
+    private FactionUnitManager _factionUnitManager;
+
     public static QuestManager instance;
 
     //create an instance of the DialogueManager
@@ -69,16 +96,30 @@ public class QuestManager : MonoBehaviour
         }
     }
 
-    //check if the current QuestAction is a QuestKill
-    public void CheckQuestKill(Faction faction)
+    //check if the current QuestAction is a QuestPick
+    public void CheckQuestPick(float quantityPick, string stuffToPick)
     {
-        if (_quests[_currentMainQuest].GetCurrentQuestAction() is QuestKill aQuestKill)
+        if (_quests[_currentMainQuest].GetCurrentQuestAction() is QuestPick aQuestPick)
         {
-            if (aQuestKill.IsFinished(faction))
+            if (aQuestPick.IsFinished(quantityPick, stuffToPick))
             {
                 NextMainQuest();
             }
-            _factionQuestManager.CheckFactionQuestsKill(faction);
+            _factionQuestManager.CheckFactionQuestsPick(quantityPick, stuffToPick);
+            UpdateInGameQuestUi();
+        }
+    }
+
+    //check if the current QuestAction is a QuestKill
+    public void CheckQuestKill(Faction faction, string enemyType = "")
+    {
+        if (_quests[_currentMainQuest].GetCurrentQuestAction() is QuestKill aQuestKill)
+        {
+            if (aQuestKill.IsFinished(faction, enemyType))
+            {
+                NextMainQuest();
+            }
+            _factionQuestManager.CheckFactionQuestsKill(faction, enemyType);
             UpdateInGameQuestUi();
         }
     }
@@ -89,12 +130,42 @@ public class QuestManager : MonoBehaviour
         if (!_quests[_currentMainQuest].NextQuestAction())
         {
             _currentMainQuest += 1;
+            _quests[_currentMainQuest].GetCurrentQuestAction().Configure(_quests[_currentMainQuest].GetObjectsToActivateAtStartOfTheCUrrentQuestAction());
         }
-        if (_quests[_currentMainQuest].GetCurrentQuestAction().Configure())
+        List<string> actionsToDo = _quests[_currentMainQuest].GetCurrentQuestAction().GetActionsToDoAtStart();
+        if (actionsToDo.Count >0)
         {
-            UpdateInGameQuestUi();
-            NextMainQuest();
+            for (int i = 0; i < actionsToDo.Count; i++)
+            {
+                switch (actionsToDo[i])
+                {
+                    case "CaseSpawnBandit":
+                        _factionUnitManager.SpawnWaveUnit(_case.transform.position + new Vector3(0, 2, 0), _case.transform.position, 5);
+                        break;
+                    case "ConstructionSpawnBandit":
+                        for (int j = 0; j < _banditsAtConstructionArea; j++)
+                        {
+                            _factionUnitManager.SpawnWaveUnit(_constructionSpot.transform.position + new Vector3(0, 2, 0), _constructionSpot.transform.position, 5, "clearConstructionArea");
+                        }
+                        break;
+                    case "DefendBase":
+                        Humanoid humanoide = _objectToDefend.GetComponent<Humanoid>();
+                        humanoide.life = 100;
+                        humanoide.SetSlider();
+                        WaveManager.instance.StartWave(_constructionSpot.transform.position, 10, 1, 3);
+                        break;
+                    case "TpBruce":
+                        _bruce.transform.position = _bruceTpPosition.transform.position;
+                        break;
+                    case "TpBackBruce":
+                        _bruce.transform.position = _bruceTpBackPosition.transform.position;
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
+        CheckQuestItems(_checkItem);
         UpdateInGameQuestUi();
     }
 
@@ -162,11 +233,8 @@ public class QuestManager : MonoBehaviour
     {
         defend,
         enterArea,
-        buildCoil,
-        plantingDynamiteInTheBanditCamp,
-        readRansomPaper,
-        fillTheEngine,
-        startMagneticCoil,
+        exitArea,
+        interact,
         dialogue
     }
 }

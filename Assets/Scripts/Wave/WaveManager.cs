@@ -5,8 +5,6 @@ public class WaveManager : MonoBehaviour
 {
     public static WaveManager instance;
 
-    public GameObject _protectObject;
-
     [SerializeField]
     private GameObject _player;
 
@@ -48,6 +46,7 @@ public class WaveManager : MonoBehaviour
                 _unitManager.SpawnWaveUnit(GetRandomSpawnPosition(), _point);
             }
         }
+        QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.defend, "DefendBase");
     }
 
     // Get a random spawn position for the unit

@@ -8,9 +8,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     private Item _item;
     private int _quantity;
+    private float _quantityContainer;
 
     [SerializeField]
     private TextMeshProUGUI _quantityText;
+
+    [SerializeField]
+    private GameObject _quantityContainerText;
 
     [SerializeField]
     private Image _itemSprite;
@@ -94,6 +98,17 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             _itemSprite.sprite = _item.ItemSprite;
             _itemSprite.color = Color.white;
+
+
+            if (_item is QuestItemContainer questItemContainer)
+            {
+                _quantityContainerText.SetActive(true);
+                UpdateContainerQuantity();
+            }
+            else
+            {
+                _quantityContainerText.SetActive(false);
+            }
         }
         else
         {
@@ -121,7 +136,60 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             UpdateItemSprite();
             _quantity = 0;
             _quantityText.gameObject.SetActive(false);
+            _quantityContainerText.SetActive(false);
         }
+    }
+
+    //Update the container quantity text
+    public void UpdateContainerQuantity()
+    {
+        _quantityContainerText.GetComponent<TextMeshProUGUI>().text = _quantityContainer.ToString();
+    }
+
+    //Add a quantity in the item in this if it's a container
+    public void AddContainerQuantity(float quantityAdd)
+    {
+        if(_item is QuestItemContainer questItemContainer) 
+        {
+            if (_quantityContainer + quantityAdd >= questItemContainer.GetQuantityFull())
+            {
+                _quantityContainer = questItemContainer.GetQuantityFull();
+                questItemContainer.SetIsFull(true);
+            }
+            else
+            {
+                _quantityContainer += quantityAdd;
+                questItemContainer.SetIsFull(false);
+            }
+        }
+    }
+
+    //modify the container quantity
+    public void SetContainerQuantity(float quantity)
+    {
+        if (_item is QuestItemContainer questItemContainer)
+        {
+            if (quantity >= questItemContainer.GetQuantityFull())
+            {
+                _quantityContainer = questItemContainer.GetQuantityFull();
+                questItemContainer.SetIsFull(true);
+            }
+            else
+            {
+                _quantityContainer = quantity;
+                questItemContainer.SetIsFull(false);
+            }
+        }
+    }
+
+    //return the container quantity
+    public float GetContainerQuantity()
+    {
+        if (_item is QuestItemContainer questItemContainer)
+        {
+            return _quantityContainer;
+        }
+        return 0;
     }
 
     public Item Item { get { return _item; } set { _item = value; } }

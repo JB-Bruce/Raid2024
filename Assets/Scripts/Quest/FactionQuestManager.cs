@@ -92,20 +92,41 @@ public class FactionQuestManager : MonoBehaviour
     }
 
     //check if the currents FactionQuests are QuestsKill
-    public void CheckFactionQuestsKill(Faction faction)
+    public void CheckFactionQuestsKill(Faction faction, string enemyType)
     {
-        CheckFactionQuestKill(faction, ref _currentUtopistFactionQuest);
-        CheckFactionQuestKill(faction, ref _currentMilitaryFactionQuest);
-        CheckFactionQuestKill(faction, ref _currentSurvivalistFactionQuest);
-        CheckFactionQuestKill(faction, ref _currentIntellectualFactionQuest);
+        CheckFactionQuestKill(faction, ref _currentUtopistFactionQuest, enemyType);
+        CheckFactionQuestKill(faction, ref _currentMilitaryFactionQuest, enemyType);
+        CheckFactionQuestKill(faction, ref _currentSurvivalistFactionQuest, enemyType);
+        CheckFactionQuestKill(faction, ref _currentIntellectualFactionQuest, enemyType);
     }
 
     //check if the current FactionQuestAction is a QuestKill
-    private void CheckFactionQuestKill(Faction faction, ref int questIndex)
+    private void CheckFactionQuestKill(Faction faction, ref int questIndex, string enemyType)
     {
         if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestKill aQuestKill)
         {
-            if (aQuestKill.IsFinished(faction))
+            if (aQuestKill.IsFinished(faction, enemyType))
+            {
+                NextQuest(ref questIndex);
+            }
+        }
+    }
+
+    //check if the currents FactionQuests are QuestsPick
+    public void CheckFactionQuestsPick(float quantityPick, string stuffToPick)
+    {
+        CheckFactionQuestPick(quantityPick, ref _currentUtopistFactionQuest, stuffToPick);
+        CheckFactionQuestPick(quantityPick, ref _currentMilitaryFactionQuest, stuffToPick);
+        CheckFactionQuestPick(quantityPick, ref _currentSurvivalistFactionQuest, stuffToPick);
+        CheckFactionQuestPick(quantityPick, ref _currentIntellectualFactionQuest, stuffToPick);
+    }
+
+    //check if the current FactionQuestAction is a QuestKill
+    private void CheckFactionQuestPick(float quantityPick, ref int questIndex, string stuffToPick)
+    {
+        if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestPick aQuestPick)
+        {
+            if (aQuestPick.IsFinished(quantityPick, stuffToPick))
             {
                 GetReward(faction);
                 NextQuest(ref questIndex);

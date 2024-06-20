@@ -19,6 +19,12 @@ public class Quest
     [SerializeField]
     private questType _questType;
 
+    [SerializeField]
+    private List<GameObjectsList> _objectsToActivateAtStart;
+
+    [SerializeField]
+    private List<GameObjectsList> _objectsToDesactivateAtTheEnd;
+
     //return the quest name
     public string GetName() {  return _name; }
     //return the quest description
@@ -41,13 +47,22 @@ public class Quest
     {
         return _questActions.Count;
     }
+    
+    //get objects to activate at start of the current quest action
+    public GameObjectsList GetObjectsToActivateAtStartOfTheCUrrentQuestAction()
+    {
+        return _objectsToActivateAtStart[_currentQuestAction];
+    }
 
     //update the current QuestAction if is not the last of the Quest
     public bool NextQuestAction()
     {
+        GetCurrentQuestAction().OnEnd(_objectsToDesactivateAtTheEnd[_currentQuestAction]);
+
         if (_questActions.Count > _currentQuestAction+1)
         {
             _currentQuestAction += 1;
+            GetCurrentQuestAction().Configure(GetObjectsToActivateAtStartOfTheCUrrentQuestAction());
             return true;
         }
         else
@@ -62,4 +77,10 @@ public class Quest
         mainQuest,
         factionQuest
     }
+}
+
+[System.Serializable]
+public struct GameObjectsList
+{
+    public List<GameObject> gameObjects;
 }

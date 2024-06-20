@@ -23,7 +23,7 @@ MonoBehaviour:
   _flipable: 0
   _damage: 6
   _attackSpeed: 1
-  _attackRange: 4
+  _attackRange: 5
   _leftHandPos: {x: 0.7, y: 0.3}
   _rightHandPos: {x: 1, y: -0.3}
   _rotationRightHand: -140

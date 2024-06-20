@@ -92,6 +92,9 @@ MonoBehaviour:
   containerColumn: 3
   _isUnit: 0
   despawnTimer: 0
+  _itemsToGiveAtStart: []
+  _itemToOpen:
+  - {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
   despawnable: 0
   maxRefillTimer: 300
   openSFX: CarOpen
