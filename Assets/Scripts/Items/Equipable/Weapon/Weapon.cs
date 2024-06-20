@@ -11,6 +11,7 @@ public class Weapon : Equipable
     [SerializeField] protected float _rotationRightHand;
     [SerializeField] protected float _rotationLeftHand;
     [SerializeField] protected float _moveSpeed;
+    [SerializeField] protected bool _semiAutomatic;
     public string animAttack;
     public string animIdle;
 
@@ -23,4 +24,6 @@ public class Weapon : Equipable
     public float RotationRightHand => _rotationRightHand;
     public float RotationLeftHand => _rotationLeftHand;
     public float MoveSpeed { get { return _moveSpeed;} }
+    public bool IsSemiAuto => _semiAutomatic;
+
 }
