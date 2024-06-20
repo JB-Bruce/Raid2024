@@ -56,6 +56,7 @@ public class DroppedItem : Interactable
     protected override void Interact()
     {
         Inventory inventory = Inventory.Instance;
+        int tempQuantity = quantity;
         for (int i = 0; i < quantity; i++)
         {
             if (item != null)
@@ -63,10 +64,15 @@ public class DroppedItem : Interactable
                 if (!inventory.AddItem(item))
                 {
                     quantity -= i;
+                    if (i > 0)
+                    {
+                        PopUpManager.Instance.AddPopUp(item, i);
+                    }
                     return;
                 }
             }
         }
+        PopUpManager.Instance.AddPopUp(item, tempQuantity);
         Highlight(false);
         PlayerInteraction.Instance.interactables.Remove(this);
         DroppedItemManager.Instance.droppedItems.Remove(this);
