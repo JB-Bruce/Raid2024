@@ -32,3 +32,6 @@ MonoBehaviour:
   _moveSpeed: 5
   animAttack: BaseballBatAttack
   animIdle: WeaponIdle
+  attackSFX: BaseballSwing
+  hitSFX: BaseballHit
+  reloadSFX: 
