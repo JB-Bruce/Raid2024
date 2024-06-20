@@ -1302,7 +1302,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 0
-  circleCollider: {fileID: 7587460380071086963}
+  _detectionZone: {fileID: 7587460380071086963}
+  _lootZone: {fileID: 3570925510043406716}
   MoveFeet: 1
   CanRespawn: 1
   _slider: {fileID: 0}
@@ -6298,7 +6299,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8334718818371835372}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:

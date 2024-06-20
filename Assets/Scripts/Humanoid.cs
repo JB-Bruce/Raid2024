@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class Humanoid : MonoBehaviour
 {
     public bool isPlayer = false;
-    public CircleCollider2D circleCollider;
+    [SerializeField] private CircleCollider2D _detectionZone;
+    [SerializeField] private CircleCollider2D _lootZone;
     public bool MoveFeet = true;
     public bool CanRespawn = true;
 
@@ -146,7 +147,8 @@ public class Humanoid : MonoBehaviour
             }
             RemoveUnitComponent();
 
-            circleCollider.enabled = false;
+            _detectionZone.enabled = false;
+            _lootZone.enabled = true;
 
             GetComponent<Container>().enabled = true;
         }
