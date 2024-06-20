@@ -28,6 +28,9 @@ public class QuestManager : MonoBehaviour
     private GameObject _constructionSpot;
 
     [SerializeField]
+    private GameObject _objectToDefend;
+
+    [SerializeField]
     private PlayerInput _playerInput;
 
     [SerializeField]
@@ -146,6 +149,9 @@ public class QuestManager : MonoBehaviour
                         }
                         break;
                     case "DefendBase":
+                        Humanoid humanoide = _objectToDefend.GetComponent<Humanoid>();
+                        humanoide.life = 100;
+                        humanoide.SetSlider();
                         WaveManager.instance.StartWave(_constructionSpot.transform.position, 10, 1, 3);
                         break;
                     case "TpBruce":

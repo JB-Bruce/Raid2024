@@ -164,6 +164,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
+    //modify the container quantity
     public void SetContainerQuantity(float quantity)
     {
         if (_item is QuestItemContainer questItemContainer)
@@ -181,6 +182,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
     }
 
+    //return the container quantity
     public float GetContainerQuantity()
     {
         if (_item is QuestItemContainer questItemContainer)

@@ -16,5 +16,5 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 1
   _name: Plans du support
-  _description: 
+  _description: "Le tr\xF4ne royal de votre bobine magn\xE9tique !"
   _itemSprite: {fileID: 21300000, guid: 7b44cd1c220fb73449db122a012ecb11, type: 3}

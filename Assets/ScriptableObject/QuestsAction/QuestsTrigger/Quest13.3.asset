@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest13.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 13.3"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 2
   _information: BanditPoi
-  _objectifText: 
+  _objectifText: '- Sortir du camp'

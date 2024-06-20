@@ -6,6 +6,9 @@ public class QuestItemContainer : QuestItem
     [SerializeField]
     private float _quantityFull;
 
+    [SerializeField]
+    private string _stuffInContainer;
+
     private bool _isFull;
 
     //return if this is full
@@ -24,5 +27,11 @@ public class QuestItemContainer : QuestItem
     public float GetQuantityFull()
     {
         return _quantityFull;
+    }
+
+    //return the stuff in container
+    public string GetStuffInContainer()
+    {
+        return _stuffInContainer;
     }
 }

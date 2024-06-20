@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest8.5
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 8.5"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Rachel
-  _objectifText: 
+  _objectifText: "- Ramener les mat\xE9riaux \xE0 Rachel"

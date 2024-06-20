@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Quest16.4
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 16.4"
-  _description: 
-  _actionsToDoAtStart: []
+  _actionsToDoAtStart:
+  - DefendBase
   _questTriggerType: 0
   _information: DefendBase
-  _objectifText: 
+  _objectifText: "- D\xE9fendre la construction"

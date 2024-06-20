@@ -19,11 +19,12 @@ public class QuestPick : QuestAction
     //call when the QuestPick is the current QuestAction to configure it
     public override bool Configure(GameObjectsList objectsToActivateAtStart)
     {
-        _quantityInInventory = Inventory.Instance.GetQuantityStuffInQuestContainer(name);
+        _quantityInInventory = Mathf.Clamp(Inventory.Instance.GetContainerQuantityInInventory(name), 0, _quantityToPick);
         for (int i = 0; i < objectsToActivateAtStart.gameObjects.Count; i++)
         {
             objectsToActivateAtStart.gameObjects[i].SetActive(true);
         }
+        IsFinished(0,_stuffToPick);
         return false;
     }
 
@@ -47,7 +48,7 @@ public class QuestPick : QuestAction
     {
         if (stuffToPick == _stuffToPick)
         {
-            _quantityInInventory += quantityPick;
+            _quantityInInventory = Mathf.Clamp(_quantityInInventory + quantityPick, 0, _quantityToPick);
         }
     }
 

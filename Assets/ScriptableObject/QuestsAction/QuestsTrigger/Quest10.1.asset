@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest10.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 10.1"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 3
   _information: ConstructionEngine
-  _objectifText: 
+  _objectifText: '- Installer le moteur thermique'

@@ -8,15 +8,10 @@ public abstract class QuestAction : ScriptableObject
     private string _name;
 
     [SerializeField]
-    private string _description;
-
-    [SerializeField]
     private List<string> _actionsToDoAtStart;
 
     //return the questAction name
     public string GetName() { return _name; }
-    //return the questAction description
-    public string GetDescription() { return _description; }
 
     //call when the QuestAction is the current QuestAction to configure it
     public abstract bool Configure(GameObjectsList objectsToActivateAtStart);

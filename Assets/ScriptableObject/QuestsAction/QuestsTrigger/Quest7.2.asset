@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Quest7.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 7.2"
-  _description: 
   _actionsToDoAtStart:
   - DefendBase
   _questTriggerType: 0
   _information: DefendBase
-  _objectifText: 
+  _objectifText: "- D\xE9fendre le support"

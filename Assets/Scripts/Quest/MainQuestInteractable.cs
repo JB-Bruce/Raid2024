@@ -15,6 +15,9 @@ public class MainQuestInteractable : Interactable
     [SerializeField]
     private List<QuestActionItems> _itemsToDelete;
 
+    [SerializeField]
+    private List<QuestActionStuff> _stuffToDelete;
+
     //call when the player interact with this, return true if he can interact and the inventory is not full
     public override bool TryToInteract()
     {
@@ -43,6 +46,19 @@ public class MainQuestInteractable : Interactable
                     }
                 }
             }
+            for (int i = 0; i < _stuffToDelete.Count; i++)
+            {
+                if (_stuffToDelete[i].quest == questManagerCurrentQuestIndex[0] && _stuffToDelete[i].questAction == questManagerCurrentQuestIndex[1])
+                {
+                    for (int j = 0; j < _stuffToDelete[i].stuffsWithQuantity.Count; j++)
+                    {
+                        if (Inventory.Instance.GetContainerQuantityInInventory(_stuffToDelete[i].stuffsWithQuantity[j].container.Name) < _stuffToDelete[i].stuffsWithQuantity[j].quantity)
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
         }
         return base.TryToInteract();
     }
@@ -54,9 +70,17 @@ public class MainQuestInteractable : Interactable
         {
             DeleteItems();
         }
-        if(_itemsToGive.Count > 0)
+        if (_itemsToGive.Count > 0)
         {
             GiveItems();
+        }
+        if (_stuffToDelete.Count > 0)
+        {
+            DeleteStuffs();
+        }
+        if(_information == "RansomPaper")
+        {
+            RansomPaper.instance.OpenRansomPaper();
         }
         if(_questTriggerType != QuestManager.QuestTriggerType.dialogue)
         {
@@ -99,6 +123,22 @@ public class MainQuestInteractable : Interactable
         }
     }
 
+    //delete the _stuffsToDelete from the inventory
+    private void DeleteStuffs()
+    {
+        List<int> questManagerCurrentQuestIndex = QuestManager.instance.GetCurrentMainQuestActionIndex();
+        for (int i = 0; i < _stuffToDelete.Count; i++)
+        {
+            if (_stuffToDelete[i].quest == questManagerCurrentQuestIndex[0] && _stuffToDelete[i].questAction == questManagerCurrentQuestIndex[1])
+            {
+                for (int j = 0; j < _stuffToDelete[i].stuffsWithQuantity.Count; j++)
+                {
+                    Inventory.Instance.RemoveContainerQuantityInInventory(_stuffToDelete[i].stuffsWithQuantity[j].quantity, _stuffToDelete[i].stuffsWithQuantity[j].container.Name);
+                }
+            }
+        }
+    }
+
     // Checks if the player enter the radius of the container, if he does, gets added to the list of container of the player
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -125,4 +165,20 @@ public struct QuestActionItems
     public List<ItemWithQuantity> itemsWithQuantity;
     public int quest;
     public int questAction;
+}
+
+[System.Serializable]
+public struct QuestActionStuff
+{
+    public List<StuffWithQuantity> stuffsWithQuantity;
+    public int quest;
+    public int questAction;
+}
+
+[System.Serializable]
+public struct StuffWithQuantity
+{
+    public string stuff;
+    public float quantity;
+    public Item container;
 }

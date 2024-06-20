@@ -16,5 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Quartz
-  _description: 
+  _description: "Parfait pour les s\xE9ances de m\xE9ditation post-apocalyptique."
   _itemSprite: {fileID: 21300000, guid: b5bfcd05c985314478faffd806a19cd7, type: 3}

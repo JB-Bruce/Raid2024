@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest1.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 1.2"
-  _description: 
+  _actionsToDoAtStart: []
   _questTriggerType: 1
   _information: Bruce area
-  _objectifText: 
+  _objectifText: "- Aller \xE0 la cabane du vieillard"

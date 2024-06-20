@@ -16,5 +16,6 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 1
   _name: "Cl\xE9 \xE0 molette"
-  _description: 
+  _description: "C'est comme avoir un couteau suisse g\xE9ant, mais en beaucoup plus
+    cool."
   _itemSprite: {fileID: 21300000, guid: 2450d5676b7239d47a3399ae4bfb6a2c, type: 3}

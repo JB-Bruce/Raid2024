@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest16.5
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 16.5"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 3
   _information: FillEngine
-  _objectifText: 
+  _objectifText: '- Mettre l''essence dans le moteur'

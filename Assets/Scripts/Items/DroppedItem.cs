@@ -72,6 +72,7 @@ public class DroppedItem : Interactable
         Destroy(gameObject);
     }
 
+    //modify the stuff quantity in this
     public void SetStuffQuantityInThis(float quantity)
     {
         _stuffQuantityInThis = quantity;

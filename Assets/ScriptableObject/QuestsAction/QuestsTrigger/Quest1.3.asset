@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest1.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 1.3"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Bruce
-  _objectifText: 
+  _objectifText: '- Parler au vieillard'

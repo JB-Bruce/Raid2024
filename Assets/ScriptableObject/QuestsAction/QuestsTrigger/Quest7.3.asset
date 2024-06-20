@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest7.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 7.3"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Bruce
-  _objectifText: 
+  _objectifText: '- Retourner voir Bruce'

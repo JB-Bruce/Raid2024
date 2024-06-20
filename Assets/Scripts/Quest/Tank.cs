@@ -1,5 +1,4 @@
 using UnityEngine;
-using static QuestManager;
 
 public class Tank : Interactable
 {
@@ -8,9 +7,6 @@ public class Tank : Interactable
 
     [SerializeField]
     private GameObject _tankFull;
-
-    [SerializeField]
-    private GameObject _tankEmpty;
 
     [SerializeField]
     private float _quantity;
@@ -35,10 +31,7 @@ public class Tank : Interactable
     protected override void Interact() 
     {
         _canInterract = false;
-        _tankFull.SetActive(false);
-        _tankEmpty.SetActive(true);
         Inventory.Instance.AddQuantityInQuestItemContainer(_itemToFill.Name, _quantity);
-        QuestManager.instance.CheckQuestPick(_quantity, _stuffToPick);
     }
 
     // Checks if the player enter the radius of the tank, if he does, gets added to the list of container of the player

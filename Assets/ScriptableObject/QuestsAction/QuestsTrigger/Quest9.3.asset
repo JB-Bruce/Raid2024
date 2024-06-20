@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest9.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 9.3"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Bruce
-  _objectifText: 
+  _objectifText: "- Ramener les \xE9l\xE9ments \xE0 Bruce"

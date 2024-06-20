@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest12.6
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 12.6"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 3
   _information: RansomPaper
-  _objectifText: 
+  _objectifText: '- Lire le papier'

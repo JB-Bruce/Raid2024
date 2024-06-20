@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest13.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 13.2"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Bruce
-  _objectifText: 
+  _objectifText: "- Parler \xE0 Bruce"

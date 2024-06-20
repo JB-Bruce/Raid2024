@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Quest12.5
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 12.5"
-  _description: 
   _actionsToDoAtStart:
   - TpBruce
   _questTriggerType: 1
   _information: Bruce area
-  _objectifText: 
+  _objectifText: '- Retourner voir Bruce'

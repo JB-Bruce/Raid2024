@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest13.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 13.1"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 1
   _information: BanditPoi
-  _objectifText: 
+  _objectifText: "- Aller \xE0 l'avant-post de bandit"

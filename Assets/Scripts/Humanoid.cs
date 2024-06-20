@@ -111,12 +111,17 @@ public class Humanoid : MonoBehaviour
             // Building is Destroy, TODO Create a dead function
         }
 
+        SetSlider();
+
+        return isDead;
+    }
+
+    public void SetSlider()
+    {
         if (_slider != null)
         {
             _slider.localScale = new Vector3(life / 100, 1, 1);
         }
-
-        return isDead;
     }
 
     // When a unit Die

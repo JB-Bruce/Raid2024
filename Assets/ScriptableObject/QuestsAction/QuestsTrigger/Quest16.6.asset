@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Quest16.6
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 16.6"
-  _description: 
   _actionsToDoAtStart:
   - ConsumeFuel
   _questTriggerType: 3
   _information: StartEngine
-  _objectifText: 
+  _objectifText: "- D\xE9marrer le moteur"

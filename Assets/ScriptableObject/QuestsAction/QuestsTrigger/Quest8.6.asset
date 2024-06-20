@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest8.6
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 8.6"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Bruce
-  _objectifText: 
+  _objectifText: "Ramener les plans \xE0 Bruce"

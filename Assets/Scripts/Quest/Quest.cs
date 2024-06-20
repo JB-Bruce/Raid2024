@@ -47,7 +47,8 @@ public class Quest
     {
         return _questActions.Count;
     }
-
+    
+    //get objects to activate at start of the current quest action
     public GameObjectsList GetObjectsToActivateAtStartOfTheCUrrentQuestAction()
     {
         return _objectsToActivateAtStart[_currentQuestAction];

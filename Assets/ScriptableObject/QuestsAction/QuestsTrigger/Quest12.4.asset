@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest12.4
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 12.4"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 2
   _information: BanditCampArea
-  _objectifText: 
+  _objectifText: '- Sortir du camp'

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest2.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 2.3"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Bruce
-  _objectifText: 
+  _objectifText: "- Ramener la malette \xE0 Bruce"

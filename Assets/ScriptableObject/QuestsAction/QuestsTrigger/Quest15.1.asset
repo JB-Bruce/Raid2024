@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest15.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 15.1"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 3
   _information: ConstructionCoil
-  _objectifText: 
+  _objectifText: '- Construire la bobine'

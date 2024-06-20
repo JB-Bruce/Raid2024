@@ -16,5 +16,5 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Silver
-  _description: 
+  _description: Pratiques pour troquer ou pour attirer l'attention des corbeaux voleurs.
   _itemSprite: {fileID: 21300000, guid: d8a3ecc7514a6b047a0c0851a83d8ad7, type: 3}

@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest11.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 11.2"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Bruce
-  _objectifText: 
+  _objectifText: "- Ramener les mat\xE9riaux \xE0 Bruce"

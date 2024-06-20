@@ -16,7 +16,8 @@ MonoBehaviour:
   _isStackable: 0
   _maxStack: 1
   _name: Jerrican
-  _description: 
+  _description: "Id\xE9al pour transporter de l'eau, du carburant, ou pour impressionner
+    vos amis avec votre collection de bidons vides."
   _itemSprite: {fileID: 21300000, guid: c6195655666b07b449e89303572db057, type: 3}
-  _quantityInThis: 0
   _quantityFull: 100
+  _stuffInContainer: Essence

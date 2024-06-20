@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Quest12.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 12.2"
-  _description: 
   _actionsToDoAtStart: []
   _questTriggerType: 3
   _information: GetMagneticCoilPlan
-  _objectifText: 
+  _objectifText: "- R\xE9cup\xE9rer le plan"

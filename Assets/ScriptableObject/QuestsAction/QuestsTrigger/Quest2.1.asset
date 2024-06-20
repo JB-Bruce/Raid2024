@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Quest2.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 2.1"
-  _description: 
   _actionsToDoAtStart:
   - CaseSpawnBandit
   _questTriggerType: 1
   _information: Suitcase area
-  _objectifText: 
+  _objectifText: '- Aller au campement de bandit'
