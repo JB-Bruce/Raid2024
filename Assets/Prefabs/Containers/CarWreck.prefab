@@ -90,10 +90,14 @@ MonoBehaviour:
   _items: []
   containerRows: 3
   containerColumn: 3
+  _isUnit: 0
   despawnTimer: 0
   _itemsToGiveAtStart: []
   _itemToOpen:
   - {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
+  despawnable: 0
+  maxRefillTimer: 300
+  openSFX: CarOpen
 --- !u!1 &3153082099452265111
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,7 +271,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 20.48, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -351,7 +355,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 20.48, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

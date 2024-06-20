@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class WeaponAttack : MonoBehaviour
@@ -20,13 +21,13 @@ public class WeaponAttack : MonoBehaviour
     private Weapon _equipedWeapon;
 
 
-    private GameObject _handWeapon;
-
     [SerializeField]
     private Transform _AnimTransform;
     private Animator _animator;
     private RangedWeapon _rangedWeapon;
     private UnitCombat _unitCombat;
+    private NavMeshAgent _navMeshAgent;
+    private SoundManager _soundManager;
 
     [SerializeField]
     private SpriteRenderer _handWeaponSpriteRenderer;
@@ -50,13 +51,17 @@ public class WeaponAttack : MonoBehaviour
 
     private Camera _camera;
 
+    private void Start()
+    {
+        _soundManager = SoundManager.instance;
+    }
+
     public void Init()
     {
-        _unitCombat = transform.parent.GetComponent<UnitCombat>();
+        _unitCombat = transform.parent.parent.GetComponent<UnitCombat>();
         _animator = GetComponent<Animator>();
+        _navMeshAgent = transform.parent.parent.GetComponent<NavMeshAgent>();
         _camera = Camera.main;
-
-        //EquipWeapon(_unitCombat.weapon);
     }
 
     private void Update()
@@ -104,6 +109,11 @@ public class WeaponAttack : MonoBehaviour
         _handWeaponSpriteRenderer.sprite = _equipedWeapon.WorldSprite;
         //_AnimTransform.localScale = _normalScale;
 
+        if(_navMeshAgent != null)
+        {
+            _navMeshAgent.speed = weapon.MoveSpeed;
+        }
+
         _rightHandTransform.localPosition = new Vector3(weapon.RightHand.x, weapon.RightHand.y, 0);
         _rightHandTransform.localRotation = Quaternion.Euler(0, 0, weapon.RotationRightHand);
         _leftHandTransform.localPosition = new Vector3(weapon.LeftHand.x, weapon.LeftHand.y, 0);
@@ -125,6 +135,7 @@ public class WeaponAttack : MonoBehaviour
             _timer = Time.time + _equipedWeapon.AttackSpeed;
 
             _animator.Play(_equipedWeapon.animAttack, 0, 0);
+            _soundManager.PlaySFX(_equipedWeapon.attackSFX);
             if (_isRangeWeapon)
             {
                 direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread/ 2), _rangedWeapon.Spread / 2));
@@ -144,6 +155,7 @@ public class WeaponAttack : MonoBehaviour
         if (_enemy != null)
         {
             _enemy.TakeDamage(_equipedWeapon.Damage, _isAI ? _unitCombat.GetFaction() : Faction.Player, (_enemy.transform.position - transform.position).normalized);
+            _soundManager.PlaySFX(_equipedWeapon.hitSFX);
         }
 
     }
@@ -155,7 +167,8 @@ public class WeaponAttack : MonoBehaviour
 
         RaycastHit2D _hit =  Physics2D.Raycast(_transform.position, direction, _equipedWeapon.AttackRange);
 
-        if(_hit.collider != null && _hit.collider.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid))
+        if(_hit.collider != null  && _hit.collider.transform.parent != null && _hit.collider.transform.parent.parent != null 
+            && _hit.collider.transform.parent.parent.TryGetComponent<Humanoid>(out Humanoid humanoid))
         {
             return humanoid;
         }
@@ -188,5 +201,13 @@ public class WeaponAttack : MonoBehaviour
 
     }
 
+    public bool IsRangedWeapon => _isRangeWeapon;
+    public RangedWeapon RangedWeapon => _rangedWeapon;
+    public Animator Animator => _animator;
+    public float Timer 
+    { 
+        get { return _timer; }
+        set {  _timer = value; }
+    }
 
 }

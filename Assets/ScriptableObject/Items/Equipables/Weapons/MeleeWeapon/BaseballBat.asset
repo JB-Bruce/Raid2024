@@ -16,7 +16,8 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 1
   _name: Batte de baseball
-  _description: 
+  _description: "Id\xE9ale pour fracasser des bandits, ou organiser un match amical
+    de \u201Cbaseball post-apo\"."
   _itemSprite: {fileID: 21300000, guid: d13ea39ea922922458e61c2b130948aa, type: 3}
   _equipementTier: 0
   _worldSprite: {fileID: 1147398682, guid: 90103723d822bc3468b9b61e21f095cf, type: 3}
@@ -28,4 +29,9 @@ MonoBehaviour:
   _rightHandPos: {x: 0.1, y: -0.2}
   _rotationRightHand: -24
   _rotationLeftHand: 0
+  _moveSpeed: 5
   animAttack: BaseballBatAttack
+  animIdle: WeaponIdle
+  attackSFX: BaseballSwing
+  hitSFX: BaseballHit
+  reloadSFX: 

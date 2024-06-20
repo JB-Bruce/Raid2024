@@ -16,7 +16,9 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Bouteille d'eau
-  _description: 
+  _description: "L'essentiel de la survie, captur\xE9 dans un r\xE9cipient de plastique,
+    offrant une oasis dans un monde o\xF9 l'hydratation reste primordiale."
   _itemSprite: {fileID: 21300000, guid: 7479ec5458ce44f418b627fe2219a164, type: 3}
+  useConsSFX: WaterDrink
   _foodAmount: 0
   _drinkAmount: 50

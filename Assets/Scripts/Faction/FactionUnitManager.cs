@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
-using static UnityEngine.GraphicsBuffer;
 
 public class FactionUnitManager : MonoBehaviour
 {
@@ -105,7 +103,7 @@ public class FactionUnitManager : MonoBehaviour
     }
 
     // Make spawn a unit with parameters (for wave)
-    public void SpawnWaveUnit(Vector3 position, Vector3 target, float maxRange = 0, string enemyType = "")
+    public GameObject SpawnWaveUnit(Vector3 position, Vector3 target, float maxRange = 0, string enemyType = "")
     {
 
         GameObject go = Instantiate<GameObject>(unit, position, Quaternion.identity, parent);
@@ -126,6 +124,8 @@ public class FactionUnitManager : MonoBehaviour
         unitMovement.SetGuardPoint(target, 0, maxRange);
 
         unitBT.SetQuestType(enemyType);
+
+        return go;
     }
 
     // Give a job to unit

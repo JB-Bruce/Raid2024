@@ -9,7 +9,8 @@ public class BuildingsTriggers : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _pnj.GetSelected(true);
+            _pnj.Highlight(true);
+            _pnj.TriggerEnter(true);
         }
     }
 
@@ -17,7 +18,8 @@ public class BuildingsTriggers : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            _pnj.GetSelected(false);
+            _pnj.Highlight(false);
+            _pnj.TriggerEnter(false);
         }
     }
 }

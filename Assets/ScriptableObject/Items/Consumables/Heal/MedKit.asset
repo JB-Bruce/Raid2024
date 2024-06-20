@@ -16,6 +16,8 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Trousse de soin
-  _description: 
+  _description: "La bo\xEEte \xE0 outils des aventuriers d\xE9gourdis, transformant
+    les catastrophes mineures en anecdotes h\xE9ro\xEFques."
   _itemSprite: {fileID: 21300000, guid: 5cfd28e728469e84e84181e911aa6984, type: 3}
+  useConsSFX: HealSound
   _healAmount: 80

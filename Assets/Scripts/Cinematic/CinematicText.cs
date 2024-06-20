@@ -4,5 +4,5 @@ public class CinematicText
     public string text;
     public bool isSlideChanger;
     public bool isEndSlide;
-    public float delayAfterFinish;
+    public float displayDuration;
 }

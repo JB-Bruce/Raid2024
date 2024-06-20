@@ -126,8 +126,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4083485486290346258}
-  - component: {fileID: -7038993257515701599}
   - component: {fileID: 443371477706875050}
+  - component: {fileID: 5344649350019229704}
   m_Layer: 0
   m_Name: ArmouryBuilding
   m_TagString: Untagged
@@ -152,22 +152,6 @@ Transform:
   - {fileID: 1476073321428739160}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7038993257515701599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 862069557370708831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_OverrideArea: 1
-  m_Area: 1
-  m_IgnoreFromBuild: 0
-  m_AffectedAgents: ffffffff
 --- !u!114 &443371477706875050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +200,33 @@ MonoBehaviour:
       quantityNeed: 3
   _traderType: Armurier
   _traderImage: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+--- !u!114 &5344649350019229704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862069557370708831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eae98ffe826b2d41b5d3713022be3e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  faction: 0
+  _buildingLevel: 1
+  _maxLevel: 2
+  buildingImage: {fileID: 21300000, guid: 82bb66ad7670d0c41ab00352668eb4f8, type: 3}
+  buildingDescription: Armory
+  buildingUpgradeInfo: Info
+  WeaponSpawnPerLevel:
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+      percentage: 90
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 10
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+      percentage: 1
 --- !u!1 &1011794653094974667
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,6 +405,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1476073321428739160}
   - component: {fileID: 699151669243735600}
+  - component: {fileID: 2464029846681590551}
   m_Layer: 0
   m_Name: ArmouryBuildingSprite
   m_TagString: Untagged
@@ -469,3 +481,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2464029846681590551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7259229466258698817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

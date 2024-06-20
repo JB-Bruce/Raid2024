@@ -91,7 +91,11 @@ MonoBehaviour:
   _items: []
   containerRows: 3
   containerColumn: 3
+  _isUnit: 0
   despawnTimer: 0
+  despawnable: 0
+  maxRefillTimer: 300
+  openSFX: BushOpen
 --- !u!114 &6089085615253006398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +190,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -271,7 +275,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

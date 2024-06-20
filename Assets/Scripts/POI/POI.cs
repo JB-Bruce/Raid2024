@@ -113,4 +113,14 @@ public class POI : MonoBehaviour
         }
 
     }
+
+    // Return the Faction who captured the POI 
+    public Faction GetOwnerFaction()
+    {
+        if(_captured)
+        {
+            return ownerFaction;
+        }
+        return Faction.Null;
+    }
 }

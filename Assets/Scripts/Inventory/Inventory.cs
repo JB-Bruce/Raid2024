@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class Inventory : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private PlayerInput _playerInput;
 
     private EventSystem _eventSystem;
+
+    private SoundManager _soundManager;
 
     [SerializeField] 
     private GameObject _inventoryPanel;
@@ -106,6 +109,8 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         _eventSystem = EventSystem.current;
+
+        _soundManager = SoundManager.instance;
 
         //inventory slots
         CreateInventorySlots();
@@ -489,6 +494,8 @@ public class Inventory : MonoBehaviour
                 itemDropped.quantity = -itemWithQuantity.quantityNeed;
                 itemDropped.UpdateSprite();
 
+                PopUpManager.Instance.AddPopUp(itemWithQuantity.item, itemWithQuantity.quantityNeed);
+
                 UpdateMassDisplay();
             }
         }
@@ -500,7 +507,7 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void DecideHowToUseItem()
     {
-        if (!_itemSlots.Contains(selectedItemSlot) && !weaponSlots.Contains(selectedItemSlot) && !equipementSlots.Contains(selectedItemSlot))
+        if (IsContainerSlot(selectedItemSlot))
         {
             TrySwapItemsInSlots(selectedItemSlot, FindFirstInventorySlotAvailable(selectedItemSlot.Item));
         }
@@ -529,6 +536,11 @@ public class Inventory : MonoBehaviour
         UpdateMassDisplay();
     }
 
+    public bool IsContainerSlot(ItemSlot itemSlot)
+    {
+        return (!_itemSlots.Contains(itemSlot) && !weaponSlots.Contains(itemSlot) && !equipementSlots.Contains(itemSlot));
+    }
+
     /// <summary>
     /// Updates the mass in the inventory (and the display)
     /// </summary>
@@ -554,10 +566,17 @@ public class Inventory : MonoBehaviour
             StatsManager.instance.AddHealth((int)heal.HealAmount);
         }
 
+        if (itemSlot.Item is Consumable consumable) 
+        { 
+            _soundManager.PlaySFX(consumable.useConsSFX);
+        }
+
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
         itemWithQuantity.item = itemSlot.Item;
         itemWithQuantity.quantityNeed = -1;
         QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
+        PopUpManager.Instance.AddPopUp(itemWithQuantity.item, itemWithQuantity.quantityNeed);
 
         itemSlot.UpdateQuantity(itemSlot.Quantity-1);
     }
@@ -639,6 +658,12 @@ public class Inventory : MonoBehaviour
                     slot1.GetSelected(true);
                 }
             }
+
+            if (IsContainerSlot(slot1))
+            {
+                PopUpManager.Instance.AddPopUp(slot1.Item, slot1.Quantity);
+            }
+
             ItemSwap(slot1, slot2);
         }
     }
@@ -648,6 +673,12 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void ItemSwap(ItemSlot slot1, ItemSlot slot2)
     {
+        if(slot1.Item.GetType() == typeof(RangedWeapon) && slot1 is EquipementSlot equipementSlot)
+        {
+            _player.RemoveAmmoWhenRemoveWeapon(weaponSlots.IndexOf(equipementSlot));
+        }
+
+
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
         itemWithQuantity.item = slot1.Item;
         itemWithQuantity.quantityNeed = slot1.Quantity;
@@ -673,6 +704,12 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private bool TryStackingItems(ItemSlot slot1, ItemSlot slot2)
     {
+        bool addItem = false;
+        if (IsContainerSlot(slot1))
+        {
+            addItem = true;
+        }
+
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
         itemWithQuantity.item = slot1.Item;
         itemWithQuantity.quantityNeed = slot1.Quantity;
@@ -685,10 +722,20 @@ public class Inventory : MonoBehaviour
         {
             isSlotEmpty = false;
             slot2.UpdateQuantity(slot2.Item.MaxStack);
+            
+            if (addItem)
+            {
+                PopUpManager.Instance.AddPopUp(slot1.Item, remainingItems);
+            }
         }
         else
         {
             slot2.UpdateQuantity(slot2.Quantity + slot1.Quantity);
+
+            if (addItem)
+            {
+                PopUpManager.Instance.AddPopUp(slot1.Item, slot1.Quantity);
+            }
         }
 
         slot1.UpdateQuantity(slot1.Quantity - remainingItems);
@@ -823,9 +870,10 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void RemoveItems(Item item, int quantity)
     {
+        int tempQuantity = quantity;
         for (int i = _itemSlots.Count-1; i >= 0; i--)
         {
-            if (quantity <= 0)
+            if (tempQuantity <= 0)
             {
                 return;
             }
@@ -836,25 +884,30 @@ public class Inventory : MonoBehaviour
                     ItemWithQuantity itemWithQuantity = new ItemWithQuantity();
                     itemWithQuantity.item = item;
 
-                    if (quantity > _itemSlots[i].Quantity)
+                    if (tempQuantity > _itemSlots[i].Quantity)
                     {
-                        quantity -= _itemSlots[i].Quantity;
+                        tempQuantity -= _itemSlots[i].Quantity;
                         _itemSlots[i].UpdateQuantity(0);
 
-                        itemWithQuantity.quantityNeed = -(quantity - _itemSlots[i].Quantity);
+                        itemWithQuantity.quantityNeed = -(tempQuantity - _itemSlots[i].Quantity);
                         QuestManager.instance.CheckQuestItems(itemWithQuantity);
                     }
                     else
                     {
-                        _itemSlots[i].UpdateQuantity(_itemSlots[i].Quantity - quantity);
+                        _itemSlots[i].UpdateQuantity(_itemSlots[i].Quantity - tempQuantity);
 
-                        itemWithQuantity.quantityNeed = -quantity;
+                        itemWithQuantity.quantityNeed = -tempQuantity;
                         QuestManager.instance.CheckQuestItems(itemWithQuantity);
+
+                        PopUpManager.Instance.AddPopUp(item, -quantity);
+
                         return;
                     }
                 }
             }
         }
+
+        PopUpManager.Instance.AddPopUp(item, quantity - tempQuantity);
 
         UpdateMassDisplay();
     }

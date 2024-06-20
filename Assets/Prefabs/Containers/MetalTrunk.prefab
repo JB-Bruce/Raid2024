@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.24, y: 10.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -175,7 +175,11 @@ MonoBehaviour:
   _items: []
   containerRows: 4
   containerColumn: 4
+  _isUnit: 0
   despawnTimer: 0
+  despawnable: 0
+  maxRefillTimer: 300
+  openSFX: MetalTrunkOpen
 --- !u!1 &7612619736928877471
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +258,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 10.75, y: 10.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

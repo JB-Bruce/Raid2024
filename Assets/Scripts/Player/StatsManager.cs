@@ -1,6 +1,11 @@
+using JetBrains.Annotations;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class StatsManager : Humanoid
@@ -8,6 +13,12 @@ public class StatsManager : Humanoid
     public static StatsManager instance;
 
     private MovePlayer _movePlayer;
+
+    [SerializeField]
+    private List<GameObject> _panelToDeactivateOnDeath = new List<GameObject>();
+
+    [SerializeField]
+    private PlayerInput _playerInput;
 
     [SerializeField]
     private Transform _respawnPosition;
@@ -37,6 +48,7 @@ public class StatsManager : Humanoid
     private bool _recupStamina;
     private FactionManager _factionManager;
     
+    public UnityEvent haveChangeSpawn = new UnityEvent();
     
 
     [SerializeField]
@@ -137,12 +149,25 @@ public class StatsManager : Humanoid
                 }
             }
 
+            foreach (GameObject panel in _panelToDeactivateOnDeath)
+            {
+                panel.SetActive(false);
+            }
+            if (Inventory.Instance.isInventoryOpen)
+            {
+                Inventory.Instance.OpenFullInventory();
+            }
+            if (Inventory.Instance.isHalfInvenoryOpen)
+            {
+                Inventory.Instance.OpenInventory(false);
+            }
 
             Time.timeScale = 0.0f;
             DeathFade.CrossFadeAlpha(0,0.01f,true);
             DeathFade.enabled = true;
             DeathFade.CrossFadeAlpha(1,1f,true);
-            
+
+            _playerInput.SwitchCurrentActionMap("Death");
 
             StartCoroutine(CouroutineDeath());
         }
@@ -237,6 +262,7 @@ public class StatsManager : Humanoid
         DeathFade.CrossFadeAlpha(0,0.01f,true);
         DeathFade.enabled = true;
         DeathFade.CrossFadeAlpha(1,1f,true);
+        _playerInput.SwitchCurrentActionMap("InGame");
 
         StartCoroutine(CouroutineRespawn());
     }
@@ -279,8 +305,8 @@ public class StatsManager : Humanoid
     {
         yield return new WaitForSecondsRealtime(2f);
 
-        
         DeathScreen.SetActive(true);
+        DeathScreen.transform.parent.GetComponent<ControllerMenus>().SelectFirstButton();
         DeathFade.CrossFadeAlpha(0,1f,true);
         
         //Time.timeScale = 1.0f;
@@ -413,7 +439,33 @@ public class StatsManager : Humanoid
     }
 
 
+    // Change the player respawn faction
+    public void ChangeRespawnFaction(ERespawnFaction newRespawnFaction)
+    {
+        _respawnFaction = newRespawnFaction;
+        haveChangeSpawn.Invoke();
+    }
 
+    // Get the EFactionRespawn for a Faction
+    public ERespawnFaction CastToEFactionRespawn(Faction faction)
+    {
+        switch (faction)
+        {
+            case Faction.Utopist:
+                return StatsManager.ERespawnFaction.Utopist;
+            case Faction.Scientist:
+                return StatsManager.ERespawnFaction.Scientist;
+            case Faction.Survivalist:
+                return StatsManager.ERespawnFaction.Survivalist;
+            case Faction.Military:
+                return StatsManager.ERespawnFaction.Military;
+            default:
+                return StatsManager.ERespawnFaction.Null;
+        }
+    }
+
+    // Get Respawn Faction
+    public ERespawnFaction GetRespawnFaction() { return _respawnFaction; }
 
     //enum for the all the different faction respawn
     public enum ERespawnFaction 

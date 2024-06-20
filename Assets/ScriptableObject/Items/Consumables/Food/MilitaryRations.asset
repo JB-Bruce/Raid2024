@@ -16,7 +16,9 @@ MonoBehaviour:
   _isStackable: 1
   _maxStack: 99
   _name: Ration Militaire
-  _description: 
+  _description: "Le festin des soldats, maintenant le repas de choix dans un monde
+    o\xF9 la cuisine de luxe est une relique du pass\xE9."
   _itemSprite: {fileID: 21300000, guid: dfddfb3a88ced614eaec6409825b0497, type: 3}
+  useConsSFX: EatingSound
   _foodAmount: 100
   _drinkAmount: 50

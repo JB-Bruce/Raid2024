@@ -1,7 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
+using UnityEngine.SceneManagement;
 
 
 public class TutorialManager : MonoBehaviour
@@ -30,6 +32,9 @@ public class TutorialManager : MonoBehaviour
 
     private ArrowQuest _arrowQuest;
 
+    [SerializeField]
+    private string _sceneToLoad;
+
     /// <summary>
     /// create an instance of the tutorial manager
     /// </summary>
@@ -50,6 +55,11 @@ public class TutorialManager : MonoBehaviour
     {
         if (!CharacterCustomisation.Instance.PlayPressed)
             return;
+
+        if (CharacterCustomisation.Instance.SkipTutorial)
+        {
+            SceneManager.LoadScene(_sceneToLoad);
+        }
 
         //Take care of everything that appends in the tutorial
         switch (_tutorialincrement)
@@ -107,6 +117,7 @@ public class TutorialManager : MonoBehaviour
                 if (_playOnce)
                 {
                     FadeInAnimator.Play("FadeIn");
+                    StartCoroutine(ChangeSceneToGame());
                     _playOnce = false;
                 }
                 break;
@@ -114,9 +125,12 @@ public class TutorialManager : MonoBehaviour
             default:
                 break;
         }
+    }
 
-
-      
+    private IEnumerator ChangeSceneToGame()
+    {
+        yield return new WaitForSeconds(FadeInAnimator.GetCurrentAnimatorClipInfo(0).Length + 1);
+        SceneManager.LoadScene(_sceneToLoad);
     }
 
     /// <summary>

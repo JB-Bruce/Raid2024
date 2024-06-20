@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class Humanoid : MonoBehaviour
 {
     public bool isPlayer = false;
+    public CircleCollider2D circleCollider;
     public bool MoveFeet = true;
+    public bool CanRespawn = true;
 
     public RectTransform _slider;
 
@@ -133,8 +135,8 @@ public class Humanoid : MonoBehaviour
             _factionManager.AddReputation(faction, _faction, removeDeathReputation);
             _factionManager.ChangeAllReputation(_faction, faction);
             Animator _anim = GetComponent<Animator>();
-            //_anim.enabled = true;
-            if(Random.Range(0,2)  == 0)
+            _anim.enabled = true;
+            if (Random.Range(0, 2) == 0)
             {
                 _anim.Play("DeathL");
             }
@@ -143,6 +145,10 @@ public class Humanoid : MonoBehaviour
                 _anim.Play("DeathR");
             }
             RemoveUnitComponent();
+
+            circleCollider.enabled = false;
+
+            GetComponent<Container>().enabled = true;
         }
 
         if(_faction == Faction.Player)
@@ -156,11 +162,6 @@ public class Humanoid : MonoBehaviour
     {
         Destroy(GetComponent<UnitBT>());
         Destroy(_agent);
-        Transform _bodyAnim = _transform.GetChild(0);
-        _bodyAnim.GetChild(0).gameObject.SetActive(false);
-        _bodyAnim.GetChild(1).GetComponentInChildren<Animator>().enabled = false;
-        _bodyAnim.GetChild(2).gameObject.SetActive(false);
-
         Destroy(GetComponent<UnitCombat>());
         Destroy(GetComponent<UnitMovement>());
     }

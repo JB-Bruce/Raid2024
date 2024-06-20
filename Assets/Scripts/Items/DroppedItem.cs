@@ -7,6 +7,8 @@ public class DroppedItem : Interactable
     [SerializeField]
     private float _stuffQuantityInThis = 0;
 
+    private float _despawnTimer = 120f;
+
     /// <summary>
     /// Checks if the player enter the radius of the item, if he does, gets added to the list of interactable of the player
     /// </summary>
@@ -56,6 +58,7 @@ public class DroppedItem : Interactable
     protected override void Interact()
     {
         Inventory inventory = Inventory.Instance;
+        int tempQuantity = quantity;
         for (int i = 0; i < quantity; i++)
         {
             if (item != null)
@@ -63,12 +66,18 @@ public class DroppedItem : Interactable
                 if (!inventory.AddItem(item, _stuffQuantityInThis))
                 {
                     quantity -= i;
+                    if (i > 0)
+                    {
+                        PopUpManager.Instance.AddPopUp(item, i);
+                    }
                     return;
                 }
             }
         }
+        PopUpManager.Instance.AddPopUp(item, tempQuantity);
         Highlight(false);
         PlayerInteraction.Instance.interactables.Remove(this);
+        DroppedItemManager.Instance.droppedItems.Remove(this);
         Destroy(gameObject);
     }
 
@@ -76,5 +85,20 @@ public class DroppedItem : Interactable
     public void SetStuffQuantityInThis(float quantity)
     {
         _stuffQuantityInThis = quantity;
+    }
+    
+    private void Start()
+    {
+        DroppedItemManager.Instance.droppedItems.Add(this);
+    }
+
+    private void Update()
+    {
+        _despawnTimer -= Time.deltaTime;
+        if (_despawnTimer <= 0)
+        {
+            DroppedItemManager.Instance.droppedItems.Remove(this);
+            Destroy(gameObject);
+        }
     }
 }

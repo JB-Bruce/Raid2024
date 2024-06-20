@@ -3,7 +3,7 @@ using UnityEngine;
 public class PnjFactionQuestGiver : Pnj
 {
     [SerializeField]
-    private string _factionName;
+    private Faction _factionName;
 
     [SerializeField]
     private static int _giverQuestQuantity;
@@ -46,4 +46,7 @@ public class PnjFactionQuestGiver : Pnj
         FactionQuestManager.instance.SelectFactionQuest(_factionQuest[indexQuestInList], _factionName);
         DefineQuest(indexQuestInList);
     }
+    
+    public Faction GetFaction => _factionName;
+    public int[] FactionQuest => _factionQuest;
 }

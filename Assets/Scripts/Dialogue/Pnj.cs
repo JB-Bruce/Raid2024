@@ -31,12 +31,8 @@ public class Pnj : Interactable
         _isNameHide = true;
     }
 
-    public void GetSelected(bool state)
+    public void TriggerEnter(bool state)
     {
-        if (_highlightSprite != null)
-        {
-            _highlightSprite.SetActive(state);
-        }
         if (state)
         {
             PlayerInteraction.Instance.interactables.Add(this);
@@ -44,6 +40,15 @@ public class Pnj : Interactable
         else
         {
             PlayerInteraction.Instance.interactables.Remove(this);
+        }
+    }
+
+
+    public override void Highlight(bool state)
+    {
+        if (_highlightSprite != null)
+        {
+            _highlightSprite.SetActive(state);
         }
     }
 
@@ -80,6 +85,8 @@ public class Pnj : Interactable
     {
         StartDialogue();
     }
+
+    public string GetName => _name;
 }
 
 [System.Serializable]

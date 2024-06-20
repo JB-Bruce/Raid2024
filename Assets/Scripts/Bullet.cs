@@ -10,6 +10,15 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed = 30;
     private Faction _ownerFaction;
 
+    public string bulletHit;
+
+    private SoundManager _soundManager;
+
+    private void Start()
+    {
+        _soundManager = SoundManager.instance;
+    }
+
     // Set bullet
     public void SetBullet(float damage, Vector2 direction, float bulletRange, Faction _faction)
     {
@@ -43,6 +52,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
             humanoid.TakeDamage(_damage, _ownerFaction, transform.right);
+            _soundManager.PlaySFX(bulletHit);
         }
 
         if(!collision.isTrigger && collision!=null) 
