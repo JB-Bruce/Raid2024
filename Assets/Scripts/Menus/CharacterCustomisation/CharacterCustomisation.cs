@@ -13,21 +13,39 @@ public class CharacterCustomisation : MonoBehaviour
     public static CharacterCustomisation Instance;
 
     public Image CharacterPreview;
-    public Image CharacterPreviewHair;
     public Image CharacterPreviewHip;
 
     public Sprite WomanSprite;
-    public Sprite WomanSpriteHair;
     public Sprite WomanSpriteHip;
 
     public Sprite ManSprite;
-    public Sprite ManSpriteHair;
     public Sprite ManSpriteHip;
 
 
-    public SpriteRenderer PlayerHair;
     public SpriteRenderer PlayerBody;
     public SpriteRenderer PlayerHip;
+
+
+    public Image BackgroundTuto;
+    public Sprite BackgroundTutoIntellectuel;
+    public Sprite BackgroundTutoMilitaire;
+    public Sprite BackgroundTutoUtopiste;
+    public Sprite BackGroundTutoSurvivaliste;
+
+    public Image WomanSymbol;
+    public Image ManSymbol;
+
+    public Image FactionSelected;
+
+    public Sprite ManSymbolIntellectuel;
+    public Sprite ManSymbolMilitaire;
+    public Sprite ManSymbolUtopiste;
+    public Sprite ManSymbolSurvivaliste;
+
+    public Sprite WomanSymbolIntellectuel;
+    public Sprite WomanSymbolMilitaire;
+    public Sprite WomanSymbolUtopiste;
+    public Sprite WomanSymbolSurvivaliste;
     
     /*
     public Sprite PlayerSpriteBody;
@@ -67,9 +85,6 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToWoman()
     {
         CharacterPreview.sprite = WomanSprite;
-        CharacterPreviewHair.rectTransform.sizeDelta = new Vector2(139, 157);
-        CharacterPreviewHair.rectTransform.anchoredPosition = new Vector2(0, 81);
-        CharacterPreviewHair.sprite = WomanSpriteHair;
         CharacterPreviewHip.sprite = WomanSpriteHip;
 
         _characterGender = "Woman";
@@ -81,9 +96,6 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToMan()
     {
         CharacterPreview.sprite = ManSprite;
-        CharacterPreviewHair.rectTransform.sizeDelta = new Vector2(134, 112);
-        CharacterPreviewHair.rectTransform.anchoredPosition = new Vector2(0, 100);
-        CharacterPreviewHair.sprite = ManSpriteHair;
         CharacterPreviewHip.sprite = ManSpriteHip;
         _characterGender = "Man";
     }
@@ -93,7 +105,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToSurvivalist()
     {
+        BackgroundTuto.sprite = BackGroundTutoSurvivaliste;
+        ManSymbol.sprite = ManSymbolSurvivaliste;
+        WomanSymbol.sprite = WomanSymbolSurvivaliste;
 
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -625);
         _characterFaction = "Survivalist";
     }
 
@@ -102,6 +119,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToUtopist()
     {
+        BackgroundTuto.sprite = BackgroundTutoUtopiste;
+        ManSymbol.sprite = ManSymbolUtopiste;
+        WomanSymbol.sprite = WomanSymbolUtopiste;
+
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -0);
         _characterFaction = "Utopist";
     }
     /// <summary>
@@ -109,6 +132,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToScientist()
     {
+        BackgroundTuto.sprite = BackgroundTutoIntellectuel;
+        ManSymbol.sprite = ManSymbolIntellectuel;
+        WomanSymbol.sprite = WomanSymbolIntellectuel;
+
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -420);
         _characterFaction = "Scientist";
     }
 
@@ -117,6 +146,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToMilitary()
     {
+        BackgroundTuto.sprite = BackgroundTutoMilitaire;
+        ManSymbol.sprite = ManSymbolMilitaire;
+        WomanSymbol.sprite = WomanSymbolMilitaire;
+
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -200);
         _characterFaction = "Military";
     }
 
@@ -149,7 +184,6 @@ public class CharacterCustomisation : MonoBehaviour
 
 
             PlayerBody.sprite = CharacterPreview.sprite;
-            PlayerHair.sprite = CharacterPreviewHair.sprite;
             PlayerHip.sprite = CharacterPreviewHip.sprite;
 
             PlayPressed = true;

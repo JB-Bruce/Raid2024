@@ -94,67 +94,70 @@ public class StatsManager : Humanoid
 
         if (life <= 0)
         {
-
-            //Death
-            //Fade in/out for death screen
-            if(_respawnFaction == ERespawnFaction.Survivalist)
-            {
-                if(_factionManager.GetReputation(Faction.Player, Faction.Survivalist) < -1)
-                {
-                    RespawnButtonFaction.SetActive(false);
-                }
-                else
-                {
-                    RespawnButtonFaction.SetActive(true);
-                }
-            }
-
-            if(_respawnFaction == ERespawnFaction.Utopist)
-            {
-                if(_factionManager.GetReputation(Faction.Player, Faction.Utopist) < -1)
-                {
-                    RespawnButtonFaction.SetActive(false);
-                }
-                else
-                {
-                    RespawnButtonFaction.SetActive(true);
-                }
-            }
-
-            if(_respawnFaction == ERespawnFaction.Scientist)
-            {
-                if(_factionManager.GetReputation(Faction.Player, Faction.Scientist) < -1)
-                {
-                    RespawnButtonFaction.SetActive(false);
-                }
-                else
-                {
-                    RespawnButtonFaction.SetActive(true);
-                }
-            }
-
-            if(_respawnFaction == ERespawnFaction.Military)
-            {
-                if(_factionManager.GetReputation(Faction.Player, Faction.Military) < -1)
-                {
-                    RespawnButtonFaction.SetActive(false);
-                }
-                else
-                {
-                    RespawnButtonFaction.SetActive(true);
-                }
-            }
-
-
-            Time.timeScale = 0.0f;
-            DeathFade.CrossFadeAlpha(0,0.01f,true);
-            DeathFade.enabled = true;
-            DeathFade.CrossFadeAlpha(1,1f,true);
-
-            _playerInput.SwitchCurrentActionMap("Death");
-
-            StartCoroutine(CouroutineDeath());
+            Death();                
         }
+    }
+    
+    //Fade in/out for death screen
+    private void Death()
+    {
+        if(_respawnFaction == ERespawnFaction.Survivalist)
+        {
+            if(_factionManager.GetReputation(Faction.Player, Faction.Survivalist) < -1)
+            {
+                RespawnButtonFaction.SetActive(false);
+            }
+            else
+            {
+                RespawnButtonFaction.SetActive(true);
+            }
+        }
+
+        if(_respawnFaction == ERespawnFaction.Utopist)
+        {
+            if(_factionManager.GetReputation(Faction.Player, Faction.Utopist) < -1)
+            {
+                RespawnButtonFaction.SetActive(false);
+            }
+            else
+            {
+                RespawnButtonFaction.SetActive(true);
+            }
+        }
+
+        if(_respawnFaction == ERespawnFaction.Scientist)
+        {
+            if(_factionManager.GetReputation(Faction.Player, Faction.Scientist) < -1)
+            {
+                RespawnButtonFaction.SetActive(false);
+            }
+            else
+            {
+                RespawnButtonFaction.SetActive(true);
+            }
+        }
+
+        if(_respawnFaction == ERespawnFaction.Military)
+        {
+            if(_factionManager.GetReputation(Faction.Player, Faction.Military) < -1)
+            {
+                RespawnButtonFaction.SetActive(false);
+            }
+            else
+            {
+                RespawnButtonFaction.SetActive(true);
+            }
+        }
+
+
+        Time.timeScale = 0.0f;
+        DeathFade.CrossFadeAlpha(0,0.01f,true);
+        DeathFade.enabled = true;
+        DeathFade.CrossFadeAlpha(1,1f,true);
+
+        _playerInput.SwitchCurrentActionMap("Death");
+
+        StartCoroutine(CouroutineDeath());
     }
 
     //Call this function when you want to heal the player. Change the color of the life image (depending on the life amount).
@@ -386,6 +389,16 @@ public class StatsManager : Humanoid
         {
             staminaBar.CrossFadeAlpha(1,0.1f,false);
             staminaBorder.CrossFadeAlpha(1,0.1f,false);
+        }
+
+        if(hunger <= 0)
+        {
+            Death();
+        }
+
+        if(water <= 0)
+        {
+            Death();
         }
 
         _verifSprint = _isSprinting;
