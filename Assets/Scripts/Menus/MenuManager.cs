@@ -9,6 +9,7 @@ public class MenuManager : MonoBehaviour
 
     SettingsMenusManager _settingsMenus;
     MenuButtonTracker _menuButtonTracker;
+    SoundManager _soundManager;
 
     public static MenuManager instance;
 
@@ -20,6 +21,7 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         _settingsMenus = SettingsMenusManager.instance;
+        _soundManager = SoundManager.instance;
     }
 
     public void OpenSettingsInGame()
@@ -59,6 +61,7 @@ public class MenuManager : MonoBehaviour
     public void ReturnToMainMenu()
     {
         Time.timeScale = 1f;
+        _soundManager.PlaySFX("ButtonClick");
         SceneManager.LoadScene("MainMenu");
     }
 

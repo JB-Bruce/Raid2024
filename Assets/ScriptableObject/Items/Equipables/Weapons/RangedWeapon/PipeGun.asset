@@ -31,6 +31,9 @@ MonoBehaviour:
   _moveSpeed: 3
   animAttack: FamasShoot
   animIdle: 
+  attackSFX: PipegunShoot
+  hitSFX: 
+  reloadSFX: PipegunReload
   _spread: 0
   _maxBullet: 5
   _reloadTime: 1

@@ -26,13 +26,17 @@ public class Container : Interactable
     public float despawnTimer = 0f;
     public bool despawnable = false;
 
+    public string openSFX;
+
     private bool _hasBeenOpened = false;
 
     private Inventory _inventory;
+    private SoundManager _soundManager;
 
     private void Start()
     {
         _inventory = Inventory.Instance;
+        _soundManager = SoundManager.instance;
     }
 
     /// <summary>
@@ -83,6 +87,7 @@ public class Container : Interactable
             _hasBeenOpened = true;
             GenerateItems();
         }
+        _soundManager.PlaySFX(openSFX);
         CreateItemSlots();
     }
 
