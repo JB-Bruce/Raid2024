@@ -604,7 +604,7 @@ public class MovePlayer : MonoBehaviour
     // Change bool _isParrying if the player try to parrying attack
     public void Parrying(InputAction.CallbackContext context)
     {
-        if(context.started) 
+        if(context.started && !_weaponAttack.IsRangedWeapon) 
         {
             _tryToParrying = true;
         }
