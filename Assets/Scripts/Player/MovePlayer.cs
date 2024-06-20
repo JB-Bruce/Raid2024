@@ -888,9 +888,11 @@ public class MovePlayer : MonoBehaviour
             _isParrying = _tryToParrying;
             _weaponAttack.Animator.SetBool("IsParrying", _isParrying);
 
-            if (_tryToHit && (!_weaponAttack.IsRangedWeapon && !_tryToParrying) && !_isReloading)
+            if (_tryToHit && (_weaponAttack.IsRangedWeapon || !_tryToParrying) && !_isReloading)
             {
-                if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedweapon)
+
+
+                if (inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedweapon)
                 {
                     _equipedWeapon = rangedweapon;
                 }
@@ -901,6 +903,11 @@ public class MovePlayer : MonoBehaviour
                 else
                 {
                     _equipedWeapon = _handAttack;
+                }
+
+                if (_equipedWeapon.IsSemiAuto)
+                {
+                    _tryToHit = false;
                 }
 
                 _timer = Time.time + _equipedWeapon.AttackSpeed;
