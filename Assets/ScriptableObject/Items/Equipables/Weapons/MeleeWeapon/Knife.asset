@@ -31,3 +31,6 @@ MonoBehaviour:
   _moveSpeed: 5
   animAttack: KnifeAttack
   animIdle: 
+  attackSFX: KnifeSwing
+  hitSFX: KnifeHit
+  reloadSFX: 

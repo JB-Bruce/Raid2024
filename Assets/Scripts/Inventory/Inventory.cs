@@ -19,6 +19,8 @@ public class Inventory : MonoBehaviour
 
     private EventSystem _eventSystem;
 
+    private SoundManager _soundManager;
+
     [SerializeField] 
     private GameObject _inventoryPanel;
     
@@ -107,6 +109,8 @@ public class Inventory : MonoBehaviour
     private void Start()
     {
         _eventSystem = EventSystem.current;
+
+        _soundManager = SoundManager.instance;
 
         //inventory slots
         CreateInventorySlots();
@@ -546,6 +550,11 @@ public class Inventory : MonoBehaviour
         else if (itemSlot.Item is Heal heal)
         {
             StatsManager.instance.AddHealth((int)heal.HealAmount);
+        }
+
+        if (itemSlot.Item is Consumable consumable) 
+        { 
+            _soundManager.PlaySFX(consumable.useConsSFX);
         }
 
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();

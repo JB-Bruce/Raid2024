@@ -13,6 +13,9 @@ public class Weapon : Equipable
     [SerializeField] protected float _moveSpeed;
     public string animAttack;
     public string animIdle;
+    public string attackSFX;
+    public string hitSFX;
+    public string reloadSFX;
 
 
     public float Damage { get { return _damage; } }

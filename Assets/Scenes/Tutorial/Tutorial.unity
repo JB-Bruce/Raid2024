@@ -5530,6 +5530,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &283547437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8697,6 +8709,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &512075814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9740,6 +9764,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &555891717
@@ -11970,6 +12006,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &722203688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13411,6 +13459,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1984873440}
         m_TargetAssemblyTypeName: CharacterCustomisation, Assembly-CSharp
         m_MethodName: OnPlayPressed
@@ -14226,6 +14286,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &885170675
@@ -16773,6 +16845,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1013497403
@@ -26612,6 +26696,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1521525434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32407,7 +32503,19 @@ MonoBehaviour:
     m_ActionId: 7979fc61-6262-4473-8b9e-286de2d6133e
     m_ActionName: Quest/Close Quest[/XInputControllerWindows/dpad/left,/Keyboard/j,/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 169b8622-ca42-4b4b-8bb2-fef0f7de3ecb
     m_ActionName: Settings/EscapeSettings[/Keyboard/escape,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
@@ -32426,6 +32534,18 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5ce9d8e8-8086-4b6d-9d87-d17422fbd7c6
     m_ActionName: CharacterCustomization/Move[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 1b673205-4528-40ad-b7cf-464851e55da4
+    m_ActionName: InGame/Reload[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5e0e187b-06f1-438e-af20-fbfdc739b740
+    m_ActionName: Quest/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dedfa57b-26d0-40a8-9ef9-1295845a086e
+    m_ActionName: Death/Move
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: CharacterCustomization
@@ -35979,6 +36099,7 @@ GameObject:
   - component: {fileID: 1956797796}
   - component: {fileID: 1956797795}
   - component: {fileID: 1956797794}
+  - component: {fileID: 1956797801}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -36200,6 +36321,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1956797801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1956797793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062643ac395c26a4f8a1f6c37f5c13c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1964087293
 GameObject:
   m_ObjectHideFlags: 0
@@ -37052,6 +37185,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
+          m_BoolArgument: 0
+        m_CallState: 2
   m_IsOn: 0
 --- !u!1001 &2013522055
 PrefabInstance:
@@ -37646,6 +37791,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &2050742063
@@ -38683,6 +38840,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1956797801}
+        m_TargetAssemblyTypeName: SFXLinker, Assembly-CSharp
+        m_MethodName: GetPlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: ButtonClick
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2103922018

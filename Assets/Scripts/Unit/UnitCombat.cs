@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitCombat : MonoBehaviour
@@ -27,6 +28,9 @@ public class UnitCombat : MonoBehaviour
 
     [Header("Detection")]
     public CircleCollider2D circleCollider;
+
+    // Attack
+    private int _magazine = 0;
 
     public void Init()
     {
@@ -138,11 +142,32 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
-        if(canAttack && nearestEnemy != null) 
+        if (weaponAttack.Timer < Time.time)
         {
-            weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position, _mHumanoid.faction);
+            if (canAttack && nearestEnemy != null && FireBullet())
+            {
+                weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position, _mHumanoid.faction);
+            }
         }
         //weaponAttack.UpdateWeaponRotation();
+    }
+
+    // Check if the unit can fire bullet or need to reload
+    private bool FireBullet()
+    {
+        if(!weaponAttack.IsRangedWeapon)
+            return true;
+
+        if (_magazine > 0)
+        {
+            _magazine--;
+            return true;
+        }
+
+        weaponAttack.Timer += weaponAttack.RangedWeapon.ReloadTime;
+        _magazine = weaponAttack.RangedWeapon.MaxBullet;
+        weaponAttack.Animator.Play(weaponAttack.RangedWeapon.animReload, 0, 0);
+        return false;
     }
 
     // Get the faction of the owner unit

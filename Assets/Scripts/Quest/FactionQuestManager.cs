@@ -21,6 +21,8 @@ public class FactionQuestManager : MonoBehaviour
 
     public static FactionQuestManager instance;
 
+    private FactionManager _factionManager;
+
     //create an instance of the FactionQuestManager
     private void Awake()
     {
@@ -34,24 +36,26 @@ public class FactionQuestManager : MonoBehaviour
         _currentMilitaryFactionQuest = -1;
         _currentSurvivalistFactionQuest = -1;
         _currentIntellectualFactionQuest = -1;
+        _factionManager = FactionManager.Instance;
     }
 
     //check if the currents FactionQuests are QuestsTrigger
     public void CheckFactionQuestsTrigger(QuestTriggerType questTrigger, string information = "")
     {
-        CheckFactionQuestTrigger(questTrigger, ref _currentUtopistFactionQuest, information);
-        CheckFactionQuestTrigger(questTrigger, ref _currentMilitaryFactionQuest, information);
-        CheckFactionQuestTrigger(questTrigger, ref _currentSurvivalistFactionQuest, information);
-        CheckFactionQuestTrigger(questTrigger, ref _currentIntellectualFactionQuest, information);
+        CheckFactionQuestTrigger(questTrigger, ref _currentUtopistFactionQuest, Faction.Utopist, information);
+        CheckFactionQuestTrigger(questTrigger, ref _currentMilitaryFactionQuest,Faction.Military, information);
+        CheckFactionQuestTrigger(questTrigger, ref _currentSurvivalistFactionQuest, Faction.Survivalist, information);
+        CheckFactionQuestTrigger(questTrigger, ref _currentIntellectualFactionQuest, Faction.Scientist, information);
     }
 
     //check if the current FactionQuestAction is a QuestTrigger
-    private void CheckFactionQuestTrigger(QuestTriggerType questTrigger, ref int questIndex, string information = "")
+    private void CheckFactionQuestTrigger(QuestTriggerType questTrigger, ref int questIndex, Faction faction, string information = "")
     {
         if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestTrigger aQuestTrigger)
         {
             if (aQuestTrigger.IsFinished(questTrigger, information))
             {
+                GetReward(faction);
                 NextQuest(ref questIndex);
             }
         }
@@ -60,22 +64,31 @@ public class FactionQuestManager : MonoBehaviour
     //check if the currents FactionQuests are QuestsItems
     public void CheckFactionQuestsItems(ItemWithQuantity itemWithQuantity)
     {
-        CheckFactionQuestItems(itemWithQuantity, ref _currentUtopistFactionQuest);
-        CheckFactionQuestItems(itemWithQuantity, ref _currentMilitaryFactionQuest);
-        CheckFactionQuestItems(itemWithQuantity, ref _currentSurvivalistFactionQuest);
-        CheckFactionQuestItems(itemWithQuantity, ref _currentIntellectualFactionQuest);
+        CheckFactionQuestItems(itemWithQuantity, ref _currentUtopistFactionQuest, Faction.Utopist);
+        CheckFactionQuestItems(itemWithQuantity, ref _currentMilitaryFactionQuest, Faction.Military);
+        CheckFactionQuestItems(itemWithQuantity, ref _currentSurvivalistFactionQuest, Faction.Survivalist);
+        CheckFactionQuestItems(itemWithQuantity, ref _currentIntellectualFactionQuest, Faction.Scientist);
     }
 
     //check if the current FactionQuestAction is a QuestItems
-    private void CheckFactionQuestItems(ItemWithQuantity itemWithQuantity, ref int questIndex)
+    private void CheckFactionQuestItems(ItemWithQuantity itemWithQuantity, ref int questIndex, Faction faction)
     {
         if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestItems aQuestItems)
         {
             if (aQuestItems.IsFinished(itemWithQuantity))
             {
+                GetReward(faction);
                 NextQuest(ref questIndex);
             }
         }
+    }
+
+    // Get reward for completing the quest // TODO Change value with modifiable value
+    private void GetReward(Faction faction)
+    {
+        FactionSc _factionSc = _factionManager.GetFaction(faction);
+        _factionManager.AddReputation(faction, Faction.Player, 1);
+        _factionSc.FactionLeader.BuildingXP += 50;
     }
 
     //check if the currents FactionQuests are QuestsKill
@@ -94,35 +107,34 @@ public class FactionQuestManager : MonoBehaviour
         {
             if (aQuestKill.IsFinished(faction))
             {
+                GetReward(faction);
                 NextQuest(ref questIndex);
             }
         }
     }
 
     //select a faction quest
-    public void SelectFactionQuest(int indexQuest, string faction)
+    public void SelectFactionQuest(int indexQuest, Faction faction)
     {
         GetIndexRefByFaction(faction) = indexQuest;
     }
 
     //return the ref of a faction quest index with the faction name
-    public ref int GetIndexRefByFaction(string faction)
+    public ref int GetIndexRefByFaction(Faction faction)
     {
-        if(faction == "Utopist")
+        switch (faction)
         {
-            return ref _currentUtopistFactionQuest;
-        }
-        else if (faction == "Military") 
-        {
-            return ref _currentMilitaryFactionQuest;
-        }
-        else if (faction == "Survivalist")
-        {
-            return ref _currentSurvivalistFactionQuest;
-        }
-        else
-        {
-            return ref _currentIntellectualFactionQuest;
+            case Faction.Utopist:
+                return ref _currentUtopistFactionQuest;
+
+            case Faction.Military:
+                return ref _currentMilitaryFactionQuest;
+
+            case Faction.Survivalist:
+                return ref _currentSurvivalistFactionQuest;
+
+            default:
+                return ref _currentIntellectualFactionQuest;
         }
     }
 
@@ -142,14 +154,27 @@ public class FactionQuestManager : MonoBehaviour
     }
 
     //give up the quest of a faction
-    public void GiveUpQuest(string faction)
+    public void GiveUpQuest(Faction faction)
     {
         GetIndexRefByFaction(faction) = -1;
     }
 
     //return the quest of a faction
-    public Quest GetQuestByFaction(string faction)
+    public Quest GetQuestByFaction(Faction faction)
     {
-        return _factionQuests[GetIndexRefByFaction(faction)];
+        int index = GetIndexRefByFaction(faction);
+
+        if(index == -1)
+        {
+            return null;
+        }
+
+        return _factionQuests[index];
+    }
+
+    // Get the quest at this index
+    public Quest GetQuest(int index)
+    {
+        return _factionQuests[index];
     }
 }

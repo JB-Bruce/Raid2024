@@ -98,5 +98,9 @@ public class FactionLeader : MonoBehaviour
     public int UpgradePrice => _upgradePrice;
 
     // Get building XP
-    public int BuildingXP => _buildingExperience;
+    public int BuildingXP
+    {
+        get { return _buildingExperience; }
+        set { _buildingExperience += value; }
+    }
 }

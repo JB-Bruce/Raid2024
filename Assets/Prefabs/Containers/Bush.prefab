@@ -95,6 +95,7 @@ MonoBehaviour:
   despawnTimer: 0
   despawnable: 0
   maxRefillTimer: 300
+  openSFX: BushOpen
 --- !u!114 &6089085615253006398
 MonoBehaviour:
   m_ObjectHideFlags: 0
