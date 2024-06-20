@@ -36,6 +36,8 @@ public class MovePlayer : MonoBehaviour
     
     private bool _isSprinting = false;
     private bool _isAiming = false;
+    private bool _isParrying = false;
+    private bool _tryToParrying = false;
     private bool _mouseActive = true;
     private bool _tryToHit = false;
     private bool _isReloading = false;
@@ -48,6 +50,7 @@ public class MovePlayer : MonoBehaviour
     private int oldAmmo1 = 0;
     private int oldAmmo2 = 0;
     private int oldAmmo3 = 0;
+    private float _parryingReduceDamage = 15f;
     string maxBullet;
     int oldSelectedWeapon = 0;
     int ammoRemoved;
@@ -180,7 +183,7 @@ public class MovePlayer : MonoBehaviour
         if(context.started && !_tryToHit)
         {
             
-            if(_isAiming)
+            if(_isAiming || !_weaponAttack.IsRangedWeapon)
             {
                 _tryToHit = true;
                 if (_mouseActive == false)
@@ -595,7 +598,20 @@ public class MovePlayer : MonoBehaviour
         {
             _isAiming = false;
         }
-        
+
+    }
+
+    // Change bool _isParrying if the player try to parrying attack
+    public void Parrying(InputAction.CallbackContext context)
+    {
+        if(context.started) 
+        {
+            _tryToParrying = true;
+        }
+        else if(context.canceled)
+        {
+            _tryToParrying= false;
+        }
     }
 
 
@@ -828,7 +844,7 @@ public class MovePlayer : MonoBehaviour
     }
     
 
-//Check on the 3 equipement slots what protection is eqquiped. Get for the three the amount of reduce damage and return it.
+//Check on the 3 equipement slots what protection is eqquiped and if the player is parrying blow. Get for the three the amount of reduce damage and return it.
     public float CheckArmor()
     {
         float reduceDamage = 0;
@@ -839,6 +855,11 @@ public class MovePlayer : MonoBehaviour
                 Armor armor = (Armor)inventory.equipementSlots[i].Item;
                 reduceDamage += armor.Protection;
             }
+        }
+
+        if (_isParrying && !_weaponAttack.IsRangedWeapon)
+        {
+            reduceDamage += _parryingReduceDamage;
         }
         return reduceDamage;
     }
@@ -861,9 +882,12 @@ public class MovePlayer : MonoBehaviour
             _rb.velocity = Vector3.zero;
         }
 
-        if(_tryToHit && _isAiming && !_isReloading)
+        if (_timer < Time.time) 
         {
-            if (_timer < Time.time) 
+            _isParrying = _tryToParrying;
+            _weaponAttack.Animator.SetBool("IsParrying", _isParrying);
+
+            if (_tryToHit && (!_weaponAttack.IsRangedWeapon && !_tryToParrying) && !_isReloading)
             {
                 if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedweapon)
                 {
