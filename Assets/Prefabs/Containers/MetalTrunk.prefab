@@ -178,6 +178,7 @@ MonoBehaviour:
   _isUnit: 0
   despawnTimer: 0
   despawnable: 0
+  maxRefillTimer: 300
   openSFX: MetalTrunkOpen
 --- !u!1 &7612619736928877471
 GameObject:

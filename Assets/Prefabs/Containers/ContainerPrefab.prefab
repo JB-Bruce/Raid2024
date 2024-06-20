@@ -174,7 +174,10 @@ MonoBehaviour:
   _items: []
   containerRows: 3
   containerColumn: 3
+  _isUnit: 0
   despawnTimer: 0
+  despawnable: 0
+  maxRefillTimer: 300
 --- !u!1 &8882486897249550123
 GameObject:
   m_ObjectHideFlags: 0

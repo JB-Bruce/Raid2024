@@ -93,6 +93,7 @@ MonoBehaviour:
   _isUnit: 0
   despawnTimer: 0
   despawnable: 0
+  maxRefillTimer: 300
   openSFX: CarOpen
 --- !u!1 &3153082099452265111
 GameObject:

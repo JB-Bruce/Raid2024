@@ -6290,6 +6290,7 @@ MonoBehaviour:
   _isUnit: 1
   despawnTimer: 120
   despawnable: 1
+  maxRefillTimer: 300
 --- !u!58 &3570925510043406716
 CircleCollider2D:
   m_ObjectHideFlags: 0

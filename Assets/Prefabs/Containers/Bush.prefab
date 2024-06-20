@@ -94,6 +94,7 @@ MonoBehaviour:
   _isUnit: 0
   despawnTimer: 0
   despawnable: 0
+  maxRefillTimer: 300
   openSFX: BushOpen
 --- !u!114 &6089085615253006398
 MonoBehaviour:

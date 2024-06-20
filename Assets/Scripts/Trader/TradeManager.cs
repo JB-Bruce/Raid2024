@@ -178,7 +178,8 @@ public class TradeManager : MonoBehaviour
         {
             _inventory.AddItem(_selectedTrade.currentData.tradeItem);
         }
-        
+        PopUpManager.Instance.AddPopUp(_selectedTrade.currentData.tradeItem, _selectedTrade.currentData.tradeItemQuantity);
+
         UpdateTradeButton(_selectedTrade);
         RefreshTrades();
     }

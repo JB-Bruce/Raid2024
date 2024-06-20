@@ -566,6 +566,7 @@ public class MovePlayer : MonoBehaviour
                     {
                         inventory.AddItem(oldRangedWeapon.BulletType[0]);
                     }
+                    PopUpManager.Instance.AddPopUp(oldRangedWeapon.BulletType[0], ammoRemoved);
                 }
                 currentAmmoWeapon1 = oldAmmo1;
                 currentAmmoWeapon2 = oldAmmo2;
