@@ -13,6 +13,6 @@ public class SFXLinker : MonoBehaviour
 
     public void GetPlaySFX(string name)
     {
-        _soundManager.PlaySFX(name);
+        _soundManager.PlaySFX(name, _soundManager._sfxPlayer);
     }
 }

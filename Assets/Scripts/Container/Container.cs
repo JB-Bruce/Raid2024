@@ -112,7 +112,7 @@ public class Container : Interactable
             _hasBeenOpened = true;
             GenerateItems();
         }
-        _soundManager.PlaySFX(openSFX);
+        _soundManager.PlaySFX(openSFX, _soundManager._sfxPlayer);
         CreateItemSlots();
     }
 

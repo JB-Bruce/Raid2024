@@ -87,7 +87,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    public void PlaySFX(string _name)
+    public void PlaySFX(string _name, AudioSource audioSource)
     {
         Sounds _s = Array.Find(_sfxs, _x => _x.name == _name);
         if (_s == null) // If doesn't find sfx by name
@@ -96,7 +96,7 @@ public class SoundManager : MonoBehaviour
         }
         else // else play the sfx by name
         {
-            _sfxPlayer.PlayOneShot(_s.clip);
+            audioSource.PlayOneShot(_s.clip);
         }
     }
 
