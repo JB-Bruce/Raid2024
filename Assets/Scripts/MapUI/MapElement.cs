@@ -8,6 +8,7 @@ public class MapElement : MonoBehaviour
     public bool canMove;
     public string overName;
 
+
     private void Start()
     {
         if (!canMove)

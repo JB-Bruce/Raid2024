@@ -1,8 +1,5 @@
-using JetBrains.Annotations;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -46,7 +43,6 @@ public class StatsManager : Humanoid
     public bool _isSprinting;
     private bool _verifSprint;
     private bool _recupStamina;
-    private FactionManager _factionManager;
     
     public UnityEvent haveChangeSpawn = new UnityEvent();
     

@@ -115,7 +115,7 @@ public class UnitCombat : MonoBehaviour
                 RaycastHit2D _hit = Physics2D.Raycast(_transform.position, ennemies[i].transform.position - _transform.position, viewRange);
 
 
-                if (_hit.collider != null && _hit.collider.transform.parent.parent.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
+                if (_hit.collider != null && _hit.collider.transform.parent != null &&_hit.collider.transform.parent.parent.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
                 {
                     nearest = i;
                     _distanceToNearest = _newDistance;

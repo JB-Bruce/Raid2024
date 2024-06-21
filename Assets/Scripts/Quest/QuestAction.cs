@@ -8,6 +8,9 @@ public abstract class QuestAction : ScriptableObject
     private string _name;
 
     [SerializeField]
+    private Vector3 _goal;
+
+    [SerializeField]
     private List<string> _actionsToDoAtStart;
 
     //return the questAction name
@@ -27,4 +30,6 @@ public abstract class QuestAction : ScriptableObject
     {
         return _actionsToDoAtStart;
     }
+
+    public Vector3 GetGoal() { return _goal; }
 }

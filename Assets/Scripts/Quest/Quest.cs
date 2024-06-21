@@ -58,11 +58,15 @@ public class Quest
     public bool NextQuestAction()
     {
         GetCurrentQuestAction().OnEnd(_objectsToDesactivateAtTheEnd[_currentQuestAction]);
-
+        
         if (_questActions.Count > _currentQuestAction+1)
         {
             _currentQuestAction += 1;
             GetCurrentQuestAction().Configure(GetObjectsToActivateAtStartOfTheCUrrentQuestAction());
+            if(GetCurrentQuestAction().GetGoal() != null)
+            {
+                MapManager.instance.SetQuestWaypoint(GetCurrentQuestAction().GetGoal());
+            }
             return true;
         }
         else

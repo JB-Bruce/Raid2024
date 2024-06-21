@@ -32,7 +32,7 @@ public class Humanoid : MonoBehaviour
     [SerializeField]
     private string _questType;
 
-    private FactionManager _factionManager;
+    protected FactionManager _factionManager;
 
     protected virtual void Start()
     {

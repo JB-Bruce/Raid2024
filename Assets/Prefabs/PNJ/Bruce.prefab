@@ -1,0 +1,1004 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3965264754105266816
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6465442020856224380}
+  - component: {fileID: 3861118868235092263}
+  m_Layer: 0
+  m_Name: Sprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6465442020856224380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3965264754105266816}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 468628988623088784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3861118868235092263
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3965264754105266816}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 1
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 0.7509433, g: 0.7509433, b: 0.7509433, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &5947767418376869763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 468628988623088784}
+  - component: {fileID: 679558352778873561}
+  - component: {fileID: 3221530253636203864}
+  - component: {fileID: 8793340133144132569}
+  - component: {fileID: 1470590137739784208}
+  - component: {fileID: 7592453477553413623}
+  - component: {fileID: 5140803977399028144}
+  m_Layer: 0
+  m_Name: Bruce
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &468628988623088784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947767418376869763}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 199.13812, y: 71.534294, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 2155612600260204921}
+  - {fileID: 6465442020856224380}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &679558352778873561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947767418376869763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 8292089535960678223}
+  _dialogues:
+  - isThePlayer: 0
+    talk: "Qui \xEAtes-vous? Que me voulez-vous? Ce sont les Utopistes qui vous envoie?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Calmez-vous, je suis en qu\xEAte d\u2019informations. On m\u2019a dit
+        que vous pourriez m\u2019aider pour finir le dessein de mes parents."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Ah, je vois qui vous \xEAtes. J\u2019avais beaucoup de respect pour
+          vos parents. Avant de vous aider, laisse moi me pr\xE9senter."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Mon nom est Bruce, je faisais autrefois partie des Utopistes mais
+            ils m\u2019ont banni \xE0 cause de mes id\xE9es. J\u2019ai travaill\xE9
+            avec tes parents dans le pass\xE9 sur un projet qui pourrait changer
+            l\u2019avenir de tous."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "J\u2019aimerais t\u2019en dire plus mais je ne te fais pas encore
+              confiance pour l\u2019instant."
+            nextTalk:
+            - isThePlayer: 1
+              talk: Comment est-ce que je peux obtenir votre confiance?
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Ma pr\xE9cieuse mallette a \xE9t\xE9 vol\xE9e par des bandits,
+                  r\xE9cup\xE8re la et je te ferai part de mon savoir."
+                nextTalk: []
+                choices:
+                - choice: "Tr\xE8s bien, j\u2019en m\u2019en vais la chercher de
+                    ce pas."
+                  indexNextDialogue: 0
+                - choice: "Vous avez int\xE9r\xEAt \xE0 tout m\u2019expliquer apr\xE8s
+                    \xE7a."
+                  indexNextDialogue: 0
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 0
+        choices:
+        - choice: "Tr\xE8s bien, qui \xEAtes vous?"
+          indexNextDialogue: 0
+        - choice: "Je n\u2019ai pas le temps pour ces balivernes!"
+          indexNextDialogue: 0
+        showRealName: 0
+      choices: []
+      showRealName: 0
+    choices: []
+    showRealName: 0
+  - isThePlayer: 0
+    talk: "Vous revoil\xE0 et avec ma mallette!"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Comme vous me l\u2019aviez demand\xE9. Maintenant, dites-moi tout ce
+        que vous savez sur le plan de mes parents."
+      nextTalk:
+      - isThePlayer: 0
+        talk: Doucement, doucement. Je vais tout vous expliquer.
+        nextTalk:
+        - isThePlayer: 1
+          talk: "Okay je vous \xE9coute."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Il y a quelques ann\xE9es de cela, j\u2019ai travaill\xE9 avec
+              vos parents sur un moyen de restaurer les technologies du pass\xE9. 
+              Nous allions commencer \xE0 concevoir une bobine magn\xE9tique qui
+              permettrait de stopper les \xE9ruptions solaires qui interf\xE8rent
+              avec l'\xE9lectronique. Malheureusement, des bandits ont tu\xE9 tes
+              parents et vol\xE9 les plans de la bobine magn\xE9tique."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Vous avez vraiment trouv\xE9 comment restaurer les Anciennes
+                Technologies?"
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Oui et je vais avoir besoin de ton aide pour construire la
+                  bobine magn\xE9tique. Gr\xE2ce \xE0 celle-ci nous pourrons restaurer
+                  la grandeur du monde d\u2019autrefois."
+                nextTalk:
+                - isThePlayer: 0
+                  talk: "Je vais avoir besoin que tu me rapportes du m\xE9tal , du
+                    bois et des cordes pour pouvoir construire le d\xE9but de la
+                    bobine magn\xE9tique. Cherche \xE0 travers les Ruines pour trouver
+                    ces mat\xE9riaux. Bon courage. "
+                  nextTalk: []
+                  choices: []
+                  showRealName: 1
+                choices:
+                - choice: "C\u2019est une excellente nouvelle! Comment puis-je vous
+                    aider \xE0 fabriquer cette bobine magn\xE9tique?"
+                  indexNextDialogue: 0
+                - choice: "Si ce que vous dites est vrai, il faut faire vite avant
+                    que les bandits ne d\xE9truisent les plans."
+                  indexNextDialogue: 0
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "C\u2019est bon, j\u2019ai tous les mat\xE9riaux dont vous aviez besoin."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Parfait. La prochaine \xE9tape est de trouver un endroit appropri\xE9
+        pour la construction de la bobine magn\xE9tique. Je connais le lieu parfait
+        pour sa construction mais il est actuellement occup\xE9 par des bandits."
+      nextTalk:
+      - isThePlayer: 1
+        talk: "Et je suppose que je vais devoir m\u2019en occuper?"
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Oui, apr\xE8s \xE7a nous pourrons commencer la construction de la
+            premi\xE8re partie de la bobine magn\xE9tique. Occupes-toi des bandits
+            et reviens me voir."
+          nextTalk: []
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "Le lieu de construction est s\xE9curis\xE9, je me suis occup\xE9 des bandits."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Bien bien\u2026 Nous aurions pu commencer la construction du support
+        de la bobine magn\xE9tique\u2026 Malheureusement, je n\u2019ai pas ce plan."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Je l\u2019ai remis \xE0 un de mes amis pour qu\u2019il soit en s\xE9curit\xE9.
+          Je t\u2019indique o\xF9 sa maison se trouve sur ta carte."
+        nextTalk:
+        - isThePlayer: 1
+          talk: "Okay, dans ce cas j\u2019y vais tout de sui-"
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Attends! Mon ami est un peu parano\xEFaque, il ne te croira pas
+              si tu lui dis que tu viens de ma part. Quand tu le verras, r\xE9ponds
+              \xE0 toutes ses questions par \u201CAffirme\u201D, il comprendra que
+              tu es digne de confiance."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "\xC9trange. C\u2019est not\xE9, je m\u2019en vais \xE0 sa rencontre."
+              nextTalk: []
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices:
+      - choice: "Dans ce cas, o\xF9 est-ce que je peux le trouver?"
+        indexNextDialogue: 0
+      - choice: "Oh l\xE0 l\xE0\u2026 Je vais devoir aller le chercher je suppose?"
+        indexNextDialogue: 0
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "J\u2019ai obtenu le plan que vous aviez confi\xE9 \xE0 Jean-Baptiste,
+      le voici."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Excellent. Nous allons pouvoir d\xE9buter la construction de la bobine
+        magn\xE9tique. Comme Jean-Baptiste a d\xFB te l\u2019expliquer, ce plan permet
+        de construire la premi\xE8re partie de la bobine, le support."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Ce support servira \xE0 maintenir le reste de la bobine magn\xE9tique.
+          C\u2019est la raison pour laquelle je t\u2019ai demand\xE9 de r\xE9cup\xE9rer
+          des mat\xE9riaux afin de construire un support solide pour la bobine."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Absolument. Une bobine de cette taille n\xE9cessite un support robuste
+            pour garantir sa stabilit\xE9 et son bon fonctionnement."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Maintenant, avant de pouvoir construire le support pour la bobine
+              magn\xE9tique, nous avons besoin d\u2019une plaque d\u2019acier solide."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "O\xF9 puis-je trouver cette plaque d\u2019acier?"
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Trouve un marchand affili\xE9 \xE0 l\u2019une des factions
+                  qui habitent les Ruines. Il devrait \xEAtre dispos\xE9 \xE0 faire
+                  un \xE9change contre une plaque d\u2019acier."
+                nextTalk:
+                - isThePlayer: 0
+                  talk: "Une fois que tu l\u2019as en ta possession, rends-toi au
+                    lieu de construction de la bobine et construis le support selon
+                    les plans que tu as r\xE9cup\xE9r\xE9s. C\u2019est crucial pour
+                    la r\xE9ussite du projet."
+                  nextTalk:
+                  - isThePlayer: 1
+                    talk: "Je m\u2019en occupe imm\xE9diatement."
+                    nextTalk: []
+                    choices: []
+                    showRealName: 1
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices:
+        - choice: Un support solide? Est-ce que cela signifie que la bobine sera
+            de grande taille?
+          indexNextDialogue: 0
+        - choice: "Ah, donc la bobine va \xEAtre assez imposante si elle a besoin
+            d\u2019un support solide, n\u2019est-ce pas?"
+          indexNextDialogue: 0
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "O\xF9 en est la construction du support de la bobine magn\xE9tique."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Excellent travail. Maintenant que le support est en place, il est temps
+        de passer \xE0 la prochaine \xE9tape. Nous devons obtenir le plan de la seconde
+        partie de la bobine magn\xE9tique, le moteur thermique."
+      nextTalk:
+      - isThePlayer: 1
+        talk: "D\u2019accord, je suis pr\xEAt pour la suite. Comment puis-je trouver
+          les plans du moteur thermique?"
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Je sais qu\u2019il y a une ing\xE9nieur des Intellectuels, du nom
+            de Rachel, qui vit en ermite et d\xE9tient les plans du moteur thermique.
+            Elle est r\xE9put\xE9e pour son caract\xE8re radin et sa m\xE9fiance
+            envers les \xE9trangers, mais je suis s\xFBr que tu sauras trouver un
+            moyen de l\u2019approcher."
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Rends toi chez elle et vois si tu peux lui proposer un \xE9change
+              pour obtenir les plans. C\u2019est capital pour poursuivre la cr\xE9ation
+              de la bobine magn\xE9tique."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Entendu, je vais la trouver et voir ce que je peux faire pour
+                obtenir les plans. Je reviens vers vous d\xE8s que j\u2019aurai les
+                plans."
+              nextTalk: []
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices:
+    - choice: "J\u2019ai termin\xE9 la construction du support pour la bobine magn\xE9tique
+        comme vous me l\u2019avez demand\xE9."
+      indexNextDialogue: 0
+    - choice: "Le support est construit. J\u2019ai eu une petite visite de la part
+        de bandits pendant la construction, mais je m\u2019en suis occup\xE9."
+      indexNextDialogue: 0
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Ah, te revoil\xE0. As-tu r\xE9ussi \xE0 obtenir les plans du moteur thermique
+      aupr\xE8s de Rachel?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui, voici les plans que vous m\u2019avez demand\xE9s."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, tu es tr\xE8s efficace. Maintenant, passons \xE0 l\u2019\xE9tape
+          suivante. Pour construire le moteur thermique, nous aurons besoin de r\xE9cup\xE9rer
+          des pi\xE8ces sur des carcasses de voitures. Mais pour cela, il nous faut
+          une clef \xE0 molette."
+        nextTalk:
+        - isThePlayer: 1
+          talk: "O\xF9 est-ce que je peux trouver une clef \xE0 molette?"
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Tu devrais pouvoir en \xE9changer une aupr\xE8s des marchands
+              des factions. Va voir l\u2019un d\u2019eux et procure toi une clef
+              \xE0 molette. C\u2019est essentiel pour pouvoir d\xE9monter les voitures."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Okay, j\u2019en m\u2019en vais acqu\xE9rir une clef sur le champ."
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Ensuite tu pourras commencer \xE0 d\xE9monter des voitures
+                  pour r\xE9cup\xE9rer des pi\xE8ces de moteur. Quand tu en auras
+                  r\xE9colt\xE9 assez, reviens me voir."
+                nextTalk: []
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Te voil\xE0 d\xE9j\xE0 de retour. As-tu r\xE9cup\xE9r\xE9 les pi\xE8ces
+      de moteur?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui. Voici les pi\xE8ces que j\u2019ai pu trouver."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, laisse-moi les prendre. La fabrication du moteur thermique
+          est une t\xE2che trop d\xE9licate pour que tu le fabriques toi-m\xEAme."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "*prend les pi\xE8ces et se met au travail pour fabriquer le moteur
+            thermique.*"
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Voil\xE0, le moteur est pr\xEAt. Maintenant, \xE9coute-moi attentivement.
+              Ce moteur va \xEAtre vital pour le fonctionnement de la bobine magn\xE9tique.
+              Il va fournir de l\u2019\xE9nergie n\xE9cessaire pour alimenter la
+              bobine magn\xE9tique qui g\xE9n\xE9rera un champ magn\xE9tique assez
+              puissant pour nous prot\xE9ger des \xE9ruptions solaires."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Compris. O\xF9 dois-je l\u2019installer?"
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Installe-le sur le support de la bobine magn\xE9tique. Assure-toi
+                  qu\u2019il soit solidement fix\xE9. Une fois en place, reviens
+                  me voir pour la suite du projet."
+                nextTalk: []
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Ah, te revoil\xE0 sain et sauf. As-tu install\xE9 le moteur thermique
+      sur le support de la bobine magn\xE9tique?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui. Le moteur est en place, j'ai \xE0 nouveau eu des probl\xE8mes avec
+        des bandits mais tout est r\xE9gl\xE9."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, tu as accompli un travail remarquable jusqu\u2019\xE0 pr\xE9sent.
+          Cependant, il nous reste encore une \xE9tape \xE0 franchir."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Le dernier plan pour fabriquer la bobine magn\xE9tique est entre
+            les mains d\u2019un clan de bandits. Ils le gardent bien cach\xE9 dans
+            leur camp fortifi\xE9."
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Un camp de bandits? Comment vais-je pouvoir r\xE9cup\xE9rer ce
+              plan?"
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Tu devras te faufiler dans leur repaire pour mettre la main
+                sur le plan. Mais avant \xE7a, je pr\xE9f\xE9rerais que nous pr\xE9parions
+                de la dynamite pour an\xE9antir leur camp une fois que nous aurons
+                r\xE9cup\xE9r\xE9 le plan. De cette mani\xE8re, les bandits ne pourront
+                pas se venger, car ils n\u2019auront plus de refuge o\xF9 se retrancher."
+              nextTalk:
+              - isThePlayer: 0
+                talk: "Nous aurons besoin de poudre \xE0 canon et du plastique. Tu
+                  pourras trouver ces \xE9l\xE9ments un peu partout dans les ruines."
+                nextTalk:
+                - isThePlayer: 1
+                  talk: "Je vais me mettre \xE0 la recherche de ces ressources aussit\xF4t."
+                  nextTalk:
+                  - isThePlayer: 0
+                    talk: "Bon courage, reviens vite, nous sommes proche de construire
+                      la bobine magn\xE9tique!"
+                    nextTalk: []
+                    choices: []
+                    showRealName: 1
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices:
+              - choice: De la dynamite? De quoi avons-nous besoin?
+                indexNextDialogue: 0
+              - choice: "De la dynamite? \xC7a, \xE7a me pla\xEEt! Qu\u2019est-ce
+                  qu\u2019il nous faut pour la fabriquer?"
+                indexNextDialogue: 0
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "As-tu rassembl\xE9 les ressources dont nous avons besoin pour la dynamite?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui. Voici ce que j\u2019ai trouv\xE9."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Tr\xE8s bien, laisse-moi les prendre. Je vais commencer \xE0 pr\xE9parer
+          la dynamite."
+        nextTalk:
+        - isThePlayer: 0
+          talk: '*prend les ressources et se met au travail pour fabriquer la dynamite.*'
+          nextTalk:
+          - isThePlayer: 0
+            talk: "Voil\xE0, la dynamite est pr\xEAte. Tiens, prends-la. Sois prudent
+              avec cette chose, c\u2019est un outil de destruction avant tout."
+            nextTalk:
+            - isThePlayer: 1
+              talk: "Merci, je ferai attention. Je vais me rendre au camp des bandits
+                et r\xE9cup\xE9rer le plan. Ensuite, je d\xE9truirai leur camp avec
+                la dynamite."
+              nextTalk:
+              - isThePlayer: 0
+                talk: Bon courage, reviens en un seul morceau.
+                nextTalk: []
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 1
+    talk: "Bruce, te voil\xE0 enfin! Accroche-toi, je vais te sortir d\u2019ici."
+    nextTalk:
+    - isThePlayer: 0
+      talk: "Merci. Tu es arriv\xE9 juste \xE0 temps. Mais maintenant, nous devons
+        quitter cet endroit au plus vite."
+      nextTalk: []
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Enfin en s\xE9curit\xE9. Merci de m\u2019avoir sauv\xE9. Maintenant nous
+      pouvons discuter de la derni\xE8re \xE9tape. As-tu toujours le plan pour la
+      bobine?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui, je l\u2019avais gard\xE9 sur moi. Le voici."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Excellent. Pour construire la bobine, nous aurons besoin de quelques
+          ressources fondamentales. Il va nous falloir du m\xE9tal, du plastique
+          et un noyau de ferrite."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Tu pourras trouver le m\xE9tal et le plastique dans les Ruines.
+            Quant au noyau de ferrite, il te faudra l\u2019\xE9changer aupr\xE8s
+            d\u2019un des marchands de faction. Ils devraient en avoir trouver au
+            fil des ann\xE9es."
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Okay. Je m\u2019en vais \xE0 la recherche de ces ressources."
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Bon courage. Ces mat\xE9riaux sont cruciaux pour aboutir \xE0
+                notre projet. Reviens vers moi d\xE8s que tu les auras rassembl\xE9s."
+              nextTalk: []
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices:
+        - choice: "Du m\xE9tal, du plastique et un noyau de ferrite\u2026 C\u2019est
+            not\xE9. O\xF9 puis-je trouver ces ressources?"
+          indexNextDialogue: 0
+        - choice: "\xC7a fait beaucoup de ressources! Sais-tu o\xF9 je peux trouver
+            ces ressources?"
+          indexNextDialogue: 0
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  - isThePlayer: 0
+    talk: "Ah! Te voil\xE0 enfin! As-tu r\xE9ussi \xE0 rassembler les ressources
+      n\xE9cessaires pour la construction de la bobine?"
+    nextTalk:
+    - isThePlayer: 1
+      talk: "Oui, Bruce. J\u2019ai tout ce qu\u2019il faut pour la construire."
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Parfait, tu as fait du bon travail. Maintenant, tu vas pouvoir te
+          rendre sur le lieu de construction de la bobine magn\xE9tique et assembler
+          la derni\xE8re partie toi-m\xEAme."
+        nextTalk:
+        - isThePlayer: 0
+          talk: "Une fois que tu auras termin\xE9 la construction de la bobine, il
+            te faudra de l\u2019essence pour lancer le moteur thermique et ainsi
+            d\xE9marrer la bobine magn\xE9tique."
+          nextTalk:
+          - isThePlayer: 1
+            talk: "De l\u2019essence, d\u2019accord. O\xF9 est-ce que je peux en
+              trouver?"
+            nextTalk:
+            - isThePlayer: 0
+              talk: "Il te faudra \xE9changer un jerrican aupr\xE8s d\u2019un marchand
+                de faction puis aller siphonner de l\u2019essence sur des voitures."
+              nextTalk:
+              - isThePlayer: 1
+                talk: "Compris, je vais m\u2019en charger."
+                nextTalk:
+                - isThePlayer: 0
+                  talk: "Bon courage et fais attention \xE0 toi. Nous y sommes presque,
+                    bient\xF4t nous changerons notre avenir! Il y a des chances que
+                    les bandits attaquent la bobine magn\xE9tique avant que tu ne
+                    puisses la d\xE9marrer. Pense \xE0 te faire des alli\xE9s pour
+                    t\u2019aider."
+                  nextTalk: []
+                  choices: []
+                  showRealName: 1
+                choices: []
+                showRealName: 1
+              choices: []
+              showRealName: 1
+            choices: []
+            showRealName: 1
+          choices: []
+          showRealName: 1
+        choices: []
+        showRealName: 1
+      choices: []
+      showRealName: 1
+    choices: []
+    showRealName: 1
+  _questDialogues:
+  - questIndex: 0000000002000000
+    dialogueIndex: 0
+  - questIndex: 0100000002000000
+    dialogueIndex: 1
+  - questIndex: 0200000001000000
+    dialogueIndex: 2
+  - questIndex: 0300000002000000
+    dialogueIndex: 3
+  - questIndex: 0400000002000000
+    dialogueIndex: 4
+  - questIndex: 0600000002000000
+    dialogueIndex: 5
+  - questIndex: 0700000005000000
+    dialogueIndex: 6
+  - questIndex: 0800000002000000
+    dialogueIndex: 7
+  - questIndex: 0900000002000000
+    dialogueIndex: 8
+  - questIndex: 0a00000001000000
+    dialogueIndex: 9
+  - questIndex: 0c00000001000000
+    dialogueIndex: 10
+  - questIndex: 0c00000003000000
+    dialogueIndex: 11
+  - questIndex: 0d00000002000000
+    dialogueIndex: 12
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: "Je n'ai rien \xE0 te proposer repasses me voir plus tard."
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 84d87160889aaee4b92cc2e5e207531c, type: 3}
+  _name: Vieillard
+  _hideName: Bruce
+--- !u!58 &3221530253636203864
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947767418376869763}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.5
+--- !u!58 &8793340133144132569
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947767418376869763}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
+--- !u!114 &1470590137739784208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947767418376869763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6aced4dca57654eb6482c59fb04476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pnj: {fileID: 679558352778873561}
+--- !u!114 &7592453477553413623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947767418376869763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 0}
+  size: 0
+  canMove: 0
+  overName: 
+--- !u!114 &5140803977399028144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5947767418376869763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e0a630fd6633843b77cdf387498d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _questTriggerType: 4
+  _information: 
+  _itemsToGive:
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: a53c2ef800616164d828b7e0504fa524, type: 2}
+      quantityNeed: 1
+    quest: 8
+    questAction: 2
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: 25ca8da0f80628f4dac79cb1b55ecb81, type: 2}
+      quantityNeed: 1
+    quest: 10
+    questAction: 1
+  _itemsToDelete:
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: 0acd4cc51f5c91849873fec945b2183b, type: 2}
+      quantityNeed: 1
+    quest: 1
+    questAction: 2
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 3
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 2
+    quest: 2
+    questAction: 1
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: 376a9485b4fe3604da9265a5c7a95f4b, type: 2}
+      quantityNeed: 1
+    quest: 4
+    questAction: 2
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: 19c496e817ef94147bad23d7768c32ab, type: 2}
+      quantityNeed: 1
+    quest: 7
+    questAction: 5
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: 070d4893aefb883408846c85f9892657, type: 2}
+      quantityNeed: 5
+    quest: 8
+    questAction: 2
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 3
+    - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
+      quantityNeed: 2
+    quest: 10
+    questAction: 1
+  - itemsWithQuantity:
+    - item: {fileID: 11400000, guid: 16b18dea5d248b342844da9c5a6a3531, type: 2}
+      quantityNeed: 1
+    quest: 12
+    questAction: 3
+  _stuffToDelete: []
+--- !u!1 &8292089535960678223
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2155612600260204921}
+  - component: {fileID: 5187380887734655449}
+  m_Layer: 0
+  m_Name: HighLightSprite
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2155612600260204921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292089535960678223}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 468628988623088784}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &5187380887734655449
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292089535960678223}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
