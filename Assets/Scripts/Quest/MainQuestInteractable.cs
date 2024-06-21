@@ -10,6 +10,9 @@ public class MainQuestInteractable : Interactable
     private string _information;
 
     [SerializeField]
+    private string _name;
+
+    [SerializeField]
     private List<QuestActionItems> _itemsToGive;
 
     [SerializeField]
@@ -158,6 +161,8 @@ public class MainQuestInteractable : Interactable
             PlayerInteraction.Instance.interactables.Remove(this);
         }
     }
+
+    public string Name { get { return _name; } }
 }
 
 [System.Serializable]

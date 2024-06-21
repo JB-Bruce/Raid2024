@@ -6,6 +6,8 @@ public class Container : Interactable
 {
     [SerializeField] private GameObject _itemSlotPrefab;
 
+    public string name;
+
     public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public GameObject containerSelectedSprite;
