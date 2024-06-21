@@ -551,7 +551,7 @@ public class Inventory : MonoBehaviour
 
         if (itemSlot.Item is Consumable consumable) 
         { 
-            _soundManager.PlaySFX(consumable.useConsSFX);
+            _soundManager.PlaySFX(consumable.useConsSFX, _soundManager._sfxPlayer);
         }
 
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();

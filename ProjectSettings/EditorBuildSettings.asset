@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Tutorial/Tutorial.unity
     guid: be4dd30d4d5b4b1449f2cd069fa473d6
+  - enabled: 1
+    path: Assets/Scenes/Eliott.unity
+    guid: 0df9c16096c01c444824693f4ca7eaa8
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d4ff0f997b8a45d4ea71bd57c76e521d, type: 2}
