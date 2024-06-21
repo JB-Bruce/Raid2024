@@ -19,3 +19,4 @@ MonoBehaviour:
   _description: "Utile pour les n\u0153uds, les pi\xE8ges, et les jours o\xF9 la
     survie semble vraiment trop difficile."
   _itemSprite: {fileID: 21300000, guid: 39bfe38052559d44c8103bcca14b91f1, type: 3}
+  _canDrop: 1

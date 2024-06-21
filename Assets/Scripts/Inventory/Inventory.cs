@@ -471,7 +471,7 @@ public class Inventory : MonoBehaviour
     {
         if (itemSlot.Item != null && _itemSlots.Contains(itemSlot))
         {
-            if (itemSlot.Item.GetType() != typeof(QuestItem))
+            if (itemSlot.Item.CanDrop)
             {
                 GameObject Item = Instantiate(_itemDroppedPrefab);
                 Item.transform.position = _player.transform.position;

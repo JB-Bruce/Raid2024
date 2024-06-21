@@ -19,3 +19,4 @@ MonoBehaviour:
   _description: "Le manteau de la civilisation, maintenant r\xE9duit \xE0 un simple
     fil dans ce monde o\xF9 la chaleur est une raret\xE9."
   _itemSprite: {fileID: 21300000, guid: 9f9ee8f3baf80d0499369f7bf9e8e5b0, type: 3}
+  _canDrop: 1

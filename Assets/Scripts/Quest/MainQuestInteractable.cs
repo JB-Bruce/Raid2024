@@ -102,6 +102,7 @@ public class MainQuestInteractable : Interactable
                     {
                         Inventory.Instance.AddItem(_itemsToGive[i].itemsWithQuantity[j].item);
                     }
+                    PopUpManager.Instance.AddPopUp(_itemsToGive[i].itemsWithQuantity[j].item, _itemsToGive[i].itemsWithQuantity[j].quantityNeed);
                 }
             }
         }
