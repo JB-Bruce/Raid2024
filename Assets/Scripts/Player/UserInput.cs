@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class UserInput : MonoBehaviour
 {
@@ -36,6 +38,8 @@ public class UserInput : MonoBehaviour
     private InputAction _AimWeaponAction;
     private InputAction _weaponHitAction;
 
+    private bool _canPlay = false;
+
     private void Awake()
     {
         if (instance == null)
@@ -44,8 +48,8 @@ public class UserInput : MonoBehaviour
         }
 
         _playerInput = GetComponent<PlayerInput>();
+        StartCoroutine(CanPlay());
 
-        SetupInputActions();
     }
 
     private void Update()
@@ -71,6 +75,8 @@ public class UserInput : MonoBehaviour
 
     private void UpdateInputs()
     {
+        if(!_canPlay) { return; }
+
         MoveInput = _moveAction.ReadValue<Vector2>();
         Interract = _interractAction.WasPressedThisFrame();
         Sprint = _sprintAction.IsPressed();
@@ -83,5 +89,18 @@ public class UserInput : MonoBehaviour
         SelectWeaponRight = _selectWeaponRightAction.WasPressedThisFrame();
         AimWeapon = _AimWeaponAction.IsPressed();
         WeaponHit = _weaponHitAction.WasPressedThisFrame();
+    }
+
+    // Set the Action Map to InGame when the scene is load
+    private IEnumerator CanPlay() 
+    {
+        UnityEngine.SceneManagement.Scene loadScene = SceneManager.GetSceneByName("LoadScene"); 
+        while( loadScene.name != null ) 
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        _playerInput.SwitchCurrentActionMap("InGame");
+        SetupInputActions();
+        _canPlay = true;
     }
 }
