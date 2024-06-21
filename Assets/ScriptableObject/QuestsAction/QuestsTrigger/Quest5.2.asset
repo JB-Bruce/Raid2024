@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Quest5.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 5.2"
-  _questTriggerType: 7
-  _information: Bruce
+  _actionsToDoAtStart: []
+  _questTriggerType: 4
+  _information: Jean-Baptiste
+  _objectifText: "- Parler \xE0 Jean-Baptiste"

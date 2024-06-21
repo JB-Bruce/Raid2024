@@ -356,3 +356,5 @@ MonoBehaviour:
   _isUnit: 0
   despawnTimer: 0
   despawnable: 0
+  maxRefillTimer: 300
+  openSFX: CrateOpen

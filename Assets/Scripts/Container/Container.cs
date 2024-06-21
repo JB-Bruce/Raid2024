@@ -26,13 +26,29 @@ public class Container : Interactable
     public float despawnTimer = 0f;
     public bool despawnable = false;
 
+    public float maxRefillTimer = 300f;
+    private float _refillTimer = 0f;
+    public string openSFX;
+
     private bool _hasBeenOpened = false;
 
+    [SerializeField]
+    private List<ContainerItem> _itemsToGiveAtStart = new();
+
+    [SerializeField]
+    private List<Item> _itemToOpen;
+
     private Inventory _inventory;
+    private SoundManager _soundManager;
 
     private void Start()
     {
         _inventory = Inventory.Instance;
+        for (int i = 0; i < _itemsToGiveAtStart.Count; i++)
+        {
+            _items.Add(_itemsToGiveAtStart[i]);
+        }
+        _soundManager = SoundManager.instance;
     }
 
     /// <summary>
@@ -46,6 +62,16 @@ public class Container : Interactable
             if (despawnTimer < 0f && _inventory.currentContainer != this)
             {
                 Destroy(gameObject);
+            }
+        }
+        if (_hasBeenOpened)
+        {
+            _refillTimer -= Time.deltaTime;
+            if (_refillTimer < 0f && _inventory.currentContainer != this)
+            {
+                _items.Clear();
+                //Restock base items
+                _hasBeenOpened = false;
             }
         }
     }
@@ -80,9 +106,11 @@ public class Container : Interactable
     {
         if (!_hasBeenOpened)
         {
+            _refillTimer = maxRefillTimer;
             _hasBeenOpened = true;
             GenerateItems();
         }
+        _soundManager.PlaySFX(openSFX);
         CreateItemSlots();
     }
 
@@ -108,14 +136,14 @@ public class Container : Interactable
     {
         //Center the slots
         _inventory.containerSlotsTransform.localPosition = new Vector3(597.5f - (containerColumn - 1) * 95f / 2f, ((containerRows - 1) * 95f / 2f) + 10f, _inventory.containerSlotsTransform.localPosition.z);
-        
+
         //Creates the item slots
         for (int i = 0; i < containerRows; i++)
         {
-            for (int j = 0 ; j < containerColumn; j++)
+            for (int j = 0; j < containerColumn; j++)
             {
                 GameObject itemSlot = Instantiate(_itemSlotPrefab, _inventory.containerSlotsTransform);
-                itemSlot.transform.localPosition += new Vector3(j*95f, -i*95f, 0);
+                itemSlot.transform.localPosition += new Vector3(j * 95f, -i * 95f, 0);
                 itemSlots.Add(itemSlot.GetComponent<ItemSlot>());
             }
         }
@@ -190,6 +218,26 @@ public class Container : Interactable
         _inventory.OpenFullInventory();
         _inventory.currentContainer = this;
         OpenContainer();
+    }
+
+    //call when the player interact with this, return true if he can interact
+    public override bool TryToInteract()
+    {
+        if (_canInterract)
+        {
+            if (_itemToOpen.Count > 0)
+            {
+                for (int i = 0; i < _itemToOpen.Count; i++)
+                {
+                    if (Inventory.Instance.CountItemInInventory(_itemToOpen[i]) == 0)
+                    {
+                        _canInterract = false;
+                        break;
+                    }
+                }
+            }
+        }
+        return base.TryToInteract();
     }
 }
 

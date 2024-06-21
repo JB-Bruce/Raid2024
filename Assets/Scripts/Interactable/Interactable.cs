@@ -4,6 +4,7 @@ public class Interactable : MonoBehaviour
 {
     protected bool _canInterract = true;
 
+    //call when the player interact with this and return true if he can interact
     public virtual bool TryToInteract() 
     {
         if( _canInterract)
@@ -13,6 +14,7 @@ public class Interactable : MonoBehaviour
         return _canInterract;
     }
 
+    //call when the player interact with this and this can interact
     protected virtual void Interact(){}
 
     public virtual void Highlight(bool state){}

@@ -6,8 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CinematicManager : MonoBehaviour
 {
-    public bool isWritingText;
-
     [Header("Background Images: ")]
     [SerializeField] SpriteRenderer _currentSlide;
     [SerializeField] int _currentSlideIndex = 0;
@@ -18,16 +16,7 @@ public class CinematicManager : MonoBehaviour
     [SerializeField] int _currentTextIndex = 0;
     [SerializeField] List<CinematicText> _cineTexts = new List<CinematicText>();
 
-    private Coroutine _textCoroutine;
     private Coroutine _autoNextCoroutine;
-
-    [Header("Typing Text Settings: ")]
-    [SerializeField] float _delayBeforeStart = 0f;
-    [SerializeField] float _timeBetweenChars = 0.05f;
-    [SerializeField] float timeBetweenTexts = 4f;
-
-    private string _leadingChar = "";
-    private bool _leadingCharBeforeDelay = false;
 
     [Header("Scene Management: ")]
     [SerializeField] string _sceneToLoadAtEnd;
@@ -36,7 +25,9 @@ public class CinematicManager : MonoBehaviour
     [SerializeField] Camera _camera;
     [SerializeField] Animator _animator;
 
+    private Animator _textAnimator;
     private SoundManager _soundManager;
+    [SerializeField] Animator _fadeAnimator;
 
     private void Awake()
     {
@@ -44,6 +35,8 @@ public class CinematicManager : MonoBehaviour
         {
             _currentCineText.text = _cineTexts[_currentTextIndex].text;
         }
+
+        _textAnimator = _currentCineText.GetComponent<Animator>();
     }
 
     private void Start()
@@ -60,27 +53,37 @@ public class CinematicManager : MonoBehaviour
     {
         _soundManager.PlayMusicFromPlaylist("Cinematic");
         _animator.Play("Slide1", 0, 0);
-        StartCinematicText();
+        StartCinematicSequence();
     }
 
-    private void OnDisable() //Stop all runnign coroutines
+    private void OnDisable() //Stop all running coroutines
     {
         StopAllCoroutines();
     }
 
-    private void StartCinematicText() //Starts the Cinematic coroutine
+    private void StartCinematicSequence() //Starts the Cinematic coroutine
     {
-        if(_textCoroutine != null )
-        {
-            StopCoroutine(_textCoroutine);
-        }
+        FadeOut();
         if (_autoNextCoroutine != null)
         {
             StopCoroutine(_autoNextCoroutine);
         }
 
-        _currentCineText.text = "";
-        _textCoroutine = StartCoroutine("TypeCineText");
+        _currentCineText.text = _cineTexts[_currentTextIndex].text;
+
+        _textAnimator.Play("FadeIn", 0, 0f);
+
+        _autoNextCoroutine = StartCoroutine(AutoNextText());
+    }
+
+    private void FadeIn()
+    {
+        _fadeAnimator.Play("FadeIn");
+    }
+
+    private void FadeOut()
+    {
+        _fadeAnimator.Play("FadeOut");
     }
 
     public void NextText() //Next Text changes the current displayed text to the next text of the list as well as the next slide if the Cinematic text is a slide changer
@@ -89,8 +92,8 @@ public class CinematicManager : MonoBehaviour
 
         if (cinematicText.isEndSlide) //If the Cinematic Text is a Cinematic Ender, loads Scene by name
         {
-            _soundManager.PlayMusicFromPlaylist("InGame");
-            SceneManager.LoadScene(_sceneToLoadAtEnd);
+            Skip();
+            return;
         }
         if (cinematicText.isSlideChanger)
         {
@@ -100,41 +103,36 @@ public class CinematicManager : MonoBehaviour
         }
 
         _currentTextIndex = (_currentTextIndex + 1) % _cineTexts.Count;
-        StartCinematicText();
+        StartCinematicSequence();
     }
 
-    IEnumerator TypeCineText() //Types the text at a defined pace
+    private void LoadNextScene()
     {
-        _currentCineText.text = _leadingCharBeforeDelay ? _leadingChar : "";
+        _soundManager.PlayMusicFromPlaylist("InGame");
+        SceneManager.LoadScene(_sceneToLoadAtEnd);
+    }
 
-        yield return new WaitForSeconds(_delayBeforeStart);
-
-        string writer = _cineTexts[_currentTextIndex].text;
-
-        foreach (char c in writer)
-        {
-            if (_currentCineText.text.Length > 0)
-            {
-                _currentCineText.text =_currentCineText.text.Substring(0, _currentCineText.text.Length - _leadingChar.Length);
-            }
-
-            _currentCineText.text += c;
-            _currentCineText.text += _leadingChar;
-            yield return new WaitForSeconds(_timeBetweenChars);
-        }
-
-        if (_leadingChar != "")
-        {
-            _currentCineText.text = _currentCineText.text.Substring(0, _currentCineText.text.Length - _leadingChar.Length);
-        }
-
-        _autoNextCoroutine = StartCoroutine(AutoNextText());
+    public void Skip()
+    {
+        FadeIn();
+        Invoke("LoadNextScene", .75f);
     }
 
     IEnumerator AutoNextText() //Starts the Coroutine to automatically change to the next Text and Slide
     {
-        yield return new WaitForSeconds(_cineTexts[_currentTextIndex].delayAfterFinish);
+        CinematicText cinematicText = _cineTexts[_currentTextIndex];
+
+        yield return new WaitForSeconds(cinematicText.displayDuration);
+
+        // Play FadeOut animation
+        _textAnimator.Play("FadeOut", 0, 0f);
+
+        // Wait for FadeOut animation to complete
+        AnimatorStateInfo stateInfo = _textAnimator.GetCurrentAnimatorStateInfo(0);
+        float fadeOutDuration = stateInfo.length;
+        yield return new WaitForSeconds(fadeOutDuration);
+
+        // Proceed to next text
         NextText();
     }
-
 }

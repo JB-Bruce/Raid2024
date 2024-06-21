@@ -30,8 +30,12 @@ MonoBehaviour:
   _rotationRightHand: -90
   _rotationLeftHand: 0
   _moveSpeed: 2.5
+  _semiAutomatic: 1
   animAttack: FamasShoot
   animIdle: WeaponIdle
+  attackSFX: FAMASShoot
+  hitSFX: 
+  reloadSFX: FAMASReload
   _spread: 10
   _maxBullet: 25
   _reloadTime: 2.16

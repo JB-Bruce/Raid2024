@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class Humanoid : MonoBehaviour
 {
     public bool isPlayer = false;
+    [SerializeField] private CircleCollider2D _detectionZone;
+    [SerializeField] private CircleCollider2D _lootZone;
     public bool MoveFeet = true;
     public bool CanRespawn = true;
 
@@ -27,7 +29,10 @@ public class Humanoid : MonoBehaviour
     private MovePlayer _player;
     private float _reduceDamage = 0;
 
-    private FactionManager _factionManager;
+    [SerializeField]
+    private string _questType;
+
+    protected FactionManager _factionManager;
 
     protected virtual void Start()
     {
@@ -109,12 +114,17 @@ public class Humanoid : MonoBehaviour
             // Building is Destroy, TODO Create a dead function
         }
 
+        SetSlider();
+
+        return isDead;
+    }
+
+    public void SetSlider()
+    {
         if (_slider != null)
         {
             _slider.localScale = new Vector3(life / 100, 1, 1);
         }
-
-        return isDead;
     }
 
     // When a unit Die
@@ -136,12 +146,16 @@ public class Humanoid : MonoBehaviour
                 _anim.Play("DeathR");
             }
             RemoveUnitComponent();
+
+            _detectionZone.enabled = false;
+            _lootZone.enabled = true;
+
             GetComponent<Container>().enabled = true;
         }
 
         if(_faction == Faction.Player)
         {
-            QuestManager.instance.CheckQuestKill(faction);
+            QuestManager.instance.CheckQuestKill(faction, _questType);
         }
     }
 
@@ -159,5 +173,11 @@ public class Humanoid : MonoBehaviour
     protected void MakeRun(bool isRunning)
     {
         _feetAnimator.SetBool("isRunning", isRunning);
+    }
+
+    //modify the quest type
+    public void SetQuestType(string questType)
+    {
+        _questType = questType;
     }
 }

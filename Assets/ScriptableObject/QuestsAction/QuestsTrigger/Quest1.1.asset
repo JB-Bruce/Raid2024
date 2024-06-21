@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Quest1.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 1.1"
-  _questTriggerType: 7
+  _actionsToDoAtStart: []
+  _questTriggerType: 4
   _information: Lieutenant Enzo
+  _objectifText: '- Parler au lieutenant Enzo'

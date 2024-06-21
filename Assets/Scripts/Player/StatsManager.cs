@@ -1,7 +1,5 @@
-using JetBrains.Annotations;
-using System;
 using System.Collections;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -12,6 +10,9 @@ public class StatsManager : Humanoid
     public static StatsManager instance;
 
     private MovePlayer _movePlayer;
+
+    [SerializeField]
+    private List<GameObject> _panelToDeactivateOnDeath = new List<GameObject>();
 
     [SerializeField]
     private PlayerInput _playerInput;
@@ -42,7 +43,6 @@ public class StatsManager : Humanoid
     public bool _isSprinting;
     private bool _verifSprint;
     private bool _recupStamina;
-    private FactionManager _factionManager;
     
     public UnityEvent haveChangeSpawn = new UnityEvent();
     
@@ -149,6 +149,18 @@ public class StatsManager : Humanoid
             }
         }
 
+            foreach (GameObject panel in _panelToDeactivateOnDeath)
+            {
+                panel.SetActive(false);
+            }
+            if (Inventory.Instance.isInventoryOpen)
+            {
+                Inventory.Instance.OpenFullInventory();
+            }
+            if (Inventory.Instance.isHalfInvenoryOpen)
+            {
+                Inventory.Instance.OpenInventory(false);
+            }
 
         Time.timeScale = 0.0f;
         DeathFade.CrossFadeAlpha(0,0.01f,true);

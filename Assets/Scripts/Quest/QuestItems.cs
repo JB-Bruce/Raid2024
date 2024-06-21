@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +12,7 @@ public class QuestItems : QuestAction
     private List<ItemWithQuantity> _itemsInInventory = new();
 
     //call when the QuestItems is the current QuestAction to configure it
-    public override bool Configure()
+    public override bool Configure(GameObjectsList objectsToActivateAtStart)
     {
         bool isFinished = true;
         _itemsInInventory.Clear();
@@ -28,8 +27,15 @@ public class QuestItems : QuestAction
                 isFinished = false;
             }
         }
+        for (int i = 0; i < objectsToActivateAtStart.gameObjects.Count; i++)
+        {
+            objectsToActivateAtStart.gameObjects[i].SetActive(true);
+        }
         return isFinished;
     }
+
+    //call when the QuestItems ended
+    public override void OnEnd(GameObjectsList objectsToDesactivateAtTheEnd) { }
 
     //return the text for the objectives
     public override string GetObjectivesText()
@@ -37,7 +43,7 @@ public class QuestItems : QuestAction
         string textToReturn = string.Empty;
         for (int i = 0; i <_itemsInInventory.Count; i++)
         {
-            textToReturn += "- " + _itemsInInventory[i].item.Name + "   " + _itemsInInventory[i].quantityNeed + "/" + _itemsNeed[i].quantityNeed + "\n";
+            textToReturn += "- " + _itemsInInventory[i].item.Name + "   " + System.Math.Clamp(_itemsInInventory[i].quantityNeed, 0, _itemsNeed[i].quantityNeed) + "/" + _itemsNeed[i].quantityNeed + "\n";
         }
         return textToReturn;
     }

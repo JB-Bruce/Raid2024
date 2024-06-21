@@ -101,6 +101,7 @@ public class QuestPanelManager : MonoBehaviour
     //open main quest panel
     public void OpenMainQuestPanel() 
     {
+        _selectedQuestIndex = QuestManager.instance.GetCurrentMainQuestActionIndex()[0];
         UpdateMainQuestUi();
         _factionQuestPanel.SetActive(false);
         _mainQuestPanel.SetActive(true);
@@ -144,56 +145,56 @@ public class QuestPanelManager : MonoBehaviour
     {
         FactionQuestManager factionQuestManager = FactionQuestManager.instance;
 
-        if(factionQuestManager.GetIndexRefByFaction("Utopist") == -1)
+        if(factionQuestManager.GetIndexRefByFaction(Faction.Utopist) == -1)
         {
             _utopistFactionQuestActionUi.SetActive(false);
             _utopistFactionQuestActionNoQuest.SetActive(true);
         }
         else
         {
-            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction("Utopist").GetCurrentQuestAction();
+            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction(Faction.Utopist).GetCurrentQuestAction();
             _utopistFactionQuestActionTitle.text = currentQuestAction.GetName();
             _utopistFactionQuestActionObjectives.text = currentQuestAction.GetObjectivesText();
             _utopistFactionQuestActionNoQuest.SetActive(false);
             _utopistFactionQuestActionUi.SetActive(true);
         }
 
-        if (factionQuestManager.GetIndexRefByFaction("Military") == -1)
+        if (factionQuestManager.GetIndexRefByFaction(Faction.Military) == -1)
         {
             _militaryFactionQuestActionUi.SetActive(false);
             _militaryFactionQuestActionNoQuest.SetActive(true);
         }
         else
         {
-            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction("Military").GetCurrentQuestAction();
+            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction(Faction.Military).GetCurrentQuestAction();
             _militaryFactionQuestActionTitle.text = currentQuestAction.GetName();
             _militaryFactionQuestActionObjectives.text = currentQuestAction.GetObjectivesText();
             _militaryFactionQuestActionNoQuest.SetActive(false);
             _militaryFactionQuestActionUi.SetActive(true);
         }
 
-        if (factionQuestManager.GetIndexRefByFaction("Survivalist") == -1)
+        if (factionQuestManager.GetIndexRefByFaction(Faction.Survivalist) == -1)
         {
             _survivalistFactionQuestActionUi.SetActive(false);
             _survivalistFactionQuestActionNoQuest.SetActive(true);
         }
         else
         {
-            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction("Survivalist").GetCurrentQuestAction();
+            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction(Faction.Survivalist).GetCurrentQuestAction();
             _survivalistFactionQuestActionTitle.text = currentQuestAction.GetName();
             _survivalistFactionQuestActionObjectives.text = currentQuestAction.GetObjectivesText();
             _survivalistFactionQuestActionNoQuest.SetActive(false);
             _survivalistFactionQuestActionUi.SetActive(true);
         }
 
-        if (factionQuestManager.GetIndexRefByFaction("Scientist") == -1)
+        if (factionQuestManager.GetIndexRefByFaction(Faction.Scientist) == -1)
         {
             _scientistFactionQuestActionUi.SetActive(false);
             _scientistFactionQuestActionNoQuest.SetActive(true);
         }
         else
         {
-            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction("Scientist").GetCurrentQuestAction();
+            QuestAction currentQuestAction = factionQuestManager.GetQuestByFaction(Faction.Scientist).GetCurrentQuestAction();
             _scientistFactionQuestActionTitle.text = currentQuestAction.GetName();
             _scientistFactionQuestActionObjectives.text = currentQuestAction.GetObjectivesText();
             _scientistFactionQuestActionNoQuest.SetActive(false);

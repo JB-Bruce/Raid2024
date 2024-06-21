@@ -30,5 +30,9 @@ MonoBehaviour:
   _rotationRightHand: -24
   _rotationLeftHand: 0
   _moveSpeed: 5
+  _semiAutomatic: 1
   animAttack: BaseballBatAttack
   animIdle: WeaponIdle
+  attackSFX: BaseballSwing
+  hitSFX: BaseballHit
+  reloadSFX: 

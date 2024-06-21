@@ -4,6 +4,8 @@ public class DroppedItem : Interactable
 {
     public int quantity = 0;
     public Item item;
+    [SerializeField]
+    private float _stuffQuantityInThis = 0;
 
     private float _despawnTimer = 120f;
 
@@ -56,23 +58,35 @@ public class DroppedItem : Interactable
     protected override void Interact()
     {
         Inventory inventory = Inventory.Instance;
+        int tempQuantity = quantity;
         for (int i = 0; i < quantity; i++)
         {
             if (item != null)
             {
-                if (!inventory.AddItem(item))
+                if (!inventory.AddItem(item, _stuffQuantityInThis))
                 {
                     quantity -= i;
+                    if (i > 0)
+                    {
+                        PopUpManager.Instance.AddPopUp(item, i);
+                    }
                     return;
                 }
             }
         }
+        PopUpManager.Instance.AddPopUp(item, tempQuantity);
         Highlight(false);
         PlayerInteraction.Instance.interactables.Remove(this);
         DroppedItemManager.Instance.droppedItems.Remove(this);
         Destroy(gameObject);
     }
 
+    //modify the stuff quantity in this
+    public void SetStuffQuantityInThis(float quantity)
+    {
+        _stuffQuantityInThis = quantity;
+    }
+    
     private void Start()
     {
         DroppedItemManager.Instance.droppedItems.Add(this);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UnitCombat : MonoBehaviour
@@ -27,6 +28,9 @@ public class UnitCombat : MonoBehaviour
 
     [Header("Detection")]
     public CircleCollider2D circleCollider;
+
+    // Attack
+    private int _magazine = 0;
 
     public void Init()
     {
@@ -111,7 +115,7 @@ public class UnitCombat : MonoBehaviour
                 RaycastHit2D _hit = Physics2D.Raycast(_transform.position, ennemies[i].transform.position - _transform.position, viewRange);
 
 
-                if (_hit.collider != null && _hit.collider.transform.parent.parent.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
+                if (_hit.collider != null && _hit.collider.transform.parent != null &&_hit.collider.transform.parent.parent.gameObject == ennemies[i].gameObject && !_hit.collider.isTrigger)
                 {
                     nearest = i;
                     _distanceToNearest = _newDistance;
@@ -138,11 +142,32 @@ public class UnitCombat : MonoBehaviour
 
     private void Update()
     {
-        if(canAttack && nearestEnemy != null) 
+        if (weaponAttack.Timer < Time.time)
         {
-            weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position, _mHumanoid.faction);
+            if (canAttack && nearestEnemy != null && FireBullet())
+            {
+                weaponAttack.UseWeapon(nearestEnemy.transform.position - weaponAttack.firePoint.transform.position, _mHumanoid.faction);
+            }
         }
         //weaponAttack.UpdateWeaponRotation();
+    }
+
+    // Check if the unit can fire bullet or need to reload
+    private bool FireBullet()
+    {
+        if(!weaponAttack.IsRangedWeapon)
+            return true;
+
+        if (_magazine > 0)
+        {
+            _magazine--;
+            return true;
+        }
+
+        weaponAttack.Timer += weaponAttack.RangedWeapon.ReloadTime;
+        _magazine = weaponAttack.RangedWeapon.MaxBullet;
+        weaponAttack.Animator.Play(weaponAttack.RangedWeapon.animReload, 0, 0);
+        return false;
     }
 
     // Get the faction of the owner unit

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Quest12.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 12.3"
-  _questTriggerType: 7
-  _information: Bruce
+  _actionsToDoAtStart: []
+  _questTriggerType: 3
+  _information: PlantDynamite
+  _objectifText: '- Poser la dynamite'
