@@ -90,10 +90,7 @@ public class MovePlayer : MonoBehaviour
     {
         if (context.started)
         {
-            if(_rb.velocity!= new Vector2(0,0))
-            {
-                _isSprinting = true;
-            }
+            _isSprinting = true;
         }
         else if (context.canceled)
         {
@@ -122,21 +119,26 @@ public class MovePlayer : MonoBehaviour
         float weightDebuff = WeightDebuff();
 
         _moveVector = UserInput.instance.MoveInput;
-        if(_rb.velocity == new Vector2(0,0))
+        bool isMoving = _moveVector != new Vector2(0,0);
+        if (isMoving)
         {
-            _isSprinting = false;
-        }
-        
-        if (_isSprinting == true && stats.GetStamina() > 0 && weightDebuff > 0.10f)
-        {
-            stats.ChangeIsSprinting(true);
-            _rb.velocity = _moveVector * moveSpeed * (weightDebuff - 0.05f) * 1.5f;
+            if (_isSprinting == true && stats.GetStamina() > 0 && weightDebuff > 0.10f)
+            {
+                stats.ChangeIsSprinting(true);
+                _rb.velocity = _moveVector * moveSpeed * (weightDebuff - 0.05f) * 1.5f;
+            }
+            else
+            {
+                stats.ChangeIsSprinting(false);
+                _rb.velocity = _moveVector * moveSpeed * weightDebuff;
+            }
         }
         else
         {
             stats.ChangeIsSprinting(false);
-            _rb.velocity = _moveVector * moveSpeed * weightDebuff;
+            _rb.velocity = Vector2.zero;
         }
+        
         //Debug.Log(_rb.velocity);
     }
 

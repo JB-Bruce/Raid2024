@@ -1,11 +1,7 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
 
 public class CharacterCustomisation : MonoBehaviour
@@ -13,9 +9,45 @@ public class CharacterCustomisation : MonoBehaviour
     public static CharacterCustomisation Instance;
 
     public Image CharacterPreview;
+    public Image CharacterPreviewHip;
 
     public Sprite WomanSprite;
+    public Sprite WomanSpriteHip;
+
     public Sprite ManSprite;
+    public Sprite ManSpriteHip;
+
+
+    public SpriteRenderer PlayerBody;
+    public SpriteRenderer PlayerHip;
+
+
+    public Image BackgroundTuto;
+    public Sprite BackgroundTutoIntellectuel;
+    public Sprite BackgroundTutoMilitaire;
+    public Sprite BackgroundTutoUtopiste;
+    public Sprite BackGroundTutoSurvivaliste;
+
+    public Image WomanSymbol;
+    public Image ManSymbol;
+
+    public Image FactionSelected;
+
+    public Sprite ManSymbolIntellectuel;
+    public Sprite ManSymbolMilitaire;
+    public Sprite ManSymbolUtopiste;
+    public Sprite ManSymbolSurvivaliste;
+
+    public Sprite WomanSymbolIntellectuel;
+    public Sprite WomanSymbolMilitaire;
+    public Sprite WomanSymbolUtopiste;
+    public Sprite WomanSymbolSurvivaliste;
+    
+    /*
+    public Sprite PlayerSpriteBody;
+    public Sprite PlayerSpriteHair;
+    public Sprite PlayerSpriteHip;*/
+
 
     public Toggle ToggleSkipTutorial;
 
@@ -49,6 +81,8 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToWoman()
     {
         CharacterPreview.sprite = WomanSprite;
+        CharacterPreviewHip.sprite = WomanSpriteHip;
+
         _characterGender = "Woman";
     }
 
@@ -58,6 +92,7 @@ public class CharacterCustomisation : MonoBehaviour
     public void SetCharacterToMan()
     {
         CharacterPreview.sprite = ManSprite;
+        CharacterPreviewHip.sprite = ManSpriteHip;
         _characterGender = "Man";
     }
 
@@ -66,7 +101,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToSurvivalist()
     {
+        BackgroundTuto.sprite = BackGroundTutoSurvivaliste;
+        ManSymbol.sprite = ManSymbolSurvivaliste;
+        WomanSymbol.sprite = WomanSymbolSurvivaliste;
 
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -625);
         _characterFaction = "Survivalist";
     }
 
@@ -75,6 +115,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToUtopist()
     {
+        BackgroundTuto.sprite = BackgroundTutoUtopiste;
+        ManSymbol.sprite = ManSymbolUtopiste;
+        WomanSymbol.sprite = WomanSymbolUtopiste;
+
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -0);
         _characterFaction = "Utopist";
     }
     /// <summary>
@@ -82,6 +128,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToScientist()
     {
+        BackgroundTuto.sprite = BackgroundTutoIntellectuel;
+        ManSymbol.sprite = ManSymbolIntellectuel;
+        WomanSymbol.sprite = WomanSymbolIntellectuel;
+
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -420);
         _characterFaction = "Scientist";
     }
 
@@ -90,6 +142,12 @@ public class CharacterCustomisation : MonoBehaviour
     /// </summary>
     public void SetFactionToMilitary()
     {
+        BackgroundTuto.sprite = BackgroundTutoMilitaire;
+        ManSymbol.sprite = ManSymbolMilitaire;
+        WomanSymbol.sprite = WomanSymbolMilitaire;
+
+        FactionSelected.enabled = true;
+        FactionSelected.rectTransform.anchoredPosition = new Vector2(0, -200);
         _characterFaction = "Military";
     }
 
@@ -119,6 +177,11 @@ public class CharacterCustomisation : MonoBehaviour
             PlayerPrefs.SetString("Gender", _characterGender);
             PlayerPrefs.SetString("CharacterFaction", _characterFaction);
             PlayerPrefs.SetString("CharacterName", _characterNameText);
+
+
+            PlayerBody.sprite = CharacterPreview.sprite;
+            PlayerHip.sprite = CharacterPreviewHip.sprite;
+
             PlayPressed = true;
             _playerInput.SwitchCurrentActionMap("InGame");
             ActiveGameUI();
