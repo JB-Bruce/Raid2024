@@ -18,6 +18,7 @@ MonoBehaviour:
   _name: Soda
   _description: "La potion p\xE9tillante qui rend la fin du monde un peu plus supportable."
   _itemSprite: {fileID: 21300000, guid: 64b42946bcd14bb4c96cd204cefdb83d, type: 3}
+  _canDrop: 1
   useConsSFX: SodaDrink
   _foodAmount: 0
   _drinkAmount: 70

@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RansomPaper : MonoBehaviour
 {
     [SerializeField]
     private GameObject _ransomPaper;
+
+    [SerializeField]
+    private PlayerInput _playerInput;
 
     public static RansomPaper instance;
 
@@ -16,6 +20,8 @@ public class RansomPaper : MonoBehaviour
     //close the ransom paper
     public void CloseRansomPaper()
     {
+        _playerInput.SwitchCurrentActionMap("InGame");
+        Time.timeScale = 1f;
         _ransomPaper.SetActive(false);
     }
 
@@ -23,5 +29,7 @@ public class RansomPaper : MonoBehaviour
     public void OpenRansomPaper()
     {
         _ransomPaper.SetActive(true);
+        Time.timeScale = 0f;
+        _playerInput.SwitchCurrentActionMap("RansomPaper");
     }
 }
