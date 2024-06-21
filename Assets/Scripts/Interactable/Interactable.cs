@@ -18,4 +18,5 @@ public class Interactable : MonoBehaviour
     protected virtual void Interact(){}
 
     public virtual void Highlight(bool state){}
+    public virtual void TriggerEnter(bool state) {}
 }

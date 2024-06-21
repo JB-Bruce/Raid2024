@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FactionMenu : MonoBehaviour
+public class FactionMenu : Interactable
 {
     [SerializeField] private FactionSc _faction;
     private Inventory _inventory;
@@ -41,10 +41,10 @@ public class FactionMenu : MonoBehaviour
     [SerializeField] private List<Item> _items = new();
     [SerializeField] private Button _recruitBtn;
     private bool _canTrade = false;
+    [SerializeField] private GameObject _highlightSprite;
 
 
-
-    private void Init()
+private void Init()
     {
         _leader = _faction.FactionLeader;
         _leader.haveUpgradeBuilding.AddListener(BuildingUpgrade);
@@ -287,6 +287,44 @@ public class FactionMenu : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         Time.timeScale = 1.0f;
+    }
+
+    //Get Faction
+    public Faction GetFaction()
+    {
+        return _faction.FactionUnitManager.faction;
+    }
+
+    // Set highlight sprite
+    public void SetHighlight(GameObject highlight)
+    {
+        _highlightSprite = highlight;
+    }
+
+    // Gestion of Interaction
+    protected override void Interact()
+    {
+        OpenFactionMenu();
+    }
+
+    public override void Highlight(bool state)
+    {
+        if (_highlightSprite != null)
+        {
+            _highlightSprite.SetActive(state);
+        }
+    }
+
+    public override void TriggerEnter(bool state)
+    {
+        if (state)
+        {
+            PlayerInteraction.Instance.interactables.Add(this);
+        }
+        else
+        {
+            PlayerInteraction.Instance.interactables.Remove(this);
+        }
     }
 
 }

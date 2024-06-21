@@ -86,7 +86,16 @@ public class FactionUnitManager : MonoBehaviour
     // Make spawn a unit
     private void SpawnUnit(bool _init = false)
     {
-        bool _isBandit = faction == Faction.Bandit && (Random.Range(0, 100) >= _banditSpawnInCamp || _init);
+        bool _isBandit;
+        if (CheckDistanceToPlayer(_spawnPosition.position) && faction == Faction.Bandit)
+        {
+            _isBandit = true;
+        }
+        else
+        {
+            _isBandit = faction == Faction.Bandit && (Random.Range(0, 100) >= _banditSpawnInCamp || _init);
+        }
+
 
         GameObject go = Instantiate<GameObject>(unit, _isBandit ? GetRandomSpawnPoint() : _spawnPosition.position, Quaternion.identity, parent);
 
@@ -100,6 +109,12 @@ public class FactionUnitManager : MonoBehaviour
 
         GiveAJob(unitBT, _transform.position, !_isBandit);
         unitBT.faction = faction;
+    }
+
+    // Coroutine for wait to make spawn the unit if the player is far the unit to spawn
+    private bool CheckDistanceToPlayer(Vector3 position)
+    {
+        return Vector3.Distance(position, _player.position) > SpawnDistanceAroundPlayer;
     }
 
     // Make spawn a unit with parameters (for wave)
