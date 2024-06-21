@@ -68,6 +68,11 @@ public class QuestManager : MonoBehaviour
         UpdateInGameQuestUi();
     }
 
+    private void Start()
+    {
+        MapManager.instance.SetQuestWaypoint(_quests[_currentMainQuest].GetCurrentQuestAction().GetGoal());
+    }
+
     //check if the current QuestActions are QuestTrigger
     public void CheckQuestTrigger(QuestTriggerType questTrigger, string information = "")
     {
@@ -131,6 +136,10 @@ public class QuestManager : MonoBehaviour
         {
             _currentMainQuest += 1;
             _quests[_currentMainQuest].GetCurrentQuestAction().Configure(_quests[_currentMainQuest].GetObjectsToActivateAtStartOfTheCUrrentQuestAction());
+            if(_quests[_currentMainQuest].GetCurrentQuestAction().GetGoal() != null)
+            {
+                MapManager.instance.SetQuestWaypoint(_quests[_currentMainQuest].GetCurrentQuestAction().GetGoal());
+            }
         }
         List<string> actionsToDo = _quests[_currentMainQuest].GetCurrentQuestAction().GetActionsToDoAtStart();
         if (actionsToDo.Count >0)

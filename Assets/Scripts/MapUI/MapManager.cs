@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
@@ -24,6 +25,13 @@ public class MapManager : MonoBehaviour
     public bool doesArrowsFollowPlayer;
 
     public float distanceToDesappear;
+
+    public static MapManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     // Detect overed ui element
     public bool IsPointerOverUIElement(out GameObject uiElement)

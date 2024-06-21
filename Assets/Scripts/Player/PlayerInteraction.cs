@@ -93,7 +93,7 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable != null)//If a container is close, open the inventory and the container
             {
                 MainQuestInteractable mainQuestInteractable;
-                if (interactable is Pnj && _closestInteractable.gameObject.TryGetComponent<MainQuestInteractable>(out mainQuestInteractable))
+                if (interactable is Pnj && interactable.gameObject.TryGetComponent<MainQuestInteractable>(out mainQuestInteractable))
                 {
                     if (mainQuestInteractable.TryToInteract())
                     {
