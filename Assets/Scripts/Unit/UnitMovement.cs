@@ -58,7 +58,7 @@ public class UnitMovement : MonoBehaviour
         for(int i = 0; i < _gameManager.restrictedAreas.Count; i++) 
         {
             if (Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= _gameManager.restrictedAreas[i].areaRadius || !_factionManager.IsPointInRhombus(position) || 
-                _hit != null || Vector3.Distance(position, _transform.position) > 100)
+                _hit != null /*|| Vector3.Distance(position, _transform.position) > 100*/)
             {
                 return true;
             }
@@ -70,12 +70,19 @@ public class UnitMovement : MonoBehaviour
     // Get a random point in the guard point of the unit
     public Vector3 GetRandomPointOnGuardPoint()
     {
+        Vector3 target;
+        Vector3 randomDirection;
+        float randomDistance;
 
-            Vector3 randomDirection = Random.insideUnitCircle;
+        do
+        {
+            randomDirection = Random.insideUnitCircle;
+            randomDistance = Random.Range(_minDistanceGuardPoint, _maxDistanceGuardPoint);
+            target = _guardPoint + randomDirection * randomDistance;
+        } while (IsThePointRestricted(target));
 
-            float randomDistance = Random.Range(_minDistanceGuardPoint, _maxDistanceGuardPoint);
+        return target;
 
-            return _guardPoint + randomDirection * randomDistance;
     }
 
     // set the guard area

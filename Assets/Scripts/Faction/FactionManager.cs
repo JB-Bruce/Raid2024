@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -38,6 +39,7 @@ public class FactionManager : MonoBehaviour
 
     private static readonly List<Faction> _interactibleFaction = new List<Faction>() { Faction.Player, Faction.Survivalist, Faction.Scientist, Faction.Military, Faction.Utopist};
     public List<FactionRespawn> factionRespawns = new List<FactionRespawn>();
+    [SerializeField] private List<FactionMenu> _factionsMenus = new List<FactionMenu>();
 
 
     private void Awake()
@@ -352,11 +354,25 @@ public class FactionManager : MonoBehaviour
             {
                 _factionsPlacement[_randomIndex].buildings[j].faction = factions[i].FactionUnitManager.faction;
             }
+            int index = GetFactionMenuIndex(factions[i].FactionUnitManager.faction);
+            _factionsPlacement[_randomIndex].buildingTriggers.SetPNJ(_factionsMenus[index]);
+            _factionsMenus[index].SetHighlight(_factionsPlacement[_randomIndex].highlight);
             _factionsPlacement.RemoveAt(_randomIndex);
         }
     }
 
+    // return the index of the faction menu of the faction parameter
+    private int GetFactionMenuIndex(Faction faction)
+    {
+        for(int i = 0; i < _factionsMenus.Count;i++)
+        {
+            if(_factionsMenus[i].GetFaction() == faction)
+                return i;
+        }
+        return -1;
+    }
 }
+
 
 
 // Contain the reference of the reputation of one faction to another
@@ -392,4 +408,6 @@ public struct FactionPlacement
     public Transform guardPoint1;
     public Transform guardPoint2;
     public List<FactionBuilding> buildings;
+    public BuildingsTriggers buildingTriggers;
+    public GameObject highlight;
 }

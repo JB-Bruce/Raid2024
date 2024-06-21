@@ -3,7 +3,8 @@ using UnityEngine;
 public class BuildingsTriggers : MonoBehaviour
 {
     [SerializeField]
-    private Pnj _pnj;
+    private Interactable _pnj;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,5 +22,11 @@ public class BuildingsTriggers : MonoBehaviour
             _pnj.Highlight(false);
             _pnj.TriggerEnter(false);
         }
+    }
+
+    // Set PNJ
+    public void SetPNJ(Interactable interact)
+    {
+        _pnj = interact;
     }
 }
