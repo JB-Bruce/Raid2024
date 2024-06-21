@@ -11,6 +11,9 @@ public class PlayerInteraction : MonoBehaviour
     private PlayerInput _playerInput;
     private InputActionMap _actionMapInGame;
 
+    [SerializeField]
+    private InteractableText _interactionText;
+
     private Inventory _inventory;
 
     public List<Interactable> interactables = new List<Interactable>();
@@ -44,7 +47,12 @@ public class PlayerInteraction : MonoBehaviour
         Interactable interactable = GetNearestInteractable();
         if (interactable != null)//if we find the nearest interactable, highlight it
         {
+            _interactionText.ShowText(interactable);
             interactable.Highlight(true);
+        }
+        else
+        {
+            _interactionText.HideText();
         }
     }
 
