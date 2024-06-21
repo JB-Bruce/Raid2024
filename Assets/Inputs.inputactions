@@ -1455,6 +1455,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Empty",
+            "id": "7f014574-efa8-4305-8956-40cc3472e245",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [
