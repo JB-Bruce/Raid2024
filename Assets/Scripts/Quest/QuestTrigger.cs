@@ -51,4 +51,9 @@ public class QuestTrigger : QuestAction
             return false;
         }
     }
+
+    public QuestTriggerType GetQuestTriggerType()
+    {
+        return _questTriggerType;
+    }
 }
