@@ -12,11 +12,12 @@ public class MenuFactionCrontolNRelation : MonoBehaviour
 
     [Header("FactionRelation")]
     [SerializeField] private Sprite[] _relationSprite = new Sprite[3]; // Ally = 0 / Neutral = 1 / Ennemy = 2
-    [SerializeField] private List<RelationInMenu> _relationsInMenu = new List<RelationInMenu>();
-    private static readonly List<Faction> _factions = new List<Faction>() { Faction.Utopist, Faction.Scientist, Faction.Military, Faction.Survivalist };
+    [SerializeField] private List<Image> _relationsInMenu = new List<Image>();
+    private static readonly List<Faction> _factions = new List<Faction>() { Faction.Military, Faction.Utopist, Faction.Scientist, Faction.Survivalist };
 
     [Header("POI")]
-    [SerializeField] private List<TextMeshProUGUI> _PoiOwners = new List<TextMeshProUGUI>();
+    [SerializeField] private List<Image> _PoiOwners = new List<Image>();
+    [SerializeField] private List<Sprite> _ImageFaction = new List<Sprite>(); // Null = 0, Mili = 1, Uto = 2, Sci = 3, Survi = 4
 
     // Open the panel and set all the properties 
     public void OpenMenu()
@@ -48,7 +49,20 @@ public class MenuFactionCrontolNRelation : MonoBehaviour
     {
         for(int i = 0; i< _PoiOwners.Count; i++)
         {
-            _PoiOwners[i].text = _factionManager.poi[i].GetOwnerFaction().ToString();
+            _PoiOwners[i].sprite = GetFactionImage(_factionManager.poi[i].GetOwnerFaction());
+        }
+    }
+
+    // Get image by faction
+    public Sprite GetFactionImage(Faction faction)
+    {
+        switch(faction) 
+        {
+            case Faction.Military: return _ImageFaction[1];
+            case Faction.Utopist: return _ImageFaction[2];
+            case Faction.Scientist: return _ImageFaction[3];
+            case Faction.Survivalist: return _ImageFaction[4];
+            default: return _ImageFaction[0];
         }
     }
 
@@ -61,9 +75,7 @@ public class MenuFactionCrontolNRelation : MonoBehaviour
     //Set all the relation in the menue
     private void SetRelations(string faction1, string faction2, float reputation, int index)
     {
-        _relationsInMenu[index].faction1.text = faction1;
-        _relationsInMenu[index].faction2.text = faction2;
-        _relationsInMenu[index].relationImage.sprite = SetRelationSprite(reputation);
+        _relationsInMenu[index].sprite = SetRelationSprite(reputation);
     }
 
     // Set the relation Sprite
@@ -82,15 +94,4 @@ public class MenuFactionCrontolNRelation : MonoBehaviour
             return _relationSprite[0]; 
         }
     }
-
-
-    // Contain information on one Relation in the Menu
-    [Serializable]
-    public struct RelationInMenu
-    {
-        public TextMeshProUGUI faction1;
-        public TextMeshProUGUI faction2;
-        public Image relationImage;
-    }
-
 }
