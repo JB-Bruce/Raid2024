@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5279002219307110490}
   - component: {fileID: 1482966409726072043}
   m_Layer: 0
-  m_Name: Rock
+  m_Name: Rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6634567, y: 0.6634567, z: 1}
+  m_LocalScale: {x: 0.8396729, y: 0.8396729, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: aaa74e0b2992d4a40821f82ca2f37c64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60292a757fd24f342bd5a8ed3c8a3d3f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

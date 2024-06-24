@@ -67,9 +67,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14210129, y: 0}
+  m_Offset: {x: 0.6072993, y: 0.117871284}
   serializedVersion: 2
-  m_Radius: 1.8808308
+  m_Radius: 3.463035
 --- !u!114 &2391136917547589544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,6 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
+  name: 
   itemSlots: []
   containerSelectedSprite: {fileID: 5613503629003946378}
   rerollNumbers: 9
@@ -90,12 +91,17 @@ MonoBehaviour:
   _items: []
   containerRows: 3
   containerColumn: 3
+  _isUnit: 0
   despawnTimer: 0
+  despawnable: 0
+  maxRefillTimer: 300
+  openSFX: 
   _itemsToGiveAtStart:
   - item: {fileID: 11400000, guid: 0c3d5b25b28b7f448976e7a015d7079a, type: 2}
     amount: 3
   - item: {fileID: 11400000, guid: 8e163295ef490114396e9bb6d8c39d7c, type: 2}
     amount: 2
+  _itemToOpen: []
 --- !u!1 &2394451791471959020
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,8 +175,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f5f0b8bf9da2d09489b24bd5ead5c403, type: 3}
+  m_SortingOrder: -2
+  m_Sprite: {fileID: 21300000, guid: 2107d67058e224f41915af2c9be23d82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -253,8 +259,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4b51cb226d49b80459c4b77b7d089312, type: 3}
+  m_SortingOrder: -3
+  m_Sprite: {fileID: 21300000, guid: 20214a3a0bf00024ca291b3ce797a93a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -330,7 +336,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2387636, y: -1.0364323}
+  m_Offset: {x: 1.0854032, y: -0.007874727}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -341,7 +347,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2237134, y: 2.299152}
+  m_Size: {x: 5.3617606, y: 3.6488914}
   m_EdgeRadius: 0
 --- !u!114 &3295254349373468458
 MonoBehaviour:

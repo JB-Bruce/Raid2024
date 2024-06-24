@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -3
-  m_Sprite: {fileID: 21300000, guid: 4b51cb226d49b80459c4b77b7d089312, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2814d44c0a0be743893bceb72f280fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -110,13 +110,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6017283790603101240}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.42660013, y: -0.17670354, z: -0.33944437, w: 0.8194912}
+  m_LocalRotation: {x: -0.39988604, y: -0.23087431, z: -0.44350544, w: 0.76817393}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2771897145328962646}
-  m_LocalEulerAnglesHint: {x: -55, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: -55, y: 0, z: -60}
 --- !u!61 &4073425849871892058
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -149,7 +149,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2387636, y: -1.0364323}
+  m_Offset: {x: 1.9131833, y: -0.7157241}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -160,7 +160,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2237134, y: 2.299152}
+  m_Size: {x: 3.572553, y: 4.1227016}
   m_EdgeRadius: 0
 --- !u!114 &5920369574227213418
 MonoBehaviour:
@@ -252,7 +252,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: f5f0b8bf9da2d09489b24bd5ead5c403, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4b1049eca58eae5478cb442a43da6842, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 4860990516190744292}
   - component: {fileID: 7425889842651036706}
   m_Layer: 0
-  m_Name: Crate
+  m_Name: WoodPile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -330,9 +330,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14210105, y: 0.007612705}
+  m_Offset: {x: 0.13364744, y: -0.72995186}
   serializedVersion: 2
-  m_Radius: 2.2081866
+  m_Radius: 3.2332268
 --- !u!114 &7425889842651036706
 MonoBehaviour:
   m_ObjectHideFlags: 0
