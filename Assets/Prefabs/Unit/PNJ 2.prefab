@@ -170,6 +170,7 @@ MonoBehaviour:
   _flipScale: {x: -0.2, y: 0.2, z: 0.2}
   _equipedWeapon: {fileID: 0}
   _AnimTransform: {fileID: 2211126344439906170}
+  _navMeshAgent: {fileID: 5021856836070495951}
   _unitSoundPlayer: {fileID: -6335658587882543399}
   _handWeaponSpriteRenderer: {fileID: 5382921198042124605}
   _transform: {fileID: 3549200763495876058}
@@ -946,7 +947,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.57}
+  m_Offset: {x: 0, y: -0.31907195}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -957,7 +958,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.61, y: 3.26}
+  m_Size: {x: 1.61, y: 2.758144}
   m_EdgeRadius: 0
 --- !u!1 &7330787713416782180
 GameObject:
@@ -1269,6 +1270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d4dd03843d7d1408bc195dd3468f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _agent: {fileID: 5021856836070495951}
   targetPOI: {fileID: 0}
   poiHasBeenCaptured: 0
 --- !u!195 &5021856836070495951
@@ -1318,6 +1320,8 @@ MonoBehaviour:
   removeHitReputation: -0.1
   pSystem: {fileID: 558998445630434574}
   _feetAnimator: {fileID: 8702537998892710122}
+  _agent: {fileID: 5021856836070495951}
+  _questType: 
   order: 0
   waitTime: 0
   canMove: 1
@@ -6286,6 +6290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemSlotPrefab: {fileID: 9003581086358798507, guid: 05940256eeec7124daa4ffdcb734d4e4, type: 3}
+  name: 
   itemSlots: []
   containerSelectedSprite: {fileID: 0}
   rerollNumbers: 6
@@ -6298,6 +6303,8 @@ MonoBehaviour:
   despawnable: 1
   maxRefillTimer: 300
   openSFX: 
+  _itemsToGiveAtStart: []
+  _itemToOpen: []
 --- !u!58 &3570925510043406716
 CircleCollider2D:
   m_ObjectHideFlags: 0
