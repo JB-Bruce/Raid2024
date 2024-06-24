@@ -228,6 +228,7 @@ public class Inventory : MonoBehaviour
 
             if (isInventoryOpen)//Show the weapons in inventory (change position and show the holster)
             {
+                MovePlayer.instance.SetVisibleTextAmmo(false);
                 Cursor.visible = true;
                 _playerInput.actions.FindActionMap("InGame").Disable();
                 _playerInput.actions.FindActionMap("Inventory").Enable();
@@ -249,6 +250,7 @@ public class Inventory : MonoBehaviour
             }
             else//Show the weapons in game (change position and hide the holster)
             {
+                MovePlayer.instance.SetVisibleTextAmmo(true);
                 Cursor.visible = false;
                 _playerInput.actions.FindActionMap("Inventory").Disable();
                 _playerInput.actions.FindActionMap("InGame").Enable();
@@ -271,6 +273,11 @@ public class Inventory : MonoBehaviour
                     currentContainer = null;
                 }
             }
+
+            if(weaponSlots[_player.GetSelectedWeapon()].Item is RangedWeapon weapon)
+            {
+                MovePlayer.instance.UpdateAmmoNumber(weapon);
+            }
         }
     }
 
@@ -284,6 +291,7 @@ public class Inventory : MonoBehaviour
         int actualWeapon = _player.GetSelectedWeapon();
         if (isHalfInvenoryOpen)//Hides the weapon slots
         {
+            MovePlayer.instance.SetVisibleTextAmmo(false);
             Cursor.visible = true;
             weaponSlots[actualWeapon].GetSelected(false);
             _weaponSlotsGameObject.SetActive(false);
@@ -291,6 +299,7 @@ public class Inventory : MonoBehaviour
         }
         else//Shows the weapon slots
         {
+            MovePlayer.instance.SetVisibleTextAmmo(true);
             for (int i = 0; i < weaponSlots.Count; i++)
             {
                 Navigation navigation = new Navigation();
@@ -302,6 +311,10 @@ public class Inventory : MonoBehaviour
             _weaponSlotsGameObject.SetActive(true);
             weaponSlots[actualWeapon].GetSelected(true);
             _itemSlotsGameObject.transform.position = _itemSlotsPosInInventory.position;
+        }
+        if(weaponSlots[_player.GetSelectedWeapon()].Item is RangedWeapon weapon)
+        {
+            MovePlayer.instance.UpdateAmmoNumber(weapon);
         }
     }
 
@@ -403,7 +416,7 @@ public class Inventory : MonoBehaviour
     /// <summary>
     /// Adds the item "item" to the inventory if a slot is available
     /// </summary>
-    public bool AddItem(Item item, float quantityContainer = 0)
+    public bool AddItem(Item item, float quantityContainer = 0, int nbAmmo = 0)
     {
         ItemSlot itemSlot = FindFirstInventorySlotAvailable(item);
         if (itemSlot != null)
@@ -411,6 +424,7 @@ public class Inventory : MonoBehaviour
             if (itemSlot.Item == null)
             {
                 itemSlot.AddItemToSlot(item);
+                itemSlot.ammoQuantity = nbAmmo;
                 if (item is QuestItemContainer questItemContainer)
                 {
                     itemSlot.SetContainerQuantity(quantityContainer);
@@ -477,6 +491,7 @@ public class Inventory : MonoBehaviour
                 Item.transform.position = _player.transform.position;
                 DroppedItem itemDropped = Item.GetComponent<DroppedItem>();
                 itemDropped.SetStuffQuantityInThis(itemSlot.GetContainerQuantity());
+                itemDropped.quantityAmmo = itemSlot.ammoQuantity;
                 if(itemSlot.Item is QuestItemContainer questItemContainer)
                 {
                     QuestManager.instance.CheckQuestPick(-itemSlot.GetContainerQuantity(), questItemContainer.GetStuffInContainer());
@@ -664,6 +679,7 @@ public class Inventory : MonoBehaviour
                 PopUpManager.Instance.AddPopUp(slot1.Item, slot1.Quantity);
             }
 
+            slot2.ammoQuantity = slot1.ammoQuantity;
             ItemSwap(slot1, slot2);
         }
     }
@@ -673,10 +689,11 @@ public class Inventory : MonoBehaviour
     /// </summary>
     private void ItemSwap(ItemSlot slot1, ItemSlot slot2)
     {
+        /*
         if(slot1.Item.GetType() == typeof(RangedWeapon) && slot1 is EquipementSlot equipementSlot)
         {
             _player.RemoveAmmoWhenRemoveWeapon(weaponSlots.IndexOf(equipementSlot));
-        }
+        }*/
 
 
         ItemWithQuantity itemWithQuantity = new ItemWithQuantity();

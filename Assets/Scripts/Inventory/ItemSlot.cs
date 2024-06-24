@@ -9,6 +9,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Item _item;
     private int _quantity;
     private float _quantityContainer;
+    public int ammoQuantity;
 
     [SerializeField]
     private TextMeshProUGUI _quantityText;

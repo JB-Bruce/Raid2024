@@ -3,6 +3,7 @@ using UnityEngine;
 public class DroppedItem : Interactable
 {
     public int quantity = 0;
+    public int quantityAmmo = 0;
     public Item item;
     [SerializeField]
     private float _stuffQuantityInThis = 0;
@@ -63,7 +64,7 @@ public class DroppedItem : Interactable
         {
             if (item != null)
             {
-                if (!inventory.AddItem(item, _stuffQuantityInThis))
+                if (!inventory.AddItem(item, _stuffQuantityInThis, quantityAmmo))
                 {
                     quantity -= i;
                     if (i > 0)

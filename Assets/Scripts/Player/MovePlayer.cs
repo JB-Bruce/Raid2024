@@ -44,12 +44,7 @@ public class MovePlayer : MonoBehaviour
     private bool _cancelReload = false;
     public float moveSpeed = 7f;
     private int _selectedWeapon = 0;
-    private int currentAmmoWeapon1;
-    private int currentAmmoWeapon2;
-    private int currentAmmoWeapon3;
-    private int oldAmmo1 = 0;
-    private int oldAmmo2 = 0;
-    private int oldAmmo3 = 0;
+    private int oldAmmo = 0;
     private float _parryingReduceDamage = 15f;
     string maxBullet;
     int oldSelectedWeapon = 0;
@@ -177,6 +172,11 @@ public class MovePlayer : MonoBehaviour
         {
             _sprite.transform.rotation = _normalRotation;
         }
+    }
+
+    public void SetVisibleTextAmmo(bool isVisible)
+    {
+        _numberAmmoWeapon.gameObject.SetActive(isVisible);
     }
 
     //The player can shoot only if he is aiming  
@@ -573,9 +573,7 @@ public class MovePlayer : MonoBehaviour
                     }
                     PopUpManager.Instance.AddPopUp(oldRangedWeapon.BulletType[0], ammoRemoved);
                 }
-                currentAmmoWeapon1 = oldAmmo1;
-                currentAmmoWeapon2 = oldAmmo2;
-                currentAmmoWeapon3 = oldAmmo3;
+                inventory.weaponSlots[oldSelectedWeapon].ammoQuantity = oldAmmo;
                 
             }
             else
@@ -699,21 +697,11 @@ public class MovePlayer : MonoBehaviour
     }
 
     //Change the text of the current ammo, next to the weapons
-    private void UpdateAmmoNumber(RangedWeapon rangedWeapon)
+    public void UpdateAmmoNumber(RangedWeapon rangedWeapon)
     {
         maxBullet = rangedWeapon.MaxBullet.ToString();
-        if(_selectedWeapon == 0)
-        {
-            _numberAmmoWeapon.text = currentAmmoWeapon1 + "/" + maxBullet;
-        }
-        if(_selectedWeapon == 1)
-        {
-            _numberAmmoWeapon.text = currentAmmoWeapon2 + "/" + maxBullet;
-        }
-        if(_selectedWeapon == 2)
-        {
-            _numberAmmoWeapon.text = currentAmmoWeapon3 + "/" + maxBullet;
-        }
+
+        _numberAmmoWeapon.text = inventory.weaponSlots[_selectedWeapon].ammoQuantity + "/" + maxBullet;
 
         if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon)
         {
@@ -735,84 +723,32 @@ public class MovePlayer : MonoBehaviour
     {
         if(!_isReloading)
         {
-            oldAmmo1 = currentAmmoWeapon1;
-            oldAmmo2 = currentAmmoWeapon2;
-            oldAmmo3 = currentAmmoWeapon3;
+            oldAmmo = inventory.weaponSlots[_selectedWeapon].ammoQuantity;
             if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
             {
                 int numberOfAmmoInInventory = inventory.CountItemInInventory(rangedWeapon.BulletType[0]);
                 
-                if(_selectedWeapon == 0)
+               
+                if(numberOfAmmoInInventory > 0 && inventory.weaponSlots[_selectedWeapon].ammoQuantity != rangedWeapon.MaxBullet)
                 {
-                    if(numberOfAmmoInInventory > 0 && currentAmmoWeapon1 != rangedWeapon.MaxBullet)
+                    ammoRemoved = 0;
+                    _animator.Play(rangedWeapon.animReload, 0, 0);
+                    _isReloading = true;
+
+                    if(numberOfAmmoInInventory + inventory.weaponSlots[_selectedWeapon].ammoQuantity >= rangedWeapon.MaxBullet)
                     {
-                        ammoRemoved = 0;
-                        _animator.Play(rangedWeapon.animReload, 0, 0);
-                        _isReloading = true;
-
-                        if(numberOfAmmoInInventory + currentAmmoWeapon1 >= rangedWeapon.MaxBullet)
-                        {
-                            ammoRemoved = rangedWeapon.MaxBullet-currentAmmoWeapon1;
-                            currentAmmoWeapon1 = rangedWeapon.MaxBullet;
-                        }
-                        else
-                        {
-                            ammoRemoved = numberOfAmmoInInventory;
-                            currentAmmoWeapon1 = currentAmmoWeapon1 + numberOfAmmoInInventory;
-                        }
-                        
-                        inventory.RemoveItems(rangedWeapon.BulletType[0], ammoRemoved);
-
-                        StartCoroutine(CouroutineReload(rangedWeapon));
+                        ammoRemoved = rangedWeapon.MaxBullet-inventory.weaponSlots[_selectedWeapon].ammoQuantity;
+                        inventory.weaponSlots[_selectedWeapon].ammoQuantity = rangedWeapon.MaxBullet;
                     }
-                }
-                if(_selectedWeapon == 1)
-                {
-                    if(numberOfAmmoInInventory > 0 && currentAmmoWeapon2 != rangedWeapon.MaxBullet)
+                    else
                     {
-                        ammoRemoved = 0;
-                        _animator.Play(rangedWeapon.animReload, 0, 0);
-                        _isReloading = true;
-
-                        if(numberOfAmmoInInventory + currentAmmoWeapon2 >= rangedWeapon.MaxBullet)
-                        {
-                            ammoRemoved = rangedWeapon.MaxBullet-currentAmmoWeapon2;
-                            currentAmmoWeapon2 = rangedWeapon.MaxBullet;
-                        }
-                        else
-                        {
-                            ammoRemoved = numberOfAmmoInInventory;
-                            currentAmmoWeapon2 = currentAmmoWeapon2 + numberOfAmmoInInventory;
-                        }
-                        
-                        inventory.RemoveItems(rangedWeapon.BulletType[0], ammoRemoved);
-
-                        StartCoroutine(CouroutineReload(rangedWeapon));
+                        ammoRemoved = numberOfAmmoInInventory;
+                        inventory.weaponSlots[_selectedWeapon].ammoQuantity = inventory.weaponSlots[_selectedWeapon].ammoQuantity + numberOfAmmoInInventory;
                     }
-                }
-                if(_selectedWeapon == 2)
-                {
-                    if(numberOfAmmoInInventory > 0 && currentAmmoWeapon3 != rangedWeapon.MaxBullet)
-                    {
-                        ammoRemoved = 0;
-                        _animator.Play(rangedWeapon.animReload, 0, 0);
-                        _isReloading = true;
+                    
+                    inventory.RemoveItems(rangedWeapon.BulletType[0], ammoRemoved);
 
-                        if(numberOfAmmoInInventory + currentAmmoWeapon3 >= rangedWeapon.MaxBullet)
-                        {
-                            ammoRemoved = rangedWeapon.MaxBullet-currentAmmoWeapon3;
-                            currentAmmoWeapon3 = rangedWeapon.MaxBullet;
-                        }
-                        else
-                        {
-                            ammoRemoved = numberOfAmmoInInventory;
-                            currentAmmoWeapon3 = currentAmmoWeapon3 + numberOfAmmoInInventory;
-                        }
-                        
-                        inventory.RemoveItems(rangedWeapon.BulletType[0], ammoRemoved);
-
-                        StartCoroutine(CouroutineReload(rangedWeapon));
-                    }
+                    StartCoroutine(CouroutineReload(rangedWeapon));
                 }
             }
         }
@@ -829,22 +765,6 @@ public class MovePlayer : MonoBehaviour
         UpdateAmmoNumber(rangedWeapon);
     }
 
-//When the weapon is removed from the weapon slot, remove all the ammo of the weapon. When reequiped, the weapons have 0 ammo.
-    public void RemoveAmmoWhenRemoveWeapon(int _selectedWeapon)
-    {
-        if(_selectedWeapon == 0)
-        {
-            currentAmmoWeapon1 = 0;
-        }
-        if(_selectedWeapon == 1)
-        {
-            currentAmmoWeapon2 = 0;
-        }
-        if(_selectedWeapon == 2)
-        {
-            currentAmmoWeapon3 = 0;
-        }
-    }
     
 
 //Check on the 3 equipement slots what protection is eqquiped and if the player is parrying blow. Get for the three the amount of reduce damage and return it.
@@ -915,46 +835,15 @@ public class MovePlayer : MonoBehaviour
                 _timer = Time.time + _equipedWeapon.AttackSpeed;
                 if(inventory.weaponSlots[_selectedWeapon].Item is RangedWeapon rangedWeapon)
                 {
-                    if(_selectedWeapon == 0)
+                    if(inventory.weaponSlots[_selectedWeapon].ammoQuantity != 0)
                     {
-                        if(currentAmmoWeapon1 != 0)
-                        {
-                            currentAmmoWeapon1 -= 1;
-                            UpdateAmmoNumber(rangedWeapon);
-                            _weaponAttack.UseWeapon(direction, Faction.Player);
-                        }
-                        else
-                        {
-                            ReloadAmmo();
-                        }
+                        inventory.weaponSlots[_selectedWeapon].ammoQuantity -= 1;
+                        UpdateAmmoNumber(rangedWeapon);
+                        _weaponAttack.UseWeapon(direction, Faction.Player);
                     }
-
-                    if(_selectedWeapon == 1)
+                    else
                     {
-                        if(currentAmmoWeapon2 != 0)
-                        {
-                            currentAmmoWeapon2 -= 1;
-                            UpdateAmmoNumber(rangedWeapon);
-                            _weaponAttack.UseWeapon(direction, Faction.Player);
-                        }
-                        else
-                        {
-                            ReloadAmmo();
-                        }
-                    }
-
-                    if(_selectedWeapon == 2)
-                    {
-                        if(currentAmmoWeapon3 != 0)
-                        {
-                            currentAmmoWeapon3 -= 1;
-                            UpdateAmmoNumber(rangedWeapon);
-                            _weaponAttack.UseWeapon(direction, Faction.Player);
-                        }
-                        else
-                        {
-                            ReloadAmmo();
-                        }
+                        ReloadAmmo();
                     }
                     
                 }
