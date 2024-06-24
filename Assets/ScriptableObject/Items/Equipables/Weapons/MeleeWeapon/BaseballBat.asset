@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BaseballBat
   m_EditorClassIdentifier: 
   _weight: 0
-  _isStackable: 1
+  _isStackable: 0
   _maxStack: 1
   _name: Batte de baseball
   _description: "Id\xE9ale pour fracasser des bandits, ou organiser un match amical
@@ -23,7 +23,7 @@ MonoBehaviour:
   _equipementTier: 1
   _worldSprite: {fileID: 1147398682, guid: 90103723d822bc3468b9b61e21f095cf, type: 3}
   _flipable: 1
-  _damage: 25
+  _damage: 20
   _attackSpeed: 1
   _attackRange: 5
   _leftHandPos: {x: -0.09, y: 0.11}

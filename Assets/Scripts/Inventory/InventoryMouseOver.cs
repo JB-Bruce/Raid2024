@@ -20,6 +20,12 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
     private TextMeshProUGUI _itemDescription;
 
     [SerializeField]
+    private TextMeshProUGUI _protectionStat;
+
+    [SerializeField]
+    private TextMeshProUGUI _damageStat;
+
+    [SerializeField]
     private List<GameObject> _controllerOptionsImages = new();
 
     [SerializeField]
@@ -78,6 +84,18 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
     {
         _itemName.text = _inventory.selectedItemSlot.Item.Name;
         _itemDescription.text = '"' + _inventory.selectedItemSlot.Item.Description + '"';
+        _damageStat.gameObject.SetActive(false);
+        _protectionStat.gameObject.SetActive(false);
+        if (_inventory.selectedItemSlot.Item is Weapon weapon && weapon.Damage > 0)
+        {
+            _damageStat.text = "Damage : " + weapon.Damage.ToString();
+            _damageStat.gameObject.SetActive(true);
+        }
+        else if (_inventory.selectedItemSlot.Item is Armor armor && armor.Protection > 0)
+        {
+            _protectionStat.text = "Protection : " + armor.Protection.ToString();
+            _protectionStat.gameObject.SetActive(true);
+        }
     }
 
     /// <summary>

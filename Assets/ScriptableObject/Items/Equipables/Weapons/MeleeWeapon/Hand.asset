@@ -22,7 +22,7 @@ MonoBehaviour:
   _equipementTier: 3
   _worldSprite: {fileID: 0}
   _flipable: 0
-  _damage: 6
+  _damage: 10
   _attackSpeed: 1
   _attackRange: 5
   _leftHandPos: {x: 0.7, y: 0.3}
