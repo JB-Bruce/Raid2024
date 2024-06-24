@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class UnitMovement : MonoBehaviour
 {
     private float _mapSize;
-    private NavMeshAgent _agent;
+    [SerializeField] private NavMeshAgent _agent;
     private Transform _transform;
 
     private Vector3 _guardPoint;
@@ -24,7 +24,6 @@ public class UnitMovement : MonoBehaviour
         _gameManager = GameManager.Instance;
         _mapSize = _gameManager.mapSize;
         _transform = transform;
-        _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
         _factionManager = FactionManager.Instance;

@@ -26,7 +26,7 @@ public class WeaponAttack : MonoBehaviour
     private Animator _animator;
     private RangedWeapon _rangedWeapon;
     private UnitCombat _unitCombat;
-    private NavMeshAgent _navMeshAgent;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
     private SoundManager _soundManager;
 
     [SerializeField]
@@ -60,7 +60,6 @@ public class WeaponAttack : MonoBehaviour
     {
         _unitCombat = transform.parent.parent.GetComponent<UnitCombat>();
         _animator = GetComponent<Animator>();
-        _navMeshAgent = transform.parent.parent.GetComponent<NavMeshAgent>();
         _camera = Camera.main;
     }
 
@@ -107,7 +106,7 @@ public class WeaponAttack : MonoBehaviour
         _equipedWeapon = weapon;
         weaponChange.Invoke(_equipedWeapon);
         _handWeaponSpriteRenderer.sprite = _equipedWeapon.WorldSprite;
-        //_AnimTransform.localScale = _normalScale;
+        _AnimTransform.localScale = _normalScale;
 
         if(_navMeshAgent != null)
         {

@@ -24,7 +24,7 @@ public class Humanoid : MonoBehaviour
 
     [SerializeField] private Animator _feetAnimator;
     protected Rigidbody2D _rb;
-    protected NavMeshAgent _agent;
+    [SerializeField] protected NavMeshAgent _agent;
 
     private MovePlayer _player;
     private float _reduceDamage = 0;
@@ -44,12 +44,6 @@ public class Humanoid : MonoBehaviour
             _factionManager = FactionManager.Instance;
             _rb = GetComponent<Rigidbody2D>();
         }
-
-        if (!isPlayer)
-        {
-            _agent = GetComponent<NavMeshAgent>();
-        }
-
     }
 
     protected virtual void Update()

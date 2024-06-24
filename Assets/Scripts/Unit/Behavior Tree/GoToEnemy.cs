@@ -10,11 +10,11 @@ public class GoToEnemy : Node
     NavMeshAgent _agent;
     Transform _transform;
 
-    public GoToEnemy(GameObject unit)
+    public GoToEnemy(GameObject unit, NavMeshAgent agent)
     {
         _unit = unit.GetComponent<UnitCombat>();
         _unitMovement = unit.GetComponent<UnitMovement>();
-        _agent = unit.GetComponent<NavMeshAgent>();
+        _agent = agent;
         _transform = _unit.transform;
     }
 
