@@ -176,7 +176,14 @@ public class TradeManager : MonoBehaviour
         //methode to add trade item to inventory
         for(int i = 0; i < _selectedTrade.currentData.tradeItemQuantity; i++)
         {
-            _inventory.AddItem(_selectedTrade.currentData.tradeItem);
+            if(_selectedTrade.currentData.tradeItem is RangedWeapon rangedWeapon)
+            {
+                _inventory.AddItem(rangedWeapon, 0, rangedWeapon.MaxBullet);
+            }
+            else
+            {
+                _inventory.AddItem(_selectedTrade.currentData.tradeItem);
+            }
         }
         PopUpManager.Instance.AddPopUp(_selectedTrade.currentData.tradeItem, _selectedTrade.currentData.tradeItemQuantity);
 

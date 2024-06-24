@@ -174,6 +174,10 @@ public class Container : Interactable
             {
                 itemSlots[i].Item = item;
                 itemSlots[i].UpdateQuantity(1);
+                if (item is RangedWeapon rangedWeapon)
+                {
+                    itemSlots[i].ammoQuantity = Random.Range(0, rangedWeapon.MaxBullet);
+                }
                 return true;
             }
             else if (itemSlots[i].Item.IsStackable && itemSlots[i].Item == item && itemSlots[i].Item.MaxStack > itemSlots[i].Quantity)
