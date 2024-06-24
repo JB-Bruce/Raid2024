@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PipeGun
   m_EditorClassIdentifier: 
   _weight: 1.5
-  _isStackable: 1
+  _isStackable: 0
   _maxStack: 1
   _name: Fusil de fortune
   _description: "L\u2019arme DIY par excellence! Attention aux fuites d\u2019eau."
@@ -22,7 +22,7 @@ MonoBehaviour:
   _equipementTier: 2
   _worldSprite: {fileID: -664833799, guid: 9b8079160c75e444683777736f8dd84c, type: 3}
   _flipable: 0
-  _damage: 10
+  _damage: 25
   _attackSpeed: 1
   _attackRange: 20
   _leftHandPos: {x: 0.05, y: 0.06}
