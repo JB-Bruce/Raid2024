@@ -23,6 +23,10 @@ public class UnitCombat : MonoBehaviour
     [HideInInspector]
     public WeaponAttack weaponAttack;
 
+    [SerializeField] UnitSoundPlayer _unitSoundPlayer;
+
+    private SoundManager _soundManager;
+
     [Header("Reputation")]
     public float neutralReputation = -1;
 
@@ -31,6 +35,12 @@ public class UnitCombat : MonoBehaviour
 
     // Attack
     private int _magazine = 0;
+
+    private void Start()
+    {
+        _soundManager = SoundManager.instance;
+        _unitSoundPlayer = GetComponent<UnitSoundPlayer>();
+    }
 
     public void Init()
     {
@@ -166,6 +176,7 @@ public class UnitCombat : MonoBehaviour
 
         weaponAttack.Timer += weaponAttack.RangedWeapon.ReloadTime;
         _magazine = weaponAttack.RangedWeapon.MaxBullet;
+        _soundManager.PlaySFX(weaponAttack._equipedWeapon.reloadSFX, _unitSoundPlayer.unitAudioSource);
         weaponAttack.Animator.Play(weaponAttack.RangedWeapon.animReload, 0, 0);
         return false;
     }

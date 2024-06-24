@@ -12,7 +12,14 @@ public class Bullet : MonoBehaviour
 
     public string bulletHit;
 
+    [SerializeField] AudioSource _bulletAudioSource;
+
     private SoundManager _soundManager;
+
+    private void Awake()
+    {
+        _bulletAudioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -52,7 +59,7 @@ public class Bullet : MonoBehaviour
                 return;
             }
             humanoid.TakeDamage(_damage, _ownerFaction, transform.right);
-            _soundManager.PlaySFX(bulletHit);
+            _soundManager.PlaySFX(bulletHit, _bulletAudioSource);
         }
 
         if(!collision.isTrigger && collision!=null) 

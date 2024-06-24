@@ -18,7 +18,7 @@ public class WeaponAttack : MonoBehaviour
     public Vector3 _flipScale = new Vector3(-0.2f, 0.2f, 0.2f);
 
     // Cache
-    private Weapon _equipedWeapon;
+    public Weapon _equipedWeapon;
 
 
     [SerializeField]
@@ -28,6 +28,7 @@ public class WeaponAttack : MonoBehaviour
     private UnitCombat _unitCombat;
     private NavMeshAgent _navMeshAgent;
     private SoundManager _soundManager;
+    [SerializeField] private UnitSoundPlayer _unitSoundPlayer;
 
     [SerializeField]
     private SpriteRenderer _handWeaponSpriteRenderer;
@@ -54,6 +55,8 @@ public class WeaponAttack : MonoBehaviour
     private void Start()
     {
         _soundManager = SoundManager.instance;
+
+        _unitSoundPlayer = transform.parent.parent.GetComponent<UnitSoundPlayer>();
     }
 
     public void Init()
@@ -135,7 +138,7 @@ public class WeaponAttack : MonoBehaviour
             _timer = Time.time + _equipedWeapon.AttackSpeed;
 
             _animator.Play(_equipedWeapon.animAttack, 0, 0);
-            _soundManager.PlaySFX(_equipedWeapon.attackSFX);
+            _soundManager.PlaySFX(_equipedWeapon.attackSFX, _unitSoundPlayer.unitAudioSource);
             if (_isRangeWeapon)
             {
                 direction = rotateVector2(direction, Random.Range(-(_rangedWeapon.Spread/ 2), _rangedWeapon.Spread / 2));
@@ -155,7 +158,7 @@ public class WeaponAttack : MonoBehaviour
         if (_enemy != null)
         {
             _enemy.TakeDamage(_equipedWeapon.Damage, _isAI ? _unitCombat.GetFaction() : Faction.Player, (_enemy.transform.position - transform.position).normalized);
-            _soundManager.PlaySFX(_equipedWeapon.hitSFX);
+            _soundManager.PlaySFX(_equipedWeapon.hitSFX, _unitSoundPlayer.unitAudioSource);
         }
 
     }
