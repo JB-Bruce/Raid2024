@@ -85,6 +85,11 @@ public class FactionManager : MonoBehaviour
 
     public void AddReputation(Faction faction1, Faction faction2, float newReputation)
     {
+        if(faction1 == Faction.Bandit ||  faction2 == Faction.Bandit || faction1 == Faction.Null || faction2 == Faction.Null)
+        {
+            return;
+        }
+
         for(int i = 0;i < reputations.Count;i++)
         {
             if ((reputations[i].faction1 == faction1 || reputations[i].faction2 == faction1) &&
@@ -197,7 +202,7 @@ public class FactionManager : MonoBehaviour
     // Add Reputation to Allies and remove reputation to the allies of the kill unit's faction
     public void ChangeAllReputation(Faction killer, Faction kill)
     {
-        if (kill == Faction.Bandit)
+        if (kill == Faction.Bandit || killer == Faction.Bandit || kill == Faction.Null || killer == Faction.Null)
             return;
         for(int i = 0 ; i< _interactibleFaction.Count; i++) 
         {

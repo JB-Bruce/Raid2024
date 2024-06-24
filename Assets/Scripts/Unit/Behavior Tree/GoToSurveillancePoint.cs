@@ -6,10 +6,10 @@ public class GoToSurveillancePoint : Node_script.Node
     private UnitMovement _unit;
     private NavMeshAgent _navMesh;
 
-    public GoToSurveillancePoint(UnitMovement unit)
+    public GoToSurveillancePoint(UnitMovement unit, NavMeshAgent agent)
     {
         _unit = unit;
-        _navMesh = unit.GetComponent<NavMeshAgent>();
+        _navMesh = agent;
     }
 
     public override NodeState Evaluate()
