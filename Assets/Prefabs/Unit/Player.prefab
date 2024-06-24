@@ -527,7 +527,9 @@ MonoBehaviour:
   rightHand: {fileID: 9017515535234970102}
   leftHand: {fileID: 7265171136468319011}
   _flipScale: {x: -0.2, y: 0.2, z: 0.2}
+  _equipedWeapon: {fileID: 0}
   _AnimTransform: {fileID: 5358568399288875607}
+  _unitSoundPlayer: {fileID: 3906569105435675658}
   _handWeaponSpriteRenderer: {fileID: 6923117039081080266}
   _transform: {fileID: 1659885193875156989}
   _handWeaponTransform: {fileID: 3510407563116278908}
@@ -780,7 +782,6 @@ GameObject:
   - component: {fileID: 4033585227035685844}
   - component: {fileID: 4003373503059094416}
   - component: {fileID: 3906569105435675658}
-  - component: {fileID: 2867076105843520499}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -849,6 +850,7 @@ MonoBehaviour:
   _inventory: {fileID: 0}
   _numberAmmoWeapon: {fileID: 0}
   _handAttack: {fileID: 11400000, guid: 7e022779d57a4de4f86ef1a35f875548, type: 2}
+  _unitSoundPlayer: {fileID: 3906569105435675658}
   moveSpeed: 10
   _lineRenderer: {fileID: 5122117368119731729}
   Laser: {fileID: 5664837541779527735}
@@ -5766,7 +5768,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 30
   Pan2D: 0
-  rolloffMode: 2
+  rolloffMode: 0
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -5905,15 +5907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1355a11b741cd4f8df98c7891fa58f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitAudioSource: {fileID: 0}
---- !u!81 &2867076105843520499
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4491993540299430035}
-  m_Enabled: 1
+  unitAudioSource: {fileID: 4003373503059094416}
 --- !u!1 &5080902359668578892
 GameObject:
   m_ObjectHideFlags: 0
