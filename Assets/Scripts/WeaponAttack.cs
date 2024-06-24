@@ -18,7 +18,7 @@ public class WeaponAttack : MonoBehaviour
     public Vector3 _flipScale = new Vector3(-0.2f, 0.2f, 0.2f);
 
     // Cache
-    private Weapon _equipedWeapon;
+    public Weapon _equipedWeapon;
 
 
     [SerializeField]
@@ -28,8 +28,7 @@ public class WeaponAttack : MonoBehaviour
     private UnitCombat _unitCombat;
     private NavMeshAgent _navMeshAgent;
     private SoundManager _soundManager;
-    private UnitSoundPlayer _unitSoundPlayer;
-    private Humanoid _humanoid;
+    [SerializeField] private UnitSoundPlayer _unitSoundPlayer;
 
     [SerializeField]
     private SpriteRenderer _handWeaponSpriteRenderer;
@@ -56,7 +55,8 @@ public class WeaponAttack : MonoBehaviour
     private void Start()
     {
         _soundManager = SoundManager.instance;
-        _unitSoundPlayer = UnitSoundPlayer.instance;
+
+        _unitSoundPlayer = transform.parent.parent.GetComponent<UnitSoundPlayer>();
     }
 
     public void Init()
