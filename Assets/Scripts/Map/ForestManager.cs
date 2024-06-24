@@ -40,7 +40,8 @@ public class ForestManager : MonoBehaviour
                 prefabspercentage += tree.Percentage;
                 if (prefabspercentage >= randompercentage && randompercentage >= lastpercentage)
                 {
-                    t.GetComponent<SpriteRenderer>().sprite = tree.SpriteTree;
+                    t.GetChild(0).GetComponent<SpriteRenderer>().sprite = tree.UpperTree;
+                    t.GetChild(1).GetComponent<SpriteRenderer>().sprite = tree.LowerTree;
                 }
             }
 
@@ -53,7 +54,8 @@ public class ForestManager : MonoBehaviour
     [System.Serializable]
     public struct Tree
     {
-        public Sprite SpriteTree;
+        public Sprite UpperTree;
+        public Sprite LowerTree;
         public float Percentage;
     }
 }
