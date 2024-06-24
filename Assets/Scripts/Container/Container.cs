@@ -6,6 +6,8 @@ public class Container : Interactable
 {
     [SerializeField] private GameObject _itemSlotPrefab;
 
+    public string name;
+
     public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public GameObject containerSelectedSprite;
@@ -110,7 +112,7 @@ public class Container : Interactable
             _hasBeenOpened = true;
             GenerateItems();
         }
-        _soundManager.PlaySFX(openSFX);
+        _soundManager.PlaySFX(openSFX, _soundManager._sfxPlayer);
         CreateItemSlots();
     }
 
@@ -172,6 +174,10 @@ public class Container : Interactable
             {
                 itemSlots[i].Item = item;
                 itemSlots[i].UpdateQuantity(1);
+                if (item is RangedWeapon rangedWeapon)
+                {
+                    itemSlots[i].ammoQuantity = Random.Range(0, rangedWeapon.MaxBullet);
+                }
                 return true;
             }
             else if (itemSlots[i].Item.IsStackable && itemSlots[i].Item == item && itemSlots[i].Item.MaxStack > itemSlots[i].Quantity)

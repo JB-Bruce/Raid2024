@@ -7,7 +7,6 @@ using static Node_script;
 /// Contain all the behavior of a unit
 /// </summary>
 
-[RequireComponent(typeof(NavMeshAgent))]
 public class UnitBT : Humanoid
 {
     public UnitOrder order;
@@ -16,13 +15,10 @@ public class UnitBT : Humanoid
 
     public UnitLeader master;
 
-    //private NavMeshAgent _agent;
     private Selector _selectorRoot;
     private UnitMovement _unitMove;
-    [SerializeField]
-    private GameObject _weapon;
+    [SerializeField] private GameObject _weapon;
     private UnitCombat _unitCombat;
-    //private Transform _transform;
     public GameObject body;
 
     private int evaluateUpdate = 0;
@@ -50,8 +46,6 @@ public class UnitBT : Humanoid
         _weaponTransform = _weapon.transform;
         _weaponAttackTransform = _unitCombat.weaponAttack.transform;
 
-        _agent = GetComponent<NavMeshAgent>();
-
         _selectorRoot = new Selector(new List<Node>
         {
             //Attack
@@ -61,7 +55,7 @@ public class UnitBT : Humanoid
                 new Selector(new List<Node>
                 {
                     new CanAttack(this.gameObject),
-                    new GoToEnemy(this.gameObject)
+                    new GoToEnemy(this.gameObject, _agent)
                 })
             }),
 
@@ -97,7 +91,7 @@ public class UnitBT : Humanoid
             new Sequence( new List<Node>
             {
                 new CheckOrderState(this, UnitOrder.Surveillance),
-                new GoToSurveillancePoint(_unitMove)
+                new GoToSurveillancePoint(_unitMove, _agent)
             }),
 
             // Capture of POI
@@ -109,7 +103,7 @@ public class UnitBT : Humanoid
                     new Sequence(new List<Node>
                     {
                         new IsPOICaptured(_unitMove),
-                        new GoToSurveillancePoint(_unitMove)
+                        new GoToSurveillancePoint(_unitMove, _agent)
                     }),
                     new Selector(new List<Node>
                     {

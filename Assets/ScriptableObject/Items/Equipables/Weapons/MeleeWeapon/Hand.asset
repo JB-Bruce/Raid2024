@@ -18,10 +18,11 @@ MonoBehaviour:
   _name: Main
   _description: 
   _itemSprite: {fileID: 0}
+  _canDrop: 0
   _equipementTier: 3
   _worldSprite: {fileID: 0}
   _flipable: 0
-  _damage: 6
+  _damage: 10
   _attackSpeed: 1
   _attackRange: 5
   _leftHandPos: {x: 0.7, y: 0.3}
@@ -32,3 +33,6 @@ MonoBehaviour:
   _semiAutomatic: 1
   animAttack: HandHit
   animIdle: WeaponIdle
+  attackSFX: 
+  hitSFX: 
+  reloadSFX: 

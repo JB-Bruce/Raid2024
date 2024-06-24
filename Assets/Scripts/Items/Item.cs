@@ -22,10 +22,14 @@ public class Item : ScriptableObject
     [SerializeField]
     protected Sprite _itemSprite;
 
+    [SerializeField]
+    protected bool _canDrop = true;
+
     public bool IsStackable {  get { return _isStackable; } }
     public int MaxStack { get { return _maxStack; } }
     public Sprite ItemSprite {  get { return _itemSprite; } }
     public string Name { get { return _name;} }
     public string Description { get { return _description;} }
     public float Weight { get { return _weight; } }
+    public bool CanDrop { get { return _canDrop; } }
 }

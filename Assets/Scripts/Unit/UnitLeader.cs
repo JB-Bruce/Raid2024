@@ -20,8 +20,9 @@ public class UnitLeader : MonoBehaviour
     {
         _transform = transform;
         _weapon = _transform.GetComponentInChildren<WeaponAttack>().gameObject;
+        _navMesh = GetComponentInChildren<NavMeshAgent>();
 
-        if(TryGetComponent<NavMeshAgent>(out _navMesh))
+        if(_navMesh != null )
         {
             _navMesh.speed *= _leaderSpeedMultiplier;
         }

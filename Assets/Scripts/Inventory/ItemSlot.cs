@@ -9,9 +9,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Item _item;
     private int _quantity;
     private float _quantityContainer;
+    public int ammoQuantity;
 
     [SerializeField]
     private TextMeshProUGUI _quantityText;
+
+    [SerializeField]
+    private TextMeshProUGUI _tierText;
 
     [SerializeField]
     private GameObject _quantityContainerText;
@@ -123,12 +127,33 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void UpdateQuantity(int quantity)
     {
+        _tierText.gameObject.SetActive(false);
         if (quantity > 0 && _item != null)
         {
             UpdateItemSprite();
             _quantity = quantity;
             _quantityText.text = _quantity.ToString();
             _quantityText.gameObject.SetActive(_item.IsStackable);
+            if (_item is Equipable equipable)
+            {
+                _tierText.text = equipable.EquipementTier.ToString();
+                switch (equipable.EquipementTier)
+                {
+                    case RomanNumeral.I:
+                        _tierText.color = Color.green;
+                        break;
+                    case RomanNumeral.II:
+                        _tierText.color = Color.cyan;
+                        break;
+                    case RomanNumeral.III:
+                        _tierText.color = Color.magenta;
+                        break;
+                    default:
+                        _tierText.color = Color.white;
+                        break;
+                }
+                _tierText.gameObject.SetActive(true);
+            }
         }
         else
         {
