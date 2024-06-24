@@ -19,7 +19,7 @@ MonoBehaviour:
   _description: "Utile pour couper les l\xE9gumes... ou les conversations ennuyeuses."
   _itemSprite: {fileID: 21300000, guid: 78be531d43c20744daf81b16aa330d3a, type: 3}
   _canDrop: 1
-  _equipementTier: 0
+  _equipementTier: 1
   _worldSprite: {fileID: -822357014, guid: 48e8d6960b39b32429c5e48135aa0d31, type: 3}
   _flipable: 0
   _damage: 6

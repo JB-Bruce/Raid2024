@@ -13,6 +13,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     private TextMeshProUGUI _quantityText;
 
+    //[SerializeField]
+    //private TextMeshProUGUI _tierText;
+
     [SerializeField]
     private GameObject _quantityContainerText;
 
@@ -129,6 +132,12 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             _quantity = quantity;
             _quantityText.text = _quantity.ToString();
             _quantityText.gameObject.SetActive(_item.IsStackable);
+            //_tierText.gameObject.SetActive(false);
+            if (_item is Equipable equipable)
+            {
+                //_tierText.text = equipable.EquipementTier.ToString();
+                //_tierText.gameObject.SetActive(true);
+            }
         }
         else
         {
