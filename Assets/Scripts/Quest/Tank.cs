@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Tank : Interactable
@@ -9,20 +10,39 @@ public class Tank : Interactable
     private GameObject _tankFull;
 
     [SerializeField]
+    private float _quantityFull;
+
+    [SerializeField]
     private float _quantity;
 
     [SerializeField]
     private string _stuffToPick;
 
+    [SerializeField]
+    private float _quantityToFill;
+
+    [SerializeField]
+    private float _fillingFrequency;
+
+    [SerializeField]
+    private bool _canRefill = true;
+
+    private void Start()
+    {
+        StartCoroutine(ReFillTheTank());
+    }
+
     //call when the player interact with this, return true if he can interact
     public override bool TryToInteract()
     {
-        if (_canInterract)
+        
+        if (Inventory.Instance.CountItemInInventory(_itemToFill) == 0)
         {
-            if (Inventory.Instance.CountItemInInventory(_itemToFill) == 0)
-            {
-                _canInterract = false;
-            }
+            _canInterract = false;
+        }
+        else
+        {
+            _canInterract = true;
         }
         return base.TryToInteract();
     }
@@ -30,8 +50,8 @@ public class Tank : Interactable
     //call when the player interact with this and this can interact
     protected override void Interact() 
     {
-        _canInterract = false;
         Inventory.Instance.AddQuantityInQuestItemContainer(_itemToFill.Name, _quantity);
+        _quantity = 0;
     }
 
     // Checks if the player enter the radius of the tank, if he does, gets added to the list of container of the player
@@ -50,6 +70,21 @@ public class Tank : Interactable
         {
             Highlight(false);
             PlayerInteraction.Instance.interactables.Remove(this);
+        }
+    }
+
+    private void FillTheTank()
+    {
+        _quantity = Mathf.Clamp(_quantity + _quantityToFill, 0, _quantityFull);
+    }
+
+    IEnumerator ReFillTheTank()
+    {
+        while (_canRefill)
+        {
+            print("ff");
+            FillTheTank();
+            yield return new WaitForSeconds(_fillingFrequency);
         }
     }
 }

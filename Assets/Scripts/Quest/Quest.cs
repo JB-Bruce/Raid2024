@@ -36,6 +36,12 @@ public class Quest
         return (_questActions[_currentQuestAction]);
     }
 
+    //modify the current quest action
+    public void SetCurrentQuestAction(int index)
+    {
+        _currentQuestAction = index;
+    }
+
     //return the current quest action index
     public int GetCurrentQuestActionIndex()
     {
@@ -49,9 +55,15 @@ public class Quest
     }
     
     //get objects to activate at start of the current quest action
-    public GameObjectsList GetObjectsToActivateAtStartOfTheCUrrentQuestAction()
+    public GameObjectsList GetObjectsToActivateAtStartByQuestActionIndex(int questAction)
     {
-        return _objectsToActivateAtStart[_currentQuestAction];
+        return _objectsToActivateAtStart[questAction];
+    }
+
+    //get objects to activate at start of the current quest action
+    public GameObjectsList GetObjectsToDesactivateAtTheEndOfByQuestActionIndex(int questAction)
+    {
+        return _objectsToDesactivateAtTheEnd[questAction];
     }
 
     //update the current QuestAction if is not the last of the Quest
@@ -62,7 +74,7 @@ public class Quest
         if (_questActions.Count > _currentQuestAction+1)
         {
             _currentQuestAction += 1;
-            GetCurrentQuestAction().Configure(GetObjectsToActivateAtStartOfTheCUrrentQuestAction());
+            GetCurrentQuestAction().Configure(GetObjectsToActivateAtStartByQuestActionIndex(_currentQuestAction));
             if(GetCurrentQuestAction().GetGoal() != null)
             {
                 MapManager.instance.SetQuestWaypoint(GetCurrentQuestAction().GetGoal());

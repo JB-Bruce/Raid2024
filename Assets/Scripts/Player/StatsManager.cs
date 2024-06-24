@@ -99,7 +99,7 @@ public class StatsManager : Humanoid
     }
     
     //Fade in/out for death screen
-    private void Death()
+    public void Death()
     {
         if(_respawnFaction == ERespawnFaction.Survivalist)
         {
@@ -262,6 +262,7 @@ public class StatsManager : Humanoid
         DeathFade.enabled = true;
         DeathFade.CrossFadeAlpha(1,1f,true);
         _playerInput.SwitchCurrentActionMap("InGame");
+        QuestManager.instance.OnDeath();
 
         StartCoroutine(CouroutineRespawn());
     }

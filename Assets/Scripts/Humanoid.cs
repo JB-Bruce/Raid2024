@@ -111,7 +111,7 @@ public class Humanoid : MonoBehaviour
         else if (life <= 0 && !MoveFeet && !isDead) 
         {
             life = 0;
-            // Building is Destroy, TODO Create a dead function
+            Death(faction);
         }
 
         SetSlider();
@@ -119,6 +119,7 @@ public class Humanoid : MonoBehaviour
         return isDead;
     }
 
+    //modify the slider value
     public void SetSlider()
     {
         if (_slider != null)
@@ -128,7 +129,7 @@ public class Humanoid : MonoBehaviour
     }
 
     // When a unit Die
-    private void Death(Faction _faction)
+    protected virtual void Death(Faction _faction)
     {
         if (!isPlayer)
         {

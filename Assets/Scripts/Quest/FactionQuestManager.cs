@@ -51,12 +51,15 @@ public class FactionQuestManager : MonoBehaviour
     //check if the current FactionQuestAction is a QuestTrigger
     private void CheckFactionQuestTrigger(QuestTriggerType questTrigger, ref int questIndex, Faction faction, string information = "")
     {
-        if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestTrigger aQuestTrigger)
+        if (questIndex >= 0)
         {
-            if (aQuestTrigger.IsFinished(questTrigger, information))
+            if (_factionQuests[questIndex].GetCurrentQuestAction() is QuestTrigger aQuestTrigger)
             {
-                GetReward(faction);
-                NextQuest(ref questIndex);
+                if (aQuestTrigger.IsFinished(questTrigger, information))
+                {
+                    GetReward(faction);
+                    NextQuest(ref questIndex);
+                }
             }
         }
     }
@@ -73,12 +76,15 @@ public class FactionQuestManager : MonoBehaviour
     //check if the current FactionQuestAction is a QuestItems
     private void CheckFactionQuestItems(ItemWithQuantity itemWithQuantity, ref int questIndex, Faction faction)
     {
-        if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestItems aQuestItems)
+        if (questIndex >= 0)
         {
-            if (aQuestItems.IsFinished(itemWithQuantity))
+            if (_factionQuests[questIndex].GetCurrentQuestAction() is QuestItems aQuestItems)
             {
-                GetReward(faction);
-                NextQuest(ref questIndex);
+                if (aQuestItems.IsFinished(itemWithQuantity))
+                {
+                    GetReward(faction);
+                    NextQuest(ref questIndex);
+                }
             }
         }
     }
@@ -103,12 +109,15 @@ public class FactionQuestManager : MonoBehaviour
     //check if the current FactionQuestAction is a QuestKill
     private void CheckFactionQuestKill(Faction faction, ref int questIndex, string enemyType)
     {
-        if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestKill aQuestKill)
+        if (questIndex >= 0)
         {
-            if (aQuestKill.IsFinished(faction, enemyType))
+            if (_factionQuests[questIndex].GetCurrentQuestAction() is QuestKill aQuestKill)
             {
-                GetReward(faction);
-                NextQuest(ref questIndex);
+                if (aQuestKill.IsFinished(faction, enemyType))
+                {
+                    GetReward(faction);
+                    NextQuest(ref questIndex);
+                }
             }
         }
     }
@@ -125,12 +134,15 @@ public class FactionQuestManager : MonoBehaviour
     //check if the current FactionQuestAction is a QuestKill
     private void CheckFactionQuestPick(float quantityPick, ref int questIndex, string stuffToPick, Faction faction)
     {
-        if (questIndex >= 0 && _factionQuests[questIndex].GetCurrentQuestAction() is QuestPick aQuestPick)
+        if (questIndex >= 0)
         {
-            if (aQuestPick.IsFinished(quantityPick, stuffToPick))
+            if (_factionQuests[questIndex].GetCurrentQuestAction() is QuestPick aQuestPick)
             {
-                GetReward(faction);
-                NextQuest(ref questIndex);
+                if (aQuestPick.IsFinished(quantityPick, stuffToPick))
+                {
+                    GetReward(faction);
+                    NextQuest(ref questIndex);
+                }
             }
         }
     }
