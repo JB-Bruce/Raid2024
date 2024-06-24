@@ -19,7 +19,7 @@ MonoBehaviour:
   _description: Pour garder vos cheveux intacts (ou ce qu'il en reste).
   _itemSprite: {fileID: 21300000, guid: 723bc9867e7e8bd4490189df1fb7f6d4, type: 3}
   _canDrop: 1
-  _equipementTier: 0
+  _equipementTier: 1
   _worldSprite: {fileID: 0}
   _flipable: 0
   _protection: 5

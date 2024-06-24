@@ -20,7 +20,7 @@ MonoBehaviour:
     ou ouvrir les conserves r\xE9calcitrantes (avec un peu de pratique)."
   _itemSprite: {fileID: 21300000, guid: bceee331827c2af438e0afa1dbdc0d55, type: 3}
   _canDrop: 1
-  _equipementTier: 0
+  _equipementTier: 3
   _worldSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
   _flipable: 0
   _damage: 15
