@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FactionMenu : MonoBehaviour
+public class FactionMenu : Interactable
 {
     [SerializeField] private FactionSc _faction;
     private Inventory _inventory;
@@ -41,10 +41,10 @@ public class FactionMenu : MonoBehaviour
     [SerializeField] private List<Item> _items = new();
     [SerializeField] private Button _recruitBtn;
     private bool _canTrade = false;
+    [SerializeField] private GameObject _highlightSprite;
 
 
-
-    private void Init()
+private void Init()
     {
         _leader = _faction.FactionLeader;
         _leader.haveUpgradeBuilding.AddListener(BuildingUpgrade);
@@ -265,23 +265,6 @@ public class FactionMenu : MonoBehaviour
         SetTradeButton();
     }
 
-    enum RomanNumeral 
-    {
-        I = 1,
-        II = 2, 
-        III = 3,
-        IV = 4,
-        V = 5, 
-        VI = 6, 
-        VII = 7,
-        VIII = 8,
-        IX = 9,
-        X = 10,
-        XI = 11,
-        XII = 12,
-        XIII = 13,
-    }
-
     // Close the panel
     public void Close()
     {
@@ -289,4 +272,59 @@ public class FactionMenu : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+    //Get Faction
+    public Faction GetFaction()
+    {
+        return _faction.FactionUnitManager.faction;
+    }
+
+    // Set highlight sprite
+    public void SetHighlight(GameObject highlight)
+    {
+        _highlightSprite = highlight;
+    }
+
+    // Gestion of Interaction
+    protected override void Interact()
+    {
+        OpenFactionMenu();
+    }
+
+    public override void Highlight(bool state)
+    {
+        if (_highlightSprite != null)
+        {
+            _highlightSprite.SetActive(state);
+        }
+    }
+
+    public override void TriggerEnter(bool state)
+    {
+        if (state)
+        {
+            PlayerInteraction.Instance.interactables.Add(this);
+        }
+        else
+        {
+            PlayerInteraction.Instance.interactables.Remove(this);
+        }
+    }
+
+}
+
+public enum RomanNumeral
+{
+    I = 1,
+    II = 2,
+    III = 3,
+    IV = 4,
+    V = 5,
+    VI = 6,
+    VII = 7,
+    VIII = 8,
+    IX = 9,
+    X = 10,
+    XI = 11,
+    XII = 12,
+    XIII = 13,
 }

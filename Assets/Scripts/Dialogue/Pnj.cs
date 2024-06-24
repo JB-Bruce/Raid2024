@@ -31,7 +31,7 @@ public class Pnj : Interactable
         _isNameHide = true;
     }
 
-    public void TriggerEnter(bool state)
+    public override void TriggerEnter(bool state)
     {
         if (state)
         {

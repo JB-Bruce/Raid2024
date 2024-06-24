@@ -6,6 +6,8 @@ public class Container : Interactable
 {
     [SerializeField] private GameObject _itemSlotPrefab;
 
+    public string name;
+
     public List<ItemSlot> itemSlots = new List<ItemSlot>();
 
     public GameObject containerSelectedSprite;
@@ -110,7 +112,7 @@ public class Container : Interactable
             _hasBeenOpened = true;
             GenerateItems();
         }
-        _soundManager.PlaySFX(openSFX);
+        _soundManager.PlaySFX(openSFX, _soundManager._sfxPlayer);
         CreateItemSlots();
     }
 

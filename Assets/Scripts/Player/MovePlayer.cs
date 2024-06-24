@@ -31,6 +31,10 @@ public class MovePlayer : MonoBehaviour
     [SerializeField]
     private MeleeWeapon _handAttack;
 
+    [SerializeField] private UnitSoundPlayer _unitSoundPlayer;
+
+    private SoundManager _soundManager;
+
     public static MovePlayer instance;
     private Animator _animator;
     
@@ -72,7 +76,10 @@ public class MovePlayer : MonoBehaviour
     private static readonly Quaternion _flipRotation = new Quaternion(0, 180, 0, 0);
     private void Start()
     {
-        
+        _soundManager = SoundManager.instance;
+
+        _unitSoundPlayer = GetComponent<UnitSoundPlayer>();
+
         _inGameActionMap = _input.actions.FindActionMap("InGame");
         _weaponAttack.Init();
         _animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
@@ -734,6 +741,7 @@ public class MovePlayer : MonoBehaviour
                     ammoRemoved = 0;
                     _animator.Play(rangedWeapon.animReload, 0, 0);
                     _isReloading = true;
+                    _soundManager.PlaySFX(_weaponAttack._equipedWeapon.reloadSFX, _unitSoundPlayer.unitAudioSource);
 
                     if(numberOfAmmoInInventory + inventory.weaponSlots[_selectedWeapon].ammoQuantity >= rangedWeapon.MaxBullet)
                     {

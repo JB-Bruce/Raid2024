@@ -60,7 +60,7 @@ public class PauseManager : MonoBehaviour
     public void UnpauseGame() //Unpauses the game
     {
         _playerInput.SwitchCurrentActionMap("InGame");
-        _soundManager.PlaySFX("ButtonClick");
+        _soundManager.PlaySFX("ButtonClick", _soundManager._sfxPlayer);
         _pauseMenu.SetActive(false);
         _pauseMenuBackgroundImage.enabled = false;
         _conditionsManager.isPaused = false;
