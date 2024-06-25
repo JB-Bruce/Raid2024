@@ -78,6 +78,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Open Reputation",
+                    "type": "Button",
+                    "id": "d19b5dd5-867c-4d72-bbfb-123c1ef463ef",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "SelectFirstWeapon",
                     "type": "Button",
                     "id": "c6f2dff5-024d-4737-80f3-993b17c1f9f9",
@@ -683,6 +692,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Parry",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c88145f0-8f44-4023-8ce4-75afa888fdd3",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open Reputation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d64274e-357b-4eb7-bef6-58a9154cdaf8",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Open Reputation",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1306,6 +1337,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7f6704d7-b974-402d-b9d1-02ca45b4a509",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Quest",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6246f5ed-a90a-4227-b72f-55b2f295caf1",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
@@ -1496,6 +1538,87 @@
                     "processors": "",
                     "groups": "",
                     "action": "QuitPaper",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "ReputationMenu",
+            "id": "36d446d6-af78-4521-ae84-895928c34fba",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "5afce0c8-4454-42b4-916d-fb1d7e29ed0e",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Close Menu",
+                    "type": "Button",
+                    "id": "fd724a14-f0d2-44d6-8b49-652a2c49524c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "884cb699-2d22-4ac2-9c0b-38582a6f603f",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43839a87-1444-4978-bda0-376c8f938044",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eba0102f-d267-47ea-a813-694bbd3bc3c6",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef7d6006-8cda-4711-9159-d295637433ff",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Menu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fd5d1e43-644e-4916-9c8a-21b82270b73f",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Close Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

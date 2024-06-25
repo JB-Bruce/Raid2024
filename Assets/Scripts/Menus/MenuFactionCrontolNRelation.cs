@@ -1,14 +1,16 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static StatsManager;
 
 public class MenuFactionCrontolNRelation : MonoBehaviour
 {
     private FactionManager _factionManager;
+
+    [SerializeField]
+    private PlayerInput _playerInput;
 
     [Header("FactionRelation")]
     [SerializeField] private Sprite[] _relationSprite = new Sprite[3]; // Ally = 0 / Neutral = 1 / Ennemy = 2
@@ -26,6 +28,7 @@ public class MenuFactionCrontolNRelation : MonoBehaviour
         {
             _factionManager = FactionManager.Instance;
         }
+        _playerInput.SwitchCurrentActionMap("ReputationMenu");
         gameObject.SetActive(true);
         SetRelations();
         SetPoiMenu();
@@ -69,6 +72,7 @@ public class MenuFactionCrontolNRelation : MonoBehaviour
     // Close the panel
     public void Close()
     {
+        _playerInput.SwitchCurrentActionMap("InGame");
         this.gameObject.SetActive(false);
     }
 
