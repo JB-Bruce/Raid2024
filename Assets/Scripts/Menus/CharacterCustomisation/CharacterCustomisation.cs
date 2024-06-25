@@ -177,6 +177,7 @@ public class CharacterCustomisation : MonoBehaviour
             PlayerPrefs.SetString("Gender", _characterGender);
             PlayerPrefs.SetString("CharacterFaction", _characterFaction);
             PlayerPrefs.SetString("CharacterName", _characterNameText);
+            PlayerPrefs.SetString("ChooseFaction", _characterFaction);
 
 
             PlayerBody.sprite = CharacterPreview.sprite;

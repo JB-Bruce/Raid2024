@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class FactionUnitManager : MonoBehaviour
 {
@@ -97,7 +98,7 @@ public class FactionUnitManager : MonoBehaviour
         }
 
 
-        GameObject go = Instantiate<GameObject>(unit, _isBandit ? GetRandomSpawnPoint() : _spawnPosition.position, Quaternion.identity, parent);
+        GameObject go = Instantiate<GameObject>(unit, _isBandit ? GetRandomSpawnPoint() : GetPointAround(_spawnPosition.position, 50), Quaternion.identity, parent);
 
         UnitBT unitBT = go.GetComponent<UnitBT>();
         unitBT.Init();
@@ -109,6 +110,22 @@ public class FactionUnitManager : MonoBehaviour
 
         GiveAJob(unitBT, _transform.position, !_isBandit);
         unitBT.faction = faction;
+    }
+
+    // Get a random position around a radius
+    private Vector3 GetPointAround(Vector3 position, float radius)
+    {
+        Vector3 randomDirection;
+        float randomDistance;
+        Vector3 newPosition;
+        do
+        {
+            randomDirection = Random.insideUnitCircle;
+            randomDistance = Random.Range(0, radius);
+            newPosition = position + (randomDirection * randomDistance);
+        } while (CantSpawnHere(newPosition));
+
+        return position + (randomDirection * randomDistance);
     }
 
     // Coroutine for wait to make spawn the unit if the player is far the unit to spawn
