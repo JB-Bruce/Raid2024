@@ -29,7 +29,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     public GameObject itemSelectedSprite;
 
-    [SerializeField]
     private Inventory _inventory;
 
     protected bool _isAvailable = true;
@@ -117,7 +116,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         else
         {
             _itemSprite.sprite = null;
-            _itemSprite.color = new Color(0.5f, 0.5f, 0.5f, 0);
+            _itemSprite.color = new Color(1f, 1f, 1f, 0);
         }
     }
 
