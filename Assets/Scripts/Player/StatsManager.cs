@@ -254,6 +254,7 @@ public class StatsManager : Humanoid
         AddHealth(100);
         stamina = 50;
         staminaBar.fillAmount = stamina / 50f;
+        ChangeRespawnPoint();
         transform.position = _respawnPosition.position;
         MainCamera.position = transform.position + new Vector3(0,0,-10);
         ChangeLifeColor();
