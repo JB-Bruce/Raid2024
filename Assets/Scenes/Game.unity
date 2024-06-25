@@ -27679,7 +27679,7 @@ PrefabInstance:
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _unitLeader
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6201810838606085025}
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _eRespawnFaction
       value: 3
@@ -32879,7 +32879,7 @@ PrefabInstance:
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _unitLeader
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6201810838606085025}
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _eRespawnFaction
       value: 2
@@ -35517,7 +35517,7 @@ PrefabInstance:
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _unitLeader
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6201810838606085025}
     - target: {fileID: 534565846741916944, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -65330,7 +65330,7 @@ PrefabInstance:
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _unitLeader
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6201810838606085025}
     - target: {fileID: 534565846741916944, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -106382,6 +106382,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09be1240e21a2064d8c713f500b2d8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6201810838606085025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4033585227035685844, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+  m_PrefabInstance: {fileID: 4621625210165911806}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 948752625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f7f97ee0f0f564c96bf19cd8c3d2c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &6220249487043309952
