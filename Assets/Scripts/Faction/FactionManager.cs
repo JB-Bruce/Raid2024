@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class FactionManager : MonoBehaviour
 {
@@ -34,6 +35,11 @@ public class FactionManager : MonoBehaviour
     [SerializeField] private Color _enemyColor;
     [SerializeField] private Color _neutralColor;
     [SerializeField] private Color _allyColor;
+
+    [Header("Sprites")]
+    [SerializeField] private Sprite _enemySprite;
+    [SerializeField] private Sprite _neutralSprite;
+    [SerializeField] private Sprite _allySprite;
 
     public BonusFaction[] bonus = new BonusFaction[4];
 
@@ -256,25 +262,44 @@ public class FactionManager : MonoBehaviour
         {
             Faction _otherFaction = _faction1 == Faction.Player ? _faction2 : _faction1;
 
+            Sprite sprite = null;
+
+            if (reputation < neutralReputation)
+            {
+                sprite = _enemySprite;
+            }
+            else if (reputation > allyReputation)
+            {
+                sprite = _allySprite;
+            }
+            else
+            {
+                sprite = _neutralSprite;
+            }
+
             switch(_otherFaction) 
             {
                 case Faction.Survivalist:
                     _textReputationPlayerSurvivalist.text = reputation.ToString("f1");
+                    _textReputationPlayerSurvivalist.transform.parent.GetComponent<Image>().sprite = sprite;
                     PlayerReputationParameters(_textReputationPlayerSurvivalist, reputation, _otherFaction);
                     break;
 
                 case Faction.Utopist:
                     _textReputationPlayerUtopist.text = reputation.ToString("f1");
+                    _textReputationPlayerUtopist.transform.parent.GetComponent<Image>().sprite = sprite;
                     PlayerReputationParameters(_textReputationPlayerUtopist, reputation, _otherFaction);
                     break;
 
                 case Faction.Scientist:
                     _textReputationPlayerScientist.text = reputation.ToString("f1");
+                    _textReputationPlayerScientist.transform.parent.GetComponent<Image>().sprite = sprite;
                     PlayerReputationParameters(_textReputationPlayerScientist, reputation, _otherFaction);
                     break;
 
                 case Faction.Military:
                     _textReputationPlayerMilitary.text = reputation.ToString("f1");
+                    _textReputationPlayerMilitary.transform.parent.GetComponent<Image>().sprite = sprite;
                     PlayerReputationParameters(_textReputationPlayerMilitary, reputation, _otherFaction);
                     break;
             }

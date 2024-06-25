@@ -105,18 +105,19 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
     {
         ItemSlot slot = _inventory.selectedItemSlot;
         Rect rect = _overPanel.GetComponent<RectTransform>().rect;
+
         Vector3 PosOffset = new Vector3(rect.width/2 + 95f/2, rect.height/2 + 95f / 2, 0);
 
-        if (slot.gameObject.transform.position.x + 95f / 2 + rect.width > 1920)
+        if (slot.gameObject.transform.position.x + 95f / 2 + rect.width * (Screen.width / 1920f) > 1920f * (Screen.width / 1920f))
         {
             PosOffset -= new Vector3(rect.width + 95f, 0, 0);
         }
-        if (slot.gameObject.transform.position.y + 95f / 2 + rect.height > 1080)
+        if (slot.gameObject.transform.position.y + 95f / 2 + rect.height * (Screen.height / 1080f) > 1080f * (Screen.height / 1080f))
         {
             PosOffset -= new Vector3(0, rect.height + 95f, 0);
         }
 
-        _overPanel.transform.position = slot.gameObject.transform.position + PosOffset;
+        _overPanel.transform.position = slot.gameObject.transform.position + PosOffset * (Screen.width / 1920f);
     }
 
     /// <summary>
