@@ -5598,7 +5598,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1682619433}
   - component: {fileID: 1682619432}
-  - component: {fileID: 1682619434}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -5795,6 +5794,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: dedfa57b-26d0-40a8-9ef9-1295845a086e
     m_ActionName: Death/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 068bd4a7-372d-4516-aca3-6ce8571419e3
+    m_ActionName: InGame/Parry[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58330186-fd26-49a9-84f3-d933c3b5891f
+    m_ActionName: RansomPaper/QuitPaper[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Settings
@@ -5815,14 +5822,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1682619434
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682619431}
-  m_Enabled: 1
 --- !u!1 &1690278163
 GameObject:
   m_ObjectHideFlags: 0
@@ -7822,7 +7821,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 2073d2ce5a7910443a29d290d1454986, type: 3}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _sfxs.Array.size
-      value: 25
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.size
@@ -8031,6 +8030,22 @@ PrefabInstance:
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _sfxs.Array.data[24].name
       value: QuestFinished2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[25].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f22d1d1a9846a1a4e8adcd9069d3408c, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[25].name
+      value: FistSwing
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[26].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d1542404c06754488817c2aa3cd2479, type: 3}
+    - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
+      propertyPath: _sfxs.Array.data[26].name
+      value: FistHit
       objectReference: {fileID: 0}
     - target: {fileID: 5086958966833998618, guid: 6fc4b5a7412758843aeec1631ff50dd0, type: 3}
       propertyPath: _musics.Array.data[0].clip
