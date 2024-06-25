@@ -62,6 +62,7 @@ public class DecorManager : MonoBehaviour
             float randomValue = Random.value;
             GameObject selectedPrefab = null;
             float cumulative = 0f;
+            float scaleFactor = 1f;
 
             foreach (DecorType decorType in _decorTypes)
             {
@@ -69,8 +70,7 @@ public class DecorManager : MonoBehaviour
                 if (randomValue <= cumulative)
                 {
                     selectedPrefab = decorType.prefab;
-                    float scaleFactor = Random.Range(decorType.minSize, decorType.maxSize);
-                    selectedPrefab.transform.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
+                    scaleFactor = Random.Range(decorType.minSize, decorType.maxSize);
                     break;
                 }
             }
@@ -123,6 +123,7 @@ public class DecorManager : MonoBehaviour
                 positions.Add(randomPos);
                 GameObject decorInstance = Instantiate(selectedPrefab, new Vector3(randomPos.x, randomPos.y, 0f), Quaternion.identity);
                 decorInstance.transform.SetParent(transform);
+                decorInstance.transform.localScale = new Vector3(scaleFactor, scaleFactor, 1f);
             }
         }
     }

@@ -9369,6 +9369,11 @@ PrefabInstance:
       value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[6].text
+      value: "50 ans plus tard, 4 factions se sont form\xE9es, chacune avec leur
+        vision de ce nouveau monde et de son futur\u2026"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cinematicSlides.Array.data[0]
       value: 
       objectReference: {fileID: 21300000, guid: 11577f9cd21fbec4ca63da68e5945a17, type: 3}
