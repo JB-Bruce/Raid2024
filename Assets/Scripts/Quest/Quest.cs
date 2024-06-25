@@ -75,7 +75,7 @@ public class Quest
         {
             _currentQuestAction += 1;
             GetCurrentQuestAction().Configure(GetObjectsToActivateAtStartByQuestActionIndex(_currentQuestAction));
-            if(GetCurrentQuestAction().GetGoal() != null)
+            if(GetCurrentQuestAction().GetGoal() != Vector3.zero)
             {
                 MapManager.instance.SetQuestWaypoint(GetCurrentQuestAction().GetGoal());
             }
