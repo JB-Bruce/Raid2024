@@ -57744,6 +57744,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d19b5dd5-867c-4d72-bbfb-123c1ef463ef
     m_ActionName: InGame/Open Reputation[/XInputControllerWindows/dpad/down,/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 878919201}
+        m_TargetAssemblyTypeName: ControllerMenus, Assembly-CSharp
+        m_MethodName: MoveInMenuAction
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e5aa814c-36cf-46ef-988e-536fa4d038ea
+    m_ActionName: EndGameMenu/Move
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -86300,6 +86316,7 @@ RectTransform:
   - {fileID: 516451849}
   - {fileID: 2018771629}
   - {fileID: 1161115856}
+  - {fileID: 878919199}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
