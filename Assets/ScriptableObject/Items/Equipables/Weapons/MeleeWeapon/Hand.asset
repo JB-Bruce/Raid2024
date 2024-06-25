@@ -33,6 +33,6 @@ MonoBehaviour:
   _semiAutomatic: 1
   animAttack: HandHit
   animIdle: WeaponIdle
-  attackSFX: 
-  hitSFX: 
+  attackSFX: FistSwing
+  hitSFX: FistHit
   reloadSFX: 
