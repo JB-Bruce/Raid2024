@@ -70,7 +70,11 @@ public class QuestItems : QuestAction
         CheckItem(itemWithQuantity);
         for (int i = 0; i < _itemsNeed.Count; i++)
         {
-            if (_itemsInInventory[i].quantityNeed < _itemsNeed[i].quantityNeed)
+            if (_itemsInInventory.Count <= 0)
+            {
+                return false;
+            }
+            else if (_itemsInInventory[i].quantityNeed < _itemsNeed[i].quantityNeed)
             {
                 return false;
             }

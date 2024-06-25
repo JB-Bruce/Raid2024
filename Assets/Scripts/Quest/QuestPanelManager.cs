@@ -89,6 +89,9 @@ public class QuestPanelManager : MonoBehaviour
     [SerializeField]
     private GameObject _scientistFactionQuestActionNoQuest;
 
+    [SerializeField]
+    private bool _mainQuestFinish = false;
+
     public EventSystem eventSystem;
 
     //configure quest panel
@@ -124,7 +127,7 @@ public class QuestPanelManager : MonoBehaviour
         _mainQuestTitle.text = selectedQuest.GetName();
         _mainQuestDescription.text = selectedQuest.GetDescription();
         _questCounter.text = _selectedQuestIndex+1 + "/" + (indexs[0]+1);
-        if (_selectedQuestIndex == indexs[0])
+        if (_selectedQuestIndex == indexs[0] && !_mainQuestFinish)
         {
             _questActionTitle.text = selectedQuest.GetCurrentQuestAction().GetName();
             _objectives.text = selectedQuest.GetCurrentQuestAction().GetObjectivesText();
@@ -220,5 +223,11 @@ public class QuestPanelManager : MonoBehaviour
             _selectedQuestIndex -= 1;
         }
         UpdateMainQuestUi();
+    }
+
+    //set the bool main quest finish to true
+    public void EndMainQuest()
+    {
+        _mainQuestFinish = true;
     }
 }
