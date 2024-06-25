@@ -1623,6 +1623,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "EndGameMenu",
+            "id": "d2c08966-246b-41c8-ac3c-d4cc4ddeb782",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "e5aa814c-36cf-46ef-988e-536fa4d038ea",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "de7d7cef-10fd-4fb1-874c-389e17f37802",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

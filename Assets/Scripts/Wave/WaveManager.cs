@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
@@ -17,7 +18,10 @@ public class WaveManager : MonoBehaviour
     [SerializeField]
     private float radiusAroundPoint = 50;
 
-    private Vector3 _point;
+    [SerializeField]
+    private GameObject _objective;
+
+    private List<GameObject> _spawnUnits = new();
 
     private void Awake()
     {
@@ -31,7 +35,7 @@ public class WaveManager : MonoBehaviour
     public void StartWave(Vector3 point, float duration, int intencity, float waitSpawnTimer)
     {
         duration += Time.time;
-        _point = point;
+        _objective.transform.position = point;
         StartCoroutine(Wave(point, duration, intencity, waitSpawnTimer));
     }
 
@@ -43,9 +47,14 @@ public class WaveManager : MonoBehaviour
             yield return new WaitForSeconds(waitSpawnTimer);
             for (int i = 0; i < intencity; i++)
             {
-                _unitManager.SpawnWaveUnit(GetRandomSpawnPosition(), _point);
+                _spawnUnits.Add(_unitManager.SpawnWaveUnit(GetRandomSpawnPosition(), _objective.transform.position));
+            }
+            if(_objective == null)
+            {
+                break;
             }
         }
+        EndWave();
         QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.defend, "DefendBase");
     }
 
@@ -59,17 +68,29 @@ public class WaveManager : MonoBehaviour
 
             float randomDistance = Random.Range(radiusAroundPoint, (radiusAroundPoint+10));
 
-            _pos = _point + (randomDirection * randomDistance);
+            _pos = _objective.transform.position + (randomDirection * randomDistance);
 
         } while (CantSpawnHere(_pos));
 
         return _pos;
     }
 
+    // Call when the wave is finish make all the unit go to patrol
+    private void EndWave()
+    {
+        for (int i = 0; i < _spawnUnits.Count; i++)
+        {
+            if (_spawnUnits[i] != null)
+            {
+                _spawnUnits[i].GetComponent<UnitBT>().order = UnitOrder.Patrol;
+            }
+        }
+    }
+
     // Check if the unit can't spawn here
     private bool CantSpawnHere(Vector3 position)
     {
-        if (Vector3.Distance(position, _player.transform.position) < radiusAroundPlayer || Vector3.Distance(position, _point) < radiusAroundPlayer)
+        if (Vector3.Distance(position, _player.transform.position) < radiusAroundPlayer || Vector3.Distance(position, _objective.transform.position) < radiusAroundPlayer)
         {
             return true;
         }

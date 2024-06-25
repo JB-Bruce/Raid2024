@@ -52,7 +52,13 @@ public class QuestManager : MonoBehaviour
     private PlayerInput _playerInput;
 
     [SerializeField]
+    private GameObject _endMainQuestPanel;
+
+    [SerializeField]
     private GameObject _questPanel;
+
+    [SerializeField]
+    private GameObject _questInfosInGame;
 
     [SerializeField]
     private TextMeshProUGUI _questActionTitleInGame;
@@ -152,7 +158,16 @@ public class QuestManager : MonoBehaviour
     {
         if (!_quests[_currentMainQuest].NextQuestAction())
         {
-            _currentMainQuest += 1;
+            if(_currentMainQuest+1 < _quests.Count)
+            {
+                _currentMainQuest += 1;
+            }
+            else
+            {
+                _questPanelManager.EndMainQuest();
+                EndMainQuests();
+            }
+            
             Quest currentMainQuest = _quests[_currentMainQuest];
             currentMainQuest.GetCurrentQuestAction().Configure(currentMainQuest.GetObjectsToActivateAtStartByQuestActionIndex(currentMainQuest.GetCurrentQuestActionIndex()));
             if(currentMainQuest.GetCurrentQuestAction().GetGoal() != Vector3.zero)
@@ -252,6 +267,10 @@ public class QuestManager : MonoBehaviour
                     }
                 }
                 _quests[_currentMainQuest].SetCurrentQuestAction(_quests[_currentMainQuest].GetCurrentQuestActionIndex() - 1);
+                if (_quests[_currentMainQuest].GetCurrentQuestAction().GetGoal() != Vector3.zero)
+                {
+                    MapManager.instance.SetQuestWaypoint(_quests[_currentMainQuest].GetCurrentQuestAction().GetGoal());
+                }
                 UpdateInGameQuestUi();
             }
         }
@@ -315,6 +334,23 @@ public class QuestManager : MonoBehaviour
     public Quest GetMainQuestByIndex(int index)
     {
         return _quests[index];
+    }
+
+    //call when all main quests are done
+    private void EndMainQuests()
+    {
+        _playerInput.SwitchCurrentActionMap("EndGameMenu");
+        Time.timeScale = 0.0f;
+        _questInfosInGame.SetActive(false);
+        _endMainQuestPanel.SetActive(true);
+    }
+
+    //call when the player select the button to continue to play
+    public void ContinueToPlay()
+    {
+        _playerInput.SwitchCurrentActionMap("InGame");
+        Time.timeScale = 1.0f;
+        _endMainQuestPanel.SetActive(false);
     }
 
     public enum QuestTriggerType
