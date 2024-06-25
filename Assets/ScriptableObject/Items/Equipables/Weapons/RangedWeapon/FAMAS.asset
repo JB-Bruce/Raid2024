@@ -24,14 +24,14 @@ MonoBehaviour:
   _worldSprite: {fileID: 968171125, guid: 973519e1f0e50524897eb22980628f91, type: 3}
   _flipable: 0
   _damage: 35
-  _attackSpeed: 0.07692308
+  _attackSpeed: 0.1538462
   _attackRange: 20
   _leftHandPos: {x: 0.5, y: -0.2}
   _rightHandPos: {x: 1.5, y: -0.08}
   _rotationRightHand: -90
   _rotationLeftHand: 0
   _moveSpeed: 2.5
-  _semiAutomatic: 1
+  _semiAutomatic: 0
   animAttack: FamasShoot
   animIdle: WeaponIdle
   attackSFX: FAMASShoot
