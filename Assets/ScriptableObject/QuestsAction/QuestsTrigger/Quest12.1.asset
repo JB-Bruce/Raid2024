@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest12.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 12.1"
+  _goal: {x: 701.2, y: 18.8, z: 0}
   _actionsToDoAtStart: []
   _questTriggerType: 1
   _information: BanditCampArea

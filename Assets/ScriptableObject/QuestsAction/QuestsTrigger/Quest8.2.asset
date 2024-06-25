@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest8.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 8.2"
+  _goal: {x: 180.6385, y: -282.804, z: 0}
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Rachel

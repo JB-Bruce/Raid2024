@@ -26970,9 +26970,7 @@ MonoBehaviour:
   containerSlotsTransform: {fileID: 1103292855}
   currentContainer: {fileID: 0}
   mass: 0
-  _itemsToGiveAtStart:
-  - item: {fileID: 11400000, guid: 69daa4cc1e4680b4ea4f3f93866c8ed6, type: 2}
-    quantityNeed: 1
+  _itemsToGiveAtStart: []
   _player: {fileID: 2161282078654006046}
   _itemDroppedPrefab: {fileID: 6945675786110959046, guid: e037957d78abc7a4097fc36cb1cd0224, type: 3}
 --- !u!224 &617406743
@@ -32680,7 +32678,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &716806264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61315,7 +61313,7 @@ MonoBehaviour:
   _questPanel: {fileID: 271678159}
   _questActionTitleInGame: {fileID: 1622015311}
   _objectivesInGame: {fileID: 1222336750}
-  _currentMainQuest: 6
+  _currentMainQuest: 0
   eventSystem: {fileID: 1463176503}
   _quests:
   - _name: "Le r\xE9veil"
@@ -61706,7 +61704,7 @@ MonoBehaviour:
       - {fileID: 1220928796}
   _factionQuestManager: {fileID: 1314616347}
   _questPanelManager: {fileID: 1049674392}
-  _factionUnitManager: {fileID: 0}
+  _factionUnitManager: {fileID: 255321290}
 --- !u!4 &1314616346
 Transform:
   m_ObjectHideFlags: 0

@@ -132,11 +132,11 @@ public class MapManager : MonoBehaviour
     private void SetQuestPingArrow()
     {
         Vector2 dir = mainQuestWaypoint - (Vector2)playerT.position;
-        playerPingArrow.right = dir.normalized;
+        questPingArrow.right = dir.normalized;
 
         if (doesArrowsFollowPlayer)
         {
-            playerPingArrow.transform.position = Camera.main.WorldToScreenPoint(playerT.position);
+            questPingArrow.transform.position = Camera.main.WorldToScreenPoint(playerT.position);
         }
 
         if (dir.magnitude < distanceToDesappear)

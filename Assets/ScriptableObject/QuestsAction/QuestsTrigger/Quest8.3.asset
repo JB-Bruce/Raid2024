@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest8.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 8.3"
+  _goal: {x: -331.6, y: -185.3, z: 0}
   _actionsToDoAtStart: []
   _questTriggerType: 1
   _information: RessourcesArea

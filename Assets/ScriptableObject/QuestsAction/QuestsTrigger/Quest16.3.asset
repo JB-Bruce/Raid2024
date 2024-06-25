@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest16.3
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 16.3"
+  _goal: {x: 88.8, y: 38.1, z: 0}
   _actionsToDoAtStart: []
   _questTriggerType: 1
   _information: ConstructionArea
