@@ -49,7 +49,10 @@ public class FactionManager : MonoBehaviour
 
         poi = OrderPOIByPriority();
         SetFactionsPosition();
-        AddReputation(Faction.Player, TutorialManager.Instance.GetPlayerFaction(), 20);
+        if (TutorialManager.Instance != null)
+        {
+            AddReputation(Faction.Player, TutorialManager.Instance.GetPlayerFaction(), 20);
+        }
     }
 
     private void Start()

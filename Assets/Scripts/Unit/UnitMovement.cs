@@ -72,12 +72,21 @@ public class UnitMovement : MonoBehaviour
         Vector3 target;
         Vector3 randomDirection;
         float randomDistance;
+        int iterationCount = 0;
+
+        if(_maxDistanceGuardPoint == 0) { return _guardPoint;}
 
         do
         {
             randomDirection = Random.insideUnitCircle;
             randomDistance = Random.Range(_minDistanceGuardPoint, _maxDistanceGuardPoint);
             target = _guardPoint + randomDirection * randomDistance;
+            iterationCount++;
+            if(iterationCount%10 == 0)
+            {
+                _maxDistanceGuardPoint += 10;
+            }
+
         } while (IsThePointRestricted(target));
 
         return target;

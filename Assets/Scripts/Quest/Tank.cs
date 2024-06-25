@@ -73,16 +73,17 @@ public class Tank : Interactable
         }
     }
 
+    //fill the tank
     private void FillTheTank()
     {
         _quantity = Mathf.Clamp(_quantity + _quantityToFill, 0, _quantityFull);
     }
 
+    //refill the tank with the filling frequency
     IEnumerator ReFillTheTank()
     {
         while (_canRefill)
         {
-            print("ff");
             FillTheTank();
             yield return new WaitForSeconds(_fillingFrequency);
         }
