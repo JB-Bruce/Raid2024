@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest2.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 2.2"
+  _goal: {x: 14.6, y: -83.4, z: 0}
   _actionsToDoAtStart: []
   _questTriggerType: 3
   _information: GetSuitcase

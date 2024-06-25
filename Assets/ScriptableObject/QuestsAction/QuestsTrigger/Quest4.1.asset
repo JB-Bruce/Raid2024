@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest4.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 4.1"
+  _goal: {x: 88.8, y: 38.1, z: 0}
   _actionsToDoAtStart:
   - ConstructionSpawnBandit
   _questTriggerType: 1

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest2.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 2.1"
+  _goal: {x: 14.6, y: -83.4, z: 0}
   _actionsToDoAtStart:
   - CaseSpawnBandit
   _questTriggerType: 1

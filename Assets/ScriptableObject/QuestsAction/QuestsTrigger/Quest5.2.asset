@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest5.2
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 5.2"
+  _goal: {x: -640.4852, y: -9.0404005, z: 0}
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Jean-Baptiste

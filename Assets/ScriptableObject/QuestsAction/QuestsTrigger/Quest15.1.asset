@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Quest15.1
   m_EditorClassIdentifier: 
   _name: "Qu\xEAte 15.1"
+  _goal: {x: 88.8, y: 38.1, z: 0}
   _actionsToDoAtStart: []
   _questTriggerType: 3
   _information: ConstructionCoil

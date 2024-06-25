@@ -155,7 +155,7 @@ public class QuestManager : MonoBehaviour
             _currentMainQuest += 1;
             Quest currentMainQuest = _quests[_currentMainQuest];
             currentMainQuest.GetCurrentQuestAction().Configure(currentMainQuest.GetObjectsToActivateAtStartByQuestActionIndex(currentMainQuest.GetCurrentQuestActionIndex()));
-            if(currentMainQuest.GetCurrentQuestAction().GetGoal() != null)
+            if(currentMainQuest.GetCurrentQuestAction().GetGoal() != Vector3.zero)
             {
                 MapManager.instance.SetQuestWaypoint(currentMainQuest.GetCurrentQuestAction().GetGoal());
             }
