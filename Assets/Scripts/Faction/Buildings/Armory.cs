@@ -5,17 +5,20 @@ using UnityEngine;
 
 public class Armory : FactionBuilding
 {
-    [Serializable]
-    public struct WeaponsDrawLevel
-    {
-        public List<DrawWeapon> _drawWeapons;
-    }
-
-    public List<WeaponsDrawLevel> WeaponSpawnPerLevel = new();
+    private FactionUnitManager _factionUnit;
 
     protected override void UpgradeEffect()
     {
-        FactionUnitManager _factionUnit = FactionManager.Instance.GetFaction(faction).FactionUnitManager;
-        _factionUnit.drawWeapons = WeaponSpawnPerLevel[_buildingLevel - 2]._drawWeapons;
+        if(_factionUnit == null)
+        {
+            _factionUnit = FactionManager.Instance.GetFaction(faction).FactionUnitManager;
+        }
+        _factionUnit.drawWeapons = _factionUnit.WeaponSpawnPerLevel[_buildingLevel - 2]._drawWeapons;
     }
+}
+
+[Serializable]
+public struct WeaponsDrawLevel
+{
+    public List<DrawWeapon> _drawWeapons;
 }

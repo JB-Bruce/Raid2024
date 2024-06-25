@@ -4661,7 +4661,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 1054617543}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -11624,6 +11624,7 @@ MonoBehaviour:
     percentage: 1
   - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
     percentage: 9
+  WeaponSpawnPerLevel: []
   formation:
     position:
     - {x: 0, y: -5}
@@ -19095,9 +19096,26 @@ MonoBehaviour:
   womenPercentage: 50
   drawWeapons:
   - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-    percentage: 5
+    percentage: 3
+  - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+    percentage: 3
   - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-    percentage: 1
+    percentage: 4
+  WeaponSpawnPerLevel:
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+      percentage: 4
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 4
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 3
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+      percentage: 5
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 4
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 2
   formation:
     position:
     - {x: 0, y: -5}
@@ -34805,7 +34823,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 925681624}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -35175,7 +35193,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 1912765554}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -37187,7 +37205,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 2082502722}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -56992,7 +57010,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 73734441}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -62092,7 +62110,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 237489161}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -65363,6 +65381,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 6.3
       objectReference: {fileID: 0}
+    - target: {fileID: 473006493896733804, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _faction
       value: 
@@ -65394,6 +65416,14 @@ PrefabInstance:
     - target: {fileID: 534565846741916944, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -240.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 808227582594635399, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 839446693818725305, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1374387744990025974, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -65442,6 +65472,10 @@ PrefabInstance:
     - target: {fileID: 2326795562769662692, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -559.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427770141877349272, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3309409528671657999, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchorMax.y
@@ -65479,9 +65513,17 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 6.3
       objectReference: {fileID: 0}
+    - target: {fileID: 3875570154636734078, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4628225231821741283, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_SizeDelta.x
       value: 6.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4675201786605673167, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6370750338731715200, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_SizeDelta.x
@@ -70827,7 +70869,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 1703347041}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -80755,10 +80797,21 @@ MonoBehaviour:
   SpawnDistanceAroundPlayer: 50
   womenPercentage: 50
   drawWeapons:
-  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-    percentage: 1
+  - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+    percentage: 3
   - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-    percentage: 5
+    percentage: 7
+  WeaponSpawnPerLevel:
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 4
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 6
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 5
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 5
   formation:
     position:
     - {x: 0, y: -5}
@@ -85879,10 +85932,21 @@ MonoBehaviour:
   SpawnDistanceAroundPlayer: 50
   womenPercentage: 30
   drawWeapons:
-  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-    percentage: 8
-  - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-    percentage: 2
+  - weapon: {fileID: 11400000, guid: 4f167ab963ef4bf439e80d46e5647533, type: 2}
+    percentage: 7
+  - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+    percentage: 3
+  WeaponSpawnPerLevel:
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 4f167ab963ef4bf439e80d46e5647533, type: 2}
+      percentage: 6
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 4
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 4f167ab963ef4bf439e80d46e5647533, type: 2}
+      percentage: 5
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 5
   formation:
     position:
     - {x: 0, y: -5}
@@ -96878,10 +96942,25 @@ MonoBehaviour:
   SpawnDistanceAroundPlayer: 50
   womenPercentage: 70
   drawWeapons:
-  - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-    percentage: 3
+  - weapon: {fileID: 11400000, guid: 4f167ab963ef4bf439e80d46e5647533, type: 2}
+    percentage: 5
   - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-    percentage: 2
+    percentage: 5
+  WeaponSpawnPerLevel:
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 4f167ab963ef4bf439e80d46e5647533, type: 2}
+      percentage: 5
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 5
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 3
+  - _drawWeapons:
+    - weapon: {fileID: 11400000, guid: 4f167ab963ef4bf439e80d46e5647533, type: 2}
+      percentage: 4
+    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+      percentage: 4
+    - weapon: {fileID: 11400000, guid: b134a14fa6b971549819860f13902c9d, type: 2}
+      percentage: 5
   formation:
     position:
     - {x: 0, y: -5}
@@ -98876,7 +98955,7 @@ MonoBehaviour:
   unitInCaptureZone: []
   Timer: 0
   captureTime: 1
-  priority: 0
+  priority: 10
   poiPosition: {fileID: 1311528031}
   minDistancePOI: 5
   maxDistancePOI: 15
@@ -105550,14 +105629,6 @@ PrefabInstance:
     - target: {fileID: 1436775381993209973, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1617668345506921999, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
-      propertyPath: life
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1617668345506921999, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
-      propertyPath: faction
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1617668345506921999, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: waterBar

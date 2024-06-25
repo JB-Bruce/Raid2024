@@ -529,6 +529,7 @@ MonoBehaviour:
   _flipScale: {x: -0.2, y: 0.2, z: 0.2}
   _equipedWeapon: {fileID: 0}
   _AnimTransform: {fileID: 5358568399288875607}
+  _navMeshAgent: {fileID: 0}
   _unitSoundPlayer: {fileID: 3906569105435675658}
   _handWeaponSpriteRenderer: {fileID: 6923117039081080266}
   _transform: {fileID: 1659885193875156989}
@@ -867,6 +868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerInput: {fileID: 0}
+  _interactionText: {fileID: 0}
   interactables: []
 --- !u!114 &1617668345506921999
 MonoBehaviour:
@@ -881,17 +883,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer: 1
-  circleCollider: {fileID: 0}
+  _detectionZone: {fileID: 0}
+  _lootZone: {fileID: 0}
   MoveFeet: 1
   CanRespawn: 1
   _slider: {fileID: 0}
-  life: 100
+  life: 200
   faction: 6
   isDead: 0
   removeDeathReputation: -0.5
   removeHitReputation: -1
   pSystem: {fileID: 1227516974611606605}
   _feetAnimator: {fileID: 5473973947417063727}
+  _agent: {fileID: 0}
+  _questType: 
   _panelToDeactivateOnDeath: []
   _playerInput: {fileID: 0}
   _respawnPosition: {fileID: 0}

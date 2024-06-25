@@ -19,8 +19,8 @@ public class FactionUnitManager : MonoBehaviour
     public float SpawnDistanceAroundPlayer = 50;
     public float womenPercentage = 0;
     public List<DrawWeapon> drawWeapons = new();
+    public List<WeaponsDrawLevel> WeaponSpawnPerLevel = new();
     private int _lastFollower = 5;
-
     public Formation formation;
 
     [Header("Unit Management")]
