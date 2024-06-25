@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b517c84d775fcb2458621eb343efe5fe, type: 3}
+  m_Name: RubbleLootTable
+  m_EditorClassIdentifier: 
+  _loots:
+  - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+    dropRate: 30
+    dropNumber:
+    - amount: 1
+      pourcentage: 50
+    - amount: 2
+      pourcentage: 50
+  - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+    dropRate: 10
+    dropNumber:
+    - amount: 1
+      pourcentage: 90
+    - amount: 2
+      pourcentage: 10
+  - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+    dropRate: 10
+    dropNumber:
+    - amount: 1
+      pourcentage: 90
+    - amount: 2
+      pourcentage: 10
+  - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+    dropRate: 20
+    dropNumber:
+    - amount: 1
+      pourcentage: 90
+    - amount: 2
+      pourcentage: 10
+  - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+    dropRate: 30
+    dropNumber:
+    - amount: 1
+      pourcentage: 90
+    - amount: 3
+      pourcentage: 10
