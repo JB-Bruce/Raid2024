@@ -190,11 +190,8 @@ public class SoundManager : MonoBehaviour
         Playlist playlist = Array.Find(_playlists, p => p.name == playlistName);
         if (playlist == null)
         {
-            Debug.Log("Playlist not found: " + playlistName);
             return;
         }
-
-        Debug.Log("Playing from playlist: " + playlist.name);
 
         // Stop the current coroutine if it's running
         if (_currentPlaylistCoroutine != null)
@@ -211,12 +208,10 @@ public class SoundManager : MonoBehaviour
         {
             if (playlist.sounds.Count == 0)
             {
-                Debug.Log("Playlist is empty: " + playlist.name);
                 yield break;
             }
 
             Sounds randomSound = playlist.sounds[UnityEngine.Random.Range(0, playlist.sounds.Count)];
-            Debug.Log("Playing clip: " + randomSound.name + " from playlist: " + playlist.name);
             _musicPlayer.clip = randomSound.clip;
             _musicPlayer.Play();
 
