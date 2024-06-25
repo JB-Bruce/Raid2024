@@ -9369,9 +9369,32 @@ PrefabInstance:
       value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[0].text
+      value: CineText1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[1].text
+      value: CineText2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[2].text
+      value: CineText3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[3].text
+      value: CineText4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[4].text
+      value: CineText5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
+      propertyPath: _cineTexts.Array.data[5].text
+      value: CineText6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cineTexts.Array.data[6].text
-      value: "50 ans plus tard, 4 factions se sont form\xE9es, chacune avec leur
-        vision de ce nouveau monde et de son futur\u2026"
+      value: CineText7
       objectReference: {fileID: 0}
     - target: {fileID: 3238359637378367023, guid: fa8e98fbd884de24984ac80dde1514d4, type: 3}
       propertyPath: _cinematicSlides.Array.data[0]

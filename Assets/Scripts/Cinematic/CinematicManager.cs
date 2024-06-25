@@ -69,7 +69,7 @@ public class CinematicManager : MonoBehaviour
             StopCoroutine(_autoNextCoroutine);
         }
 
-        _currentCineText.text = _cineTexts[_currentTextIndex].text;
+        _currentCineText.text = LanguageManager.instance.GetText(_cineTexts[_currentTextIndex].text);
 
         _textAnimator.Play("FadeIn", 0, 0f);
 
