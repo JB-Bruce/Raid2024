@@ -30398,6 +30398,7 @@ GameObject:
   - component: {fileID: 667042809}
   - component: {fileID: 667042811}
   - component: {fileID: 667042810}
+  - component: {fileID: 667042812}
   m_Layer: 5
   m_Name: QuestText
   m_TagString: Untagged
@@ -30521,6 +30522,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667042808}
   m_CullTransparentMesh: 1
+--- !u!114 &667042812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667042808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Uihover_ReputationJournal
+  language: 
 --- !u!1001 &670099596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42571,6 +42586,7 @@ GameObject:
   - component: {fileID: 916535382}
   - component: {fileID: 916535384}
   - component: {fileID: 916535383}
+  - component: {fileID: 916535385}
   m_Layer: 5
   m_Name: InventoryText
   m_TagString: Untagged
@@ -42694,6 +42710,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 916535381}
   m_CullTransparentMesh: 1
+--- !u!114 &916535385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916535381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Uihover_Inventory
+  language: 
 --- !u!1 &925681623
 GameObject:
   m_ObjectHideFlags: 0
@@ -47514,7 +47544,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6280439718368653121, guid: 1230d6476f6450a44b54dd95665cf185, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1049674395}
   m_SourcePrefab: {fileID: 100100000, guid: 1230d6476f6450a44b54dd95665cf185, type: 3}
 --- !u!114 &1049674392 stripped
 MonoBehaviour:
@@ -47532,6 +47565,25 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 985752029624651996, guid: 1230d6476f6450a44b54dd95665cf185, type: 3}
   m_PrefabInstance: {fileID: 1049674391}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1049674394 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6280439718368653121, guid: 1230d6476f6450a44b54dd95665cf185, type: 3}
+  m_PrefabInstance: {fileID: 1049674391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1049674395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049674394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: 
+  language: 
 --- !u!1 &1049963676
 GameObject:
   m_ObjectHideFlags: 0
@@ -61438,14 +61490,9 @@ MonoBehaviour:
   _currentMainQuest: 0
   eventSystem: {fileID: 1463176503}
   _quests:
-  - _name: "Le r\xE9veil"
+  - _name: Quest1_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir \xE9t\xE9 secouru, vous vous r\xE9veillez dans
-      un lit plut\xF4t confortable. Cela faisait quelques mois que vous n\u2019aviez
-      pas si bien dormi. Un tas de questions vous viennent \xE0 l\u2019esprit, mais
-      il n'y a pas le temps pour \xE7a. Vous n\u2019avez qu\u2019un seul objectif
-      : le projet de vos d\xE9funts parents. Peut-\xEAtre que quelqu\u2019un ici
-      pourrait vous aider."
+    _description: Quest1_Desc
     _questActions:
     - {fileID: 11400000, guid: b56e9bcd97ce3644bb328a84fcbddc99, type: 2}
     - {fileID: 11400000, guid: a5db5f3876dbd5e4b87b0a1151c561ae, type: 2}
@@ -61461,14 +61508,9 @@ MonoBehaviour:
     - gameObjects:
       - {fileID: 105644609}
     - gameObjects: []
-  - _name: La Confiance de Bruce
+  - _name: Quest2_Name
     _currentQuestAction: 0
-    _description: "Arriv\xE9 dans la cabane du Vieillard, vous devez le convaincre
-      de vous aider pour continuer le projet de vos parents. Apr\xE8s une rencontre
-      tendue, le Vieillard r\xE9v\xE8le \xEAtre Bruce, un ancien collaborateur de
-      vos parents. Pour gagner sa confiance, Bruce vous charge de retrouver sa mallette
-      vol\xE9e par des bandits, marquant ainsi le d\xE9but de votre collaboration
-      pour d\xE9couvrir les secrets du projet familial."
+    _description: Quest2_Desc
     _questActions:
     - {fileID: 11400000, guid: 0af2bab5099aa344f8cca94bba5f9167, type: 2}
     - {fileID: 11400000, guid: c51b032d207a304468e493a885817c6a, type: 2}
@@ -61486,14 +61528,9 @@ MonoBehaviour:
     - gameObjects:
       - {fileID: 685765969}
     - gameObjects: []
-  - _name: "L'H\xE9ritage Technologique"
+  - _name: Quest3_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir r\xE9cup\xE9r\xE9 la mallette pour Bruce, vous
-      d\xE9couvrez que vos parents travaillaient sur un projet pour restaurer les
-      technologies anciennes. Bruce vous r\xE9v\xE8le l'existence des plans d'une
-      bobine magn\xE9tique pour contrer les \xE9ruptions solaires. Il vous envoie
-      collecter les mat\xE9riaux n\xE9cessaires dans les Ruines pour commencer la
-      construction de cette bobine."
+    _description: Quest3_Desc
     _questActions:
     - {fileID: 11400000, guid: bf2f3bb7df52b704d811e8990ef59563, type: 2}
     - {fileID: 11400000, guid: 96aebf8e470ec8b48b5c5902ba04003d, type: 2}
@@ -61504,12 +61541,9 @@ MonoBehaviour:
     _objectsToDesactivateAtTheEnd:
     - gameObjects: []
     - gameObjects: []
-  - _name: "Nettoyage Pr\xE9paratoire"
+  - _name: Quest4_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir collect\xE9 les mat\xE9riaux n\xE9cessaires, Bruce
-      vous informe qu'il faut s\xE9curiser un emplacement vital pour la construction
-      de la bobine magn\xE9tique, actuellement occup\xE9e par des bandits. Vous devez
-      \xE9liminer les bandits pour pr\xE9parer le terrain \xE0 la construction."
+    _description: Quest4_Desc
     _questActions:
     - {fileID: 11400000, guid: bd12745383ee0d24b85f1d70b4e9780e, type: 2}
     - {fileID: 11400000, guid: 92c5f6aa4343c9b428146223ec5ddaee, type: 2}
@@ -61525,14 +61559,9 @@ MonoBehaviour:
       - {fileID: 148403462}
     - gameObjects: []
     - gameObjects: []
-  - _name: "Le Code de S\xE9curit\xE9"
+  - _name: Quest5_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir s\xE9curis\xE9 l'emplacement pour la bobine magn\xE9tique,
-      Bruce vous informe qu'il manque le plan crucial pour la premi\xE8re partie
-      de la construction. Il vous envoie r\xE9cup\xE9rer ce plan chez son ami parano\xEFaque,
-      Jean-Baptiste, en vous recommandant de r\xE9pondre \"Affirme\" \xE0 toutes
-      ses questions pour gagner sa confiance. Une fois en possession du plan, retournez
-      aupr\xE8s de Bruce pour poursuivre le projet."
+    _description: Quest5_Desc
     _questActions:
     - {fileID: 11400000, guid: 9c66ea14ece94bb4db7a515ebd53b115, type: 2}
     - {fileID: 11400000, guid: 200c17780e7fd6a44966ac9b77197291, type: 2}
@@ -61548,15 +61577,9 @@ MonoBehaviour:
       - {fileID: 2100799278}
     - gameObjects: []
     - gameObjects: []
-  - _name: Acier Robuste
+  - _name: Quest6_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir r\xE9cup\xE9r\xE9 le plan aupr\xE8s de Jean-Baptiste,
-      vous le remettez \xE0 Bruce. Il vous explique que pour commencer la construction
-      de la bobine magn\xE9tique, vous devez obtenir une plaque d'acier robuste.
-      Bruce vous guide vers un marchand dans les Ruines affili\xE9 \xE0 une faction,
-      o\xF9 vous \xE9changez pour obtenir l'acier. Une fois en possession de la plaque,
-      vous pouvez assembler le support n\xE9cessaire sur le site de construction
-      de la bobine."
+    _description: Quest6_Desc
     _questActions:
     - {fileID: 11400000, guid: abeed8b55386ecd41a4f68f615ca57a9, type: 2}
     _questType: 0
@@ -61564,13 +61587,9 @@ MonoBehaviour:
     - gameObjects: []
     _objectsToDesactivateAtTheEnd:
     - gameObjects: []
-  - _name: "D\xE9fense du Support"
+  - _name: Quest7_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir obtenu la plaque d'acier, vous retournez au lieu
-      de construction de la bobine magn\xE9tique pour y construire le support. Une
-      fois le support achev\xE9, vous devez le d\xE9fendre contre des vagues de bandits
-      pendant une minute. Apr\xE8s avoir repouss\xE9 l'attaque, retournez voir Bruce
-      pour discuter des prochaines \xE9tapes."
+    _description: Quest7_Desc
     _questActions:
     - {fileID: 11400000, guid: 7b2fb4fbc4d654943b46d90917846180, type: 2}
     - {fileID: 11400000, guid: 88bf4dd547db93e43ae97ff2752f4294, type: 2}
@@ -61589,12 +61608,9 @@ MonoBehaviour:
     - gameObjects:
       - {fileID: 621098868}
     - gameObjects: []
-  - _name: "L'Ing\xE9nieure"
+  - _name: Quest8_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir construit le support de la bobine magn\xE9tique,
-      Bruce vous envoie chercher les plans du moteur thermique aupr\xE8s de Rachel,
-      une ing\xE9nieur isol\xE9e. Vous devez n\xE9gocier avec elle pour obtenir les
-      plans, puis retourner les plans \xE0 Bruce pour progresser dans votre mission."
+    _description: Quest8_Desc
     _questActions:
     - {fileID: 11400000, guid: 7749b0218e5f4b04cab2d16bf5c94c99, type: 2}
     - {fileID: 11400000, guid: 03ac065019c5ea847a93294e128eab7d, type: 2}
@@ -61623,13 +61639,9 @@ MonoBehaviour:
     - gameObjects:
       - {fileID: 0}
     - gameObjects: []
-  - _name: Les Reliques de la Route
+  - _name: Quest9_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir obtenu les plans du moteur thermique aupr\xE8s
-      de Rachel, vous les donnez \xE0 Bruce, qui explique la n\xE9cessit\xE9 de r\xE9cup\xE9rer
-      des pi\xE8ces de moteur sur des voitures. Vous devez d'abord \xE9changer un
-      objet avec un marchand de faction pour obtenir une clef \xE0 molette, puis
-      d\xE9monter des voitures pour collecter les pi\xE8ces n\xE9cessaires."
+    _description: Quest9_Desc
     _questActions:
     - {fileID: 11400000, guid: 1187f2b8f7a659a45a9c4d988d70c96c, type: 2}
     - {fileID: 11400000, guid: 85835c6c46179384f98ae42778518ba4, type: 2}
@@ -61643,13 +61655,9 @@ MonoBehaviour:
     - gameObjects: []
     - gameObjects: []
     - gameObjects: []
-  - _name: "Le C\u0153ur de la Bobine"
+  - _name: Quest10_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir rapport\xE9 les pi\xE8ces de moteur \xE0 Bruce,
-      celui-ci fabrique un moteur thermique et vous explique son importance pour
-      alimenter la bobine magn\xE9tique, n\xE9cessaire pour se prot\xE9ger des \xE9ruptions
-      solaires. Vous devez installer le moteur sur le support de la bobine magn\xE9tique
-      et d\xE9fendre la zone contre des vagues de bandits."
+    _description: Quest10_Desc
     _questActions:
     - {fileID: 11400000, guid: 814261a098d907046b05d698b27d7998, type: 2}
     - {fileID: 11400000, guid: cccb0e036a9424448b43df7270d62763, type: 2}
@@ -61667,14 +61675,9 @@ MonoBehaviour:
     - gameObjects:
       - {fileID: 621098868}
     - gameObjects: []
-  - _name: "Pr\xE9parations Explosives"
+  - _name: Quest11_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir install\xE9 le moteur thermique, vous retournez
-      voir Bruce qui vous informe que le dernier plan n\xE9cessaire est gard\xE9
-      dans un camp de bandits. Pour le r\xE9cup\xE9rer, Bruce vous demande de rassembler
-      de la poudre \xE0 canon et du plastique pour fabriquer de la dynamite afin
-      de d\xE9truire le camp apr\xE8s avoir pris le plan. Vous devez explorer les
-      Ruines pour trouver ces ressources."
+    _description: Quest11_Desc
     _questActions:
     - {fileID: 11400000, guid: bb88d32fa423a2d4ba49874294dce679, type: 2}
     - {fileID: 11400000, guid: f882a7f8951e4134ea3ebfb975b48bc2, type: 2}
@@ -61685,12 +61688,9 @@ MonoBehaviour:
     _objectsToDesactivateAtTheEnd:
     - gameObjects: []
     - gameObjects: []
-  - _name: La Destruction du Repaire
+  - _name: Quest12_Name
     _currentQuestAction: 0
-    _description: "Vous d\xE9couvrez un papier de ran\xE7on expliquant que Bruce
-      a \xE9t\xE9 enlev\xE9 par les bandits. Vous devez localiser Bruce dans un avant-poste
-      ennemi, \xE9liminer tous les bandits et le lib\xE9rer. Une fois libre, Bruce
-      vous demande de le rejoindre dans sa cabane pour poursuivre leur mission."
+    _description: Quest12_Desc
     _questActions:
     - {fileID: 11400000, guid: 9b721f73d936083419f76924cf31e885, type: 2}
     - {fileID: 11400000, guid: bae616f282986ee4f9262c812fef7ada, type: 2}
@@ -61726,12 +61726,9 @@ MonoBehaviour:
       - {fileID: 105644609}
     - gameObjects:
       - {fileID: 2018491280}
-  - _name: "Bruce en D\xE9tresse"
+  - _name: Quest13_Name
     _currentQuestAction: 0
-    _description: "Vous d\xE9couvrez un papier de ran\xE7on expliquant que Bruce
-      a \xE9t\xE9 enlev\xE9 par les bandits. Vous devez localiser Bruce dans un avant-poste
-      ennemi, \xE9liminer tous les bandits et le lib\xE9rer. Une fois libre, Bruce
-      vous demande de le rejoindre dans sa cabane pour poursuivre leur mission."
+    _description: Quest13_Desc
     _questActions:
     - {fileID: 11400000, guid: 6f2bd6594b38038449895426cb0d6cbe, type: 2}
     - {fileID: 11400000, guid: ac32d49780792124a808e9a252f9aa58, type: 2}
@@ -61752,13 +61749,9 @@ MonoBehaviour:
     - gameObjects:
       - {fileID: 1793127857}
     - gameObjects: []
-  - _name: Assemblage Final
+  - _name: Quest14_Name
     _currentQuestAction: 0
-    _description: "Apr\xE8s avoir sauv\xE9 Bruce, vous lui remettez le plan de la
-      bobine. Bruce explique que pour construire la bobine, il vous faut du m\xE9tal,
-      du plastique, et un noyau de ferrite. Le m\xE9tal et le plastique peuvent \xEAtre
-      trouv\xE9s dans les Ruines, tandis que le noyau de ferrite doit \xEAtre \xE9chang\xE9
-      aupr\xE8s d'un marchand de faction."
+    _description: Quest14_Desc
     _questActions:
     - {fileID: 11400000, guid: 1acf0fb14908d994db4982b99c539928, type: 2}
     - {fileID: 11400000, guid: 42f1c9d7420d962448cec749fede6fc8, type: 2}
@@ -61772,13 +61765,9 @@ MonoBehaviour:
     - gameObjects: []
     - gameObjects: []
     - gameObjects: []
-  - _name: La Bobine Prend Forme
+  - _name: Quest15_Name
     _currentQuestAction: 0
-    _description: "Bruce vous charge de construire la derni\xE8re partie de la bobine
-      magn\xE9tique avec les ressources rassembl\xE9es. Ensuite, vous devrez obtenir
-      de l'essence en \xE9changeant un jerrican et en siphonnant des voitures. Bruce
-      vous avertit des possibles attaques de bandits et recommande de recruter des
-      alli\xE9s pour d\xE9fendre la bobine."
+    _description: Quest15_Desc
     _questActions:
     - {fileID: 11400000, guid: 8b9602faddaff4e46b569bb0f8497ece, type: 2}
     _questType: 0
@@ -61787,12 +61776,9 @@ MonoBehaviour:
     _objectsToDesactivateAtTheEnd:
     - gameObjects:
       - {fileID: 1900702100}
-  - _name: "La R\xE9surgence des Ruines"
+  - _name: Quest16_Name
     _currentQuestAction: 0
-    _description: "Procurez-vous un jerrican aupr\xE8s d\u2019un marchand de faction,
-      puis siphonnez des voitures pour obtenir de l\u2019essence. Une fois l\u2019essence
-      en main, retournez \xE0 la bobine magn\xE9tique. Pr\xE9parez-vous \xE0 d\xE9fendre
-      la bobine contre des vagues de bandits avant de pouvoir y mettre l\u2019essence."
+    _description: Quest16_Desc
     _questActions:
     - {fileID: 11400000, guid: 8d03759777935474c8b26cab466ec5e3, type: 2}
     - {fileID: 11400000, guid: b88d1becaa7459a42bdab3312930913a, type: 2}
@@ -96480,6 +96466,7 @@ GameObject:
   - component: {fileID: 2030166092}
   - component: {fileID: 2030166094}
   - component: {fileID: 2030166093}
+  - component: {fileID: 2030166095}
   m_Layer: 5
   m_Name: QuestText
   m_TagString: Untagged
@@ -96603,6 +96590,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030166091}
   m_CullTransparentMesh: 1
+--- !u!114 &2030166095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030166091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Uihover_ QuestJournal
+  language: 
 --- !u!1001 &2030367659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102601,6 +102602,7 @@ GameObject:
   - component: {fileID: 2136576418}
   - component: {fileID: 2136576420}
   - component: {fileID: 2136576419}
+  - component: {fileID: 2136576421}
   m_Layer: 5
   m_Name: MapText
   m_TagString: Untagged
@@ -102650,7 +102652,7 @@ MonoBehaviour:
   m_text: Map
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 1544671298164285393, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -102724,6 +102726,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2136576417}
   m_CullTransparentMesh: 1
+--- !u!114 &2136576421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2136576417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Uihover_Map
+  language: 
 --- !u!1001 &2137780000
 PrefabInstance:
   m_ObjectHideFlags: 0
