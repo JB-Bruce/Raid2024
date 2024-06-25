@@ -343,7 +343,9 @@ public class StatsManager : Humanoid
         _factionManager = FactionManager.Instance;
         RemoveFood();
         RemoveWater();
+        _respawnFaction = CastStringToERespawnFaction(PlayerPrefs.GetString("ChooseFaction"));
         ChangeRespawnPoint();
+        RespawnPlayer();
     }
 
     //Set _recupStamina to true, when 
@@ -449,6 +451,18 @@ public class StatsManager : Humanoid
         }
     }
 
+    // Cast string to ERespawnFaction
+    private ERespawnFaction CastStringToERespawnFaction(string faction)
+    {
+        switch(faction)
+        {
+            case "Military": return ERespawnFaction.Military;
+            case "Utopist": return ERespawnFaction.Utopist;
+            case "Scientist": return ERespawnFaction.Scientist;
+            case "Survivalist": return ERespawnFaction.Survivalist;
+            default: return ERespawnFaction.Null;
+        }
+    }
 
     // Change the player respawn faction
     public void ChangeRespawnFaction(ERespawnFaction newRespawnFaction)
