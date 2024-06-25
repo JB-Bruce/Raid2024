@@ -73,7 +73,7 @@ private void Init()
     private void SetBuilding(GameObject buildingInfo, int index)
     {
         buildingInfo.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _leader.buildings[index].buildingUpgradeInfo;
-        buildingInfo.transform.GetChild(3).GetComponentInChildren<TextMeshProUGUI>().text = ((RomanNumeral)_leader.buildings[index]._buildingLevel).ToString();
+        buildingInfo.transform.GetChild(3).GetComponentInChildren<TextMeshProUGUI>().text = (_leader.buildings[index]._buildingLevel).ToString();
         buildingInfo.transform.GetChild(0).gameObject.SetActive(false);
         buildingInfo.transform.GetChild(2).GetComponent<Image>().sprite = _leader.buildings[index].buildingImage;
     }
@@ -88,8 +88,8 @@ private void Init()
     // Set the slider of building XP
     private void SetBuildingXPSlider()
     {
-        _currentLVL.text = ((RomanNumeral)_leader.LevelOfLeader).ToString();
-        _nextLVL.text = ((RomanNumeral)(_leader.LevelOfLeader + 1)).ToString();
+        _currentLVL.text = (_leader.LevelOfLeader).ToString();
+        _nextLVL.text = ((_leader.LevelOfLeader + 1)).ToString();
         float _sliderSize = Mathf.Clamp((float)(_leader.BuildingXP) / ((float)_leader.UpgradePrice), 0, 1);
         _slider.localScale = new Vector3(_sliderSize, 1, 1);
         _progress.text = _leader.BuildingXP.ToString() + " / " + _leader.UpgradePrice.ToString();
@@ -312,19 +312,19 @@ private void Init()
 
 }
 
-public enum RomanNumeral
-{
-    I = 1,
-    II = 2,
-    III = 3,
-    IV = 4,
-    V = 5,
-    VI = 6,
-    VII = 7,
-    VIII = 8,
-    IX = 9,
-    X = 10,
-    XI = 11,
-    XII = 12,
-    XIII = 13,
-}
+//public enum RomanNumeral
+//{
+//    I = 1,
+//    II = 2,
+//    III = 3,
+//    IV = 4,
+//    V = 5,
+//    VI = 6,
+//    VII = 7,
+//    VIII = 8,
+//    IX = 9,
+//    X = 10,
+//    XI = 11,
+//    XII = 12,
+//    XIII = 13,
+//}
