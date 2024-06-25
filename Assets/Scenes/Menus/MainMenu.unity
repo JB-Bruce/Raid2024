@@ -5598,7 +5598,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1682619433}
   - component: {fileID: 1682619432}
-  - component: {fileID: 1682619434}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -5795,6 +5794,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: dedfa57b-26d0-40a8-9ef9-1295845a086e
     m_ActionName: Death/Move
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 068bd4a7-372d-4516-aca3-6ce8571419e3
+    m_ActionName: InGame/Parry[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 58330186-fd26-49a9-84f3-d933c3b5891f
+    m_ActionName: RansomPaper/QuitPaper[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Settings
@@ -5815,14 +5822,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1682619434
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1682619431}
-  m_Enabled: 1
 --- !u!1 &1690278163
 GameObject:
   m_ObjectHideFlags: 0
