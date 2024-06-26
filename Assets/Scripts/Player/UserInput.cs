@@ -105,7 +105,7 @@ public class UserInput : MonoBehaviour
         {
             yield return new WaitForSeconds(0.5f);
         }
-        _playerInput.SwitchCurrentActionMap("InGame");
+        _playerInput.SwitchCurrentActionMap("FirstQuest");
         SetupInputActions();
         _canPlay = true;
     }

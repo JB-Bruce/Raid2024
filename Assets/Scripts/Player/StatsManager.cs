@@ -237,7 +237,8 @@ public class StatsManager : Humanoid
         DeathFade.CrossFadeAlpha(0,0.01f,true);
         DeathFade.enabled = true;
         DeathFade.CrossFadeAlpha(1,1f,true);
-        _playerInput.SwitchCurrentActionMap("InGame");
+        if(_playerInput.currentActionMap.ToString() != "FirstQuest")
+            _playerInput.SwitchCurrentActionMap("InGame");
         QuestManager.instance.OnDeath();
 
         StartCoroutine(CouroutineRespawn());
