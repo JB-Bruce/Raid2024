@@ -1615,22 +1615,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1899347777315899622, guid: 0cf9a0fa9e7cd9940a6f94a57c8f0dd3, type: 3}
   m_PrefabInstance: {fileID: 43080278}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &44240437 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7478662891674075893, guid: 3ecb13fcead85924683bc01ba5aac875, type: 3}
-  m_PrefabInstance: {fileID: 2000015139}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2b399fbe6de4b141a3321145a5aac0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &44240440 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6333826459052352264, guid: 3ecb13fcead85924683bc01ba5aac875, type: 3}
-  m_PrefabInstance: {fileID: 2000015139}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &44653587
 GameObject:
   m_ObjectHideFlags: 0
@@ -29215,22 +29199,6 @@ RectTransform:
   m_AnchoredPosition: {x: 199.99997, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!4 &653175021 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1277414741848670986, guid: ff3577e50d1e07742889bb0af9157a00, type: 3}
-  m_PrefabInstance: {fileID: 492149013}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &653175024 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8453884897881644730, guid: ff3577e50d1e07742889bb0af9157a00, type: 3}
-  m_PrefabInstance: {fileID: 492149013}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eae98ffe826b2d41b5d3713022be3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &653287689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -100125,22 +100093,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 223502398710342163, guid: af2da895e62d68b43a71299af392c058, type: 3}
   m_PrefabInstance: {fileID: 2063840030}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2064382625 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1277414741848670986, guid: ff3577e50d1e07742889bb0af9157a00, type: 3}
-  m_PrefabInstance: {fileID: 987067468}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2064382630 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8453884897881644730, guid: ff3577e50d1e07742889bb0af9157a00, type: 3}
-  m_PrefabInstance: {fileID: 987067468}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eae98ffe826b2d41b5d3713022be3e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2064391079
 GameObject:
   m_ObjectHideFlags: 0
@@ -112173,15 +112125,6 @@ MonoBehaviour:
   buildingImage: {fileID: 21300000, guid: 82bb66ad7670d0c41ab00352668eb4f8, type: 3}
   buildingDescription: Armory
   buildingUpgradeInfo: Info
-  WeaponSpawnPerLevel:
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 90
-    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-      percentage: 10
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 1
 --- !u!114 &5344649350284743793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112200,15 +112143,6 @@ MonoBehaviour:
   buildingImage: {fileID: 21300000, guid: 82bb66ad7670d0c41ab00352668eb4f8, type: 3}
   buildingDescription: Armory
   buildingUpgradeInfo: Info
-  WeaponSpawnPerLevel:
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 90
-    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-      percentage: 10
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 1
 --- !u!222 &5434482491898413581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -113798,7 +113732,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1.5
   canMove: 0
-  overName: 
+  overName: Bruce
 --- !u!4 &6936086834214265351
 Transform:
   m_ObjectHideFlags: 0
@@ -115594,15 +115528,6 @@ MonoBehaviour:
   buildingImage: {fileID: 21300000, guid: 82bb66ad7670d0c41ab00352668eb4f8, type: 3}
   buildingDescription: Armory
   buildingUpgradeInfo: Info
-  WeaponSpawnPerLevel:
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 90
-    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-      percentage: 10
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 1
 --- !u!114 &8453884898230650799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115621,15 +115546,6 @@ MonoBehaviour:
   buildingImage: {fileID: 21300000, guid: 82bb66ad7670d0c41ab00352668eb4f8, type: 3}
   buildingDescription: Armory
   buildingUpgradeInfo: Info
-  WeaponSpawnPerLevel:
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 90
-    - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
-      percentage: 10
-  - _drawWeapons:
-    - weapon: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-      percentage: 1
 --- !u!114 &8459888795642676629
 MonoBehaviour:
   m_ObjectHideFlags: 0
