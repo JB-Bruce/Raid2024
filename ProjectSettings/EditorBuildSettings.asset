@@ -26,5 +26,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Enzo/Enzo2.unity
     guid: e870bf0bbc466b344a046acd4a4a253f
+  - enabled: 1
+    path: Assets/Scenes/Load/LoadScene.unity
+    guid: 72c27ddd2207e314bb796e93df65c262
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: d4ff0f997b8a45d4ea71bd57c76e521d, type: 2}

@@ -1,10 +1,8 @@
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using static UnityEngine.Rendering.DebugUI;
 
 public class LanguageManager : MonoBehaviour
 {
@@ -93,8 +91,11 @@ public class LanguageManager : MonoBehaviour
     {
 
         localizationData = new Dictionary<string, Dictionary<string, string>>();
+        
+        string newPath = System.IO.Path.Combine(Application.streamingAssetsPath, "Localization.csv");
+        
 
-        string[] lines = File.ReadAllLines(filePath);
+        string[] lines = File.ReadAllLines(newPath);
 
         var headers = lines[0].Split(';');
 
