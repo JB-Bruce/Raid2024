@@ -9291,9 +9291,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: _hip
+      value: 
+      objectReference: {fileID: 472410536}
+    - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: Laser
       value: 
       objectReference: {fileID: 625494453}
+    - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: _body
+      value: 
+      objectReference: {fileID: 472410537}
     - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: _input
       value: 
@@ -9330,6 +9338,16 @@ PrefabInstance:
       addedObject: {fileID: 1631789880}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+--- !u!1 &472410536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1289450736268041935, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+  m_PrefabInstance: {fileID: 472410535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &472410537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 112211041879254420, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+  m_PrefabInstance: {fileID: 472410535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &472500030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36702,6 +36720,11 @@ MonoBehaviour:
   _guardTransform:
   - {fileID: 0}
   - {fileID: 0}
+  _trader: {fileID: 0}
+  _armory: {fileID: 0}
+  _mainQuest: {fileID: 0}
+  _questGiver: {fileID: 0}
+  interactables: []
 --- !u!114 &1956797795
 MonoBehaviour:
   m_ObjectHideFlags: 0
