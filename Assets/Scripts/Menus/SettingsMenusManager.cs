@@ -98,11 +98,11 @@ public class SettingsMenusManager : MonoBehaviour
         _menuManager.gameObject.SetActive(true);
     }
 
-    public void GetSelectedButton()
+    public void GetSelectedButton(string buttonToFind)
     {
         _menuButtonTracker = MenuButtonTracker.instance;
 
-        _menuButtonTracker.SetLastGameObjectSelected(GameObject.Find("SettingsBackButton"));
+        _menuButtonTracker.SetLastGameObjectSelected(GameObject.Find(buttonToFind));
     }
 
     public void DeactivateSettingsMenus()

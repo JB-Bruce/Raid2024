@@ -21621,6 +21621,10 @@ MonoBehaviour:
   _questActionTitleInGame: {fileID: 1276573388}
   _objectivesInGame: {fileID: 1054313324}
   _currentMainQuest: 0
+  _utopistFisrtMainQuest: {fileID: 0}
+  _survivalistFisrtMainQuest: {fileID: 0}
+  _scientistFisrtMainQuest: {fileID: 0}
+  _militaryFisrtMainQuest: {fileID: 0}
   eventSystem: {fileID: 193916642}
   _quests:
   - _name: 
@@ -30688,7 +30692,7 @@ Transform:
   m_GameObject: {fileID: 1619108222}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -126.50031, y: 138.80508, z: -0.6752381}
+  m_LocalPosition: {x: -126.5003, y: 138.8051, z: -0.6752381}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -33309,7 +33313,19 @@ MonoBehaviour:
     m_ActionId: 7979fc61-6262-4473-8b9e-286de2d6133e
     m_ActionName: Quest/Close Quest[/XInputControllerWindows/dpad/left,/Keyboard/j,/Keyboard/escape]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1967127390}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: CloseSettingsInGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 169b8622-ca42-4b4b-8bb2-fef0f7de3ecb
     m_ActionName: Settings/EscapeSettings[/Keyboard/escape,/XInputControllerWindows/buttonWest]
   - m_PersistentCalls:
@@ -33388,6 +33404,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e5aa814c-36cf-46ef-988e-536fa4d038ea
     m_ActionName: EndGameMenu/Move[/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2401e60-f7d8-4c54-aa7c-89e508f30ed5
+    m_ActionName: FirstQuest/Pause[/Keyboard/escape,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2d37a36-22f3-4126-bafe-fe625191ea26
+    m_ActionName: FirstQuest/Interract[/Keyboard/e,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: CharacterCustomization
@@ -36802,6 +36826,7 @@ MonoBehaviour:
     percentage: 1
   - weapon: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
     percentage: 9
+  WeaponSpawnPerLevel: []
   formation:
     position:
     - {x: 0, y: -5}
@@ -36878,6 +36903,9 @@ MonoBehaviour:
   changeReputationForAllies: 0.1
   vertices: []
   IsPoiCaught:
+    m_PersistentCalls:
+      m_Calls: []
+  RelationWithPlayerChange:
     m_PersistentCalls:
       m_Calls: []
   _factionsPlacement: []
@@ -37156,7 +37184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb675e3a82843fd4a9de0ecbc485a515, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerInput: {fileID: 0}
+  _playerInput: {fileID: 1732528763}
 --- !u!114 &1967127391
 MonoBehaviour:
   m_ObjectHideFlags: 0

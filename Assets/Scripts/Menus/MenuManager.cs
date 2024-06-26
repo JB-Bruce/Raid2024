@@ -37,11 +37,11 @@ public class MenuManager : MonoBehaviour
         }
     }
 
-    public void GetSelectedSettingsButton()
+    public void GetSelectedSettingsButton(string buttonToFind)
     {
         _menuButtonTracker = MenuButtonTracker.instance;
 
-        _menuButtonTracker.SetLastGameObjectSelected(GameObject.Find("SettingsButton"));
+        _menuButtonTracker.SetLastGameObjectSelected(GameObject.Find(buttonToFind));
     }
 
     public void ChangeScene(string _sceneName)
@@ -55,7 +55,6 @@ public class MenuManager : MonoBehaviour
     {
         _playerInput.SwitchCurrentActionMap("InGame");
         this.gameObject.SetActive(false);
-        _settingsMenus.DeactivateSettingsMenus();
     }
 
     public void ReturnToMainMenu()

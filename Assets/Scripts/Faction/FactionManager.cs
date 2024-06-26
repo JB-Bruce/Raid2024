@@ -99,10 +99,6 @@ public class FactionManager : MonoBehaviour
         {
             return;
         }
-        if(faction1 == Faction.Player || faction2 == Faction.Player)
-        {
-            print("Big Problem");
-        }
 
         for(int i = 0;i < reputations.Count;i++)
         {
