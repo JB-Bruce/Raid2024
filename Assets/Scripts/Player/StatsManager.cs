@@ -45,8 +45,6 @@ public class StatsManager : Humanoid
     private bool _verifSprint;
     private bool _recupStamina;
 
-    public bool isDead = false;
-
     public UnityEvent haveChangeSpawn = new UnityEvent();
     
 
