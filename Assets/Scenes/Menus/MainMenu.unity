@@ -9168,6 +9168,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 825389093}
@@ -9176,7 +9180,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3295947647546064277}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
+      value: 
+      objectReference: {fileID: 3295947647546064277}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
@@ -9196,6 +9208,10 @@ PrefabInstance:
       value: DeactivateSettingsMenus
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
+      value: DeactivateSettingsMenus
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: SFXLinker, Assembly-CSharp
       objectReference: {fileID: 0}
@@ -9204,12 +9220,20 @@ PrefabInstance:
       value: SettingsMenusManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
+      value: SettingsMenusManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: ButtonClick
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
-      value: SettingsButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_StringArgument
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -9217,6 +9241,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8557998772078969999, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}

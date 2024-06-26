@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingsMenusManager : MonoBehaviour
@@ -27,7 +28,7 @@ public class SettingsMenusManager : MonoBehaviour
 
     [SerializeField] string _actionMapString;
 
-    MenuManager _menuManager;
+    [SerializeField] MenuManager _menuManager;
     MenuButtonTracker _menuButtonTracker;
 
     public static SettingsMenusManager instance;
@@ -67,10 +68,28 @@ public class SettingsMenusManager : MonoBehaviour
         }
     }
 
+    public static GameObject FindInactiveObjectByName(string name)
+    {
+        Transform[] allTransforms = Resources.FindObjectsOfTypeAll<Transform>();
+        foreach (Transform t in allTransforms)
+        {
+            if (t.hideFlags == HideFlags.None && t.name == name)
+            {
+                return t.gameObject;
+            }
+        }
+        return null;
+    }
+
     public void OpenSettings()
     {
         _playerInput = FindAnyObjectByType<PlayerInput>();
         _playerInput.SwitchCurrentActionMap("Settings");
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            GameObject inactiveObject = FindInactiveObjectByName("MainMenuCanvas");
+            _menuManager = inactiveObject.GetComponent<MenuManager>();
+        }
         isInSettings = true;
         settingsMenus.SetActive(true);
     }
@@ -93,14 +112,21 @@ public class SettingsMenusManager : MonoBehaviour
 
     public void ActivateMainMenu()
     {
-        _menuManager = MenuManager.instance;
-
         _menuManager.gameObject.SetActive(true);
     }
 
     public void GetSelectedButton(string buttonToFind)
     {
         _menuButtonTracker = MenuButtonTracker.instance;
+
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            buttonToFind = "SettingsButton";
+        }
+        else
+        {
+            buttonToFind = "ReturnToGameButton";
+        }
 
         _menuButtonTracker.SetLastGameObjectSelected(GameObject.Find(buttonToFind));
     }
