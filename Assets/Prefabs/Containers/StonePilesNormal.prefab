@@ -95,7 +95,7 @@ MonoBehaviour:
   despawnTimer: 0
   despawnable: 0
   maxRefillTimer: 300
-  openSFX: 
+  openSFX: StonePileOpen
   _itemsToGiveAtStart: []
   _itemToOpen: []
 --- !u!1 &2394451791471959020

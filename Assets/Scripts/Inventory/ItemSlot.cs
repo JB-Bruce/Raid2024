@@ -138,13 +138,13 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 _tierText.text = equipable.EquipementTier.ToString();
                 switch (equipable.EquipementTier)
                 {
-                    case RomanNumeral.I:
+                    case 1:
                         _tierText.color = Color.green;
                         break;
-                    case RomanNumeral.II:
+                    case 2:
                         _tierText.color = Color.cyan;
                         break;
-                    case RomanNumeral.III:
+                    case 3:
                         _tierText.color = Color.magenta;
                         break;
                     default:

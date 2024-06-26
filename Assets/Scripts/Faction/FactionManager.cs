@@ -22,6 +22,7 @@ public class FactionManager : MonoBehaviour
     private StatsManager _statManager;
 
     public UnityEvent<POI, Faction> IsPoiCaught = new();
+    public UnityEvent<Faction, float> RelationWithPlayerChange = new();
 
     [SerializeField] private List<FactionPlacement> _factionsPlacement = new List<FactionPlacement>();
 
@@ -105,6 +106,13 @@ public class FactionManager : MonoBehaviour
                 (reputations[i].faction1 == faction2 || reputations[i].faction2 == faction2) && 
                 faction1 != faction2) 
             {
+                if(i < 4) 
+                {
+                    Faction changeRelation = faction1 == Faction.Player ? faction2 : faction1;
+
+                    RelationWithPlayerChange.Invoke(changeRelation, newReputation);
+                }
+
                 Reputation reputation = reputations[i];
                 reputation.reputation += newReputation;
                 reputation.reputation = Mathf.Clamp(reputation.reputation, -5, 8);
@@ -115,6 +123,7 @@ public class FactionManager : MonoBehaviour
             }
         }
     }
+
 
     // Check if the Player is not ennemy with the faction where he set is respawn
     private void CanAlwaysRespawnInFaction(Faction faction1, Faction faction2, float reputation)

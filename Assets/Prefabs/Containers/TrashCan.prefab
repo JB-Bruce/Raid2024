@@ -349,8 +349,8 @@ MonoBehaviour:
   name: 
   itemSlots: []
   containerSelectedSprite: {fileID: 3050903927729174517}
-  rerollNumbers: 9
-  lootTable: {fileID: 11400000, guid: a6a51366ef7348744af116f296aaa6f3, type: 2}
+  rerollNumbers: 6
+  lootTable: {fileID: 11400000, guid: b0321b54066d77a4a818e3ef860382c6, type: 2}
   _items: []
   containerRows: 3
   containerColumn: 3
@@ -358,6 +358,6 @@ MonoBehaviour:
   despawnTimer: 0
   despawnable: 0
   maxRefillTimer: 300
-  openSFX: CrateOpen
+  openSFX: TrashCanOpen
   _itemsToGiveAtStart: []
   _itemToOpen: []
