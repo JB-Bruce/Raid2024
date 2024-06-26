@@ -222,7 +222,7 @@ public class QuestManager : MonoBehaviour
                     case "ConstructionSpawnBandit":
                         for (int j = 0; j < _banditsAtConstructionArea; j++)
                         {
-                            _factionUnitManager.SpawnWaveUnit(_constructionSpot.transform.position + new Vector3(0, 2, 0), _constructionSpot.transform.position, 5, "clearConstructionArea");
+                            _factionUnitManager.SpawnWaveUnit(_constructionSpot.transform.position + new Vector3(0, 2, 0), _constructionSpot.transform.position, 5, false, "clearConstructionArea");
                         }
                         break;
                     case "DefendBase":
