@@ -68,6 +68,27 @@ public class FactionManager : MonoBehaviour
         {
             IsPoiCaught.AddListener(factions[i].HaveCaughtPOI);
         }
+
+        string startFaction = PlayerPrefs.GetString("CharacterFaction", "");
+        switch (startFaction)
+        {
+            case "Military":
+                AddReputation(Faction.Player, Faction.Military, 5);
+                break;
+            case "Utopist":
+                AddReputation(Faction.Player, Faction.Utopist, 5);
+                break;
+            case "Survivalist":
+                AddReputation(Faction.Player, Faction.Survivalist, 5);
+                break;
+            case "Scientist":
+                AddReputation(Faction.Player, Faction.Scientist, 5);
+                break;
+            default:
+                break;
+
+        }
+
         SetReputationText();
     }
 
