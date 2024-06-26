@@ -4713,11 +4713,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Water treatment plant
 --- !u!114 &123411643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5669,7 +5669,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4907262089020707382, guid: 583d57f2856650e49956d64b4b6140aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1261867535}
   m_SourcePrefab: {fileID: 100100000, guid: 583d57f2856650e49956d64b4b6140aa, type: 3}
 --- !u!1001 &137210030
 PrefabInstance:
@@ -19323,11 +19326,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: 332011d23645c364ca40f7305c836c82, type: 3}
+  color: {r: 0.17515779, g: 1, b: 0, a: 1}
+  size: 1.75
   canMove: 0
-  overName: 
+  overName: Military camp
 --- !u!114 &433980674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35021,11 +35024,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Supermarket
 --- !u!114 &763352074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35391,11 +35394,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Hospital
 --- !u!114 &769855576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37345,11 +37348,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Gas station
 --- !u!114 &799822897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54073,6 +54076,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6813149384980283446, guid: 8f292966053f4f14d93e1246f421e436, type: 3}
   m_PrefabInstance: {fileID: 1184474178}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1186371314 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4907262089020707382, guid: 583d57f2856650e49956d64b4b6140aa, type: 3}
+  m_PrefabInstance: {fileID: 137102055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1186385064
 GameObject:
   m_ObjectHideFlags: 0
@@ -57092,11 +57100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Bunker
 --- !u!114 &1235562673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58931,6 +58939,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2864923250589469673, guid: 583d57f2856650e49956d64b4b6140aa, type: 3}
   m_PrefabInstance: {fileID: 137102055}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1261867535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186371314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: -763562658, guid: c2a51551c90926441b3adff0ff0634af, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
+  canMove: 0
+  overName: Rachel
 --- !u!1001 &1264439431
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62134,11 +62159,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Steelmill
 --- !u!114 &1315603580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70893,11 +70918,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Helicopter
 --- !u!114 &1516499077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80916,11 +80941,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: 332011d23645c364ca40f7305c836c82, type: 3}
+  color: {r: 0.97333336, g: 0, b: 1, a: 1}
+  size: 1.75
   canMove: 0
-  overName: 
+  overName: Utopist camp
 --- !u!114 &1741281905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86051,11 +86076,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: 332011d23645c364ca40f7305c836c82, type: 3}
+  color: {r: 1, g: 0.7092272, b: 0.41037738, a: 1}
+  size: 1.75
   canMove: 0
-  overName: 
+  overName: Survivalist camp
 --- !u!114 &1840590492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87235,6 +87260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866176282}
   - component: {fileID: 1866176283}
+  - component: {fileID: 1866176284}
   m_Layer: 0
   m_Name: BanditCampVisualiser
   m_TagString: Untagged
@@ -87309,6 +87335,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1866176284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866176281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sp: {fileID: -1964391745, guid: 102fa7571cfe0a54f9435180b23c8053, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 2
+  canMove: 0
+  overName: Bandit camp
 --- !u!1001 &1867880757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97125,11 +97168,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: 332011d23645c364ca40f7305c836c82, type: 3}
+  color: {r: 0, g: 0.9505663, b: 1, a: 1}
+  size: 1.75
   canMove: 0
-  overName: 
+  overName: Scientist camp
 --- !u!114 &2035542046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99039,11 +99082,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 21300000, guid: f0f2bf5e952153a42ba86427ddbe59fb, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1
   canMove: 0
-  overName: 
+  overName: POI Sawmill
 --- !u!114 &2071499897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104462,11 +104505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 1477673848, guid: 6bf2ae8869dda1f4c8ed6c14b15e84da, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1.25
   canMove: 0
-  overName: 
+  overName: Jean-Baptiste
 --- !u!58 &1934705518577492554
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -105930,6 +105973,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5662532431031785170}
     - target: {fileID: 6542746002765554786, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: sp
+      value: 
+      objectReference: {fileID: 1220744378, guid: 47bcf5978c44f5542bf676e0cfb2fe33, type: 3}
+    - target: {fileID: 6542746002765554786, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542746002765554786, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542746002765554786, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6542746002765554786, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: overName
       value: You
       objectReference: {fileID: 0}
@@ -106957,11 +107016,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32a41eed47b347649be0ebc25b65ea3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sp: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
-  size: 0
+  sp: {fileID: 1477673848, guid: 6bf2ae8869dda1f4c8ed6c14b15e84da, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 1}
+  size: 1.5
   canMove: 0
-  overName: 
+  overName: Bruce
 --- !u!224 &6963813631263838562
 RectTransform:
   m_ObjectHideFlags: 0
