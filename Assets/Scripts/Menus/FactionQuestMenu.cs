@@ -6,15 +6,19 @@ public class FactionQuestMenu : MonoBehaviour
 {
     [SerializeField] private Image _logo;
     [SerializeField] private TextMeshProUGUI _title;
-    [SerializeField] private PnjFactionQuestGiver _questGiver;
+    private PnjFactionQuestGiver _questGiver;
     [SerializeField] private Sprite[] _logoSprites = new Sprite[4];
     [SerializeField] private GameObject _quest;
     [SerializeField] private GameObject _acceptQuest;
+    [SerializeField] private float _removeReputation;
     private FactionQuestManager _factionQuestManager;
+
+    private FactionManager _factionManager;
 
     private void Start()
     {
         _factionQuestManager = FactionQuestManager.instance;
+        _factionManager = FactionManager.Instance;
     }
 
     // Set All the information in the menu
@@ -23,8 +27,8 @@ public class FactionQuestMenu : MonoBehaviour
         _title.text = '"' + _questGiver.GetName + '"';
         _logo.sprite = GetLogo(_questGiver.GetFaction);
 
-        Quest acceptedQuest;
-        if ((acceptedQuest = _factionQuestManager.GetQuestByFaction(_questGiver.GetFaction)) != null)
+        Quest acceptedQuest = _factionQuestManager.GetQuestByFaction(_questGiver.GetFaction);
+        if (acceptedQuest != null)
         {
             _quest.SetActive(false);
             _acceptQuest.SetActive(true);
@@ -51,7 +55,7 @@ public class FactionQuestMenu : MonoBehaviour
     public void Open()
     {
         gameObject.SetActive(true);
-        SetMenu();
+        //SetMenu();
         Time.timeScale = 0;
     }
 
@@ -73,6 +77,7 @@ public class FactionQuestMenu : MonoBehaviour
     public void CancelQuest()
     {
         _factionQuestManager.GiveUpQuest(_questGiver.GetFaction);
+        _factionManager.AddReputation(Faction.Player, _questGiver.GetFaction, -_removeReputation);
         SetMenu();
     }
 

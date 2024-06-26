@@ -5,6 +5,9 @@ public class PnjFactionQuestGiver : Pnj
     [SerializeField]
     private Faction _factionName;
 
+    [SerializeField] 
+    private FactionQuestMenu _factionQuestMenu;
+
     [SerializeField]
     private static int _giverQuestQuantity;
 
@@ -46,7 +49,17 @@ public class PnjFactionQuestGiver : Pnj
         FactionQuestManager.instance.SelectFactionQuest(_factionQuest[indexQuestInList], _factionName);
         DefineQuest(indexQuestInList);
     }
-    
+
+    private void OpenQuestGiverPanel()
+    {
+        _factionQuestMenu.Open();
+    }
+
+    protected override void Interact()
+    {
+        OpenQuestGiverPanel();
+    }
+
     public Faction GetFaction => _factionName;
     public int[] FactionQuest => _factionQuest;
 }

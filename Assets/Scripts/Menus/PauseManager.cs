@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -59,7 +60,15 @@ public class PauseManager : MonoBehaviour
 
     public void UnpauseGame() //Unpauses the game
     {
-        _playerInput.SwitchCurrentActionMap("InGame");
+        List<int> questIndexs = QuestManager.instance.GetCurrentMainQuestActionIndex();
+        if (questIndexs[0] == 0 && questIndexs[1] == 0)
+        {
+            _playerInput.SwitchCurrentActionMap("FirstQuest");
+        }
+        else
+        {
+            _playerInput.SwitchCurrentActionMap("InGame");
+        }
         _soundManager.PlaySFX("ButtonClick", _soundManager._sfxPlayer);
         _pauseMenu.SetActive(false);
         _pauseMenuBackgroundImage.enabled = false;
