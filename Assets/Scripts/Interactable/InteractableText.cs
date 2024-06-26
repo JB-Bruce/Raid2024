@@ -23,7 +23,7 @@ public class InteractableText : MonoBehaviour
 
     public void ShowText(Interactable interactable)
     {
-        string name = "";
+        string name = "Interragir";
         string error = "";
         if (interactable is Pnj pnj)
         {
@@ -48,10 +48,6 @@ public class InteractableText : MonoBehaviour
         else if (interactable is Tank tank)
         {
             name = "Cuve";
-        }
-        else
-        {
-            return;
         }
         UpdateInteractableName(name);
         UpdateErrorMessage(error);
