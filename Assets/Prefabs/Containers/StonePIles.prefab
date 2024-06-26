@@ -95,7 +95,7 @@ MonoBehaviour:
   despawnTimer: 0
   despawnable: 0
   maxRefillTimer: 300
-  openSFX: 
+  openSFX: StonePileOpen
   _itemsToGiveAtStart:
   - item: {fileID: 11400000, guid: 0c3d5b25b28b7f448976e7a015d7079a, type: 2}
     amount: 3

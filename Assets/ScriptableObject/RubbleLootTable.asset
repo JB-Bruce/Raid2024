@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _loots:
   - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
-    dropRate: 30
+    dropRate: 20
     dropNumber:
     - amount: 1
       pourcentage: 50
@@ -42,9 +42,30 @@ MonoBehaviour:
     - amount: 2
       pourcentage: 10
   - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
-    dropRate: 30
+    dropRate: 20
     dropNumber:
     - amount: 1
       pourcentage: 90
     - amount: 3
+      pourcentage: 10
+  - item: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    dropRate: 5
+    dropNumber:
+    - amount: 1
+      pourcentage: 90
+    - amount: 2
+      pourcentage: 10
+  - item: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    dropRate: 5
+    dropNumber:
+    - amount: 1
+      pourcentage: 90
+    - amount: 2
+      pourcentage: 10
+  - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+    dropRate: 10
+    dropNumber:
+    - amount: 1
+      pourcentage: 90
+    - amount: 2
       pourcentage: 10

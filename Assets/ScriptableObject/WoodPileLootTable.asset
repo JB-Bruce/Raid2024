@@ -10,24 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b517c84d775fcb2458621eb343efe5fe, type: 3}
-  m_Name: StonePilesLootTableNormal
+  m_Name: WoodPileLootTable
   m_EditorClassIdentifier: 
   _loots:
-  - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
-    dropRate: 95
+  - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+    dropRate: 100
     dropNumber:
     - amount: 1
       pourcentage: 50
-    - amount: 3
-      pourcentage: 30
-    - amount: 5
-      pourcentage: 20
-  - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
-    dropRate: 5
-    dropNumber:
-    - amount: 1
-      pourcentage: 80
     - amount: 2
-      pourcentage: 15
+      pourcentage: 30
     - amount: 4
+      pourcentage: 15
+    - amount: 6
       pourcentage: 5
