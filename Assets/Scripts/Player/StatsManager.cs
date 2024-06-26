@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StatsManager : Humanoid
@@ -321,12 +322,15 @@ public class StatsManager : Humanoid
         base.Start();
         _movePlayer = MovePlayer.instance;
         _factionManager = FactionManager.Instance;
-        RemoveFood();
-        RemoveWater();
-        _respawnFaction = CastStringToERespawnFaction(PlayerPrefs.GetString("ChooseFaction"));
-        ChangeRespawnPoint();
-        RespawnPlayer();
-        _playerInput.SwitchCurrentActionMap("FirstQuest");
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            RemoveFood();
+            RemoveWater();
+            _respawnFaction = CastStringToERespawnFaction(PlayerPrefs.GetString("ChooseFaction"));
+            ChangeRespawnPoint();
+            RespawnPlayer();
+            _playerInput.SwitchCurrentActionMap("FirstQuest");
+        }
     }
 
     //Set _recupStamina to true, when 
