@@ -33,6 +33,18 @@ public class MovePlayer : MonoBehaviour
 
     [SerializeField] private UnitSoundPlayer _unitSoundPlayer;
 
+    [SerializeField]
+    private GameObject _body;
+
+    [SerializeField]
+    private GameObject _hip;
+
+    [SerializeField]
+    private Sprite _WomanBody;
+
+    [SerializeField]
+    private Sprite _WomanHip;
+
     private SoundManager _soundManager;
 
     public static MovePlayer instance;
@@ -76,6 +88,12 @@ public class MovePlayer : MonoBehaviour
     private static readonly Quaternion _flipRotation = new Quaternion(0, 180, 0, 0);
     private void Start()
     {
+        if (PlayerPrefs.GetString("Gender") == "Woman")
+        {
+            _hip.GetComponent<SpriteRenderer>().sprite = _WomanHip;
+            _body.GetComponent<SpriteRenderer>().sprite = _WomanBody;
+        }
+
         _soundManager = SoundManager.instance;
 
         _unitSoundPlayer = GetComponent<UnitSoundPlayer>();
