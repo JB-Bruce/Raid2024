@@ -11,6 +11,13 @@ public class FactionSc : MonoBehaviour
     private List<POI> _caughtPOI = new();
     [SerializeField] Transform[] _guardTransform = new Transform[2];
 
+    [Header("PNJ")]
+    public PnjFactionTrader _trader;
+    public PnjFactionTrader _armory;
+    public Pnj _mainQuest;
+    public PnjFactionQuestGiver _questGiver;
+    public List<Interactable> interactables = new();
+
     private void Awake()
     {
         _factionLeader = GetComponent<FactionLeader>();

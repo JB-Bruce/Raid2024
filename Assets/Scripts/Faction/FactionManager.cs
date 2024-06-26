@@ -399,6 +399,12 @@ public class FactionManager : MonoBehaviour
             }
             int index = GetFactionMenuIndex(factions[i].FactionUnitManager.faction);
             _factionsPlacement[_randomIndex].buildingTriggers.SetPNJ(_factionsMenus[index]);
+
+            for (int j =0; j < _factionsPlacement[_randomIndex]._triggers.Count; j++)
+            {
+                _factionsPlacement[_randomIndex]._triggers[j].SetPNJ(factions[i].interactables[j]);
+            }
+
             _factionsMenus[index].SetHighlight(_factionsPlacement[_randomIndex].highlight);
             _factionsPlacement.RemoveAt(_randomIndex);
         }
@@ -452,5 +458,6 @@ public struct FactionPlacement
     public Transform guardPoint2;
     public List<FactionBuilding> buildings;
     public BuildingsTriggers buildingTriggers;
+    public List<BuildingsTriggers> _triggers;
     public GameObject highlight;
 }

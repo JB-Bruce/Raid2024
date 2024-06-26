@@ -1721,6 +1721,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "FactionMenu",
+            "id": "9a3d34f6-3fd3-41b3-a9dd-832c5b87e60a",
+            "actions": [
+                {
+                    "name": "Escape",
+                    "type": "Button",
+                    "id": "3df4a6d4-a592-4d7a-be8c-fd222a5d53eb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7387ec45-2541-4dbf-8c35-16eba4389c96",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0454ddc-cc92-4be2-8463-5d37d0a2f0ec",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Escape",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [
