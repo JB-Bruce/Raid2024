@@ -101,66 +101,28 @@ public class StatsManager : Humanoid
     //Fade in/out for death screen
     public void Death()
     {
-        if(_respawnFaction == ERespawnFaction.Survivalist)
+
+        if(_respawnFaction != ERespawnFaction.Null)
         {
-            if(_factionManager.GetReputation(Faction.Player, Faction.Survivalist) < -1)
-            {
-                RespawnButtonFaction.SetActive(false);
-            }
-            else
-            {
-                RespawnButtonFaction.SetActive(true);
-            }
+            RespawnButtonFaction.SetActive(true);
+        }
+        else
+        {
+            RespawnButtonFaction.SetActive(false);
         }
 
-        if(_respawnFaction == ERespawnFaction.Utopist)
+        foreach (GameObject panel in _panelToDeactivateOnDeath)
         {
-            if(_factionManager.GetReputation(Faction.Player, Faction.Utopist) < -1)
-            {
-                RespawnButtonFaction.SetActive(false);
-            }
-            else
-            {
-                RespawnButtonFaction.SetActive(true);
-            }
+            panel.SetActive(false);
         }
-
-        if(_respawnFaction == ERespawnFaction.Scientist)
+        if (Inventory.Instance.isInventoryOpen)
         {
-            if(_factionManager.GetReputation(Faction.Player, Faction.Scientist) < -1)
-            {
-                RespawnButtonFaction.SetActive(false);
-            }
-            else
-            {
-                RespawnButtonFaction.SetActive(true);
-            }
+            Inventory.Instance.OpenFullInventory();
         }
-
-        if(_respawnFaction == ERespawnFaction.Military)
+        if (Inventory.Instance.isHalfInvenoryOpen)
         {
-            if(_factionManager.GetReputation(Faction.Player, Faction.Military) < -1)
-            {
-                RespawnButtonFaction.SetActive(false);
-            }
-            else
-            {
-                RespawnButtonFaction.SetActive(true);
-            }
+            Inventory.Instance.OpenInventory(false);
         }
-
-            foreach (GameObject panel in _panelToDeactivateOnDeath)
-            {
-                panel.SetActive(false);
-            }
-            if (Inventory.Instance.isInventoryOpen)
-            {
-                Inventory.Instance.OpenFullInventory();
-            }
-            if (Inventory.Instance.isHalfInvenoryOpen)
-            {
-                Inventory.Instance.OpenInventory(false);
-            }
 
         Time.timeScale = 0.0f;
         DeathFade.CrossFadeAlpha(0,0.01f,true);
