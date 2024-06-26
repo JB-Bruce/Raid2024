@@ -17,5 +17,5 @@ MonoBehaviour:
   _maxStack: 1
   _name: Qitems_FerriteCore
   _description: Dqitems_FerriteCore
-  _itemSprite: {fileID: 21300000, guid: d8eea0366acf85741a032f8082de8950, type: 3}
+  _itemSprite: {fileID: 21300000, guid: b69263842e6082742bde89ee779fbe41, type: 3}
   _canDrop: 1

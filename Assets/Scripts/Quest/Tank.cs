@@ -7,7 +7,7 @@ public class Tank : Interactable
     private Item _itemToFill;
 
     [SerializeField]
-    private GameObject _tankFull;
+    private GameObject _selectedSprite;
 
     [SerializeField]
     private float _quantityFull;
@@ -87,5 +87,10 @@ public class Tank : Interactable
             FillTheTank();
             yield return new WaitForSeconds(_fillingFrequency);
         }
+    }
+
+    public override void Highlight(bool state)
+    {
+        _selectedSprite.SetActive(state);
     }
 }
