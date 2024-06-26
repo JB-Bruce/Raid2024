@@ -190,6 +190,11 @@ public class QuestManager : MonoBehaviour
             if(_currentMainQuest+1 < _quests.Count)
             {
                 _currentMainQuest += 1;
+                if (QuestAchievedPanelManager.Instance)
+                {
+                    QuestAchievedPanelManager.Instance.PlayQuestAchievedAnimation();
+                    SoundManager.instance.PlaySFX("QuestAchieved", SoundManager.instance._sfxPlayer);
+                }
             }
             else
             {
