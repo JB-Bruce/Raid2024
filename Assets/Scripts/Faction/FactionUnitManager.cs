@@ -123,7 +123,7 @@ public class FactionUnitManager : MonoBehaviour
             randomDirection = Random.insideUnitCircle;
             randomDistance = Random.Range(0, radius);
             newPosition = position + (randomDirection * randomDistance);
-        } while (CantSpawnHere(newPosition));
+        } while (CantSpawnHere(newPosition, false));
 
         return position + (randomDirection * randomDistance);
     }
@@ -261,19 +261,27 @@ public class FactionUnitManager : MonoBehaviour
     }
 
     // can the unit spawn here
-    private bool CantSpawnHere(Vector3 position)
+    private bool CantSpawnHere(Vector3 position, bool checkRestriction = true)
     {
         Collider2D _hit = Physics2D.OverlapCircle(position, 0.1f);
 
-        for (int i = 0; i < _gameManager.restrictedAreas.Count; i++)
+        if(checkRestriction) 
         {
-            if ((Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius
-                || Vector3.Distance(_player.position, position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1) 
-                || !_factionManager.IsPointInRhombus(position) || _hit != null)
+            for (int i = 0; i < _gameManager.restrictedAreas.Count; i++)
             {
-                return true;
+                if (Vector3.Distance(_gameManager.restrictedAreas[i].areaOrigine.position, position) <= GameManager.Instance.restrictedAreas[i].areaRadius)
+                {
+                    return true;
+                }
             }
         }
+
+        if ((Vector3.Distance(_player.position, position) <= SpawnDistanceAroundPlayer) || !NavMesh.SamplePosition(position, out NavMeshHit hit, 0.1f, 1)
+            || !_factionManager.IsPointInRhombus(position) || _hit != null)
+        {
+            return true;
+        }
+
         return false;
     }
 
