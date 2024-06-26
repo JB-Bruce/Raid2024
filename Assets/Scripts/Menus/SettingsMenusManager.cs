@@ -112,7 +112,14 @@ public class SettingsMenusManager : MonoBehaviour
 
     public void ActivateMainMenu()
     {
-        _menuManager.gameObject.SetActive(true);
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            _menuManager.gameObject.SetActive(true);
+        }
+        else
+        {
+            return;
+        }
     }
 
     public void GetSelectedButton(string buttonToFind)
