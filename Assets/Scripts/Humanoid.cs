@@ -32,6 +32,8 @@ public class Humanoid : MonoBehaviour
     [SerializeField]
     private string _questType;
 
+    private bool _canTakeDamageByPlayer = true;
+
     protected FactionManager _factionManager;
 
     protected virtual void Start()
@@ -64,7 +66,11 @@ public class Humanoid : MonoBehaviour
     // remove life to him self and return true if he is dead
     public bool TakeDamage(float damage, Faction _faction, Vector2 fwd)
     {
-        
+        if (!_canTakeDamageByPlayer)
+        {
+            return false;
+        }
+
         life -= damage;
 
         if (faction != Faction.Player && MoveFeet)
@@ -174,5 +180,10 @@ public class Humanoid : MonoBehaviour
     public void SetQuestType(string questType)
     {
         _questType = questType;
+    }
+
+    public void SetCanTakeDamageByPlayer(bool canTakeDamageByPlayer)
+    {
+        _canTakeDamageByPlayer = canTakeDamageByPlayer;
     }
 }
