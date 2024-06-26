@@ -19,3 +19,4 @@ MonoBehaviour:
   _description: "\xC0 utiliser avec parcimonie, sauf si vous aimez voir les choses
     exploser."
   _itemSprite: {fileID: 21300000, guid: db55f7f0c7a161f49a2f89e1b20930c2, type: 3}
+  _canDrop: 0
