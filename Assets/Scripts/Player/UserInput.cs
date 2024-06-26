@@ -48,7 +48,15 @@ public class UserInput : MonoBehaviour
         }
 
         _playerInput = GetComponent<PlayerInput>();
-        StartCoroutine(CanPlay());
+        if (SceneManager.GetActiveScene().name != "Tutorial")
+        {
+            StartCoroutine(CanPlay());
+        }
+        else
+        {
+            SetupInputActions();
+            _canPlay = true;
+        }
 
     }
 

@@ -43,7 +43,9 @@ public class StatsManager : Humanoid
     public bool _isSprinting;
     private bool _verifSprint;
     private bool _recupStamina;
-    
+
+    public bool isDead = false;
+
     public UnityEvent haveChangeSpawn = new UnityEvent();
     
 
@@ -92,7 +94,7 @@ public class StatsManager : Humanoid
             healthImage.color = Color.red;
         }
 
-        if (life <= 0)
+        if (life <= 0 && !isDead)
         {
             Death();                
         }
@@ -149,20 +151,21 @@ public class StatsManager : Humanoid
             }
         }
 
-            foreach (GameObject panel in _panelToDeactivateOnDeath)
-            {
-                panel.SetActive(false);
-            }
-            if (Inventory.Instance.isInventoryOpen)
-            {
-                Inventory.Instance.OpenFullInventory();
-            }
-            if (Inventory.Instance.isHalfInvenoryOpen)
-            {
-                Inventory.Instance.OpenInventory(false);
-            }
+        foreach (GameObject panel in _panelToDeactivateOnDeath)
+        {
+            panel.SetActive(false);
+        }
+        if (Inventory.Instance.isInventoryOpen)
+        {
+            Inventory.Instance.OpenFullInventory();
+        }
+        if (Inventory.Instance.isHalfInvenoryOpen)
+        {
+            Inventory.Instance.OpenInventory(false);
+        }
 
-        Time.timeScale = 0.0f;
+        isDead = true;
+
         DeathFade.CrossFadeAlpha(0,0.01f,true);
         DeathFade.enabled = true;
         DeathFade.CrossFadeAlpha(1,1f,true);
@@ -255,7 +258,6 @@ public class StatsManager : Humanoid
         stamina = 50;
         staminaBar.fillAmount = stamina / 50f;
         ChangeRespawnPoint();
-        transform.position = _respawnPosition.position;
         MainCamera.position = transform.position + new Vector3(0,0,-10);
         ChangeLifeColor();
         
@@ -305,6 +307,7 @@ public class StatsManager : Humanoid
     IEnumerator CouroutineDeath()
     {
         yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 0.0f;
 
         DeathScreen.SetActive(true);
         DeathScreen.transform.parent.GetComponent<ControllerMenus>().SelectFirstButton();
@@ -319,14 +322,17 @@ public class StatsManager : Humanoid
     IEnumerator CouroutineRespawn()
     {
         yield return new WaitForSecondsRealtime(2f);
-        
+        Time.timeScale = 1.0f;
+
+        transform.position = _respawnPosition.position;
         DeathScreen.SetActive(false);
         
         DeathFade.CrossFadeAlpha(0,1f,true);
         
         yield return new WaitForSecondsRealtime(1f);
         DeathFade.enabled = false;
-        Time.timeScale = 1.0f;
+
+        isDead = false;
     }
 
     private void Awake()
@@ -345,7 +351,6 @@ public class StatsManager : Humanoid
         RemoveWater();
         _respawnFaction = CastStringToERespawnFaction(PlayerPrefs.GetString("ChooseFaction"));
         ChangeRespawnPoint();
-        RespawnPlayer();
     }
 
     //Set _recupStamina to true, when 
