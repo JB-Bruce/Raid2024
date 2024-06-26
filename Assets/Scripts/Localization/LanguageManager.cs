@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -95,7 +96,7 @@ public class LanguageManager : MonoBehaviour
 
         string[] lines = File.ReadAllLines(filePath);
 
-        var headers = lines[0].Split(',');
+        var headers = lines[0].Split(';');
 
         for (int k = 1; k < headers.Length; k++)
         {
@@ -104,13 +105,21 @@ public class LanguageManager : MonoBehaviour
 
         for (int i = 1; i < lines.Length; i++)
         {
-            var fields = lines[i].Split(',');
+            var fields = lines[i].Split(';');
 
             var key = fields[0];
             var translations = new Dictionary<string, string>();
 
             for (int j = 1; j < fields.Length; j++)
             {
+                if(j > fields.Length - 1)
+                {
+
+                }
+                if(j > headers.Length - 1)
+                {
+
+                }
                 translations[headers[j]] = fields[j];
             }
 

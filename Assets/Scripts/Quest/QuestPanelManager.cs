@@ -124,8 +124,8 @@ public class QuestPanelManager : MonoBehaviour
         QuestManager questManager = QuestManager.instance;
         Quest selectedQuest = questManager.GetMainQuestByIndex(_selectedQuestIndex);
         List<int> indexs = questManager.GetCurrentMainQuestActionIndex();
-        _mainQuestTitle.text = selectedQuest.GetName();
-        _mainQuestDescription.text = selectedQuest.GetDescription();
+        _mainQuestTitle.text = LanguageManager.instance.GetText(selectedQuest.GetName());
+        _mainQuestDescription.text = LanguageManager.instance.GetText(selectedQuest.GetDescription());
         _questCounter.text = _selectedQuestIndex+1 + "/" + (indexs[0]+1);
         if (_selectedQuestIndex == indexs[0] && !_mainQuestFinish)
         {
