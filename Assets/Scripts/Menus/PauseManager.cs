@@ -62,7 +62,7 @@ public class PauseManager : MonoBehaviour
     public void UnpauseGame() //Unpauses the game
     {
         List<int> questIndexs = QuestManager.instance.GetCurrentMainQuestActionIndex();
-        if (questIndexs[0] == 0 && questIndexs[1] == 0 && SceneManager.GetActiveScene().name == "Game")
+        if (questIndexs[0] == 0 && questIndexs[1] == 0 && (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "LoadScene"))
         {
             _playerInput.SwitchCurrentActionMap("FirstQuest");
         }
