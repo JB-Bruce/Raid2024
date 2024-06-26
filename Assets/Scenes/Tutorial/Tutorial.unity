@@ -9168,13 +9168,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2081438828600798683, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1220744378, guid: 47bcf5978c44f5542bf676e0cfb2fe33, type: 3}
+    - target: {fileID: 2081438828600798683, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2150639459067610979, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -652043183, guid: dffba6db92fb79e4fb4aac374058056f, type: 3}
+      objectReference: {fileID: 1269837628, guid: 38a36f6d7680b144a9838edf7932b09e, type: 3}
     - target: {fileID: 4491993540299430035, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: m_Name
       value: Player
@@ -9187,6 +9191,10 @@ PrefabInstance:
       propertyPath: m_Parameters.colorGradient.m_ColorSpace
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 5158963958314168577, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: _equipedWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e022779d57a4de4f86ef1a35f875548, type: 2}
     - target: {fileID: 5158963958314168577, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: _leftHandTransform
       value: 
@@ -9204,17 +9212,33 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: _hip
+      value: 
+      objectReference: {fileID: 472410536}
+    - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: Laser
       value: 
       objectReference: {fileID: 625494453}
+    - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: _body
+      value: 
+      objectReference: {fileID: 472410537}
     - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: _input
       value: 
       objectReference: {fileID: 1732528763}
     - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: _WomanHip
+      value: 
+      objectReference: {fileID: -192257315, guid: 3167b4fcdbf17d445b2e1ed2aba2eaa3, type: 3}
+    - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: moveSpeed
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+      propertyPath: _WomanBody
+      value: 
+      objectReference: {fileID: 2121573756, guid: d6789137e98686a4c9bc141d53cea83c, type: 3}
     - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: _inventory
       value: 
@@ -9243,6 +9267,16 @@ PrefabInstance:
       addedObject: {fileID: 1631789880}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+--- !u!1 &472410536 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1289450736268041935, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+  m_PrefabInstance: {fileID: 472410535}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &472410537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 112211041879254420, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
+  m_PrefabInstance: {fileID: 472410535}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &472500030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30682,7 +30716,7 @@ MonoBehaviour:
   - {fileID: 8754838448786865279}
   FadeInAnimator: {fileID: 318609611}
   _tutorialincrement: -1
-  _sceneToLoad: Game
+  _sceneToLoad: LoadScene
 --- !u!4 &1619108224
 Transform:
   m_ObjectHideFlags: 0
@@ -36766,6 +36800,11 @@ MonoBehaviour:
   _guardTransform:
   - {fileID: 0}
   - {fileID: 0}
+  _trader: {fileID: 0}
+  _armory: {fileID: 0}
+  _mainQuest: {fileID: 0}
+  _questGiver: {fileID: 0}
+  interactables: []
 --- !u!114 &1956797795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37821,7 +37860,6 @@ MonoBehaviour:
   _playerInput: {fileID: 1732528763}
   _gameobjectToActivate:
   - {fileID: 1747435274}
-  - {fileID: 1719170368}
   - {fileID: 321846869}
   - {fileID: 1651466212}
   - {fileID: 552440501}

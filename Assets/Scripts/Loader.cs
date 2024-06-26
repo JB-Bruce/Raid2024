@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -24,12 +22,12 @@ public class Loader : MonoBehaviour
         float timer = Time.time + _waitTime;
         float startTimer = Time.time;
         SceneManager.LoadScene(_sceneName, LoadSceneMode.Additive);
-        while (Time.time < _waitTime)
+        while (Time.time < timer)
         {
             SetSlider((Time.time - startTimer) * 100 / _waitTime);
             yield return null;
         }
-        SceneManager.UnloadSceneAsync(gameObject.scene);
+        SceneManager.UnloadScene(gameObject.scene);
     }
 
     // Set the scale of the slider

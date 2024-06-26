@@ -320,7 +320,7 @@ public class StatsManager : Humanoid
         base.Start();
         _movePlayer = MovePlayer.instance;
         _factionManager = FactionManager.Instance;
-        if (SceneManager.GetActiveScene().name == "Game")
+        if (SceneManager.GetActiveScene().name == "Game" || SceneManager.GetActiveScene().name == "LoadScene")
         {
             RemoveFood();
             RemoveWater();
