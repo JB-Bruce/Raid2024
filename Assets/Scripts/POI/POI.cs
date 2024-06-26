@@ -41,6 +41,12 @@ public class POI : MonoBehaviour
     {
         for(int i = 0; i < unitInCaptureZone.Count; i++) 
         {
+            if (unitInCaptureZone[i] == null)
+            {
+                unitInCaptureZone.RemoveAt(i);
+                i--;
+                continue;
+            }
             AddCapturePercentage(unitInCaptureZone[i].faction);
         }
     }
