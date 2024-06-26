@@ -15,9 +15,8 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
-  _name: Batte de baseball
-  _description: "Id\xE9ale pour fracasser des bandits, ou organiser un match amical
-    de \u201Cbaseball post-apo\"."
+  _name: Items_BaseballBat
+  _description: Ditems_BaseballBat
   _itemSprite: {fileID: 21300000, guid: d13ea39ea922922458e61c2b130948aa, type: 3}
   _canDrop: 1
   _equipementTier: 1

@@ -15,8 +15,8 @@ MonoBehaviour:
   _weight: 0.4
   _isStackable: 0
   _maxStack: 1
-  _name: Couteau
-  _description: "Utile pour couper les l\xE9gumes... ou les conversations ennuyeuses."
+  _name: Items_Knife
+  _description: Ditems_Knife
   _itemSprite: {fileID: 21300000, guid: 78be531d43c20744daf81b16aa330d3a, type: 3}
   _canDrop: 1
   _equipementTier: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   _moveSpeed: 5
   _semiAutomatic: 1
   animAttack: KnifeAttack
-  animIdle: 
+  animIdle: WeaponIdle
   attackSFX: KnifeSwing
   hitSFX: KnifeHit
   reloadSFX: 

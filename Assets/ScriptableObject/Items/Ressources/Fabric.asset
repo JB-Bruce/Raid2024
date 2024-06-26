@@ -15,8 +15,7 @@ MonoBehaviour:
   _weight: 0.1
   _isStackable: 1
   _maxStack: 99
-  _name: Tissu
-  _description: "Le manteau de la civilisation, maintenant r\xE9duit \xE0 un simple
-    fil dans ce monde o\xF9 la chaleur est une raret\xE9."
+  _name: Items_Tissue
+  _description: Ditems_Tissue
   _itemSprite: {fileID: 21300000, guid: 9f9ee8f3baf80d0499369f7bf9e8e5b0, type: 3}
   _canDrop: 1

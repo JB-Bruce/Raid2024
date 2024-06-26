@@ -15,6 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 1
   _maxStack: 99
-  _name: "Pi\xE8ces de moteur"
-  _description: "Assemblez-les pour r\xE9animer vos bolides."
+  _name: Qitems_EngineParts
+  _description: Dqitems_EngineParts
   _itemSprite: {fileID: 21300000, guid: a79d70c8a9e26e440b114641b14661ae, type: 3}
+  _canDrop: 1

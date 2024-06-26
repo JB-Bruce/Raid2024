@@ -15,8 +15,7 @@ MonoBehaviour:
   _weight: 0.4
   _isStackable: 1
   _maxStack: 99
-  _name: Alcool
-  _description: "D\xE9sinfectant ultime, carburant d\u2019urgence, et boisson de
-    dernier recours pour les t\xE9m\xE9raires."
+  _name: Items_Alcohol
+  _description: Ditems_Alcohol
   _itemSprite: {fileID: 21300000, guid: 18eed3d78913be7489e1175d9f4281d3, type: 3}
   _canDrop: 1

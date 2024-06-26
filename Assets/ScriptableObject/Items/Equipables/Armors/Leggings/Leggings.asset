@@ -15,9 +15,8 @@ MonoBehaviour:
   _weight: 4
   _isStackable: 0
   _maxStack: 1
-  _name: Jambiere
-  _description: "Parfaites pour courir, sauter, et donner des coups de pied \xE0
-    tout ce qui bouge."
+  _name: Items_LeatherLeg
+  _description: Ditems_LeatherLeg
   _itemSprite: {fileID: 21300000, guid: 8a2b083e55c734e4f9dfb5d36578b0ec, type: 3}
   _canDrop: 1
   _equipementTier: 1

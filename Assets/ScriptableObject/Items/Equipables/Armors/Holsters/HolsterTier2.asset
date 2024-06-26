@@ -15,9 +15,8 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
-  _name: Etui simple
-  _description: "Votre meilleur alli\xE9 pour garder votre arme \xE0 port\xE9e de
-    main."
+  _name: Items_Holster
+  _description: Ditems_Holster
   _itemSprite: {fileID: 21300000, guid: f9ebcf05f1f99ea4999f50335b03b73c, type: 3}
   _canDrop: 1
   _equipementTier: 1

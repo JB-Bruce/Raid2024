@@ -15,9 +15,8 @@ MonoBehaviour:
   _weight: 0.05
   _isStackable: 1
   _maxStack: 99
-  _name: Baie
-  _description: "Les joyaux de la nature dans un monde o\xF9 chaque bouch\xE9e est
-    une chance de survie."
+  _name: Items_Berry
+  _description: Ditems_Berry
   _itemSprite: {fileID: 21300000, guid: 7465e74cb521fc3418799a9f484c5324, type: 3}
   _canDrop: 1
   useConsSFX: EatingSound

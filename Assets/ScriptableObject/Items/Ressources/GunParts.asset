@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0.5
   _isStackable: 1
   _maxStack: 99
-  _name: Pieces d'armes
-  _description: "L'\xE9quivalent post-apocalyptique du Lego pour adultes."
+  _name: Items_GunParts
+  _description: Ditems_GunParts
   _itemSprite: {fileID: 21300000, guid: e612262f9311ef945946105916da79ab, type: 3}
   _canDrop: 1

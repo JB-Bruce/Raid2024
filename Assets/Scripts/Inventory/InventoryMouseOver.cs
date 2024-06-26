@@ -82,18 +82,18 @@ public class InventoryMouseOver : MonoBehaviour, IPointerMoveHandler
 
     private void ChangeText()
     {
-        _itemName.text = _inventory.selectedItemSlot.Item.Name;
-        _itemDescription.text = '"' + _inventory.selectedItemSlot.Item.Description + '"';
+        _itemName.text = LanguageManager.instance.GetText(_inventory.selectedItemSlot.Item.Name);
+        _itemDescription.text = '"' + LanguageManager.instance.GetText(_inventory.selectedItemSlot.Item.Description) + '"';
         _damageStat.gameObject.SetActive(false);
         _protectionStat.gameObject.SetActive(false);
         if (_inventory.selectedItemSlot.Item is Weapon weapon && weapon.Damage > 0)
         {
-            _damageStat.text = "Damage : " + weapon.Damage.ToString();
+            _damageStat.text = LanguageManager.instance.GetText("InventoryDamage") + " : " + weapon.Damage.ToString();
             _damageStat.gameObject.SetActive(true);
         }
         else if (_inventory.selectedItemSlot.Item is Armor armor && armor.Protection > 0)
         {
-            _protectionStat.text = "Protection : " + armor.Protection.ToString();
+            _protectionStat.text = LanguageManager.instance.GetText("InventoryProtection") + " : " + armor.Protection.ToString();
             _protectionStat.gameObject.SetActive(true);
         }
     }
