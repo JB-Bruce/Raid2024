@@ -237,8 +237,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Vous \xEAtes mort."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
+  m_sharedMaterial: {fileID: 1544671298164285393, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -582,8 +582,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dans la faction '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
+  m_sharedMaterial: {fileID: 1544671298164285393, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -716,8 +716,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "O\xF9 voulez-vous r\xE9appara\xEEtre?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
+  m_sharedMaterial: {fileID: 1544671298164285393, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -850,8 +850,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Chez le vieillard
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
+  m_sharedMaterial: {fileID: 1544671298164285393, guid: 8513e9c088899eb43aed5642a6ceaef2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
