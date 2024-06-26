@@ -6,20 +6,15 @@ public class Pnj : Interactable
     [SerializeField]
     private GameObject _highlightSprite;
 
-    [SerializeField]
-    private List<DialogueContent> _dialogues = new();
+    public List<DialogueContent> _dialogues = new();
 
-    [SerializeField]
-    private List<QuestDialogue> _questDialogues = new();
+    public List<QuestDialogue> _questDialogues = new();
 
-    [SerializeField]
-    private DialogueContent _defaultDialogue = new();
+    public DialogueContent _defaultDialogue = new();
 
-    [SerializeField]
-    private Sprite _pnjSprite;
+    public Sprite _pnjSprite;
 
-    [SerializeField]
-    private string _name;
+    public string _name;
 
     [SerializeField]
     private string _hideName;

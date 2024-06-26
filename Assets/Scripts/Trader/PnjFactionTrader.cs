@@ -3,14 +3,12 @@ using UnityEngine;
 
 public class PnjFactionTrader : Pnj
 {
-    [SerializeField]
-    private List<TradeData> _trades = new();
+    public List<TradeData> _trades = new();
 
     [SerializeField]
     private string _traderType;
 
-    [SerializeField]
-    private Sprite _traderImage;
+    public Sprite _traderImage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

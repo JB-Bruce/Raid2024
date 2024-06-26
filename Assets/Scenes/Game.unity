@@ -4324,6 +4324,268 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 223502398710342163, guid: af2da895e62d68b43a71299af392c058, type: 3}
   m_PrefabInstance: {fileID: 110690337}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &112313148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 112313149}
+  - component: {fileID: 112313153}
+  - component: {fileID: 112313152}
+  - component: {fileID: 112313151}
+  - component: {fileID: 112313150}
+  m_Layer: 0
+  m_Name: 'FactionBuilding '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &112313149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112313148}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1840590490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112313150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112313148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e246dd9868bf2094c8220efbcbf1443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 3118878145761873815}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 2a90f34b95e814141b65df5726a7b0e8, type: 3}
+  _name: Eliott
+  _hideName: Eliott
+  _factionName: 3
+  _factionQuestMenu: {fileID: 1095013937}
+  _factionQuest: 
+--- !u!114 &112313151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112313148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 9179157527055159212}
+  _dialogues:
+  - isThePlayer: 0
+    talk: "Ah, te voil\xE0 enfin. J'ai entendu parler de toi et de ta famille. J\u2019ai
+      des informations qui pourraient t'int\xE9resser dans la r\xE9alisation de ton
+      objectif."
+    nextTalk:
+    - isThePlayer: 1
+      talk: Vraiment? Dites-moi ce que vous savez.
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Nous avons pris connaissance d\u2019un vieillard qui d\xE9tiendrait
+          des informations cruciales pour t\u2019aider \xE0 poursuivre le travail
+          de tes parents."
+        nextTalk:
+        - isThePlayer: 0
+          talk: Celui-ci se cache dans une cabane, je vais te l'indiquer sur ta carte.
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Merci, je m\u2019en vais \xE0 sa recherche tout de suite."
+            nextTalk: []
+            choices: []
+            showRealName: 0
+          choices: []
+          showRealName: 0
+        choices: []
+        showRealName: 0
+      choices: []
+      showRealName: 0
+    choices: []
+    showRealName: 0
+  _questDialogues:
+  - questIndex: 0000000000000000
+    dialogueIndex: 0
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: "Je n'ai rien \xE0 te proposer repasses me voir plus tard."
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 2a90f34b95e814141b65df5726a7b0e8, type: 3}
+  _name: Eliott
+  _hideName: Eliott
+--- !u!114 &112313152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112313148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 7118262855948943760}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: c68344d815cc8c8438fb559fe5fae6d3, type: 3}
+  _name: Doryan
+  _hideName: Doryan
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 85b51428fe9b2164bb8f56616f4c1f40, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 2
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 09fb9573ec037ee419ce703b2a8f1100, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 69daa4cc1e4680b4ea4f3f93866c8ed6, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 7
+  - tradeItem: {fileID: 11400000, guid: c489ecec3f98f3f4abeecf51fc0f582a, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 9
+  - tradeItem: {fileID: 11400000, guid: ea49fd97856ce2941b0178e6c31a7440, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 4
+  _traderType: Marchand
+  _traderImage: {fileID: 21300000, guid: c68344d815cc8c8438fb559fe5fae6d3, type: 3}
+--- !u!114 &112313153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112313148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 338546851123171814}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 8152b8f2cdbb5684e9a8ba865e6718bd, type: 3}
+  _name: Vildy
+  _hideName: Vildy
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
+    tradeItemQuantity: 25
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
+      quantityNeed: 5
+  - tradeItem: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 3
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+      quantityNeed: 7
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 3
+  _traderType: Armurier
+  _traderImage: {fileID: 21300000, guid: 8152b8f2cdbb5684e9a8ba865e6718bd, type: 3}
 --- !u!1001 &118603462
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11671,6 +11933,11 @@ MonoBehaviour:
   _guardTransform:
   - {fileID: 0}
   - {fileID: 0}
+  _trader: {fileID: 0}
+  _armory: {fileID: 0}
+  _mainQuest: {fileID: 0}
+  _questGiver: {fileID: 0}
+  interactables: []
 --- !u!114 &255321289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19227,6 +19494,7 @@ Transform:
   m_Children:
   - {fileID: 1541758755}
   - {fileID: 1198006565}
+  - {fileID: 1976391444}
   m_Father: {fileID: 1615623831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &433980673
@@ -19261,6 +19529,15 @@ MonoBehaviour:
   _guardTransform:
   - {fileID: 1541758755}
   - {fileID: 1198006565}
+  _trader: {fileID: 4380676408200164690}
+  _armory: {fileID: 1679024459785382292}
+  _mainQuest: {fileID: 4699740794945438637}
+  _questGiver: {fileID: 681854024}
+  interactables:
+  - {fileID: 1976391447}
+  - {fileID: 1976391448}
+  - {fileID: 1976391446}
+  - {fileID: 1976391445}
 --- !u!114 &433980675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27970,6 +28247,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6201810838606085025}
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 1236173891}
+    - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _eRespawnFaction
       value: 3
       objectReference: {fileID: 0}
@@ -33265,6 +33546,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6201810838606085025}
     - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 1236173891}
+    - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: _eRespawnFaction
       value: 2
       objectReference: {fileID: 0}
@@ -35981,6 +36266,10 @@ PrefabInstance:
       propertyPath: _unitLeader
       value: 
       objectReference: {fileID: 6201810838606085025}
+    - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 1236173891}
     - target: {fileID: 534565846741916944, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -38244,6 +38533,268 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1899347777315899622, guid: 0cf9a0fa9e7cd9940a6f94a57c8f0dd3, type: 3}
   m_PrefabInstance: {fileID: 807228479}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &807875829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 807875830}
+  - component: {fileID: 807875834}
+  - component: {fileID: 807875833}
+  - component: {fileID: 807875832}
+  - component: {fileID: 807875831}
+  m_Layer: 0
+  m_Name: 'FactionBuilding '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &807875830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807875829}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 391.3, y: 245.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2035542044}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &807875831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807875829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e246dd9868bf2094c8220efbcbf1443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 8053394312266262323}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 8f91168c034c31943a4a3c0fbff339f5, type: 3}
+  _name: Docteur Maxence
+  _hideName: Docteur Maxence
+  _factionName: 4
+  _factionQuestMenu: {fileID: 1095013937}
+  _factionQuest: 
+--- !u!114 &807875832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807875829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 9179157527510820188}
+  _dialogues:
+  - isThePlayer: 0
+    talk: "Ah, te voil\xE0 enfin. J'ai entendu parler de toi et de ta famille. J\u2019ai
+      des informations qui pourraient t'int\xE9resser dans la r\xE9alisation de ton
+      objectif."
+    nextTalk:
+    - isThePlayer: 1
+      talk: Vraiment? Dites-moi ce que vous savez.
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Nous avons pris connaissance d\u2019un vieillard qui d\xE9tiendrait
+          des informations cruciales pour t\u2019aider \xE0 poursuivre le travail
+          de tes parents."
+        nextTalk:
+        - isThePlayer: 0
+          talk: Celui-ci se cache dans une cabane, je vais te l'indiquer sur ta carte.
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Merci, je m\u2019en vais \xE0 sa recherche tout de suite."
+            nextTalk: []
+            choices: []
+            showRealName: 0
+          choices: []
+          showRealName: 0
+        choices: []
+        showRealName: 0
+      choices: []
+      showRealName: 0
+    choices: []
+    showRealName: 0
+  _questDialogues:
+  - questIndex: 0000000000000000
+    dialogueIndex: 0
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: "Je n'ai rien \xE0 te proposer repasses me voir plus tard."
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 8f91168c034c31943a4a3c0fbff339f5, type: 3}
+  _name: Docteur Maxence
+  _hideName: Docteur Maxence
+--- !u!114 &807875833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807875829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 7118262855359858190}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 45570fba501d6344e933b96dfcfe4973, type: 3}
+  _name: Doctoresse Vignolles
+  _hideName: Doctoresse Vignolles
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 85b51428fe9b2164bb8f56616f4c1f40, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 2
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 09fb9573ec037ee419ce703b2a8f1100, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 69daa4cc1e4680b4ea4f3f93866c8ed6, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 7
+  - tradeItem: {fileID: 11400000, guid: c489ecec3f98f3f4abeecf51fc0f582a, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 9
+  - tradeItem: {fileID: 11400000, guid: ea49fd97856ce2941b0178e6c31a7440, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 4
+  _traderType: Marchand
+  _traderImage: {fileID: 21300000, guid: 45570fba501d6344e933b96dfcfe4973, type: 3}
+--- !u!114 &807875834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 807875829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 6370066155039003434}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 61b135c1b49f1b04d999c17d2c3943a5, type: 3}
+  _name: Professeur Decroix
+  _hideName: Professeur Decroix
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
+    tradeItemQuantity: 25
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
+      quantityNeed: 5
+  - tradeItem: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 3
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+      quantityNeed: 7
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 3
+  _traderType: Armurier
+  _traderImage: {fileID: 21300000, guid: 61b135c1b49f1b04d999c17d2c3943a5, type: 3}
 --- !u!1001 &812094344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58419,6 +58970,58 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f2d37a36-22f3-4126-bafe-fe625191ea26
     m_ActionName: FirstQuest/Interract[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1490437699}
+        m_TargetAssemblyTypeName: FactionMenu, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 774060935}
+        m_TargetAssemblyTypeName: FactionMenu, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 723491305}
+        m_TargetAssemblyTypeName: FactionMenu, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 630222674}
+        m_TargetAssemblyTypeName: FactionMenu, Assembly-CSharp
+        m_MethodName: Close
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3df4a6d4-a592-4d7a-be8c-fd222a5d53eb
+    m_ActionName: FactionMenu/Escape[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: InGame
@@ -66009,6 +66612,10 @@ PrefabInstance:
       propertyPath: _unitLeader
       value: 
       objectReference: {fileID: 6201810838606085025}
+    - target: {fileID: 511969725134596468, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
+      propertyPath: _playerInput
+      value: 
+      objectReference: {fileID: 1236173891}
     - target: {fileID: 534565846741916944, guid: a0db640c42d316b46b18054b6cd60b7b, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -80490,6 +81097,268 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 223502398710342163, guid: af2da895e62d68b43a71299af392c058, type: 3}
   m_PrefabInstance: {fileID: 1707144650}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1707472523
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707472524}
+  - component: {fileID: 1707472528}
+  - component: {fileID: 1707472527}
+  - component: {fileID: 1707472526}
+  - component: {fileID: 1707472525}
+  m_Layer: 0
+  m_Name: 'FactionBuilding '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1707472524
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707472523}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 910.5, y: 6.699997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1741281903}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707472525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707472523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e246dd9868bf2094c8220efbcbf1443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 1225673891550768438}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 2447b143a87da9049a8665b150caacd7, type: 3}
+  _name: "Du Foss\xE9"
+  _hideName: "Du Foss\xE9"
+  _factionName: 2
+  _factionQuestMenu: {fileID: 1095013937}
+  _factionQuest: 
+--- !u!114 &1707472526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707472523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 9179157526160716736}
+  _dialogues:
+  - isThePlayer: 0
+    talk: "Ah, te voil\xE0 enfin. J'ai entendu parler de toi et de ta famille. J\u2019ai
+      des informations qui pourraient t'int\xE9resser dans la r\xE9alisation de ton
+      objectif."
+    nextTalk:
+    - isThePlayer: 1
+      talk: Vraiment? Dites-moi ce que vous savez.
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Nous avons pris connaissance d\u2019un vieillard qui d\xE9tiendrait
+          des informations cruciales pour t\u2019aider \xE0 poursuivre le travail
+          de tes parents."
+        nextTalk:
+        - isThePlayer: 0
+          talk: Celui-ci se cache dans une cabane, je vais te l'indiquer sur ta carte.
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Merci, je m\u2019en vais \xE0 sa recherche tout de suite."
+            nextTalk: []
+            choices: []
+            showRealName: 0
+          choices: []
+          showRealName: 0
+        choices: []
+        showRealName: 0
+      choices: []
+      showRealName: 0
+    choices: []
+    showRealName: 0
+  _questDialogues:
+  - questIndex: 0000000000000000
+    dialogueIndex: 0
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: "Je n'ai rien \xE0 te proposer repasses me voir plus tard."
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 2447b143a87da9049a8665b150caacd7, type: 3}
+  _name: "Du Foss\xE9"
+  _hideName: "Du Foss\xE9"
+--- !u!114 &1707472527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707472523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 7118262854122786083}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 096ee1bb1d9f05044a8e7da98208ce0b, type: 3}
+  _name: Baptiste
+  _hideName: Baptiste
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 85b51428fe9b2164bb8f56616f4c1f40, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 2
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 09fb9573ec037ee419ce703b2a8f1100, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 69daa4cc1e4680b4ea4f3f93866c8ed6, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 7
+  - tradeItem: {fileID: 11400000, guid: c489ecec3f98f3f4abeecf51fc0f582a, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 9
+  - tradeItem: {fileID: 11400000, guid: ea49fd97856ce2941b0178e6c31a7440, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 4
+  _traderType: Marchand
+  _traderImage: {fileID: 21300000, guid: 096ee1bb1d9f05044a8e7da98208ce0b, type: 3}
+--- !u!114 &1707472528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707472523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 338546850128465614}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 1c504c10f031ecf4b85e9cd3c3ff1a4d, type: 3}
+  _name: Garcia
+  _hideName: Garcia
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
+    tradeItemQuantity: 25
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
+      quantityNeed: 5
+  - tradeItem: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 3
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+      quantityNeed: 7
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 3
+  _traderType: Armurier
+  _traderImage: {fileID: 21300000, guid: 1c504c10f031ecf4b85e9cd3c3ff1a4d, type: 3}
 --- !u!1 &1707860727
 GameObject:
   m_ObjectHideFlags: 0
@@ -81767,6 +82636,7 @@ Transform:
   m_Children:
   - {fileID: 146713185}
   - {fileID: 249158559}
+  - {fileID: 1707472524}
   m_Father: {fileID: 1615623831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1741281904
@@ -81801,6 +82671,15 @@ MonoBehaviour:
   _guardTransform:
   - {fileID: 146713185}
   - {fileID: 249158559}
+  _trader: {fileID: 4380676408150888975}
+  _armory: {fileID: 443371479123198971}
+  _mainQuest: {fileID: 5642301972693238177}
+  _questGiver: {fileID: 5306045540242233092}
+  interactables:
+  - {fileID: 1707472527}
+  - {fileID: 1707472528}
+  - {fileID: 1707472526}
+  - {fileID: 1707472525}
 --- !u!114 &1741281906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87190,6 +88069,7 @@ Transform:
   m_Children:
   - {fileID: 1494036925}
   - {fileID: 188745741}
+  - {fileID: 112313149}
   m_Father: {fileID: 1615623831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1840590491
@@ -87224,6 +88104,15 @@ MonoBehaviour:
   _guardTransform:
   - {fileID: 1494036925}
   - {fileID: 188745741}
+  _trader: {fileID: 4380676408300379836}
+  _armory: {fileID: 443371477972524243}
+  _mainQuest: {fileID: 5642301971664584141}
+  _questGiver: {fileID: 8352154762898584995}
+  interactables:
+  - {fileID: 112313152}
+  - {fileID: 112313153}
+  - {fileID: 112313151}
+  - {fileID: 112313150}
 --- !u!114 &1840590493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89985,6 +90874,11 @@ MonoBehaviour:
     - {fileID: 2060599733}
     - {fileID: 1864308021}
     buildingTriggers: {fileID: 1217143247}
+    _triggers:
+    - {fileID: 8859681404451603198}
+    - {fileID: 7801528664654885030}
+    - {fileID: 6054082342091926073}
+    - {fileID: 4946614330447636566}
     highlight: {fileID: 1538737218}
   - position: {fileID: 579460005}
     guardPoint1: {fileID: 1822587301}
@@ -89995,6 +90889,11 @@ MonoBehaviour:
     - {fileID: 5344649349131701081}
     - {fileID: 618438723}
     buildingTriggers: {fileID: 351543957}
+    _triggers:
+    - {fileID: 8859681403474086355}
+    - {fileID: 8469518898372730402}
+    - {fileID: 6054082340757552293}
+    - {fileID: 4207759643744838227}
     highlight: {fileID: 1247912865}
   - position: {fileID: 2003940085}
     guardPoint1: {fileID: 2008496735}
@@ -90005,6 +90904,11 @@ MonoBehaviour:
     - {fileID: 1796146151}
     - {fileID: 1208595976}
     buildingTriggers: {fileID: 1808665486}
+    _triggers:
+    - {fileID: 8859681403525525134}
+    - {fileID: 7801528664193555967}
+    - {fileID: 1841476568066356658}
+    - {fileID: 1457165832}
     highlight: {fileID: 1736925913}
   - position: {fileID: 1995326029}
     guardPoint1: {fileID: 365080717}
@@ -90015,6 +90919,11 @@ MonoBehaviour:
     - {fileID: 5344649350284743793}
     - {fileID: 7478662891891379670}
     buildingTriggers: {fileID: 1905648104}
+    _triggers:
+    - {fileID: 8859681403694744928}
+    - {fileID: 8469518899502432522}
+    - {fileID: 6054082340668424393}
+    - {fileID: 13224741211308274}
     highlight: {fileID: 795943839}
   _textReputationPlayerScientist: {fileID: 322228940}
   _textReputationPlayerUtopist: {fileID: 1537768812}
@@ -94663,6 +95572,268 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 223502398710342163, guid: af2da895e62d68b43a71299af392c058, type: 3}
   m_PrefabInstance: {fileID: 1975611759}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1976391443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1976391444}
+  - component: {fileID: 1976391448}
+  - component: {fileID: 1976391447}
+  - component: {fileID: 1976391446}
+  - component: {fileID: 1976391445}
+  m_Layer: 0
+  m_Name: 'FactionBuilding '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1976391444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976391443}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 548.6, y: -317.9, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 433980672}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1976391445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976391443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e246dd9868bf2094c8220efbcbf1443b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 772764854}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: e8fd4512f1e9e2441bb731cb926bc83a, type: 3}
+  _name: Lieutenant Enzo
+  _hideName: Lieutenant Enzo
+  _factionName: 1
+  _factionQuestMenu: {fileID: 1095013937}
+  _factionQuest: 
+--- !u!114 &1976391446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976391443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccae6100c27eb0045ae6d4f36363d208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 3753291285586469324}
+  _dialogues:
+  - isThePlayer: 0
+    talk: "Ah, te voil\xE0 enfin. J'ai entendu parler de toi et de ta famille. J\u2019ai
+      des informations qui pourraient t'int\xE9resser dans la r\xE9alisation de ton
+      objectif."
+    nextTalk:
+    - isThePlayer: 1
+      talk: Vraiment? Dites-moi ce que vous savez.
+      nextTalk:
+      - isThePlayer: 0
+        talk: "Nous avons pris connaissance d\u2019un vieillard qui d\xE9tiendrait
+          des informations cruciales pour t\u2019aider \xE0 poursuivre le travail
+          de tes parents."
+        nextTalk:
+        - isThePlayer: 0
+          talk: Celui-ci se cache dans une cabane, je vais te l'indiquer sur ta carte.
+          nextTalk:
+          - isThePlayer: 1
+            talk: "Merci, je m\u2019en vais \xE0 sa recherche tout de suite."
+            nextTalk: []
+            choices: []
+            showRealName: 0
+          choices: []
+          showRealName: 0
+        choices: []
+        showRealName: 0
+      choices: []
+      showRealName: 0
+    choices: []
+    showRealName: 0
+  _questDialogues:
+  - questIndex: 0000000000000000
+    dialogueIndex: 0
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: "Je n'ai rien \xE0 te proposer repasses me voir plus tard."
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: e8fd4512f1e9e2441bb731cb926bc83a, type: 3}
+  _name: Lieutenant Enzo
+  _hideName: Lieutenant Enzo
+--- !u!114 &1976391447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976391443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 7118262856048978558}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 414c1c2f55591ad4a9e2f5f7a92d5037, type: 3}
+  _name: Sous-Lieutenant Grimard
+  _hideName: Sous-Lieutenant Grimard
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 75b28fd53acb03b46ba2da984312b111, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 85b51428fe9b2164bb8f56616f4c1f40, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 003073eaded9e684eabb5d9e068697d5, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 2
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 6ace390d2af83bb44892eeb95ca596bb, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 09fb9573ec037ee419ce703b2a8f1100, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 900253c5716cf3d4a9ffad195cf9a824, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 69daa4cc1e4680b4ea4f3f93866c8ed6, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: b54b2240cbd8321498e4faed7bff23ed, type: 2}
+      quantityNeed: 2
+  - tradeItem: {fileID: 11400000, guid: 1cb166b5420e8324ebf2ed58103ead7b, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 4
+    - item: {fileID: 11400000, guid: e6c6f5cd96664e8479e9a131eb3c84ca, type: 2}
+      quantityNeed: 7
+  - tradeItem: {fileID: 11400000, guid: c489ecec3f98f3f4abeecf51fc0f582a, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: ab55f411c10f7c5429066bd7689aefa7, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 9
+  - tradeItem: {fileID: 11400000, guid: ea49fd97856ce2941b0178e6c31a7440, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 8
+    - item: {fileID: 11400000, guid: b534265600dca0b48bd61089a9268dee, type: 2}
+      quantityNeed: 4
+  _traderType: Marchand
+  _traderImage: {fileID: 21300000, guid: 414c1c2f55591ad4a9e2f5f7a92d5037, type: 3}
+--- !u!114 &1976391448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976391443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1ce6e0626cee4942a292059e74dc77c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _highlightSprite: {fileID: 6370066154409852531}
+  _dialogues: []
+  _questDialogues: []
+  _defaultDialogue:
+    isThePlayer: 0
+    talk: 
+    nextTalk: []
+    choices: []
+    showRealName: 0
+  _pnjSprite: {fileID: 21300000, guid: 7e334d5d094814f49876c41cf858db2c, type: 3}
+  _name: Caporal-Chef Alexis
+  _hideName: Caporal-Chef Alexis
+  _trades:
+  - tradeItem: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
+    tradeItemQuantity: 25
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 9e2f3fe8feaa8a24abfa874ead0dd977, type: 2}
+      quantityNeed: 1
+    - item: {fileID: 11400000, guid: 1812f06fdf617b54cb3fa39ec44ad597, type: 2}
+      quantityNeed: 5
+  - tradeItem: {fileID: 11400000, guid: fd05055fb626fa24cb932c8896b5a88f, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: c7d512aa54d38344984fbcdc5db18041, type: 2}
+      quantityNeed: 3
+    - item: {fileID: 11400000, guid: 015def1aacf6d81438b5723a00617b86, type: 2}
+      quantityNeed: 1
+  - tradeItem: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
+    tradeItemQuantity: 1
+    itemsToTrade:
+    - item: {fileID: 11400000, guid: 7effa5b5c47ea01479727b14a1807d87, type: 2}
+      quantityNeed: 7
+    - item: {fileID: 11400000, guid: 311ed464e8b18384eae961ba3da410d9, type: 2}
+      quantityNeed: 3
+  _traderType: Armurier
+  _traderImage: {fileID: 21300000, guid: 7e334d5d094814f49876c41cf858db2c, type: 3}
 --- !u!1001 &1977315829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98334,6 +99505,7 @@ Transform:
   m_Children:
   - {fileID: 270887767}
   - {fileID: 1348489200}
+  - {fileID: 807875830}
   m_Father: {fileID: 1615623831}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2035542045
@@ -98368,6 +99540,15 @@ MonoBehaviour:
   _guardTransform:
   - {fileID: 270887767}
   - {fileID: 1348489200}
+  _trader: {fileID: 4380676409052977442}
+  _armory: {fileID: 1679024459156276429}
+  _mainQuest: {fileID: 5642301971342219069}
+  _questGiver: {fileID: 6105637034172024026}
+  interactables:
+  - {fileID: 807875833}
+  - {fileID: 807875834}
+  - {fileID: 807875832}
+  - {fileID: 807875831}
 --- !u!114 &2035542047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113009,7 +114190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6aced4dca57654eb6482c59fb04476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pnj: {fileID: 5642301972693238177}
+  _pnj: {fileID: 0}
 --- !u!114 &6054082342091926073
 MonoBehaviour:
   m_ObjectHideFlags: 0

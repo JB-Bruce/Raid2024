@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class FactionMenu : Interactable
@@ -13,6 +14,8 @@ public class FactionMenu : Interactable
     private FactionLeader _leader;
 
     private FactionManager _factionManager;
+
+    [SerializeField] private PlayerInput _playerInput;
 
     [SerializeField]
     private Transform _parentBuildingInfo;
@@ -256,6 +259,8 @@ private void Init()
         }
 
         _eRespawnFaction = _statsManager.CastToEFactionRespawn(_faction.FactionUnitManager.faction);
+
+        _playerInput.SwitchCurrentActionMap("FactionMenu");
         
         SpawnBuildings();
         UnitRecruitement(0);
@@ -269,6 +274,7 @@ private void Init()
     public void Close()
     {
         this.gameObject.SetActive(false);
+        _playerInput.SwitchCurrentActionMap("InGame");
         Time.timeScale = 1.0f;
     }
 
