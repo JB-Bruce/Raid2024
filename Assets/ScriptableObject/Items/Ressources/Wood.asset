@@ -15,8 +15,7 @@ MonoBehaviour:
   _weight: 0.7
   _isStackable: 1
   _maxStack: 99
-  _name: Bois
-  _description: "La b\xFBche polyvalente : feu, abri, ou massue pour les conflits
-    de voisinage."
+  _name: Items_Wood
+  _description: Ditems_Wood
   _itemSprite: {fileID: 21300000, guid: 75a7b2ca0b1a7b3429162285ed962062, type: 3}
   _canDrop: 1

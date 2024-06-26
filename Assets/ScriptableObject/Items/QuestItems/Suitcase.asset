@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
-  _name: Malette
-  _description: "Id\xE9ale pour impressionner les autres survivants avec votre sens
-    du style."
+  _name: Qitems_Case
+  _description: Dqitems_Case
   _itemSprite: {fileID: 21300000, guid: 46724d92d432ab546ab07f3922c066b8, type: 3}
+  _canDrop: 1

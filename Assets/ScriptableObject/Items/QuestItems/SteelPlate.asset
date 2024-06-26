@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
-  _name: Plaque d'acier
-  _description: "Parfaite pour renforcer vos abris, fabriquer des armures, ou jouer
-    \xE0 cache-cache avec les balles perdues."
+  _name: Qitems_SteelPlate
+  _description: Dqitems_SteelPlate
   _itemSprite: {fileID: 21300000, guid: e42044e9732b877489386df0707c44d4, type: 3}
+  _canDrop: 1

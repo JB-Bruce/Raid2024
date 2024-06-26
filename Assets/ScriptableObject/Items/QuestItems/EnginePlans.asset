@@ -15,6 +15,7 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
-  _name: Plans du moteur
-  _description: "Pour ceux qui pr\xE9f\xE8rent le bruit et la fum\xE9e \xE0 la tranquillit\xE9."
+  _name: Qitems_HeatEngineBlueprint
+  _description: Dqitems_HeatEngineBlueprint
   _itemSprite: {fileID: 21300000, guid: bb9acbacfd69a5f4db6535589c708963, type: 3}
+  _canDrop: 1

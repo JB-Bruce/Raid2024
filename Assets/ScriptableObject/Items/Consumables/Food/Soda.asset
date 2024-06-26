@@ -15,8 +15,8 @@ MonoBehaviour:
   _weight: 0.3
   _isStackable: 1
   _maxStack: 99
-  _name: Soda
-  _description: "La potion p\xE9tillante qui rend la fin du monde un peu plus supportable."
+  _name: Items_Soda
+  _description: Ditems_Soda
   _itemSprite: {fileID: 21300000, guid: 64b42946bcd14bb4c96cd204cefdb83d, type: 3}
   _canDrop: 1
   useConsSFX: SodaDrink

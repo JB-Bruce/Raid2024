@@ -4555,7 +4555,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Water treatment plant
+  overName: MapPOIWatertreatmentplant
 --- !u!114 &123411643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5945,6 +5945,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &144346970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOISupermarket
+  language: 
 --- !u!1001 &146004198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17175,6 +17189,7 @@ GameObject:
   - component: {fileID: 385309555}
   - component: {fileID: 385309557}
   - component: {fileID: 385309556}
+  - component: {fileID: 385309558}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -17298,6 +17313,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385309554}
   m_CullTransparentMesh: 1
+--- !u!114 &385309558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385309554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapWaypoint
+  language: 
 --- !u!1 &385360788
 GameObject:
   m_ObjectHideFlags: 0
@@ -19245,7 +19274,7 @@ MonoBehaviour:
   color: {r: 0.17515779, g: 1, b: 0, a: 1}
   size: 1.75
   canMove: 0
-  overName: Military camp
+  overName: MapMili
 --- !u!114 &433980674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20575,7 +20604,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4932615346579275290, guid: 3d58affc91b20d34f9bc4e5d798a7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463625799}
+    - targetCorrespondingSourceObject: {fileID: 8209417138244310543, guid: 3d58affc91b20d34f9bc4e5d798a7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463625798}
+    - targetCorrespondingSourceObject: {fileID: 3744494061725567210, guid: 3d58affc91b20d34f9bc4e5d798a7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 463625797}
+    - targetCorrespondingSourceObject: {fileID: 4974219947243891615, guid: 3d58affc91b20d34f9bc4e5d798a7847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1847570796}
   m_SourcePrefab: {fileID: 100100000, guid: 3d58affc91b20d34f9bc4e5d798a7847, type: 3}
 --- !u!224 &463625783 stripped
 RectTransform:
@@ -20666,6 +20707,48 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3341071084341305634, guid: 3d58affc91b20d34f9bc4e5d798a7847, type: 3}
   m_PrefabInstance: {fileID: 463625782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &463625797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463625792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: InventoryHover_Equip
+  language: 
+--- !u!114 &463625798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463625793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: InventoryHover_Transfer
+  language: 
+--- !u!114 &463625799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463625794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: InventoryHover_Consume
+  language: 
 --- !u!1001 &464533920
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32045,6 +32128,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1191259208}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &696293124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOIWatertreatmentplant
+  language: 
 --- !u!1 &696783783
 GameObject:
   m_ObjectHideFlags: 0
@@ -35164,7 +35261,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Supermarket
+  overName: MapPOISupermarket
 --- !u!114 &763352074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35534,7 +35631,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Hospital
+  overName: MapPOIHospital
 --- !u!114 &769855576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37591,7 +37688,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Gas station
+  overName: MapPOIGasstation
 --- !u!114 &799822897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39863,6 +39960,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -290
       objectReference: {fileID: 0}
+    - target: {fileID: 3733642293656859112, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      propertyPath: m_text
+      value: MapPOIBunker
+      objectReference: {fileID: 0}
     - target: {fileID: 3808235289782514046, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -40158,7 +40259,141 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7428005366933026940, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
       insertIndex: -1
       addedObject: {fileID: 575899579}
+    - targetCorrespondingSourceObject: {fileID: 5985391129111230284, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847432668}
+    - targetCorrespondingSourceObject: {fileID: 7574075519913542543, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847432667}
+    - targetCorrespondingSourceObject: {fileID: 6196586211085319797, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847432666}
+    - targetCorrespondingSourceObject: {fileID: 2576185970187276353, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847432665}
+    - targetCorrespondingSourceObject: {fileID: 8015351104128521237, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 847432664}
+    - targetCorrespondingSourceObject: {fileID: 3961747893593768363, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 144346970}
+    - targetCorrespondingSourceObject: {fileID: 5313147013974738774, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 696293124}
+    - targetCorrespondingSourceObject: {fileID: 376776373442033546, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1242193013}
   m_SourcePrefab: {fileID: 100100000, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+--- !u!1 &847432656 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 376776373442033546, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &847432657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5313147013974738774, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &847432658 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3961747893593768363, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &847432659 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8015351104128521237, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &847432660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2576185970187276353, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &847432661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6196586211085319797, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &847432662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7574075519913542543, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &847432663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5985391129111230284, guid: 30152ea6ff293f14a8ce09f5f8980b84, type: 3}
+  m_PrefabInstance: {fileID: 847432655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &847432664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOIHospital
+  language: 
+--- !u!114 &847432665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOIGasstation
+  language: 
+--- !u!114 &847432666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOISawmill
+  language: 
+--- !u!114 &847432667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOIBunker
+  language: 
+--- !u!114 &847432668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOIHelicopter
+  language: 
 --- !u!1 &848100857
 GameObject:
   m_ObjectHideFlags: 0
@@ -42820,7 +43055,19 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8417462596083545990, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 907674437}
+    - targetCorrespondingSourceObject: {fileID: 8054788672889654596, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 907674436}
+    - targetCorrespondingSourceObject: {fileID: 3167704486346371349, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 907674435}
+    - targetCorrespondingSourceObject: {fileID: 8371353777953673286, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 907674434}
   m_SourcePrefab: {fileID: 100100000, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
 --- !u!1 &907674427 stripped
 GameObject:
@@ -42837,6 +43084,82 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1721586567389052227, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
   m_PrefabInstance: {fileID: 907674426}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &907674430 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8371353777953673286, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+  m_PrefabInstance: {fileID: 907674426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &907674431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3167704486346371349, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+  m_PrefabInstance: {fileID: 907674426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &907674432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8054788672889654596, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+  m_PrefabInstance: {fileID: 907674426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &907674433 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8417462596083545990, guid: 32222ce24db89d34e8bc671078cc62ce, type: 3}
+  m_PrefabInstance: {fileID: 907674426}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &907674434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907674430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Deathmenu_DeathQuestion
+  language: 
+--- !u!114 &907674435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907674431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Deathmenu_DeathText
+  language: 
+--- !u!114 &907674436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907674432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Deathmenu_FactionButton
+  language: 
+--- !u!114 &907674437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907674433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: Deathmenu_ElderButton
+  language: 
 --- !u!1 &907900021
 GameObject:
   m_ObjectHideFlags: 0
@@ -57600,7 +57923,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Bunker
+  overName: MapPOIBunker
 --- !u!114 &1235562673
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58750,6 +59073,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1899347777315899622, guid: 0cf9a0fa9e7cd9940a6f94a57c8f0dd3, type: 3}
   m_PrefabInstance: {fileID: 1241579824}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1242193013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 847432656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: MapPOISteelmill
+  language: 
 --- !u!1 &1243225253
 GameObject:
   m_ObjectHideFlags: 0
@@ -62764,7 +63101,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Steelmill
+  overName: MapPOISteelmill
 --- !u!114 &1315603580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71636,7 +71973,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Helicopter
+  overName: MapPOIHelicopter
 --- !u!114 &1516499077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81785,7 +82122,7 @@ MonoBehaviour:
   color: {r: 0.97333336, g: 0, b: 1, a: 1}
   size: 1.75
   canMove: 0
-  overName: Utopist camp
+  overName: MapUto
 --- !u!114 &1741281905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87208,7 +87545,7 @@ MonoBehaviour:
   color: {r: 1, g: 0.7092272, b: 0.41037738, a: 1}
   size: 1.75
   canMove: 0
-  overName: Survivalist camp
+  overName: MapSurv
 --- !u!114 &1840590492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87593,6 +87930,20 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4974219947243891615, guid: 3d58affc91b20d34f9bc4e5d798a7847, type: 3}
   m_PrefabInstance: {fileID: 463625782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1847570796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847570795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: InventoryHover_Throw
+  language: 
 --- !u!1001 &1848315526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88498,7 +88849,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 2
   canMove: 0
-  overName: Bandit camp
+  overName: MapBandit
 --- !u!1001 &1867880757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -98352,7 +98703,7 @@ MonoBehaviour:
   color: {r: 0, g: 0.9505663, b: 1, a: 1}
   size: 1.75
   canMove: 0
-  overName: Scientist camp
+  overName: MapSci
 --- !u!114 &2035542046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100485,7 +100836,7 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   size: 1
   canMove: 0
-  overName: POI Sawmill
+  overName: MapPOISawmill
 --- !u!114 &2071499897
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110941,7 +111292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6542746002765554786, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: overName
-      value: You
+      value: MapPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 8582386405185438273, guid: 925418fc8600a8348980d188e84a9c8e, type: 3}
       propertyPath: Laser

@@ -15,7 +15,7 @@ MonoBehaviour:
   _weight: 0.2
   _isStackable: 1
   _maxStack: 99
-  _name: Plastique
-  _description: "Parfois, une simple bouteille vide peut sembler comme un tr\xE9sor."
+  _name: Items_Plastic
+  _description: Ditems_Plastic
   _itemSprite: {fileID: 21300000, guid: 4bfcc3695707ba5489b221aac40b67e4, type: 3}
   _canDrop: 1
