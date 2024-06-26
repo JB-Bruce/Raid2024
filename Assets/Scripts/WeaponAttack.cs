@@ -16,6 +16,7 @@ public class WeaponAttack : MonoBehaviour
     private static readonly Quaternion _flipRotation = Quaternion.Euler(180, 0, 0);
     private static readonly Vector3 _normalScale = new Vector3(0.2f,0.2f, 0.2f);
     public Vector3 _flipScale = new Vector3(-0.2f, 0.2f, 0.2f);
+    private bool _isAI;
 
     // Cache
     public Weapon _equipedWeapon;
@@ -62,6 +63,7 @@ public class WeaponAttack : MonoBehaviour
     public void Init()
     {
         _unitCombat = transform.parent.parent.GetComponent<UnitCombat>();
+        _isAI = _unitCombat != null;
         _animator = GetComponent<Animator>();
         _camera = Camera.main;
     }
@@ -150,8 +152,6 @@ public class WeaponAttack : MonoBehaviour
     // Give damage to the nearrest player
     public void CaCAttack()
     {
-        bool _isAI = _unitCombat != null;
-
         Humanoid _enemy = _isAI ? _unitCombat.nearestEnemy : GetFrontEnemy();
 
         if (_enemy != null)

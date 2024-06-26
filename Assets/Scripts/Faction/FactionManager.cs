@@ -44,7 +44,7 @@ public class FactionManager : MonoBehaviour
 
     public BonusFaction[] bonus = new BonusFaction[4];
 
-    private static readonly List<Faction> _interactibleFaction = new List<Faction>() { Faction.Player, Faction.Survivalist, Faction.Scientist, Faction.Military, Faction.Utopist};
+    private static readonly List<Faction> _interactibleFaction = new List<Faction>() { Faction.Survivalist, Faction.Scientist, Faction.Military, Faction.Utopist};
     public List<FactionRespawn> factionRespawns = new List<FactionRespawn>();
     [SerializeField] private List<FactionMenu> _factionsMenus = new List<FactionMenu>();
 
@@ -98,6 +98,10 @@ public class FactionManager : MonoBehaviour
         if(faction1 == Faction.Bandit ||  faction2 == Faction.Bandit || faction1 == Faction.Null || faction2 == Faction.Null)
         {
             return;
+        }
+        if(faction1 == Faction.Player || faction2 == Faction.Player)
+        {
+            print("Big Problem");
         }
 
         for(int i = 0;i < reputations.Count;i++)
@@ -224,7 +228,7 @@ public class FactionManager : MonoBehaviour
             return;
         for(int i = 0 ; i< _interactibleFaction.Count; i++) 
         {
-            if (kill != _interactibleFaction[i])
+                if (kill != _interactibleFaction[i])
             { 
                 if(GetReputation(kill, _interactibleFaction[i]) >= allyReputation)
                 {
