@@ -563,7 +563,7 @@ public class Inventory : MonoBehaviour
     {
         mass = CountItemMassInInventory();
 
-        _massText.text = "Masse : " + mass.ToString("0.00f");
+        _massText.text = LanguageManager.instance.GetText("InventoryMasse") + " : " + mass.ToString("0.00f");
     }
 
     /// <summary>

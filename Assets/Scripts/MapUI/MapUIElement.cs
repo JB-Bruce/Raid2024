@@ -10,7 +10,7 @@ public class MapUIElement : MonoBehaviour
     public void Init(Sprite _image, string _name, float _scale, Color _color)
     {
         image.sprite = _image;
-        text.text = _name;
+        text.text = LanguageManager.instance.GetText(_name);
         image.transform.localScale = Vector3.one * _scale;
         image.color = _color;
         SetTextActive(false);
