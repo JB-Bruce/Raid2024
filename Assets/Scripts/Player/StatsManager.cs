@@ -325,6 +325,8 @@ public class StatsManager : Humanoid
         RemoveWater();
         _respawnFaction = CastStringToERespawnFaction(PlayerPrefs.GetString("ChooseFaction"));
         ChangeRespawnPoint();
+        RespawnPlayer();
+        _playerInput.SwitchCurrentActionMap("FirstQuest");
     }
 
     //Set _recupStamina to true, when 

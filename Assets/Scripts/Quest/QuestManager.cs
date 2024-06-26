@@ -69,6 +69,18 @@ public class QuestManager : MonoBehaviour
     [SerializeField]
     private int _currentMainQuest;
 
+    [SerializeField]
+    private QuestAction _utopistFisrtMainQuest;
+
+    [SerializeField]
+    private QuestAction _survivalistFisrtMainQuest;
+
+    [SerializeField]
+    private QuestAction _scientistFisrtMainQuest;
+
+    [SerializeField]
+    private QuestAction _militaryFisrtMainQuest;
+
     public EventSystem eventSystem;
 
     [SerializeField]
@@ -94,6 +106,23 @@ public class QuestManager : MonoBehaviour
 
     private void Start()
     {
+        string factionChoose = PlayerPrefs.GetString("ChooseFaction");
+        if (factionChoose == "Survivalist")
+        {
+            _quests[0].SetQuestAction(0, _survivalistFisrtMainQuest);
+        }
+        else if (factionChoose == "Utopist")
+        {
+            _quests[0].SetQuestAction(0, _utopistFisrtMainQuest);
+        }
+        else if (factionChoose == "Scientist")
+        {
+            _quests[0].SetQuestAction(0, _scientistFisrtMainQuest);
+        }
+        else if (factionChoose == "Military")
+        {
+            _quests[0].SetQuestAction(0, _militaryFisrtMainQuest);
+        }
         MapManager.instance.SetQuestWaypoint(_quests[_currentMainQuest].GetCurrentQuestAction().GetGoal());
     }
 

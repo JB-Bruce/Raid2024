@@ -10,6 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField]
     private PlayerInput _playerInput;
     private InputActionMap _actionMapInGame;
+    private InputActionMap _actionMapFirstQuest;
 
     [SerializeField]
     private InteractableText _interactionText;
@@ -28,6 +29,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Start()
     {
+        _actionMapFirstQuest = _playerInput.actions.FindActionMap("FirstQuest");
         _actionMapInGame = _playerInput.actions.FindActionMap("InGame");
         _inventory = Inventory.Instance;
     }
@@ -90,7 +92,7 @@ public class PlayerInteraction : MonoBehaviour
     /// </summary>
     public void PlayerInteract(InputAction.CallbackContext context)
     {
-        if (context.started && _actionMapInGame.enabled)
+        if (context.started && (_actionMapInGame.enabled || _actionMapFirstQuest.enabled))
         {
             if (_inventory.isInventoryOpen) 
             {
