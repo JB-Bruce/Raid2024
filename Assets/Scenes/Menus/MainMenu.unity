@@ -3551,6 +3551,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8587443660939065444, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
   m_PrefabInstance: {fileID: 3295947647546064275}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1076108542 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+  m_PrefabInstance: {fileID: 3295947647546064275}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076108541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1085010765
 GameObject:
   m_ObjectHideFlags: 0
@@ -5598,6 +5609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1682619433}
   - component: {fileID: 1682619432}
+  - component: {fileID: 1682619434}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -5732,37 +5744,13 @@ MonoBehaviour:
     m_ActionName: Quest/Close Quest[/Keyboard/j]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3295947647546064277}
-        m_TargetAssemblyTypeName: SettingsMenusManager, Assembly-CSharp
-        m_MethodName: DeactivateSettingsMenus
+      - m_Target: {fileID: 1682619434}
+        m_TargetAssemblyTypeName: ButtonInputHandler, Assembly-CSharp
+        m_MethodName: OnClickActionPerformed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1690278163}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 899938240}
-        m_TargetAssemblyTypeName: MenuButtonTracker, Assembly-CSharp
-        m_MethodName: SetLastGameObjectSelected
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2115932749}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5802,9 +5790,33 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 58330186-fd26-49a9-84f3-d933c3b5891f
     m_ActionName: RansomPaper/QuitPaper[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d19b5dd5-867c-4d72-bbfb-123c1ef463ef
+    m_ActionName: InGame/Open Reputation[/XInputControllerWindows/dpad/down,/Keyboard/h]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5afce0c8-4454-42b4-916d-fb1d7e29ed0e
+    m_ActionName: ReputationMenu/Move[/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fd724a14-f0d2-44d6-8b49-652a2c49524c
+    m_ActionName: ReputationMenu/Close Menu[/XInputControllerWindows/dpad/down,/Keyboard/h,/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e5aa814c-36cf-46ef-988e-536fa4d038ea
+    m_ActionName: EndGameMenu/Move[/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c2401e60-f7d8-4c54-aa7c-89e508f30ed5
+    m_ActionName: FirstQuest/Pause[/Keyboard/escape,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f2d37a36-22f3-4126-bafe-fe625191ea26
+    m_ActionName: FirstQuest/Interract[/Keyboard/e,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Settings
+  m_DefaultActionMap: Pause
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!4 &1682619433
@@ -5822,6 +5834,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682619434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682619431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8c4c5c2167f48c4dbd9b6691b285a7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetButton: {fileID: 1076108542}
+  _playerInput: {fileID: 1682619432}
 --- !u!1 &1690278163
 GameObject:
   m_ObjectHideFlags: 0
@@ -7662,13 +7688,13 @@ MonoBehaviour:
       - m_Target: {fileID: 1690278168}
         m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
         m_MethodName: GetSelectedSettingsButton
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SettingsBackButton
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 1690278163}
@@ -8445,6 +8471,10 @@ PrefabInstance:
       propertyPath: _playerInput
       value: 
       objectReference: {fileID: 1682619432}
+    - target: {fileID: 2283065339798988011, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: _actionMapString
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 2283301745431017457, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
@@ -9130,6 +9160,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -9172,6 +9206,10 @@ PrefabInstance:
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: ButtonClick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
+      value: SettingsButton
       objectReference: {fileID: 0}
     - target: {fileID: 8403872558298471372, guid: 487657e426765c94a83aeb802fe4f13a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

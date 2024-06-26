@@ -1388,7 +1388,18 @@
                 {
                     "name": "",
                     "id": "c0d8aa92-521b-48e4-a02a-2c134a496a97",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EscapeSettings",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77f15c6b-f65b-499e-b5bd-c903ef7a8e66",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

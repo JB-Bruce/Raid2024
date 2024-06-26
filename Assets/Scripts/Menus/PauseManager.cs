@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseManager : MonoBehaviour
@@ -49,6 +50,7 @@ public class PauseManager : MonoBehaviour
     public void PauseGame() //Pauses the game
     {
         _playerInput.SwitchCurrentActionMap("Pause");
+        Debug.Log("Pause ActionMap");
         GetComponent<ControllerMenus>().SelectFirstButton();
         Cursor.visible = true;
         _pauseMenu.SetActive(true);
@@ -61,7 +63,7 @@ public class PauseManager : MonoBehaviour
     public void UnpauseGame() //Unpauses the game
     {
         List<int> questIndexs = QuestManager.instance.GetCurrentMainQuestActionIndex();
-        if (questIndexs[0] == 0 && questIndexs[1] == 0)
+        if (questIndexs[0] == 0 && questIndexs[1] == 0 && SceneManager.GetActiveScene().name == "Game")
         {
             _playerInput.SwitchCurrentActionMap("FirstQuest");
         }
