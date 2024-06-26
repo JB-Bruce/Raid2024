@@ -237,8 +237,4 @@ MonoBehaviour:
     dropRate: 3.448276
     dropNumber:
     - amount: 1
-      pourcentage: 50
-    - amount: 3
-      pourcentage: 30
-    - amount: 5
-      pourcentage: 20
+      pourcentage: 100
