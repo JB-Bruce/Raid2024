@@ -73,22 +73,22 @@ public class StatsManager : Humanoid
     //Change the life image color (is called on TakeDamage())
     public void ChangeLifeColor()
     {
-        if (life <= 100 && life >= 76)
+        if (life <= 200 && life >= 151)
         {
             healthImage.color = Color.white;
         }
 
-        if (life <= 75 && life >= 51)
+        if (life <= 150 && life >= 101)
         {
             healthImage.color = Color.yellow;
         }
 
-        if (life <= 50 && life >= 26)
+        if (life <= 100 && life >= 51)
         {
             healthImage.color = new Color(1.0f,0.5f,0.0f);
         }
 
-        if (life <= 25 && life >= 1)
+        if (life <= 50 && life >= 1)
         {
             healthImage.color = Color.red;
         }
@@ -151,9 +151,9 @@ public class StatsManager : Humanoid
     //Call this function when you want to heal the player. Change the color of the life image (depending on the life amount).
     public void AddHealth(int healthAdd)
     {
-        if (life + healthAdd >= 100)
+        if (life + healthAdd >= 200)
         {
-            life = 100;
+            life = 200;
         }
         else
         {
@@ -227,7 +227,7 @@ public class StatsManager : Humanoid
     {
         AddWater(100);
         AddFood(100);
-        AddHealth(100);
+        AddHealth(200);
         stamina = 50;
         staminaBar.fillAmount = stamina / 50f;
         ChangeRespawnPoint();
