@@ -13,13 +13,8 @@ MonoBehaviour:
   m_Name: ContainerTutorial
   m_EditorClassIdentifier: 
   _loots:
-  - item: {fileID: 11400000, guid: 373f0f6c235839e448b07f72a60b6f65, type: 2}
-    dropRate: 50
+  - item: {fileID: 11400000, guid: 2c8f4bacac00df1499309c65241b96fb, type: 2}
+    dropRate: 100
     dropNumber:
-    - amount: 1
-      pourcentage: 100
-  - item: {fileID: 11400000, guid: 5f2a8b77470bba44b933c1cd31eb73cc, type: 2}
-    dropRate: 50
-    dropNumber:
-    - amount: 25
+    - amount: 99
       pourcentage: 100

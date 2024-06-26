@@ -56,14 +56,14 @@ public class FactionManager : MonoBehaviour
 
         poi = OrderPOIByPriority();
         SetFactionsPosition();
-        if (TutorialManager.Instance != null)
-        {
-            AddReputation(Faction.Player, TutorialManager.Instance.GetPlayerFaction(), 20);
-        }
     }
 
     private void Start()
     {
+        if (TutorialManager.Instance != null)
+        {
+            AddReputation(Faction.Player, TutorialManager.Instance.GetPlayerFaction(), 20);
+        }
         for (int i = 0; i < factions.Count; i++) 
         {
             IsPoiCaught.AddListener(factions[i].HaveCaughtPOI);
