@@ -77,8 +77,7 @@ public class DialogueManager : MonoBehaviour
     //called by pnj to start a dialogue
     public void StartDialogue(string pnjName, string pnjHideName, bool isPnjNameHide, Sprite pnjSprite, DialogueContent talk, Action<List<string>, bool> returnMethode)
     {
-        _playerInput.actions.FindActionMap("InGame").Disable();
-        _playerInput.actions.FindActionMap("Dialogue").Enable();
+        _playerInput.SwitchCurrentActionMap("Dialogue");
 
         _displayedDialogue.Clear();
         _dialogueChoices.Clear();
