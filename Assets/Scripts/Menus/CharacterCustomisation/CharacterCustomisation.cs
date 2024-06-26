@@ -200,6 +200,9 @@ public class CharacterCustomisation : MonoBehaviour
             go.SetActive(true);
         }
         
-        CharacterSelectionUI.SetActive(false);
+        if (!SkipTutorial)
+        {
+            CharacterSelectionUI.SetActive(false);
+        }
     }
 }
