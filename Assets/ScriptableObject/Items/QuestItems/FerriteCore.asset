@@ -15,7 +15,13 @@ MonoBehaviour:
   _weight: 0
   _isStackable: 0
   _maxStack: 1
+<<<<<<< HEAD
   _name: Qitems_FerriteCore
   _description: Dqitems_FerriteCore
   _itemSprite: {fileID: 21300000, guid: d8eea0366acf85741a032f8082de8950, type: 3}
+=======
+  _name: Noyau de ferrite
+  _description: "Parfait pour impressionner vos amis avec des mots compliqu\xE9s."
+  _itemSprite: {fileID: 21300000, guid: b69263842e6082742bde89ee779fbe41, type: 3}
+>>>>>>> be82b7b (sprites integration)
   _canDrop: 1

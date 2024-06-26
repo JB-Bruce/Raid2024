@@ -1,10 +1,14 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MainQuestInteractable : Interactable
 {
     [SerializeField]
     private QuestManager.QuestTriggerType _questTriggerType;
+
+    [SerializeField]
+    private GameObject _selectedSprite;
 
     [SerializeField]
     private string _information;
@@ -160,6 +164,11 @@ public class MainQuestInteractable : Interactable
             Highlight(false);
             PlayerInteraction.Instance.interactables.Remove(this);
         }
+    }
+
+    public override void Highlight(bool state)
+    {
+        _selectedSprite.SetActive(state);
     }
 
     public string Name { get { return _name; } }
