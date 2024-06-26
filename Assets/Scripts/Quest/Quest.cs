@@ -88,6 +88,11 @@ public class Quest
         }
     }
 
+    public void SetQuestAction(int questActionIndex, QuestAction questAction)
+    {
+        _questActions[questActionIndex] = questAction;
+    }
+
     public enum questType
     {
         mainQuest,
