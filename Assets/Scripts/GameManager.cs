@@ -8,11 +8,19 @@ public class GameManager : MonoBehaviour
     public List<RestrictedArea> restrictedAreas = new List<RestrictedArea>();
     public float mapSize = 100f;
 
+    public bool hasFinishedFirstQuest;
+    public GameObject firstQuestBlocker;
 
     private void Awake()
     {
         if(Instance == null)
             Instance = this;
+    }
+
+    public void FinishFirstQuest()
+    {
+        hasFinishedFirstQuest = true;
+        firstQuestBlocker.SetActive(!hasFinishedFirstQuest);
     }
 
 }
