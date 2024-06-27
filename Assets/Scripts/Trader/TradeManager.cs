@@ -201,8 +201,8 @@ public class TradeManager : MonoBehaviour
     //update the description panel
     private void SetDescriptionPanel()
     {
-        _selectedItemName.text = _selectedTrade.currentData.tradeItem.Name;
-        _selectedItemDescription.text = _selectedTrade.currentData.tradeItem.Description;
+        _selectedItemName.text = LanguageManager.instance.GetText(_selectedTrade.currentData.tradeItem.Name);
+        _selectedItemDescription.text = LanguageManager.instance.GetText(_selectedTrade.currentData.tradeItem.Description);
     }
 }
 

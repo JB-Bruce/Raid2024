@@ -4187,6 +4187,7 @@ GameObject:
   - component: {fileID: 199878885}
   - component: {fileID: 199878887}
   - component: {fileID: 199878886}
+  - component: {fileID: 199878888}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4310,6 +4311,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199878884}
   m_CullTransparentMesh: 1
+--- !u!114 &199878888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 199878884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: TutoPlay
+  language: 
 --- !u!4 &200110138 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7652861056275234707, guid: df8475c5a1c2bae4a9c31b9767423e5d, type: 3}
@@ -5518,6 +5533,7 @@ GameObject:
   - component: {fileID: 262045053}
   - component: {fileID: 262045055}
   - component: {fileID: 262045056}
+  - component: {fileID: 262045057}
   m_Layer: 5
   m_Name: Label
   m_TagString: Untagged
@@ -5643,6 +5659,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &262045057
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262045052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: TutoSkip
+  language: 
 --- !u!1 &263540385
 GameObject:
   m_ObjectHideFlags: 0
@@ -7231,6 +7261,7 @@ GameObject:
   - component: {fileID: 344738296}
   - component: {fileID: 344738298}
   - component: {fileID: 344738297}
+  - component: {fileID: 344738299}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -7280,14 +7311,14 @@ MonoBehaviour:
   m_text: "+30% de chance de trouver des mat\xE9rieaux m\xE9dicaux dans des containers."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 8100152201445779400, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7343,7 +7374,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &344738298
@@ -7354,6 +7385,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344738295}
   m_CullTransparentMesh: 1
+--- !u!114 &344738299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344738295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: TutoDescSci
+  language: 
 --- !u!1 &351486972
 GameObject:
   m_ObjectHideFlags: 0
@@ -11441,7 +11486,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 342e31a3b08e12a4487306c2c3b4332c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dc0b4bfd074e66147816c8eb6239af8f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14458,7 +14503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -160.44275, y: 90.21741}
+  m_AnchoredPosition: {x: -134, y: 64}
   m_SizeDelta: {x: 161.1145, y: 70.4348}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864954135
@@ -14702,6 +14747,7 @@ GameObject:
   - component: {fileID: 876315773}
   - component: {fileID: 876315775}
   - component: {fileID: 876315774}
+  - component: {fileID: 876315776}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -14751,14 +14797,14 @@ MonoBehaviour:
   m_text: +30% de chance de trouver de la nourriture/eau dans des containers.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 8100152201445779400, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -14814,7 +14860,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &876315775
@@ -14825,6 +14871,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 876315772}
   m_CullTransparentMesh: 1
+--- !u!114 &876315776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876315772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: TutoDescSurv
+  language: 
 --- !u!1 &878931042
 GameObject:
   m_ObjectHideFlags: 0
@@ -17302,7 +17362,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 1}
+  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 0.078431375}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18219,8 +18279,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -641565601, guid: 7a97e88ffa880964b90d2470f03763e4, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -22013,6 +22073,7 @@ GameObject:
   - component: {fileID: 1215279496}
   - component: {fileID: 1215279498}
   - component: {fileID: 1215279497}
+  - component: {fileID: 1215279499}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -22062,14 +22123,14 @@ MonoBehaviour:
   m_text: "+30% de chance de trouver de la mati\xE8re premi\xE8re dans des containers."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 8100152201445779400, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -22125,7 +22186,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1215279498
@@ -22136,6 +22197,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215279495}
   m_CullTransparentMesh: 1
+--- !u!114 &1215279499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215279495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: TutoDescUto
+  language: 
 --- !u!4 &1216664350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4916279288818328073, guid: cc193615a99c6444084f43e578dc155b, type: 3}
@@ -22378,7 +22453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 1}
+  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 0.078431375}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -33601,6 +33676,7 @@ GameObject:
   - component: {fileID: 1740187803}
   - component: {fileID: 1740187802}
   - component: {fileID: 1740187801}
+  - component: {fileID: 1740187804}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -33744,6 +33820,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740187799}
   m_CullTransparentMesh: 1
+--- !u!114 &1740187804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740187799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: TtoEnterName
+  language: 
 --- !u!1 &1745182018
 GameObject:
   m_ObjectHideFlags: 0
@@ -35881,7 +35971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 1}
+  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 0.078431375}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -36933,6 +37023,8 @@ MonoBehaviour:
   - areaOrigine: {fileID: 0}
     areaRadius: 20
   mapSize: 1000
+  hasFinishedFirstQuest: 0
+  firstQuestBlocker: {fileID: 0}
 --- !u!4 &1956797800
 Transform:
   m_ObjectHideFlags: 0
@@ -39208,7 +39300,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 1}
+  m_Color: {r: 0.37254903, g: 0.34901962, b: 0.34901962, a: 0.078431375}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -39306,6 +39398,7 @@ GameObject:
   - component: {fileID: 2091112264}
   - component: {fileID: 2091112266}
   - component: {fileID: 2091112265}
+  - component: {fileID: 2091112267}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -39355,14 +39448,14 @@ MonoBehaviour:
   m_text: +30% de chance de trouver des munitions/armes dans des containers.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 8100152201445779400, guid: c2f1962c805eb324c90aa244cf44c853, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -39418,7 +39511,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2091112266
@@ -39429,6 +39522,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2091112263}
   m_CullTransparentMesh: 1
+--- !u!114 &2091112267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091112263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e8c05d537493c459f6420f19417dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: TutoDescMili
+  language: 
 --- !u!1001 &2102354279
 PrefabInstance:
   m_ObjectHideFlags: 0

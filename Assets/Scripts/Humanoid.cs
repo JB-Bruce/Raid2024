@@ -12,6 +12,7 @@ public class Humanoid : MonoBehaviour
 
     public RectTransform _slider;
 
+    public float maxLife = 100;
     public float life = 100;
     public Faction faction;
     public bool isDead = false;
@@ -124,7 +125,7 @@ public class Humanoid : MonoBehaviour
     {
         if (_slider != null)
         {
-            _slider.localScale = new Vector3(life / 100, 1, 1);
+            _slider.localScale = new Vector3(life / maxLife, 1, 1);
         }
     }
 

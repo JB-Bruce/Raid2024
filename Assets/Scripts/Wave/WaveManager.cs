@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +35,6 @@ public class WaveManager : MonoBehaviour
     // Start a wave (point  = point to defend // duration = duration of the wave // intensity = number of unit who spawn/second)
     public void StartWave(Vector3 point, float duration, int intencity, float waitSpawnTimer)
     {
-        duration += Time.time;
         _objective.transform.position = point;
         StartCoroutine(Wave(point, duration, intencity, waitSpawnTimer));
     }
@@ -42,7 +42,8 @@ public class WaveManager : MonoBehaviour
     // Coroutine of the wave
     private IEnumerator Wave(Vector3 point, float duration, int intencity, float waitSpawnTimer)
     {
-        while(Time.time < duration) 
+        float realDuration = Time.time + duration;
+        while(Time.time < realDuration) 
         {
             yield return new WaitForSeconds(waitSpawnTimer);
             for (int i = 0; i < intencity; i++)
@@ -54,6 +55,7 @@ public class WaveManager : MonoBehaviour
                 break;
             }
         }
+        yield return new WaitForSeconds(5);
         EndWave();
         QuestManager.instance.CheckQuestTrigger(QuestManager.QuestTriggerType.defend, "DefendBase");
     }
@@ -64,9 +66,9 @@ public class WaveManager : MonoBehaviour
         Vector3 _pos = Vector3.zero;
         do
         {
-            Vector3 randomDirection = Random.insideUnitCircle;
+            Vector3 randomDirection = UnityEngine.Random.insideUnitCircle;
 
-            float randomDistance = Random.Range(radiusAroundPoint, (radiusAroundPoint+10));
+            float randomDistance = UnityEngine.Random.Range(radiusAroundPoint, (radiusAroundPoint+10));
 
             _pos = _objective.transform.position + (randomDirection * randomDistance);
 
@@ -80,7 +82,7 @@ public class WaveManager : MonoBehaviour
     {
         for (int i = 0; i < _spawnUnits.Count; i++)
         {
-            if (_spawnUnits[i] != null)
+            if (_spawnUnits[i] != null && _spawnUnits[i].GetComponent<UnitBT>() != null)
             {
                 _spawnUnits[i].GetComponent<UnitBT>().order = UnitOrder.Patrol;
             }

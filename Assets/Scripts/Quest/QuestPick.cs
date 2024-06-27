@@ -40,7 +40,7 @@ public class QuestPick : QuestAction
     //return the text for the objectives
     public override string GetObjectivesText()
     {
-        return "- " + _stuffToPick + "   " + System.Math.Clamp(_quantityInInventory, 0, _quantityToPick) + "/" + _quantityToPick + "\n";
+        return "- " + LanguageManager.instance.GetText(_stuffToPick) + "   " + System.Math.Clamp(_quantityInInventory, 0, _quantityToPick) + "/" + _quantityToPick + "\n";
     }
 
     //check if the stuff pick is the quest stuff to pick

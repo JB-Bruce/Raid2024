@@ -36,7 +36,7 @@ public class QuestTrigger : QuestAction
     //return the text for the objectives
     public override string GetObjectivesText()
     {
-        return _objectifText;
+        return LanguageManager.instance.GetText(_objectifText);
     }
 
     //return if the QuestTrigger is finished

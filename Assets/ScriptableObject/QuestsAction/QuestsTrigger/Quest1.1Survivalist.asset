@@ -17,4 +17,4 @@ MonoBehaviour:
   _actionsToDoAtStart: []
   _questTriggerType: 4
   _information: Eliott
-  _objectifText: '- Parler au Eliott'
+  _objectifText: "- Parler \xE0 Eliott"

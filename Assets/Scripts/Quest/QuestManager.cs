@@ -101,7 +101,7 @@ public class QuestManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        UpdateInGameQuestUi();
+        
     }
 
     private void Start()
@@ -124,6 +124,8 @@ public class QuestManager : MonoBehaviour
             _quests[0].SetQuestAction(0, _militaryFisrtMainQuest);
         }
         MapManager.instance.SetQuestWaypoint(_quests[_currentMainQuest].GetCurrentQuestAction().GetGoal());
+
+        UpdateInGameQuestUi();
     }
 
     //check if the current QuestActions are QuestTrigger
@@ -227,7 +229,8 @@ public class QuestManager : MonoBehaviour
                         break;
                     case "DefendBase":
                         Humanoid humanoide = _objectToDefend.GetComponent<Humanoid>();
-                        humanoide.life = 100;
+                        humanoide.life = 750;
+                        humanoide.maxLife = 750;
                         humanoide.SetSlider();
                         WaveManager.instance.StartWave(_constructionSpot.transform.position, 10, 1, 3);
                         break;
@@ -360,7 +363,7 @@ public class QuestManager : MonoBehaviour
     {
         string objectives = _quests[_currentMainQuest].GetCurrentQuestAction().GetObjectivesText();
         _objectivesInGame.text = objectives;
-        string text = _quests[_currentMainQuest].GetCurrentQuestAction().GetName();
+        string text = LanguageManager.instance.GetText(_quests[_currentMainQuest].GetCurrentQuestAction().GetName());
         _questActionTitleInGame.text = text;
     }
 
