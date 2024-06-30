@@ -17,4 +17,4 @@ MonoBehaviour:
   _actionsToDoAtStart: []
   _questTriggerType: 1
   _information: RessourcesArea
-  _objectifText: "- Aller \xE0 l'Est du camp des Utopistes"
+  _objectifText: "- Se rendre sur la route reliant la ville au camp \xE0 l'ouest"

@@ -67,7 +67,7 @@ public class Humanoid : MonoBehaviour
     // remove life to him self and return true if he is dead
     public bool TakeDamage(float damage, Faction _faction, Vector2 fwd)
     {
-        if (!_canTakeDamageByPlayer)
+        if (!_canTakeDamageByPlayer && _faction != Faction.Player)
         {
             return false;
         }
